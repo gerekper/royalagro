@@ -1,0 +1,302 @@
+# Copyright (C) 2020 Kathy Darling
+# This file is distributed under the GNU General Public License v3.0.
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Free Gift Coupons 3.0.5\n"
+"Report-Msgid-Bugs-To: https://woocommerce.com/my-account/tickets/\n"
+"POT-Creation-Date: 2020-11-26 00:50:44+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2020-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n 1.0.3\n"
+
+#: includes/admin/class-wc-free-gift-coupons-admin-notices.php:116
+msgid "Dismiss"
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin-notices.php:174
+msgid "Your database is being updated in the background."
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin-notices.php:184
+msgid "Your database needs to be updated to the latest version."
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin-notices.php:189
+msgid "Database update incomplete."
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin-notices.php:194
+msgid "WooCommerce Free Gift Coupons Data Update"
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin-notices.php:200
+msgid "WooCommerce Free Gift Coupons data update complete."
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin-notices.php:214
+msgid "Run the updater"
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin-notices.php:234
+msgid "run the update process manually"
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin-notices.php:237
+#. translators: %s: Fallback link to force update
+msgid "&hellip;Taking a while? You may need to %s."
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin-notices.php:252
+msgid "get in touch with us"
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin-notices.php:254
+#. translators: %s: Link to support
+msgid "If this message persists, please restore your database from a backup, or %s."
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin-notices.php:266
+msgid "Action failed. Please refresh the page and retry."
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin-notices.php:270
+msgid "You do not have permission to dismiss this notice."
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin.php:110
+#: includes/compatibility/modules/class-wc-fgc-smart-coupons-compatibility.php:109
+msgid "Free Gifts"
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin.php:112
+msgid ""
+"These are the products you are giving away with this coupon. They will "
+"automatically be added to the cart."
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin.php:120
+#: includes/admin/class-wc-free-gift-coupons-admin.php:142
+msgid "Search for a product&hellip;"
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin.php:128
+msgid "Javascript is required for product selection to work."
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin.php:134
+msgid "Sync Quantities"
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin.php:136
+msgid "Sync the gift products' quantities to the quantity of a product in the cart."
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin.php:159
+msgid ""
+"This adds the Synced Product to the required Product List, if it is not "
+"already added. If changed, the previously synced product remains in your "
+"required products list."
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin.php:170
+msgid "Free shipping for gift(s)"
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin.php:171
+msgid ""
+"Check this box if the free gift(s) should not incur a shipping cost. A free "
+"shipping method must be enabled."
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin.php:201
+msgid "Product"
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin.php:202
+msgid "Quantity"
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin.php:222
+msgid "Click to remove"
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin.php:259
+msgid "Please select at least one product to give away with this coupon."
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin.php:319
+msgid ""
+"The previously synced product might still be in your required product list, "
+"if it has not been removed by you already."
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin.php:387
+msgid "Documentation"
+msgstr ""
+
+#: includes/admin/class-wc-free-gift-coupons-admin.php:388
+msgid "Support"
+msgstr ""
+
+#: includes/class-wc-fgc-update-variation-cart.php:108
+msgid "Sorry, an error occured, please try again later."
+msgstr ""
+
+#: includes/class-wc-fgc-update-variation-cart.php:109
+msgid "Sorry, the gift item could not be updated, please try again later."
+msgstr ""
+
+#: includes/class-wc-fgc-update-variation-cart.php:130
+msgid " Please select some product options."
+msgstr ""
+
+#: includes/class-wc-fgc-update-variation-cart.php:202
+msgid ""
+"This gift product no longer appears to be valid. Could you try reloading "
+"the page?"
+msgstr ""
+
+#: includes/class-wc-fgc-update-variation-cart.php:271
+msgid "Product selections are not valid, so this selection cannot be confirmed."
+msgstr ""
+
+#: includes/class-wc-fgc-update-variation-cart.php:276
+msgid "Product no longer exists in cart, so cannot be edited."
+msgstr ""
+
+#: includes/class-wc-fgc-update-variation-cart.php:309
+msgid "Click here"
+msgstr ""
+
+#: includes/class-wc-fgc-update-variation-cart.php:313
+#. Translators: 1: Product name. 2: Cart link.
+msgid ""
+"We were unable to process your order, please try again by choosing "
+"attributes for \"%1$s\". %2$s"
+msgstr ""
+
+#: includes/class-wc-fgc-update-variation-cart.php:387
+msgid "Update Gift"
+msgstr ""
+
+#: includes/class-wc-fgc-update-variation-cart.php:437
+msgid "Cart updated."
+msgstr ""
+
+#: includes/class-wc-free-gift-coupons.php:212
+#. translators: %s: Required version of WooCommerce
+msgid ""
+"WooCommerce Free Gift Coupons requires at least WooCommerce %s in order to "
+"function. Please upgrade WooCommerce."
+msgstr ""
+
+#: includes/class-wc-free-gift-coupons.php:235
+msgid "Free Gift"
+msgstr ""
+
+#: includes/class-wc-free-gift-coupons.php:384
+#. Translators: %s Product title.
+msgid "You are not allowed to modify the quantity of your %s gift."
+msgstr ""
+
+#: includes/class-wc-free-gift-coupons.php:457
+msgid "A gift item which is no longer available was removed from your cart."
+msgstr ""
+
+#: includes/class-wc-free-gift-coupons.php:500
+msgid "Free!"
+msgstr ""
+
+#: includes/class-wc-free-gift-coupons.php:957
+#. Translators: %s is the coupon code/name.
+msgid "Coupon \"%s\" has been removed."
+msgstr ""
+
+#: includes/compatibility/modules/class-wc-fgc-smart-coupons-compatibility.php:57
+msgid "Free Gift Data"
+msgstr ""
+
+#: includes/compatibility/modules/class-wc-fgc-smart-coupons-compatibility.php:58
+msgid "Free Gift Shipping"
+msgstr ""
+
+#: includes/compatibility/modules/class-wc-fgc-smart-coupons-compatibility.php:84
+msgid "You have received a coupon for a free gift!"
+msgstr ""
+
+#: includes/compatibility/modules/class-wc-fgc-smart-coupons-compatibility.php:107
+#. translators: %s: List of titles of free products gifted by coupon
+msgid "Free %s"
+msgstr ""
+
+#: includes/compatibility/modules/class-wc-fgc-smart-coupons-compatibility.php:126
+msgid "Free Gift!"
+msgstr ""
+
+#: templates/cart/product-image.php:44
+msgid "Awaiting product image"
+msgstr ""
+
+#: woocommerce-free-gift-coupons.php:47
+#. translators: %1$s: Opening link tag, %2$s: Closing link tag, %3$s: Required
+#. version of WooCommerce
+msgid ""
+"<strong>WooCommerce Free Gift Coupons is inactive.</strong> The "
+"%1$sWooCommerce plugin%2$s must be active and at least version %3$s for "
+"Free Gift Coupons to function. Please upgrade or activate WooCommerce."
+msgstr ""
+
+#: woocommerce-free-gift-coupons.php:56
+#. translators: %1$s: Opening link tag, %2$s: Closing link tag, %3$s: Required
+#. version of PHP
+msgid ""
+"WooCommerce Free Gift Coupons requires at least PHP <strong>%1$s</strong>. "
+"Learn <a href=\"%2$s\">how to update PHP</a>."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "WooCommerce Free Gift Coupons"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.woocommerce.com/products/free-gift-coupons/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Add a free product to the cart when a coupon is entered"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Kathy Darling"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://kathyisawesome.com"
+msgstr ""
+
+#: includes/class-wc-fgc-update-variation-cart.php:157
+msgctxt "edit in cart link text"
+msgid "Change options"
+msgstr ""
+
+#: includes/class-wc-fgc-update-variation-cart.php:160
+msgctxt "edit in cart link text"
+msgid "Choose options"
+msgstr ""
+
+#: includes/class-wc-fgc-update-variation-cart.php:173
+#. Translators: %1$s text for edit price link.
+msgctxt "edit in cart text"
+msgid ""
+"<small>%1$s<span class=\"dashicons dashicons-after "
+"dashicons-edit\"></span></small>"
+msgstr ""
+
+#: includes/wc-fgc-template-functions.php:47
+msgctxt "Replacement text for add to cart button in cart updating context."
+msgid "Update gift"
+msgstr ""
