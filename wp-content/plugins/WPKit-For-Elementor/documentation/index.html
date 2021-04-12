@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+		<title>WPKit For Elementor Documentation</title>
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link href='https://fonts.gstatic.com/' crossorigin rel='preconnect' />
+<link rel="alternate" type="application/rss+xml" title="ThemeVan Documentation &raquo; Feed" href="/feed/" />
+<link rel="alternate" type="application/rss+xml" title="ThemeVan Documentation &raquo; Comments Feed" href="/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"\builder\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.2.4"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css'  href='builder/wp-includes/css/dist/block-library/style.min.css?ver=5.2.4' type='text/css' media='all' />
+<link rel='stylesheet' id='tmvc-style-css'  href='builder/wp-content/plugins/themevan-core/build/css/themevan-core.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='tmv-style-css'  href='builder/wp-content/themes/inno/style.css?ver=1.0.7.1' type='text/css' media='all' />
+<link rel='stylesheet' id='ionicons-css'  href='builder/wp-content/themes/inno/inc/assets/icon-fonts/ionicons/css/ionicons.min.css?ver=1.0.7.1' type='text/css' media='all' />
+<link rel='stylesheet' id='tmv-theme-css'  href='builder/wp-content/themes/inno/assets/css/main.css?ver=1.0.7.1' type='text/css' media='all' />
+<link rel='stylesheet' id='tmv-default-fonts-css'  href='https://fonts.googleapis.com/css?family=Lora%3A400%2C400i%2C700%2C700i%7CPlayfair+Display%3A400%2C400i%2C700%2C700i%2C+900%2C+900i&#038;subset=latin%2Clatin-ext%2Cvietnamese%2Ccyrillic-ext%2Ccyrillic%2Cgreek%2Cgreek-ext' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-icons-css'  href='builder/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=5.4.0' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-animations-css'  href='builder/wp-content/plugins/elementor/assets/lib/animations/animations.min.css?ver=2.7.4' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-frontend-css'  href='builder/wp-content/plugins/elementor/assets/css/frontend.min.css?ver=2.7.4' type='text/css' media='all' />
+<style id='elementor-frontend-inline-css' type='text/css'>
+/* Start custom CSS for column, class: .elementor-element-15f80b73 */.is-sticky .tmvc_sticky{height:100%;overflow:auto;}
+@media(max-width:767px){
+    #desktop-menu-sticky-wrapper{height:auto!important;}
+}/* End custom CSS */
+</style>
+<link rel='stylesheet' id='elementor-pro-css'  href='builder/wp-content/plugins/elementor-pro/assets/css/frontend.min.css?ver=2.0.7' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='builder/wp-content/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min.css?ver=4.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-global-css'  href='builder/wp-content/uploads/elementor/css/global.css?ver=1571734159' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-post-149-css'  href='builder/wp-content/uploads/elementor/css/post-149.css?ver=1571774536' type='text/css' media='all' />
+<link rel='stylesheet' id='tmv-dynamic-css'  href='builder/wp-content/themes/inno/assets/css/dynamic1.css?ver=1.0.7.1' type='text/css' media='all' />
+<script type='text/javascript' src='builder/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='builder/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<link rel='https://api.w.org/' href='/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="builder/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="builder/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.2.4" />
+<link rel="canonical" href="/" />
+<link rel='shortlink' href='/' />
+<link rel="alternate" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=%2F" />
+<link rel="alternate" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=%2F&#038;format=xml" />
+<style>/* CSS added by WP Meta and Date Remover*/.entry-meta {display:none !important;}
+	.home .entry-meta { display: none; }
+	.entry-footer {display:none !important;}
+	.home .entry-footer { display: none; }</style>
+<style id="kirki-inline-styles">@font-face{font-display:swap;font-family:'Poppins';font-style:normal;font-weight:400;src:local('Poppins Regular'), local('Poppins-Regular'), url(https://fonts.gstatic.com/s/poppins/v9/pxiEyp8kv8JHgFVrFJM.woff) format('woff');}@font-face{font-display:swap;font-family:'Poppins';font-style:normal;font-weight:600;src:local('Poppins SemiBold'), local('Poppins-SemiBold'), url(https://fonts.gstatic.com/s/poppins/v9/pxiByp8kv8JHgFVrLEj6V1g.woff) format('woff');}@font-face{font-display:swap;font-family:'Muli';font-style:normal;font-weight:400;src:local('Muli Regular'), local('Muli-Regular'), url(https://fonts.gstatic.com/s/muli/v16/7Auwp_0qiz-aTTY.woff) format('woff');}</style>	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" /></head>
+<body class="home page-template page-template-elementor_canvas page page-id-149 tmv-theme elementor-default elementor-template-canvas elementor-page elementor-page-149">
+			<div data-elementor-type="wp-post" data-elementor-id="149" class="elementor elementor-149" data-elementor-settings="[]">
+			<div class="elementor-inner">
+				<div class="elementor-section-wrap">
+							<section class="elementor-element elementor-element-8d56e46 elementor-section-height-min-height elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-items-middle elementor-section elementor-top-section" data-id="8d56e46" data-element_type="section" id="header">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-3b4a60f9 elementor-column elementor-col-100 elementor-top-column" data-id="3b4a60f9" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div style="opacity:1" class="elementor-element elementor-element-140b8524 elementor-widget elementor-widget-heading" data-id="140b8524" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-large">WPKit For Elementor Documentation</h1>		</div>
+				</div>
+				<div style="opacity:1" class="elementor-element elementor-element-56ca4064 elementor-widget elementor-widget-text-editor" data-id="56ca4064" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>Created: October 2019 / Current Version: 1.0.0 / by <a href="https://www.themevan.com/" target="_blank" rel="noopener">ThemeVan</a></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section class="elementor-element elementor-element-5a434a97 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="5a434a97" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-15f80b73 elementor-column elementor-col-50 elementor-top-column" data-id="15f80b73" data-element_type="column" id="sidebar">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div style="opacity:1" class="elementor-element elementor-element-11108926 elementor-nav-menu__align-left elementor-nav-menu--stretch elementor-nav-menu__text-align-center elementor-hidden-desktop elementor-hidden-tablet elementor-nav-menu--indicator-classic elementor-nav-menu--dropdown-tablet elementor-nav-menu--toggle elementor-nav-menu--burger elementor-widget elementor-widget-nav-menu" data-id="11108926" data-element_type="widget" id="mobile-menu" data-settings="{&quot;layout&quot;:&quot;vertical&quot;,&quot;full_width&quot;:&quot;stretch&quot;,&quot;toggle&quot;:&quot;burger&quot;}" data-widget_type="nav-menu.default">
+				<div class="elementor-widget-container">
+						<nav class="elementor-nav-menu--main elementor-nav-menu__container elementor-nav-menu--layout-vertical e--pointer-underline e--animation-fade"><ul id="menu-1-11108926" class="elementor-nav-menu sm-vertical"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-215"><a href="#introduction" class="elementor-item">Introduction</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-217"><a href="#installation" class="elementor-item">Installation</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-221"><a href="#modules" class="elementor-item">Modules</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-243"><a href="#widgets" class="elementor-item">Elementor Widgets</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-240"><a href="#local" class="elementor-item">Localization</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-241"><a href="#upgrade" class="elementor-item">Upgrade</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-242"><a href="#credits" class="elementor-item">Credits</a></li>
+</ul></nav>
+					<div class="elementor-menu-toggle">
+			<i class="eicon" aria-hidden="true"></i>
+		</div>
+		<nav class="elementor-nav-menu--dropdown elementor-nav-menu__container"><ul id="menu-2-11108926" class="elementor-nav-menu sm-vertical"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-215"><a href="#introduction" class="elementor-item">Introduction</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-217"><a href="#installation" class="elementor-item">Installation</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-221"><a href="#modules" class="elementor-item">Modules</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-243"><a href="#widgets" class="elementor-item">Elementor Widgets</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-240"><a href="#local" class="elementor-item">Localization</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-241"><a href="#upgrade" class="elementor-item">Upgrade</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-242"><a href="#credits" class="elementor-item">Credits</a></li>
+</ul></nav>
+				</div>
+				</div>
+				<section class="elementor-element elementor-element-5c0de05b elementor-hidden-phone tmvc_sticky elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="5c0de05b" data-element_type="section" id="desktop-menu">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-709d621 elementor-column elementor-col-100 elementor-inner-column" data-id="709d621" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div style="opacity:1" class="elementor-element elementor-element-1cf76f1a elementor-hidden-phone elementor-icon-list--layout-traditional elementor-widget elementor-widget-icon-list" data-id="1cf76f1a" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+					<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item" >
+					<a href="#introduction">					<span class="elementor-icon-list-text">Introduction</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item" >
+					<a href="#installation">					<span class="elementor-icon-list-text">Installation</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item" >
+					<a href="#modules">					<span class="elementor-icon-list-text">Modules</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item" >
+					<a href="#widgets">					<span class="elementor-icon-list-text">Elementor Widgets</span>
+											</a>
+									</li>
+						</ul>
+				</div>
+				</div>
+				<div style="opacity:1" class="elementor-element elementor-element-7709d349 elementor-icon-list--layout-traditional elementor-widget elementor-widget-icon-list" data-id="7709d349" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+					<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item" >
+					<a href="#local">					<span class="elementor-icon-list-text">Localization</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item" >
+					<a href="#upgrade">					<span class="elementor-icon-list-text">Upgrade</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item" >
+					<a href="#credits">					<span class="elementor-icon-list-text">Credits</span>
+											</a>
+									</li>
+						</ul>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-524dd8b2 elementor-column elementor-col-50 elementor-top-column" data-id="524dd8b2" data-element_type="column" id="main">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<section class="elementor-element elementor-element-7d4d9de3 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="7d4d9de3" data-element_type="section" id="introduction">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-4a9a6379 elementor-column elementor-col-100 elementor-inner-column" data-id="4a9a6379" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div style="opacity:1" class="elementor-element elementor-element-702a31c5 elementor-widget elementor-widget-heading" data-id="702a31c5" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Introduction</h2>		</div>
+				</div>
+				<div style="opacity:1" class="elementor-element elementor-element-105a17fd elementor-widget elementor-widget-divider" data-id="105a17fd" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<div style="opacity:1" class="elementor-element elementor-element-2774576e elementor-widget elementor-widget-text-editor" data-id="2774576e" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>Thank you for purchasing our plugin. If you have any questions that are beyond the scope of this help file, You can asking on the <a href="https://forum.themevan.com/" target="_blank" rel="noopener">support forum</a> after you sign up with your purchased code. Thanks so much!</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section class="elementor-element elementor-element-6fa25859 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="6fa25859" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-wide">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-7913040e elementor-column elementor-col-33 elementor-inner-column" data-id="7913040e" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div style="opacity:1" class="elementor-element elementor-element-71e4d419 elementor-widget elementor-widget-text-editor" data-id="71e4d419" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h4>Support Forums</h4><p>Any questions that are beyond the scope of this help file, asking on <a href="https://forum.themevan.com/" target="_blank" rel="noopener">support forum</a></p></div>
+				</div>
+				</div>
+				<div style="opacity:1" class="elementor-element elementor-element-55bfcb68 elementor-button-success elementor-widget elementor-widget-button" data-id="55bfcb68" data-element_type="widget" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a href="https://forum.themevan.com/" class="elementor-button-link elementor-button elementor-size-sm" target="_blank" role="button">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">Visit Support Forum</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-306675c2 elementor-column elementor-col-33 elementor-inner-column" data-id="306675c2" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div style="opacity:1" class="elementor-element elementor-element-30c85ce5 elementor-widget elementor-widget-text-editor" data-id="30c85ce5" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h4>Follow Us</h4><p>Follow us on Facebook Page and don&#8217;t miss our new upcoming premium themes or plugins.</p></div>
+				</div>
+				</div>
+				<div style="opacity:1" class="elementor-element elementor-element-5890db10 elementor-button-info elementor-widget elementor-widget-button" data-id="5890db10" data-element_type="widget" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a href="https://facebook.com/themevan" class="elementor-button-link elementor-button elementor-size-sm" target="_blank" role="button">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">Follow us on Facebook</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-4471fae6 elementor-column elementor-col-33 elementor-inner-column" data-id="4471fae6" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div style="opacity:1" class="elementor-element elementor-element-18d817f5 elementor-widget elementor-widget-text-editor" data-id="18d817f5" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h4>Rate Item &amp; Support</h4><p>If you like our plugin or support, please rate on Envato in your download page.</p></div>
+				</div>
+				</div>
+				<div style="opacity:1" class="elementor-element elementor-element-39db9c7d elementor-button-danger elementor-widget elementor-widget-button" data-id="39db9c7d" data-element_type="widget" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a href="https://codecanyon.net/downloads" class="elementor-button-link elementor-button elementor-size-sm" target="_blank" role="button">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">Rate on Envato</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section class="elementor-element elementor-element-3a0bcbd1 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="3a0bcbd1" data-element_type="section" id="installation">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-78a47ea1 elementor-column elementor-col-100 elementor-inner-column" data-id="78a47ea1" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div style="opacity:1" class="elementor-element elementor-element-10d47009 elementor-widget elementor-widget-heading" data-id="10d47009" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Plugin Installation</h2>		</div>
+				</div>
+				<div style="opacity:1" class="elementor-element elementor-element-21213a21 elementor-widget elementor-widget-divider" data-id="21213a21" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<div style="opacity:1" class="elementor-element elementor-element-1447649b elementor-widget elementor-widget-text-editor" data-id="1447649b" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>Unzip the downloaded package. Find the zipped theme file called <strong>wpkit-elementor.zip</strong>.</p><p>Go to &#8220;Plugins&#8221; page in your dashboard side menu. Click “Install Plugin” button and upload the zipped plugin  file. Activate it after uploading is finished.</p><p>You can also unzip the installation zip file and upload the plugin folder to &#8220;/wp-content/plugins&#8221; directory via FTP client.</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section class="elementor-element elementor-element-7e49e9c elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="7e49e9c" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-5f97434 elementor-column elementor-col-100 elementor-inner-column" data-id="5f97434" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div style="opacity:1" class="elementor-element elementor-element-dc9829f elementor-widget elementor-widget-heading" data-id="dc9829f" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Modules</h2>		</div>
+				</div>
+				<div style="opacity:1" class="elementor-element elementor-element-4b564d9 elementor-widget elementor-widget-divider" data-id="4b564d9" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<div style="opacity:1" class="elementor-element elementor-element-f51ef4c elementor-widget elementor-widget-text-editor" data-id="f51ef4c" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>In the current version, we include 2 modules: Flexible Panel For Elementor, Global Blocks Module. You can enable/disable them at any time via<b> WPKit For Elementor Page.</b></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section class="elementor-element elementor-element-52d45239 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="52d45239" data-element_type="section" id="global-template-module">
+						<div class="elementor-container elementor-column-gap-extended">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-ce00fa7 elementor-column elementor-col-50 elementor-inner-column" data-id="ce00fa7" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div style="opacity:1" class="elementor-element elementor-element-6f260426 elementor-widget elementor-widget-image" data-id="6f260426" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+										<img width="300" height="300" src="builder/wp-content/uploads/2019/01/global_template.png" class="attachment-large size-large" alt="" srcset="builder/wp-content/uploads/2019/01/global_template.png 300w, builder/wp-content/uploads/2019/01/global_template-150x150.png 150w" sizes="(max-width: 300px) 100vw, 300px" />											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-1ec84a45 elementor-column elementor-col-50 elementor-inner-column" data-id="1ec84a45" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div style="opacity:1" class="elementor-element elementor-element-6bd1a9a2 elementor-widget elementor-widget-heading" data-id="6bd1a9a2" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-medium">Global Blocks</h2>		</div>
+				</div>
+				<div style="opacity:1" class="elementor-element elementor-element-37e39eec elementor-widget elementor-widget-text-editor" data-id="37e39eec" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>You can create the global blocks by Elementor Page Builder and use these blocks anywhere for the global template parts.</p><p>After enabled this module, you will see the global blocks menu item will be shown in the left sidebar, and <b>we recommend you to re-save the permalink via Settings &gt; Permalink in order to make the Elementor works properly for the global block post.</b></p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section class="elementor-element elementor-element-3d569a6 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="3d569a6" data-element_type="section" id="dragable-panel">
+						<div class="elementor-container elementor-column-gap-extended">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-9c72bc4 elementor-column elementor-col-50 elementor-inner-column" data-id="9c72bc4" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div style="opacity:1" class="elementor-element elementor-element-a5b8780 elementor-widget elementor-widget-image" data-id="a5b8780" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+										<img width="300" height="300" src="builder/wp-content/uploads/2019/01/dragable.png" class="attachment-large size-large" alt="" srcset="builder/wp-content/uploads/2019/01/dragable.png 300w, builder/wp-content/uploads/2019/01/dragable-150x150.png 150w" sizes="(max-width: 300px) 100vw, 300px" />											</div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+				<div class="elementor-element elementor-element-a120793 elementor-column elementor-col-50 elementor-inner-column" data-id="a120793" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div style="opacity:1" class="elementor-element elementor-element-3d8c347 elementor-widget elementor-widget-heading" data-id="3d8c347" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-medium">Flexible Panel For Elementor</h2>		</div>
+				</div>
+				<div style="opacity:1" class="elementor-element elementor-element-4fd0d5a elementor-widget elementor-widget-text-editor" data-id="4fd0d5a" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>The Elementor panel is fixed to the left side of the page by default, if you enable this module, the panel will be dragable such as using the Photoshop, and the panel skin will be changed to dark style.</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section class="elementor-element elementor-element-2de176d3 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="2de176d3" data-element_type="section" id="local">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-25008a03 elementor-column elementor-col-100 elementor-inner-column" data-id="25008a03" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div style="opacity:1" class="elementor-element elementor-element-691c0eb5 elementor-widget elementor-widget-heading" data-id="691c0eb5" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Elementor Widgets</h2>		</div>
+				</div>
+				<div style="opacity:1" class="elementor-element elementor-element-240e06a8 elementor-widget elementor-widget-divider" data-id="240e06a8" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<div style="opacity:1" class="elementor-element elementor-element-10d84851 elementor-widget elementor-widget-text-editor" data-id="10d84851" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>We includes 23 custom Elementor widgets and 2 custom controls in this plugin. After you activated this plugin, the custom widgets will be automatically appended to the panel that you can directly use them to build the page.</p></div>
+				</div>
+				</div>
+				<div style="opacity:1" class="elementor-element elementor-element-b8e71f4 elementor-widget elementor-widget-image" data-id="b8e71f4" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-image">
+										<img width="1024" height="721" src="builder/wp-content/uploads/2019/10/widgets-1024x721.jpg" class="attachment-large size-large" alt="" srcset="builder/wp-content/uploads/2019/10/widgets-1024x721.jpg 1024w, builder/wp-content/uploads/2019/10/widgets-300x211.jpg 300w, builder/wp-content/uploads/2019/10/widgets-768x541.jpg 768w, builder/wp-content/uploads/2019/10/widgets.jpg 1200w" sizes="(max-width: 1024px) 100vw, 1024px" />											</div>
+				</div>
+				</div>
+				<div style="opacity:1" class="elementor-element elementor-element-9561854 elementor-widget elementor-widget-text-editor" data-id="9561854" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>Please note, only when you activate WooCommerce, Easy Digital Downloads and Contact Form 7, the related widgets will be displayed and available to use.</p><p>In Advanced tab of each widget, you will see Parallax and Opacity sections are added, so you can change the opacity or set the parallax animation for all widgets.</p></div>
+				</div>
+				</div>
+				<div style="opacity:1" class="elementor-element elementor-element-49e1944 elementor-widget elementor-widget-text-editor" data-id="49e1944" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><h4>Customize The Widget Template</h4><p>In some cases, you may need to customize the widget output template in order to match your theme style or layout. Please following the method below:</p><p>&#8211; Create &#8220;<strong>wpkit-elementor</strong>&#8221; folder in your theme folder.</p><p>&#8211; Copy the templates which you want to customize from the plugin folder: <strong>&#8220;wp-content/plugins/wpkit-elementor/templates&#8221; </strong>to your<strong> &#8220;theme folder/wpkit-elementor&#8221;.</strong></p><p><strong>&#8211; </strong>Just edit the copied version, it will override the original template which are included in the plugin folder.</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section class="elementor-element elementor-element-5c22023 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="5c22023" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-4913a74 elementor-column elementor-col-100 elementor-inner-column" data-id="4913a74" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div style="opacity:1" class="elementor-element elementor-element-5d55609 elementor-widget elementor-widget-heading" data-id="5d55609" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Localization</h2>		</div>
+				</div>
+				<div style="opacity:1" class="elementor-element elementor-element-3948905 elementor-widget elementor-widget-divider" data-id="3948905" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<div style="opacity:1" class="elementor-element elementor-element-22c9308 elementor-widget elementor-widget-text-editor" data-id="22c9308" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>This theme is ready for localization. We have made every string translate able with the text domain &#8220;wpkit-elementor&#8221;, use <a href="http://www.poedit.net/" target="_blank" rel="noopener">Poedit <i class="fa fa-external-link" aria-hidden="true"></i></a> editor to translate it, or install <b>Loco Translation </b>plugin to translate the text.</p><p>If you choose use Poedit to create your own language file, please do it as following steps</p><ol><li>Go to /wp-content/plugins/wpkit-elementor/languages directory, you will find the wpkit-elementor.pot file</li><li>Just base on this file template and create your language file. (ie. pt_BR.po, de_DE.po, etc.)</li><li>Then, open this file with Poedit editor, translate all words to your language, save the file.</li><li>Go to &#8220;Setting &gt; General &gt; Site language&#8221;, you will find the language options at the bottom, select your language.</li></ol></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section class="elementor-element elementor-element-74069a55 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="74069a55" data-element_type="section" id="upgrade">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-736c6b96 elementor-column elementor-col-100 elementor-inner-column" data-id="736c6b96" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div style="opacity:1" class="elementor-element elementor-element-17ae753b elementor-widget elementor-widget-heading" data-id="17ae753b" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Upgrade</h2>		</div>
+				</div>
+				<div style="opacity:1" class="elementor-element elementor-element-545ff449 elementor-widget elementor-widget-divider" data-id="545ff449" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<div style="opacity:1" class="elementor-element elementor-element-3144c9f8 elementor-widget elementor-widget-text-editor" data-id="3144c9f8" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>If you have registered your purchased code, you can enjoy the plugin auto update. When we release the new version, you only need to click upgrade the plugin via Plugins page.</p><p>For manually upgrade the plugin, you can get the new version on your CodeCanyon download page. Please note that if you haven&#8217;t modified any source files of the plugin, just remove the old version and reinstall the new version directly, if you have changed some source files, you can&#8217;t simply reinstall the new version of the plugin, it&#8217;s hard to upgrade smoothly, you must move all your changed codes to the new version of the plugin before you reinstall or override the old files.</p></div>
+				</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+				<section class="elementor-element elementor-element-5151f07d elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="5151f07d" data-element_type="section" id="credits">
+						<div class="elementor-container elementor-column-gap-default">
+				<div class="elementor-row">
+				<div class="elementor-element elementor-element-64fdf8c5 elementor-column elementor-col-100 elementor-inner-column" data-id="64fdf8c5" data-element_type="column">
+			<div class="elementor-column-wrap  elementor-element-populated">
+					<div class="elementor-widget-wrap">
+				<div style="opacity:1" class="elementor-element elementor-element-3729d5c4 elementor-widget elementor-widget-heading" data-id="3729d5c4" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Credits</h2>		</div>
+				</div>
+				<div style="opacity:1" class="elementor-element elementor-element-54812902 elementor-widget elementor-widget-divider" data-id="54812902" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<div style="opacity:1" class="elementor-element elementor-element-5eb1a285 elementor-widget elementor-widget-text-editor" data-id="5eb1a285" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-text-editor elementor-clearfix"><p>thanks all of these great files</p><ul><li><a href="http://jquery.com/" target="_blank" rel="noopener">jQuery</a></li><li><a href="http://elementor.com/" target="_blank" rel="noopener">Elementor</a></li><li><a href="http://www.idangero.us/swiper/" target="_blank" rel="noopener">Swiper</a></li><li><a href="http://fontawesome.io/" target="_blank" rel="noopener">Font Awesome</a></li><li><a href="http://gsgd.co.uk/sandbox/jquery/easing/" target="_blank" rel="noopener">jQuery Sasing</a></li><li><a href="http://wordpress.org/" target="_blank" rel="noopener">WordPress</a></li></ul></div>
+				</div>
+				</div>
+				<div style="opacity:1" class="elementor-element elementor-element-8cbaf70 elementor-widget elementor-widget-heading" data-id="8cbaf70" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Thanks for your reading, enjoy in the plugin!</h2>		</div>
+				</div>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+						</div>
+			</div>
+		</section>
+						</div>
+			</div>
+		</div>
+		
+<script type='text/javascript' src='builder/wp-content/plugins/themevan-core/build/js/themevan-core.min.js'></script>
+<script type='text/javascript' src='builder/wp-content/themes/inno/assets/js/modernizr.custom.41385.js?ver=1.0.7.1'></script>
+<script type='text/javascript' src='builder/wp-content/themes/inno/inc/assets/js/plugins.js?ver=1.0.7.1'></script>
+<script type='text/javascript' src='builder/wp-includes/js/imagesloaded.min.js?ver=3.2.0'></script>
+<script type='text/javascript' src='builder/wp-includes/js/masonry.min.js?ver=3.3.2'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var tmv_data = {"theme_directory_uri":"\builder\/wp-content\/themes\/inno","ajax_url":"\builder\/wp-admin\/admin-ajax.php","submiting_text":"Submiting","plyr_svg":"\builder\/wp-content\/themes\/inno\/assets\/img\/plyr.svg"};
+var tmv_page_config = {"trans_nav":"0","logo":"","hide_logo":"0","menu":"0","menu_text_color":"","menu_text_hover_color":"","page_header_height":"auto","page_header_custom_height":"170","page_header_bg_picture":"","page_header_bg_picture_size":"cover","page_header_bg_picture_repeat":"no-repeat","page_header_bg_picture_scrollable":"scroll","page_header_bg_picture_position":"center","page_header_bg_color":"","page_header_text_color":"","page_header_link_color":"","page_header_link_hover_color":"","page_header_text_aligned":"left","bottom_bg_color":"","bottom_text_color":"","bottom_link_color":"","bottom_link_hover_color":"","footer_bg_color":"","footer_text_color":"","footer_link_color":"","footer_link_hover_color":""};
+var tmv_global_config = {"sticky_top":"0"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='builder/wp-content/themes/inno/assets/js/theme.js?ver=1.0.7.1'></script>
+<script type='text/javascript' src='builder/wp-includes/js/wp-embed.min.js?ver=5.2.4'></script>
+<script type='text/javascript' src='builder/wp-content/plugins/elementor-pro/assets/lib/smartmenus/jquery.smartmenus.min.js?ver=1.0.1'></script>
+<script type='text/javascript' src='builder/wp-content/plugins/elementor-pro/assets/lib/sticky-kit/jquery.sticky-kit.min.js?ver=1.1.2'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var ElementorProFrontendConfig = {"ajaxurl":"\builder\/wp-admin\/admin-ajax.php","nonce":"8d3dff4245","shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"google":{"title":"Google+","has_counter":true},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"delicious":{"title":"Delicious"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"}},"facebook_sdk":{"lang":"en_US","app_id":""}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='builder/wp-content/plugins/elementor-pro/assets/js/frontend.min.js?ver=2.0.7'></script>
+<script type='text/javascript' src='builder/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=2.7.4'></script>
+<script type='text/javascript' src='builder/wp-includes/js/jquery/ui/position.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='builder/wp-content/plugins/elementor/assets/lib/dialog/dialog.min.js?ver=4.7.3'></script>
+<script type='text/javascript' src='builder/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js?ver=4.0.2'></script>
+<script type='text/javascript' src='builder/wp-content/plugins/elementor/assets/lib/swiper/swiper.min.js?ver=4.4.6'></script>
+<script type='text/javascript'>
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"version":"2.7.4","urls":{"assets":"\builder\/wp-content\/plugins\/elementor\/assets\/"},"settings":{"page":[],"general":{"elementor_global_image_lightbox":"yes","elementor_enable_lightbox_in_editor":"yes"}},"post":{"id":149,"title":"WPKit For Elementor Documentation","excerpt":""}};
+</script>
+<script type='text/javascript' src='builder/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=2.7.4'></script>
+	</body>
+</html>
