@@ -1715,7 +1715,7 @@
         padding: 0
     }
 }
-@media (max-width:1024px) and (min-width:768px) {
+@media (max-width:1023px) and (min-width:768px) {
     .pt_plus_asb_wrapper.sliding-boxes .service-item-loop.sb_t_1 {
         -webkit-box-flex: 0;
         -ms-flex: 0 0 100%;

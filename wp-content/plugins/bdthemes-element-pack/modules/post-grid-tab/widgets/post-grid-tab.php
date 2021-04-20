@@ -7,9 +7,9 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Utils;
+use ElementPack\Utils;
 use Elementor\Icons_Manager;
-
+ 
 use ElementPack\Modules\QueryControl\Module;
 use ElementPack\Modules\QueryControl\Controls\Group_Control_Posts;
 
@@ -264,6 +264,29 @@ class Post_Grid_Tab extends Module_Base {
 				'label'   => esc_html__( 'Date', 'bdthemes-element-pack' ),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
+			]
+		);
+
+		$this->add_control(
+			'human_diff_time',
+			[
+				'label'   => esc_html__( 'Human Different Time', 'bdthemes-element-pack' ) . BDTEP_NC,
+				'type'    => Controls_Manager::SWITCHER,
+				'condition' => [
+					'show_date' => 'yes'
+				]
+			]
+		);
+
+		$this->add_control(
+			'human_diff_time_short',
+			[
+				'label'   => esc_html__( 'Time Short Format', 'bdthemes-element-pack' ) . BDTEP_NC,
+				'type'    => Controls_Manager::SWITCHER,
+				'condition' => [
+					'human_diff_time' => 'yes',
+					'show_date' => 'yes'
+				]
 			]
 		);
 
@@ -1332,9 +1355,9 @@ class Post_Grid_Tab extends Module_Base {
 
 		?>
 		<a href="<?php echo get_the_permalink(); ?>">
-			<<?php echo esc_attr($tag) ?> class="bdt-post-grid-tab-item-title bdt-margin-remove">
+			<<?php echo Utils::get_valid_html_tag($tag) ?> class="bdt-post-grid-tab-item-title bdt-margin-remove">
 				<?php the_title() ?>
-			</<?php echo esc_attr($tag) ?>>
+			</<?php echo Utils::get_valid_html_tag($tag) ?>>
 		</a>
 		<?php
 	}
@@ -1356,13 +1379,21 @@ class Post_Grid_Tab extends Module_Base {
 	}
 
 	public function render_date() {
+		$settings = $this->get_settings_for_display();
 
-		if ( ! $this->get_settings('show_date') ) {
+		if ( ! $settings['show_date'] ) {
 			return;
 		}
 		
-		echo 
-			'<span class="bdt-post-grid-tab-date">'.get_the_date().'</span>';		
+		echo '<span class="bdt-post-grid-tab-date">';
+		
+		if ($settings['human_diff_time'] == 'yes') {
+			echo element_pack_post_time_diff(($settings['human_diff_time_short'] == 'yes') ? 'short' : '');
+        } else {
+			echo get_the_date();
+		}
+		
+		echo '</span>';
 	}
 
 	public function render_comments() {

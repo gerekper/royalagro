@@ -8,6 +8,7 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Image_Size;
+use ElementPack\Utils;
 
 use ElementPack\Modules\Woocommerce\Skins;
 
@@ -2787,7 +2788,7 @@ class WC_Carousel extends Module_Base {
 							"pauseOnHover"   => ("yes" == $settings["pauseonhover"]) ? true : false,
 							"slidesPerView"  => (int) $settings["columns_mobile"],
 							"slidesPerGroup" => (int) $settings["slides_to_scroll_mobile"],
-							"spaceBetween"   => $settings["item_gap"]["size"],
+							"spaceBetween"   => (int) $settings["item_gap_mobile"]["size"],
 							"centeredSlides" => ($settings["centered_slides"] === "yes") ? true : false,
 							"grabCursor"     => ($settings["grab_cursor"] === "yes") ? true : false,
 							"effect"         => $settings["skin"],
@@ -2795,13 +2796,13 @@ class WC_Carousel extends Module_Base {
 							"observeParents" => ($settings["observer"]) ? true : false,
 							"breakpoints"    => [
 								(int) $viewport_md => [
-									"slidesPerView" => (int) $settings["columns_tablet"],
-									"spaceBetween"  => $settings["item_gap"]["size"],
+									"slidesPerView"  => (int) $settings["columns_tablet"],
+									"spaceBetween"   => (int) $settings["item_gap_tablet"]["size"],
 									"slidesPerGroup" => (int) $settings["slides_to_scroll_tablet"],
 								],
 								(int) $viewport_lg => [
-                                    "slidesPerView" => (int) $settings["columns"],
-									"spaceBetween"  => $settings["item_gap"]["size"],
+									"slidesPerView"  => (int) $settings["columns"],
+									"spaceBetween"   => (int) $settings["item_gap"]["size"],
 									"slidesPerGroup" => (int) $settings["slides_to_scroll"],
                                 ]
 					      	],
@@ -3091,9 +3092,9 @@ class WC_Carousel extends Module_Base {
 	           			<div class="bdt-wc-carousel-desc bdt-padding bdt-position-relative bdt-text-<?php echo esc_attr($text_align); ?>">
 	           			<div class="bdt-wc-carousel-desc-inner">
 		               		<?php if ( $settings['show_title']) : ?>
-			           			<<?php echo esc_html($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-wc-carousel-title'); ?>>
+			           			<<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-wc-carousel-title'); ?>>
 					               <?php the_title(); ?>
-				               </<?php echo esc_html($settings['title_tags']); ?>>
+				               </<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?>>
 				            <?php endif; ?>
 
 		           			<?php if ($settings['show_price'] or $settings['show_rating']) : ?>

@@ -694,6 +694,7 @@ class Premium_Ihover extends Widget_Base {
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-ihover-icon' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .premium-ihover-title-wrap svg' => 'fill: {{VALUE}};',
 				),
 				'condition' => array(
 					'premium_ihover_icon_selection' => 'icon',
@@ -707,7 +708,7 @@ class Premium_Ihover extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-pro' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .premium-ihover-icon, {{WRAPPER}} .premium-ihover-icon-image, {{WRAPPER}} .premium-ihover-lottie'    => 'background: {{VALUE}};',
+					'{{WRAPPER}} .premium-ihover-icon, {{WRAPPER}} .premium-ihover-title-wrap svg, {{WRAPPER}} .premium-ihover-icon-image, {{WRAPPER}} .premium-ihover-lottie'    => 'background: {{VALUE}};',
 				),
 			)
 		);
@@ -716,7 +717,7 @@ class Premium_Ihover extends Widget_Base {
 			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'premium_ihover_icon_border',
-				'selector' => '{{WRAPPER}} .premium-ihover-icon,{{WRAPPER}} .premium-ihover-icon-image, {{WRAPPER}} .premium-ihover-lottie',
+				'selector' => '{{WRAPPER}} .premium-ihover-icon, {{WRAPPER}} .premium-ihover-title-wrap svg, {{WRAPPER}} .premium-ihover-icon-image, {{WRAPPER}} .premium-ihover-lottie',
 			)
 		);
 
@@ -727,7 +728,7 @@ class Premium_Ihover extends Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .premium-ihover-icon, {{WRAPPER}} .premium-ihover-icon-image, {{WRAPPER}} .premium-ihover-lottie'  => 'border-radius: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .premium-ihover-icon, {{WRAPPER}} .premium-ihover-title-wrap svg, {{WRAPPER}} .premium-ihover-icon-image, {{WRAPPER}} .premium-ihover-lottie'  => 'border-radius: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -737,7 +738,7 @@ class Premium_Ihover extends Widget_Base {
 			array(
 				'label'     => __( 'Shadow', 'premium-addons-pro' ),
 				'name'      => 'premium_ihover_icon_shadow',
-				'selector'  => '{{WRAPPER}} .premium-ihover-icon',
+				'selector'  => '{{WRAPPER}} .premium-ihover-icon, {{WRAPPER}} .premium-ihover-title-wrap svg',
 				'condition' => array(
 					'premium_ihover_icon_selection' => 'icon',
 				),
@@ -763,7 +764,7 @@ class Premium_Ihover extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .premium-ihover-icon , {{WRAPPER}} .premium-ihover-icon-image, {{WRAPPER}} .premium-ihover-lottie' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .premium-ihover-icon, {{WRAPPER}} .premium-ihover-title-wrap svg, {{WRAPPER}} .premium-ihover-icon-image, {{WRAPPER}} .premium-ihover-lottie' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -775,7 +776,7 @@ class Premium_Ihover extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .premium-ihover-icon, {{WRAPPER}} .premium-ihover-icon-image, {{WRAPPER}} .premium-ihover-lottie' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .premium-ihover-icon, {{WRAPPER}} .premium-ihover-title-wrap svg, {{WRAPPER}} .premium-ihover-icon-image, {{WRAPPER}} .premium-ihover-lottie' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);

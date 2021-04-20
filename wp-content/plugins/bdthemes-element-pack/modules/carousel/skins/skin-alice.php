@@ -4,7 +4,7 @@ namespace ElementPack\Modules\Carousel\Skins;
 use Elementor\Skin_Base as Elementor_Skin_Base;
 
 use Elementor\Group_Control_Image_Size;
-use Elementor\Utils;
+use ElementPack\Utils;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 

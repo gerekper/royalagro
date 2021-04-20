@@ -4,6 +4,7 @@ namespace ElementPack\Modules\HoverBox\Skins;
 use Elementor\Skin_Base as Elementor_Skin_Base;
 
 use Elementor\Icons_Manager;
+use ElementPack\Utils;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -93,7 +94,7 @@ class Skin_Flexure extends Elementor_Skin_Base {
                         <div <?php echo ( $this->parent->get_render_attribute_string( 'box-item' ) ); ?> data-id="<?php echo esc_attr($tab_id); ?>">
 
                             <?php if ( $item['hover_box_title'] && ( 'yes' == $settings['show_title'] ) ) : ?>
-                                <<?php echo esc_html($settings['title_tags']); ?> <?php echo $this->parent->get_render_attribute_string('bdt-hover-box-title'); ?>>
+                                <<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?> <?php echo $this->parent->get_render_attribute_string('bdt-hover-box-title'); ?>>
 									<?php if ( '' !== $item['title_link']['url'] ) : ?>
 										<a <?php echo $this->parent->get_render_attribute_string( 'title-link' ); ?>>
 									<?php endif; ?>
@@ -101,7 +102,7 @@ class Skin_Flexure extends Elementor_Skin_Base {
 									<?php if ( '' !== $item['title_link']['url'] ) : ?>
 										</a>
 									<?php endif; ?>
-                                </<?php echo esc_html($settings['title_tags']); ?>>
+                                </<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?>>
                             <?php endif; ?>
 
                             <?php if ( $item['hover_box_sub_title'] && ( 'yes' == $settings['show_sub_title'] ) ) : ?>

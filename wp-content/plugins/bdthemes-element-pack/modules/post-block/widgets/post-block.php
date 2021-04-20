@@ -7,9 +7,9 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Css_Filter;
-use Elementor\Utils;
+use ElementPack\Utils;
 use Elementor\Icons_Manager;
-
+ 
 use ElementPack\Modules\QueryControl\Module;
 use ElementPack\Modules\QueryControl\Controls\Group_Control_Posts;
 
@@ -137,6 +137,29 @@ class Post_Block extends Module_Base {
 				'label'   => esc_html__( 'Date', 'bdthemes-element-pack' ),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
+			]
+		);
+
+		$this->add_control(
+			'featured_human_diff_time',
+			[
+				'label'   => esc_html__( 'Human Different Time', 'bdthemes-element-pack' ) . BDTEP_NC,
+				'type'    => Controls_Manager::SWITCHER,
+				'condition' => [
+					'featured_show_date' => 'yes'
+				]
+			]
+		);
+
+		$this->add_control(
+			'featured_human_diff_time_short',
+			[
+				'label'   => esc_html__( 'Time Short Format', 'bdthemes-element-pack' ) . BDTEP_NC,
+				'type'    => Controls_Manager::SWITCHER,
+				'condition' => [
+					'featured_human_diff_time' => 'yes',
+					'featured_show_date' => 'yes'
+				]
 			]
 		);
 
@@ -346,6 +369,29 @@ class Post_Block extends Module_Base {
 				'label'   => esc_html__( 'Date', 'bdthemes-element-pack' ),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
+			]
+		);
+
+		$this->add_control(
+			'list_human_diff_time',
+			[
+				'label'   => esc_html__( 'Human Different Time', 'bdthemes-element-pack' ) . BDTEP_NC,
+				'type'    => Controls_Manager::SWITCHER,
+				'condition' => [
+					'list_show_date' => 'yes'
+				]
+			]
+		);
+
+		$this->add_control(
+			'list_human_diff_time_short',
+			[
+				'label'   => esc_html__( 'Time Short Format', 'bdthemes-element-pack' ) . BDTEP_NC,
+				'type'    => Controls_Manager::SWITCHER,
+				'condition' => [
+					'list_human_diff_time' => 'yes',
+					'list_show_date' => 'yes'
+				]
 			]
 		);
 
@@ -1275,6 +1321,42 @@ class Post_Block extends Module_Base {
 
 	}
 
+	public function render_featured_date() {
+		$settings = $this->get_settings_for_display();
+
+		if ( ! $settings['featured_show_date'] ) {
+			return;
+		}
+		
+		echo '<span>';
+		
+		if ($settings['featured_human_diff_time'] == 'yes') {
+			echo element_pack_post_time_diff(($settings['featured_human_diff_time_short'] == 'yes') ? 'short' : '');
+        } else {
+			echo get_the_date();
+		}
+		
+		echo '</span>';
+	}
+
+	public function render_list_date() {
+		$settings = $this->get_settings_for_display();
+
+		if ( ! $settings['list_show_date'] ) {
+			return;
+		}
+		
+		echo '<span>';
+		
+		if ($settings['list_human_diff_time'] == 'yes') {
+			echo element_pack_post_time_diff(($settings['list_human_diff_time_short'] == 'yes') ? 'short' : '');
+        } else {
+			echo get_the_date();
+		}
+		
+		echo '</span>';
+	}
+
 	public function render() {
 		$settings = $this->get_settings_for_display();
 		$id       = uniqid('bdtpbm_');
@@ -1353,17 +1435,15 @@ class Post_Block extends Module_Base {
 					  		<div class="bdt-post-block-desc">
 
 								<?php if ('yes' == $settings['featured_show_title']) : ?>
-									<<?php echo esc_html($settings['featured_title_size']); ?> <?php echo $this->get_render_attribute_string( 'featured-title' ); ?>>
+									<<?php echo Utils::get_valid_html_tag($settings['featured_title_size']); ?> <?php echo $this->get_render_attribute_string( 'featured-title' ); ?>>
 										<a href="<?php echo esc_url(get_permalink()); ?>" class="bdt-post-block-link" title="<?php echo esc_attr(get_the_title()); ?>"><?php echo esc_html(get_the_title()) ; ?></a>
-									</<?php echo esc_html($settings['featured_title_size']); ?>>
+									</<?php echo Utils::get_valid_html_tag($settings['featured_title_size']); ?>>
 								<?php endif ?>
 
             	            	<?php if ($settings['featured_show_category'] or $settings['featured_show_date']) : ?>
 
             						<div class="bdt-post-block-meta bdt-subnav bdt-flex-middle">
-            							<?php if ($settings['featured_show_date']) : ?>
-            								<?php echo '<span>'.get_the_date().'</span>'; ?>
-            							<?php endif ?>
+										<?php $this->render_featured_date(); ?>
 
             							<?php if ($settings['featured_show_category']) : ?>
             								<?php echo '<span>'.get_the_category_list(', ').'</span>'; ?>
@@ -1433,9 +1513,7 @@ class Post_Block extends Module_Base {
 					            	<?php if ($settings['list_show_category'] or $settings['list_show_date']) : ?>
 
 										<div class="bdt-post-block-meta bdt-subnav bdt-flex-middle">
-											<?php if ($settings['list_show_date']) : ?>
-												<span><?php echo get_the_date(); ?></span>
-											<?php endif ?>
+											<?php $this->render_list_date(); ?>
 
 											<?php if ($settings['list_show_category']) : ?>
 												<?php echo '<span>'.get_the_category_list(', ').'</span>'; ?>

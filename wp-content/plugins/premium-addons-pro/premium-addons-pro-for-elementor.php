@@ -3,7 +3,7 @@
 Plugin Name: Premium Addons PRO
 Description: Premium Addons PRO Plugin Includes 33+ premium widgets & addons for Elementor Page Builder.
 Plugin URI: https://premiumaddons.com
-Version: 2.3.6
+Version: 2.3.7
 Author: Leap13
 Elementor tested up to: 3.1.4
 Elementor Pro tested up to: 3.2.1
@@ -12,20 +12,21 @@ Text Domain: premium-addons-pro
 Domain Path: /languages
 */
 
+update_option('papro_license_status', 'valid');
+update_option('papro_license_key', '********');
 
 /**
  * Checking if WordPress is installed
  */
-if ( ! function_exists('add_action') ) {
-    die('WordPress not Installed'); // if WordPress not installed kill the page.
+if ( ! function_exists( 'add_action' ) ) {
+	die( 'WordPress not Installed' ); // if WordPress not installed kill the page.
 }
 
-if ( ! defined( 'ABSPATH') ) exit; // No access of directly access
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // No access of directly access
+}
 
-update_option( 'papro_license_status', 'valid' );
-update_option( 'papro_license_key', 'B5E0B5F8DD8689E6ACA49DD6E6E1A930' );
-
-define( 'PREMIUM_PRO_ADDONS_VERSION', '2.3.6' );
+define( 'PREMIUM_PRO_ADDONS_VERSION', '2.3.7' );
 define( 'PREMIUM_PRO_ADDONS_STABLE_VERSION', '2.1.4' );
 define( 'PREMIUM_PRO_ADDONS_URL', plugins_url( '/', __FILE__ ) );
 define( 'PREMIUM_PRO_ADDONS_PATH', plugin_dir_path( __FILE__ ) );
@@ -35,60 +36,66 @@ define( 'PAPRO_ITEM_NAME', 'Premium Addons PRO' );
 define( 'PAPRO_STORE_URL', 'http://my.leap13.com' );
 define( 'PAPRO_ITEM_ID', 361 );
 
-//Check compatibility with the free version.
-if( defined( 'PREMIUM_ADDONS_VERSION' ) ) {
+// Check compatibility with the free version.
+if ( defined( 'PREMIUM_ADDONS_VERSION' ) ) {
 
-    $outdated_plugin = '';
+	$outdated_plugin = '';
 
-    if ( version_compare( PREMIUM_ADDONS_VERSION, '4.0.0', '>=' ) ) {
-        if ( version_compare( PREMIUM_PRO_ADDONS_VERSION, '2.2.0', '<' ) ) {
-            $outdated_plugin = 'papro';
-        }
-    } else {
-        $outdated_plugin = 'pa';
-    }
+	if ( version_compare( PREMIUM_ADDONS_VERSION, '4.0.0', '>=' ) ) {
+		if ( version_compare( PREMIUM_PRO_ADDONS_VERSION, '2.2.0', '<' ) ) {
+			$outdated_plugin = 'papro';
+		}
+	} else {
+		$outdated_plugin = 'pa';
+	}
 
-    if( ! empty( $outdated_plugin ) ) {
-        update_option( 'papro_updated', false );
-        add_action( 'admin_notices', function() use ( $outdated_plugin ) {
-            pa_version_mismatch_notice( $outdated_plugin );
-        });
-        return;
-    }
-
+	if ( ! empty( $outdated_plugin ) ) {
+		update_option( 'papro_updated', false );
+		add_action(
+			'admin_notices',
+			function() use ( $outdated_plugin ) {
+				pa_version_mismatch_notice( $outdated_plugin );
+			}
+		);
+		return;
+	}
 }
 
 
-//Render a notice if PAPRO version is outdated
+// Render a notice if PAPRO version is outdated
 function pa_version_mismatch_notice( $outdated_plugin ) {
 
-    if( ! $outdated_plugin ) {
-        return;
-    }
+	if ( ! $outdated_plugin ) {
+		return;
+	}
 
-    switch ($outdated_plugin) {
-        case 'papro':
-            $url = PAPRO_STORE_URL . '/my-account';
-            $name = __('Premium Addons Pro', 'premium-addons-pro');
-            $version = PREMIUM_PRO_ADDONS_VERSION;
-        break;
-        default:
-            $url = 'https://wordpress.org/plugins/premium-addons-for-elementor';
-            $name = __('Premium Addons For Elementor', 'premium-addons-pro');
-            $version = '4.0.0';
-    }
+	switch ( $outdated_plugin ) {
+		case 'papro':
+			$url     = PAPRO_STORE_URL . '/my-account';
+			$name    = __( 'Premium Addons Pro', 'premium-addons-pro' );
+			$version = PREMIUM_PRO_ADDONS_VERSION;
+			break;
+		default:
+			$url     = 'https://wordpress.org/plugins/premium-addons-for-elementor';
+			$name    = __( 'Premium Addons For Elementor', 'premium-addons-pro' );
+			$version = '4.0.0';
+	}
 
-    ?>
-        <div class="error">
-            <?php
-                echo sprintf( '<p>You are using an outdated version of <b>%s</b>. Please update your version to %s+. You can download the latest version from <a href="%s" target="_blank">here</a>',
-                $name, $version, $url );
-            ?>
-        </div>
-    <?php
+	?>
+		<div class="error">
+			<?php
+				echo sprintf(
+					'<p>You are using an outdated version of <b>%s</b>. Please update your version to %s+. You can download the latest version from <a href="%s" target="_blank">here</a>',
+					$name,
+					$version,
+					$url
+				);
+			?>
+		</div>
+	<?php
 }
 
-//If both versions are updated, run all dependencies
+// If both versions are updated, run all dependencies
 update_option( 'papro_updated', 'true' );
 
 /*

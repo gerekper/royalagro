@@ -9,10 +9,10 @@
 			var data_stroke=$self.data("stroke");
 			var svg_fill_enable=$self.data("svg_fill_enable");
 			var data_fill_color=$self.data("fill_color");
-			if($self.find(".info_box_svg").length > 0){
+			/*if($self.find(".info_box_svg").length > 0){
 				$self.find(".info_box_svg > svg").attr("id",data_id);
 				new Vivus(data_id, {type: data_type, duration: data_duration,forceRender:false,start: 'inViewport'});
-			}else{
+			}else{ */
 				var drawSvg = new Vivus(data_id, {type: data_type, duration: data_duration,forceRender:false,start: 'inViewport',onReady: function (myVivus) {
 					var c=myVivus.el.childNodes;
 					var show_id=document.getElementById(data_id);
@@ -46,7 +46,7 @@
 					var scrollPercentage = (document.documentElement.scrollTop + $("#"+data_id).scrollTop()) / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
 					drawSvg.setFrameProgress(scrollPercentage);
 				});*/
-			}
+			//}
 		});
 	};
 	

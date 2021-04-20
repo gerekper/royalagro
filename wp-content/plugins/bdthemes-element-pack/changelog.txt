@@ -1,3 +1,19 @@
+## 5.7.7 [15th April 2021]
+
+### Added
+
+- Hide On Before Scrolling added on Scroll Button widget
+- Glassmorphism option added in Lightbox Widget for some special cases
+- Two Columns option added in Simple Contact Form Widget
+- Human Different Time option added in Post Grid, Post Block, Post Block Modern, Post Card, Post Grid Tab, Post List, Post Slider Widgets
+
+### Fixed
+
+- Panel Slider title color fixed (Thanks to Greg Allman)
+- Navbar widget issue fixed that conflict with hello elementor theme (Thanks to Mike Kandela and PHC Software)
+- Featured Image not showing issue fixed in Post Block skin Genesis Widget
+- Responsive column gap issue fixed in Woocommerce Carousel Widget
+
 ## 5.7.6 [22th March 2021]
 
 ### Fixed
@@ -5,8 +21,7 @@
 - Active and deactivation error fixed
 - Carousel, testimonial slider and carousel speed slider control issue fixed
 - Advanced Heading + Animated Heading, accordion, Advanced Counter, Advanced Icon Box, Carousel, Circle Info, Custom Gallery etc widgets tag size security issue fixed
-- total count RTL css missing issue fixed
-
+- Total count widget RTL css missing issue fixed
 
 ## 5.7.5 [18th March 2021]
 

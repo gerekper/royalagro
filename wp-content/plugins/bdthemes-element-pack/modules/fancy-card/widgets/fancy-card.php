@@ -9,8 +9,8 @@ use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Css_Filter;
 use Elementor\Icons_Manager;
-use Elementor\Utils;
-
+use ElementPack\Utils;
+ 
 use ElementPack\Modules\FancyCard\Skins;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -2352,11 +2352,11 @@ class Fancy_Card extends Module_Base {
 
 			<div class="bdt-fancy-card-content">
 				<?php if ( $settings['title_text'] ) : ?>
-					<<?php echo esc_html($settings['title_size']); ?> <?php echo $this->get_render_attribute_string( 'fancy-card-title' ); ?>>
+					<<?php echo Utils::get_valid_html_tag($settings['title_size']); ?> <?php echo $this->get_render_attribute_string( 'fancy-card-title' ); ?>>
 						<span <?php echo $this->get_render_attribute_string( 'title_text' ); ?>>
 							<?php echo wp_kses( $settings['title_text'], element_pack_allow_tags('title') ); ?>
 						</span>
-					</<?php echo esc_html($settings['title_size']); ?>>
+					</<?php echo Utils::get_valid_html_tag($settings['title_size']); ?>>
 				<?php endif; ?>
 
 				<?php if ( $settings['description_text'] ) : ?>

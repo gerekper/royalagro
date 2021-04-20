@@ -1275,8 +1275,8 @@ class Premium_Google_Reviews extends Widget_Base {
 			array(
 				'label'     => __( 'Star Color', 'premium-addons-pro' ),
 				'type'      => Controls_Manager::COLOR,
-                'default'   => '#ffab40',
-                'global'  => false,
+				'default'   => '#ffab40',
+				'global'    => false,
 				'condition' => array(
 					'source_stars' => 'true',
 				),
@@ -1288,7 +1288,7 @@ class Premium_Google_Reviews extends Widget_Base {
 			array(
 				'label'     => __( 'Empty Star Color', 'premium-addons-pro' ),
 				'type'      => Controls_Manager::COLOR,
-				'global'  => false,
+				'global'    => false,
 				'condition' => array(
 					'source_stars' => 'true',
 				),
@@ -1379,7 +1379,7 @@ class Premium_Google_Reviews extends Widget_Base {
 			array(
 				'label'  => __( 'Star Color', 'premium-addons-pro' ),
 				'type'   => Controls_Manager::COLOR,
-				'global'  => false,
+				'global' => false,
 			)
 		);
 
@@ -1388,7 +1388,7 @@ class Premium_Google_Reviews extends Widget_Base {
 			array(
 				'label'  => __( 'Empty Star Color', 'premium-addons-pro' ),
 				'type'   => Controls_Manager::COLOR,
-				'global'  => false,
+				'global' => false,
 			)
 		);
 

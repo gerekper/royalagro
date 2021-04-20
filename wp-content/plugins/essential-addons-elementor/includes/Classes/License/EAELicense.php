@@ -364,6 +364,7 @@ class EAELicense {
 			return;
 		}
 
+
 		$message = $this->get_formatted_message( $status );
 
 		switch( $status ) {

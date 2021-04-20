@@ -90,6 +90,20 @@ class Premium_Img_Layers extends Widget_Base {
 	}
 
 	/**
+	 * Retrieve Widget Dependent CSS.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return array CSS script handles.
+	 */
+	public function get_style_depends() {
+		return array(
+			'premium-addons',
+		);
+	}
+
+	/**
 	 * Retrieve Widget Dependent JS.
 	 *
 	 * @since 1.0.0
@@ -1627,6 +1641,72 @@ class Premium_Img_Layers extends Widget_Base {
 		);
 
 		$repeater->add_control(
+			'mask_switcher',
+			array(
+				'label'        => __( 'Minimal Mask Effect', 'premium-addons-for-elementor' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'description'  => __( 'Note: This effect takes place once the element is in the viewport', 'premium-addons-for-elementor' ),
+				'render_type'  => 'template',
+				'prefix_class' => 'premium-mask-',
+				'condition'    => array(
+					'media_type' => 'text',
+				),
+			)
+		);
+
+		$repeater->add_control(
+			'mask_color',
+			array(
+				'label'       => __( 'Mask Color', 'premium-addons-for-elementor' ),
+				'type'        => Controls_Manager::COLOR,
+				'render_type' => 'template',
+				'selectors'   => array(
+					'{{WRAPPER}} {{CURRENT_ITEM}}.premium-mask-yes .premium-mask-span::after'   => 'background: {{VALUE}};',
+				),
+				'condition'   => array(
+					'media_type'    => 'text',
+					'mask_switcher' => 'yes',
+				),
+			)
+		);
+
+		$repeater->add_control(
+			'mask_dir',
+			array(
+				'label'       => __( 'Direction', 'premium-addons-for-elementor' ),
+				'type'        => Controls_Manager::SELECT,
+				'default'     => 'tr',
+				'render_type' => 'template',
+				'options'     => array(
+					'tr' => __( 'To Right', 'premium-addons-for-elementor' ),
+					'tl' => __( 'To Left', 'premium-addons-for-elementor' ),
+					'tt' => __( 'To Top', 'premium-addons-for-elementor' ),
+					'tb' => __( 'To Bottom', 'premium-addons-for-elementor' ),
+				),
+				'condition'   => array(
+					'media_type'    => 'text',
+					'mask_switcher' => 'yes',
+				),
+			)
+		);
+
+		$repeater->add_responsive_control(
+			'mask_padding',
+			array(
+				'label'      => __( 'Words Padding', 'premium-addons-for-elementor' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', 'em', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} {{CURRENT_ITEM}} .premium-mask-span' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+				'condition'  => array(
+					'media_type'    => 'text',
+					'mask_switcher' => 'yes',
+				),
+			)
+		);
+
+		$repeater->add_control(
 			'premium_img_layers_zindex',
 			array(
 				'label'     => __( 'z-index', 'premium-addons-pro' ),
@@ -2145,6 +2225,11 @@ class Premium_Img_Layers extends Widget_Base {
 					}
 				}
 
+				if ( 'yes' === $image['mask_switcher'] ) {
+					$this->add_render_attribute( $list_item_key, 'class', 'premium-mask-yes' );
+					$dir_class = 'premium-mask-' . $image['mask_dir'];
+				}
+
 				if ( 'yes' === $image['premium_img_layers_mouse'] ) {
 
 					$this->add_render_attribute( $list_item_key, 'data-' . $image['premium_img_layers_mouse_type'], 'true' );
@@ -2222,7 +2307,7 @@ class Premium_Img_Layers extends Widget_Base {
 						<?php
 					} elseif ( 'text' === $image['media_type'] ) {
 						?>
-						<p class="premium-img-layers-text" >
+						<p class="premium-img-layers-text <?php echo esc_attr( $dir_class ); ?>" >
 							<?php echo wp_kses_post( $image['img_layer_text'] ); ?>
 						</p>
 					<?php } ?>
@@ -2331,6 +2416,11 @@ class Premium_Img_Layers extends Widget_Base {
 
 					view.addRenderAttribute( listItemKey, 'data-rate', rate );
 
+				}
+
+				if ( 'yes' === image.mask_switcher ) {
+					view.addRenderAttribute( listItemKey, 'class', 'premium-mask-yes' );
+					var dirClass = 'premium-mask-' + image.mask_dir;
 				}
 
 				if( 'yes' === image.premium_img_layers_float_effects ) {
@@ -2515,15 +2605,15 @@ class Premium_Img_Layers extends Widget_Base {
 				#>
 
 				<li {{{ view.getRenderAttributeString(listItemKey) }}}>
-					<# if( 'image'=== image.media_type ) { #>
+					<# if( 'image' === image.media_type ) { #>
 						<img src="{{ image_url }}" class="premium-img-layers-image">
-					<# }  else if( 'text'=== image.media_type ) { #>
-						<p class="premium-img-layers-text">
+					<# }  else if( 'text' === image.media_type ) { #>
+						<p class="premium-img-layers-text {{{ dirClass }}}">
 							{{{image.img_layer_text}}}
 						</p>
 					<# } #>
 
-					<# if( 'yes' == image.premium_img_layers_link_switcher ) { #>
+					<# if( 'yes' === image.premium_img_layers_link_switcher ) { #>
 						<a class="premium-img-layers-link" href="{{ imageUrl }}"></a>
 					<# } #>
 				</li>

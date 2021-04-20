@@ -10,6 +10,7 @@ use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
 use Elementor\Repeater;
+use ElementPack\Utils;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -2271,7 +2272,7 @@ class Fancy_Slider extends Module_Base {
 					<?php endif; ?>
 		
 					<?php if ($content['title'] && ( 'yes' == $settings['show_title'] )) : ?>
-						<<?php echo esc_html($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('fancy_title_tags'); ?>>
+						<<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('fancy_title_tags'); ?>>
 							<?php if ( '' !== $content['title_link']['url'] ) : ?>
 								<a href="<?php echo esc_url( $content['title_link']['url'] ); ?>">
 							<?php endif; ?>
@@ -2279,7 +2280,7 @@ class Fancy_Slider extends Module_Base {
 							<?php if ( '' !== $content['title_link']['url'] ) : ?>
 								</a>
 							<?php endif; ?>
-						</<?php echo esc_html($settings['title_tags']); ?>>
+						</<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?>>
 					<?php endif; ?>
 		
 					<?php if ($content['description'] && ( 'yes' == $settings['show_description'] )) : ?>

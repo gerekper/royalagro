@@ -7,7 +7,8 @@ use ElementPack\Base\Module_Base;
 use Elementor\Controls_Manager;
 use Elementor\Icons_Manager;
 
-use Elementor\Utils;
+use ElementPack\Utils;
+ 
 
 use Elementor\Skin_Base as Elementor_Skin_Base;
 
@@ -142,9 +143,9 @@ class Skin_Custom extends Elementor_Skin_Base {
         <a href="<?php echo esc_url(get_permalink()); ?>">
         <?php } ?>
 
-      <<?php echo esc_attr($tag) ?> class="<?php echo implode(" ", $classes); ?>">
+      <<?php echo Utils::get_valid_html_tag($tag); ?> class="<?php echo implode(" ", $classes); ?>">
         <?php echo esc_attr($title['image_title']); ?>
-      </<?php echo esc_attr($tag) ?>>
+      </<?php echo Utils::get_valid_html_tag($tag); ?>>
 
         <?php if ( 'yes' == $settings['title_link_option'] ) { ?>
         </a>

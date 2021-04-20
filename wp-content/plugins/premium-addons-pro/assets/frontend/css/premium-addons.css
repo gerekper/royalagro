@@ -81,13 +81,16 @@
     height: 30px;
     margin-right: 5px;
     margin-left: 5px; }
+  .premium-notbar .premium-notbar-icon-wrap svg {
+    width: 1em;
+    height: 1em;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out; }
   .premium-notbar .premium-notbar-icon {
     margin-right: 5px;
     margin-left: 5px;
     border: none;
-    color: #54595f;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out; }
+    color: #54595f; }
   .premium-notbar .premium-notbar-icon-lottie {
     -js-display: flex;
     display: -webkit-box;
@@ -134,8 +137,8 @@
 .premium-notbar-close-container {
   cursor: pointer; }
 
-/**************** Premium Icon Box ******************/
-/***************************************************/
+/**************** Premium Icon Box ****************/
+/**************************************************/
 .premium-icon-box-container-out {
   position: relative;
   padding: 20px;
@@ -314,10 +317,15 @@
        -moz-box-flex: 0;
         -ms-flex: 0 0 auto;
             flex: 0 0 auto; }
-  .premium-icon-box-container-in .premium-icon-box-icon {
+  .premium-icon-box-container-in .premium-icon-box-icon-container .premium-icon-box-icon {
     border-color: #000;
     font-size: 40px;
     padding: 8px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out; }
+  .premium-icon-box-container-in .premium-icon-box-icon-container svg {
+    width: 2em;
+    height: 2em;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out; }
   .premium-icon-box-container-in .premium-icon-box-animation {
@@ -355,15 +363,12 @@
   bottom: -8%;
   right: -3%;
   color: rgba(41, 41, 41, 0.1); }
-  .premium-icon-box-container-out .premium-icon-box-big .premium-icon-box-animation {
+  .premium-icon-box-container-out .premium-icon-box-big .premium-icon-box-animation,
+  .premium-icon-box-container-out .premium-icon-box-big > svg {
     width: 150px;
     height: 150px; }
   .premium-icon-box-container-out .premium-icon-box-big i {
     font-size: 200px; }
-
-.premium-icon-box-container-in .premium-icon-box-link {
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out; }
 
 .premium-icon-box-container-out .premium-icon-box-container-in .premium-icon-box-more {
   display: inline-block;
@@ -381,7 +386,13 @@
   -webkit-align-items: center;
      -moz-box-align: center;
       -ms-flex-align: center;
-          align-items: center; }
+          align-items: center;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; }
+  .premium-icon-box-more .premium-icon-box-link svg {
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background: none !important; }
 
 .premium-icon-box-big {
   -webkit-transition: all 0.3s ease-in-out;
@@ -398,6 +409,7 @@
   font-size: 220px; }
 
 .premium-icon-box-container-out:hover .premium-icon-box-big.premium-icon-box-big-hover .premium-icon-box-animation,
+.premium-icon-box-container-out:hover .premium-icon-box-big.premium-icon-box-big-hover svg,
 .premium-icon-box-container-out:hover .premium-icon-box-big.premium-icon-box-big-hover img {
   -webkit-transform: scaleX(1.2) scaleY(1.2);
       -ms-transform: scaleX(1.2) scaleY(1.2);
@@ -2313,6 +2325,9 @@
     transition: all 0.3s ease-in-out; }
   .premium-preview-image-figure:hover .premium-preview-image-hover {
     opacity: 1; }
+  .premium-preview-image-figure > svg {
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out; }
   .premium-preview-image-figure .premium-prev-image-lottie svg {
     display: inline-block;
     width: 60px !important;
@@ -5927,7 +5942,7 @@ ul.premium-social-count-ul {
     .premium-table-responsive .premium-table {
       min-width: 600px; } }
 
-/**************** Premium Separator **************/
+/**************** Premium Divider ****************/
 /*************************************************/
 .premium-separator-wrapper hr {
   border-bottom: none; }
@@ -5994,6 +6009,7 @@ ul.premium-social-count-ul {
   .premium-separator-wrapper-separator .premium-separator-img-icon img {
     max-width: none; }
   .premium-separator-wrapper-separator .premium-separator-icon i,
+  .premium-separator-wrapper-separator .premium-separator-icon svg,
   .premium-separator-wrapper-separator .premium-separator-icon-text {
     margin: 0;
     border-color: #000;
@@ -6126,7 +6142,9 @@ ul.premium-social-count-ul {
     height: 30px; }
   .premium-whatsapp-link svg {
     width: 70px;
-    height: 70px; }
+    height: 70px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out; }
   .premium-whatsapp-link .premium-whatsapp-icon {
     font-size: 22px; }
 
@@ -6455,16 +6473,16 @@ ul.premium-social-count-ul {
   transition: transform 0.3s ease-in-out, visibility 0.2s ease-in-out, opacity 0.2s ease-in-out, -webkit-transform 0.3s ease-in-out; }
 
 .premium-accordion-container .premium-accordion-overlay-wrap {
-  -webkit-transition: background-color 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out;
-  transition: background-color 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out;
-  transition: background-color 0.3s ease-in-out, transform 0.3s 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out;
-  transition: background-color 0.3s ease-in-out, transform 0.3s 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out; }
+  -webkit-transition: background-color 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, transform 0.3s 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, transform 0.3s 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out; }
 
 .premium-accordion-container .premium-accordion-li:hover .premium-accordion-content > * {
-  -webkit-transition: visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, background-color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out;
-  transition: visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, background-color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out;
-  transition: transform 0.3s 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  transition: transform 0.3s 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, background-color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out; }
+  -webkit-transition: visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, fill 0.3s ease-in-out, background-color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out;
+  transition: visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, fill 0.3s ease-in-out, background-color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out;
+  transition: transform 0.3s 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, fill 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  transition: transform 0.3s 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, fill 0.3s ease-in-out, background-color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out; }
 
 .premium-accordion-container .premium-accordion-background {
   width: 100%;
@@ -6866,7 +6884,9 @@ ul.premium-social-count-ul {
 
 .premium-hscroll-arrow svg {
   width: 1em;
-  height: 1em; }
+  height: 1em;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; }
 
 .premium-hscroll-elem-hidden,
 .premium-hscroll-arrows-hidden .premium-hscroll-arrow,

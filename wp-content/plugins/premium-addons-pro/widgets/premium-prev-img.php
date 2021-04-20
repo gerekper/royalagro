@@ -1199,7 +1199,8 @@ class Premium_Prev_Img extends Widget_Base {
 					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .premium-preview-image-trigger' => 'color:{{VALUE}};',
+					'{{WRAPPER}} .premium-preview-image-trigger' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .premium-preview-image-figure svg' => 'fill: {{VALUE}};',
 				),
 				'condition' => array(
 					'trigger_type!' => 'lottie',
@@ -1213,7 +1214,7 @@ class Premium_Prev_Img extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-pro' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .premium-preview-image-trigger'  => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .premium-preview-image-trigger, {{WRAPPER}} .premium-preview-image-figure svg'  => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -1222,7 +1223,7 @@ class Premium_Prev_Img extends Widget_Base {
 			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'trigger_border_normal',
-				'selector' => '{{WRAPPER}} .premium-preview-image-trigger',
+				'selector' => '{{WRAPPER}} .premium-preview-image-trigger, {{WRAPPER}} .premium-preview-image-figure svg',
 			)
 		);
 
@@ -1234,7 +1235,7 @@ class Premium_Prev_Img extends Widget_Base {
 				'size_units' => array( 'px', '%', 'em' ),
 				'separator'  => 'after',
 				'selectors'  => array(
-					'{{WRAPPER}} .premium-preview-image-trigger' => 'border-radius: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .premium-preview-image-trigger, {{WRAPPER}} .premium-preview-image-figure svg' => 'border-radius: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -1259,6 +1260,7 @@ class Premium_Prev_Img extends Widget_Base {
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-preview-image-figure:hover .premium-preview-image-trigger'   => 'color: {{VALUE}};',
+					'{{WRAPPER}} .premium-preview-image-figure:hover svg'   => 'fill: {{VALUE}};',
 				),
 				'condition' => array(
 					'trigger_type!' => 'lottie',
@@ -1272,7 +1274,7 @@ class Premium_Prev_Img extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-pro' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .premium-preview-image-figure:hover .premium-preview-image-trigger' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .premium-preview-image-figure:hover .premium-preview-image-trigger, {{WRAPPER}} .premium-preview-image-figure:hover svg' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -1281,7 +1283,7 @@ class Premium_Prev_Img extends Widget_Base {
 			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'trigger_border_hover',
-				'selector' => '{{WRAPPER}} .premium-preview-image-figure:hover .premium-preview-image-trigger',
+				'selector' => '{{WRAPPER}} .premium-preview-image-figure:hover .premium-preview-image-trigger, {{WRAPPER}} .premium-preview-image-figure:hover svg',
 			)
 		);
 
@@ -1293,7 +1295,7 @@ class Premium_Prev_Img extends Widget_Base {
 				'size_units' => array( 'px', '%', 'em' ),
 				'separator'  => 'after',
 				'selectors'  => array(
-					'{{WRAPPER}} .premium-preview-image-figure:hover .premium-preview-image-trigger' => 'border-radius: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .premium-preview-image-figure:hover .premium-preview-image-trigger, {{WRAPPER}} .premium-preview-image-figure:hover svg' => 'border-radius: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -1379,7 +1381,7 @@ class Premium_Prev_Img extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .premium-preview-image-trigger:not(.premium-preview-image-hover)' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .premium-preview-image-trigger:not(.premium-preview-image-hover), {{WRAPPER}} .premium-preview-image-figure svg' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					'{{WRAPPER}} .premium-preview-image-hover' => 'margin: 0 {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
@@ -1392,7 +1394,7 @@ class Premium_Prev_Img extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .premium-preview-image-trigger' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .premium-preview-image-trigger, {{WRAPPER}} .premium-preview-image-figure svg' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);

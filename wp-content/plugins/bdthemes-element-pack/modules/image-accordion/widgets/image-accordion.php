@@ -9,6 +9,7 @@ use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Repeater;
+use ElementPack\Utils;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -861,9 +862,9 @@ class Image_Accordion extends Module_Base {
 							<?php if ( '' !== $item['title_link']['url'] ) : ?>
 								<a href="<?php echo esc_url( $item['title_link']['url'] ); ?>">
 							<?php endif; ?>
-								<<?php echo esc_html($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-image-accordion-title'); ?>>
+								<<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-image-accordion-title'); ?>>
 									<?php echo wp_kses( $item['image_accordion_title'], element_pack_allow_tags('title') ); ?>
-								</<?php echo esc_html($settings['title_tags']); ?>>
+								</<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?>>
 							<?php if ( '' !== $item['title_link']['url'] ) : ?>
 								</a>
 							<?php endif; ?>

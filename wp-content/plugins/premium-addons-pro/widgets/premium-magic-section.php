@@ -768,9 +768,9 @@ class Premium_Magic_Section extends Widget_Base {
 				),
 				'default' => 'top',
 			)
-        );
+		);
 
-        $this->add_responsive_control(
+		$this->add_responsive_control(
 			'content_height',
 			array(
 				'label'      => __( 'Maximum Height', 'premium-addons-pro' ),
@@ -787,13 +787,13 @@ class Premium_Magic_Section extends Widget_Base {
 					),
 				),
 				'condition'  => array(
-					'premium_magic_section_pos'   => array( 'top', 'bottom' ),
+					'premium_magic_section_pos' => array( 'top', 'bottom' ),
 				),
 				'selectors'  => array(
 					'{{WRAPPER}} .premium-magic-section-wrap' => 'max-height: {{SIZE}}{{UNIT}}; overflow-y: scroll',
 				),
 			)
-        );
+		);
 
 		$this->add_control(
 			'premium_magic_section_gutter',

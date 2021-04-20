@@ -9,8 +9,8 @@ use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Css_Filter;
 use Elementor\Icons_Manager;
 use Elementor\Repeater;
-use Elementor\Utils;
-
+use ElementPack\Utils;
+ 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Fancy_Tabs extends Module_Base {
@@ -1476,9 +1476,9 @@ class Fancy_Tabs extends Module_Base {
 					<?php endif; ?>
 
 					<?php if ( $item['tab_title'] && ( 'yes' == $settings['show_title'] ) ) : ?>
-						<<?php echo esc_html($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('fancy_title_tags'); ?>>
+						<<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('fancy_title_tags'); ?>>
 							<?php echo wp_kses( $item['tab_title'], element_pack_allow_tags('title') ); ?>
-						</<?php echo esc_html($settings['title_tags']); ?>>
+						</<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?>>
 					<?php endif; ?>
 
 					<?php if ( $item['tab_content'] && ( 'yes' == $settings['show_content'] ) ) : ?>

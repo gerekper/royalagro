@@ -14,6 +14,7 @@ function theplus_html_tag_check(){
 		'h4',
 		'h5',
 		'h6',
+		'a',
 		'span',
 		'p',
 		'header',
@@ -644,6 +645,10 @@ function get_current_ID($id){
 
 
 function plus_acf_repeater_field_ajax(){
+	if ( isset($_POST['security']) && !empty($_POST['security']) && ! wp_verify_nonce( $_POST['security'], 'theplus-addons' ) ){
+		 die ( 'Invalid Nonce Security checked!');
+	} 
+	
 	$data = [];
 	
 	if(!empty($_REQUEST['post_id']) && isset($_REQUEST['post_id'])){
@@ -662,7 +667,9 @@ function plus_acf_repeater_field_ajax(){
 	}
 	wp_send_json_success($data);
 }
-add_action('wp_ajax_plus_acf_repeater_field','plus_acf_repeater_field_ajax');
+if( is_admin() &&  current_user_can("manage_options") ){	
+	add_action('wp_ajax_plus_acf_repeater_field','plus_acf_repeater_field_ajax');
+}
 
 
 function get_acf_repeater_field(){
@@ -723,7 +730,7 @@ add_action( 'wp_ajax_nopriv_theplus_ajax_login', 'theplus_ajax_login' );
 /*Wp login ajax*/
 
 /* login social application facebook/google */
-function tp_login_social_app( $name, $email, $post_id, $widget_id, $type = ''){
+function tp_login_social_app( $name, $email, $type = ''){
 	$response	= [];
 	$user_data	= get_user_by( 'email', $email ); 
 
@@ -764,24 +771,6 @@ function tp_login_social_app( $name, $email, $post_id, $widget_id, $type = ''){
 			);
 
 			update_user_meta( $user_ID, 'theplus_login_form', $user_meta );
-			
-			if(!empty($post_id) && !empty($widget_id)){
-				$elementor = \Elementor\Plugin::$instance;			
-				$meta_data = $elementor->documents->get( $post_id )->get_elements_data();
-				
-				$widget_data = get_element_widget_data( $meta_data, $widget_id );
-				
-				$widget_settings = $elementor->elements_manager->create_element_instance( $widget_data );
-				
-				$get_settings = $widget_settings->get_settings();
-				
-				if(!empty($get_settings) && !empty($get_settings['user_role'])){
-					$role = $get_settings['user_role'];
-					if(!empty($role)){
-						wp_update_user( array ('ID' => $user_ID, 'role' => $role) ) ;
-					}
-				}
-			}
 			
 			if ( wp_check_password( $password, $user_data->user_pass, $user_data->ID ) ) {
 				wp_set_auth_cookie( $user_ID );
@@ -863,9 +852,7 @@ function theplus_ajax_facebook_login() {
 	$access_token = (!empty( $_POST['accessToken'] )) ? sanitize_text_field( $_POST['accessToken'] ) : '';
 	$user_id = (!empty( $_POST['id'] )) ? sanitize_text_field( $_POST['id'] ) : 0;
 	$email	=	(isset($_POST['email'])) ? sanitize_email($_POST['email']) : '';
-	$name	=	(isset($_POST['name'])) ? sanitize_user( $_POST['name'] ) : '';
-	$page_id	=	(isset($_POST['page_id'])) ? sanitize_text_field( $_POST['page_id'] ) : '';
-	$widget_id	=	(isset($_POST['widget_id'])) ? sanitize_text_field( $_POST['widget_id'] ) : '';
+	$name	=	(isset($_POST['name'])) ? sanitize_user( $_POST['name'] ) : '';	
 	
 	$fb_data= get_option( 'theplus_api_connection_data' );
 	$fb_app_id = (!empty($fb_data['theplus_facebook_app_id'])) ? $fb_data['theplus_facebook_app_id'] : '';
@@ -887,7 +874,7 @@ function theplus_ajax_facebook_login() {
 
 	$verify_email = !empty( $email ) && !empty( $email_res['email'] ) ? sanitize_email( $email_res['email'] ) : $verify_data['user_id'] . '@facebook.com';
 	
-	tp_login_social_app( $name, $verify_email, $page_id, $widget_id, 'facebook' );
+	tp_login_social_app( $name, $verify_email, 'facebook' );
 	
 	die();
 }
@@ -934,8 +921,6 @@ function theplus_google_ajax_register() {
 		
 		$name       = isset( $_POST['name'] ) ? sanitize_text_field($_POST['name']) : '';
 		$email      = isset( $_POST['email'] ) ? sanitize_email($_POST['email']) : '';
-		$page_id	=	(isset($_POST['page_id'])) ? sanitize_text_field( $_POST['page_id'] ) : '';
-		$widget_id	=	(isset($_POST['widget_id'])) ? sanitize_text_field( $_POST['widget_id'] ) : '';
 		$id_token = filter_input( INPUT_POST, 'id_token', FILTER_SANITIZE_STRING );
 		$google_data= get_option( 'theplus_api_connection_data' );
 		$client_id = (!empty($google_data['theplus_google_client_id'])) ? $google_data['theplus_google_client_id'] : '';
@@ -956,7 +941,7 @@ function theplus_google_ajax_register() {
 			exit;
 		}
 
-		tp_login_social_app( $v_name, $v_email, $page_id, $widget_id, 'google' );
+		tp_login_social_app( $v_name, $v_email, 'google' );
 		
 	} else {
 		echo wp_json_encode( $response );
@@ -1131,11 +1116,11 @@ function redirect_to_tp_custom_password_reset() {
             if ( $user && $user->get_error_code() === 'expired_key' ) {
 				$redirect_url = $_REQUEST['forgoturl'];
 				$redirect_url = add_query_arg( 'expired', 'expired', $redirect_url );
-				wp_redirect($redirect_url);
+				wp_safe_redirect($redirect_url);
             } else {
 				$redirect_url = $_REQUEST['forgoturl'];
 				$redirect_url = add_query_arg( 'invalid', 'invalid', $redirect_url );
-				wp_redirect($redirect_url);
+				wp_safe_redirect($redirect_url);
             }
             exit;
         }
@@ -1146,9 +1131,9 @@ function redirect_to_tp_custom_password_reset() {
 			$redirect_url = add_query_arg( 'key', esc_attr( $_REQUEST['key'] ), $redirect_url );
 			$redirect_url = add_query_arg( 'action', 'theplusrpf', $redirect_url );
 			$redirect_url = add_query_arg( 'forgoturl', $_REQUEST['forgoturl'], $redirect_url );
-			wp_redirect($redirect_url);
+			wp_safe_redirect($redirect_url);
 		}else{
-			wp_redirect(home_url());
+			wp_safe_redirect(home_url());
 		}
         exit;
     }
@@ -1208,25 +1193,8 @@ function theplus_ajax_register_user( $email='', $first_name='', $last_name='',$t
 				}else{
 					wp_new_user_notification( $user_id, null, 'both' );
 				}
-			}
-			
-			$tp_user_role='subscriber';
-			$post_id   = $_POST['page_id'];
-			$widget_id = $_POST['widget_id'];
-						
-			$elementor = \Elementor\Plugin::$instance;			
-			$meta_data      = $elementor->documents->get( $post_id )->get_elements_data();
-			
-			$widget_data = get_element_widget_data( $meta_data, $widget_id );
-			
-			$widget_settings = $elementor->elements_manager->create_element_instance( $widget_data );
-			
-			$get_settings = $widget_settings->get_settings();
-			
-			if(!empty($get_settings) && !empty($get_settings['user_role'])){
-				$tp_user_role = $get_settings['user_role'];
-			}
-			wp_update_user( array ('ID' => $user_id, 'role' => $tp_user_role) ) ;
+			}		
+			wp_update_user( array ('ID' => $user_id) ) ;
 		}
 		
 	    return $user_id;
@@ -1447,6 +1415,10 @@ function theplus_load_metro_style_layout($columns='1',$metro_column='3',$metro_s
 }
 
 function theplus_key_notice_ajax(){
+	if ( isset($_POST['security']) && !empty($_POST['security']) && ! wp_verify_nonce( $_POST['security'], 'theplus-addons' ) ){
+		 die ( 'Invalid Nonce Security checked!');
+	} 
+	
 	if ( get_option( 'theplus-notice-dismissed' ) !== false ) {
 		update_option( 'theplus-notice-dismissed', '1' );
 	} else {
@@ -1455,7 +1427,10 @@ function theplus_key_notice_ajax(){
 		add_option( 'theplus-notice-dismissed','1', $deprecated, $autoload );
 	}
 }
-add_action('wp_ajax_theplus_key_notice','theplus_key_notice_ajax');
+
+if( is_admin() &&  current_user_can("manage_options") ){
+	add_action('wp_ajax_theplus_key_notice','theplus_key_notice_ajax');
+}
 	
 //post pagination
 function theplus_pagination($pages = '', $range = 2)
@@ -1611,7 +1586,7 @@ if(!function_exists('theplus_api_check_license')){
 		);
 		
 		//@version 3.3.4
-		$response = true;		
+		$response = get_transient( 'theplus_verify_trans_api_store' );		
 		if (false === $response || $license_action == 'activate_license') {				
 			$response = wp_remote_post( $store_url, array( 'timeout' => 30, 'sslverify' => false, 'body' => $api_params ) );
 			set_transient('theplus_verify_trans_api_store', $response, 172800); 
@@ -1621,6 +1596,7 @@ if(!function_exists('theplus_api_check_license')){
 		$license_data->success = true;
 		$license_data->license = 'valid';
 		$license_data->expires = 'lifetime';
+		
 			if ( !empty($license_data) && true == $license_data->success  && !empty($license_data->success)) {
 				
 				if(!empty($license_data->license)){
@@ -1732,8 +1708,6 @@ if(!function_exists('theplus_check_api_status')){
     	return 1;
 	}
 }
-
-
 //@version 3.3.5
 function check_expired_date_key() {
 	$option_name = 'theplus_verified';

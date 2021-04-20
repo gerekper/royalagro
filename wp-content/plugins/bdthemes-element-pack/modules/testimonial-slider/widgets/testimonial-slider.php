@@ -593,14 +593,14 @@ class Testimonial_Slider extends Module_Base {
             ]
         );
 
-        $this->add_group_control(
-            Group_Control_Box_Shadow::get_type(),
-            [
-                'name'     => 'testimonial_shadow',
-                'label'    => esc_html__('Shadow', 'bdthemes-element-pack'),
-                'selector' => '{{WRAPPER}} .bdt-testimonial-slider .bdt-slider-item-inner',
-            ]
-        );
+        // $this->add_group_control(
+        //     Group_Control_Box_Shadow::get_type(),
+        //     [
+        //         'name'     => 'testimonial_shadow',
+        //         'label'    => esc_html__('Shadow', 'bdthemes-element-pack'),
+        //         'selector' => '{{WRAPPER}} .bdt-testimonial-slider .bdt-slider-item-inner',
+        //     ]
+        // );
 
         $this->add_group_control(
             Group_Control_Border::get_type(),

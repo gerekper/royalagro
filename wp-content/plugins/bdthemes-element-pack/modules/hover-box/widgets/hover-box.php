@@ -10,7 +10,7 @@ use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Icons_Manager;
 use Elementor\Repeater;
-
+use ElementPack\Utils;
 use ElementPack\Modules\HoverBox\Skins;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -1499,7 +1499,7 @@ class Hover_Box extends Module_Base {
 								<?php endif; ?>
 
 								<?php if ( $item['hover_box_title'] && ( 'yes' == $settings['show_title'] ) ) : ?>
-									<<?php echo esc_html($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-hover-box-title'); ?>>
+									<<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-hover-box-title'); ?>>
 										
 											<?php if ( '' !== $item['title_link']['url'] ) : ?>
 												<a <?php echo $this->get_render_attribute_string( 'title-link' ); ?>>
@@ -1509,7 +1509,7 @@ class Hover_Box extends Module_Base {
 												</a>
 											<?php endif; ?>
 										
-									</<?php echo esc_html($settings['title_tags']); ?>>
+									</<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?>>
 								<?php endif; ?>
 
 								<?php if ( $item['hover_box_content'] && ( 'yes' == $settings['show_content'] ) ) : ?>

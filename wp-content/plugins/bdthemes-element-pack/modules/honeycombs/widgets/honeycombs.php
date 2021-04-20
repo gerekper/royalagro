@@ -10,6 +10,7 @@ use Elementor\Repeater;
 use Elementor\Group_Control_Css_Filter;
 use Elementor\Icons_Manager;
 use ElementPack\Element_Pack_Loader;
+use ElementPack\Utils;
 
 if (!defined('ABSPATH')) {
     exit();
@@ -738,9 +739,9 @@ class Honeycombs extends Module_Base
                         <?php endif; ?>
 
                         <?php if ($settings['title_display'] == 'yes'): ?>
-                        <<?php echo $titleTag; ?> class="bdt-title" >
+                        <<?php echo Utils::get_valid_html_tag($titleTag); ?> class="bdt-title" >
                         <?php echo $item['honeycombs_title']; ?>
-                    </<?php echo $titleTag; ?> >
+                    </<?php echo Utils::get_valid_html_tag($titleTag); ?> >
                     <?php endif; ?>
                 </div>
                 <div class="bdt-back-content">

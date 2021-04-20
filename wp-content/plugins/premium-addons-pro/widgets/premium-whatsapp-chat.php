@@ -717,6 +717,7 @@ class Premium_Whatsapp_Chat extends Widget_Base {
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-whatsapp-icon' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .premium-whatsapp-icon-wrap svg' => 'fill: {{VALUE}}',
 				),
 				'condition' => array(
 					'icon_switcher'           => 'yes',
@@ -876,6 +877,7 @@ class Premium_Whatsapp_Chat extends Widget_Base {
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-whatsapp-link:hover .premium-whatsapp-icon'   => 'color: {{VALUE}};',
+					'{{WRAPPER}} .premium-whatsapp-link:hover svg' => 'fill: {{VALUE}}',
 				),
 				'condition' => array(
 					'icon_switcher'           => 'yes',

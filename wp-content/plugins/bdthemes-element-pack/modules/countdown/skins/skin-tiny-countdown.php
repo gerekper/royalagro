@@ -7,9 +7,9 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Core\Schemes;
-use Elementor\Utils;
 use Elementor\Schemes\Color;
 
+use ElementPack\Utils;
 use Elementor\Skin_Base as Elementor_Skin_Base;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly

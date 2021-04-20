@@ -1328,8 +1328,8 @@ class Premium_Facebook_Reviews extends Widget_Base {
 			'page_fill',
 			array(
 				'label'     => __( 'Star Color', 'premium-addons-pro' ),
-                'type'      => Controls_Manager::COLOR,
-                'global'  => false,
+				'type'      => Controls_Manager::COLOR,
+				'global'    => false,
 				'default'   => '#ffab40',
 				'condition' => array(
 					'source_stars' => 'true',
@@ -1341,8 +1341,8 @@ class Premium_Facebook_Reviews extends Widget_Base {
 			'page_empty',
 			array(
 				'label'     => __( 'Empty Star Color', 'premium-addons-pro' ),
-                'type'      => Controls_Manager::COLOR,
-                'global'  => false,
+				'type'      => Controls_Manager::COLOR,
+				'global'    => false,
 				'condition' => array(
 					'source_stars' => 'true',
 				),
@@ -1432,8 +1432,8 @@ class Premium_Facebook_Reviews extends Widget_Base {
 			'reviews_fill',
 			array(
 				'label'   => __( 'Star Color', 'premium-addons-pro' ),
-                'type'    => Controls_Manager::COLOR,
-                'global'  => false,
+				'type'    => Controls_Manager::COLOR,
+				'global'  => false,
 				'default' => '#ffab40',
 			)
 		);
@@ -1442,8 +1442,8 @@ class Premium_Facebook_Reviews extends Widget_Base {
 			'reviews_empty',
 			array(
 				'label'  => __( 'Empty Star Color', 'premium-addons-pro' ),
-                'type'   => Controls_Manager::COLOR,
-                'global'  => false,
+				'type'   => Controls_Manager::COLOR,
+				'global' => false,
 			)
 		);
 

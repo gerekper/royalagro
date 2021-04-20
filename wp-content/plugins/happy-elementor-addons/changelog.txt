@@ -1,3 +1,9 @@
+= 2.23.0 - 12 April 2021 =
+
+- New: Animated Link Widget
+- New: Infobox widget media direction option
+- Fix: Shape Divider issue
+
 = 2.22.1 - 24 March 2021 =
 
 - Fix: Elementor compatibility tag added

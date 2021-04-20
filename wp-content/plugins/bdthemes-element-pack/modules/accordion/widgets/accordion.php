@@ -1155,4 +1155,4 @@ class Accordion extends Module_Base {
 
     protected function content_template() { }
 }
- 
+  

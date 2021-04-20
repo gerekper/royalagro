@@ -22,7 +22,7 @@ class ElementPack_Template_Library_Base
 
     public $packLicenseActivated = true;
 
-    protected $api_url = 'https://elementpack.pro/wp-json/template-manager/v1/';
+    protected $api_url = 'https://www.elementpack.pro/wp-json/template-manager/v1/';
 
     public function __construct()
     {

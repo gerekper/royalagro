@@ -8,6 +8,7 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Image_Size;
+use ElementPack\Utils;
 
 use ElementPack\Modules\Woocommerce\Skins;
 use WP_Query;
@@ -3819,11 +3820,11 @@ class Products extends Module_Base {
 
 	           			<div class="bdt-wc-product-desc">
 		               		<?php if ( 'yes' == $settings['show_title']) : ?>
-			           			<<?php echo esc_html($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-wc-product-title'); ?>>
+			           			<<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-wc-product-title'); ?>>
 			           				<a href="<?php the_permalink(); ?>" class="bdt-link-reset">
 						               <?php the_title(); ?>
 						           </a>
-				               </<?php echo esc_html($settings['title_tags']); ?>>
+				               </<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?>>
 				            <?php endif; ?>
 
 		           			<?php if (('yes' == $settings['show_price']) or ('yes' == $settings['show_rating'])) : ?>

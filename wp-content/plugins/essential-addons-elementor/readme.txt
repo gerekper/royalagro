@@ -2,7 +2,7 @@
 Contributors: wpdevteam, Codetic, re_enter_rupok, Asif2BD, priyomukul, mahfuz01, nazsabuz
 Tags: elementor, elements, widgets, page builder, builder, visual editor, wordpress page builder
 Tested up to: 5.7
-Stable tag: 4.3.6
+Stable tag: 4.3.7
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -86,6 +86,11 @@ List of Extensions :
 * Custom JS
 
 == Changelog ==
+
+= 4.3.7 - 13/04/2021 =
+
+- Fixed: EA Creative Button | SVG color not changing
+- Few minor bug fix and improvements
 
 = 4.3.6 - 11/04/2021 =
 

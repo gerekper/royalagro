@@ -2,7 +2,7 @@
 Contributors: bdthemes, selimmw
 Donate link: http://bdthemes.com/
 Tags: elementor, element, pack, elementor addon, pagebuilder addon, addons, template library, live copy, live paste, bdthemes
-Stable tag: 5.7.6
+Stable tag: 5.7.7
 Requires PHP: 5.6.42
 Requires at least: 4.7.0
 Tested up to: 5.7
@@ -35,6 +35,21 @@ e.g.
 
  
 == Changelog ==
+
+= 5.7.7 [15th April 2021] =
+
+= Added =
+
+* Hide On Before Scrolling added on Scroll Button widget
+* Glassmorphism option added in Lightbox Widget for some special cases
+* Two Columns option added in Simple Contact Form Widget
+* Human Different Time option added in Post Grid, Post Block, Post Block Modern, Post Card, Post Grid Tab, Post List, Post Slider Widgets
+
+= Fixed =
+
+* Panel Slider title color fixed (Thanks to Greg Allman)
+* Navbar widget issue fixed that conflict with hello elementor theme (Thanks to Mike Kandela and PHC Software)
+* Featured Image not showing issue fixed in Post Block skin Genesis Widget
 
 = 5.7.6 [22th March 2021] =
 

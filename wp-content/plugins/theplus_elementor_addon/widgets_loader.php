@@ -124,13 +124,11 @@ final class Theplus_Element_Load {
 		wp_enqueue_style( 'theplus-ele-admin-pro', THEPLUS_ASSETS_URL .'css/admin/theplus-ele-admin.css', array(),THEPLUS_VERSION,false );
 	}
 	public function theplus_elementor_admin_css() {  
-		wp_enqueue_script( 'jquery-ui-dialog' );
+		wp_enqueue_script( 'jquery-ui-dialog' );		
 		wp_enqueue_style( 'wp-jquery-ui-dialog' );
 		wp_enqueue_style( 'theplus-ele-admin-pro', THEPLUS_ASSETS_URL .'css/admin/theplus-ele-admin.css', array(),THEPLUS_VERSION,false );
-		wp_enqueue_script( 'theplus-admin-js', THEPLUS_ASSETS_URL .'js/admin/theplus-admin.js', array(),THEPLUS_VERSION,false );
+		wp_enqueue_script( 'theplus-admin-js-pro', THEPLUS_ASSETS_URL .'js/admin/theplus-admin.js', array(),THEPLUS_VERSION,false );
 		
-		echo '<script> var theplus_ajax_url = "'.admin_url("admin-ajax.php").'";
-		var theplus_nonce = "'.wp_create_nonce("theplus-addons").'";</script>';
 	}
 		
 		

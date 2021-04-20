@@ -1,10 +1,9 @@
 <?php
 namespace ElementPack\Modules\PostBlock\Skins;
-
+ 
 use Elementor\Skin_Base as Elementor_Skin_Base;
-use Elementor\Utils;
 use Elementor\Icons_Manager;
-use Elementor\Core\Files\Assets\Svg\Svg_Handler;
+use ElementPack\Utils;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -64,12 +63,14 @@ class Skin_Genesis extends Elementor_Skin_Base {
 
 					$placeholder_image_src = Utils::get_placeholder_image_src();
 					$image_src             = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
-
+ 
 					if ( ! $image_src ) {
 						$image_src = $placeholder_image_src;
 					} else {
 						$image_src = $image_src[0];
 					}
+
+					 
 
 					if( $bdt_count <= $settings['featured_item']) : ?>
 
@@ -92,9 +93,7 @@ class Skin_Genesis extends Elementor_Skin_Base {
 	            	            	<?php if ($settings['featured_show_category'] or $settings['featured_show_date']) : ?>
 
 	            						<div class="bdt-post-block-meta bdt-subnav bdt-flex-middle">
-	            							<?php if ($settings['featured_show_date']) : ?>
-                                                <span><?php echo get_the_date(); ?></span>
-	            							<?php endif ?>
+											<?php $this->parent->render_featured_date(); ?>
 
 	            							<?php if ($settings['featured_show_category']) : ?>
 	            								<?php echo '<span>'.get_the_category_list(', ').'</span>'; ?>
@@ -137,12 +136,21 @@ class Skin_Genesis extends Elementor_Skin_Base {
 			  		<?php endif; ?>
 
 					<?php else : ?>
-						<?php $post_thumbnail  = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'thumbnail' ); ?>
+						<?php 
+						$post_thumbnail  = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'thumbnail' ); 
+
+ 						 if(empty($post_thumbnail[0])){
+ 						 	$image_src_thumbnail = $placeholder_image_src;
+ 						 }else{
+ 						 	$image_src_thumbnail =$post_thumbnail[0];
+ 						 }
+ 						 
+						?>
 					  			<li>
 						  			<div class="bdt-flex">
 						  				<div class="bdt-post-block-thumbnail bdt-width-auto">
 						  					<a href="<?php echo esc_url(get_permalink()); ?>" title="<?php echo esc_attr(get_the_title()); ?>">
-							  					<img src="<?php echo esc_url($post_thumbnail[0]); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+							  					<img src="<?php echo esc_url($image_src_thumbnail); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
 							  				</a>
 						  				</div>
 								  		<div class="bdt-post-block-desc bdt-width-expand bdt-margin-small-left">
@@ -155,9 +163,7 @@ class Skin_Genesis extends Elementor_Skin_Base {
 							            	<?php if ($settings['list_show_category'] or $settings['list_show_date']) : ?>
 
 												<div class="bdt-post-block-meta bdt-subnav bdt-flex-middle">
-													<?php if ($settings['list_show_date']) : ?>
-														<?php echo '<span>'.get_the_date().'</span>'; ?>
-													<?php endif ?>
+													<?php $this->parent->render_list_date(); ?>
 
 													<?php if ($settings['list_show_category']) : ?>
 														<?php echo '<span>'.get_the_category_list(', ').'</span>'; ?>

@@ -1118,6 +1118,7 @@ class Premium_Hscroll extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .premium-hscroll-arrow i' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .premium-hscroll-arrow svg' => 'fill: {{VALUE}}',
 				),
 			)
 		);
@@ -1129,6 +1130,7 @@ class Premium_Hscroll extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .premium-hscroll-arrow:hover i' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .premium-hscroll-arrow:hover svg' => 'fill: {{VALUE}}',
 				),
 			)
 		);

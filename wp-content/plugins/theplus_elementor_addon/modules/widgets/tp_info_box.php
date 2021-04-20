@@ -5421,10 +5421,13 @@ class ThePlus_Info_Box extends Widget_Base {
 			
 			$service_img ='<div class="pt_plus_animated_svg  svg-'.esc_attr($rand_no).'" data-id="svg-'.esc_attr($rand_no).'" data-type="'.esc_attr($settings["svg_type"]).'" data-duration="'.esc_attr($duration).'" data-stroke="'.esc_attr($border_stroke_color).'" data-fill_color="'.esc_attr($svg_fill_color).'">';
 				$service_img .='<div class="info_box_svg svg_inner_block '.esc_attr($service_icon_style).'" >';
-					if(!empty($svg_url)){
-						$service_img .= file_get_contents($svg_url);
+					//@since 4.1.9
+					$svg_url_pass='';
+					$ext = pathinfo($svg_url, PATHINFO_EXTENSION);
+					if(!empty($svg_url) && $ext=='svg' ){						
+						$svg_url_pass = $svg_url;
 					}
-					//$service_img .='<object id="svg-'.esc_attr($rand_no).'" type="image/svg+xml" data="'.esc_url($svg_url).'" style="max-width:'.$settings["max_width"]["size"].$settings["max_width"]["unit"].';max-height:'.$settings["max_width"]["size"].$settings["max_width"]["unit"].';margin: 0 auto;" ></object>';
+					$service_img .='<object id="svg-'.esc_attr($rand_no).'" type="image/svg+xml" data="'.esc_url($svg_url_pass).'" style="max-width:'.$settings["max_width"]["size"].$settings["max_width"]["unit"].';max-height:'.$settings["max_width"]["size"].$settings["max_width"]["unit"].';margin: 0 auto;" ></object>';
 				$service_img .='</div>';
 			$service_img .='</div>';
 		}
@@ -5728,10 +5731,13 @@ class ThePlus_Info_Box extends Widget_Base {
 									
 									$list_img ='<div class="pt_plus_animated_svg svg-'.esc_attr($rand_no).' " data-id="svg-'.esc_attr($rand_no).'" data-type="'.esc_attr($settings["svg_type"]).'" data-duration="'.esc_attr($duration).'" data-stroke="'.esc_attr($border_stroke_color).'" data-fill_color="'.esc_attr($svg_fill_color).'">';
 										$list_img .='<div class="info_box_svg svg_inner_block '.esc_attr($service_icon_style).'">';
-											if(!empty($loop_svg_url)){
-												$list_img .= file_get_contents($loop_svg_url);
+											//@since 4.1.9
+											$svg_loop_url_pass='';
+											$ext = pathinfo($loop_svg_url, PATHINFO_EXTENSION);
+											if(!empty($loop_svg_url) && $ext=='svg' ){						
+												$svg_loop_url_pass = $loop_svg_url;
 											}
-											//$list_img .='<object id="svg-'.esc_attr($rand_no).'" type="image/svg+xml" data="'.esc_url($loop_svg_url).'"  style="max-width:'.esc_attr($loop_max_width).';max-height:'.esc_attr($loop_max_width).';margin:0 auto;"></object>';
+											$list_img .='<object id="svg-'.esc_attr($rand_no).'" type="image/svg+xml" data="'.esc_url($svg_loop_url_pass).'"  style="max-width:'.esc_attr($loop_max_width).';max-height:'.esc_attr($loop_max_width).';margin:0 auto;"></object>';
 										$list_img .='</div>';
 									$list_img .='</div>';
 									

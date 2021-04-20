@@ -119,12 +119,24 @@ class Contact_Form extends Module_Base {
 		);
 		
 		$this->add_control(
+			'two_columns',
+			[
+				'label' => esc_html__( 'Two Columns', 'bdthemes-element-pack' ) . BDTEP_NC,
+				'type'  => Controls_Manager::SWITCHER,
+				'condition' => [
+					'all_field_inline' => ''
+				]
+			]
+		);
+		
+		$this->add_control(
 			'name_email_field_inline',
 			[
 				'label' => esc_html__( 'Name/Email Field Inline', 'bdthemes-element-pack' ),
 				'type'  => Controls_Manager::SWITCHER,
 				'condition' => [
-					'all_field_inline' => ''
+					'all_field_inline' => '',
+					'two_columns' => ''
 				]
 			]
 		);
@@ -135,6 +147,9 @@ class Contact_Form extends Module_Base {
 				'label' => esc_html__( 'All Field Inline', 'bdthemes-element-pack' ) . BDTEP_NC,
 				'type'  => Controls_Manager::SWITCHER,
 				'prefix_class' => 'bdt-all-field-inline--',
+				'condition' => [
+					'two_columns' => ''
+				]
 			]
 		);
 
@@ -508,6 +523,27 @@ class Contact_Form extends Module_Base {
 				// 'condition' => [
 				// 	'show_recaptcha' => 'yes',
 				// ],
+			]
+		);
+
+		$this->add_control(
+			'message_rows',
+			[
+				'label'   => esc_html__( 'Message Rows', 'bdthemes-element-pack' ) . BDTEP_NC,
+				'type'    => Controls_Manager::SELECT,
+				'default' => '5',
+				'options' => [
+					'1'  => '1',
+					'2'  => '2',
+					'3'  => '3',
+					'4'  => '4',
+					'5'  => '5',
+					'6'  => '6',
+					'7'  => '7',
+					'8'  => '8',
+					'9'  => '9',
+					'10' => '10',
+				],
 			]
 		);
 
@@ -1041,7 +1077,7 @@ class Contact_Form extends Module_Base {
 					'type'        => 'textarea',
 					'name'        => 'message',
 					'id'          => 'message' . $id,
-					'rows'		  => '5',
+					'rows'		  => $settings['message_rows'],
 					'placeholder' => ($settings['message_placeholder']) ? $settings['message_placeholder'] : esc_html__( 'Your Message Here', 'bdthemes-element-pack' ),
 					'class'       => [
 						'bdt-textarea',
@@ -1106,6 +1142,10 @@ class Contact_Form extends Module_Base {
 		?>
 		<div class="bdt-contact-form-wrapper">
 			<form <?php echo $this->get_render_attribute_string( 'contact-form' ); ?>>
+
+				<?php if ( $settings['two_columns'] ) : ?>
+				<div class="bdt-width-1-2">
+				<?php endif; ?>
 
 				<div <?php echo $this->get_render_attribute_string( 'name-email-field-group' ); ?>>
 					<?php
@@ -1178,6 +1218,11 @@ class Contact_Form extends Module_Base {
 				</div>
 				<?php endif; ?>
 
+				<?php if ( $settings['two_columns'] ) : ?>
+				</div>
+				<div class="bdt-width-1-2">
+				<?php endif; ?>
+
 				<?php if ( $settings['show_message'] ) : ?>
 				<div <?php echo $this->get_render_attribute_string( 'field-group' ); ?>>
 					<?php
@@ -1207,9 +1252,14 @@ class Contact_Form extends Module_Base {
 							<span><?php echo esc_html($settings['button_text']); ?></span>
 						<?php endif; ?>
 					</button>
-				</div>		
-				
+				</div>	
+
 				<input type="hidden" name="action" value="element_pack_contact_form" />
+
+				<?php if ( $settings['two_columns'] ) : ?>
+				</div>
+				<?php endif; ?>
+
 			</form>
 		</div>
 		<?php

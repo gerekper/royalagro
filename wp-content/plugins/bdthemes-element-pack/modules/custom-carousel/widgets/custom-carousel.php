@@ -10,8 +10,8 @@ use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Repeater;
 use Elementor\Core\Schemes;
-use Elementor\Utils;
 
+use ElementPack\Utils;
 use ElementPack\Modules\CustomCarousel\Skins;
 
 use ElementPack\Element_Pack_Loader;

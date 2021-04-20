@@ -217,6 +217,14 @@ class Scroll_Button extends Module_Base {
 			]
 		);
 
+		$this->add_control(
+			'hide_on_before_scrolling',
+			[
+				'label'   => esc_html__( 'Hide On Before Scrolling', 'bdthemes-element-pack' ),
+				'type'    => Controls_Manager::SWITCHER,
+			]
+		);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -473,8 +481,6 @@ class Scroll_Button extends Module_Base {
 
 		$this->add_render_attribute( 'bdt-scroll-button', 'class', ['bdt-scroll-button', 'bdt-button', 'bdt-button-primary'] );
 		
-		//$this->add_render_attribute( 'bdt-scroll-button', 'bdt-scroll', '' );
-
 		if ( $settings['scroll_button_hover_animation'] ) {
 			$this->add_render_attribute( 'bdt-scroll-button', 'class', 'elementor-animation-'.esc_attr($settings['scroll_button_hover_animation']) );
 		}
@@ -484,13 +490,18 @@ class Scroll_Button extends Module_Base {
 				'bdt-scroll-button' => [
 					'data-settings' => [
 						wp_json_encode(array_filter([
-							'duration' => ( '' != $settings['duration']['size'] ) ? $settings['duration']['size'] : '',
-							'offset' => ( '' != $settings['offset']['size'] ) ? $settings['offset']['size'] : '',
+							'duration'              => ( '' != $settings['duration']['size'] ) ? $settings['duration']['size'] : '',
+							'offset'                => ( '' != $settings['offset']['size'] ) ? $settings['offset']['size'] : '',
+							'HideOnBeforeScrolling' => ( '' != $settings['hide_on_before_scrolling'] ) ? "true" : "false",
 				        ]))
 					]
 				]
 			]
 		);
+
+		if ('' != $settings['hide_on_before_scrolling']) {
+			$this->add_render_attribute( 'bdt-scroll-button', 'style', 'opacity: 0;' );
+		}
 
 		$this->add_render_attribute( 'bdt-scroll-button', 'data-selector', '#' . esc_attr($settings['section_id']) );
 

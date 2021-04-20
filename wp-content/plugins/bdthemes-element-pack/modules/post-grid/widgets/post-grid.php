@@ -9,7 +9,7 @@ use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Background;
-use Elementor\Utils;
+use ElementPack\Utils;
 use Elementor\Icons_Manager;
 
 use ElementPack\Modules\QueryControl\Module;
@@ -20,7 +20,9 @@ use ElementPack\Modules\PostGrid\Skins;
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Post_Grid extends Module_Base {
-
+	
+	private $_query = null;
+	
 	public function get_name() {
 		return 'bdt-post-grid';
 	}
@@ -654,6 +656,29 @@ class Post_Grid extends Module_Base {
 				'label'   => esc_html__( 'Date', 'bdthemes-element-pack' ),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
+			]
+		);
+
+		$this->add_control(
+			'human_diff_time',
+			[
+				'label'   => esc_html__( 'Human Different Time', 'bdthemes-element-pack' ) . BDTEP_NC,
+				'type'    => Controls_Manager::SWITCHER,
+				'condition' => [
+					'show_date' => 'yes'
+				]
+			]
+		);
+
+		$this->add_control(
+			'human_diff_time_short',
+			[
+				'label'   => esc_html__( 'Time Short Format', 'bdthemes-element-pack' ) . BDTEP_NC,
+				'type'    => Controls_Manager::SWITCHER,
+				'condition' => [
+					'human_diff_time' => 'yes',
+					'show_date' => 'yes'
+				]
 			]
 		);
 
@@ -2146,11 +2171,11 @@ class Post_Grid extends Module_Base {
 		$this->add_render_attribute('bdt-post-grid-title', 'class', 'bdt-post-grid-title');
 		$titleClass = $this->get_render_attribute_string('bdt-post-grid-title');
 		echo 
-			'<'.esc_html($settings['title_tags']) . ' '.$titleClass.' >
+			'<'.Utils::get_valid_html_tag($settings['title_tags']) . ' '.$titleClass.' >
 				<a href="' . esc_url(get_permalink()) . '" class="bdt-post-grid-link" title="' . esc_attr(get_the_title()) . '">
 					' . esc_html(get_the_title())  . '
 				</a>
-			</'.esc_html($settings['title_tags']).'>';
+			</'.Utils::get_valid_html_tag($settings['title_tags']).'>';
 	}
 
 	public function render_author() {
@@ -2164,13 +2189,21 @@ class Post_Grid extends Module_Base {
 	}
 
 	public function render_date() {
+		$settings = $this->get_settings_for_display();
 
-		if ( ! $this->get_settings('show_date') ) {
+		if ( ! $settings['show_date'] ) {
 			return;
 		}
 		
-		echo 
-			'<span class="bdt-post-grid-date">'.get_the_date().'</span>';		
+		echo '<span class="bdt-post-grid-date">';
+		
+		if ($settings['human_diff_time'] == 'yes') {
+			echo element_pack_post_time_diff(($settings['human_diff_time_short'] == 'yes') ? 'short' : '');
+        } else {
+			echo get_the_date();
+		}
+		
+		echo '</span>';
 	}
 
 	public function render_comments() {
@@ -2202,7 +2235,7 @@ class Post_Grid extends Module_Base {
         
         <?php if ( ! empty( $tags ) ) { ?>
         <div class="bdt-post-grid-tags">
-            <?php echo esc_html('Tags:', 'bdthemes-element-pack'); ?>
+            <?php echo esc_html__('Tags:', 'bdthemes-element-pack'); ?>
             <ul class="bdt-post-grid-tag">
                 <?php foreach($tags as $tag) :  ?>
                 <li>

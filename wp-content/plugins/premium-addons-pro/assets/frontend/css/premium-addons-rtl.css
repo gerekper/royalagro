@@ -1,21 +1,11 @@
 /**************** Premium Alert Box ********************/
 /*******************************************************/
-.premium-notbar {
-    position: fixed;
-    z-index: 9999;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    background: #6ec1e4;
-}
-
 .premium-notbar-template .premium-notbar {
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flex;
     -js-display: flex;
     display: -webkit-box;
+    display: -webkit-flex;
     display: -moz-box;
+    display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: center;
     -webkit-justify-content: center;
@@ -29,17 +19,33 @@
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
-
+.premium-notbar-outer-container .premium-notbar-background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
 .premium-notbar-outer-container .premium-notbar-top.premium-notbar-relative,
 .premium-notbar-outer-container .premium-notbar-edit-top.premium-notbar-relative {
     position: relative;
 }
 
+.premium-notbar {
+    position: fixed;
+    z-index: 9999;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background: #6ec1e4;
+}
 .premium-notbar.premium-notbar-wide {
     width: 100%;
     right: 0;
 }
-
 .premium-notbar a.premium-notbar-close {
     display: inline-block;
     background: transparent;
@@ -47,16 +53,13 @@
     padding: 5px;
     cursor: pointer;
 }
-
 .premium-notbar .premium-notbar-content-wrapper {
     padding: 5px 7px;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flex;
     -js-display: flex;
     display: -webkit-box;
+    display: -webkit-flex;
     display: -moz-box;
+    display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
     -webkit-align-items: center;
@@ -64,18 +67,15 @@
     -ms-flex-align: center;
     align-items: center;
 }
-
 .premium-notbar .premium-notbar-icon-text-container {
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flex;
     -js-display: flex;
     display: -webkit-box;
+    display: -webkit-flex;
     display: -moz-box;
+    display: -ms-flexbox;
     display: flex;
-    -webkit-flex-grow: 2;
     -webkit-box-flex: 2;
+    -webkit-flex-grow: 2;
     -moz-box-flex: 2;
     -ms-flex-positive: 2;
     flex-grow: 2;
@@ -85,19 +85,38 @@
     -ms-flex-align: center;
     align-items: center;
 }
-
 .premium-notbar .premium-notbar-custom-image {
     width: 30px;
     height: 30px;
-}
-
-.premium-notbar .premium-notbar-custom-image,
-.premium-notbar .premium-notbar-icon {
     margin-left: 5px;
     margin-right: 5px;
 }
-
-.premium-notbar .premium-notbar-icon,
+.premium-notbar .premium-notbar-icon-wrap svg {
+    width: 1em;
+    height: 1em;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.premium-notbar .premium-notbar-icon {
+    margin-left: 5px;
+    margin-right: 5px;
+    border: none;
+    color: #54595f;
+}
+.premium-notbar .premium-notbar-icon-lottie {
+    -js-display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.premium-notbar .premium-notbar-icon-lottie svg {
+    width: 60px;
+    height: 60px;
+}
 .premium-notbar .premium-notbar-close {
     border: none;
     color: #54595f;
@@ -132,7 +151,6 @@
     display: inline-block;
     color: #54595f;
 }
-
 .premium-notbar-content-wrapper .premium-notbar-text * {
     margin-bottom: 0;
 }
@@ -140,11 +158,93 @@
 .premium-notbar-close-container {
     cursor: pointer;
 }
-
-.premium-notbar .premium-clearfix {
-    clear: both;
+/**************** Premium Preview Window **********/
+/**************************************************/
+.premium-preview-image-container a {
+    display: inline-block;
 }
 
+.premium-prev-img-tooltip-wrap {
+    overflow: hidden;
+    border-color: #000;
+    background: #f7f7f7;
+    padding: 0px;
+}
+
+.premium-prev-img-tooltip-title-wrap {
+    margin: 10px auto;
+}
+.premium-prev-img-tooltip-title-wrap .premium-previmg-tooltip-title {
+    margin: 0;
+}
+
+.tooltipster-sidetip .tooltipster-content {
+    background: transparent;
+    text-align: center;
+    padding: 0;
+}
+
+.premium-prev-img-tooltip-desc-wrap {
+    margin: 10px auto;
+}
+
+.premium-preview-image-tooltips-img,
+.premium-prev-img-tooltip-title-wrap,
+.premium-prev-img-tooltip-desc-wrap {
+    border-color: #000;
+}
+
+.premium-preview-image-wrap .premium-preview-image-inner-trig-img {
+    display: inline-block;
+}
+
+.premium-preview-image-wrap .premium-preview-image-figcap {
+    border-color: #000;
+}
+
+.premium-preview-image-wrap .premium-preview-image-trigger {
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.premium-preview-image-main-container {
+    position: relative;
+    display: inline-block;
+}
+
+.premium-preview-image-content-container {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.premium-preview-image-figure {
+    position: relative;
+}
+.premium-preview-image-figure .premium-preview-image-hover {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.premium-preview-image-figure:hover .premium-preview-image-hover {
+    opacity: 1;
+}
+.premium-preview-image-figure > svg {
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.premium-preview-image-figure .premium-prev-image-lottie svg {
+    display: inline-block;
+    width: 60px !important;
+    height: 60px !important;
+}
 /**************** Premium Icon Box ******************/
 /***************************************************/
 .premium-icon-box-container-out {
@@ -990,6 +1090,33 @@
 
 .premium-instafeed-header-container .premium-instafeed-logo-container i {
     color: transparent;
+    background: -webkit-radial-gradient(
+        30% 107%,
+        circle,
+        #fdf497 0%,
+        #fdf497 5%,
+        #fd5949 45%,
+        #d6249f 60%,
+        #285aeb 90%
+    );
+    background: -webkit-radial-gradient(
+        30% 107%,
+        circle,
+        #fdf497 0%,
+        #fdf497 5%,
+        #fd5949 45%,
+        #d6249f 60%,
+        #285aeb 90%
+    );
+    background: -webkit-radial-gradient(
+        30% 107%,
+        circle,
+        #fdf497 0%,
+        #fdf497 5%,
+        #fd5949 45%,
+        #d6249f 60%,
+        #285aeb 90%
+    );
     background: -webkit-radial-gradient(
         30% 107%,
         circle,
@@ -7439,6 +7566,7 @@ ul.premium-social-count-ul {
 }
 
 .premium-separator-wrapper-separator .premium-separator-icon i,
+.premium-separator-wrapper-separator .premium-separator-icon svg,
 .premium-separator-wrapper-separator .premium-separator-icon-text {
     margin: 0;
     border-color: #000;
@@ -7851,6 +7979,22 @@ ul.premium-social-count-ul {
 
 /**************** Premium Whatsapp Chat ****************/
 /*******************************************************/
+.premium-whatsapp-icon-before .premium-whatsapp-icon-wrap {
+    -webkit-box-ordinal-group: 6;
+    -webkit-order: 5;
+    -moz-box-ordinal-group: 6;
+    -ms-flex-order: 5;
+    order: 5;
+}
+
+.premium-whatsapp-icon-after .premium-whatsapp-icon-wrap {
+    -webkit-box-ordinal-group: 16;
+    -webkit-order: 15;
+    -moz-box-ordinal-group: 16;
+    -ms-flex-order: 15;
+    order: 15;
+}
+
 .premium-whatsapp-link {
     background-color: #61ce70;
     -js-display: inline-flex;
@@ -7865,26 +8009,40 @@ ul.premium-social-count-ul {
     -ms-flex-align: center;
     align-items: center;
     z-index: 999;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
-
-.premium-whatsapp-icon-before .premium-whatsapp-link {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: reverse;
-    -webkit-flex-direction: row-reverse;
-    -moz-box-orient: horizontal;
-    -moz-box-direction: reverse;
-    -ms-flex-direction: row-reverse;
-    flex-direction: row-reverse;
+.premium-whatsapp-link .premium-whatsapp-text {
+    -webkit-box-ordinal-group: 11;
+    -webkit-order: 10;
+    -moz-box-ordinal-group: 11;
+    -ms-flex-order: 10;
+    order: 10;
 }
-
-.premium-whatsapp-link,
-.premium-whatsapp-link i,
+.premium-whatsapp-link .premium-whatsapp-lottie {
+    -js-display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.premium-whatsapp-link .premium-whatsapp-icon,
 .premium-whatsapp-link span {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
-
-.premium-whatsapp-link i {
+.premium-whatsapp-link img {
+    width: 30px;
+    height: 30px;
+}
+.premium-whatsapp-link svg {
+    width: 70px;
+    height: 70px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.premium-whatsapp-link .premium-whatsapp-icon {
     font-size: 22px;
 }
 
@@ -7905,7 +8063,6 @@ ul.premium-social-count-ul {
     -webkit-border-radius: 2px;
     border-radius: 2px;
 }
-
 /**************** Premium Multi Scroll *****************/
 /*******************************************************/
 .premium-multiscroll-inner {
@@ -8335,6 +8492,12 @@ ul.premium-social-count-ul {
         -webkit-transform 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out, visibility 0.2s ease-in-out, opacity 0.2s ease-in-out,
         -webkit-transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, visibility 0.2s ease-in-out, opacity 0.2s ease-in-out,
+        -webkit-transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, visibility 0.2s ease-in-out, opacity 0.2s ease-in-out,
+        -webkit-transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, visibility 0.2s ease-in-out, opacity 0.2s ease-in-out,
+        -webkit-transform 0.3s ease-in-out;
 }
 
 .premium-accordion-container .premium-accordion-overlay-wrap {
@@ -8342,6 +8505,12 @@ ul.premium-social-count-ul {
         visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out;
     -webkit-transition: background-color 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out,
         opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out,
+        color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out,
+        color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out,
+        color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out;
     transition: background-color 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out,
         color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out;
     transition: background-color 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out,
@@ -8413,6 +8582,18 @@ ul.premium-social-count-ul {
 .premium-accordion-container .premium-accordion-li:hover .premium-accordion-content * {
     -webkit-transition: transform 0.3s 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out,
         color 0.3s ease-in-out;
+    -webkit-transition: visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out,
+        -webkit-transform 0.3s 0.3s ease-in-out;
+    transition: visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out,
+        -webkit-transform 0.3s 0.3s ease-in-out;
+    -webkit-transition: visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out,
+        -webkit-transform 0.3s 0.3s ease-in-out;
+    transition: visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out,
+        -webkit-transform 0.3s 0.3s ease-in-out;
+    -webkit-transition: visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out,
+        -webkit-transform 0.3s 0.3s ease-in-out;
+    transition: visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out,
+        -webkit-transform 0.3s 0.3s ease-in-out;
     -webkit-transition: visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out,
         -webkit-transform 0.3s 0.3s ease-in-out;
     transition: visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out,
@@ -9021,6 +9202,8 @@ ul.premium-social-count-ul {
 .premium-hscroll-arrow svg {
     width: 1em;
     height: 1em;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .premium-hscroll-arrows-hidden .premium-hscroll-arrow,

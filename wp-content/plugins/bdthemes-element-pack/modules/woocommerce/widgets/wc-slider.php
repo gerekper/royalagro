@@ -8,6 +8,7 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Icons_Manager;
+use ElementPack\Utils;
 
 use ElementPack\Modules\QueryControl\Controls\Group_Control_Posts;
 //use ElementPack\Modules\Woocommerce\Skins;
@@ -2350,7 +2351,7 @@ class WC_Slider extends Module_Base {
             <?php endif; ?>
 
 			<?php if ( $settings['show_title'] ) : ?>
-				<<?php echo esc_html($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-wc-slider-title'); ?>><?php the_title(); ?></<?php echo esc_html($settings['title_tags']); ?>>
+				<<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-wc-slider-title'); ?>><?php the_title(); ?></<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?>>
 			<?php endif; ?>
 
 			<?php if ($settings['show_rating']) : ?>

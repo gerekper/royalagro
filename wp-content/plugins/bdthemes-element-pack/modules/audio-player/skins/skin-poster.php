@@ -1,7 +1,7 @@
 <?php
 namespace ElementPack\Modules\AudioPlayer\Skins;
 use Elementor\Skin_Base as Elementor_Skin_Base;
-use Elementor\Utils;
+use ElementPack\Utils;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 

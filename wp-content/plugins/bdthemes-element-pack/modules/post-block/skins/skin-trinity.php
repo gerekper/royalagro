@@ -1,7 +1,7 @@
 <?php
 namespace ElementPack\Modules\PostBlock\Skins;
 use Elementor\Skin_Base as Elementor_Skin_Base;
-use Elementor\Utils;
+use ElementPack\Utils;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -85,9 +85,7 @@ class Skin_Trinity extends Elementor_Skin_Base {
 												<?php echo '<span>'.get_the_category_list(', ').'</span>'; ?>
 											<?php endif ?>
 
-											<?php if ('yes' == $settings['featured_show_date']) : ?>
-                                                <span><?php echo get_the_date(); ?></span>
-											<?php endif ?>
+											<?php $this->parent->render_featured_date(); ?>
 										</div>
 
 									<?php endif ?>

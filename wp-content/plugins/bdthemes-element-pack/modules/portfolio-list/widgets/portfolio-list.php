@@ -8,7 +8,8 @@ use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
-use Elementor\Utils;
+use ElementPack\Utils;
+ 
 
 use ElementPack\Modules\QueryControl\Controls\Group_Control_Posts;
 
@@ -970,9 +971,9 @@ class Portfolio_List extends Module_Base {
 
 		?>
 		<a href="<?php echo get_the_permalink(); ?>" <?php echo $target; ?>>
-			<<?php echo $tag ?> class="bdt-gallery-item-title bdt-margin-remove">
+			<<?php echo Utils::get_valid_html_tag($tag) ?> class="bdt-gallery-item-title bdt-margin-remove">
 				<?php the_title() ?>
-			</<?php echo $tag ?>>
+			</<?php echo Utils::get_valid_html_tag($tag) ?>>
 		</a>
 		<?php
 	}

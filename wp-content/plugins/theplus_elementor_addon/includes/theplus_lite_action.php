@@ -16,9 +16,15 @@ class Theplus_Element_Install_Plugin{
 	 * constructor.
 	 */
 	private function __construct() {
-		add_action( 'admin_action_theplus_lite_install_plugin', array( __CLASS__,'plus_free_install') );
+		if( is_admin() &&  current_user_can("manage_options") ){
+			add_action( 'admin_action_theplus_lite_install_plugin', array( __CLASS__,'plus_free_install') );
+		}
 	}
 	public static function plus_free_install() {
+	  if ( isset($_POST['security']) && !empty($_POST['security']) && ! wp_verify_nonce( $_POST['security'], 'theplus-addons' ) ){
+	    die ( 'Invalid Nonce Security checked!');
+	  }
+	  
 	  $plugin_slug = 'the-plus-addons-for-elementor-page-builder/theplus_elementor_addon.php';	
 	  $plugin_zip = 'https://downloads.wordpress.org/plugin/the-plus-addons-for-elementor-page-builder.latest-stable.zip';
 	  

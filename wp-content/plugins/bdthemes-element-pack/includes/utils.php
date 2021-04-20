@@ -147,4 +147,32 @@ class Utils {
 		);
 
 	}
+
+	/**
+	 * Get timezone string.
+	 *
+	 * Retrieve timezone string from the WordPress database.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 * @static
+	 *
+	 * @return string Timezone string.
+	 */
+	public static function get_timezone_string() {
+		$current_offset = (float) get_option( 'gmt_offset' );
+		$timezone_string = get_option( 'timezone_string' );
+
+		// Create a UTC+- zone if no timezone string exists.
+		if ( empty( $timezone_string ) ) {
+			if ( $current_offset < 0 ) {
+				$timezone_string = 'UTC' . $current_offset;
+			} else {
+				$timezone_string = 'UTC+' . $current_offset;
+			}
+		}
+
+		return $timezone_string;
+	}
+	
 }

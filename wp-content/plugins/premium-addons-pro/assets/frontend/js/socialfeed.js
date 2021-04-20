@@ -136,9 +136,9 @@
                                 }, l.twitter.utility.getPosts, !0);
                                 break;
                             case "#":
-                                var o = t.substr(1);
+                                // var o = t.substr(1);
                                 e.__call("search_tweets", {
-                                    q: o,
+                                    q: t,
                                     count: i.twitter.limit,
                                     tweet_mode: void 0 === i.twitter.tweet_mode ? "compatibility" : i.twitter.tweet_mode
                                 }, function (d) {

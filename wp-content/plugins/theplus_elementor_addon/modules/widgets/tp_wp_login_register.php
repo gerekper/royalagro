@@ -894,17 +894,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 					'tp_terms_condition_opt' => 'yes',
 				],
 			]
-		);	
-		$this->add_control(
-			'user_role',
-			[
-				'label' => esc_html__( 'New User Role', 'theplus' ),
-				'type' => Controls_Manager::SELECT,
-				'default' => 'subscriber',
-				'options' => tp_wp_lr_user_role(),
-				'separator' => 'before',
-			]
-		);
+		);			
 		$this->add_control(
 			'tp_cst_email_opt',
 			[
@@ -7411,13 +7401,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 		
 		$dis_password = ( $settings['tp_dis_pass_field'] == 'yes' ) ? 'yes' : 'no';
 		$dis_password_conf = ( $settings['tp_dis_conf_pass_field'] == 'yes' ) ? 'yes' : 'no';
-		
-		$widget_id = $this->get_id();
-		$page_id='';
-		if ( null !== \Elementor\Plugin::$instance->documents->get_current() ) {
-			$page_id = \Elementor\Plugin::$instance->documents->get_current()->get_main_id();
-		}
-		
+				
 		$dis_mail_chimp = ( $settings['tp_mail_chimp_subscribe_opt'] == 'yes' ) ? 'yes' : 'no';
 		$mc_custom_apikey=$mc_custom_listid='';
 		if(!empty($dis_mail_chimp) && $dis_mail_chimp=='yes'){
@@ -7443,7 +7427,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 		
 		?>
 		
-		<form id="tp-user-register<?php echo esc_attr($id); ?>" name="tp-user-registration" class="tp-form-stacked " method="post" action="" data-dis_cap="<?php echo $dis_cap; ?>" ' data-tceo="<?php echo htmlspecialchars($data_tceo, ENT_QUOTES, 'UTF-8'); ?>" data-dis_password="<?php echo $dis_password; ?>" data-dis_password_conf="<?php echo $dis_password_conf; ?>" data-after_reg_redirect="<?php echo $redirect_url_reg; ?>" data-dis_mail_chimp="<?php echo $dis_mail_chimp; ?>" data-mc_custom_apikey="<?php echo $mc_custom_apikey; ?>" data-mc_custom_listid="<?php echo $mc_custom_listid; ?>" data-widget_id="<?php echo esc_attr($widget_id); ?>" data-page_id="<?php echo esc_attr($page_id); ?>">
+		<form id="tp-user-register<?php echo esc_attr($id); ?>" name="tp-user-registration" class="tp-form-stacked " method="post" action="" data-dis_cap="<?php echo $dis_cap; ?>" ' data-tceo="<?php echo htmlspecialchars($data_tceo, ENT_QUOTES, 'UTF-8'); ?>" data-dis_password="<?php echo $dis_password; ?>" data-dis_password_conf="<?php echo $dis_password_conf; ?>" data-after_reg_redirect="<?php echo $redirect_url_reg; ?>" data-dis_mail_chimp="<?php echo $dis_mail_chimp; ?>" data-mc_custom_apikey="<?php echo $mc_custom_apikey; ?>" data-mc_custom_listid="<?php echo $mc_custom_listid; ?>">
 			
 			<?php if(!empty($hide_form) && $hide_form != 'yes'){
 				if(!empty($settings['tp_dis_name_field']) && $settings['tp_dis_name_field']=='yes'){ 
@@ -7992,12 +7976,6 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 			$auto_loggedin = false;
 		}
 		
-		$widget_id = $this->get_id();
-		$page_id='';
-		if ( null !== \Elementor\Plugin::$instance->documents->get_current() ) {
-			$page_id = \Elementor\Plugin::$instance->documents->get_current()->get_main_id();
-		}
-		
 		$mc_custom_apikey=$mc_custom_listid='';
 		$dis_mail_chimp=$settings['tp_mail_chimp_subscribe_opt'];
 		if(!empty($dis_mail_chimp) && $dis_mail_chimp=='yes'){			
@@ -8239,8 +8217,6 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 							'auto_loggedin': '<?php echo $auto_loggedin; ?>',
 							'mc_custom_apikey': '<?php echo $mc_custom_apikey; ?>',
 							'mc_custom_listid': '<?php echo $mc_custom_listid; ?>',
-							'widget_id' : '<?php echo $widget_id; ?>',
-							'page_id' : '<?php echo $page_id; ?>',
 			            },
 						beforeSend: function(){							
 							$(register_form+" .theplus-notification").addClass("active");
@@ -8335,14 +8311,8 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 		}else if($type=='register'){
 			$action = 'theplus_ajax_facebook_login';
 			$gid = 'register'.$this->get_id();
-		}
-		
-		$widget_id = $this->get_id();
-		$page_id='';
-		if ( null !== \Elementor\Plugin::$instance->documents->get_current() ) {
-			$page_id = \Elementor\Plugin::$instance->documents->get_current()->get_main_id();
-		}
-		
+		}	
+				
 		if(((!empty($settings['tp_sl_facebook']) && $settings['tp_sl_facebook']=="yes") || (!empty($settings['tp_sl_google']) && $settings['tp_sl_google']=="yes"))){
 			
 			if(!empty($settings['tp_sl_layout_opt']) && $settings['tp_sl_layout_opt']=='tp_sl_layout_opt_1'){
@@ -8352,11 +8322,6 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 				echo '<style>.tp-social-login-wrapper > div{margin-right: 10px;}.tp-wp-lrcf .tp-social-login-wrapper{margin-top:10px;}</style>';
 			}
 			
-		$widget_id = $this->get_id();
-		$page_id='';
-		if ( null !== \Elementor\Plugin::$instance->documents->get_current() ) {
-			$page_id = \Elementor\Plugin::$instance->documents->get_current()->get_main_id();
-		}
 		
 		$mcl_double_opt_in = (!empty($settings['mcl_double_opt_in'])) ? $settings['mcl_double_opt_in'] : 'no';
 		
@@ -8432,8 +8397,6 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 							'last_name' : res.last_name,
 							'email' : res.email,
 							'link' : res.link,
-							'widget_id' : "<?php echo $widget_id; ?>",
-							'page_id' : "<?php echo $page_id; ?>",
 							'nonce' : "<?php echo $nonce; ?>",
 						};
 				jQuery.ajax( {
@@ -8518,8 +8481,6 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 								'name' : name,
 								'email' : email,
 								'id_token' : id_token,
-								'widget_id' : "<?php echo $widget_id; ?>",
-								'page_id' : "<?php echo $page_id; ?>",
 							};
 							
 							jQuery.ajax({

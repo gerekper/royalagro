@@ -94,7 +94,7 @@ class ep_menu_walker extends Walker_Nav_Menu {
             $class = '';
         }  
 
-        $output .= '<li'.(strlen($id) ? sprintf(' id="%s"', esc_attr($id)) : '').$attributes . $class.'>';
+        $output .= '<li'.$attributes . $class.'>';
 
         // set link attributes
         $attributes = '';

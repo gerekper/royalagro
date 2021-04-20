@@ -10,7 +10,8 @@
     use Elementor\Group_Control_Background;
     use Elementor\Group_Control_Css_Filter;
     use Elementor\Icons_Manager;
-    use Elementor\Utils;
+    use ElementPack\Utils;
+ 
     
     if (!defined('ABSPATH')) exit; // Exit if accessed directly
     
@@ -2216,11 +2217,11 @@
             ?>
             
             <?php if ($settings['title_text']) : ?>
-            <<?php echo esc_html($settings['title_size']) . ' '; ?><?php echo $this->get_render_attribute_string('step-flow-title'); ?>>
+            <<?php echo Utils::get_valid_html_tag($settings['title_size']) . ' '; ?><?php echo $this->get_render_attribute_string('step-flow-title'); ?>>
             <span <?php echo $this->get_render_attribute_string('title_text'); ?>>
                 <?php echo wp_kses($settings['title_text'], element_pack_allow_tags('title')); ?>
             </span>
-            </<?php echo esc_html($settings['title_size']); ?>>
+            </<?php echo Utils::get_valid_html_tag($settings['title_size']); ?>>
             <?php endif; ?>
             
             <?php

@@ -9,8 +9,9 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Image_Size;
-use Elementor\Utils;
+use ElementPack\Utils;
 use Elementor\Icons_Manager;
+ 
 
 use ElementPack\Modules\Timeline\Skins;
 
@@ -1598,7 +1599,7 @@ class Timeline extends Module_Base {
         $this->add_render_attribute('bdt-timeline-title', 'class', 'bdt-timeline-title', true);
 
         ?>
-        <<?php echo esc_html($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-timeline-title'); ?>>
+        <<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-timeline-title'); ?>>
             <?php if ( $settings['title_link'] ) : ?>
                 <a href="<?php echo esc_url($title_link); ?>" title="<?php echo esc_html($title); ?>">
                     <?php echo esc_html($title); ?>
@@ -1606,7 +1607,7 @@ class Timeline extends Module_Base {
             <?php else : ?>
                 <span><?php echo esc_html($title); ?></span>
             <?php endif; ?>
-        </<?php echo esc_html($settings['title_tags']); ?>>
+        </<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?>>
         <?php
 
     }

@@ -403,12 +403,6 @@ class Premium_Fb_Chat extends Widget_Base {
 			left: 18pt !important;
 			right: auto;
 		}
-		<?php elseif ( 'bottomright' === $position ) : ?>
-		.fb_dialog,
-		.fb-customerchat * > iframe {
-			right: 18pt !important;
-			left: auto;
-		}
 		<?php elseif ( 'topleft' === $position ) : ?>
 		.fb_dialog,
 		.fb-customerchat * > iframe {

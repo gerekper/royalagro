@@ -5,8 +5,9 @@ use ElementPack\Base\Module_Base;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
-use Elementor\Utils;
+use ElementPack\Utils;
 use Elementor\Icons_Manager;
+ 
 
 use ElementPack\Modules\QueryControl\Controls\Group_Control_Posts;
 use ElementPack\Modules\QueryControl\Module;
@@ -200,6 +201,29 @@ class Post_Slider extends Module_Base {
 				'label'   => __( 'Meta', 'bdthemes-element-pack' ),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
+			]
+		);
+
+		$this->add_control(
+			'human_diff_time',
+			[
+				'label'   => esc_html__( 'Human Different Time', 'bdthemes-element-pack' ) . BDTEP_NC,
+				'type'    => Controls_Manager::SWITCHER,
+				'condition' => [
+					'show_meta' => 'yes'
+				]
+			]
+		);
+
+		$this->add_control(
+			'human_diff_time_short',
+			[
+				'label'   => esc_html__( 'Time Short Format', 'bdthemes-element-pack' ) . BDTEP_NC,
+				'type'    => Controls_Manager::SWITCHER,
+				'condition' => [
+					'human_diff_time' => 'yes',
+					'show_meta' => 'yes'
+				]
 			]
 		);
 
@@ -1374,12 +1398,26 @@ class Post_Slider extends Module_Base {
 		?>
 		<div class="bdt-post-slider-title-wrap">
 			<a href="<?php echo esc_url(get_permalink()); ?>">
-				<<?php echo esc_attr($tag) ?> class="bdt-post-slider-title bdt-margin-remove-bottom" bdt-slideshow-parallax="x: 200,-200">
+				<<?php echo Utils::get_valid_html_tag($tag) ?> class="bdt-post-slider-title bdt-margin-remove-bottom" bdt-slideshow-parallax="x: 200,-200">
 					<?php the_title() ?>
-				</<?php echo esc_attr($tag) ?>>
+				</<?php echo Utils::get_valid_html_tag($tag) ?>>
 			</a>
 		</div>
 		<?php
+	}
+
+	public function render_date() {
+		$settings = $this->get_settings_for_display();
+
+		if ( ! $this->get_settings( 'show_meta' ) ) {
+			return;
+		}
+	 
+		if ($settings['human_diff_time'] == 'yes') {
+			echo element_pack_post_time_diff(($settings['human_diff_time_short'] == 'yes') ? 'short' : '');
+        } else {
+			echo get_the_date();
+		}
 	}
 
 	public function render_read_more_button() {
@@ -1524,7 +1562,7 @@ class Post_Slider extends Module_Base {
 								</div>
 								<span class="bdt-author bdt-text-capitalize"><?php echo esc_attr(get_the_author()); ?> </span>
 							</a>
-							<span><?php esc_html_e('On', 'bdthemes-element-pack'); ?> <?php echo get_the_date(); ?></span>
+							<span><?php esc_html_e('On', 'bdthemes-element-pack'); ?> <?php $this->render_date(); ?></span>
 						</div>
 					<?php endif; ?>
 					
@@ -1585,13 +1623,13 @@ class Post_Slider extends Module_Base {
 								</div>
 		        			<?php endif; ?>
 							<div class="bdt-margin-small-left bdt-visible@m">
-								<<?php echo $settings['thumb_title_tag']; ?> class="bdt-margin-remove-bottom thumb-title-default-skin">
+								<<?php echo Utils::get_valid_html_tag($settings['thumb_title_tag']); ?> class="bdt-margin-remove-bottom thumb-title-default-skin">
 									<?php echo esc_attr(get_the_title()); ?>
-								</<?php echo $settings['thumb_title_tag']; ?>>
+								</<?php echo Utils::get_valid_html_tag($settings['thumb_title_tag']); ?>>
 								
-								 
-
-								<span class="bdt-post-slider-date"><?php echo get_the_date(); ?></span>
+								<?php if ($settings['show_meta']) : ?>
+								<span class="bdt-post-slider-date"><?php $this->render_date(); ?></span>
+								<?php endif; ?>
 							</div>
 						</div>
 					</a>

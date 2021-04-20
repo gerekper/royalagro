@@ -49,7 +49,7 @@ class Module extends Element_Pack_Module_Base {
 			[
 				'label' => __( 'Start Date', 'bdthemes-element-pack' ),
 				'type' => Controls_Manager::DATE_TIME,
-				'default' => '2018-02-01 00:00:00',
+				'default' => '2021-04-15 00:00:00',
 				'condition' => [
 					'section_scheduled_content_on' => 'yes',
 				],
@@ -62,7 +62,7 @@ class Module extends Element_Pack_Module_Base {
 			[
 				'label' => __( 'End Date', 'bdthemes-element-pack' ),
 				'type' => Controls_Manager::DATE_TIME,
-				'default' => '2018-02-28 00:00:00',
+				'default' => '2021-04-30 00:00:00',
 				'condition' => [
 					'section_scheduled_content_on' => 'yes',
 				],

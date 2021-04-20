@@ -8,9 +8,10 @@ use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Css_Filter;
-use Elementor\Utils;
+use ElementPack\Utils;
 use Elementor\Icons_Manager;
 use Elementor\Skin_Base as Elementor_Skin_Base;
+ 
 
 if (!defined('ABSPATH')) {
     exit;
@@ -109,11 +110,11 @@ class Skin_Batty extends Elementor_Skin_Base
 				<div class="bdt-fancy-card-content">
 				 
 					<?php if ( $settings['title_text'] ) : ?>
-							<<?php echo esc_html($settings['title_size']); ?> <?php echo $this->parent->get_render_attribute_string( 'bdt-fancy-card-title' ); ?>>
+							<<?php echo Utils::get_valid_html_tag($settings['title_size']); ?> <?php echo $this->parent->get_render_attribute_string( 'bdt-fancy-card-title' ); ?>>
 								<span <?php echo $this->parent->get_render_attribute_string( 'title_text' ); ?>>
 									<?php echo wp_kses( $settings['title_text'], element_pack_allow_tags('title') ); ?>
 								</span>
-							</<?php echo esc_html($settings['title_size']); ?>>
+							</<?php echo Utils::get_valid_html_tag($settings['title_size']); ?>>
 						<?php endif; ?>
 			 
 				 

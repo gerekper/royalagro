@@ -841,7 +841,7 @@ class ElementPack_Admin_Settings {
                     'label'        => esc_html__('Open Street Map', 'bdthemes-element-pack'),
                     'type'         => 'checkbox',
                     'default'      => "on",
-                    'widget_type'  => 'pro',
+                    'widget_type'  => 'free',
                     'content_type' => 'others',
                     'demo_url'     => 'https://elementpack.pro/demo/element/open-street-map',
                     'video_url'    => 'https://youtu.be/DCQ5g7yleyk',
@@ -3124,7 +3124,7 @@ set_time_limit(90);
             }
             ?>
 
-          <p><?php _e('Enter your license key here, to activate Element Pack Pro, and get full feature updates and premium support.', 'bdthemes-element-pack'); ?></p>
+          <p><strong><?php _e('Enter your license key here, to activate Element Pack Pro, and get full feature updates and premium support.', 'bdthemes-element-pack'); ?></strong></p>
 
           <ol>
             <li><?php printf(__('Log in to your <a href="%1s" target="_blank">bdthemes</a> or <a href="%2s" target="_blank">envato</a> account to get your license key.', 'bdthemes-element-pack'), 'https://bdthemes.onfastspring.com/account', 'https://codecanyon.net/downloads'); ?></li>

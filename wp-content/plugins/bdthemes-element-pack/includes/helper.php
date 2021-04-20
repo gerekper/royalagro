@@ -1629,6 +1629,66 @@
 		return $users;
 	}
 	
+	function element_pack_strip_emoji( $text ) {
+        // four byte utf8: 11110www 10xxxxxx 10yyyyyy 10zzzzzz
+        return preg_replace( '/[\xF0-\xF7][\x80-\xBF]{3}/', '', $text );
+    }
+    
+    function element_pack_twitter_process_links( $tweet ) {
+        
+        // Is the Tweet a ReTweet - then grab the full text of the original Tweet
+        if ( isset( $tweet->retweeted_status ) ) {
+            // Split it so indices count correctly for @mentions etc.
+            $rt_section = current( explode( ':', $tweet->text ) );
+            $text       = $rt_section . ': ';
+            // Get Text
+            $text .= $tweet->retweeted_status->text;
+        } else {
+            // Not a retweet - get Tweet
+            $text = $tweet->text;
+        }
+        
+        // NEW Link Creation from clickable items in the text
+        $text = preg_replace( '/((http)+(s)?:\/\/[^<>\s]+)/i', '<a href="$0" target="_blank" rel="nofollow">$0</a>', $text );
+        // Clickable Twitter names
+        $text = preg_replace( '/[@]+([A-Za-z0-9-_]+)/', '<a href="http://twitter.com/$1" target="_blank" rel="nofollow">@$1</a>', $text );
+        // Clickable Twitter hash tags
+        $text = preg_replace( '/[#]+([A-Za-z0-9-_]+)/', '<a href="http://twitter.com/search?q=%23$1" target="_blank" rel="nofollow">$0</a>', $text );
+        
+        // END TWEET CONTENT REGEX
+        return $text;
+        
+    }
+    
+    function element_pack_time_diff( $from, $to = '' ) {
+        $diff    = human_time_diff( $from, $to );
+        $replace = array(
+            ' hour'    => 'h',
+            ' hours'   => 'h',
+            ' day'     => 'd',
+            ' days'    => 'd',
+            ' minute'  => 'm',
+            ' minutes' => 'm',
+            ' second'  => 's',
+            ' seconds' => 's',
+        );
+        
+        return strtr( $diff, $replace );
+    }
+	
+    function element_pack_post_time_diff( $format = '' ) {
+	    $displayAgo = esc_html__( 'ago', 'bdthemes-element-pack' );
+	    
+	    if ($format == 'short') {
+		    $output = element_pack_time_diff( strtotime(get_the_date()), current_time( 'timestamp' ) );
+	    } else {
+		    $output = human_time_diff( strtotime(get_the_date()), current_time( 'timestamp' ) );
+        }
+	    
+	    $output = $output .' '. $displayAgo;
+	    
+	    return $output;
+    }
 	
 	/**
 	 * helper functions class for helping some common usage things

@@ -1086,6 +1086,7 @@ class Premium_Iconbox extends Widget_Base {
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-icon-box-icon' => 'color:{{VALUE}};',
+					'{{WRAPPER}} .premium-icon-box-icon-container svg' => 'fill:{{VALUE}};',
 				),
 				'condition' => array(
 					'premium_icon_box_selector' => 'font-awesome-icon',
@@ -1099,7 +1100,7 @@ class Premium_Iconbox extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-pro' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .premium-icon-box-icon, {{WRAPPER}} .premium-icon-box-custom-image, {{WRAPPER}} .premium-icon-box-animation'  => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .premium-icon-box-icon, {{WRAPPER}} .premium-icon-box-icon-container svg, {{WRAPPER}} .premium-icon-box-custom-image, {{WRAPPER}} .premium-icon-box-animation'  => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -1108,7 +1109,7 @@ class Premium_Iconbox extends Widget_Base {
 			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'premium_icon_box_border_normal',
-				'selector' => '{{WRAPPER}} .premium-icon-box-icon, {{WRAPPER}} .premium-icon-box-custom-image, {{WRAPPER}} .premium-icon-box-animation',
+				'selector' => '{{WRAPPER}} .premium-icon-box-icon, {{WRAPPER}} .premium-icon-box-icon-container svg, {{WRAPPER}} .premium-icon-box-custom-image, {{WRAPPER}} .premium-icon-box-animation',
 			)
 		);
 
@@ -1119,7 +1120,7 @@ class Premium_Iconbox extends Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .premium-icon-box-icon, {{WRAPPER}} .premium-icon-box-custom-image, {{WRAPPER}} .premium-icon-box-animation' => 'border-radius: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .premium-icon-box-icon, {{WRAPPER}} .premium-icon-box-icon-container svg, {{WRAPPER}} .premium-icon-box-custom-image, {{WRAPPER}} .premium-icon-box-animation' => 'border-radius: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -1129,7 +1130,7 @@ class Premium_Iconbox extends Widget_Base {
 			array(
 				'label'     => __( 'Shadow', 'premium-addons-pro' ),
 				'name'      => 'premium_icon_box_icon_shadow_normal',
-				'selector'  => '{{WRAPPER}} .premium-icon-box-icon',
+				'selector'  => '{{WRAPPER}} .premium-icon-box-icon, {{WRAPPER}} .premium-icon-box-icon-container svg',
 				'condition' => array(
 					'premium_icon_box_selector' => 'font-awesome-icon',
 				),
@@ -1155,7 +1156,7 @@ class Premium_Iconbox extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .premium-icon-box-icon, {{WRAPPER}} .premium-icon-box-custom-image, {{WRAPPER}} .premium-icon-box-animation' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .premium-icon-box-icon, {{WRAPPER}} .premium-icon-box-icon-container svg, {{WRAPPER}} .premium-icon-box-custom-image, {{WRAPPER}} .premium-icon-box-animation' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -1167,7 +1168,7 @@ class Premium_Iconbox extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .premium-icon-box-icon, {{WRAPPER}} .premium-icon-box-custom-image, {{WRAPPER}} .premium-icon-box-animation' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .premium-icon-box-icon, {{WRAPPER}} .premium-icon-box-icon-container svg, {{WRAPPER}} .premium-icon-box-custom-image, {{WRAPPER}} .premium-icon-box-animation' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -1192,6 +1193,7 @@ class Premium_Iconbox extends Widget_Base {
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-icon'   => 'color: {{VALUE}};',
+					'{{WRAPPER}} .premium-icon-box-container-out:hover svg'   => 'fill: {{VALUE}};',
 				),
 				'condition' => array(
 					'premium_icon_box_selector' => 'font-awesome-icon',
@@ -1205,7 +1207,7 @@ class Premium_Iconbox extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-pro' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-icon, {{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-custom-image, {{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-animation' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-icon, {{WRAPPER}} .premium-icon-box-container-out:hover svg, {{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-custom-image, {{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-animation' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -1214,7 +1216,7 @@ class Premium_Iconbox extends Widget_Base {
 			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'premium_icon_box_border_hover',
-				'selector' => '{{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-icon, {{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-custom-image, {{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-animation',
+				'selector' => '{{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-icon, {{WRAPPER}} .premium-icon-box-container-out:hover svg, {{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-custom-image, {{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-animation',
 			)
 		);
 
@@ -1225,7 +1227,7 @@ class Premium_Iconbox extends Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-icon, {{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-custom-image, {{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-animation' => 'border-radius: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-icon, {{WRAPPER}} .premium-icon-box-container-out:hover svg, {{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-custom-image, {{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-animation' => 'border-radius: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -1235,7 +1237,7 @@ class Premium_Iconbox extends Widget_Base {
 			array(
 				'label'     => __( 'Shadow', 'premium-addons-pro' ),
 				'name'      => 'premium_icon_box_icon_shadow_hover',
-				'selector'  => '{{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-icon',
+				'selector'  => '{{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-icon, {{WRAPPER}} .premium-icon-box-container-out:hover svg',
 				'condition' => array(
 					'premium_icon_box_selector' => 'font-awesome-icon',
 				),
@@ -1261,7 +1263,7 @@ class Premium_Iconbox extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-icon, {{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-custom-image, {{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-animation' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-icon, {{WRAPPER}} .premium-icon-box-container-out:hover svg, {{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-custom-image, {{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-animation' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -1273,7 +1275,7 @@ class Premium_Iconbox extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-icon, {{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-custom-image, {{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-animation' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-icon, {{WRAPPER}} .premium-icon-box-container-out:hover svg, {{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-custom-image, {{WRAPPER}} .premium-icon-box-container-out:hover .premium-icon-box-animation' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -1621,6 +1623,7 @@ class Premium_Iconbox extends Widget_Base {
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-icon-box-link' => 'color:{{VALUE}};',
+					'{{WRAPPER}} .premium-icon-box-link svg' => 'fill:{{VALUE}} !important',
 				),
 			)
 		);
@@ -1708,6 +1711,7 @@ class Premium_Iconbox extends Widget_Base {
 				),
 				'selectors' => array(
 					'{{WRAPPER}}.premium-icon-box-whole-text-yes:hover .premium-icon-box-link, {{WRAPPER}} .premium-icon-box-more:hover .premium-icon-box-link'   => 'color: {{VALUE}};',
+					'{{WRAPPER}}.premium-icon-box-whole-text-yes:hover .premium-icon-box-link svg, {{WRAPPER}} .premium-icon-box-more:hover .premium-icon-box-link svg'   => 'fill: {{VALUE}} !important',
 				),
 			)
 		);
@@ -1955,7 +1959,8 @@ class Premium_Iconbox extends Widget_Base {
 					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .premium-icon-box-big i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .premium-icon-box-big i' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .premium-icon-box-big svg' => 'fill: {{VALUE}}',
 				),
 				'condition' => array(
 					'premium_icon_box_back_icon_switcher' => 'yes',

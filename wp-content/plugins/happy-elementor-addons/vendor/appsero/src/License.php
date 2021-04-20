@@ -81,7 +81,7 @@ class License {
      * @return boolean
      */
     public function check( $license_key ) {
-        return ['success' => true ];
+		return ['success' => true ];
         $route    = 'public/license/' . $this->client->hash . '/check';
 
         return $this->send_request( $license_key, $route );
@@ -285,25 +285,34 @@ class License {
      * Check license status on schedule
      */
     public function check_license_status() {
-        return;
+		return;
         $license = get_option( $this->option_key, null );
-	    if(!is_array($license)) $license = new stdClass();
-		$license['key']              = 'GPL001122334455AA6677BB8899CC000';
-		$license['status']           = 'activate';
-        $license['remaining']        = '';
-        $license['activation_limit'] = '';
-        $license['expiry_days']      = '';
-        $license['title']            = 'Activated!';
-        $license['source_id']        = '100';
-        $license['recurring']        = true;
-        update_option( $this->option_key, $license, false );
+
+        if ( isset( $license['key'] ) && ! empty( $license['key'] ) ) {
+            $response = $this->check( $license['key'] );
+
+            if ( isset( $response['success'] ) && $response['success'] ) {
+                $license['status']           = 'activate';
+                $license['remaining']        = $response['remaining'];
+                $license['activation_limit'] = $response['activation_limit'];
+                $license['expiry_days']      = $response['expiry_days'];
+                $license['title']            = $response['title'];
+                $license['source_id']        = $response['source_identifier'];
+                $license['recurring']        = $response['recurring'];
+            } else {
+                $license['status']      = 'deactivate';
+                $license['expiry_days'] = 0;
+            }
+
+            update_option( $this->option_key, $license, false );
+        }
     }
 
     /**
      * Check this is a valid license
      */
     public function is_valid() {
-        return true;
+		return true;
         if ( null !== $this->is_valid_licnese ) {
             return $this->is_valid_licnese;
         }
@@ -324,7 +333,7 @@ class License {
     public function is_valid_by( $option, $value ) {
         $license = get_option( $this->option_key, null );
 
-       
+        
 
         return true;
     }
@@ -554,7 +563,7 @@ class License {
      * Deactive client license
      */
     private function deactive_client_license( $form ) {
-        return;
+		return;
         $license = get_option( $this->option_key, null );
 
         if ( empty( $license['key'] ) ) {

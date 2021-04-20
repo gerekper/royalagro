@@ -9,6 +9,7 @@ use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Icons_Manager;
 use Elementor\Repeater;
+use ElementPack\Utils;
 
 use ElementPack\Modules\PanelSlider\Skins;
 
@@ -842,7 +843,7 @@ class Panel_Slider extends Module_Base {
 				'label'     => esc_html__( 'Color', 'bdthemes-element-pack' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .bdt-panel-slide .bdt-panel-slide-item .bdt-panel-slide-title' => 'color: {{VALUE}}; -webkit-text-stroke-color: {{VALUE}};',
+					'{{WRAPPER}} .bdt-panel-slide-item .bdt-panel-slide-title' => 'color: {{VALUE}}; -webkit-text-stroke-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1308,7 +1309,7 @@ class Panel_Slider extends Module_Base {
 						<?php endif; ?>
 
 						<?php if ( 'yes' == $settings['show_title'] ) : ?>
-							<<?php echo esc_html($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('panel-slide-item-title'); ?>><?php echo esc_html($item['tab_title']); ?></<?php echo esc_html($settings['title_tags']); ?>>
+							<<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('panel-slide-item-title'); ?>><?php echo esc_html($item['tab_title']); ?></<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?>>
 						<?php endif; ?>
 
 						<?php if ( '' !== $item['tab_content'] ) : ?>

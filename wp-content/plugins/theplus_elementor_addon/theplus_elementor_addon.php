@@ -3,7 +3,7 @@
 * Plugin Name: The Plus Addons for Elementor Page Builder
 * Plugin URI: https://theplusaddons.com/
 * Description: Ultimate collection of Addons for Elementor Page Builder and proudly developed by POSIMYTH Team.
-* Version: 4.1.9
+* Version: 4.1.10
 * Author: POSIMYTH
 * Author URI: https://posimyth.com/
 * Text Domain: theplus
@@ -14,7 +14,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-defined( 'THEPLUS_VERSION' ) or define( 'THEPLUS_VERSION', '4.1.9' );
+defined( 'THEPLUS_VERSION' ) or define( 'THEPLUS_VERSION', '4.1.10' );
 update_option( 'theplus_verified', [ 'expire' => 'lifetime', 'verify' => 1 ] );
 update_option( 'theplus_purchase_code','1415b451be1a13c283ba771ea52d38bb' );
 define( 'THEPLUS_FILE__', __FILE__ );
@@ -167,7 +167,7 @@ function theplus_redirect_lite_version() {
 		if (get_option('theplus_activation_redirect', false)) {
 			delete_option('theplus_activation_redirect');
 			if(!defined('L_THEPLUS_VERSION')){				
-				wp_redirect("admin.php?action=theplus_lite_install_plugin");
+				wp_safe_redirect("admin.php?action=theplus_lite_install_plugin");
 			}
 		}
 }

@@ -829,6 +829,7 @@ class Premium_Notbar extends Widget_Base {
 				),
 				'selectors' => array(
 					'#premium-notbar-{{ID}} .premium-notbar-icon'   => 'color: {{VALUE}};',
+					'#premium-notbar-{{ID}} .premium-notbar-icon-wrap svg'   => 'fill: {{VALUE}};',
 				),
 				'condition' => array(
 					'premium_notbar_icon_switcher' => 'yes',
@@ -849,6 +850,7 @@ class Premium_Notbar extends Widget_Base {
 				),
 				'selectors' => array(
 					'#premium-notbar-{{ID}}:hover .premium-notbar-icon'   => 'color: {{VALUE}};',
+					'#premium-notbar-{{ID}}:hover .premium-notbar-icon-wrap svg'   => 'fill: {{VALUE}};',
 				),
 				'condition' => array(
 					'premium_notbar_icon_switcher' => 'yes',

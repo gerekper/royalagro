@@ -405,10 +405,8 @@ class Theplus_Elementor_Plugin_Options
 				
 					$purchase_option=get_option( 'theplus_purchase_code' );
 					$plus_key =$plus_last_key_char='';
-					
-						$plus_key = '1415b451be1a13c283ba771ea52d38bb';
-						$plus_last_key_char = substr($plus_key, -4);
-					
+					$plus_key = '1415b451be1a13c283ba771ea52d38bb';
+					$plus_last_key_char = substr($plus_key, -4);
 					?>
 					<div id="theplus_purchase_code" class="group theplus_form_content">
 					<form class="cmb-form" action="<?php echo esc_url( admin_url('admin-post.php') ); ?>" method="post" id="theplus_purchase_code" enctype="multipart/form-data" encoding="multipart/form-data">
@@ -841,28 +839,28 @@ class Theplus_Elementor_Plugin_Options
 		if(isset($_POST["submit-key"]) && !empty($_POST["submit-key"]) && $_POST["submit-key"]=='Activate'){
 			
 			if ( ! isset( $_POST['nonce_theplus_purchase_field'] ) || ! wp_verify_nonce( $_POST['nonce_theplus_purchase_field'], 'nonce_theplus_purchase_action' ) ) {
-			   wp_redirect(admin_url('admin.php?page='.$action_page));
+			   wp_safe_redirect(admin_url('admin.php?page='.$action_page));
 			} else {
 				if (FALSE === get_option($action_page)){
 					$default_value = array('tp_api_key' => '');
 					//$default_value = serialize($default_value);
 					add_option($action_page,$default_value);
 					
-					wp_redirect(admin_url('admin.php?page='.$action_page));
+					wp_safe_redirect(admin_url('admin.php?page='.$action_page));
 				}else{
 					if(isset($_POST['tp_api_key']) && !empty($_POST['tp_api_key'])){
 						$update_value = array('tp_api_key' => $_POST['tp_api_key']);
 						//$update_value = serialize($update_value);
 						update_option( $action_page, $update_value );
 						theplus_get_api_check();
-						wp_redirect(admin_url('admin.php?page='.$action_page));
+						wp_safe_redirect(admin_url('admin.php?page='.$action_page));
 					}else{
-						wp_redirect(admin_url('admin.php?page='.$action_page));
+						wp_safe_redirect(admin_url('admin.php?page='.$action_page));
 					}
 				}
 			}
 		}else{
-			wp_redirect(admin_url('admin.php?page='.$action_page));
+			wp_safe_redirect(admin_url('admin.php?page='.$action_page));
 		}
 		
 	}
@@ -872,22 +870,22 @@ class Theplus_Elementor_Plugin_Options
 		if(isset($_POST["submit-key"]) && !empty($_POST["submit-key"]) && $_POST["submit-key"]=='Deactivate'){
 			
 			if ( ! isset( $_POST['nonce_theplus_purchase_field'] ) || ! wp_verify_nonce( $_POST['nonce_theplus_purchase_field'], 'nonce_theplus_purchase_action' ) ) {
-			   wp_redirect(admin_url('admin.php?page='.$action_page));
+			   wp_safe_redirect(admin_url('admin.php?page='.$action_page));
 			} else {
 				if ( FALSE === get_option($action_page) ){
 					$default_value = array('tp_api_key' => '');
 					//$default_value = serialize($default_value);
 					add_option($action_page,$default_value);
-					wp_redirect(admin_url('admin.php?page=theplus_purchase_code'));
+					wp_safe_redirect(admin_url('admin.php?page=theplus_purchase_code'));
 				}else{
 					$update_value = array('tp_api_key' => '');
 					//$update_value = serialize($update_value);
 					update_option( $action_page, $update_value );
-					wp_redirect(admin_url('admin.php?page=theplus_purchase_code'));
+					wp_safe_redirect(admin_url('admin.php?page=theplus_purchase_code'));
 				}
 			}
 		}else{
-			wp_redirect(admin_url('admin.php?page=theplus_purchase_code'));
+			wp_safe_redirect(admin_url('admin.php?page=theplus_purchase_code'));
 		}
 	}
        

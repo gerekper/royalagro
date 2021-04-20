@@ -8,8 +8,9 @@ use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
-use Elementor\Utils;
+use ElementPack\Utils;
 use Elementor\Icons_Manager;
+ 
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -153,6 +154,29 @@ class Post_Block_Modern extends Module_Base {
 				'label'   => esc_html__( 'Meta Data', 'bdthemes-element-pack' ),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
+			]
+		);
+
+		$this->add_control(
+			'human_diff_time',
+			[
+				'label'   => esc_html__( 'Human Different Time', 'bdthemes-element-pack' ) . BDTEP_NC,
+				'type'    => Controls_Manager::SWITCHER,
+				'condition' => [
+					'show_meta' => 'yes'
+				]
+			]
+		);
+
+		$this->add_control(
+			'human_diff_time_short',
+			[
+				'label'   => esc_html__( 'Time Short Format', 'bdthemes-element-pack' ) . BDTEP_NC,
+				'type'    => Controls_Manager::SWITCHER,
+				'condition' => [
+					'human_diff_time' => 'yes',
+					'show_meta' => 'yes'
+				]
 			]
 		);
 
@@ -1204,6 +1228,20 @@ class Post_Block_Modern extends Module_Base {
 
 	}
 
+	public function render_date() {
+		$settings = $this->get_settings_for_display();
+
+		if ( ! $this->get_settings( 'show_meta' ) ) {
+			return;
+		}
+	 
+		if ($settings['human_diff_time'] == 'yes') {
+			return element_pack_post_time_diff(($settings['human_diff_time_short'] == 'yes') ? 'short' : '');
+        } else {
+			return get_the_date();
+		}
+	}
+
 	public function render() {
 		$settings = $this->get_settings_for_display();
 
@@ -1282,16 +1320,16 @@ class Post_Block_Modern extends Module_Base {
 
 					            	<?php if ('yes' == $settings['show_meta']) : ?>
 
-										<?php $meta_list = '<span><span>'.get_the_date().'</span></span><span>'.get_the_category_list(', ').'</span>'; ?>
+										<?php $meta_list = '<span>'.$this->render_date().'</span><span>'.get_the_category_list(', ').'</span>'; ?>
 
-										<div class="bdt-post-block-modern-meta bdt-subnav bdt-flex-middle bdt-flex-center"><?php echo wp_kses_post($meta_list); ?></div>
+										<div class="bdt-post-block-modern-meta bdt-subnav bdt-flex-middle bdt-flex-center"><?php echo $meta_list; ?></div>
 
 									<?php endif ?>
 
 									<?php if ('yes' == $settings['title']) : ?>
-										<<?php echo esc_html($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-post-block-modern-title'); ?>>
+										<<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-post-block-modern-title'); ?>>
 											<a href="<?php echo esc_url(get_permalink()); ?>" class="bdt-link-reset" title="<?php echo esc_attr(get_the_title()); ?>"><?php echo esc_html(get_the_title()) ; ?></a>
-										</<?php echo esc_html($settings['title_tags']); ?>>
+										</<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?>>
 									<?php endif ?>
 
 									<?php $this->render_excerpt(); ?>
@@ -1308,15 +1346,15 @@ class Post_Block_Modern extends Module_Base {
 					  		<div class="bdt-post-block-modern-desc">
 
 								<?php if ('yes' == $settings['show_meta']) : ?>
-									<?php $meta_list = '<span><span>'.get_the_date().'</span></span><span>'.get_the_category_list(', ').'</span>'; ?>
+									<?php $meta_list = '<span>'.$this->render_date().'</span><span>'.get_the_category_list(', ').'</span>'; ?>
 									
 									<div class="bdt-post-block-modern-meta bdt-subnav"><?php echo wp_kses_post($meta_list); ?></div>
 								<?php endif ?>
 
 								<?php if ('yes' == $settings['title']) : ?>
-									<<?php echo esc_html($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-post-block-modern-title'); ?>>
+									<<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-post-block-modern-title'); ?>>
 										<a href="<?php echo esc_url(get_permalink()); ?>" class="bdt-link-reset" title="<?php echo esc_attr(get_the_title()); ?>"><?php echo esc_html(get_the_title()) ; ?></a>
-									</<?php echo esc_html($settings['title_tags']); ?>>
+									</<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?>>
 								<?php endif ?>
 
 								<?php $this->render_excerpt(); ?>

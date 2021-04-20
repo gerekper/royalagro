@@ -1449,7 +1449,7 @@ class Premium_Charts extends Widget_Base {
 		if ( 'csv' === $data_source ) {
 			$props = array();
 			foreach ( $settings['dataset_repeater'] as $repeater_ele ) {
-                if ( 'pie' === $settings['type'] || 'doughnut' === $settings['type'] || 'polarArea' === $settings['type'] ) {
+				if ( 'pie' === $settings['type'] || 'doughnut' === $settings['type'] || 'polarArea' === $settings['type'] ) {
 					$bg_color = explode( ',', $repeater_ele['circle_color'] );
 				} else {
 					$bg_color = $repeater_ele['dataset_color'];

@@ -11,6 +11,7 @@ use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Background;
 use Elementor\Icons_Manager;
 use Elementor\Repeater;
+use ElementPack\Utils;
 
 use ElementPack\Modules\PriceTable\Skins;
 
@@ -2385,9 +2386,9 @@ class Price_Table extends Module_Base {
 		if ( $settings['heading'] || $settings['sub_heading'] ) : ?>
 			<div class="bdt-price-table-header">					
 				<?php if ( ! empty( $settings['heading'] ) ) : ?>
-					<<?php echo esc_attr($settings['heading_tag']); ?> class="bdt-price-table-heading">
+					<<?php echo Utils::get_valid_html_tag($settings['heading_tag']); ?> class="bdt-price-table-heading">
 						<?php echo esc_html($settings['heading']); ?>
-					</<?php echo esc_attr($settings['heading_tag']); ?>>
+					</<?php echo Utils::get_valid_html_tag($settings['heading_tag']); ?>>
 				<?php endif; ?>
 
 				<?php if ( ! empty($settings['sub_heading']) and 'bdt-partait' != $settings['_skin'] ) : ?>
@@ -2844,7 +2845,7 @@ class Price_Table extends Module_Base {
 			<# if ( settings.heading || settings.sub_heading ) { #>
 				<div class="bdt-price-table-header">
 					<# if ( settings.heading ) { #>
-						<{{{settings.heading_tag}}} class="bdt-price-table-heading">{{{ settings.heading }}}</{{{settings.heading_tag}}}>
+						<{{{ elementor.helpers.validateHTMLTag(settings.heading_tag) }}} class="bdt-price-table-heading">{{{ settings.heading }}}</{{{ elementor.helpers.validateHTMLTag(settings.heading_tag) }}}>
 					<# } #>
 					<# if ( settings.sub_heading && 'bdt-partait' != settings._skin ) { #>
 						<span class="bdt-price-table-subheading">{{{ settings.sub_heading }}}</span>

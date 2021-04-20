@@ -6,8 +6,9 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
-use Elementor\Utils;
+use ElementPack\Utils;
 use Elementor\Icons_Manager;
+ 
 
 use ElementPack\Modules\QueryControl\Controls\Group_Control_Posts;
 use ElementPack\Modules\QueryControl\Module;
@@ -1564,9 +1565,9 @@ class Thumb_Gallery extends Module_Base {
 			<a href="<?php echo esc_url(get_permalink()); ?>">
 		<?php } ?>
 
-			<<?php echo esc_attr($tag) ?> class="<?php echo implode(" ", $classes); ?>">
+			<<?php echo Utils::get_valid_html_tag($tag) ?> class="<?php echo implode(" ", $classes); ?>">
 				<?php the_title(); ?>
-			</<?php echo esc_attr($tag); ?>>
+			</<?php echo Utils::get_valid_html_tag($tag); ?>>
 
 		<?php if ('yes' == $settings['title_link_option']) { ?>
 			</a>

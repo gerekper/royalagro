@@ -294,14 +294,14 @@
                     slidesToShow: colsNumber,
                     slidesToScroll: colsNumber,
                     responsive: [{
-                        breakpoint: 768,
+                        breakpoint: 1025,
                         settings: {
                             slidesToShow: 1,
                             slidesToScroll: 1
                         }
                     },
                     {
-                        breakpoint: 481,
+                        breakpoint: 768,
                         settings: {
                             slidesToShow: 1,
                             slidesToScroll: 1
@@ -933,14 +933,14 @@
                 slidesToShow: colsNumber,
                 slidesToScroll: colsNumber,
                 responsive: [{
-                    breakpoint: 768,
+                    breakpoint: 1025,
                     settings: {
                         slidesToShow: 1,
                         slidesToScroll: 1
                     }
                 },
                 {
-                    breakpoint: 481,
+                    breakpoint: 768,
                     settings: {
                         slidesToShow: 1,
                         slidesToScroll: 1
@@ -1017,14 +1017,14 @@
                     slidesToShow: colsNumber,
                     slidesToScroll: colsNumber,
                     responsive: [{
-                        breakpoint: 768,
+                        breakpoint: 1025,
                         settings: {
                             slidesToShow: 1,
                             slidesToScroll: 1
                         }
                     },
                     {
-                        breakpoint: 481,
+                        breakpoint: 768,
                         settings: {
                             slidesToShow: 1,
                             slidesToScroll: 1
@@ -2135,6 +2135,22 @@
                     });
                 }
 
+                if ($layer.hasClass('premium-mask-yes')) {
+                    var html = '';
+                    $layer.find('.premium-img-layers-text').text().split(' ').forEach(function (word) {
+                        html += ' <span class="premium-mask-span">' + word + '</span>';
+                    });
+
+                    $layer.find('.premium-img-layers-text').text('').append(html);
+
+                    elementorFrontend.waypoint($scope, function () {
+                        $layer.find('.premium-img-layers-text').addClass('premium-mask-active');
+                    }, {
+                        offset: Waypoint.viewportHeight() - 150,
+                        triggerOnce: true
+                    });
+                }
+
             });
 
 
@@ -2718,14 +2734,14 @@
                 slidesToShow: colsNumber,
                 slidesToScroll: colsNumber,
                 responsive: [{
-                    breakpoint: 768,
+                    breakpoint: 1025,
                     settings: {
                         slidesToShow: 1,
                         slidesToScroll: 1
                     }
                 },
                 {
-                    breakpoint: 481,
+                    breakpoint: 768,
                     settings: {
                         slidesToShow: 1,
                         slidesToScroll: 1
@@ -3713,8 +3729,9 @@
 
             var offset = elementSettings.offset;
 
-            if ('SECTION' === tag) {
+            if ('SECTION' === tag && !$el.hasClass("premium-lottie-yes")) {
                 var length = $el.find(elementSettings.item).length;
+
                 if (length > 1) {
                     return (length - 1) - $el.find($layer).index();
                 }

@@ -40,8 +40,11 @@ function plus_get_templates_library($category){
 		return false;
 	}
 }
-function theplus_template_library_content(){
-	
+function theplus_template_library_content(){		
+	if ( isset($_POST['security']) && !empty($_POST['security']) && ! wp_verify_nonce( $_POST['security'], 'theplus-addons' ) ){
+		 die ( 'Invalid Nonce Security checked!');
+	} 
+   
 	$template_library ='';
 	
 	$result  = plus_get_templates_library($_POST['category']);
@@ -101,16 +104,21 @@ function theplus_template_library_content(){
 				$widget_content .=$template_library;
 			$widget_content .='</div>';
 		$widget_content .='</div>';
-		
 		echo $widget_content;
 	}
 	
 	die;
 }
-add_action('wp_ajax_plus_template_library_content','theplus_template_library_content');
-add_action('wp_ajax_nopriv_plus_template_library_content', 'theplus_template_library_content');
+if( is_admin() &&  current_user_can("manage_options") ){
+	add_action('wp_ajax_plus_template_library_content','theplus_template_library_content');
+	add_action('wp_ajax_nopriv_plus_template_library_content', 'theplus_template_library_content');
+}
 
 function theplus_template_ajax(){
+	if ( isset($_POST['security']) && !empty($_POST['security']) && ! wp_verify_nonce( $_POST['security'], 'theplus-addons' ) ){
+		 die ( 'Invalid Nonce Security checked!');
+	} 
+	
 	if(!empty($_POST["widget_category"]) && !empty($_POST["template"])){
 		$data = array(
 			'apikey'        => 'https://theplusaddons.com',
@@ -147,25 +155,21 @@ function theplus_template_ajax(){
 	}
 	die;
 }
-add_action('wp_ajax_plus_template_ajax','theplus_template_ajax');
-add_action('wp_ajax_nopriv_plus_template_ajax', 'theplus_template_ajax');
 
+if( is_admin() &&  current_user_can("manage_options") ){
+	add_action('wp_ajax_plus_template_ajax','theplus_template_ajax');
+	add_action('wp_ajax_nopriv_plus_template_ajax', 'theplus_template_ajax');
+}
 
 if(!function_exists('theplus_get_api_check')){
-	function theplus_get_api_check() 
-	{ 
+	function theplus_get_api_check($check_license ='') {
 		return 'valid';
-	
 		$home_url=get_home_url();
-		$purchase_option = '1415b451be1a13c283ba771ea52d38bb';
-		$theplus_type=THEPLUS_TYPE;
+		
+		$purchase_option=get_option( 'theplus_purchase_code' );
+		
+			$theplus_type=THEPLUS_TYPE;
 			
-				$home_url=plus_simple_crypt( $home_url, 'ey' );
-				return theplus_api_check_license_code('1415b451be1a13c283ba771ea52d38bb',$home_url);
-			    
-				if(!empty($theplus_type) && $theplus_type=='store'){
-				return theplus_api_check_license($purchase_option['tp_api_key'],home_url());
-			}
 		
 	}
 }
@@ -178,7 +182,8 @@ if(!function_exists('theplus_message_display')){
 		$values=get_option( $option_name );
 		
 		$purchase_option=get_option( 'theplus_purchase_code' );
-				
+		
+		
 			$check='';
 			if( isset($values) && !empty($values) ){
 				if( empty($values['license']) ){
@@ -189,7 +194,7 @@ if(!function_exists('theplus_message_display')){
 				}
 			}
 			
-		
+			
 				echo '<div style="width:auto;position:relative;word-wrap:break-word;background-color:#fff;border-radius:0 0 .25rem .25rem;border:none;margin:0;padding-left:30px;padding-bottom:30px;"><div style="padding:8px 0 8px 15px;border-left:3px solid #3c763d;margin-left:15px;color:#313131;font-size:14px;line-height:26px;display:flex;align-items:center;"><svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31"><circle data-name="Ellipse 110" cx="15.5" cy="15.5" r="15.5" fill="#56a86a"/>
 				<path d="M5.347,9.3,0,3.952,1.085,2.868,5.347,7.053,12.4,0l1.085,1.085Z" transform="translate(8.525 10.85)" fill="#fff"/>
 				</svg><strong style="margin-left:15px;">'.esc_html__('  Cheers 🥳','theplus').'</strong> '.esc_html__('You have been succesfully activated.','theplus').'</div></div>';

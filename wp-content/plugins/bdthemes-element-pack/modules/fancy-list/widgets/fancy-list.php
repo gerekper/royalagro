@@ -9,7 +9,7 @@ use Elementor\Group_Control_Border;
 use Elementor\Repeater;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
-
+use ElementPack\Utils;
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 class Fancy_List extends Module_Base
@@ -707,9 +707,9 @@ class Fancy_List extends Module_Base
                                 }
                             ?>
                             <div class="list-text ">
-                                <<?php echo esc_html($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('list_title_tags'); ?>> 
+                                <<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('list_title_tags'); ?>> 
                                     <?php echo $item['text']; ?>
-                                </<?php echo esc_html($settings['title_tags']); ?>>
+                                </<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?>>
                                 <p class="list-text-des"> <?php echo $item['text_details']; ?></p>
                             </div>
                             <?php if (!empty($item['list_icon']['value'])) : ?>

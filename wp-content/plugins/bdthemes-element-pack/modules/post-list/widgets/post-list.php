@@ -4,12 +4,12 @@ namespace ElementPack\Modules\PostList\Widgets;
 use ElementPack\Base\Module_Base;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
-use Elementor\Core\Schemes;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Css_Filter;
 use Elementor\Group_Control_Background;
-use Elementor\Utils;
+use ElementPack\Utils;
+ 
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -110,6 +110,29 @@ class Post_List extends Module_Base {
 				'label'   => esc_html__( 'Date', 'bdthemes-element-pack' ),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
+			]
+		);
+
+		$this->add_control(
+			'human_diff_time',
+			[
+				'label'   => esc_html__( 'Human Different Time', 'bdthemes-element-pack' ) . BDTEP_NC,
+				'type'    => Controls_Manager::SWITCHER,
+				'condition' => [
+					'show_date' => 'yes'
+				]
+			]
+		);
+
+		$this->add_control(
+			'human_diff_time_short',
+			[
+				'label'   => esc_html__( 'Time Short Format', 'bdthemes-element-pack' ) . BDTEP_NC,
+				'type'    => Controls_Manager::SWITCHER,
+				'condition' => [
+					'human_diff_time' => 'yes',
+					'show_date' => 'yes'
+				]
 			]
 		);
 
@@ -625,6 +648,24 @@ class Post_List extends Module_Base {
 		$this->end_controls_section();
 	}
 
+	public function render_date() {
+		$settings = $this->get_settings_for_display();
+
+		if ( ! $settings['show_date'] ) {
+			return;
+		}
+		
+		echo '<span>';
+		
+		if ($settings['human_diff_time'] == 'yes') {
+			echo element_pack_post_time_diff(($settings['human_diff_time_short'] == 'yes') ? 'short' : '');
+        } else {
+			echo get_the_date();
+		}
+		
+		echo '</span>';
+	}
+
 	public function render() {
 		
 		$settings = $this->get_settings_for_display();
@@ -695,18 +736,15 @@ class Post_List extends Module_Base {
 						  				</div>
 								  		<div class="bdt-post-list-desc bdt-width-expand">
 											<?php if ($settings['show_title']) : ?>
-												<<?php echo esc_html($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-post-list-title'); ?>>
+												<<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-post-list-title'); ?>>
 													<a href="<?php echo esc_url(get_permalink()); ?>" class="bdt-post-list-link" title="<?php echo esc_attr(get_the_title()); ?>"><?php echo esc_html(get_the_title()) ; ?></a>
-												</<?php echo esc_html($settings['title_tags']); ?>>
+												</<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?>>
 											<?php endif ?>
 
 							            	<?php if ($settings['show_category'] or $settings['show_date']) : ?>
 
 												<div class="bdt-post-list-meta bdt-subnav bdt-flex-middle">
-													<?php if ($settings['show_date']) : ?>
-														<?php echo '<span>'.get_the_date().'</span>'; ?>
-													<?php endif ?>
-
+													<?php $this->render_date(); ?>
 													<?php if ($settings['show_category']) : ?>
 														<?php echo '<span>'.get_the_category_list(', ').'</span>'; ?>
 													<?php endif ?>

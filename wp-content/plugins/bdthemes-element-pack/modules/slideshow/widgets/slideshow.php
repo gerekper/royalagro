@@ -7,8 +7,9 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Utils;
+use ElementPack\Utils;
 use Elementor\Icons_Manager;
+ 
 
 use ElementPack\Modules\QueryControl\Controls\Group_Control_Posts;
 
@@ -3207,7 +3208,7 @@ class Slideshow extends Module_Base {
 			<?php endif; ?>
 
 			<?php if ($content['title'] && ( $settings['show_title'] )) : ?>
-				<div><<?php echo esc_attr($settings['title_tag']); ?> class="bdt-slideshow-title bdt-display-inline-block" <?php echo \element_pack_helper::attrs($parallax_title); ?>><?php echo wp_kses_post($content['title']); ?></<?php echo esc_attr($settings['title_tag']); ?>></div>
+				<div><<?php echo Utils::get_valid_html_tag($settings['title_tag']); ?> class="bdt-slideshow-title bdt-display-inline-block" <?php echo \element_pack_helper::attrs($parallax_title); ?>><?php echo wp_kses_post($content['title']); ?></<?php echo Utils::get_valid_html_tag($settings['title_tag']); ?>></div>
 			<?php endif; ?>
 
 			<?php if ($content['post_title'] && ( $settings['show_post_title'] )) : ?>

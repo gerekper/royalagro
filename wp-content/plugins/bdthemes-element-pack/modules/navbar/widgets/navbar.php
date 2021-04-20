@@ -881,8 +881,8 @@ class Navbar extends Module_Base {
 		$nav_menu_args = array(
 			'fallback_cb'    => false,
 			'container'      => false,
-			'menu_id'        => 'bdt-navmenu',
 			'menu_class'     => 'bdt-navbar-nav',
+			'items_wrap'     => '<ul class="%2$s">%3$s</ul>',
 			'theme_location' => 'default_navmenu', // creating a fake location for better functional control
 			'menu'           => $nav_menu,
 			'echo'           => true,
@@ -918,7 +918,7 @@ class Navbar extends Module_Base {
 		$this->add_render_attribute('navbar-wrap', 'class', 'bdt-navbar-wrapper');
 
 		?>
-		<div id="<?php echo esc_attr($id); ?>" <?php echo $this->get_render_attribute_string( 'navbar-wrap' ); ?>>
+		<div <?php echo $this->get_render_attribute_string( 'navbar-wrap' ); ?>>
 			<nav <?php echo $this->get_render_attribute_string( 'navbar-attr' ); ?>>
 				<?php wp_nav_menu( apply_filters( 'widget_nav_menu_args', $nav_menu_args, $nav_menu, $settings ) ); ?>
 			</nav>

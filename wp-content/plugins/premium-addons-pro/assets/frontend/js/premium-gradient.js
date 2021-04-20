@@ -35,9 +35,9 @@
             }
 
             settings.colorData = [];
-            settings.angle = generalSettings["angle"];
+            settings.angle = generalSettings.angle;
 
-            $.each(generalSettings["colors"], function (index, color) {
+            $.each(generalSettings.colors, function (index, color) {
                 settings.colorData.push(color);
             });
 

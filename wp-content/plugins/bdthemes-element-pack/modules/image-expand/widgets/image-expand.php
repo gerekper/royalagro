@@ -9,6 +9,7 @@ use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Repeater;
+use ElementPack\Utils;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -978,7 +979,7 @@ class Image_Expand extends Module_Base {
 						<?php endif; ?>
 	
 						<?php if ( $item['image_expand_title'] && ( 'yes' == $settings['show_title'] ) ) : ?>
-							<<?php echo esc_html($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-image-expand-title'); ?>>
+							<<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-image-expand-title'); ?>>
 								<?php if ( '' !== $item['title_link']['url'] ) : ?>
 									<a href="<?php echo esc_url( $item['title_link']['url'] ); ?>">
 								<?php endif; ?>
@@ -986,7 +987,7 @@ class Image_Expand extends Module_Base {
 								<?php if ( '' !== $item['title_link']['url'] ) : ?>
 									</a>
 								<?php endif; ?>
-							</<?php echo esc_html($settings['title_tags']); ?>>
+							</<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?>>
 						<?php endif; ?>
 	
 						<?php if ( $item['image_expand_text'] && ( 'yes' == $settings['show_text'] ) ) : ?>

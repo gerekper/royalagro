@@ -1,6 +1,7 @@
 <?php
 namespace ElementPack\Modules\Countdown\Widgets;
 
+use DateTime;
 use ElementPack\Base\Module_Base;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
@@ -8,8 +9,7 @@ use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Text_Shadow;
-use Elementor\Group_Control_Image_Size;
-use Elementor\Utils;
+use ElementPack\Utils;
 
 use ElementPack\Modules\Countdown\Skins;
 
@@ -1773,7 +1773,7 @@ class Countdown extends Module_Base {
 		$string        = $this->get_strftime( $settings );
 		
 		$with_gmt_time = date( 'Y-m-d H:i', strtotime( $due_date ) - ( get_option( 'gmt_offset' ) * HOUR_IN_SECONDS ) );		
-		$datetime      = new \DateTime($with_gmt_time);
+		$datetime      = new DateTime($with_gmt_time);
 		$final_time    = $datetime->format('c');
 
 		$this->add_render_attribute(
@@ -1782,10 +1782,10 @@ class Countdown extends Module_Base {
 					'id' 	=> 'bdt-countdown-' . $this->get_id() . '-timer',
 					'class' => [
 						'bdt-grid',
-						$settings['count_gap'] ? 'bdt-grid-' . $settings['count_gap'] : '',
-						'bdt-child-width-1-' . $settings['count_column_mobile'],
-						'bdt-child-width-1-' . $settings['count_column_tablet'] . '@s',
-						'bdt-child-width-1-' . $settings['count_column'] . '@m'
+						$settings['count_gap'] ? 'bdt-grid-' . esc_attr($settings['count_gap']) : '',
+						'bdt-child-width-1-' . esc_attr($settings['count_column_mobile']),
+						'bdt-child-width-1-' . esc_attr($settings['count_column_tablet']) . '@s',
+						'bdt-child-width-1-' . esc_attr($settings['count_column']) . '@m'
 					],
 					'bdt-countdown' => [
 						'date: ' . $final_time,

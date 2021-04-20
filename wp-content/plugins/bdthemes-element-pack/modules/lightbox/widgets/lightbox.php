@@ -413,6 +413,40 @@ class Lightbox extends Module_Base {
 		);
 
 		$this->add_control(
+            'glassmorphism_effect',
+            [
+                'label' => esc_html__('Glassmorphism', 'bdthemes-element-pack') . BDTEP_NC,
+				'type'  => Controls_Manager::SWITCHER,
+				'description' => sprintf( __( 'This feature will not work in the Firefox browser untill you enable browser compatibility so please %1s look here %2s', 'bdthemes-element-pack' ), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility" target="_blank">', '</a>' ),
+            
+            ]
+		);
+		
+		$this->add_control(
+            'glassmorphism_blur_level',
+            [
+                'label'       => __('Blur Level', 'bdthemes-element-pack'),
+                'type'        => Controls_Manager::SLIDER,
+                'range'       => [
+                    'px' => [
+                        'min'  => 0,
+                        'step' => 1,
+                        'max'  => 50,
+                    ]
+                ],
+                'default'     => [
+                    'size' => 5
+                ],
+                'selectors'   => [
+                    '{{WRAPPER}} .elementor-button' => 'backdrop-filter: blur({{SIZE}}px); -webkit-backdrop-filter: blur({{SIZE}}px);'
+				],
+				'condition' => [
+					'glassmorphism_effect' => 'yes',
+				]
+            ]
+		);
+
+		$this->add_control(
 			'button_background_color',
 			[
 				'label'     => esc_html__( 'Background Color', 'bdthemes-element-pack' ),

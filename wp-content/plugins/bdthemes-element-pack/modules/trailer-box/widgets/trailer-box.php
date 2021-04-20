@@ -9,6 +9,7 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
 use Elementor\Icons_Manager;
+use ElementPack\Utils;
 
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -2074,9 +2075,9 @@ class Trailer_Box extends Module_Base {
 
 						<?php if ( '' !== $settings['title'] ) : ?>
 							<div class="bdt-trailer-box-title-wrap">
-								<<?php echo esc_html($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-trailer-box-title'); ?>>
+								<<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-trailer-box-title'); ?>>
 									<?php echo wp_kses( $settings['title'], element_pack_allow_tags('title') ); ?>
-								</<?php echo esc_html($settings['title_tags']); ?>>
+								</<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?>>
 							</div>
 						<?php endif; ?>
 

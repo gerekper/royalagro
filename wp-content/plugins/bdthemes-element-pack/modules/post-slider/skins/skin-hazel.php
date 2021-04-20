@@ -2,7 +2,8 @@
 namespace ElementPack\Modules\PostSlider\Skins;
 
 use Elementor\Skin_Base as Elementor_Skin_Base;
-use Elementor\Utils;
+use ElementPack\Utils;
+ 
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -116,9 +117,9 @@ class Skin_Hazel extends Elementor_Skin_Base {
 		?>
 		<div class="bdt-post-slider-title-wrap">
 			<a href="<?php echo get_permalink(); ?>">
-				<<?php echo esc_attr($tag) ?> class="bdt-post-slider-title bdt-margin-remove-bottom">
+				<<?php echo Utils::get_valid_html_tag($tag) ?> class="bdt-post-slider-title bdt-margin-remove-bottom">
 					<?php the_title() ?>
-				</<?php echo esc_attr($tag) ?>>
+				</<?php echo Utils::get_valid_html_tag($tag) ?>>
 			</a>
 		</div>
 		<?php

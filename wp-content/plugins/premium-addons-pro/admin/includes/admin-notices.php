@@ -148,7 +148,7 @@ class Admin_Notices {
 					);
 				?>
 			</div>
-		
+
 		<?php
 	}
 

@@ -557,6 +557,7 @@ class Premium_Divider extends Widget_Base {
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-separator-icon-wrap i, {{WRAPPER}} .premium-separator-text-icon .premium-separator-icon-text' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .premium-separator-icon-wrap svg' => 'fill: {{VALUE}};',
 				),
 			)
 		);
@@ -576,6 +577,7 @@ class Premium_Divider extends Widget_Base {
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-separator-container:hover .premium-separator-icon i, {{WRAPPER}} .premium-separator-container:hover .premium-separator-icon-text' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .premium-separator-container:hover .premium-separator-icon svg' => 'fill: {{VALUE}};',
 				),
 			)
 		);

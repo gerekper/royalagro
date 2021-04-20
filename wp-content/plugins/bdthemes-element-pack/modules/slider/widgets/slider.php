@@ -10,6 +10,7 @@ use Elementor\Group_Control_Box_Shadow;
 use Elementor\Icons_Manager;
 use ElementPack\Element_Pack_Loader;
 use ElementPack\Modules\QueryControl\Controls\Group_Control_Posts;
+use ElementPack\Utils;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -607,6 +608,15 @@ class Slider extends Module_Base {
 				],
 			]
 		);
+
+		$this->add_control(
+            'observer',
+            [
+                'label'       => __( 'Observer', 'bdthemes-element-pack' ) . BDTEP_NC,
+                'description' => __( 'When you use carousel in any hidden place (in tabs, accordion etc) keep it yes.', 'bdthemes-element-pack' ),
+                'type'        => Controls_Manager::SWITCHER,
+            ]
+        );
 
 		$this->end_controls_section();
 
@@ -2294,12 +2304,14 @@ class Slider extends Module_Base {
 				'slider' => [
 					'data-settings' => [
 						wp_json_encode(array_filter([
-							"autoplay" => ("yes" == $settings["autoplay"]) ? ["delay" => $settings["autoplay_speed"]] : false,
-							"loop" => ($settings["loop"] == "yes") ? true : false,
-                            "speed" => $settings["speed"]["size"],
-							"pauseOnHover" => ("yes" == $settings["pauseonhover"]) ? true : false,
-							"effect"       => $settings["transition"],
-					        "navigation" => [
+							"autoplay"       => ("yes" == $settings["autoplay"]) ? ["delay"          => $settings["autoplay_speed"]] : false,
+							"loop"           => ($settings["loop"] == "yes") ? true : false,
+							"speed"          => $settings["speed"]["size"],
+							"pauseOnHover"   => ("yes" == $settings["pauseonhover"]) ? true : false,
+							"observer"       => ( $settings["observer"] ) ? true : false,
+							"observeParents" => ( $settings["observer"] ) ? true : false,
+							"effect"         => $settings["transition"],
+							"navigation"     => [
 								"nextEl" => "#" . $id . " .bdt-navigation-next",
 								"prevEl" => "#" . $id . " .bdt-navigation-prev",
 							],
@@ -2541,9 +2553,9 @@ class Slider extends Module_Base {
 							<div class="bdt-slide-desc bdt-position-large bdt-position-<?php echo ($settings['origin']); ?> bdt-position-z-index">
 
 								<?php if (( '' !== $item['tab_title'] ) && ( $settings['show_title'] )) : ?>
-									<<?php echo esc_html($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-slide-title'); ?>>
+									<<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-slide-title'); ?>>
 										<?php echo wp_kses_post($item['tab_title']); ?>
-									</<?php echo esc_html($settings['title_tags']); ?>>
+									</<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?>>
 								<?php endif; ?>
 
 								<?php if ( '' !== $item['tab_content'] ) : ?>

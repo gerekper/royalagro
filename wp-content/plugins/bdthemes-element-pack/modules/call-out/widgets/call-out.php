@@ -9,6 +9,7 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Icons_Manager;
+use ElementPack\Utils;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -684,9 +685,9 @@ class Call_Out extends Module_Base {
         <div <?php echo $this->get_render_attribute_string( 'callout' ); ?>>
             <div class="bdt-width-expand bdt-first-column">
             	<?php if ($settings['title']) : ?>
-					<<?php echo esc_html($settings['title_size']); ?> <?php echo $this->get_render_attribute_string( 'callout_title' ); ?>>
+					<<?php echo Utils::get_valid_html_tag($settings['title_size']); ?> <?php echo $this->get_render_attribute_string( 'callout_title' ); ?>>
 						<?php echo esc_html($settings['title']); ?>
-					</<?php echo esc_html($settings['title_size']); ?>>
+					</<?php echo Utils::get_valid_html_tag($settings['title_size']); ?>>
             	<?php endif; ?>
 				<?php if ($settings['description']) : ?>
                 	<div class="bdt-callout-description"><?php echo strip_tags($settings['description']); ?></div>
@@ -741,7 +742,7 @@ class Call_Out extends Module_Base {
             <div class="bdt-width-expand bdt-first-column">
             	<# 
 	            	if ('' !== settings.title) { 
-	                	print('<' + settings.title_size + ' class="bdt-callout-title">' + settings.title +'</'+settings.title_size+'>');
+	                	print('<' + elementor.helpers.validateHTMLTag(settings.title_size) + ' class="bdt-callout-title">' + settings.title +'</'+ elementor.helpers.validateHTMLTag(settings.title_size) +'>');
 	            	}
 					if ('' !== settings.description) {
 	                	print('<div class="bdt-callout-description">' + settings.description + '</div>');

@@ -1695,10 +1695,8 @@ function circleJs(id, circleMoving, movingTime , mouseEvent ) {
 
         // Auto height only works when cross origin properly set
         if ( $autoHeight ) {
-              // $($iframe).load(function(){
-                var height = jQuery($iframe).contents().find('html').height();
-                jQuery($iframe).height(height);
-            // });
+            var height = jQuery($iframe).contents().find('html').height();
+            jQuery($iframe).height(height);
         }
 
         $($iframe).recliner({
@@ -4281,19 +4279,31 @@ function circleJs(id, circleMoving, movingTime , mouseEvent ) {
 
 	var widgetScrollButton = function( $scope, $ ) {
 	    
-	    var $scrollButton = $scope.find('.bdt-scroll-button'),
-	    	$selector = $scrollButton.data('selector'),
-	    	$settings =  $scrollButton.data('settings');
+			var $scrollButton = $scope.find('.bdt-scroll-button'),
+			$selector         = $scrollButton.data('selector'),
+			$settings         =  $scrollButton.data('settings');
 
 	    if ( ! $scrollButton.length ) {
 	    	return;
 	    }
 
 	    //$($scrollButton).find('.bdt-scroll-button').unbind();
+	    
+	    if ($settings.HideOnBeforeScrolling) {
+
+			$(window).scroll(function() {
+			  if ($(window).scrollTop() > 300) {
+			    $scrollButton.css("opacity", "1");
+			  } else {
+			    $scrollButton.css("opacity", "0");
+			  }
+			});
+	    }
 
 	    $($scrollButton).on('click', function(event){
 	    	event.preventDefault();
 	    	bdtUIkit.scroll($scrollButton, $settings ).scrollTo($($selector));
+
 	    });
 
 	};

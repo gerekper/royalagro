@@ -116,8 +116,6 @@
             require BDTEP_INC_PATH . 'class-elements-wpml-compatibility.php';
             // For changelog file parse
             require BDTEP_INC_PATH . 'class-parsedown.php';
-            // Template manager for template library
-            require BDTEP_INC_PATH . 'class-template-manager.php';
             
             // Live copy paste from demo website
             if ( $live_copy == 'on' ) {
@@ -144,7 +142,7 @@
                 }
             }
             
-            // editor
+            // editor template library
             if ( !defined( 'BDTEP_CH' ) and $template_library == 'on' ) {
                 require( BDTEP_INC_PATH . 'template-library/editor/init.php' );
             }
@@ -155,7 +153,6 @@
                     // element pack admin settings here
                     require( BDTEP_INC_PATH . 'admin-settings.php' );
                     require( BDTEP_INC_PATH . 'template-library/template-library-base.php' );
-                    require( BDTEP_INC_PATH . 'template-library/template-library.php' );
                     require( BDTEP_INC_PATH . 'template-library/editor/manager/api.php' );
                     
                     // Load admin class for admin related content process
@@ -532,12 +529,6 @@
             
         }
         
-        public function element_pack_template_library() {
-            
-            return Element_Pack_Template_Manager::get_instance();
-            
-        }
-        
         public function element_pack_svg_support() {
             
             return SVG_Support::get_instance();
@@ -589,9 +580,7 @@
             $this->element_pack_svg_support()->init();
             
             $this->wpml_compatiblity()->init();
-            
-            $this->element_pack_template_library()->init();
-            
+                        
         }
     }
     

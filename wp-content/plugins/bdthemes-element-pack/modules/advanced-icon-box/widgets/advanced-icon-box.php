@@ -2561,11 +2561,11 @@ class Advanced_Icon_Box extends Module_Base {
 			<div class="bdt-icon-box-title-wrapper">
 
 				<?php if ( $settings['title_text'] ) : ?>
-				<<?php echo esc_html($settings['title_size']); ?> <?php echo $this->get_render_attribute_string( 'advanced-icon-box-title' ); ?>>
+				<<?php echo Utils::get_valid_html_tag($settings['title_size']); ?> <?php echo $this->get_render_attribute_string( 'advanced-icon-box-title' ); ?>>
 						<span <?php echo $this->get_render_attribute_string( 'title_text' ); ?>>
 							<?php echo wp_kses( $settings['title_text'], element_pack_allow_tags('title') ); ?>
 						</span>
-					</<?php echo esc_html($settings['title_size']); ?>>
+					</<?php echo Utils::get_valid_html_tag($settings['title_size']); ?>>
 				<?php endif; ?>
 
 

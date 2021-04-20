@@ -7,8 +7,9 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Image_Size;
-use Elementor\Utils;
+use ElementPack\Utils;
 use Elementor\Icons_Manager;
+ 
 
 use ElementPack\Modules\QueryControl\Module;
 use ElementPack\Modules\QueryControl\Controls\Group_Control_Posts;
@@ -112,6 +113,29 @@ class Post_Card extends Module_Base {
 				'label'   => esc_html__( 'Date', 'bdthemes-element-pack' ),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
+			]
+		);
+
+		$this->add_control(
+			'human_diff_time',
+			[
+				'label'   => esc_html__( 'Human Different Time', 'bdthemes-element-pack' ) . BDTEP_NC,
+				'type'    => Controls_Manager::SWITCHER,
+				'condition' => [
+					'meta_date' => 'yes'
+				]
+			]
+		);
+
+		$this->add_control(
+			'human_diff_time_short',
+			[
+				'label'   => esc_html__( 'Time Short Format', 'bdthemes-element-pack' ) . BDTEP_NC,
+				'type'    => Controls_Manager::SWITCHER,
+				'condition' => [
+					'human_diff_time' => 'yes',
+					'meta_date' => 'yes'
+				]
 			]
 		);
 
@@ -878,6 +902,20 @@ class Post_Card extends Module_Base {
 		$this->_query = new \WP_Query( $query_args );
 	}
 
+	public function render_date() {
+		$settings = $this->get_settings_for_display();
+
+		if ( ! $settings['meta_date'] ) {
+			return;
+		}
+	 
+		if ($settings['human_diff_time'] == 'yes') {
+			return element_pack_post_time_diff(($settings['human_diff_time_short'] == 'yes') ? 'short' : '');
+        } else {
+			return get_the_date();
+		}
+	}
+
 	public function render() {
 		$settings = $this->get_settings_for_display();
 		$id       = uniqid('bdtpc_');
@@ -957,14 +995,14 @@ class Post_Card extends Module_Base {
 		            	<?php endif ?>
 
 		            	<?php if ('yes' == $settings['title']) : ?>
-							<<?php echo esc_html($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-post-card-title'); ?>>
+							<<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-post-card-title'); ?>>
 								<a href="<?php echo esc_url(get_permalink()); ?>" title="<?php esc_attr(get_the_title()) ; ?>"><?php echo esc_html(get_the_title()) ; ?></a>
-							</<?php echo esc_html($settings['title_tags']); ?>>
+							</<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?>>
 						<?php endif ?>
 
 						<div class="bdt-post-card-meta bdt-subnav bdt-flex-middle">
 						<?php if ('yes' == $settings['meta_date']) :
-							$meta_list = '<span>'.get_the_date().'</span>'; ?>
+							$meta_list = '<span>'.$this->render_date().'</span>'; ?>
 							<?php echo wp_kses_post($meta_list); ?>
 						<?php endif ?>
 						

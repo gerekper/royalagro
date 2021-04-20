@@ -633,13 +633,32 @@ class Module extends Module_Base {
 		?>
 		<# if( 'yes' === settings.premium_lottie_switcher ) {
 
-			view.addRenderAttribute( 'lottie_data', 'id', 'premium-lottie-' + view.getID() );
-			view.addRenderAttribute( 'lottie_data', 'class', 'premium-lottie-wrapper' );
-
-			view.addRenderAttribute( 'lottie_data', 'data-pa-lottie', JSON.stringify( settings.premium_lottie_repeater ) );
+			view.addRenderAttribute( 'lottie_data', {
+				'id': 'premium-lottie-' + view.getID(),
+				'class': 'premium-lottie-wrapper',
+				'data-pa-lottie': JSON.stringify( settings.premium_lottie_repeater )
+			});
 
 		#>
-			<div {{{ view.getRenderAttributeString( 'lottie_data' ) }}}></div>
+			<div {{{ view.getRenderAttributeString( 'lottie_data' ) }}}>
+				<# _.each( settings.premium_lottie_repeater, function( layer , index ) {
+
+					var key = 'lottie_' + layer._id;
+
+					view.addRenderAttribute(key, 'class', [
+						'premium-lottie-layer',
+						'premium-lottie-animation',
+						'premium-lottie-' + layer.lottie_renderer,
+						'elementor-repeater-item-' + layer._id
+					]);
+
+					view.addRenderAttribute(key, 'initialized', true );
+					#>
+						<div {{{ view.getRenderAttributeString( key ) }}}></div>
+					<#
+				});
+				#>
+			</div>
 		<# } #>
 		<?php
 		$slider_content = ob_get_contents();
@@ -681,19 +700,7 @@ class Module extends Module_Base {
 			return;
 		}
 
-		$layers = array();
-
-		foreach ( $repeater as $layer ) {
-
-			array_push( $layers, $layer );
-
-		}
-
-		$lottie_settings = array(
-			'layers' => $layers,
-		);
-
-		$element->add_render_attribute( '_wrapper', 'data-pa-lottie', wp_json_encode( $lottie_settings ) );
+		$element->add_render_attribute( '_wrapper', 'data-pa-lottie', wp_json_encode( $repeater ) );
 
 	}
 }

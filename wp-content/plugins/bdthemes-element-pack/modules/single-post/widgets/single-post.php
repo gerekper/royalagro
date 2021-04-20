@@ -6,7 +6,8 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Core\Schemes;
-use Elementor\Utils;
+use ElementPack\Utils;
+ 
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -533,9 +534,9 @@ class Single_Post extends Module_Base {
 									<a href="<?php echo esc_url(get_permalink($single_post->ID)); ?>" class="bdt-single-post-link" title="<?php echo esc_html($single_post->post_title) ; ?>">
 								<?php endif; ?>									
 
-										<<?php echo esc_html($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-single-post-title'); ?>>
+										<<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('bdt-single-post-title'); ?>>
 											<?php echo esc_html($single_post->post_title) ; ?>
-										</<?php echo esc_html($settings['title_tags']); ?>>
+										</<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?>>
 
 								<?php if ($settings['link_title']) : ?>									
 									</a>

@@ -8,6 +8,7 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Css_Filter;
 use Elementor\Group_Control_Text_Shadow;
+use ElementPack\Utils;
 
 use Elementor\Repeater;
 
@@ -1111,7 +1112,7 @@ class Video_Gallery extends Module_Base {
 					<div class="rvs-item-text">
 
 						<?php if ( $settings['show_video_title'] ) : ?>
-							<<?php echo $settings['show_video_title_tags'] ?> class="bdt-vg-video-title"><?php echo esc_html( $video['title'] ); ?></<?php echo $settings['show_video_title_tags'] ?>>
+							<<?php echo Utils::get_valid_html_tag($settings['show_video_title_tags']); ?> class="bdt-vg-video-title"><?php echo esc_html( $video['title'] ); ?></<?php echo Utils::get_valid_html_tag($settings['show_video_title_tags']); ?>>
 						<?php endif; ?>
 
 						<?php if ( $settings['show_video_desc'] ) : ?>
@@ -1158,7 +1159,7 @@ class Video_Gallery extends Module_Base {
 					<?php endif; ?>
 
 					<?php if ( 'yes' == $settings['show_thumbnail_title'] ) : ?>
-						<<?php echo $settings['thumbnail_title_tags'] ?> class="rvs-nav-item-title" title="<?php echo esc_html( $video['title'] ); ?>"><?php echo esc_html( $video['title'] ); ?></<?php echo $settings['thumbnail_title_tags'] ?>>
+						<<?php echo Utils::get_valid_html_tag($settings['thumbnail_title_tags']); ?> class="rvs-nav-item-title" title="<?php echo esc_html( $video['title'] ); ?>"><?php echo esc_html( $video['title'] ); ?></<?php echo Utils::get_valid_html_tag($settings['thumbnail_title_tags']); ?>>
 					<?php endif; ?>
 
 					<?php if ( 'yes' == $settings['show_thumbnail_desc'] ) : ?>

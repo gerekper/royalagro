@@ -1220,6 +1220,7 @@ class Premium_Flipbox extends Widget_Base {
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-flip-front-icon' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .premium-flip-text-wrapper svg' => 'fill: {{VALUE}};',
 				),
 				'condition' => array(
 					'premium_flip_icon_selection' => 'icon',
@@ -1502,14 +1503,15 @@ class Premium_Flipbox extends Widget_Base {
 		$this->add_control(
 			'premium_flip_back_fa_color_selection',
 			array(
-				'label'     => __( 'Icon Color', 'premium-addons-pro' ),
+				'label'     => __( 'Color', 'premium-addons-pro' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
 					'type'  => Color::get_type(),
 					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .premium-flip-back-icon' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .premium-flip-back-icon' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .premium-flip-back-text-wrapper svg' => 'fill: {{VALUE}}',
 				),
 				'condition' => array(
 					'premium_flip_back_icon_fa_switcher' => 'yes',

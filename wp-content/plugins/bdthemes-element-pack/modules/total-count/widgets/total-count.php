@@ -10,7 +10,8 @@
 	use Elementor\Group_Control_Background;
 	use Elementor\Group_Control_Css_Filter;
 	use Elementor\Icons_Manager;
-	use Elementor\Utils;
+	use ElementPack\Utils;
+ 
 	
 	if ( ! defined( 'ABSPATH' ) ) {
 		exit;
@@ -1583,10 +1584,10 @@
 						<?php endif; ?>
 					<?php endif; ?>
 					<?php if ( $settings['content_text'] ): ?>
-                    <<?php echo esc_html( $settings['counter_number_size'] ); ?> <?php echo $this->get_render_attribute_string( 'content_text' ); ?>
+                    <<?php echo Utils::get_valid_html_tag( $settings['counter_number_size'] ); ?> <?php echo $this->get_render_attribute_string( 'content_text' ); ?>
                     >
 					<?php echo wp_kses( $settings['content_text'], element_pack_allow_tags( 'text' ) ); ?>
-                </<?php echo esc_html( $settings['counter_number_size'] ); ?>>
+                </<?php echo Utils::get_valid_html_tag( $settings['counter_number_size'] ); ?>>
 			<?php endif;
 			?>
             </div>
