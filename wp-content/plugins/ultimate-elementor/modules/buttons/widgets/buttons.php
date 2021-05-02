@@ -13,8 +13,8 @@ use Elementor\Utils;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Repeater;
 use Elementor\Widget_Button;
 use Elementor\Group_Control_Background;
@@ -315,9 +315,8 @@ class Buttons extends Common_Widget {
 						array(
 							'label'     => __( 'Background Color', 'uael' ),
 							'type'      => Controls_Manager::COLOR,
-							'scheme'    => array(
-								'type'  => Scheme_Color::get_type(),
-								'value' => Scheme_Color::COLOR_4,
+							'global'    => array(
+								'default' => Global_Colors::COLOR_ACCENT,
 							),
 							'selectors' => array(
 								'{{WRAPPER}} {{CURRENT_ITEM}} .elementor-button' => 'background-color: {{VALUE}};',
@@ -371,9 +370,8 @@ class Buttons extends Common_Widget {
 						array(
 							'label'     => __( 'Background Color', 'uael' ),
 							'type'      => Controls_Manager::COLOR,
-							'scheme'    => array(
-								'type'  => Scheme_Color::get_type(),
-								'value' => Scheme_Color::COLOR_4,
+							'global'    => array(
+								'default' => Global_Colors::COLOR_ACCENT,
 							),
 							'selectors' => array(
 								'{{WRAPPER}} {{CURRENT_ITEM}} .elementor-button:hover' => 'background-color: {{VALUE}};',
@@ -386,9 +384,8 @@ class Buttons extends Common_Widget {
 						array(
 							'label'     => __( 'Border Hover Color', 'uael' ),
 							'type'      => Controls_Manager::COLOR,
-							'scheme'    => array(
-								'type'  => Scheme_Color::get_type(),
-								'value' => Scheme_Color::COLOR_4,
+							'global'    => array(
+								'default' => Global_Colors::COLOR_ACCENT,
 							),
 							'selectors' => array(
 								'{{WRAPPER}} {{CURRENT_ITEM}} .elementor-button:hover' => 'border-color: {{VALUE}};',
@@ -400,7 +397,9 @@ class Buttons extends Common_Widget {
 						Group_Control_Typography::get_type(),
 						array(
 							'name'     => 'btn_typography',
-							'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+							'global'   => array(
+								'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+							),
 							'selector' => '{{WRAPPER}} {{CURRENT_ITEM}} a.elementor-button, {{WRAPPER}} {{CURRENT_ITEM}} a.elementor-button .elementor-button-icon i,{{WRAPPER}} {{CURRENT_ITEM}} a.elementor-button .elementor-button-icon svg',
 						)
 					);
@@ -582,9 +581,8 @@ class Buttons extends Common_Widget {
 						array(
 							'label'     => __( 'Background Color', 'uael' ),
 							'type'      => Controls_Manager::COLOR,
-							'scheme'    => array(
-								'type'  => Scheme_Color::get_type(),
-								'value' => Scheme_Color::COLOR_4,
+							'global'    => array(
+								'default' => Global_Colors::COLOR_ACCENT,
 							),
 							'selectors' => array(
 								'{{WRAPPER}} a.elementor-button' => 'background-color: {{VALUE}};',
@@ -646,9 +644,8 @@ class Buttons extends Common_Widget {
 						array(
 							'label'     => __( 'Background Color', 'uael' ),
 							'type'      => Controls_Manager::COLOR,
-							'scheme'    => array(
-								'type'  => Scheme_Color::get_type(),
-								'value' => Scheme_Color::COLOR_4,
+							'global'    => array(
+								'default' => Global_Colors::COLOR_ACCENT,
 							),
 							'selectors' => array(
 								'{{WRAPPER}} a.elementor-button:hover' => 'background-color: {{VALUE}};',
@@ -727,7 +724,9 @@ class Buttons extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'all_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					),
 					'selector' => '{{WRAPPER}} a.elementor-button,{{WRAPPER}} a.elementor-button svg',
 				)
 			);

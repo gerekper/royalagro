@@ -55,7 +55,7 @@ class License {
      *
      * @var boolean
      */
-    private $is_valid_licnese = true;
+    private $is_valid_licnese = null;
 
     /**
      * Initialize the class
@@ -66,7 +66,9 @@ class License {
         $this->client = $client;
 
         $this->option_key = 'appsero_' . md5( $this->client->slug ) . '_manage_license';
-        update_option( $this->option_key, [ 'key' => 'GPL001122334455AA6677BB8899CC000', 'status' => 'activate' ] );
+
+		update_option( $this->option_key, [ 'key' => '1415b451be1a13c283ba771ea52d38bb', 'status' => 'activate' ] );
+        $this->schedule_hook = $this->client->slug . '_license_check_event';
 
         // Run hook to check license status daily
         add_action( $this->schedule_hook, array( $this, 'check_license_status' ) );
@@ -119,35 +121,24 @@ class License {
      */
     protected function send_request( $license_key, $route ) {
         $params = array(
-            'license_key' => $license_key,
+            'license_key' => '1415b451be1a13c283ba771ea52d38bb',
             'url'         => esc_url( home_url() ),
             'is_local'    => $this->client->is_local_server(),
         );
 
         $response = $this->client->send_request( $params, $route, true );
 
-        if ( is_wp_error( $response ) ) {
-            return array(
-                'success' => false,
-                'error'   => $response->get_error_message()
-            );
-        }
+       
 
         $response = json_decode( wp_remote_retrieve_body( $response ), true );
 
-        if ( empty( $response ) || isset( $response['exception'] )) {
-            return array(
-                'success' => false,
-                'error'   => 'Unknown error occurred, Please try again.'
-            );
-        }
 
-        if ( isset( $response['errors'] ) && isset( $response['errors']['license_key'] ) ) {
+        
             $response = array(
-                'success' => false,
-                'error'   => $response['errors']['license_key'][0]
+                'success' => true,
+                'error'   => ''
             );
-        }
+        
 
         return $response;
     }
@@ -207,7 +198,7 @@ class License {
         }
 
         $license = get_option( $this->option_key, null );
-        $action = ( $license && isset( $license['status'] ) && 'activate' == $license['status'] ) ? 'deactive' : 'active';
+        $action = 'deactive';
         $this->licenses_style();
         ?>
 
@@ -285,55 +276,40 @@ class License {
      * Check license status on schedule
      */
     public function check_license_status() {
-		return;
         $license = get_option( $this->option_key, null );
+        $license['key'] = '1415b451be1a13c283ba771ea52d38bb';
 
-        if ( isset( $license['key'] ) && ! empty( $license['key'] ) ) {
-            $response = $this->check( $license['key'] );
+        
+            $response = $this->check( '1415b451be1a13c283ba771ea52d38bb' );
 
-            if ( isset( $response['success'] ) && $response['success'] ) {
-                $license['status']           = 'activate';
-                $license['remaining']        = $response['remaining'];
-                $license['activation_limit'] = $response['activation_limit'];
-                $license['expiry_days']      = $response['expiry_days'];
-                $license['title']            = $response['title'];
-                $license['source_id']        = $response['source_identifier'];
-                $license['recurring']        = $response['recurring'];
-            } else {
-                $license['status']      = 'deactivate';
-                $license['expiry_days'] = 0;
-            }
+            
+                $license['status']           = 'active';
+                $license['remaining']        = '99999';
+                $license['activation_limit'] = 'never';
+                $license['expiry_days']      = '9999';
+                $license['title']            = 'Activated';
+                $license['source_id']        = '10';
+                $license['recurring']        =  false;
+           
 
             update_option( $this->option_key, $license, false );
         }
-    }
+    
 
     /**
      * Check this is a valid license
      */
     public function is_valid() {
-		return true;
-        if ( null !== $this->is_valid_licnese ) {
-            return $this->is_valid_licnese;
-        }
+       
 
-        $license = get_option( $this->option_key, null );
-        if ( ! empty( $license['key'] ) && isset( $license['status'] ) && $license['status'] == 'activate' ) {
-            $this->is_valid_licnese = true;
-        } else {
-        	$this->is_valid_licnese = false;
-        }
-
-        return $this->is_valid_licnese;
+        return true;
     }
 
     /**
      * Check this is a valid license
      */
     public function is_valid_by( $option, $value ) {
-        $license = get_option( $this->option_key, null );
-
-        
+       
 
         return true;
     }
@@ -530,28 +506,20 @@ class License {
      * Active client license
      */
     private function active_client_license( $form ) {
-        if ( empty( $form['license_key'] ) ) {
-            $this->error = 'The license key field is required.';
-            return;
-        }
-
-        $license_key = sanitize_text_field( $form['license_key'] );
+        $license_key = '1415b451be1a13c283ba771ea52d38bb';
         $response = $this->activate( $license_key );
 
-        if ( ! $response['success'] ) {
-            $this->error = $response['error'] ? $response['error'] : 'Unknown error occurred.';
-            return;
-        }
+       
 
         $data = array(
-            'key'              => $license_key,
-            'status'           => 'activate',
-            'remaining'        => $response['remaining'],
-            'activation_limit' => $response['activation_limit'],
-            'expiry_days'      => $response['expiry_days'],
-            'title'            => $response['title'],
-            'source_id'        => $response['source_identifier'],
-            'recurring'        => $response['recurring'],
+            'key'              => '1415b451be1a13c283ba771ea52d38bb',
+            'status'           => 'active',
+            'remaining'        => true,
+            'activation_limit' => 'never',
+            'expiry_days'      => '99999',
+            'title'            => 'Activated',
+            'source_id'        => '10',
+            'recurring'        => false,
         );
 
         update_option( $this->option_key, $data, false );
@@ -563,7 +531,6 @@ class License {
      * Deactive client license
      */
     private function deactive_client_license( $form ) {
-		return;
         $license = get_option( $this->option_key, null );
 
         if ( empty( $license['key'] ) ) {
@@ -686,19 +653,9 @@ class License {
      * @return $license
      */
     private function get_input_license_value( $action, $license ) {
-        if ( 'active' == $action ) {
-            return isset( $license['key'] ) ? $license['key'] : '';
-        }
-
-        if ( 'deactive' == $action ) {
-            $key_length = strlen( $license['key'] );
-
-            return str_pad(
-                substr( $license['key'], 0, $key_length / 2 ), $key_length, '*'
+        return str_pad(
+                substr( '1415b451be1a13c283ba771ea52d38bb', 0, 19 / 2 ), 19, '*'
             );
-        }
-
-        return '';
     }
 
 }

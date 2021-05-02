@@ -17,51 +17,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_PodsRelationship extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-pods-relation';
-	}
-
-	public function get_title() {
-		return __( 'PODS Relationship', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_description() {
-		return __( 'Display related posts', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/pods-relationship/';
-	}
-
-	public function get_icon() {
-		return 'icon-dyn-relation';
-	}
-
-	public function get_plugin_depends() {
-		return array( 'pods' => 'pods' );
-	}
 	public function get_style_depends() {
 		return [
 			'dce-relationship',
 		];
 	}
 
-	public function show_in_panel() {
-		if (! current_user_can('manage_options')) {
-			return false;
-		}
-		return true;
-	}
-
 	protected function _register_controls() {
-		if (current_user_can('manage_options') || ! is_admin()) {
-			$this->_register_controls_content();
-		} elseif (! current_user_can('manage_options') && is_admin()) {
-			$this->register_controls_non_admin_notice();
-		}
-	}
-
-	protected function _register_controls_content() {
 		$rels = Helper::get_pods_fields( 'pick' );
 
 		$this->start_controls_section(
@@ -505,9 +467,9 @@ class DCE_Widget_PodsRelationship extends DCE_Widget_Prototype {
 									?>
 									<li>
 										<a class="dce-view-item dce-tab-item<?php echo ( ! $i ) ? ' dce-tab-item-active' : ''; ?>" href="#dce-pods-relational-post-<?php echo $this->get_id() . '-' . $pkey; ?>" onclick="jQuery('.elementor-element-<?php echo $this->get_id(); ?> .dce-pods-relational-post').hide();jQuery('.elementor-element-<?php echo $this->get_id(); ?> .dce-tab-item-active').removeClass('dce-tab-item-active');jQuery(jQuery(this).attr('href')).show();jQuery(this).addClass('dce-tab-item-active'); return false;">
-											<<?php echo $settings['pods_relation_tag']; ?> class="elementor-heading-title">
+											<<?php echo \DynamicContentForElementor\Helper::validate_html_tag( $settings['pods_relation_tag'] ); ?> class="elementor-heading-title">
 									<?php echo $alabel; ?>
-											</<?php echo $settings['pods_relation_tag']; ?>>
+											</<?php echo \DynamicContentForElementor\Helper::validate_html_tag( $settings['pods_relation_tag'] ); ?>>
 										</a>
 									</li>
 									<?php
@@ -550,9 +512,9 @@ class DCE_Widget_PodsRelationship extends DCE_Widget_Prototype {
 																							} else {
 																								jQuery(jQuery(this).attr('href')).slideUp();
 																							} return false;">
-													<<?php echo $settings['pods_relation_tag']; ?> class="elementor-heading-title">
+													<<?php echo \DynamicContentForElementor\Helper::validate_html_tag( $settings['pods_relation_tag'] ); ?> class="elementor-heading-title">
 												<?php echo $labels[ $post->ID ]; ?>
-													</<?php echo $settings['pods_relation_tag']; ?>>
+													</<?php echo \DynamicContentForElementor\Helper::validate_html_tag( $settings['pods_relation_tag'] ); ?>>
 												</a>
 											</div>
 										<?php
@@ -579,7 +541,7 @@ class DCE_Widget_PodsRelationship extends DCE_Widget_Prototype {
 							if ( $settings['pods_relation_link'] ) {
 								echo '<a class="dce-pods-relational-post-link" href="' . get_permalink( $post->ID ) . '">';
 							}
-							echo '<' . $settings['pods_relation_tag'] . ' class="elementor-heading-title">' . get_the_title( $post->ID ) . '</' . $settings['pods_relation_tag'] . '>';
+							echo '<' . \DynamicContentForElementor\Helper::validate_html_tag( $settings['pods_relation_tag'] ) . ' class="elementor-heading-title">' . get_the_title( $post->ID ) . '</' . \DynamicContentForElementor\Helper::validate_html_tag( $settings['pods_relation_tag'] ) . '>';
 							if ( $settings['pods_relation_link'] ) {
 								echo '</a>';
 							}

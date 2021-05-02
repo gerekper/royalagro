@@ -9,7 +9,7 @@ use \Elementor\Group_Control_Box_Shadow;
 use \Elementor\Group_Control_Image_Size;
 use \Elementor\Group_Control_Typography;
 use Elementor\Plugin;
-use \Elementor\Scheme_Typography;
+use \Elementor\Core\Schemes\Typography;
 use \Elementor\Widget_Base;
 use \Elementor\Utils;
 
@@ -822,7 +822,7 @@ class Post_List extends Widget_Base
             [
                 'name' => 'eael_section_post_list_topbar_tag_typo',
                 'label' => __('Tag Typography', 'essential-addons-elementor'),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                'scheme' => Typography::TYPOGRAPHY_3,
                 'selector' => '{{WRAPPER}} .eael-post-list-header .header-title .title',
             ]
         );
@@ -839,7 +839,7 @@ class Post_List extends Widget_Base
             [
                 'name' => 'eael_section_post_list_topbar_category_typo',
                 'label' => __('Typography', 'essential-addons-elementor'),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                'scheme' => Typography::TYPOGRAPHY_3,
                 'selector' => '{{WRAPPER}} .eael-post-list-header .post-categories a',
             ]
         );
@@ -1146,7 +1146,7 @@ class Post_List extends Widget_Base
             [
                 'name' => 'eael_post_list_featured_title_typography',
                 'label' => __('Typography', 'essential-addons-elementor'),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                'scheme' => Typography::TYPOGRAPHY_1,
                 'selector' => '{{WRAPPER}} .eael-post-list-featured-wrap .featured-content .eael-post-list-title, {{WRAPPER}} .eael-post-list-featured-wrap .featured-content .eael-post-list-title a',
             ]
         );
@@ -1202,7 +1202,7 @@ class Post_List extends Widget_Base
             [
                 'name' => 'eael_post_list_featured_excerpt_typography',
                 'label' => __('Excerpt Typography', 'essential-addons-elementor'),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                'scheme' => Typography::TYPOGRAPHY_3,
                 'selector' => '{{WRAPPER}} .eael-post-list-featured-wrap .featured-content p',
             ]
         );
@@ -1254,7 +1254,7 @@ class Post_List extends Widget_Base
             [
                 'name' => 'eael_post_list_featured_meta_typography',
                 'label' => __('Date Typography', 'essential-addons-elementor'),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                'scheme' => Typography::TYPOGRAPHY_3,
                 'selector' => '{{WRAPPER}} .eael-post-list-featured-wrap .featured-content .meta',
             ]
         );
@@ -1399,7 +1399,7 @@ class Post_List extends Widget_Base
             [
                 'name' => 'eael_post_list_title_typography',
                 'label' => __('Typography', 'essential-addons-elementor'),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                'scheme' => Typography::TYPOGRAPHY_1,
                 'selector' => '{{WRAPPER}} .eael-post-list-content .eael-post-list-title, {{WRAPPER}} .eael-post-list-content .eael-post-list-title a',
             ]
         );
@@ -1455,7 +1455,7 @@ class Post_List extends Widget_Base
             [
                 'name' => 'eael_post_list_excerpt_typography',
                 'label' => __('Excerpt Typography', 'essential-addons-elementor'),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                'scheme' => Typography::TYPOGRAPHY_3,
                 'selector' => '{{WRAPPER}} .eael-post-list-content p',
             ]
         );
@@ -1507,7 +1507,7 @@ class Post_List extends Widget_Base
             [
                 'name' => 'eael_post_list_meta_typography',
                 'label' => __('Meta Typography', 'essential-addons-elementor'),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                'scheme' => Typography::TYPOGRAPHY_3,
                 'selector' => '{{WRAPPER}} .eael-post-list-content .meta',
             ]
         );
@@ -1706,7 +1706,7 @@ class Post_List extends Widget_Base
             [
                 'name' => 'author_name_typography',
                 'label' => __('Title Typography', 'essential-addons-elementor'),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                'scheme' => Typography::TYPOGRAPHY_3,
                 'selector' => '{{WRAPPER}} .eael-post-list-container.layout-advanced .eael-post-list-post .eael-post-list-content .boxed-meta .author-info h5',
             ]
         );
@@ -1749,7 +1749,7 @@ class Post_List extends Widget_Base
             [
                 'name' => 'author_meta_date_typography',
                 'label' => __('Date Typography', 'essential-addons-elementor'),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                'scheme' => Typography::TYPOGRAPHY_3,
                 'selector' => '{{WRAPPER}} .eael-post-list-container.layout-advanced .eael-post-list-posts-wrap .eael-post-list-post .eael-post-list-content .boxed-meta .author-meta .author-info > a p',
             ]
         );
@@ -1784,7 +1784,7 @@ class Post_List extends Widget_Base
             [
                 'name' => 'category_typography',
                 'label' => __('Typography', 'essential-addons-elementor'),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                'scheme' => Typography::TYPOGRAPHY_3,
                 'selector' => '{{WRAPPER}} .eael-post-list-container.layout-advanced .eael-post-list-content .boxed-meta .meta-categories .meta-cats-wrap a, {{WRAPPER}} .eael-post-list-container.layout-default .eael-post-list-content .meta-categories a, {{WRAPPER}} .eael-post-list-container.layout-preset-2 .eael-post-list-content .meta-categories a, {{WRAPPER}} .eael-post-list-container.layout-preset-2 .eael-post-list-content .meta-categories a, {{WRAPPER}} .eael-post-list-container.layout-default .featured-content .meta-categories a, {{WRAPPER}} .eael-post-list-container.layout-preset-2 .featured-content .meta-categories a, {{WRAPPER}} .eael-post-list-container.layout-preset-3 .featured-content .meta-categories a',
             ]
         );

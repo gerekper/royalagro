@@ -12,7 +12,7 @@ use Elementor\Controls_Manager;
 use Elementor\Utils;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 
 // UltimateElementor Classes.
 use UltimateElementor\Base\Common_Widget;
@@ -547,7 +547,9 @@ class BaSlider extends Common_Widget {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'label_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+				),
 				'selector' => '{{WRAPPER}} .twentytwenty-before-label:before, {{WRAPPER}} .twentytwenty-after-label:before',
 			)
 		);

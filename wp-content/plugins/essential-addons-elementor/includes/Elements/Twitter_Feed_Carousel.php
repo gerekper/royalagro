@@ -1387,8 +1387,8 @@ class Twitter_Feed_Carousel extends Widget_Base
                 'label'     => __('Color', 'essential-addons-elementor'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'scheme'    => [
-                    'type'  => \Elementor\Scheme_Color::get_type(),
-                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                    'type'  => \Elementor\Core\Schemes\Color::get_type(),
+                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eael-twitter-feed-item .eael-twitter-feed-item-icon' => 'color: {{VALUE}}',

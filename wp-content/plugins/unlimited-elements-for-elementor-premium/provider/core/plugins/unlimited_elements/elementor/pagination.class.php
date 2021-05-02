@@ -393,6 +393,7 @@ class UniteCreatorElementorPagination{
 	 */
 	public function putPaginationWidgetHtml($args){
 		
+		
 		$putPrevNext = UniteFunctionsUC::getVal($args, "put_prev_next_buttons");
 		$putPrevNext = UniteFunctionsUC::strToBool($putPrevNext);
 		
@@ -443,14 +444,15 @@ class UniteCreatorElementorPagination{
 		//$options["current"] = 3;
 		
 		//-------- put pagination html
-				
-		$isArchivePage = is_archive();
+					
+		$isArchivePage = UniteFunctionsWPUC::isArchiveLocation();
+		
 		if($isArchivePage == true){
 						
 			$options = $this->getArchivePageOptions($options);
-			
 			$pagination = get_the_posts_pagination($options);
-		}else{
+			
+		}else{		//on single
 			
 			//skip for home pages
 			if(is_home() == true)

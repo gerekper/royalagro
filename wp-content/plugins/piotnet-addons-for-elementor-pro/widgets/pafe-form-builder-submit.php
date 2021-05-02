@@ -396,12 +396,45 @@ class PAFE_Form_Builder_Submit extends \Elementor\Widget_Base {
 		$this->add_control(
 			'form_database_disable',
 			[
-				'label' => __( 'Disable', 'piotnetforms' ),
+				'label' => __( 'Disable', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'default' => '',
 				'label_on' => 'Yes',
 				'label_off' => 'No',
 				'return_value' => 'yes',
+			]
+		);
+		$this->add_control(
+			'form_database_hidden_field_option',
+			[
+				'label' => __( 'Hidden Field (Database)', 'pafe' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'description' => 'When selected, the fields will be saved as ******.',
+				'default' => '',
+				'label_on' => 'Yes',
+				'label_off' => 'No',
+				'return_value' => 'yes',
+			]
+		);
+		$repeater = new \Elementor\Repeater();
+		$repeater->add_control(
+			'form_database_hidden_field',
+			[
+				'label' => __( 'Field ID', 'pafe' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+			]
+		);
+
+		$this->add_control(
+			'form_database_list_hidden_field',
+			[
+				'label' => __( 'Field List', 'pafe' ),
+				'type' => \Elementor\Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),
+				'condition' => [
+					'form_database_hidden_field_option' => 'yes'
+				],
+				'title_field' => '{{{ form_database_hidden_field }}}',
 			]
 		);
 
@@ -1915,9 +1948,9 @@ class PAFE_Form_Builder_Submit extends \Elementor\Widget_Base {
 		$this->add_control(
 			'paypal_locale',
 			[
-				'label'       => __( 'Locale', 'piotnetforms' ),
+				'label'       => __( 'Locale', 'pafe' ),
 				'type'        => \Elementor\Controls_Manager::TEXT,
-				'description' => __( 'E.g "fr_FR". By default PayPal smartly detects the correct locale for the buyer based on their geolocation and browser preferences. Go to this url to get your locale value <a href="https://developer.paypal.com/docs/checkout/reference/customize-sdk/#locale" target="_blank">https://developer.paypal.com/docs/checkout/reference/customize-sdk/#locale</a>', 'piotnetforms' ),
+				'description' => __( 'E.g "fr_FR". By default PayPal smartly detects the correct locale for the buyer based on their geolocation and browser preferences. Go to this url to get your locale value <a href="https://developer.paypal.com/docs/checkout/reference/customize-sdk/#locale" target="_blank">https://developer.paypal.com/docs/checkout/reference/customize-sdk/#locale</a>', 'pafe' ),
 				'condition'   => [
 					'paypal_enable' => 'yes',
 				],
@@ -5704,7 +5737,13 @@ class PAFE_Form_Builder_Submit extends \Elementor\Widget_Base {
 								requiredText = $(this).attr('oninvalid').replace("this.setCustomValidity('","").replace("')","");
 							}
 
-							if ( !$(this)[0].checkValidity() && $(this).closest('.elementor-widget').css('display') != 'none' && $(this).closest('[data-pafe-form-builder-conditional-logic]').css('display') != 'none' && $(this).data('pafe-form-builder-honeypot') == undefined &&  $(this).closest('[data-pafe-signature]').length == 0 || checked == 0 && $checkboxRequired.length > 0 && $(this).closest('.elementor-element').css('display') != 'none') {
+                            var isValid = $(this)[0].checkValidity();
+                            var next_ele = $($(this)[0]).next()[0];
+                            if ($(next_ele).hasClass('flatpickr-mobile')) {
+                                isValid = next_ele.checkValidity();
+                            }
+
+							if ( !isValid && $(this).closest('.elementor-widget').css('display') != 'none' && $(this).closest('[data-pafe-form-builder-conditional-logic]').css('display') != 'none' && $(this).data('pafe-form-builder-honeypot') == undefined &&  $(this).closest('[data-pafe-signature]').length == 0 || checked == 0 && $checkboxRequired.length > 0 && $(this).closest('.elementor-element').css('display') != 'none') {
 								if ($(this).css('display') == 'none' || $(this).closest('div').css('display') == 'none' || $(this).data('pafe-form-builder-image-select') != undefined || $checkboxRequired.length > 0) {
 									$(this).closest('.elementor-field-group').find('[data-pafe-form-builder-required]').html(requiredText);
 								} else {

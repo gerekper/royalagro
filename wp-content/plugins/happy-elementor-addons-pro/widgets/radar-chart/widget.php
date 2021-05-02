@@ -8,7 +8,7 @@ namespace Happy_Addons_Pro\Widget;
 
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Happy_Addons_Pro\Widget\Radar_Chart\Data_Map;
 
 defined( 'ABSPATH' ) || die();

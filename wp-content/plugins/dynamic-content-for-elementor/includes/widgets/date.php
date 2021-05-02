@@ -13,47 +13,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_Date extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-date';
-	}
-
-	public static function get_position() {
-		return 4;
-	}
-	public function get_title() {
-		return __( 'Date', 'dynamic-content-for-elementor' );
-	}
-	public function get_description() {
-		return __( 'Put a date on your article', 'dynamic-content-for-elementor' );
-	}
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/date/';
-	}
-	public function get_icon() {
-		return 'icon-dyn-date';
-	}
 	public function get_style_depends() {
 		return [
 			'dce-date',
 		];
 	}
 
-	public function show_in_panel() {
-		if (! current_user_can('manage_options')) {
-			return false;
-		}
-		return true;
-	}
-
 	protected function _register_controls() {
-		if (current_user_can('manage_options') || ! is_admin()) {
-			$this->_register_controls_content();
-		} elseif (! current_user_can('manage_options') && is_admin()) {
-			$this->register_controls_non_admin_notice();
-		}
-	}
-
-	protected function _register_controls_content() {
 
 		$post_type_object = get_post_type_object( get_post_type() );
 
@@ -462,13 +428,13 @@ class DCE_Widget_Date extends DCE_Widget_Prototype {
 		}
 
 		$allDate = $textBefore . '<' . $subtag . ' class="d1">' . $date . '</' . $subtag . '>' . $date_separator1 . '<' . $subtag . ' class="d2">' . $date2 . '</' . $subtag . '>' . $date_separator2 . '<' . $subtag . ' class="d3">' . $date3 . '</' . $subtag . '>';
-		$html = sprintf( '<%1$s class="dynamic-content-for-elementor-date %2$s%3$s">', $settings['html_tag'], $animation_class, $floatDate );
+		$html = sprintf( '<%1$s class="dynamic-content-for-elementor-date %2$s%3$s">', \DynamicContentForElementor\Helper::validate_html_tag( $settings['html_tag'] ), $animation_class, $floatDate );
 		if ( $link ) {
 			$html .= sprintf( '<a href="%1$s" %2$s>%3$s</a>', $link, $target, $allDate );
 		} else {
 			$html .= $allDate;
 		}
-		$html .= sprintf( '</%s>', $settings['html_tag'] );
+		$html .= sprintf( '</%s>', \DynamicContentForElementor\Helper::validate_html_tag( $settings['html_tag'] ) );
 
 		echo $html;
 	}

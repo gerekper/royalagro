@@ -10,36 +10,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_RawPhp extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dce-rawphp';
-	}
-
 	public function show_in_panel() {
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( 'install_plugins' ) ) {
 			return false;
 		}
 		return true;
 	}
 
-	public function get_title() {
-		return __( 'PHP Raw', 'dynamic-content-for-elementor' );
-	}
-	public function get_description() {
-		return __( 'Add PHP code directly in Elementor', 'dynamic-content-for-elementor' );
-	}
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/php-raw/';
-	}
-	public function get_icon() {
-		return 'icon-dyn-phprow';
-	}
-
 	protected function _register_controls() {
 
-		if ( current_user_can( 'manage_options' ) || ! is_admin() ) {
+		if ( current_user_can( 'install_plugins' ) || ! is_admin() ) {
 			$this->register_controls_content();
-		} elseif ( ! current_user_can( 'manage_options' ) && is_admin() ) {
+		} elseif ( ! current_user_can( 'install_plugins' ) && is_admin() ) {
 			$this->register_controls_non_admin_notice();
 		}
 	}
@@ -67,19 +50,19 @@ class DCE_Widget_RawPhp extends DCE_Widget_Prototype {
 		$settings = $this->get_settings_for_display( null, true );
 
 		if (
-			current_user_can( 'manage_options' )
+			current_user_can( 'install_plugins' )
 			&& \Elementor\Plugin::$instance->editor->is_edit_mode()
 			&& empty( $settings['custom_php'] )
 		) {
 			echo __( 'Add your Custom PHP Code to begin.', 'dynamic-content-for-elementor' );
 		} elseif (
-			! current_user_can( 'manage_options' )
+			! current_user_can( 'install_plugins' )
 			&& \Elementor\Plugin::$instance->editor->is_edit_mode()
 		) {
 			$this->render_non_admin_notice();
 		} elseif (
 			(
-				current_user_can( 'manage_options' )
+				current_user_can( 'install_plugins' )
 				&& \Elementor\Plugin::$instance->editor->is_edit_mode()
 				&& ! empty( $settings['custom_php'] )
 			)

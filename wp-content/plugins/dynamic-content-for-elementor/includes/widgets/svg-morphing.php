@@ -13,48 +13,30 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_SvgMorphing extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-svgmorphing';
-	}
-
-	public function get_title() {
-		return __( 'SVG Morphing', 'dynamic-content-for-elementor' );
-	}
-	public function get_icon() {
-		return 'icon-dyn-svgmorph';
-	}
 	public function get_script_depends() {
 		return [ 'dce-gsap-lib', 'dce-morphSVG-lib', 'dce-svgmorph' ];
 	}
+
 	public function get_style_depends() {
 		return [ 'dce-svg' ];
 	}
-	public function get_description() {
-		return __( 'You can transpose SVG path to create creative forms in animation', 'dynamic-content-for-elementor' );
-	}
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/svg-morphing/';
-	}
-	public static function get_position() {
-		return 7;
-	}
+
 	private $coeff = 1;
 	protected $svg_shapes = array(
 		'path'      => 'path',
-		//'polygon'   =>  'polygon',
 		'polyline'  => 'polyline',
 	);
 	public function show_in_panel() {
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( 'install_plugins' ) ) {
 			return false;
 		}
 		return true;
 	}
 
 	protected function _register_controls() {
-		if ( current_user_can( 'manage_options' ) || ! is_admin() ) {
+		if ( current_user_can( 'install_plugins' ) || ! is_admin() ) {
 			$this->_register_controls_content();
-		} elseif ( ! current_user_can( 'manage_options' ) && is_admin() ) {
+		} elseif ( ! current_user_can( 'install_plugins' ) && is_admin() ) {
 			$this->register_controls_non_admin_notice();
 		}
 	}
@@ -558,7 +540,7 @@ class DCE_Widget_SvgMorphing extends DCE_Widget_Prototype {
 			'easing_morph_ease', [
 				'label' => __( 'Equation', 'dynamic-content-for-elementor' ),
 				'type' => Controls_Manager::SELECT,
-				'options' => [ '' => __( 'Default', 'dynamic-content-for-elementor' ) ] + Helper::get_gsap_timingFunctions(),
+				'options' => [ '' => __( 'Default', 'dynamic-content-for-elementor' ) ] + Helper::get_gsap_timing_functions(),
 				'default' => '',
 				'frontend_available' => true,
 				'label_block' => false,
@@ -747,7 +729,7 @@ class DCE_Widget_SvgMorphing extends DCE_Widget_Prototype {
 			'easing_morph_ease', [
 				'label' => __( 'Equation', 'dynamic-content-for-elementor' ),
 				'type' => Controls_Manager::SELECT,
-				'options' => Helper::get_gsap_timingFunctions(),
+				'options' => Helper::get_gsap_timing_functions(),
 				'default' => 'Power3',
 				'frontend_available' => true,
 				'label_block' => false,

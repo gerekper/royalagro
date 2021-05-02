@@ -521,6 +521,33 @@ Note : This plugin works with Elementor. Make sure you have [Elementor](https://
 
 == Changelog ==
 
+
+version 1.4.71 = 2021-04-22
+
+* Feature: added option to take post id's from php function in post selection
+* Feature: added option for get posts by meta field that located in current or different post
+* Feature: added twig filter: wc_price for native price filtering
+* Feature: added post terms titles to post data debug
+* Change: added option for woocommerce categories in terms selection
+* Fix: fixed price issues in woocommerce related grids
+* Fix: fixed include and exclude terms mismatch with nested tax query
+* Fix: fixed pagination on search pages
+
+
+version 1.4.70 = 2021-04-14
+
+* Feature: added show widget data debug options
+* Feature: added option for filter post by post meta
+* Feature: added option for simple condition for attributes
+* Feature: added integration with wordpress popular post plugin for most viewed posts selection
+* Feature: added post list variables for data debug
+* Feature: added image sizes selector for post list
+* Feature: get thumbnailID from content in case that it's missing in post
+* Fix: when bulk moving attribute it now always goes to general category
+* Fix: fixed filter posts by status
+* Fix: fixed instagram media albom
+
+
 version 1.4.69 = 2021-04-04
 
 * Feature: added extra query debug options for custom post types selector

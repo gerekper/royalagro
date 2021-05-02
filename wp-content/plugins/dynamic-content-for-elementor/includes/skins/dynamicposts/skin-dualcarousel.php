@@ -8,6 +8,7 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Background;
+use Elementor\Utils;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -525,7 +526,7 @@ class Skin_DualCarousel extends Skin_Carousel {
 
 	protected function render_thumb_title() {
 
-		$html_tag = $this->get_instance_value( 'dualcarousel_html_tag' );
+		$html_tag = \DynamicContentForElementor\Helper::validate_html_tag( $this->get_instance_value( 'dualcarousel_html_tag' ) );
 
 		echo sprintf( '<%1$s class="dce-thumbnail-title">', $html_tag );
 		?>

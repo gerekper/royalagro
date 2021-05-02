@@ -12,8 +12,8 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Background;
 
 // UltimateElementor Classes.
@@ -237,9 +237,8 @@ class Fancy_Heading extends Common_Widget {
 			array(
 				'label'     => __( 'Line Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_4,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_ACCENT,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-clip-cursor-yes .uael-fancy-text-clip .uael-slide-main_ul::after' => 'background-color: {{VALUE}};',
@@ -689,9 +688,8 @@ class Fancy_Heading extends Common_Widget {
 				array(
 					'label'     => __( 'Text Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_1,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_PRIMARY,
 					),
 					'default'   => '',
 					'selectors' => array(
@@ -703,7 +701,9 @@ class Fancy_Heading extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'prefix_suffix_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+					),
 					'selector' => '{{WRAPPER}} .uael-fancy-heading, {{WRAPPER}} .uael-fancy-heading .uael-slide_text',
 				)
 			);
@@ -795,9 +795,8 @@ class Fancy_Heading extends Common_Widget {
 				array(
 					'label'     => __( 'Fancy Text Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_2,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_SECONDARY,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-fancy-heading.uael-fancy-text-main' => 'color: {{VALUE}};',
@@ -808,7 +807,9 @@ class Fancy_Heading extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'fancytext_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+					),
 					'selector' => '{{WRAPPER}} .uael-fancy-heading.uael-fancy-text-main, {{WRAPPER}} .uael-fancy-heading.uael-fancy-text-main .uael-slide_text',
 				)
 			);

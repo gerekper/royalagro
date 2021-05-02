@@ -221,14 +221,14 @@ class Single_Product extends Base {
 			);
 	}
 
-	public function __alert_() {
-		if ( ! function_exists( 'WC' ) ) {
-			self::show_wc_missing_alert();
-			return;
-		}elseif ( empty( $this->get_query() ) ) {
-			self::show_alert_to_add_product();
-			return;
-		}
-	}
+	// public function __alert_() {
+	// 	if ( ! function_exists( 'WC' ) ) {
+	// 		self::show_wc_missing_alert();
+	// 		return;
+	// 	}elseif ( empty( $this->get_query() ) ) {
+	// 		self::show_alert_to_add_product();
+	// 		return;
+	// 	}
+	// }
 
 }

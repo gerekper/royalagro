@@ -128,7 +128,14 @@ class Classic extends Skin_Base {
     public function render() {
 
 		// Show Alart
-		$this->parent->__alert_();
+		// $this->parent->__alert_();
+		if ( ! function_exists( 'WC' ) ) {
+			$this->parent::show_wc_missing_alert();
+			return;
+		}elseif ( empty( $this->parent->get_query() ) ) {
+			$this->parent::show_alert_to_add_product();
+			return;
+		}
 
 		// Add WC hooks
 		$this->__add_hooks();

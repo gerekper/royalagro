@@ -125,7 +125,7 @@ if ( $element_id && $post_id ) {
 			$css .= '.elementor-column { display: table-cell !important; }';
 			$css .= '.elementor-column-wrap, .elementor-widget-wrap { display: block !important; }';
 			$css = str_replace( ':not(.elementor-motion-effects-element-type-background) > .elementor-element-populated', ':not(.elementor-motion-effects-element-type-background)', $css );
-			$css .= '.elementor-column .elementor-widget-image .elementor-image img { max-width: none !important; }';
+			$css .= '.elementor-column .elementor-widget-image img { max-width: none !important; }';
 			$pdf_html_precss = $pdf_html;
 			if ( $pdf_html_precss ) {
 				$cssToInlineStyles = new \TijsVerkoyen\CssToInlineStyles\CssToInlineStyles();

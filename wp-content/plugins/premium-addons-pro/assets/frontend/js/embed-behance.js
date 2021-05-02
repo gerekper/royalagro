@@ -186,9 +186,31 @@
             if (1 == d) var i = e(".box-project img");
             else i = e(".wrap-project img");
             var r = i.length;
-            i.each(function () {
-                this.complete ? t() : e(this).one("load", t)
-            })
+            if (r) {
+                i.each(function () {
+                    this.complete ? t() : e(this).one("load", t)
+                });
+            } else {
+                e(".eb-loadingicon").remove();
+
+                e("div.box-project").animate({
+                    top: 0,
+                    opacity: 1
+                }, n.animationDuration);
+
+                function getHeaderHeight() {
+                    var t = e(".eb-container .wrap-headings").outerHeight(!0);
+                    e(".eb-desktop-info").css("height", "63px");
+                    e(".eb-container .box-project aside .wrap-owners-outer").css("min-height", t);
+                }
+
+                e(window).resize(function () {
+                    setTimeout(getHeaderHeight, 500);
+                });
+
+                getHeaderHeight();
+            }
+
         }
 
         function u() {

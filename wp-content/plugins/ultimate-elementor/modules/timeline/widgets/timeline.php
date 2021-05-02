@@ -10,10 +10,10 @@ namespace UltimateElementor\Modules\Timeline\Widgets;
 // Elementor Classes.
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
-use Elementor\Scheme_Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Image_Size;
 use UltimateElementor\Base\Common_Widget;
 
@@ -1398,9 +1398,8 @@ class Timeline extends Common_Widget {
 				array(
 					'label'     => __( 'Heading Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_1,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_PRIMARY,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-timeline-main .uael-content .uael-timeline-heading, {{WRAPPER}} .uael-timeline-main .uael-content .uael-timeline-heading-text .elementor-inline-editing' => 'color: {{VALUE}};',
@@ -1414,9 +1413,8 @@ class Timeline extends Common_Widget {
 				array(
 					'label'     => __( 'Description Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-timeline-main .uael-timeline-desc-content, {{WRAPPER}} .uael-timeline-main .inner-date-new,{{WRAPPER}} .uael-timeline-main a .uael-timeline-desc-content' => 'color: {{VALUE}};',
@@ -1430,9 +1428,8 @@ class Timeline extends Common_Widget {
 				array(
 					'label'     => __( 'Link Text Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_4,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_ACCENT,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-timeline-main .uael-timeline-link-style .uael-timeline-link' => 'color: {{VALUE}};',
@@ -1450,7 +1447,9 @@ class Timeline extends Common_Widget {
 				array(
 					'label'    => __( 'Heading Typograhy', 'uael' ),
 					'name'     => 'timeline_card_heading_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+					),
 					'selector' => '{{WRAPPER}} .uael-timeline-main .uael-content .uael-timeline-heading, {{WRAPPER}} .uael-timeline-main .uael-content .uael-timeline-heading-text .elementor-inline-editing',
 				)
 			);
@@ -1462,7 +1461,9 @@ class Timeline extends Common_Widget {
 					'label'    => __( 'Description Typograhy', 'uael' ),
 					'name'     => 'timeline_default_card_typography',
 					'selector' => '{{WRAPPER}} .uael-timeline-main .uael-timeline-desc-content, {{WRAPPER}} .uael-timeline-main .inner-date-new',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 				)
 			);
 
@@ -1473,7 +1474,9 @@ class Timeline extends Common_Widget {
 					'label'     => __( 'Link Text Typograhy', 'uael' ),
 					'name'      => 'timeline_post_link_typography',
 					'selector'  => '{{WRAPPER}} .uael-timeline-main .uael-timeline-link-style .uael-timeline-link',
-					'scheme'    => Scheme_Typography::TYPOGRAPHY_4,
+					'global'    => array(
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					),
 					'condition' => array(
 						'timeline_type'          => 'posts',
 						'post_timeline_cta_type' => 'link',
@@ -1987,9 +1990,8 @@ class Timeline extends Common_Widget {
 				array(
 					'label'     => __( 'Icon Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-timeline-main .animate-border .timeline-icon-new' => 'color: {{VALUE}};',
@@ -2021,9 +2023,8 @@ class Timeline extends Common_Widget {
 				array(
 					'label'     => __( 'Line Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_4,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_ACCENT,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-timeline__line__inner' => 'background-color: {{VALUE}};width: 100%;',
@@ -2051,9 +2052,8 @@ class Timeline extends Common_Widget {
 				array(
 					'label'     => __( 'Icon Background Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_4,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_ACCENT,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-timeline-main .uael-days .in-view .in-view-timeline-icon' => 'background: {{VALUE}};',

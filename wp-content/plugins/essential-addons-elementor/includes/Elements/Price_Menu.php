@@ -4,7 +4,7 @@ namespace Essential_Addons_Elementor\Pro\Elements;
 use \Elementor\Controls_Manager;
 use \Elementor\Group_Control_Background;
 use Elementor\Repeater;
-use \Elementor\Scheme_Typography;
+use \Elementor\Core\Schemes\Typography;
 use \Elementor\Group_Control_Border;
 use \Elementor\Group_Control_Box_Shadow;
 use \Elementor\Group_Control_Typography;
@@ -435,7 +435,7 @@ class Price_Menu extends Widget_Base {
             [
                 'name'                  => 'title_typography',
                 'label'                 => __( 'Typography', 'essential-addons-elementor' ),
-                'scheme'                => Scheme_Typography::TYPOGRAPHY_4,
+                'scheme'                => Typography::TYPOGRAPHY_4,
                 'selector'              => '{{WRAPPER}} .eael-restaurant-menu .eael-restaurant-menu-title',
             ]
         );
@@ -651,7 +651,7 @@ class Price_Menu extends Widget_Base {
             [
                 'name'                  => 'price_typography',
                 'label'                 => __( 'Typography', 'essential-addons-elementor' ),
-                'scheme'                => Scheme_Typography::TYPOGRAPHY_4,
+                'scheme'                => Typography::TYPOGRAPHY_4,
                 'selector'              => '{{WRAPPER}} .eael-restaurant-menu .eael-restaurant-menu-price-discount',
             ]
         );
@@ -697,7 +697,7 @@ class Price_Menu extends Widget_Base {
             [
                 'name'                  => 'original_price_typography',
                 'label'                 => __( 'Original Price Typography', 'essential-addons-elementor' ),
-                'scheme'                => Scheme_Typography::TYPOGRAPHY_4,
+                'scheme'                => Typography::TYPOGRAPHY_4,
                 'selector'              => '{{WRAPPER}} .eael-restaurant-menu .eael-restaurant-menu-price-original',
             ]
         );
@@ -729,7 +729,7 @@ class Price_Menu extends Widget_Base {
             [
                 'name'                  => 'description_typography',
                 'label'                 => __( 'Typography', 'essential-addons-elementor' ),
-                'scheme'                => Scheme_Typography::TYPOGRAPHY_4,
+                'scheme'                => Typography::TYPOGRAPHY_4,
                 'selector'              => '{{WRAPPER}} .eael-restaurant-menu-description',
             ]
         );

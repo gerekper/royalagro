@@ -11,9 +11,9 @@ namespace UltimateElementor\Modules\FAQ\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\repeater;
-use Elementor\Scheme_Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Icons_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
@@ -867,7 +867,9 @@ class FAQ extends Common_Widget {
 			array(
 				'name'     => 'title_typography',
 				'selector' => '{{WRAPPER}} .uael-faq-accordion .uael-accordion-title .uael-question-span, {{WRAPPER}} .uael-faq-accordion .uael-accordion-title .uael-accordion-icon',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				),
 
 			)
 		);
@@ -916,10 +918,10 @@ class FAQ extends Common_Widget {
 						{{WRAPPER}}  .uael-accordion-icon-closed, {{WRAPPER}} span.uael-accordion-icon-opened' => 'color: {{VALUE}};',
 						'{{WRAPPER}} .uael-accordion-icon-closed, {{WRAPPER}} span.uael-accordion-icon-opened' => 'fill: {{VALUE}};',
 					),
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_1,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_PRIMARY,
 					),
+
 				)
 			);
 
@@ -932,9 +934,8 @@ class FAQ extends Common_Widget {
 						'{{WRAPPER}} .uael-faq-accordion .uael-accordion-title.uael-title-active .uael-question-span,
 						{{WRAPPER}} span.uael-accordion-icon-opened' => 'color: {{VALUE}};',
 					),
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_1,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_PRIMARY,
 					),
 					'condition' => array(
 						'faq_layout' => 'accordion',
@@ -985,10 +986,10 @@ class FAQ extends Common_Widget {
 					{{WRAPPER}}  .uael-accordion-icon-closed:hover' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .uael-accordion-icon-closed:hover' => 'fill: {{VALUE}};',
 				),
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_PRIMARY,
 				),
+
 			)
 		);
 
@@ -1001,9 +1002,8 @@ class FAQ extends Common_Widget {
 					'{{WRAPPER}} .uael-faq-accordion .uael-accordion-title.uael-title-active:hover .uael-question-span,
 					{{WRAPPER}} span.uael-accordion-icon-opened:hover' => 'color: {{VALUE}};',
 				),
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_PRIMARY,
 				),
 				'condition' => array(
 					'faq_layout' => 'accordion',
@@ -1058,7 +1058,9 @@ class FAQ extends Common_Widget {
 			array(
 				'name'     => 'content_typography',
 				'selector' => '{{WRAPPER}} .uael-faq-accordion .uael-accordion-content',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				),
 			)
 		);
 
@@ -1091,10 +1093,10 @@ class FAQ extends Common_Widget {
 				'selectors' => array(
 					'{{WRAPPER}} .uael-faq-accordion .uael-accordion-content' => 'color: {{VALUE}};',
 				),
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
+
 			)
 		);
 
@@ -1125,10 +1127,10 @@ class FAQ extends Common_Widget {
 				'selectors' => array(
 					'{{WRAPPER}} .uael-faq-accordion .uael-accordion-content:hover' => 'color: {{VALUE}};',
 				),
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
+
 			)
 		);
 
@@ -1200,10 +1202,10 @@ class FAQ extends Common_Widget {
 				{{WRAPPER}}  .uael-accordion-icon-closed' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .uael-accordion-icon-closed' => 'fill: {{VALUE}};',
 				),
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_PRIMARY,
 				),
+
 			)
 		);
 
@@ -1215,9 +1217,8 @@ class FAQ extends Common_Widget {
 				'selectors' => array(
 					'{{WRAPPER}} span.uael-accordion-icon-opened'  => 'color: {{VALUE}};',
 				),
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_PRIMARY,
 				),
 			)
 		);

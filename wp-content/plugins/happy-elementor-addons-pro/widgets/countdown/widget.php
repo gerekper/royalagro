@@ -8,7 +8,7 @@
 namespace Happy_Addons_Pro\Widget;
 
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Background;
@@ -572,7 +572,7 @@ class Countdown extends Base {
 			[
 				'name' => 'common_box_time_typography',
 				'label' => __('Time Typography', 'happy-addons-pro'),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'exclude' => [
 					'line_height'
 				],
@@ -598,7 +598,7 @@ class Countdown extends Base {
 			[
 				'name' => 'common_box_label_typography',
 				'label' => __('Label Typography', 'happy-addons-pro'),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'exclude' => [
 					'line_height'
 				],
@@ -676,7 +676,7 @@ class Countdown extends Base {
 			[
 				'name' => 'days_time_typography',
 				'label' => __('Time Typography', 'happy-addons-pro'),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'exclude' => [
 					'line_height'
 				],
@@ -702,7 +702,7 @@ class Countdown extends Base {
 			[
 				'name' => 'days_label_typography',
 				'label' => __('Label Typography', 'happy-addons-pro'),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'exclude' => [
 					'line_height'
 				],
@@ -756,7 +756,7 @@ class Countdown extends Base {
 			[
 				'name' => 'hours_time_typography',
 				'label' => __('Time Typography', 'happy-addons-pro'),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'exclude' => [
 					'line_height'
 				],
@@ -782,7 +782,7 @@ class Countdown extends Base {
 			[
 				'name' => 'hours_label_typography',
 				'label' => __('Label Typography', 'happy-addons-pro'),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'exclude' => [
 					'line_height'
 				],
@@ -836,7 +836,7 @@ class Countdown extends Base {
 			[
 				'name' => 'minutes_time_typography',
 				'label' => __('Time Typography', 'happy-addons-pro'),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'exclude' => [
 					'line_height'
 				],
@@ -862,7 +862,7 @@ class Countdown extends Base {
 			[
 				'name' => 'minutes_label_typography',
 				'label' => __('Label Typography', 'happy-addons-pro'),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'exclude' => [
 					'line_height'
 				],
@@ -916,7 +916,7 @@ class Countdown extends Base {
 			[
 				'name' => 'seconds_time_typography',
 				'label' => __('Time Typography', 'happy-addons-pro'),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'exclude' => [
 					'line_height'
 				],
@@ -942,7 +942,7 @@ class Countdown extends Base {
 			[
 				'name' => 'seconds_label_typography',
 				'label' => __('Label Typography', 'happy-addons-pro'),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'exclude' => [
 					'line_height'
 				],

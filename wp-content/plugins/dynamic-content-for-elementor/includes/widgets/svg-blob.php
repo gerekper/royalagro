@@ -16,40 +16,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_SvgBlob extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-svgblob';
-	}
-
-	public function get_title() {
-		return __( 'SVG Blob', 'dynamic-content-for-elementor' );
-	}
-	public function get_icon() {
-		return 'icon-dyn-svgblob';
-	}
 	public function get_script_depends() {
 		return [ 'dce-gsap-lib', 'dce-svgblob' ];
 	}
+
 	public function get_style_depends() {
 		return [ 'dce-svg' ];
 	}
-	public function get_description() {
-		return __( 'Create a shape using an SVG path and make it move!', 'dynamic-content-for-elementor' );
-	}
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/svg-blob/';
-	}
+
 	public function show_in_panel() {
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( 'install_plugins' ) ) {
 			return false;
 		}
 		return true;
 	}
 
 	protected function _register_controls() {
-		if ( current_user_can( 'manage_options' ) || ! is_admin() ) {
+		if ( current_user_can( 'install_plugins' ) || ! is_admin() ) {
 			$this->_register_controls_content();
-		} elseif ( ! current_user_can( 'manage_options' ) && is_admin() ) {
+		} elseif ( ! current_user_can( 'install_plugins' ) && is_admin() ) {
 			$this->register_controls_non_admin_notice();
 		}
 	}

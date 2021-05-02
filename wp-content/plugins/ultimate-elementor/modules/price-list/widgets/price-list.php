@@ -12,8 +12,8 @@ use Elementor\Controls_Manager;
 use Elementor\Utils;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Image_Size;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Repeater;
@@ -473,9 +473,8 @@ if ( ! class_exists( 'Price_List' ) ) {
 					array(
 						'label'     => __( 'Color', 'uael' ),
 						'type'      => Controls_Manager::COLOR,
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_1,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_PRIMARY,
 						),
 						'selectors' => array(
 							'{{WRAPPER}} .uael-price-list-title' => 'color: {{VALUE}};',
@@ -498,7 +497,9 @@ if ( ! class_exists( 'Price_List' ) ) {
 					Group_Control_Typography::get_type(),
 					array(
 						'name'     => 'heading_typography',
-						'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+						'global'   => array(
+							'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+						),
 						'selector' => '{{WRAPPER}} .uael-price-list-title',
 					)
 				);
@@ -536,9 +537,8 @@ if ( ! class_exists( 'Price_List' ) ) {
 					array(
 						'label'     => __( 'Color', 'uael' ),
 						'type'      => Controls_Manager::COLOR,
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_3,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_TEXT,
 						),
 						'selectors' => array(
 							'{{WRAPPER}} .uael-price-list-description' => 'color: {{VALUE}};',
@@ -561,7 +561,9 @@ if ( ! class_exists( 'Price_List' ) ) {
 					Group_Control_Typography::get_type(),
 					array(
 						'name'     => 'description_typography',
-						'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+						'global'   => array(
+							'default' => Global_Typography::TYPOGRAPHY_TEXT,
+						),
 						'selector' => '{{WRAPPER}} .uael-price-list-description',
 					)
 				);
@@ -599,9 +601,8 @@ if ( ! class_exists( 'Price_List' ) ) {
 					array(
 						'label'     => __( 'Color', 'uael' ),
 						'type'      => Controls_Manager::COLOR,
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_1,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_PRIMARY,
 						),
 						'selectors' => array(
 							'{{WRAPPER}} .uael-price-list-price' => 'color: {{VALUE}};',
@@ -626,7 +627,9 @@ if ( ! class_exists( 'Price_List' ) ) {
 					Group_Control_Typography::get_type(),
 					array(
 						'name'     => 'price_typography',
-						'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+						'global'   => array(
+							'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+						),
 						'selector' => '{{WRAPPER}} .uael-price-list-price, {{WRAPPER}} .uael-price-list-discount-price',
 					)
 				);
@@ -692,9 +695,8 @@ if ( ! class_exists( 'Price_List' ) ) {
 					array(
 						'label'     => __( 'Color', 'uael' ),
 						'type'      => Controls_Manager::COLOR,
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_2,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_SECONDARY,
 						),
 						'selectors' => array(
 							'{{WRAPPER}} .uael-price-list-separator' => 'border-bottom-color: {{VALUE}};',

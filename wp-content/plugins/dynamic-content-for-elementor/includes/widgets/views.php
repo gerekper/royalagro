@@ -28,30 +28,6 @@ class DCE_Widget_Views extends DCE_Widget_Prototype {
 	public $obj__in = [];
 	public $the_query;
 
-	public function get_name() {
-		return 'dce-views';
-	}
-
-	public function get_title() {
-		return __('Views', 'dynamic-content-for-elementor');
-	}
-
-	public function get_keywords() {
-		return ['list', 'archive', 'search'];
-	}
-
-	public function get_description() {
-		return __('Create a custom list from query results', 'dynamic-content-for-elementor');
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/views/';
-	}
-
-	public function get_icon() {
-		return 'icon-dyn-views';
-	}
-
 	public function get_style_depends() {
 		return ['datatables'];
 	}
@@ -61,16 +37,16 @@ class DCE_Widget_Views extends DCE_Widget_Prototype {
 	}
 
 	public function show_in_panel() {
-		if (! current_user_can('manage_options')) {
+		if (! current_user_can('install_plugins')) {
 			return false;
 		}
 		return true;
 	}
 
 	protected function _register_controls() {
-		if (current_user_can('manage_options') || ! is_admin()) {
+		if (current_user_can('install_plugins') || ! is_admin()) {
 			$this->_register_controls_content();
-		} elseif (! current_user_can('manage_options') && is_admin()) {
+		} elseif (! current_user_can('install_plugins') && is_admin()) {
 			$this->register_controls_non_admin_notice();
 		}
 	}
@@ -80,7 +56,7 @@ class DCE_Widget_Views extends DCE_Widget_Prototype {
 
 		$cpts = Helper::get_post_types(false);
 		$taxonomies = Helper::get_taxonomies();
-		$post_status = get_post_stati();
+		$post_status = get_post_statuses();
 		$roles = Helper::get_roles();
 		$this->taxonomies = $taxonomies;
 		$sql_operators = Helper::get_sql_operators();

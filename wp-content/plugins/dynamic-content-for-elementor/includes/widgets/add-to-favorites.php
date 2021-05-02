@@ -16,26 +16,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_Favorites extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dce-add-to-favorites';
-	}
-
-	public function get_title() {
-		return __( 'Add to Favorites', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_description() {
-		return __( 'Create a favorite list for your users', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/add-to-favorites/';
-	}
-
-	public function get_icon() {
-		return 'icon-dyn-like';
-	}
-
 	public function get_style_depends() {
 		return [
 			'dce-addtofavorites',
@@ -49,16 +29,16 @@ class DCE_Widget_Favorites extends DCE_Widget_Prototype {
 	}
 
 	public function show_in_panel() {
-		if (! current_user_can('manage_options')) {
+		if ( ! current_user_can( 'install_plugins' ) ) {
 			return false;
 		}
 		return true;
 	}
 
 	protected function _register_controls() {
-		if (current_user_can('manage_options') || ! is_admin()) {
+		if ( current_user_can( 'install_plugins' ) || ! is_admin() ) {
 			$this->_register_controls_content();
-		} elseif (! current_user_can('manage_options') && is_admin()) {
+		} elseif ( ! current_user_can( 'install_plugins' ) && is_admin() ) {
 			$this->register_controls_non_admin_notice();
 		}
 	}
@@ -1345,7 +1325,7 @@ class DCE_Widget_Favorites extends DCE_Widget_Prototype {
 							$cookie_days = ( $settings['dce_favorite_cookie_days'] ) ? time() + ( 86400 * $settings['dce_favorite_cookie_days'] ) : 0; // 86400 = 1 day
 
 							$http_host = $_SERVER['HTTP_HOST'] == 'localhost' ? '' : sanitize_text_field( $_SERVER['HTTP_HOST'] );
--							@setcookie( $list_key, $favorite_value, $cookie_days, '/', $http_host );
+							- @setcookie( $list_key, $favorite_value, $cookie_days, '/', $http_host );
 
 							if ( $settings['dce_favorite_counter'] ) {
 								$cookies = get_option( 'dce_favorite_cookies', [] );

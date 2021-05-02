@@ -4,10 +4,7 @@
         var id_scope = $scope.attr('data-id');
         var customControls = elementSettings.dce_video_custom_controls;
 
-
-
         if (customControls) {
-
             var showImageOverlay = Boolean(elementSettings.show_image_overlay);
             var videoType = elementSettings.video_type;
             var autoplay = Boolean(elementSettings.autoplay);
@@ -24,8 +21,7 @@
                     videoSelector = videoContainer + ' .elementor-video';
                 }
 
-
-                // LIGHBOX
+                // Lightbox
                 if (lightbox) {
                     videoContainer = '#elementor-lightbox-' + id_scope;
                     videoSelector = videoContainer + ' .elementor-video-container > div';
@@ -58,8 +54,6 @@
                     generatePlyrVideo();
                 }, 400);
             }
-
-
         }
     };
 

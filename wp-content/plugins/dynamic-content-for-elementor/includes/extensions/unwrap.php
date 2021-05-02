@@ -3,6 +3,7 @@
 namespace DynamicContentForElementor\Extensions;
 
 use Elementor\Controls_Manager;
+use Elementor\Utils;
 use DynamicContentForElementor\Helper;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -10,8 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class DCE_Extension_Unwrap extends DCE_Extension_Prototype {
-
-
 	public $name = 'Unwrap';
 	public $has_controls = true;
 	public $common_sections_actions = array(
@@ -28,14 +27,6 @@ class DCE_Extension_Unwrap extends DCE_Extension_Prototype {
 			'action' => 'section_advanced',
 		),
 	);
-
-	public static function get_description() {
-		return __( 'Remove Element extra Wrappers', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/unwrap/';
-	}
 
 	private function add_controls( $element, $args ) {
 
@@ -209,12 +200,12 @@ class DCE_Extension_Unwrap extends DCE_Extension_Prototype {
 							break;
 
 						case 'section':
-							$settings['html_tag'] = ! empty( $settings['html_tag'] ) ? $settings['html_tag'] : 'section';
+							$settings['html_tag'] = ! empty( \DynamicContentForElementor\Helper::validate_html_tag( $settings['html_tag'] ) ) ? \DynamicContentForElementor\Helper::validate_html_tag( $settings['html_tag'] ) : 'section';
 							list($tmp, $content_unwrapped) = explode( 'elementor-row', $content_unwrapped, 2 );
 							list($tmp, $content_unwrapped) = explode( '>', $content_unwrapped, 2 );
-							$pos = strrpos( $content_unwrapped, '</' . $settings['html_tag'] . '>' );
+							$pos = strrpos( $content_unwrapped, '</' . \DynamicContentForElementor\Helper::validate_html_tag( $settings['html_tag'] ) . '>' );
 							if ( $pos !== false ) {
-								$content_unwrapped = substr_replace( $content_unwrapped, '', $pos, strlen( '</' . $settings['html_tag'] . '>' ) );
+								$content_unwrapped = substr_replace( $content_unwrapped, '', $pos, strlen( '</' . \DynamicContentForElementor\Helper::validate_html_tag( $settings['html_tag'] ) . '>' ) );
 							}
 							for ( $i = 0; $i < 3; $i++ ) {
 								$pos = strrpos( $content_unwrapped, '</div>' );

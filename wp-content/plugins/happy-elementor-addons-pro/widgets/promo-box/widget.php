@@ -13,7 +13,7 @@ use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Utils;
 
 defined( 'ABSPATH' ) || die();
@@ -500,7 +500,7 @@ class Promo_Box extends Base {
 				'name' => 'before_title_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '{{WRAPPER}} .ha-promo-box-before-title',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 
@@ -542,7 +542,7 @@ class Promo_Box extends Base {
 				'name' => 'title_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '{{WRAPPER}} .ha-promo-box-title',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+				'scheme' => Typography::TYPOGRAPHY_2,
 			]
 		);
 
@@ -599,7 +599,7 @@ class Promo_Box extends Base {
 				'name' => 'after_title_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '{{WRAPPER}} .ha-promo-box-after-title',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 
@@ -701,7 +701,7 @@ class Promo_Box extends Base {
 				'name' => 'description_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '{{WRAPPER}} .ha-promo-box-description',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 
@@ -751,7 +751,7 @@ class Promo_Box extends Base {
 			[
 				'name' => 'button_typography',
 				'selector' => '{{WRAPPER}} .ha-promo-box-btn',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+				'scheme' => Typography::TYPOGRAPHY_4,
 			]
 		);
 
@@ -904,7 +904,7 @@ class Promo_Box extends Base {
 			[
 				'name' => 'badge_typography',
 				'selector' => '{{WRAPPER}} .ha-promo-badge',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 
@@ -1028,7 +1028,7 @@ class Promo_Box extends Base {
 						<?php endif; ?>
 
 						<?php if ( !empty( $settings['title'] ) ) : ?>
-							<<?php echo tag_escape( $settings['title_tag'] ); ?> class="ha-promo-box-title">
+							<<?php echo ha_escape_tags( $settings['title_tag'] ); ?> class="ha-promo-box-title">
 
 								<?php if ( !empty( $settings['promo_link']['url'] ) ) : ?>
 									<a <?php $this->print_render_attribute_string( 'promo_link' ); ?>>
@@ -1040,7 +1040,7 @@ class Promo_Box extends Base {
 								 endif;
 								 ?>
 
-							</<?php echo tag_escape( $settings['title_tag'] ); ?>>
+							</<?php echo ha_escape_tags( $settings['title_tag'] ); ?>>
 						<?php endif; ?>
 
 						<?php if ( !empty( $settings['after_title'] ) ) : ?>

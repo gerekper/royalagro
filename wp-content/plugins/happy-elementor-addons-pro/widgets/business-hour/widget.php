@@ -15,7 +15,7 @@ use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Icons_Manager;
 use Elementor\Repeater;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Utils;
 
 defined('ABSPATH') || die();
@@ -351,7 +351,7 @@ class Business_Hour extends Base {
 			[
 				'name' => 'title_typography',
 				'selector' => '{{WRAPPER}} .ha-business-hour-title h3',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+				'scheme' => Typography::TYPOGRAPHY_2,
 			]
 		);
 
@@ -438,7 +438,7 @@ class Business_Hour extends Base {
 			[
 				'name' => 'list_typography',
 				'selector' => '{{WRAPPER}} .ha-business-hour-item',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 

@@ -16,20 +16,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 
 class DCE_Extension_Prototype {
-
 	public $name = 'Extension';
-
 	public static $docs = 'https://www.dynamic.ooo';
-
 	public $has_controls = false;
-
 	private $is_common = true;
-
 	private $depended_scripts = [];
-
 	private $depended_styles = [];
 	public static $depended_plugins = [];
-
+	private $actions_added = false;
 	public $common_sections_actions = array(
 		array(
 			'element' => 'common',
@@ -55,7 +49,10 @@ class DCE_Extension_Prototype {
 			$this->add_common_sections_actions();
 		}
 
-		$this->add_actions();
+		if ( ! $this->actions_added ) {
+			$this->actions_added = true;
+			$this->add_actions();
+		}
 	}
 
 	public function get_docs() {
@@ -168,9 +165,6 @@ class DCE_Extension_Prototype {
 		$low_name = $this->get_low_name();
 		$section_name = 'dce_section_' . $low_name . '_advanced';
 
-		if ( ! $this->is_common() ) {
-		}
-
 		if ( ! $this->has_controls ) {
 			// no need settings
 			return false;
@@ -191,7 +185,7 @@ class DCE_Extension_Prototype {
 		$element->start_controls_section(
 			$section_name, [
 				'tab' => Controls_Manager::TAB_ADVANCED,
-				'label' => $this->name,
+				'label' => '<span class="color-dce icon icon-dyn-logo-dce pull-right ml-1"></span> ' . $this->name,
 			]
 		);
 		$element->end_controls_section();

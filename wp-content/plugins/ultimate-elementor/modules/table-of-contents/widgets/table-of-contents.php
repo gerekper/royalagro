@@ -11,8 +11,8 @@ namespace UltimateElementor\Modules\TableOfContents\Widgets;
 use Elementor\Controls_Manager;
 use Elementor\Utils;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 
 // UltimateElementor Classes.
 use UltimateElementor\Base\Common_Widget;
@@ -647,9 +647,8 @@ class Table_Of_Contents extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_PRIMARY,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-toc-heading, {{WRAPPER}} .uael-toc-switch .uael-icon' => 'color: {{VALUE}};',
@@ -660,7 +659,9 @@ class Table_Of_Contents extends Common_Widget {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'heading_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				),
 				'selector' => '{{WRAPPER}} .uael-toc-heading, {{WRAPPER}} .uael-toc-heading a',
 			)
 		);
@@ -819,7 +820,9 @@ class Table_Of_Contents extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'content_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					),
 					'selector' => '{{WRAPPER}} .uael-toc-content-wrapper, {{WRAPPER}} .uael-toc-empty-note',
 				)
 			);
@@ -860,9 +863,8 @@ class Table_Of_Contents extends Common_Widget {
 						array(
 							'label'     => __( 'Text Color', 'uael' ),
 							'type'      => Controls_Manager::COLOR,
-							'scheme'    => array(
-								'type'  => Scheme_Color::get_type(),
-								'value' => Scheme_Color::COLOR_2,
+							'global'    => array(
+								'default' => Global_Colors::COLOR_SECONDARY,
 							),
 							'selectors' => array(
 								'{{WRAPPER}} .uael-toc-content-wrapper a, {{WRAPPER}} .uael-toc-list li, {{WRAPPER}} .uael-toc-empty-note' => 'color: {{VALUE}};',
@@ -884,9 +886,8 @@ class Table_Of_Contents extends Common_Widget {
 						array(
 							'label'     => __( 'Hover Color', 'uael' ),
 							'type'      => Controls_Manager::COLOR,
-							'scheme'    => array(
-								'type'  => Scheme_Color::get_type(),
-								'value' => Scheme_Color::COLOR_4,
+							'global'    => array(
+								'default' => Global_Colors::COLOR_ACCENT,
 							),
 							'selectors' => array(
 								'{{WRAPPER}} .uael-toc-content-wrapper a:hover' => 'color: {{VALUE}};',

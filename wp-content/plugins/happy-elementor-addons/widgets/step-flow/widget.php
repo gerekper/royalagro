@@ -11,7 +11,7 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Text_Shadow;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 
 defined( 'ABSPATH' ) || die();
 
@@ -430,7 +430,7 @@ class Step_Flow extends Base {
 			[
 				'name' => 'badge_typography',
 				'selector' => '{{WRAPPER}} .ha-steps-label',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+				'scheme' => Typography::TYPOGRAPHY_4,
 				'condition' => [
 					'badge!' => '',
 				],
@@ -519,7 +519,7 @@ class Step_Flow extends Base {
 			[
 				'name' => 'title_typography',
 				'selector' => '{{WRAPPER}} .ha-steps-title',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+				'scheme' => Typography::TYPOGRAPHY_2,
 			]
 		);
 
@@ -556,7 +556,7 @@ class Step_Flow extends Base {
 			[
 				'name' => 'description_typography',
 				'selector' => '{{WRAPPER}} .ha-step-description',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 
@@ -755,7 +755,7 @@ class Step_Flow extends Base {
 
 		<?php
 		printf( '<%1$s %2$s>%3$s</%1$s>',
-			tag_escape( $settings['title_tag'] ),
+			ha_escape_tags( $settings['title_tag'], 'h2' ),
 			$this->get_render_attribute_string( 'title' ),
 			$title
 		);

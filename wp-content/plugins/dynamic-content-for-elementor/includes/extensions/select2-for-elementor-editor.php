@@ -9,16 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class DCE_Extension_Editor extends DCE_Extension_Prototype {
 
 	public $name = 'Select2 for Elementor Editor';
-
 	private $is_common = false;
-
-	public static function get_description() {
-		return __( 'Select2 gives you a select box with support for searching in Elementor Backend Editor', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/select2-elementor-editor/';
-	}
 
 	protected function add_actions() {
 

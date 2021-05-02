@@ -190,14 +190,6 @@ class DCE_Extension_Visibility extends DCE_Extension_Prototype {
 		return false;
 	}
 
-	public static function get_description() {
-		return __( 'Visibility rules for widgets, rows and sections', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/dynamic-visibility-for-elementor/';
-	}
-
 	protected function add_actions() {
 		add_action('elementor/editor/after_enqueue_scripts', function () {
 			wp_register_script(
@@ -278,7 +270,6 @@ class DCE_Extension_Visibility extends DCE_Extension_Prototype {
 		if ( ! empty( $settings['enabled_visibility'] ) ) {
 			$hidden = $this->is_hidden( $element );
 			if ( $hidden ) {
-				echo WP_DEBUG ? '<!--DCE VISIBILITY HIDDEN ' . $element->get_type() . ' (' . $element->get_id() . ')-->' : '';
 				if ( $this->_ob( $settings ) ) {
 					ob_start();
 				} else {
@@ -1606,12 +1597,12 @@ class DCE_Extension_Visibility extends DCE_Extension_Prototype {
 				}
 			} else {
 				$element->add_control(
-					'dce_visibility_woo_notice',
-				  [
-					  'label' => __( 'Notice', 'dynamic-content-for-elementor' ),
-					  'type' => Controls_Manager::RAW_HTML,
-					  'raw' => __( 'You need WooCommerce to use this trigger.', 'dynamic-content-for-elementor' ),
-				  ]
+				'dce_visibility_woo_notice',
+				[
+					'type' => Controls_Manager::RAW_HTML,
+					'raw' => __( 'You need WooCommerce to use this trigger.', 'dynamic-content-for-elementor' ),
+					'content_classes' => 'elementor-panel-alert elementor-panel-alert-warning',
+				]
 				);
 			}
 		}
@@ -1910,7 +1901,7 @@ class DCE_Extension_Visibility extends DCE_Extension_Prototype {
 					]
 				);
 			} else {
-				if ( ! is_admin() || current_user_can( 'manage_options' ) ) {
+				if ( ! is_admin() || current_user_can( 'install_plugins' ) ) {
 					$element->add_control(
 						'dce_visibility_custom_condition_php',
 						[
@@ -2170,7 +2161,8 @@ class DCE_Extension_Visibility extends DCE_Extension_Prototype {
 
 		// FORCED HIDDEN
 		if ( ! empty( $settings['dce_visibility_hidden'] ) ) {
-			$triggers['dce_visibility_hidden'] = $conditions['dce_visibility_hidden'] = __( 'Always Hidden', 'dynamic-content-for-elementor' );
+			$conditions['dce_visibility_hidden'] = __( 'Always Hidden', 'dynamic-content-for-elementor' );
+			$triggers['dce_visibility_hidden'] = $conditions['dce_visibility_hidden'];
 		} else {
 
 			// DATETIME
@@ -3328,7 +3320,7 @@ class DCE_Extension_Visibility extends DCE_Extension_Prototype {
 		return $hidden;
 	}
 
-	public function check_custom_condition( $settings, $eid = null ) {
+	protected function check_custom_condition( $settings, $eid = null ) {
 		//+exclude_start
 		$php_code = $settings['dce_visibility_custom_condition_php'];
 		if ( is_string( $php_code ) ) {
@@ -3430,9 +3422,13 @@ class DCE_Extension_Visibility extends DCE_Extension_Prototype {
 
 									<?php
 									$other_css_classes_without_dots = str_replace( '.', '', $settings['dce_visibility_click_other'] );
-									$css_classes = str_replace( $other_css_classes_without_dots, '', $settings['_css_classes'] ); ?>
+									$css_classes = '';
+									if ( isset( $settings['_css_classes'] ) ) {
+										$css_classes = str_replace( $other_css_classes_without_dots, '', $settings['_css_classes'] );
+									}
+									?>
 
-									<?php if(!defined('DVE_PLUGIN_BASE')) { ?>
+									<?php if ( ! defined( 'DVE_PLUGIN_BASE' ) ) { ?>
 										// Dynamic Content for Elementor
 										// Hide other elements
 										<?php if ( ! empty( $css_classes ) && ! empty( $settings['_element_id'] ) ) { ?>
@@ -3467,7 +3463,7 @@ class DCE_Extension_Visibility extends DCE_Extension_Prototype {
 									}
 								} ?>
 
-								<?php if(!defined('DVE_PLUGIN_BASE')) { ?>
+								<?php if ( ! defined( 'DVE_PLUGIN_BASE' ) ){ ?>
 									// Dynamic Content for Elementor
 									<?php if ( ! empty( $settings['_css_classes'] ) && ! empty( $settings['_element_id'] ) ) { ?>
 										// The element has got a CSS ID and a CSS Class

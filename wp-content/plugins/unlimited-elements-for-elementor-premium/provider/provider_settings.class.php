@@ -363,8 +363,15 @@ class UniteCreatorSettings extends UniteCreatorSettingsWork{
 	 */
 	protected function addPostTermsPicker($name, $value, $title, $extra){
 		
+		
+		$isForWooCommerce = UniteFunctionsUC::getVal($extra, "for_woocommerce");
+		$isForWooCommerce = UniteFunctionsUC::strToBool($isForWooCommerce);
+				
 		$arrPostTypesWithTax = UniteFunctionsWPUC::getPostTypesWithTaxomonies(GlobalsProviderUC::$arrFilterPostTypes, false);
 		
+		if($isForWooCommerce == true)
+			$arrPostTypesWithTax = array("product" => $arrPostTypesWithTax["product"]);
+				
 		$taxData = $this->addPostTermsPicker_getArrTaxonomies($arrPostTypesWithTax);
 		
 		$arrPostTypesTaxonomies = $taxData["post_type_tax"];
@@ -408,14 +415,17 @@ class UniteCreatorSettings extends UniteCreatorSettingsWork{
 		$params["origtype"] = UniteCreatorDialogParam::PARAM_DROPDOWN;
 		
 		$arrTax = UniteFunctionsUC::getVal($arrPostTypesTaxonomies, $postType, array());
-		
+				
 		if(!empty($arrTax))
 			$arrTax = array_flip($arrTax);
 				
 		$taxonomy = UniteFunctionsUC::getVal($value, $name."_taxonomy");
 		if(empty($taxonomy))
 			$taxonomy = UniteFunctionsUC::getArrFirstValue($arrTax);
-				
+
+		if($isForWooCommerce)
+			$taxonomy = "product_cat";
+		
 		$this->addSelect($name."_taxonomy", $arrTaxonomiesSimple, __("Select Taxonomy", "unlimited-elements-for-elementor"), $taxonomy, $params);
 		
 		// --------- add include by -------------
@@ -428,6 +438,7 @@ class UniteCreatorSettings extends UniteCreatorSettingsWork{
 		$arrIncludeBy["no_parent"] = __("Not a Child of Other Term","unlimited-elements-for-elementor");
 		$arrIncludeBy["meta"] = __("Term Meta","unlimited-elements-for-elementor");
 		
+		
 		$arrIncludeBy = array_flip($arrIncludeBy);
 		
 		$params = array();
@@ -435,7 +446,8 @@ class UniteCreatorSettings extends UniteCreatorSettingsWork{
 		$params["origtype"] = UniteCreatorDialogParam::PARAM_DROPDOWN;
 				
 		$this->addMultiSelect($name."_includeby", $arrIncludeBy, esc_html__("Include By", "unlimited-elements-for-elementor"), "", $params);
-
+		
+		
 		// --------- include by meta key -------------
 		
 		$params = array();
@@ -1220,6 +1232,8 @@ class UniteCreatorSettings extends UniteCreatorSettingsWork{
 		
 		$arrIncludeBy["meta"] = __("Post Meta", "unlimited-elements-for-elementor");
 		$arrIncludeBy["most_viewed"] = __("Most Viewed", "unlimited-elements-for-elementor");
+		$arrIncludeBy["php_function"] = __("IDs from PHP function","unlimited-elements-for-elementor");
+		$arrIncludeBy["ids_from_meta"] = __("IDs from Post Meta","unlimited-elements-for-elementor");
 		
 		
 		if($isForWooProducts == true){
@@ -1369,6 +1383,48 @@ class UniteCreatorSettings extends UniteCreatorSettingsWork{
 		
 		$this->addTextBox($name."_includeby_metavalue", "", esc_html__("Include by Meta Value", "unlimited-elements-for-elementor"), $params);
 
+		// --------- include by PHP Function -------------
+		
+		$arrConditionIncludeFunction = $arrConditionIncludeBy;
+		$arrConditionIncludeFunction[$name."_includeby"] = "php_function";
+		
+		
+		$params = array();
+		$params["origtype"] = UniteCreatorDialogParam::PARAM_TEXTFIELD;
+		$params["placeholder"] = __("getMyIDs","unlimited-elements-for-elementor");
+		$params["description"] = __("Get post id's array from php function. \n For example: function getMyIDs(\$arg){return(array(\"32\",\"58\")). This function MUST begin with 'get'. }");
+		$params["elementor_condition"] = $arrConditionIncludeFunction;
+		
+		$this->addTextBox($name."_includeby_function_name", "", esc_html__("PHP Function Name", "unlimited-elements-for-elementor"), $params);
+		
+		// --------- include by PHP Function Add Parameter-------------
+		
+		$params = array();
+		$params["origtype"] = UniteCreatorDialogParam::PARAM_TEXTFIELD;
+		$params["placeholder"] = __("yourtext","unlimited-elements-for-elementor");
+		$params["description"] = __("Optional. Some argument to be passed to this function. For some \"IF\" statement.","unlimited-elements-for-elementor");
+		$params["elementor_condition"] = $arrConditionIncludeFunction;
+		
+		$this->addTextBox($name."_includeby_function_addparam", "", esc_html__("PHP Function Argument", "unlimited-elements-for-elementor"), $params);
+		
+		// --------- include by id's from meta -------------
+				
+		$textIDsFromMeta = __("Select Post (leave empty for current post)","unlimited-elements-for-elementor");
+		$arrConditionIncludePostMeta = $arrConditionIncludeBy;
+		$arrConditionIncludePostMeta[$name."_includeby"] = "ids_from_meta";
+		
+		$this->addPostIDSelect($name."_includeby_postmeta_postid", $textIDsFromMeta, $arrConditionIncludePostMeta, false,"data-issingle='true'");
+		
+		// --------- include by id's from meta field name -------------
+		
+		$params = array();
+		$params["origtype"] = UniteCreatorDialogParam::PARAM_TEXTFIELD;
+		$params["description"] = __("Choose meta field name that has the post id's on it. Good for acf relationship for example","unlimited-elements-for-elementor");
+		$params["elementor_condition"] = $arrConditionIncludePostMeta;
+		
+		$this->addTextBox($name."_includeby_postmeta_metafield", "", esc_html__("Meta Field Name", "unlimited-elements-for-elementor"), $params);
+		
+		
 		// --------- include by most viewed -------------
 		
 		$isWPPExists = UniteCreatorPluginIntegrations::isWPPopularPostsExists();
@@ -1739,6 +1795,20 @@ class UniteCreatorSettings extends UniteCreatorSettingsWork{
 		
 		$this->addSelect($name."_query_debug_type", $arrType, __("Debug Options", "unlimited-elements-for-elementor"), "basic", $params);
 				
+		
+	}
+	
+	
+	/**
+	 * add listing picker, function for override
+	 */
+	protected function addListingPicker($name,$value,$title,$extra){
+
+		$params = array();
+		$params["origtype"] = UniteCreatorDialogParam::PARAM_TEXTFIELD;
+		
+		$this->addTextBox($name."_type", "listing", "put listing here", $params);
+		
 		
 	}
 	

@@ -10,6 +10,7 @@ use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
+use Elementor\Utils;
 use DynamicContentForElementor\Helper;
 use DynamicContentForElementor\Controls\DCE_Group_Control_Transform_Element;
 use DynamicContentForElementor\Controls\DCE_Group_Control_Filters_CSS;
@@ -21,30 +22,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_DynamicPosts extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-acfposts';
-	}
-
-	public static function get_position() {
-		return 1;
-	}
-
-	public function get_title() {
-		return __( 'Dynamic Posts', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_description() {
-		return __( 'Dynamic Posts allows to build archives from lists of articles with four different queries. You can display the list with various layouts and use them to shape blocks', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/dynamic-posts/';
-	}
-
-	public function get_icon() {
-		return 'icon-dynamic_posts';
-	}
-
 	public function get_script_depends() {
 		return [ 'imagesloaded', 'jquery-slick-deprecated', 'isotope', 'dce-infinitescroll', 'dce-wow', 'dce-ajaxmodal', 'dce-acf_posts' ];
 	}
@@ -53,22 +30,7 @@ class DCE_Widget_DynamicPosts extends DCE_Widget_Prototype {
 		return [ 'animatecss', 'dce-dynamicPosts_slick', 'dce-dynamicPosts_swiper', 'dce-dynamicPosts_timeline', 'dce-dynamicPosts' ];
 	}
 
-	public function show_in_panel() {
-		if (! current_user_can('manage_options')) {
-			return false;
-		}
-		return true;
-	}
-
 	protected function _register_controls() {
-		if (current_user_can('manage_options') || ! is_admin()) {
-			$this->_register_controls_content();
-		} elseif (! current_user_can('manage_options') && is_admin()) {
-			$this->register_controls_non_admin_notice();
-		}
-	}
-
-	protected function _register_controls_content() {
 		$taxonomies = Helper::get_taxonomies();
 		$types = Helper::get_post_types();
 		// ------------------------------------------------------------------------------------ [SECTION]
@@ -76,6 +38,15 @@ class DCE_Widget_DynamicPosts extends DCE_Widget_Prototype {
 			'section_cpt',
 			[
 				'label' => __( 'Post Type Query', 'dynamic-content-for-elementor' ),
+			]
+		);
+
+		$this->add_control(
+			'deprecated',
+			[
+				'raw' => __( 'This widget is deprecated. You can continue to use it but we recommend that you use Dynamic Posts v2 instead.', 'dynamic-content-for-elementor' ),
+				'type' => Controls_Manager::RAW_HTML,
+				'content_classes' => 'elementor-panel-alert elementor-panel-alert-warning',
 			]
 		);
 
@@ -226,7 +197,7 @@ class DCE_Widget_DynamicPosts extends DCE_Widget_Prototype {
 			[
 				'label' => __( 'Number of Posts', 'dynamic-content-for-elementor' ),
 				'type' => Controls_Manager::NUMBER,
-				'default' => '-1',
+				'default' => '10',
 				'separator' => 'before',
 				'condition' => [
 					'query_type' => [ 'get_cpt', 'dynamic_mode', 'acf_relations' ],
@@ -1166,9 +1137,9 @@ class DCE_Widget_DynamicPosts extends DCE_Widget_Prototype {
 		$repeater->add_control(
 			'list_name',
 			[
-				'label' => __( 'Name', 'plugin-domain' ),
+				'label' => __( 'Name', 'dynamic-content-for-elementor' ),
 				'type' => \Elementor\Controls_Manager::HIDDEN,
-				'default' => __( 'List Name', 'plugin-domain' ),
+				'default' => __( 'List Name', 'dynamic-content-for-elementor' ),
 				'label_block' => true,
 			]
 		);
@@ -1176,7 +1147,7 @@ class DCE_Widget_DynamicPosts extends DCE_Widget_Prototype {
 		$this->add_control(
 			'list_layout_posts',
 			[
-				'label' => __( 'Ordering', 'plugin-domain' ),
+				'label' => __( 'Ordering', 'dynamic-content-for-elementor' ),
 				'separator' => 'before',
 				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
@@ -1188,46 +1159,46 @@ class DCE_Widget_DynamicPosts extends DCE_Widget_Prototype {
 				],
 				'default' => [
 					[
-						'list_name' => __( 'Image', 'plugin-domain' ),
+						'list_name' => __( 'Image', 'dynamic-content-for-elementor' ),
 						'list_html_content' => __( '<p>Image</p>', 'dynamic-content-for-elementor' ),
 						'_id' => 'sortimg',
 					],
 					[
-						'list_name' => __( 'Date', 'plugin-domain' ),
+						'list_name' => __( 'Date', 'dynamic-content-for-elementor' ),
 						'list_html_content' => __( '<p>Date</p>', 'dynamic-content-for-elementor' ),
 						'_id' => 'sortdate',
 					],
 					[
-						'list_name' => __( 'Title', 'plugin-domain' ),
+						'list_name' => __( 'Title', 'dynamic-content-for-elementor' ),
 						'_id' => 'sorttit',
 					],
 					[
-						'list_name' => __( 'Meta Data', 'plugin-domain' ),
+						'list_name' => __( 'Meta Data', 'dynamic-content-for-elementor' ),
 						'list_html_content' => __( '<p>Meta data</p>', 'dynamic-content-for-elementor' ),
 						'_id' => 'sortdata',
 					],
 					[
-						'list_name' => __( 'Content', 'plugin-domain' ),
+						'list_name' => __( 'Content', 'dynamic-content-for-elementor' ),
 						'list_html_content' => __( '<p>Content</p>', 'dynamic-content-for-elementor' ),
 						'_id' => 'sortcont',
 					],
 					[
-						'list_name' => __( 'Author', 'plugin-domain' ),
+						'list_name' => __( 'Author', 'dynamic-content-for-elementor' ),
 						'list_html_content' => __( '<p>Auhtor</p>', 'dynamic-content-for-elementor' ),
 						'_id' => 'sortauth',
 					],
 					[
-						'list_name' => __( 'Type', 'plugin-domain' ),
+						'list_name' => __( 'Type', 'dynamic-content-for-elementor' ),
 						'list_html_content' => __( '<p>ACF Items</p>', 'dynamic-content-for-elementor' ),
 						'_id' => 'sorttype',
 					],
 					[
-						'list_name' => __( 'ACF items', 'plugin-domain' ),
+						'list_name' => __( 'ACF items', 'dynamic-content-for-elementor' ),
 						'list_html_content' => __( '<p>ACF Items</p>', 'dynamic-content-for-elementor' ),
 						'_id' => 'sortacf',
 					],
 					[
-						'list_name' => __( 'Read More', 'plugin-domain' ),
+						'list_name' => __( 'Read More', 'dynamic-content-for-elementor' ),
 						'list_html_content' => __( '<p>Read More</p>', 'dynamic-content-for-elementor' ),
 						'_id' => 'sortrem',
 					],
@@ -4178,24 +4149,6 @@ class DCE_Widget_DynamicPosts extends DCE_Widget_Prototype {
 		);
 		foreach ( $taxonomies as $tkey => $atax ) {
 			if ( $tkey ) {
-				/* $this->add_control(
-				'filters_taxonomy_terms_' . $tkey, [
-
-				'label' => __('Data Filters (Selected Terms)', 'dynamic-content-for-elementor'), //.' '.$atax,
-				'type' => Controls_Manager::SELECT2,
-				//'groups' => \DynamicContentForElementor\Helper::get_taxonomies_terms(),
-				'options' => ['' => __('All', 'dynamic-content-for-elementor')] + \DynamicContentForElementor\Helper::get_taxonomy_terms($tkey), // + ['dce_current_post_terms' => __('Dynamic Current Post Terms', 'dynamic-content-for-elementor')],
-				'default' => '',
-				'description' => __('Use only Selected taxonomy terms or leave empty to use All terms of this taxonomy', 'dynamic-content-for-elementor'),
-				'multiple' => true,
-				'label_block' => true,
-				'condition' => [
-				'filters_enable' => 'yes',
-				'filters_taxonomy' => $tkey,
-				'filters_taxonomy_first_level_terms' => '',
-				]
-				]
-				); */
 				$this->add_control(
 					'filters_taxonomy_terms_' . $tkey,
 					[
@@ -4371,7 +4324,7 @@ class DCE_Widget_DynamicPosts extends DCE_Widget_Prototype {
 			[
 				'label' => __( 'Effect Timing function', 'dynamic-content-for-elementor' ),
 				'type' => Controls_Manager::SELECT,
-				'groups' => Helper::get_anim_timingFunctions(),
+				'groups' => Helper::get_anim_timing_functions(),
 				'default' => 'ease-in-out',
 				'selectors' => [
 					'{{WRAPPER}} .dce-post-item .dce-hover-effect-content' => 'transition-timing-function: {{VALUE}}; -webkit-transition-timing-function: {{VALUE}};',
@@ -4405,7 +4358,7 @@ class DCE_Widget_DynamicPosts extends DCE_Widget_Prototype {
 				[
 					'label' => __( 'IN Effect Timing function', 'dynamic-content-for-elementor' ),
 					'type' => Controls_Manager::SELECT,
-					'groups' => Helper::get_anim_timingFunctions(),
+					'groups' => Helper::get_anim_timing_functions(),
 					'default' => 'ease-in-out',
 					'selectors' => [
 						'{{WRAPPER}} .dce-post-item:hover .dce-hover-effect-content.dce-open' => 'animation-timing-function: {{VALUE}}; -webkit-animation-timing-function: {{VALUE}};',
@@ -4440,7 +4393,7 @@ class DCE_Widget_DynamicPosts extends DCE_Widget_Prototype {
 						[
 							'label' => __( 'OUT Effect Timing function', 'dynamic-content-for-elementor' ),
 							'type' => Controls_Manager::SELECT,
-							'groups' => Helper::get_anim_timingFunctions(),
+							'groups' => Helper::get_anim_timing_functions(),
 							'default' => 'ease-in-out',
 							'selectors' => [
 								'{{WRAPPER}} .dce-post-item .dce-hover-effect-content.dce-close' => 'animation-timing-function: {{VALUE}}; -webkit-animation-timing-function: {{VALUE}};',
@@ -8345,18 +8298,14 @@ class DCE_Widget_DynamicPosts extends DCE_Widget_Prototype {
 
 			// DYNAMIC MODE:
 			if ( is_archive() ) {
-					// Considero se sono in un archivio (Term)
-					$queried_object = get_queried_object();
+				// Considero se sono in un archivio (Term)
+				$queried_object = get_queried_object();
 				if ( is_tax() || is_category() || is_tag() ) {
 					$taxonomy_list[0] = $queried_object->taxonomy;
 				}
-				if ( is_date() ) {
-				}
-			} elseif ( is_home() ) {
-					// Considero se sono in home del type
 			} elseif ( is_single() ) {
-					// Considero se sono in un single-post (Correlati)
-					$taxonomy_list = get_post_taxonomies( $id_page );
+				// Considero se sono in un single-post (Correlati)
+				$taxonomy_list = get_post_taxonomies( $id_page );
 			}
 
 			if ( ! empty( $taxonomy_list ) ) {
@@ -8627,7 +8576,8 @@ class DCE_Widget_DynamicPosts extends DCE_Widget_Prototype {
 			}
 
 			if ( $date_field ) {
-					$date_after = $date_before = false;
+				$date_before = false;
+				$date_after = $date_before;
 				switch ( $settings['querydate_mode'] ) {
 					case 'past':
 						$date_before = date( 'Y-m-d H:i:s' );
@@ -8637,11 +8587,11 @@ class DCE_Widget_DynamicPosts extends DCE_Widget_Prototype {
 						break;
 					case 'today':
 						$date_after = date( 'Y-m-d 00:00:00' );
-						$date_before = date( 'Y-m-d 23:23:59' );
+						$date_before = date( 'Y-m-d 23:59:59' );
 						break;
 					case 'yesterday':
 						$date_after = date( 'Y-m-d 00:00:00', strtotime( '-1 day' ) );
-						$date_before = date( 'Y-m-d 23:23:59', strtotime( '-1 day' ) );
+						$date_before = date( 'Y-m-d 23:59:59', strtotime( '-1 day' ) );
 						break;
 					case 'days':
 					case 'weeks':
@@ -8805,7 +8755,7 @@ class DCE_Widget_DynamicPosts extends DCE_Widget_Prototype {
 							echo $divisore_f;
 						}
 						$term_url = ( is_object( $filter ) && get_class( $filter ) == 'WP_Term' ) ? get_term_link( $filter->term_id ) : '#';
-						echo '<' . $tag_filter . ' class="filters-item' . ( ! $fkey && ! $settings['all_filter'] ? ' filter-active' : '' ) . '">' . '<a href="' . $term_url . '" data-filter=".' . $filter->slug . '">' . $filter->name . '</a></' . $tag_filter . '>';
+						echo '<' . $tag_filter . ' class="filters-item' . ( ! $fkey && ! $settings['all_filter'] ? ' filter-active' : '' ) . '"><a href="' . $term_url . '" data-filter=".' . $filter->slug . '">' . $filter->name . '</a></' . $tag_filter . '>';
 					}
 				}
 			}
@@ -9248,7 +9198,7 @@ class DCE_Widget_DynamicPosts extends DCE_Widget_Prototype {
 			//end contenitore della griglia
 			// La paginazione numerica ........
 			if ( $settings['pagination_enable'] ) {
-				\DynamicContentForElementor\Helper::numeric_query_pagination( $p_query->max_num_pages, $settings );
+				Helper::numeric_query_pagination( $p_query->max_num_pages, $settings );
 			}
 
 			// La paginazione infinitescroll ...
@@ -9288,7 +9238,7 @@ class DCE_Widget_DynamicPosts extends DCE_Widget_Prototype {
 							<div class="infinite-scroll-error status-text"><?php echo $settings['infiniteScroll_label_error']; ?></div>
 
 							<div class="pagination" role="navigation">
-								<a class="pagination__next" href="<?php echo \DynamicContentForElementor\Helper::get_next_pagination(); ?>"></a>
+								<a class="pagination__next" href="<?php echo Helper::get_next_pagination(); ?>"></a>
 							</div>
 						</div>
 
@@ -9392,14 +9342,14 @@ class DCE_Widget_DynamicPosts extends DCE_Widget_Prototype {
 	}
 
 	private function generate_title( $settings ) {
-		echo sprintf( '<%1$s class="dce-post-title">', $settings['html_tag'] ); ?>
+		echo sprintf( '<%1$s class="dce-post-title">', Helper::validate_html_tag( $settings['html_tag'] ) ); ?>
 		<?php if ( $settings['title_link'] ) {
 			?><a href="<?php the_permalink(); ?>"><?php } ?>
 			<?php get_the_title() ? the_title() : the_ID(); ?>
 			<?php if ( $settings['title_link'] ) {
 				?></a><?php } ?>
 		<?php
-		echo sprintf( '</%s>', $settings['html_tag'] );
+		echo sprintf( '</%s>', Helper::validate_html_tag( $settings['html_tag'] ) );
 	}
 
 	private function generate_readmore( $settings, $clss ) {
@@ -9567,7 +9517,7 @@ class DCE_Widget_DynamicPosts extends DCE_Widget_Prototype {
 
 				$spazio = '';
 				$tag_item = 'span';
-				$tag_subitem = $acfitem['html_tag_item'];
+				$tag_subitem = Helper::validate_html_tag( $acfitem['html_tag_item'] );
 
 				$tag_subitem_start = '';
 				$tag_subitem_end = '';
@@ -9826,7 +9776,7 @@ class DCE_Widget_DynamicPosts extends DCE_Widget_Prototype {
 		$post = get_post( $post_id );
 		$post_type = get_post_type( get_post( $post_id ) );
 		$type = get_post_type_object( $post_type );
-		echo '<' . $settings['html_tag_type'] . ' class="dce-post-type">';
+		echo '<' . Helper::validate_html_tag( $settings['html_tag_type'] ) . ' class="dce-post-type">';
 		if ( $settings['type_link'] ) {
 			echo '<a href="' . get_post_type_archive_link( $post_type ) . '">';
 		}
@@ -9838,6 +9788,6 @@ class DCE_Widget_DynamicPosts extends DCE_Widget_Prototype {
 		if ( $settings['type_link'] ) {
 			echo '</a>';
 		}
-		echo '</' . $settings['html_tag_type'] . '>';
+		echo '</' . Helper::validate_html_tag( $settings['html_tag_type'] ) . '>';
 	}
 }

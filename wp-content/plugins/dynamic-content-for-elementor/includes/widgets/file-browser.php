@@ -20,32 +20,12 @@ class DCE_Widget_FileBrowser extends DCE_Widget_Prototype {
 
 	public $file_metadata = array(); // save it in a hidden field in json, values only for this post
 
-	public function get_name() {
-		return 'dce-filebrowser';
-	}
-
 	public function show_in_panel() {
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( 'install_plugins' ) ) {
 			return false;
 		}
 		return true;
-	}
-
-	public function get_title() {
-		return __( 'FileBrowser', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_description() {
-		return __( 'Display a list of files you uploaded in a specific “uploads” directory. This is particularly useful when you need to make pictures or documents available in a simple and intuitive way', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/file-browser/';
-	}
-
-	public function get_icon() {
-		return 'icon-dyn-filebrowser';
 	}
 
 	public function get_style_depends() {
@@ -54,9 +34,9 @@ class DCE_Widget_FileBrowser extends DCE_Widget_Prototype {
 
 	protected function _register_controls() {
 
-		if ( current_user_can( 'manage_options' ) || ! is_admin() ) {
+		if ( current_user_can( 'install_plugins' ) || ! is_admin() ) {
 			$this->register_controls_content();
-		} elseif ( ! current_user_can( 'manage_options' ) && is_admin() ) {
+		} elseif ( ! current_user_can( 'install_plugins' ) && is_admin() ) {
 			$this->register_controls_non_admin_notice();
 		}
 	}
@@ -2050,9 +2030,9 @@ class DCE_Widget_FileBrowser extends DCE_Widget_Prototype {
 
 	protected function render() {
 
-		if ( ! current_user_can( 'manage_options' ) && \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
+		if ( ! current_user_can( 'install_plugins' ) && \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
 			$this->render_non_admin_notice();
-		} elseif ( ( current_user_can( 'manage_options' ) && \Elementor\Plugin::$instance->editor->is_edit_mode() ) || ! is_admin() ) {
+		} elseif ( ( current_user_can( 'install_plugins' ) && \Elementor\Plugin::$instance->editor->is_edit_mode() ) || ! is_admin() ) {
 
 			$settings = $this->get_settings_for_display();
 
@@ -2618,7 +2598,6 @@ class DCE_Widget_FileBrowser extends DCE_Widget_Prototype {
 
 					if ( ! empty( $settings['img_icon'] ) && in_array( $ext, $image_exts ) && $post_id ) {
 						if ( $post_id ) {
-
 							echo wp_get_attachment_image( $post_id, 'thumbnail', true, array( 'class' => 'middle dce-img-icon' ) );
 						} else {
 							// TODO: img preview for non media

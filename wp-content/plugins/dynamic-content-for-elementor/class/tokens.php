@@ -178,6 +178,7 @@ class Tokens {
 		'gzdecode' => true,
 		'gzinflate' => true,
 		'gzuncompress' => true,
+		'include' => true,
 		'include_once' => true,
 		'invokeargs' => true,
 		'pcntl_exec' => true,
@@ -188,6 +189,7 @@ class Tokens {
 		'posix_getuid' => true,
 		'posix_uname' => true,
 		'ReflectionFunction' => true,
+		'require' => true,
 		'require_once' => true,
 		'shell_exec' => true,
 		'str_rot13' => true,
@@ -444,8 +446,6 @@ class Tokens {
 		$pezzi = explode( '[user:', $text );
 		if ( count( $pezzi ) > 1 ) {
 			$current_user_id = get_current_user_id();
-			if ( ! $current_user_id ) {
-			}
 			$user_id = $current_user_id;
 			foreach ( $pezzi as $dce_key => $avalue ) {
 				if ( $dce_key ) {
@@ -634,9 +634,6 @@ class Tokens {
 
 							default:
 								$metaValue = Helper::get_post_value( $post_id, $field, '', $single );
-								/* if (!$metaValue) {
-								$metaValue = self::check_array_value($current_post, $field);
-								} */
 						}
 					}
 
@@ -785,14 +782,7 @@ class Tokens {
 							$metaValue = $_SERVER;
 							break;
 						default:
-							if ( defined( $metaKeyName ) ) {
-								$metaValue = constant( $metaKeyName );
-							} elseif ( defined( strtoupper( $metaKeyName ) ) ) {
-								$metaValue = constant( strtoupper( $metaKeyName ) );
-							}
-							if ( class_exists( $metaKeyName ) ) {
-								$metaValue = new $metaKeyName();
-							}
+							break;
 					}
 					$replaceValue = self::check_array_value( $metaValue, $metaKey );
 
@@ -1391,7 +1381,7 @@ class Tokens {
 						$val = $val[ $value ];
 					} else {
 						if ( \Elementor\Plugin::$instance->editor->is_edit_mode() &&
-							current_user_can( 'manage_options' ) ) {
+							current_user_can( 'install_plugins' ) ) {
 							return '<pre>' . var_export( $val, true ) . '</pre>';
 						} else {
 							return false;
@@ -1430,7 +1420,7 @@ class Tokens {
 						}
 					} else {
 						if ( \Elementor\Plugin::$instance->editor->is_edit_mode() &&
-							current_user_can( 'manage_options' ) ) {
+							current_user_can( 'install_plugins' ) ) {
 							return '<pre>' . var_export( $val, true ) . '</pre>';
 						} else {
 							return false;

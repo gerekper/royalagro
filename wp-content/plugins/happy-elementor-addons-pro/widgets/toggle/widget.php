@@ -13,7 +13,7 @@ use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Happy_Addons\Elementor\Controls\Group_Control_Foreground;
 
 defined( 'ABSPATH' ) || die();
@@ -287,7 +287,7 @@ class Toggle extends Base {
             [
                 'name' => 'title_typography',
                 'selector' => '{{WRAPPER}} .ha-toggle__item-title',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+                'scheme' => Typography::TYPOGRAPHY_2,
             ]
         );
 
@@ -455,7 +455,7 @@ class Toggle extends Base {
             [
                 'name' => 'content_typography',
                 'selector' => '{{WRAPPER}} .ha-toggle__item-content',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                'scheme' => Typography::TYPOGRAPHY_3,
             ]
         );
 

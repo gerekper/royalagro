@@ -9,8 +9,8 @@ namespace UltimateElementor\Modules\BusinessReviews\Skins;
 
 use Elementor\Controls_Manager;
 use Elementor\Widget_Base;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;

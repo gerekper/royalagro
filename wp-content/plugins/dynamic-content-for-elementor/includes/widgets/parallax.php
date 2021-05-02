@@ -14,26 +14,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_Parallax extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-parallax';
-	}
-
-	public function get_title() {
-		return __( 'Parallax', 'dynamic-content-for-elementor' );
-	}
-	public function get_description() {
-		return __( 'Manage parallax movements with your mouse on desktop or device orientation on mobile', 'dynamic-content-for-elementor' );
-	}
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/parallax/';
-	}
-	public function get_icon() {
-		return 'icon-dyn-parallax';
-	}
-	public static function get_position() {
-		return 1;
-	}
-
 	public function get_script_depends() {
 		return [ 'dce-parallaxjs-lib', 'dce-parallax-js' ];
 	}

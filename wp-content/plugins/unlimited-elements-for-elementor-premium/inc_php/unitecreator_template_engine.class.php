@@ -489,21 +489,6 @@ class UniteCreatorTemplateEngineWork{
 		//function for override
 	}
 	
-	/**
-	 * put woo commerce filter
-	 */
-	public function putWooFilter($filterName = null){
-		
-		if(empty($filterName))
-			UniteFunctionsUC::throwError("putWooFilter error: No Filter provided");
-		
-		$isActive = UniteCreatorWooIntegrate::isWooActive();
-		
-		$objWooIntegrate = UniteCreatorWooIntegrate::getInstance();
-
-		$objWooIntegrate->putHtmlFilter($filterName);
-		
-	}
 	
 	/**
 	 * get woo child product
@@ -619,6 +604,52 @@ class UniteCreatorTemplateEngineWork{
 		$objPagination->putPaginationWidgetHtml($args);
 	}
 	
+	
+	/**
+	 * put listing template
+	 */
+	/*
+	public function putListingTemplate_posts($paramName, $templateID){
+		
+		global $wp_query;
+		
+		$originalPost = $GLOBALS['post'];
+		
+		//backup the original querified object
+		$originalQueriedObject = $wp_query->queried_object;
+		$originalQueriedObjectID = $wp_query->queried_object_id;
+		
+		foreach($this->arrItems as $item){
+
+			$item = UniteFunctionsUC::getVal($item, "item");
+			
+			$postItem = UniteFunctionsUC::getVal($item, $paramName);
+			if(empty($postItem))
+				UniteFunctionsUC::throwError("Posts List attribute: $paramName not found. please write the correct post list attribute name.");
+			
+			$postID = $postItem->ID;
+			
+			
+			//set the post qieried object
+			$wp_query->queried_object = $postItem;
+			$wp_query->queried_object_id = $postID;
+			
+			$GLOBALS['post'] = $postItem;
+			
+			$output = \Elementor\Plugin::instance()->frontend->get_builder_content_for_display( 1753 );
+			
+			echo $output;
+		}
+				
+		//restore the original queried object
+		$wp_query->queried_object = $originalQueriedObject;
+		$wp_query->queried_object_id = $originalQueriedObjectID;
+		$GLOBALS['post'] = $originalPost;
+		
+	}
+	
+	*/
+	
 	/**
 	 * number format for woocommerce
 	 */
@@ -635,6 +666,20 @@ class UniteCreatorTemplateEngineWork{
 		
 		return($price);
 	}
+
+	/**
+	 * number format for woocommerce
+	 */
+	public function filterWcPrice($price){
+
+		if(function_exists("wc_price") == false)
+			return($price);
+			
+		$newPrice = wc_price($price);
+		
+		return($newPrice);
+	}
+	
 	
 	/**
 	 * get listing item data
@@ -746,6 +791,7 @@ class UniteCreatorTemplateEngineWork{
 		$getPostTags = new Twig_SimpleFunction('getPostTags', array($this,"getPostTags"));
 		$getPostData = new Twig_SimpleFunction('getPostData', array($this,"getPostData"));
 		$putPagination = new Twig_SimpleFunction('putPagination', array($this,"putPagination"));
+		//$putListingTemplate_post = new Twig_SimpleFunction('putListingTemplate_posts', array($this,"putListingTemplate_posts"));
 		
 		$putPostImageAttributes = new Twig_SimpleFunction('putPostImageAttributes', array($this,"putPostImageAttributes"));
 		
@@ -760,9 +806,7 @@ class UniteCreatorTemplateEngineWork{
 		$getPostTerms = new Twig_SimpleFunction('getPostTerms', array($this,"getPostTerms"));
 		$getPostAuthor = new Twig_SimpleFunction('getPostAuthor', array($this,"getPostAuthor"));
 		$getUserData = new Twig_SimpleFunction('getUserData', array($this,"getUserData"));
-		$putWooFilter = new Twig_SimpleFunction('putWooFilter', array($this,"putWooFilter"));
 		$getWooChildProducts = new Twig_SimpleFunction('getWooChildProducts', array($this,"getWooChildProducts"));
-		
 		$getListingItemData = new Twig_SimpleFunction('getListingItemData', array($this,"getListingItemData"));
 		
 		$printTermCustomFields = new Twig_SimpleFunction('printTermCustomFields', array($this,"printTermCustomFields"));
@@ -773,7 +817,8 @@ class UniteCreatorTemplateEngineWork{
 		$filterWPAutop = new Twig_SimpleFilter("wpautop", array($this, "filterWPAutop"));
 		$filterUCDate = new Twig_SimpleFilter("ucdate", array($this, "filterUCDate"));
 		$filterPriceNumberFormat = new Twig_SimpleFilter("price_number_format", array($this, "filterPriceNumberFormat"));
-
+		$filterWcPrice = new Twig_SimpleFilter("wc_price", array($this, "filterWcPrice"));
+		
 		$putTestHtml = new Twig_SimpleFunction('putTestHTML', array($this,"putTestHTML"));
 		
 		
@@ -808,11 +853,11 @@ class UniteCreatorTemplateEngineWork{
 		$this->twig->addFunction($printJsonVar);
 		$this->twig->addFunction($printJsonHtmlData);
 		$this->twig->addFunction($putPagination);
+		//$this->twig->addFunction($putListingTemplate_post);
 		
 		$this->twig->addFunction($getPostTerms);
 		$this->twig->addFunction($getPostAuthor);
 		$this->twig->addFunction($getUserData);
-		$this->twig->addFunction($putWooFilter);
 		$this->twig->addFunction($getWooChildProducts);
 		$this->twig->addFunction($getTermCustomFields);
 		$this->twig->addFunction($putItemsJsonFunction);
@@ -828,6 +873,7 @@ class UniteCreatorTemplateEngineWork{
 		$this->twig->addFilter($filterWPAutop);
 		$this->twig->addFilter($filterUCDate);
 		$this->twig->addFilter($filterPriceNumberFormat);
+		$this->twig->addFilter($filterWcPrice);
 		
 		
 		//pro functions

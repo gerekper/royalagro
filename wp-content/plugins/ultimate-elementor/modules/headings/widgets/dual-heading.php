@@ -12,8 +12,8 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Group_Control_Background;
 use Elementor\Utils;
 
@@ -333,9 +333,8 @@ class Dual_Heading extends Common_Widget {
 			array(
 				'label'     => __( 'Text Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_PRIMARY,
 				),
 				'default'   => '',
 				'selectors' => array(
@@ -347,7 +346,9 @@ class Dual_Heading extends Common_Widget {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'before_heading_text_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				),
 				'selector' => '{{WRAPPER}} .uael-dual-heading-text',
 			)
 		);
@@ -482,9 +483,8 @@ class Dual_Heading extends Common_Widget {
 			array(
 				'label'     => __( 'Highlight Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_SECONDARY,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-dual-heading-text.uael-highlight-text' => 'color: {{VALUE}};',
@@ -495,7 +495,9 @@ class Dual_Heading extends Common_Widget {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'second_heading_text_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				),
 				'selector' => '{{WRAPPER}} .uael-dual-heading-text.uael-highlight-text',
 			)
 		);
@@ -655,7 +657,9 @@ class Dual_Heading extends Common_Widget {
 				array(
 					'name'     => 'bg_text_typography',
 					'selector' => '{{WRAPPER}} .uael-dual-color-heading:before',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 				)
 			);
 

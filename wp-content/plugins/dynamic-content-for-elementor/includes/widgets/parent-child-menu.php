@@ -13,22 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_ParentChildMenu extends DCE_Widget_Prototype {
 
-	public function get_name() {
-			return 'parent-child-menu';
-	}
-
-	public function get_title() {
-			return __( 'Parent Child Menu', 'dynamic-content-for-elementor' );
-	}
-	public function get_description() {
-		return __( 'Build a list of entries in horizontal or vertical mode where a parent element can be considered as a menu', 'dynamic-content-for-elementor' );
-	}
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/widget-parent-child-menu/';
-	}
-	public function get_icon() {
-			return 'icon-dyn-parentchild';
-	}
 	public function get_style_depends() {
 		return [ 'dce-list' ];
 	}
@@ -44,10 +28,10 @@ class DCE_Widget_ParentChildMenu extends DCE_Widget_Prototype {
 				'parentpage_select',
 				[
 					'label' => __( 'Parent Page', 'dynamic-content-for-elementor' ),
-					'type'      => 'ooo_query',
-					'placeholder'   => __( 'Post Title', 'dynamic-content-for-elementor' ),
-					'label_block'   => true,
-					'query_type'    => 'posts',
+					'type' => 'ooo_query',
+					'placeholder' => __( 'Post Title', 'dynamic-content-for-elementor' ),
+					'label_block' => true,
+					'query_type' => 'posts',
 					'condition' => [
 						'dynamic_parentchild' => '',
 					],
@@ -72,12 +56,12 @@ class DCE_Widget_ParentChildMenu extends DCE_Widget_Prototype {
 		'dynamic_parentchild',
 			[
 				'label' => __( 'Dynamic page parent/child', 'dynamic-content-for-elementor' ),
-				'description'   => __( 'Change depending on the page that displays it', 'dynamic-content-for-elementor' ),
-				'type'          => Controls_Manager::SWITCHER,
-				'default'       => '',
-				'label_on'      => __( 'Yes', 'dynamic-content-for-elementor' ),
-				'label_off'     => __( 'No', 'dynamic-content-for-elementor' ),
-				'return_value'  => 'yes',
+				'description' => __( 'Change depending on the page that displays it', 'dynamic-content-for-elementor' ),
+				'type' => Controls_Manager::SWITCHER,
+				'default' => '',
+				'label_on' => __( 'Yes', 'dynamic-content-for-elementor' ),
+				'label_off' => __( 'No', 'dynamic-content-for-elementor' ),
+				'return_value' => 'yes',
 
 			]
 		);
@@ -92,24 +76,24 @@ class DCE_Widget_ParentChildMenu extends DCE_Widget_Prototype {
 		$this->add_control(
 			'use_second_level',
 			[
-				'label'         => __( 'Use second level', 'dynamic-content-for-elementor' ),
-				'type'          => Controls_Manager::SWITCHER,
-				'default'       => 'yes',
+				'label' => __( 'Use second level', 'dynamic-content-for-elementor' ),
+				'type' => Controls_Manager::SWITCHER,
+				'default' => 'yes',
 			]
 		);
 		$this->add_control(
 			'exclude_io',
 			[
-				'label'         => __( 'Exclude myself', 'dynamic-content-for-elementor' ),
-				'type'          => Controls_Manager::SWITCHER,
-				'default'       => 'yes',
+				'label' => __( 'Exclude myself', 'dynamic-content-for-elementor' ),
+				'type' => Controls_Manager::SWITCHER,
+				'default' => 'yes',
 			]
 		);
 		$this->add_control(
 			'no_siblings',
 			[
-				'label'         => __( 'Hide Siblings', 'dynamic-content-for-elementor' ),
-				'type'          => Controls_Manager::SWITCHER,
+				'label' => __( 'Hide Siblings', 'dynamic-content-for-elementor' ),
+				'type' => Controls_Manager::SWITCHER,
 				'condition' => [
 					'dynamic_parentchild!' => '',
 				],
@@ -118,8 +102,8 @@ class DCE_Widget_ParentChildMenu extends DCE_Widget_Prototype {
 		$this->add_control(
 			'only_children',
 			[
-				'label'         => __( 'Only children', 'dynamic-content-for-elementor' ),
-				'type'          => Controls_Manager::SWITCHER,
+				'label' => __( 'Only children', 'dynamic-content-for-elementor' ),
+				'type' => Controls_Manager::SWITCHER,
 				'condition' => [
 					'no_siblings!' => '',
 				],
@@ -180,8 +164,8 @@ class DCE_Widget_ParentChildMenu extends DCE_Widget_Prototype {
 		$this->add_control(
 		'blockwidth_enable',
 			[
-				'label'         => __( 'Force Block width', 'dynamic-content-for-elementor' ),
-				'type'          => Controls_Manager::SWITCHER,
+				'label' => __( 'Force Block width', 'dynamic-content-for-elementor' ),
+				'type' => Controls_Manager::SWITCHER,
 				'condition' => [
 					'show_border' => '2',
 				],

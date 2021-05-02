@@ -25,7 +25,7 @@ trait Trait_Static {
 		return $orderby;
 	}
 
-	public static function get_anim_timingFunctions() {
+	public static function get_anim_timing_functions() {
 		$tf_p = [
 			'linear' => __( 'Linear', 'dynamic-content-for-elementor' ),
 			'ease' => __( 'Ease', 'dynamic-content-for-elementor' ),
@@ -163,26 +163,6 @@ trait Trait_Static {
 		return $nf_c;
 	}
 
-	public static function get_kute_timingFunctions() {
-		$tf_p = [
-			'linear' => __( 'Linear', 'dynamic-content-for-elementor' ),
-			'easingSinusoidalIn' => 'easingSinusoidalIn',
-			'easingSinusoidalOut' => 'easingSinusoidalOut',
-			'easingSinusoidalInOut' => 'easingSinusoidalInOut',
-			'easingQuadraticInOut' => 'easingQuadraticInOut',
-			'easingCubicInOut' => 'easingCubicInOut',
-			'easingQuarticInOut' => 'easingQuarticInOut',
-			'easingQuinticInOut' => 'easingQuinticInOut',
-			'easingCircularInOut' => 'easingCircularInOut',
-			'easingExponentialInOut' => 'easingExponentialInOut',
-			'easingSinusoidalInOut' => 'easingSinusoidalInOut',
-			'easingBackInOut' => 'easingBackInOut',
-			'easingElasticInOut' => 'easingElasticInOut',
-			'easingBounceInOut' => 'easingBounceInOut',
-		];
-		return $tf_p;
-	}
-
 	public static function get_gsap_ease() {
 		$tf_p = [
 			'easeNone' => __( 'None', 'dynamic-content-for-elementor' ),
@@ -193,7 +173,7 @@ trait Trait_Static {
 		return $tf_p;
 	}
 
-	public static function get_gsap_timingFunctions() {
+	public static function get_gsap_timing_functions() {
 		$tf_p = [
 			'Power0' => __( 'Linear', 'dynamic-content-for-elementor' ),
 			'Power1' => __( 'Power1', 'dynamic-content-for-elementor' ),
@@ -207,40 +187,6 @@ trait Trait_Static {
 			'Circ' => __( 'Circ', 'dynamic-content-for-elementor' ),
 			'Expo' => __( 'Expo', 'dynamic-content-for-elementor' ),
 			'Sine' => __( 'Sine', 'dynamic-content-for-elementor' ),
-		];
-		return $tf_p;
-	}
-
-	public static function get_ease_timingFunctions() {
-		$tf_p = [
-			'linear' => __( 'Linear', 'dynamic-content-for-elementor' ),
-			'easeInQuad' => 'easeInQuad',
-			'easeInCubic' => 'easeInCubic',
-			'easeInQuart' => 'easeInQuart',
-			'easeInQuint' => 'easeInQuint',
-			'easeInSine' => 'easeInSine',
-			'easeInExpo' => 'easeInExpo',
-			'easeInCirc' => 'easeInCirc',
-			'easeInBack' => 'easeInBack',
-			'easeInElastic' => 'easeInElastic',
-			'easeOutQuad' => 'easeOutQuad',
-			'easeOutCubic' => 'easeOutCubic',
-			'easeOutQuart' => 'easeOutQuart',
-			'easeOutQuint' => 'easeOutQuint',
-			'easeOutSine' => 'easeOutSine',
-			'easeOutExpo' => 'easeOutExpo',
-			'easeOutCirc' => 'easeOutCirc',
-			'easeOutBack' => 'easeOutBack',
-			'easeOutElastic' => 'easeOutElastic',
-			'easeInOutQuad' => 'easeInOutQuad',
-			'easeInOutCubic' => 'easeInOutCubic',
-			'easeInOutQuart' => 'easeInOutQuart',
-			'easeInOutQuint' => 'easeInOutQuint',
-			'easeInOutSine' => 'easeInOutSine',
-			'easeInOutExpo' => 'easeInOutExpo',
-			'easeInOutCirc' => 'easeInOutCirc',
-			'easeInOutBack' => 'easeInOutBack',
-			'easeInOutElastic' => 'easeInOutElastic',
 		];
 		return $tf_p;
 	}
@@ -446,13 +392,6 @@ trait Trait_Static {
 
 		return $anim_p;
 	}
-	public static function get_anim_overlay() {
-		$anim_p = [
-			'dce_overlayLeft' => _x( 'Overlay Left', 'Ajax Page', 'dynamic-content-for-elementor' ),
-			'dce_overlayTop' => _x( 'Overlay Top', 'Ajax Page', 'dynamic-content-for-elementor' ),
-		];
-		return $anim_p;
-	}
 
 	public static function bootstrap_button_sizes() {
 		return [
@@ -461,16 +400,6 @@ trait Trait_Static {
 			'md' => __( 'Medium', 'dynamic-content-for-elementor' ),
 			'lg' => __( 'Large', 'dynamic-content-for-elementor' ),
 			'xl' => __( 'Extra Large', 'dynamic-content-for-elementor' ),
-		];
-	}
-
-	public static function bootstrap_styles() {
-		return [
-			'' => __( 'Default', 'dynamic-content-for-elementor' ),
-			'info' => __( 'Info', 'dynamic-content-for-elementor' ),
-			'success' => __( 'Success', 'dynamic-content-for-elementor' ),
-			'warning' => __( 'Warning', 'dynamic-content-for-elementor' ),
-			'danger' => __( 'Danger', 'dynamic-content-for-elementor' ),
 		];
 	}
 
@@ -492,15 +421,6 @@ trait Trait_Static {
 			'!=' => '!=',
 			'LIKE' => 'LIKE',
 			'RLIKE' => 'RLIKE',
-			/*
-			  "E" => "=",
-			  "GT" => "&gt;",
-			  "GTE" => "&gt;=",
-			  "LT" => "&lt;",
-			  "LTE" => "&lt;=",
-			  "NE" => "!=",
-			  "LIKE_WILD" => "LIKE %...%",
-			 */
 			'NOT LIKE' => 'NOT LIKE',
 			'IN' => 'IN (...)',
 			'NOT IN' => 'NOT IN (...)',
@@ -510,19 +430,6 @@ trait Trait_Static {
 			'NOT EXISTS' => 'NOT EXISTS',
 			'REGEXP' => 'REGEXP',
 			'NOT REGEXP' => 'NOT REGEXP',
-		);
-	}
-
-	public static function get_post_stati() {
-		return array(
-			'published' => __( 'Published' ),
-			'future' => __( 'Future' ),
-			'draft' => __( 'Draft' ),
-			'pending' => __( 'Pending' ),
-			'private' => __( 'Private' ),
-			'trash' => __( 'Trash' ),
-			'auto-draft' => __( 'Auto-Draft' ),
-			'inherit' => __( 'Inherit' ),
 		);
 	}
 

@@ -15,25 +15,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class DCE_Widget_Tilt extends DCE_Widget_Prototype {
-	public function get_name() {
-		return 'dyncontel-tilt';
-	}
-
-	public function get_title() {
-		return __( 'Tilt', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_description() {
-		return __( 'Parallax hover tilt effect applicated to a template', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/tilt/';
-	}
-
-	public function get_icon() {
-		return 'icon-dyn-tilt';
-	}
 
 	public function get_script_depends() {
 		return [ 'tilt-lib', 'dce-tilt' ];

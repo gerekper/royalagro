@@ -11,30 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_Template extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-template';
-	}
-
-	public function get_title() {
-		return __( 'Dynamic Template', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_icon() {
-		return 'icon-dyn-layout';
-	}
-	public function get_description() {
-		return __( 'Include every element of your site in a template without having to redo it' );
-	}
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/dynamic-template/';
-	}
-
-	public function get_script_depends() {
-		return [];
-	}
-	public static function get_position() {
-		return 4;
-	}
 	protected function _register_controls() {
 		$this->start_controls_section(
 				'section_dynamictemplate', [

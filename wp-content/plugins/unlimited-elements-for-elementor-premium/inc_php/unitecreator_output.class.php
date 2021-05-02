@@ -1295,9 +1295,13 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 			
 			$num = $index+1;
 			
-			$text = "{$num}. <b>$title</b> (<i style='font-size:13px;'>$alias, $id</i>)";
+			$post = get_post($id);
+			$arrTermsNames = UniteFunctionsWPUC::getPostTermsTitles($post);
+			$strTerms = implode(",", $arrTermsNames);
 			
-			dmp($text);	
+			$text = "{$num}. <b>$title</b> (<i style='font-size:13px;'>$alias, $id | $strTerms </i>)";
+			
+			dmp($text);
 			
 			if($isShowMeta == false)
 				continue;

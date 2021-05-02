@@ -15,7 +15,7 @@ class Ajax {
 		$this->init();
 	}
 
-	function init() {
+	public function init() {
 
 		add_action( 'wp_ajax_wpa_update_postmetas', array( $this, 'wpa_update_postmetas' ) );
 		add_action( 'wp_ajax_wpa_update_options', array( $this, 'wpa_update_options' ) );
@@ -33,8 +33,8 @@ class Ajax {
 		add_action( 'wp_ajax_modale_action', array( $this, 'dce_ajax_action' ) );
 		add_action( 'wp_ajax_nopriv_modale_action', array( $this, 'dce_ajax_action' ) );
 
-		add_action( 'wp_ajax_dualview_action', array( $this, 'dce_dualView_ajax_action' ) );
-		add_action( 'wp_ajax_nopriv_dualview_action', array( $this, 'dce_dualView_ajax_action' ) );
+		add_action( 'wp_ajax_dualview_action', array( $this, 'dce_dual_view_ajax_action' ) );
+		add_action( 'wp_ajax_nopriv_dualview_action', array( $this, 'dce_dual_view_ajax_action' ) );
 
 		add_action( 'wp_ajax_dce_finder_search', array( $this, 'dce_finder_search' ) );
 		add_action( 'wp_ajax_nopriv_dce_finder_search', array( $this, 'dce_finder_search' ) );
@@ -47,7 +47,7 @@ class Ajax {
 
 	}
 
-	function wpa_update_postmetas() {
+	public function wpa_update_postmetas() {
 		// The $_REQUEST contains all the data sent via ajax
 		if ( isset( $_REQUEST ) ) {
 			$post_id = 0;
@@ -75,12 +75,12 @@ class Ajax {
 				return false;
 			}
 		}
-		echo json_encode( $_REQUEST );
+		echo wp_json_encode( $_REQUEST );
 		// Always die in functions echoing ajax content
 		wp_die(); // this is required to terminate immediately and return a proper response
 	}
 
-	function wpa_update_options() {
+	public function wpa_update_options() {
 		// The $_REQUEST contains all the data sent via ajax
 		if ( isset( $_REQUEST ) ) {
 			foreach ( $_REQUEST as $key => $value ) {
@@ -99,12 +99,12 @@ class Ajax {
 				}
 			}
 		}
-		echo json_encode( $_REQUEST );
+		echo wp_json_encode( $_REQUEST );
 		// Always die in functions echoing ajax content
 		wp_die(); // this is required to terminate immediately and return a proper response
 	}
 
-	function dce_file_browser_hits() {
+	public function dce_file_browser_hits() {
 		// The $_REQUEST contains all the data sent via ajax
 		if ( isset( $_REQUEST ) ) {
 			if ( isset( $_REQUEST['post_id'] ) ) {
@@ -141,12 +141,12 @@ class Ajax {
 				update_option( $key, $value );
 			}
 		}
-		echo json_encode( $_REQUEST );
+		echo wp_json_encode( $_REQUEST );
 		// Always die in functions echoing ajax content
 		wp_die(); // this is required to terminate immediately and return a proper response
 	}
 
-	function dce_visibility_toggle() {
+	public function dce_visibility_toggle() {
 		// The $_REQUEST contains all the data sent via ajax
 		if ( isset( $_REQUEST ) ) {
 			if ( isset( $_REQUEST['element_id'] ) && isset( $_REQUEST['post_id'] ) ) {
@@ -171,7 +171,7 @@ class Ajax {
 		// Always die in functions echoing ajax content
 		wp_die(); // this is required to terminate immediately and return a proper response
 	}
-	function dce_visibility_is_hidden() {
+	public function dce_visibility_is_hidden() {
 		// The $_REQUEST contains all the data sent via ajax
 		if ( isset( $_REQUEST ) ) {
 			if ( isset( $_REQUEST['element_id'] ) && isset( $_REQUEST['post_id'] ) ) {
@@ -192,7 +192,7 @@ class Ajax {
 	}
 
 
-	function wpa_dce_get_next_post( $id = null ) {
+	public function wpa_dce_get_next_post( $id = null ) {
 		$ret = array();
 		// The $_REQUEST contains all the data sent via ajax
 		if ( isset( $_REQUEST ) ) {
@@ -203,7 +203,7 @@ class Ajax {
 			$ret['title'] = get_the_title( $next->ID );
 			$ret['thumbnail'] = get_the_post_thumbnail( $next->ID );
 		}
-		echo json_encode( $ret );
+		echo wp_json_encode( $ret );
 		// Always die in functions echoing ajax content
 		wp_die(); // this is required to terminate immediately and return a proper response
 	}
@@ -229,7 +229,7 @@ class Ajax {
 		wp_die();
 	}
 
-	public static function dce_dualView_ajax_action() {
+	public static function dce_dual_view_ajax_action() {
 		$postid = url_to_postid( sanitize_text_field( $_POST['post_href'] ) );
 		$template_id = sanitize_text_field( $_POST['template_id'] );
 		$featuredImage = get_the_post_thumbnail( $postid );
@@ -313,7 +313,7 @@ class Ajax {
 
 			$posts_id = array();
 			global $wpdb;
-
+			$search = esc_sql( $search );
 			$title_results = $wpdb->get_results( "SELECT ID FROM {$wpdb->prefix}posts WHERE post_status LIKE 'publish' AND post_title LIKE '%" . $search . "%'", OBJECT );
 			if ( ! empty( $title_results ) ) {
 				foreach ( $title_results as $key => $title_result ) {
@@ -370,7 +370,7 @@ class Ajax {
 				'taxonomies' => $taxonomies_html,
 			);
 		}
-		echo json_encode( $ret );
+		echo wp_json_encode( $ret );
 		// Always die in functions echoing ajax content
 		wp_die(); // this is required to terminate immediately and return a proper response
 	}

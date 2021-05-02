@@ -75,13 +75,15 @@ trait Trait_Form {
 			if ( $referrer ) {
 				$post_id = url_to_postid( $referrer );
 				if ( $post_id ) {
-					$this_post = $this_page = get_post( $post_id );
+					$this_page = get_post( $post_id );
+					$this_post = $this_page;
 				}
 			}
 		}
 		if ( ! $this_page ) {
 			if ( isset( $_POST['post_id'] ) ) {
-				$this_post = $this_page = get_post( intval( $_POST['post_id'] ) );
+				$this_page = get_post( intval( $_POST['post_id'] ) );
+				$this_post = $this_page;
 			}
 		}
 
@@ -245,7 +247,7 @@ trait Trait_Form {
 		return $str;
 	}
 
-	// convert an array to a options list compatible with Elementor PRO Form
+	// convert an array to a options list compatible with Elementor Pro Form
 	public static function array_options( $arr = array(), $val = 'keys' ) {
 		$str = '';
 		if ( empty( $arr ) ) {
@@ -342,6 +344,4 @@ trait Trait_Form {
 		}
 		return false;
 	}
-
-
 }

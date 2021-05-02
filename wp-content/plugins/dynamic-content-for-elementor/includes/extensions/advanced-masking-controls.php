@@ -13,18 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Extension_Masking extends DCE_Extension_Prototype {
 
-	public $name = 'Advanced Masking Controls';
-	public static $docs = 'https://www.dynamic.ooo/widget/advanced-masking/';
 	private $is_common = false;
-	public $has_action = false;
-
-	public function get_docs() {
-		return self::$docs;
-	}
-
-	public static function get_description() {
-		return __( 'Advanced Masking features for Image, Image-box and Video Widgets', 'dynamic-content-for-elementor' );
-	}
 
 	public function get_name() {
 		return 'dce_masking';
@@ -121,7 +110,7 @@ class DCE_Extension_Masking extends DCE_Extension_Prototype {
 				  'mask_type' => 'image',
 			  ],
 			  'selectors' => [
-				  '{{WRAPPER}} .elementor-image img, {{WRAPPER}} .elementor-image-box-img img, {{WRAPPER}} .elementor-custom-embed-image-overlay,{{WRAPPER}} .elementor-video-iframe, {{WRAPPER}} .plyr__video-wrapper' => '-webkit-mask-image: url({{VALUE}}); mask-image: url({{VALUE}}); -webkit-mask-position: 50% 50%; mask-position: 50% 50%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-size: contain; mask-size: contain;',
+				  '{{WRAPPER}} img, {{WRAPPER}} .elementor-custom-embed-image-overlay,{{WRAPPER}} .elementor-video-iframe, {{WRAPPER}} .elementor-video, {{WRAPPER}} .plyr__video-wrapper iframe' => '-webkit-mask-image: url({{VALUE}}); mask-image: url({{VALUE}}); -webkit-mask-position: 50% 50%; mask-position: 50% 50%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-size: contain; mask-size: contain;',
 			  ],
 		  ]
 		);
@@ -137,7 +126,7 @@ class DCE_Extension_Masking extends DCE_Extension_Prototype {
 				  'url' => \Elementor\Utils::get_placeholder_image_src(),
 			  ],
 			  'selectors' => [
-				  '{{WRAPPER}} .elementor-image img, {{WRAPPER}} .elementor-image-box-img img, {{WRAPPER}} .elementor-custom-embed-image-overlay,{{WRAPPER}} .elementor-video-iframe, {{WRAPPER}} .plyr__video-wrapper' => '-webkit-mask-image: url({{URL}}); mask-image: url({{URL}}); -webkit-mask-position: 50% 50%; mask-position: 50% 50%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-size: contain; mask-size: contain;',
+				  '{{WRAPPER}} img, {{WRAPPER}} .elementor-custom-embed-image-overlay,{{WRAPPER}} .elementor-video-iframe, {{WRAPPER}} .elementor-video, {{WRAPPER}} .plyr__video-wrapper iframe' => '-webkit-mask-image: url({{URL}}); mask-image: url({{URL}}); -webkit-mask-position: 50% 50%; mask-position: 50% 50%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-size: contain; mask-size: contain;',
 			  ],
 			  'condition' => [
 				  'images_mask' => 'custom_mask',
@@ -167,7 +156,7 @@ class DCE_Extension_Masking extends DCE_Extension_Prototype {
 
 				],
 				'selectors' => [
-					'{{WRAPPER}} .elementor-image img, {{WRAPPER}} .elementor-image-box-img img, {{WRAPPER}} .elementor-custom-embed-image-overlay,{{WRAPPER}} .elementor-video-iframe, {{WRAPPER}} .plyr__video-wrapper' => '-webkit-mask-position: {{VALUE}}; mask-position: {{VALUE}};',
+					'{{WRAPPER}} img, {{WRAPPER}} .elementor-custom-embed-image-overlay,{{WRAPPER}} .elementor-video-iframe, {{WRAPPER}} .elementor-video, {{WRAPPER}} .plyr__video-wrapper iframe' => '-webkit-mask-position: {{VALUE}}; mask-position: {{VALUE}};',
 				],
 				'condition' => [
 					'mask_type' => 'image',
@@ -213,7 +202,7 @@ class DCE_Extension_Masking extends DCE_Extension_Prototype {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .elementor-image img, {{WRAPPER}} .elementor-image-box-img img, {{WRAPPER}} .elementor-custom-embed-image-overlay,{{WRAPPER}} .elementor-video-iframe, {{WRAPPER}} .plyr__video-wrapper' => 'mask-position: {{SIZE}}{{UNIT}} {{ypos_image_mask.SIZE}}{{ypos_image_mask.UNIT}}',
+					'{{WRAPPER}} img, {{WRAPPER}} .elementor-custom-embed-image-overlay,{{WRAPPER}} .elementor-video-iframe, {{WRAPPER}} .elementor-video, {{WRAPPER}} .plyr__video-wrapper iframe' => 'mask-position: {{SIZE}}{{UNIT}} {{ypos_image_mask.SIZE}}{{ypos_image_mask.UNIT}}',
 				],
 				'condition' => [
 					'mask_type' => 'image',
@@ -260,7 +249,7 @@ class DCE_Extension_Masking extends DCE_Extension_Prototype {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .elementor-image img, {{WRAPPER}} .elementor-image-box-img img, {{WRAPPER}} .elementor-custom-embed-image-overlay,{{WRAPPER}} .elementor-video-iframe, {{WRAPPER}} .plyr__video-wrapper' => 'mask-position: {{xpos_image_mask.SIZE}}{{xpos_image_mask.UNIT}} {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} img, {{WRAPPER}} .elementor-custom-embed-image-overlay,{{WRAPPER}} .elementor-video-iframe, {{WRAPPER}} .elementor-video, {{WRAPPER}} .plyr__video-wrapper iframe' => 'mask-position: {{xpos_image_mask.SIZE}}{{xpos_image_mask.UNIT}} {{SIZE}}{{UNIT}}',
 				],
 				'condition' => [
 					'mask_type' => 'image',
@@ -284,7 +273,7 @@ class DCE_Extension_Masking extends DCE_Extension_Prototype {
 					'repeat-y' => __( 'Repeat-y', 'dynamic-content-for-elementor' ),
 				],
 				'selectors' => [
-					'{{WRAPPER}} .elementor-image img, {{WRAPPER}} .elementor-image-box-img img, {{WRAPPER}} .elementor-custom-embed-image-overlay,{{WRAPPER}} .elementor-video-iframe, {{WRAPPER}} .plyr__video-wrapper' => '-webkit-mask-repeat: {{VALUE}}; mask-repeat: {{VALUE}};',
+					'{{WRAPPER}} img, {{WRAPPER}} .elementor-custom-embed-image-overlay,{{WRAPPER}} .elementor-video-iframe, {{WRAPPER}} .elementor-video, {{WRAPPER}} .plyr__video-wrapper iframe' => '-webkit-mask-repeat: {{VALUE}}; mask-repeat: {{VALUE}};',
 				],
 				'condition' => [
 					'mask_type' => 'image',
@@ -306,7 +295,7 @@ class DCE_Extension_Masking extends DCE_Extension_Prototype {
 					'initial' => __( 'Custom', 'dynamic-content-for-elementor' ),
 				],
 				'selectors' => [
-					'{{WRAPPER}} .elementor-image img, {{WRAPPER}} .elementor-image-box-img img, {{WRAPPER}} .elementor-custom-embed-image-overlay,{{WRAPPER}} .elementor-video-iframe, {{WRAPPER}} .plyr__video-wrapper' => '-webkit-mask-size: {{VALUE}}; mask-size: {{VALUE}};',
+					'{{WRAPPER}} img, {{WRAPPER}} .elementor-custom-embed-image-overlay,{{WRAPPER}} .elementor-video-iframe, {{WRAPPER}} .elementor-video, {{WRAPPER}} .plyr__video-wrapper iframe' => '-webkit-mask-size: {{VALUE}}; mask-size: {{VALUE}};',
 				],
 				'condition' => [
 					'mask_type' => 'image',
@@ -341,7 +330,7 @@ class DCE_Extension_Masking extends DCE_Extension_Prototype {
 				],
 				'required' => true,
 				'selectors' => [
-					'{{WRAPPER}} .elementor-image img, {{WRAPPER}} .elementor-image-box-img img, {{WRAPPER}} .elementor-custom-embed-image-overlay,{{WRAPPER}} .elementor-video-iframe, {{WRAPPER}} .plyr__video-wrapper' => '-webkit-mask-size: {{SIZE}}{{UNIT}} auto; mask-size: {{SIZE}}{{UNIT}} auto;',
+					'{{WRAPPER}} img, {{WRAPPER}} .elementor-custom-embed-image-overlay,{{WRAPPER}} .elementor-video-iframe, {{WRAPPER}} .elementor-video, {{WRAPPER}} .plyr__video-wrapper iframe' => '-webkit-mask-size: {{SIZE}}{{UNIT}} auto; mask-size: {{SIZE}}{{UNIT}} auto;',
 
 				],
 				'condition' => [
@@ -491,7 +480,7 @@ class DCE_Extension_Masking extends DCE_Extension_Prototype {
 				  'mask_type' => 'clippath',
 			  ],
 			  'selectors' => [
-				  '{{WRAPPER}} .elementor-image img, {{WRAPPER}} .elementor-image-box-img img, {{WRAPPER}} .elementor-custom-embed-image-overlay,{{WRAPPER}} .elementor-video-iframe, {{WRAPPER}} .plyr__video-wrapper' => '-webkit-clip-path: {{VALUE}}; clip-path: {{VALUE}};',
+				  '{{WRAPPER}} img, {{WRAPPER}} .elementor-custom-embed-image-overlay,{{WRAPPER}} .elementor-video-iframe, {{WRAPPER}} .elementor-video, {{WRAPPER}} .plyr__video-wrapper iframe' => '-webkit-clip-path: {{VALUE}}; clip-path: {{VALUE}};',
 			  ],
 		  ]
 		);

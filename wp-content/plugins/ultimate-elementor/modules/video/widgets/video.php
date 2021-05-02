@@ -15,7 +15,7 @@ use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Control_Media;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 
 // UltimateElementor Classes.
 use UltimateElementor\Base\Common_Widget;
@@ -1559,7 +1559,9 @@ class Video extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'      => 'sticky_info_bar_typography',
-					'scheme'    => Scheme_Typography::TYPOGRAPHY_3,
+					'global'    => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector'  => '{{WRAPPER}} .uael-sticky-apply .uael-video-sticky-infobar',
 					'condition' => array(
 						'enable_sticky'          => 'yes',
@@ -1766,7 +1768,9 @@ class Video extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'      => 'subscribe_bar_typography',
-					'scheme'    => Scheme_Typography::TYPOGRAPHY_3,
+					'global'    => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector'  => '{{WRAPPER}} .uael-subscribe-bar-prefix',
 					'condition' => array(
 						'video_type'    => 'youtube',

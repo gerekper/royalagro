@@ -14,7 +14,7 @@ use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Utils;
 use Elementor\Repeater;
 use Elementor\Icons_Manager;
@@ -827,7 +827,7 @@ class Post_Carousel extends Base {
             [
                 'name' => 'category_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .ha-posts-carousel__meta-category a',
             ]
         );
@@ -1006,7 +1006,7 @@ class Post_Carousel extends Base {
                 'name' => 'title_typography',
                 'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '{{WRAPPER}} .ha-posts-carousel__title, {{WRAPPER}} .ha-posts-carousel__title a',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+				'scheme' => Typography::TYPOGRAPHY_2,
             ]
         );
 
@@ -1139,7 +1139,7 @@ class Post_Carousel extends Base {
                 'name' => 'author_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '{{WRAPPER}} .ha-posts-carousel__meta-author-name a',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
             ]
         );
 
@@ -1194,7 +1194,7 @@ class Post_Carousel extends Base {
                 'name' => 'date_typography',
                 'label' => __( 'Typography', 'happy-addons-pro' ),
                 'selector' => '{{WRAPPER}} .ha-posts-carousel__meta-date',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3
+				'scheme' => Typography::TYPOGRAPHY_3
             ]
         );
 
@@ -1253,7 +1253,7 @@ class Post_Carousel extends Base {
                 'name' => 'content_excerpt_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '{{WRAPPER}} .ha-posts-carousel__content',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
             ]
         );
 

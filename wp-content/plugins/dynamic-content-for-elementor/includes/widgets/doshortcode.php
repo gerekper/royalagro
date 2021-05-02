@@ -9,40 +9,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_DoShortcode extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-doshortcode';
-	}
-
-	public function get_title() {
-		return __( 'DoShortcode', 'dynamic-content-for-elementor' );
-	}
-	public function get_description() {
-		return __( 'Apply a WordPress shortcode', 'dynamic-content-for-elementor' );
-	}
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/doshortcode/';
-	}
-	public function get_icon() {
-		return 'icon-dyn-doshortc';
-	}
-
 	public function show_in_panel() {
-		if (! current_user_can('manage_options')) {
+		if ( ! current_user_can( 'install_plugins' ) ) {
 			return false;
 		}
 		return true;
 	}
 
 	protected function _register_controls() {
-		if (current_user_can('manage_options') || ! is_admin()) {
+		if ( current_user_can( 'install_plugins' ) || ! is_admin() ) {
 			$this->_register_controls_content();
-		} elseif (! current_user_can('manage_options') && is_admin()) {
+		} elseif ( ! current_user_can( 'install_plugins' ) && is_admin() ) {
 			$this->register_controls_non_admin_notice();
 		}
 	}
 
 	protected function _register_controls_content() {
-		
+
 		$this->start_controls_section(
 			'section_doshortcode',
 			[

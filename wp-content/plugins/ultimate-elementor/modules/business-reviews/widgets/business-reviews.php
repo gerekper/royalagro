@@ -249,6 +249,35 @@ class Business_Reviews extends Common_Widget {
 			);
 
 			$this->add_control(
+				'language_id',
+				array(
+					/* translators: 1: <b> 2: </b> */
+					'label'       => sprintf( __( '%1$sLanguage Code%2$s', 'uael' ), '<b>', '</b>' ),
+					'type'        => Controls_Manager::TEXT,
+					'label_block' => true,
+					'dynamic'     => array(
+						'active' => true,
+					),
+					'condition'   => array(
+						'review_type!' => 'yelp',
+					),
+				)
+			);
+
+			$this->add_control(
+				'language_code_doc',
+				array(
+					'type'            => Controls_Manager::RAW_HTML,
+					/* translators: %s admin link */
+					'raw'             => sprintf( __( 'Click %1$s here %2$s to check your Language code.', 'uael' ), '<a href="https://developers.google.com/admin-sdk/directory/v1/languages" target="_blank" rel="noopener">', '</a>' ),
+					'content_classes' => 'uael-editor-doc',
+					'condition'       => array(
+						'review_type!' => 'yelp',
+					),
+				)
+			);
+
+			$this->add_control(
 				'yelp_business_id',
 				array(
 					/* translators: 1: <b> 2: </b> */

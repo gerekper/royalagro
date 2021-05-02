@@ -3,7 +3,6 @@
 
     var WidgetElements_ThreeSixtySliderHandler = function ($scope, $) {
         elementSettings360 = get_Dyncontel_ElementSettings($scope);
-        var car;
         var threesixty = $scope.find('.dce-threesixty');
         if (threesixty) {
             var frames = Number(threesixty.attr('data-total_frame'));
@@ -19,10 +18,14 @@
                 width: 'auto', //elementSettings360.width.size,
                 navigation: Boolean( elementSettings360.navigation ), // false
                 responsive: Boolean( elementSettings360.responsive ), // true
+				disableSpin: Boolean( elementSettings360.disable_spin ), // false
+				playSpeed: Number( elementSettings360.play_speed.size ), // 100	
             });
         }
 
     };
+
+	
 
     // Make sure you run this code under Elementor..
     $(window).on('elementor/frontend/init', function () {

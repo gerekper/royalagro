@@ -3,7 +3,7 @@ namespace Happy_Addons_Pro\Widget\Skins\Product_Category_Carousel;
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Core\Schemes;
 use Elementor\Utils;
@@ -385,7 +385,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
                 'name' => 'title_typography',
                 'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '{{WRAPPER}} .ha-product-cat-carousel-title a',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+				'scheme' => Typography::TYPOGRAPHY_2,
             ]
         );
 
@@ -458,7 +458,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
                 'name' => 'count_typography',
                 'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '{{WRAPPER}} .ha-product-cat-carousel-count',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
                 'condition' => [
 					$this->get_control_id( 'show_cats_count' ) => 'yes',
                 ],

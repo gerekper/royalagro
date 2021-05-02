@@ -15,26 +15,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_BarCode extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dce_barcode';
-	}
-
-	public function get_title() {
-		return __( 'QR & Barcodes', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_icon() {
-		return 'icon-dyn-qrcode';
-	}
-
-	public function get_description() {
-		return __( 'Quick creation for 1D e 2D barcodes, like EAN e QRCode', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/qr-and-bars-code/';
-	}
-
 	/**
 	 * Register button widget controls.
 	 *

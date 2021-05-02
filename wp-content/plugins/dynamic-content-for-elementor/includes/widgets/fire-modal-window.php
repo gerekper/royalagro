@@ -18,25 +18,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_ModalWindow extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-modalwindow';
-	}
-	public static function get_position() {
-		return 5;
-	}
-
-	public function get_title() {
-		return __( 'Fire Modal Window', 'dynamic-content-for-elementor' );
-	}
-	public function get_description() {
-		return __( 'Add a Modal Window button in your pages, create a call-to-action', 'dynamic-content-for-elementor' );
-	}
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/fire-modalwindow/';
-	}
-	public function get_icon() {
-		return 'icon-dyn-modal';
-	}
 	public function get_script_depends() {
 		return [ 'velocity', 'dce-modalwindow' ];
 	}

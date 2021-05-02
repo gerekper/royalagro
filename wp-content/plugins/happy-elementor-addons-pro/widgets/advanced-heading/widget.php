@@ -11,7 +11,7 @@ use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Happy_Addons\Elementor\Controls\Group_Control_Foreground;
 
 defined( 'ABSPATH' ) || die();
@@ -295,7 +295,7 @@ class Advanced_Heading extends Base {
             [
                 'name' => 'before_text_typography',
                 'selector' => '{{WRAPPER}} .ha-advanced-heading-before',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+                'scheme' => Typography::TYPOGRAPHY_2,
             ]
         );
 
@@ -415,7 +415,7 @@ class Advanced_Heading extends Base {
             [
                 'name' => 'center_text_typography',
                 'selector' => '{{WRAPPER}} .ha-advanced-heading-center',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+                'scheme' => Typography::TYPOGRAPHY_2,
             ]
         );
 
@@ -535,7 +535,7 @@ class Advanced_Heading extends Base {
             [
                 'name' => 'after_text_typography',
                 'selector' => '{{WRAPPER}} .ha-advanced-heading-after',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+                'scheme' => Typography::TYPOGRAPHY_2,
             ]
         );
 
@@ -807,7 +807,7 @@ class Advanced_Heading extends Base {
             [
                 'name' => 'background_text_typography',
                 'selector' => '{{WRAPPER}} .ha-advanced-heading-wrap:before',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                'scheme' => Typography::TYPOGRAPHY_3,
                 'condition' => [
                     'show_background_text' => 'yes',
                 ],
@@ -894,7 +894,7 @@ class Advanced_Heading extends Base {
 		}
 		?>
 
-		<<?php echo tag_escape( $settings['title_tag'] ); ?> class="ha-advanced-heading-tag">
+		<<?php echo ha_escape_tags($settings['title_tag']); ?> class="ha-advanced-heading-tag">
 			<?php if ( $has_link ) : ?>
 			<a <?php $this->print_render_attribute_string( 'link' ) ?>>
 			<?php endif; ?>
@@ -907,7 +907,7 @@ class Advanced_Heading extends Base {
 			<?php if ( $has_link ) : ?>
 			</a>
 			<?php endif; ?>
-		</<?php echo tag_escape( $settings['title_tag'] ); ?>>
+		</<?php echo ha_escape_tags( $settings['title_tag'] ); ?>>
 
 		<?php
     }

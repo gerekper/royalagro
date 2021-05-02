@@ -11,10 +11,10 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Widget_Base;
-use Elementor\Scheme_Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 
 use UltimateElementor\Base\Common_Widget;
 use UltimateElementor\Modules\Posts\TemplateBlocks\Skin_Init;
@@ -282,9 +282,8 @@ class Skin_Business extends Skin_Base {
 			array(
 				'label'     => __( 'Separator Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_4,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_ACCENT,
 				),
 				'selectors' => array(
 					'{{WRAPPER}}.uael-post__content-align-left .uael-post__gradient-separator' => 'background: linear-gradient( to right, {{VALUE}} 0%, #ffffff00 100% );',
@@ -502,9 +501,8 @@ class Skin_Business extends Skin_Base {
 				array(
 					'label'     => __( 'Background Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_4,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_ACCENT,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-posts[data-skin="business"] .uael-post__terms' => 'background-color: {{VALUE}};',
@@ -516,7 +514,9 @@ class Skin_Business extends Skin_Base {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'term_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_2,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_SECONDARY,
+					),
 					'selector' => '{{WRAPPER}} .uael-post__terms',
 				)
 			);
@@ -664,9 +664,8 @@ class Skin_Business extends Skin_Base {
 				array(
 					'label'     => __( 'Info Text Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-post__authorbox-desc' => 'color: {{VALUE}};',
@@ -682,9 +681,8 @@ class Skin_Business extends Skin_Base {
 				array(
 					'label'     => __( 'Author Name Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_2,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_SECONDARY,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-post__authorbox-name, {{WRAPPER}} .uael-post__authorbox-name a' => 'color: {{VALUE}};',
@@ -701,7 +699,9 @@ class Skin_Business extends Skin_Base {
 					'label'     => __( 'Info Text Typography', 'uael' ),
 					'name'      => 'authorbox_desc_typography',
 					'selector'  => '{{WRAPPER}} .uael-post__authorbox-desc',
-					'scheme'    => Scheme_Typography::TYPOGRAPHY_3,
+					'global'    => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'condition' => array(
 						$this->get_control_id( 'show_authorbox_meta' ) => 'yes',
 					),
@@ -714,7 +714,9 @@ class Skin_Business extends Skin_Base {
 					'label'     => __( 'Author Name Typography', 'uael' ),
 					'name'      => 'authorbox_name_typography',
 					'selector'  => '{{WRAPPER}} .uael-post__authorbox-name, {{WRAPPER}} .uael-post__authorbox-name a',
-					'scheme'    => Scheme_Typography::TYPOGRAPHY_4,
+					'global'    => array(
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					),
 					'condition' => array(
 						$this->get_control_id( 'show_authorbox_meta' ) => 'yes',
 					),

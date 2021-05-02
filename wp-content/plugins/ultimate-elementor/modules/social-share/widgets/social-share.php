@@ -14,8 +14,8 @@ use Elementor\Core\Base;
 use Elementor\Icons_Manager;
 use Elementor\Repeater;
 use Elementor\Settings;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Utils;
 
 // UltimateElementor Classes.
@@ -1082,10 +1082,13 @@ class SocialShare extends Common_Widget {
 			'enable_fake_count',
 			array(
 				'label'       => __( 'Show Fake Count', 'uael' ),
-				'type'        => Controls_Manager::SWITCHER,
-				'yes'         => __( 'Yes', 'uael' ),
-				'no'          => __( 'No', 'uael' ),
+				'type'        => Controls_Manager::SELECT,
 				'default'     => 'no',
+				'options'     => array(
+					'no'     => __( 'No', 'uael' ),
+					'yes'    => __( 'Static Count', 'uael' ),
+					'random' => __( 'Random Count', 'uael' ),
+				),
 				'render_type' => 'template',
 				'condition'   => array(
 					'show_count' => 'yes',
@@ -1111,18 +1114,64 @@ class SocialShare extends Common_Widget {
 		);
 
 		$this->add_control(
+			'fake_count_min',
+			array(
+				'label'     => __( 'Minimum Count', 'uael' ),
+				'type'      => Controls_Manager::NUMBER,
+				'min'       => 5,
+				'max'       => 1000,
+				'step'      => 1,
+				'default'   => 25,
+				'condition' => array(
+					'enable_fake_count' => 'random',
+					'show_count'        => 'yes',
+				),
+			)
+		);
+
+		$this->add_control(
+			'fake_count_max',
+			array(
+				'label'     => __( 'Maximum Count', 'uael' ),
+				'type'      => Controls_Manager::NUMBER,
+				'min'       => 5,
+				'max'       => 1000,
+				'step'      => 1,
+				'default'   => 35,
+				'condition' => array(
+					'enable_fake_count' => 'random',
+					'show_count'        => 'yes',
+				),
+			)
+		);
+
+		$this->add_control(
+			'fake_random_count_note',
+			array(
+				'type'            => Controls_Manager::RAW_HTML,
+				/* translators: %s admin link */
+				'raw'             => sprintf( 'Note: Set the minimum & maximum count values to display the random number for your different posts/pages.', 'uael' ),
+				'content_classes' => 'elementor-panel-alert elementor-panel-alert-warning',
+				'condition'       => array(
+					'enable_fake_count' => 'random',
+					'show_count'        => 'yes',
+				),
+			)
+		);
+
+		$this->add_control(
 			'fake_count_limit',
 			array(
 				'label'       => __( 'Fake Count Limit', 'uael' ),
 				'description' => __( 'Once the original count reaches this limit the fake count will be hidden. Only the original count will be shown after this limit reaches.', 'uael' ),
 				'type'        => Controls_Manager::NUMBER,
 				'min'         => 5,
-				'max'         => 100,
+				'max'         => 1000,
 				'step'        => 1,
 				'default'     => 10,
 				'condition'   => array(
-					'enable_fake_count' => 'yes',
-					'show_count'        => 'yes',
+					'enable_fake_count!' => 'no',
+					'show_count'         => 'yes',
 				),
 			)
 		);
@@ -1325,9 +1374,8 @@ class SocialShare extends Common_Widget {
 			array(
 				'label'     => __( 'Text/Icon Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_PRIMARY,
 				),
 				'default'   => '',
 				'condition' => array(
@@ -1345,7 +1393,9 @@ class SocialShare extends Common_Widget {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'share_typography',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				),
 				'selector'  => '{{WRAPPER}} .uael-style-inline .uael-total-share-btn__iconx,{{WRAPPER}} .uael-style-inline .uael-total-share-btn__titlex,
                 {{WRAPPER}} .uael-style-floating .uael-total-share-btn__iconx,{{WRAPPER}} .uael-style-floating .uael-total-share-btn__titlex',
 				'exclude'   => array( 'line_height', 'font_size', 'letter_spacing' ),
@@ -1690,35 +1740,7 @@ class SocialShare extends Common_Widget {
 							<?php
 						}
 						?>
-						<span class="uael-total-share-btn__titlex">
-
-							<?php
-							// Show/Hide count.
-							$uael_show_share_count = ! empty( $settings['show_count'] ) ? $settings['show_count'] : 'no';
-
-							$total_share_count = isset( $total_result ) ? $total_result : 0;
-
-							$fake_count_limit = ( ! empty( $settings['fake_count_limit'] ) && ! empty( $settings['fake_count'] ) ) ? $settings['fake_count_limit'] : 0;
-
-							$fake_count_number = ( ! empty( $settings['fake_count'] ) ) ? $settings['fake_count'] : 0;
-
-							$uael_show_fake_count = ( ! empty( $settings['enable_fake_count'] ) ) ? $settings['enable_fake_count'] : 'no';
-
-							if ( 'yes' === $uael_show_share_count && 'yes' === $uael_show_fake_count ) {
-
-								if ( ( $fake_count_limit >= $total_share_count ) || ( ! $fake_count_limit && $fake_count_number ) ) {
-									$fake_count_number = apply_filters( 'uael_fake_share_count', $fake_count_number );
-									$fake_count_number = $total_share_count + $fake_count_number;
-									echo esc_html( $fake_count_number );
-								} else {
-									echo esc_html( $total_share_count );
-								}
-							} elseif ( 'yes' === $uael_show_share_count && 'no' === $uael_show_fake_count ) {
-
-								echo esc_html( $total_share_count );
-							}
-							?>
-						</span>
+						<?php $this->get_count_html( $settings, $total_result ); ?>
 					</div>
 					<?php
 				}
@@ -1734,6 +1756,92 @@ class SocialShare extends Common_Widget {
 	}
 
 	/**
+	 * Display total share count.
+	 *
+	 * @since 1.30.1
+	 *
+	 * @param array $settings returns settings.
+	 * @param int   $total_result returns total result.
+	 *
+	 * @access public
+	 */
+	public function get_count_html( $settings, $total_result ) {
+		global $post;
+		$page_id = $post->ID;
+		$id      = $this->get_id();
+		?>
+		<span class="uael-total-share-btn__titlex">
+
+			<?php
+			// Show/Hide count.
+			$uael_show_share_count = ! empty( $settings['show_count'] ) ? $settings['show_count'] : 'no';
+
+			$total_share_count = isset( $total_result ) ? $total_result : 0;
+
+			$fake_count_limit = ( ! empty( $settings['fake_count_limit'] ) && ! empty( $settings['fake_count'] ) ) ? $settings['fake_count_limit'] : 0;
+
+			$fake_count_number = 0;
+
+			$uael_show_fake_count = ( ! empty( $settings['enable_fake_count'] ) ) ? $settings['enable_fake_count'] : 'no';
+
+			if ( 'yes' === $uael_show_share_count && 'no' !== $uael_show_fake_count ) {
+
+				if ( 'yes' === $uael_show_fake_count ) {
+					if ( ( $fake_count_limit >= $total_share_count ) || ( ! $fake_count_limit && $settings['fake_count'] ) ) {
+						$fake_count_number = apply_filters( 'uael_fake_share_count', $settings['fake_count'] );
+						$fake_count_number = $total_share_count + $fake_count_number;
+						echo esc_html( $fake_count_number );
+					} else {
+						echo esc_html( $total_share_count );
+					}
+				} elseif ( 'random' === $uael_show_fake_count ) {
+					if ( ( ( ! empty( $fake_count_limit ) && ! empty( $total_share_count ) ) && ( $fake_count_limit >= $total_share_count ) ) || ( ( ! $fake_count_limit ) && ( ! empty( $settings['fake_count_min'] ) ) && ( ! empty( $settings['fake_count_max'] ) ) ) ) {
+
+						$post_meta = get_post_meta( $page_id, 'uael-social-share-count', true );
+
+						$is_meta_set = ( ! empty( $post_meta ) && is_array( $post_meta ) );
+
+						if ( '' !== $page_id && ( $is_meta_set && isset( $post_meta[ $id ] ) ) && ( $settings['fake_count_min'] <= $post_meta[ $id ] ) && ( $settings['fake_count_max'] >= $post_meta[ $id ] ) ) {
+
+							$fake_count_number = $post_meta[ $id ];
+
+						} else {
+							$rand_number = wp_rand( $settings['fake_count_min'], $settings['fake_count_max'] );
+
+							if ( $is_meta_set && ! isset( $post_meta[ $id ] ) ) {
+								$post_meta[ $id ] = $rand_number;
+							} else {
+								$post_meta = array(
+									$id => $rand_number,
+								);
+							}
+
+							update_post_meta( $page_id, 'uael-social-share-count', $post_meta );
+
+							$fake_count_number = $rand_number;
+						}
+
+						$fake_count_number = apply_filters( 'uael_fake_share_count', $fake_count_number );
+						$fake_count_number = $total_share_count + $fake_count_number;
+
+						?>
+						<span class="uael-share-fake-count"><?php echo esc_html( $fake_count_number ); ?></span>
+						<?php
+					} else {
+						echo esc_html( $total_share_count );
+					}
+				}
+			} elseif ( 'yes' === $uael_show_share_count && 'no' === $uael_show_fake_count ) {
+
+				echo esc_html( $total_share_count );
+			}
+			?>
+			</span>
+
+		<?php
+	}
+
+	/**
 	 * Access share inline/floating.
 	 *
 	 * @since 1.30.0
@@ -1744,12 +1852,6 @@ class SocialShare extends Common_Widget {
 	 * @access public
 	 */
 	public function inline_floating( $settings, $total_result ) {
-
-		$total_share_count     = isset( $total_result ) ? $total_result : 0;
-		$fake_count_limit      = ! empty( $settings['fake_count_limit'] ) ? $settings['fake_count_limit'] : 0;
-		$fake_count_number     = ! empty( $settings['fake_count'] ) ? $settings['fake_count'] : 0;
-		$uael_show_share_count = ! empty( $settings['show_count'] ) ? $settings['show_count'] : 'no';
-		$uael_show_fake_count  = ! empty( $settings['enable_fake_count'] ) ? $settings['enable_fake_count'] : 'no';
 
 		if ( 'icon-text' === $settings['view'] || 'text' === $settings['view'] || 'icon' === $settings['view'] ) {
 			?>
@@ -1777,28 +1879,11 @@ class SocialShare extends Common_Widget {
 					<?php
 				}
 				?>
-				<span class="uael-total-share-btn__titlex">
-					<?php
-					if ( 'yes' === $uael_show_share_count && 'yes' === $uael_show_fake_count ) {
-
-						if ( ( $fake_count_limit >= $total_share_count ) || ( ! $fake_count_limit && $fake_count_number ) ) {
-							$fake_count_number = $total_share_count + $fake_count_number;
-							echo esc_html( $fake_count_number );
-						} else {
-							echo esc_html( $total_share_count );
-						}
-					} elseif ( 'yes' === $uael_show_share_count && 'no' === $uael_show_fake_count ) {
-
-						echo esc_html( $total_share_count );
-					}
-					?>
-					</span>
+				<?php $this->get_count_html( $settings, $total_result ); ?>
 				</div>
 				<?php
 			} else {
-
 				?>
-
 				<div class="uael-total-share-btn">
 				<?php
 				if ( ! empty( $settings['custom_share_text'] ) && 'custom' === $settings['share_text'] ) {
@@ -1815,22 +1900,7 @@ class SocialShare extends Common_Widget {
 					<?php
 				}
 				?>
-				<span class="uael-total-share-btn__titlex">
-				<?php
-				if ( 'yes' === $uael_show_share_count && 'yes' === $uael_show_fake_count ) {
-
-					if ( ( $fake_count_limit >= $total_share_count ) || ( ! $fake_count_limit && $fake_count_number ) ) {
-						$fake_count_number = $total_share_count + $fake_count_number;
-						echo esc_html( $fake_count_number );
-					} else {
-						echo esc_html( $total_share_count );
-					}
-				} elseif ( 'yes' === $uael_show_share_count && 'no' === $uael_show_fake_count ) {
-
-					echo esc_html( $total_share_count );
-				}
-				?>
-				</span>
+				<?php $this->get_count_html( $settings, $total_result ); ?>
 				</div>
 				<?php
 			}

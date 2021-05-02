@@ -18,7 +18,7 @@ use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Icons_Manager;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Utils;
 use Happy_Addons_Pro\Controls\Image_Selector;
 use Happy_Addons_Pro\Traits\Lazy_Query_Builder;
@@ -659,7 +659,7 @@ class Product_Grid extends Base {
 					'font_size' => ['']
 				],
 				'selector' => '{{WRAPPER}} .ha-product-grid__badge',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 
@@ -935,7 +935,7 @@ class Product_Grid extends Base {
 				'name' => 'title_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '{{WRAPPER}} .ha-product-grid__title',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+				'scheme' => Typography::TYPOGRAPHY_2,
 			]
 		);
 
@@ -977,7 +977,7 @@ class Product_Grid extends Base {
 				'name' => 'price_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '{{WRAPPER}} .ha-product-grid__price',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 
@@ -1109,7 +1109,7 @@ class Product_Grid extends Base {
 			[
 				'name' => 'btn_typography',
 				'selector' => '{{WRAPPER}} .button, {{WRAPPER}} .added_to_cart',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+				'scheme' => Typography::TYPOGRAPHY_4,
 			]
 		);
 
@@ -1258,7 +1258,7 @@ class Product_Grid extends Base {
 			[
 				'name' => 'qv_btn_typography',
 				'selector' => '{{WRAPPER}} .ha-pqv-btn',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+				'scheme' => Typography::TYPOGRAPHY_4,
 			]
 		);
 
@@ -1432,7 +1432,7 @@ class Product_Grid extends Base {
 			[
 				'name' => 'load_more_btn_typography',
 				'selector' => '{{WRAPPER}} .ha-product-grid__load-more-btn',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+				'scheme' => Typography::TYPOGRAPHY_4,
 			]
 		);
 
@@ -1589,7 +1589,7 @@ class Product_Grid extends Base {
 				'name' => 'qv_title_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '.ha-pqv.ha-pqv--{{ID}} .ha-pqv__title',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+				'scheme' => Typography::TYPOGRAPHY_2,
 			]
 		);
 
@@ -1661,7 +1661,7 @@ class Product_Grid extends Base {
 				'name' => 'qv_price_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '.ha-pqv.ha-pqv--{{ID}} .ha-pqv__price',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 
@@ -1702,7 +1702,7 @@ class Product_Grid extends Base {
 				'name' => 'qv_summary_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '.ha-pqv.ha-pqv--{{ID}} .ha-pqv__summary',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 
@@ -1764,7 +1764,7 @@ class Product_Grid extends Base {
 				'name' => 'qv_cart_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '.ha-pqv.ha-pqv--{{ID}} .ha-pqv__cart .button',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 

@@ -14,28 +14,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_SearchFilter extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dce-searchfilter';
-	}
-
-	public function get_title() {
-		return __( 'Search & Filter Pro', 'dynamic-content-for-elementor' );
-	}
-	public function get_description() {
-		return __( 'The Ultimate WordPress Filter Plugin with Ajax on Elementor', 'dynamic-content-for-elementor' );
-	}
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/search-filter-elementor';
-	}
-
-	public function get_icon() {
-		return 'icon-dyn-search-filter';
-	}
-
-	public function get_plugin_depends() {
-		return [ 'search-filter-pro' ];
-	}
-
 	protected function _register_controls() {
 		$this->start_controls_section(
 			'section_searchfilter',

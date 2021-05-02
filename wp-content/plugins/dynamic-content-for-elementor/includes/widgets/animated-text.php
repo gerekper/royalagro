@@ -16,29 +16,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_AnimateText extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-animateText';
-	}
-
-	public function get_title() {
-		return __( 'Animated Text', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_icon() {
-		return 'icon-dyn-animate_text';
-	}
-	public static function get_position() {
-		return 2;
-	}
-
-	public function get_description() {
-		return __( 'Advanced animation for your text', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/animated-text/';
-	}
-
 	public function get_script_depends() {
 		return [ 'dce-gsap-lib', 'dce-splitText-lib', 'dce-animatetext' ];
 	}
@@ -290,7 +267,7 @@ class DCE_Widget_AnimateText extends DCE_Widget_Prototype {
 			[
 				'label' => __( 'Equation', 'dynamic-content-for-elementor' ),
 				'type' => Controls_Manager::SELECT,
-				'options' => Helper::get_gsap_timingFunctions(),
+				'options' => Helper::get_gsap_timing_functions(),
 				'default' => 'Power3',
 				'frontend_available' => true,
 				'label_block' => false,
@@ -434,7 +411,7 @@ class DCE_Widget_AnimateText extends DCE_Widget_Prototype {
 			[
 				'label' => __( 'Equation', 'dynamic-content-for-elementor' ),
 				'type' => Controls_Manager::SELECT,
-				'options' => Helper::get_gsap_timingFunctions(),
+				'options' => Helper::get_gsap_timing_functions(),
 				'default' => 'Power3',
 				'frontend_available' => true,
 				'label_block' => false,

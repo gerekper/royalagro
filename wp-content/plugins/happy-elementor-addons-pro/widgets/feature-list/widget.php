@@ -11,7 +11,7 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Utils;
 use Elementor\Icons_Manager;
 
@@ -582,7 +582,7 @@ class Feature_List extends Base {
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ha-icon i' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .ha-icon svg' => 'fill: {{VALUE}}',
+                    '{{WRAPPER}} .ha-icon svg' => 'fill: {{VALUE}};color: {{VALUE}}',
                     '{{WRAPPER}} .ha-icon span' => 'color: {{VALUE}}',
                 ],
             ]
@@ -614,7 +614,7 @@ class Feature_List extends Base {
             [
                 'name' => 'text_typography',
                 'selector' => '{{WRAPPER}} .ha-text',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+                'scheme' => Typography::TYPOGRAPHY_4,
             ]
         );
 

@@ -22,8 +22,8 @@ class DCE_Controls_Manager extends Controls_Manager {
 	public function initialize_active_form_extensions_with_add_to_form() {
 		$this->active_form_extensions_with_add_to_form = [];
 		$active_form_extensions = \DynamicContentForElementor\Extensions::get_active_form_extensions();
-		foreach ( $active_form_extensions as $akey => $a_form_ext ) {
-			$a_form_ext_class = \DynamicContentForElementor\Extensions::$namespace . $a_form_ext;
+		foreach ( $active_form_extensions as $extension_class => $extension_info ) {
+			$a_form_ext_class = \DynamicContentForElementor\Extensions::$namespace . $extension_class;
 			if ( method_exists( $a_form_ext_class, '_add_to_form' ) ) {
 				$this->active_form_extensions_with_add_to_form[] = $a_form_ext_class;
 			}
@@ -52,22 +52,15 @@ class DCE_Controls_Manager extends Controls_Manager {
 	 */
 	public function add_control_to_stack( \Elementor\Controls_Stack $element, $control_id, $control_data, $options = [] ) {
 		$element_name = $element->get_name();
-		if ( $element_name == 'form' ) {
+		if ( $element_name === 'form' ) {
 			foreach ( $this->active_form_extensions_with_add_to_form as $ext ) {
 				$control_data = $ext::_add_to_form( $element, $control_id, $control_data, $options );
 			}
-		} elseif ( $element_name == 'video' ) {
-			$extensions = \DynamicContentForElementor\Extensions::get_all_extensions();
-			foreach ( $extensions as $akey => $a_ext ) {
-				$a_ext_class = \DynamicContentForElementor\Extensions::$namespace . $a_ext;
-				if ( method_exists( $a_ext_class, '_add_to_video' ) ) {
-					$control_data = $a_ext_class::_add_to_video( $element, $control_id, $control_data, $options );
-				}
-			}
-		} // avoid EPRO Popup condition issue
+		}
+		// avoid EPRO Popup condition issue
 		if ( ! ( $element_name === 'popup_triggers' || $element_name === 'popup_timing' ) ) {
-				//add Dynamic Tags to $control_data
-				$this->_add_dynamic_tags( $control_data );
+			//add Dynamic Tags to $control_data
+			$this->add_dynamic_tags( $control_data );
 		}
 
 		return parent::add_control_to_stack( $element, $control_id, $control_data, $options );
@@ -79,11 +72,11 @@ class DCE_Controls_Manager extends Controls_Manager {
 	 * is to force Dynamic Tags on all such controls. The actual controls that
 	 * are forced are the one listed in the property self::$dce_token_types.
 	 */
-	public function _add_dynamic_tags( &$control_data ) {
+	public function add_dynamic_tags( &$control_data ) {
 		if ( ! empty( $control_data ) ) {
 			foreach ( $control_data as $key => $control ) {
-				if ( $key != 'dynamic' && is_array( $control ) ) {
-						self::_add_dynamic_tags( $control );
+				if ( $key !== 'dynamic' && is_array( $control ) ) {
+						self::add_dynamic_tags( $control );
 				}
 			}
 			if ( isset( $control_data['type'] ) && is_string( $control_data['type'] ) &&

@@ -27,6 +27,7 @@ class UniteCreatorDialogParamWork{
 	const PARAM_POSTS_LIST = "uc_posts_list";
 	const PARAM_POST_TERMS = "uc_post_terms";
 	const PARAM_WOO_CATS = "uc_woo_categories";
+	const PARAM_LISTING = "uc_listing";
 	
 	const PARAM_USERS = "uc_users";
 	const PARAM_TEMPLATE = "uc_template";
@@ -151,6 +152,7 @@ class UniteCreatorDialogParamWork{
 		$this->arrProParams[self::PARAM_BACKGROUND] = true;
 		$this->arrProParams[self::PARAM_BORDER] = true;
 		$this->arrProParams[self::PARAM_SLIDER] = true;
+		$this->arrProParams[self::PARAM_LISTING] = true;
 		
 	}
 	
@@ -183,6 +185,8 @@ class UniteCreatorDialogParamWork{
 		$this->addParam(self::PARAM_POSTS_LIST, esc_html__("Posts List", "unlimited-elements-for-elementor"));
 		$this->addParam(self::PARAM_POST_TERMS, esc_html__("Posts Terms", "unlimited-elements-for-elementor"));
 		$this->addParam(self::PARAM_WOO_CATS, esc_html__("WooCommerce Categories", "unlimited-elements-for-elementor"));
+		$this->addParam(self::PARAM_LISTING, esc_html__("Listing", "unlimited-elements-for-elementor"));
+		
 		$this->addParam(self::PARAM_USERS, esc_html__("Users List", "unlimited-elements-for-elementor"));
 		$this->addParam(self::PARAM_TEMPLATE, esc_html__("Elementor Template", "unlimited-elements-for-elementor"));
 		$this->addParam(self::PARAM_MENU, esc_html__("Menu", "unlimited-elements-for-elementor"));
@@ -727,8 +731,14 @@ class UniteCreatorDialogParamWork{
 		<?php 
 		$this->putCheckbox("use_custom_fields", __("Use Custom Fields", "unlimited-elements-for-elementor"));
 		?>
+		<div class="vert_sap20"></div>
+		
+		<?php 
+		$this->putCheckbox("for_woocommerce", __("For WooCommerce Terms", "unlimited-elements-for-elementor"));
+		?>
 		
 		<br><br>
+		
 		<hr>
 		
 		<?php 
@@ -742,6 +752,15 @@ class UniteCreatorDialogParamWork{
 	private function putWooCatsParam(){
 		
 		$this->putPostTermsParam();
+		
+	}
+	
+	/**
+	 * put listing param
+	 */
+	private function putListingParam(){
+		
+		esc_html_e("Put listing attributes here", "unlimited-elements-for-elementor");
 		
 	}
 	
@@ -793,7 +812,17 @@ class UniteCreatorDialogParamWork{
 			$this->putCheckbox("show_image_sizes", __("Show Image Sizes Select", "unlimited-elements-for-elementor"));
 		?>
 		
+		<div class="vert_sap10"></div>
 		<hr>
+		<div class="vert_sap10"></div>
+		
+		<?php 
+			$this->putCheckbox("use_for_listing", __("Use For Listing Template", "unlimited-elements-for-elementor"));
+		?>
+		<div class="vert_sap10"></div>
+		<hr>
+		
+		<div class="vert_sap10"></div>
 		<?php 
 		
 		$this->putStyleCheckbox();
@@ -1198,6 +1227,9 @@ class UniteCreatorDialogParamWork{
 			break;
 			case self::PARAM_WOO_CATS:
 				$this->putWooCatsParam();
+			break;
+			case self::PARAM_LISTING:
+				$this->putListingParam();
 			break;
 			case self::PARAM_FORM:
 				$this->putFormParam();

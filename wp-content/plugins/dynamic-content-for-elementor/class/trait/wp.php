@@ -474,7 +474,7 @@ trait Trait_WP {
 
 		if ( ! $posts ) {
 			if ( WP_DEBUG ) {
-				$error_string = _( 'No result found' );
+				$error_string = __( 'No results found', 'dynamic-content-for-elementor' );
 				echo '<div id="message" class="error"><p>' . $error_string . '</p></div>';
 			}
 			return false;

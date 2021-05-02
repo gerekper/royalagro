@@ -2262,7 +2262,7 @@
     display: block;
     float: none; } }
 
-/**************** Premium Preview Window **********/
+/************* Premium Preview Window *************/
 /**************************************************/
 .premium-preview-image-container a {
   display: inline-block; }
@@ -4184,8 +4184,8 @@ ul.premium-social-count-ul {
 .premium-social-count-ul .premium-social-count-pin {
   border-color: #000; }
 
-/**************** Premium Image Layers *********************/
-/***********************************************************/
+/**************** Premium Image Layers ****************/
+/******************************************************/
 .premium-img-layers-wrapper {
   position: relative; }
   .premium-img-layers-wrapper ul.premium-img-layers-list-wrapper {
@@ -5247,8 +5247,8 @@ ul.premium-social-count-ul {
   .premium-ihover-item.style20:hover .premium-ihover-info-wrap .premium-ihover-info-back .premium-ihover-content {
     z-index: 2; }
 
-/**************** Premium Image Comparison *******************/
-/*************************************************************/
+/************* Premium Image Comparison *************/
+/****************************************************/
 .premium-image-comparison-wrap {
   overflow: hidden;
   position: relative !important; }
@@ -5472,7 +5472,6 @@ ul.premium-social-count-ul {
 
 /**************** Premium Content Switcher *****************/
 /***********************************************************/
-/* The switch - the box around the slider */
 .premium-content-toggle-container {
   padding: 10px 20px;
   border-color: #000;
@@ -6473,16 +6472,16 @@ ul.premium-social-count-ul {
   transition: transform 0.3s ease-in-out, visibility 0.2s ease-in-out, opacity 0.2s ease-in-out, -webkit-transform 0.3s ease-in-out; }
 
 .premium-accordion-container .premium-accordion-overlay-wrap {
-  -webkit-transition: background-color 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out;
-  transition: background-color 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out;
-  transition: background-color 0.3s ease-in-out, transform 0.3s 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out;
-  transition: background-color 0.3s ease-in-out, transform 0.3s 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out; }
+  -webkit-transition: background-color 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, transform 0.3s 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, transform 0.3s 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out; }
 
 .premium-accordion-container .premium-accordion-li:hover .premium-accordion-content > * {
-  -webkit-transition: visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, fill 0.3s ease-in-out, background-color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out;
-  transition: visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, fill 0.3s ease-in-out, background-color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out;
-  transition: transform 0.3s 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, fill 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  transition: transform 0.3s 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, fill 0.3s ease-in-out, background-color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out; }
+  -webkit-transition: visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, fill 0.3s ease-in-out, background-color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out;
+  transition: visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, fill 0.3s ease-in-out, background-color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out;
+  transition: transform 0.3s 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, fill 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  transition: transform 0.3s 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, fill 0.3s ease-in-out, background-color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out; }
 
 .premium-accordion-container .premium-accordion-background {
   width: 100%;
@@ -6540,8 +6539,8 @@ ul.premium-social-count-ul {
       -ms-transform: skewX(-15deg);
           transform: skewX(-15deg); }
 
-/**************** Premium Background Transition **********/
-/*********************************************************/
+/******** Premium Background Transition ********/
+/***********************************************/
 .premium-color-transition {
   position: fixed;
   top: 0;
@@ -6929,7 +6928,8 @@ ul.premium-social-count-ul {
 * Responsive Style
 */
 @media (max-width: 1024px) {
-  .premium-hscroll-force-true .premium-hscroll-temp section .elementor-row {
+  .premium-hscroll-force-true .premium-hscroll-temp section .elementor-row,
+  .premium-hscroll-force-true .premium-hscroll-temp section > .elementor-container {
     -webkit-flex-wrap: nowrap !important;
         -ms-flex-wrap: nowrap !important;
             flex-wrap: nowrap !important; } }

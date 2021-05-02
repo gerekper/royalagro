@@ -13,7 +13,6 @@ jQuery( window ).on( 'elementor:init', function() {
 		},
 		events: function() {
 			return _.extend( ControlMultipleBaseItemView.prototype.events.apply( this, arguments ), {
-				//'slide @ui.sliders': 'onSlideChange',
 				'click @ui.link': 'onLinkResetTransforms'
 			} );
 		},

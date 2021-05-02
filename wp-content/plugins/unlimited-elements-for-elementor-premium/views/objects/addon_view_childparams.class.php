@@ -813,14 +813,29 @@ jQuery(document).ready(function(){
 		
 		$arrParams[] = $this->createWooPostParam_getChildProducts();
 		
-		//dmp($arrKeys);exit();
+		foreach($arrKeys as $key){
 		
-		foreach($arrKeys as $key){			
-			$arrParams[] = $this->createChildParam($key);
+			switch($key){
+				case "woo_sale_price":
+				case "woo_regular_price":
+				case "woo_price":
+				case "woo_price_to":
+				case "woo_price_from":
+				case "woo_sale_price_to":
+				case "woo_sale_price_from":
+				case "woo_regular_price_from":
+				case "woo_regular_price_to":
+					$arrParams[] = $this->createChildParam($key,null,array("raw_insert_text"=>"{{[param_name]|wc_price|raw}}"));
+				break;
+				default:
+					$arrParams[] = $this->createChildParam($key);
+				break;
+			}
 		}
 		
 		return($arrParams);
 	}
+	
 	
 	/**
 	 * add woo commerce post param without post id

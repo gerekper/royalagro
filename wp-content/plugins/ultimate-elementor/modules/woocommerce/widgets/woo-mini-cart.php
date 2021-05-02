@@ -14,8 +14,8 @@ use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Core\Schemes\Typography;
-use Elementor\Core\Schemes\Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -823,9 +823,8 @@ class Woo_Mini_Cart extends Common_Widget {
 			array(
 				'label'     => __( 'Background Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Color::get_type(),
-					'value' => Color::COLOR_1,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_PRIMARY,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-mc-dropdown__header-badge' => 'background-color: {{VALUE}}',
@@ -1105,9 +1104,8 @@ class Woo_Mini_Cart extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Color::get_type(),
-					'value' => Color::COLOR_2,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_SECONDARY,
 				),
 				'default'   => 'rgba(0,0,0,0.4)',
 				'selectors' => array(
@@ -1124,9 +1122,8 @@ class Woo_Mini_Cart extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Color::get_type(),
-					'value' => Color::COLOR_2,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_SECONDARY,
 				),
 				'default'   => 'rgba(0,0,0,0.75)',
 				'selectors' => array(
@@ -1155,9 +1152,8 @@ class Woo_Mini_Cart extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Color::get_type(),
-					'value' => Color::COLOR_2,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_SECONDARY,
 				),
 				'default'   => '#000000',
 				'selectors' => array(
@@ -1174,9 +1170,8 @@ class Woo_Mini_Cart extends Common_Widget {
 			array(
 				'label'     => __( 'Background Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Color::get_type(),
-					'value' => Color::COLOR_2,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_SECONDARY,
 				),
 				'default'   => '#ffffff',
 				'selectors' => array(
@@ -1421,9 +1416,8 @@ class Woo_Mini_Cart extends Common_Widget {
 			array(
 				'label'     => __( 'Background Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Color::get_type(),
-					'value' => Color::COLOR_2,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_SECONDARY,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-mc__btn' => 'background-color: {{VALUE}}',
@@ -1491,9 +1485,8 @@ class Woo_Mini_Cart extends Common_Widget {
 			array(
 				'label'     => __( 'Background Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Color::get_type(),
-					'value' => Color::COLOR_2,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_SECONDARY,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-mc__btn:hover' => 'background-color: {{VALUE}}',
@@ -1812,9 +1805,8 @@ class Woo_Mini_Cart extends Common_Widget {
 			array(
 				'label'     => __( 'Background Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Color::get_type(),
-					'value' => Color::COLOR_1,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_PRIMARY,
 				),
 				'default'   => '#d9534f',
 				'selectors' => array(
@@ -1860,9 +1852,8 @@ class Woo_Mini_Cart extends Common_Widget {
 			array(
 				'label'     => __( 'Background Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Color::get_type(),
-					'value' => Color::COLOR_1,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_PRIMARY,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-mc:hover .uael-mc__btn-badge' => 'background-color: {{VALUE}}',
@@ -1901,7 +1892,9 @@ class Woo_Mini_Cart extends Common_Widget {
 			array(
 				'name'     => 'ck_btn_typography',
 				'label'    => __( 'Typography', 'uael' ),
-				'scheme'   => Typography::TYPOGRAPHY_1,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				),
 				'selector' => '{{WRAPPER}} .woocommerce-mini-cart__buttons a',
 			)
 		);

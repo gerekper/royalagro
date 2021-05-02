@@ -1,3 +1,18 @@
+Version 1.30.2 - Friday, 23rd April 2021
+- Fix: Woo - Products - Undefined Global Typography class error with Modern skin.
+
+Version 1.30.1 - Friday, 23rd April 2021
+- Improvement: Added notice to update Elementor to v3.0.0 or higher.
+Elementor has deprecated few functions and namespaces with its v3.0.0. Following Elementor, our plugin too deprecates similar functions and namespaces. You will now require the Elementor v3.0.0 or higher.
+- Improvement: Compatibility with Elementor v3.2 - Added Elementor Global Color and Typography scheme support.
+- Improvement: Compatibility with Elementor v3.2 - Soft deprecated is_built_with_elementor() updated.
+- Improvement: Business Reviews - Added an option to pass the language parameter to the Google Places API.
+- Improvement: Social Share - Added fake random count for posts/pages.
+- Fix: Modal Popup - Scrolling inside the popup not working.
+- Fix: Modal Popup - Elements below the popup was not working due to JS conflicts.
+- Fix: Woo - Category - Categories to Show setting not working for tablet breakpoint in carousel layout.
+- Fix: Woo - Products - Products to Show setting not working for tablet breakpoint in carousel layout.
+
 Version 1.30.0 - Wednesday, 31st March 2021
 - New: Introduced Social Share widget.
 - Improvement: Video Gallery - Added 'uael_video_gallery_slick_options' filter to pass extra option to the slick library carousel layout.

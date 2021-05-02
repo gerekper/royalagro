@@ -10,7 +10,7 @@ namespace Happy_Addons_Pro\Widget;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Icons_Manager;
@@ -278,7 +278,7 @@ class Mini_Cart extends Base {
 			[
 				'name'     => 'mini_cart_button_typo',
 				'label'    => __( 'Typography', 'happy-addons-pro' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+				'scheme'   => Typography::TYPOGRAPHY_4,
 				'selector' => '{{WRAPPER}} .ha-mini-cart-button',
 			]
 		);
@@ -1022,7 +1022,7 @@ class Mini_Cart extends Base {
 			[
 				'name'     => 'popup_item_remove_typo',
 				'label'    => __( 'Typography', 'happy-addons-pro' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+				'scheme'   => Typography::TYPOGRAPHY_4,
 				'selector' => '{{WRAPPER}} .ha-mini-cart-popup .ha-mini-cart-popup-body ul li a.remove',
 			]
 		);
@@ -1188,7 +1188,7 @@ class Mini_Cart extends Base {
 			[
 				'name'     => 'popup_subtotal_title_typo',
 				'label'    => __( 'Typography', 'happy-addons-pro' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+				'scheme'   => Typography::TYPOGRAPHY_4,
 				'selector' => '{{WRAPPER}} .ha-mini-cart-popup .ha-mini-cart-popup-body .woocommerce-mini-cart__total strong',
 			]
 		);
@@ -1218,7 +1218,7 @@ class Mini_Cart extends Base {
 			[
 				'name'     => 'popup_subtotal_price_typo',
 				'label'    => __( 'Typography', 'happy-addons-pro' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+				'scheme'   => Typography::TYPOGRAPHY_4,
 				'selector' => '{{WRAPPER}} .ha-mini-cart-popup .ha-mini-cart-popup-body .woocommerce-mini-cart__total .amount',
 			]
 		);
@@ -1292,7 +1292,7 @@ class Mini_Cart extends Base {
 			[
 				'name'     => 'view_cart_button_typo',
 				'label'    => __( 'Typography', 'happy-addons-pro' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+				'scheme'   => Typography::TYPOGRAPHY_4,
 				'selector' => '{{WRAPPER}} .ha-mini-cart-popup .ha-mini-cart-popup-body .woocommerce-mini-cart__buttons .button:nth-child(1)',
 			]
 		);
@@ -1434,7 +1434,7 @@ class Mini_Cart extends Base {
 			[
 				'name'     => 'checkout_button_typo',
 				'label'    => __( 'Typography', 'happy-addons-pro' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+				'scheme'   => Typography::TYPOGRAPHY_4,
 				'selector' => '{{WRAPPER}} .ha-mini-cart-popup .ha-mini-cart-popup-body .woocommerce-mini-cart__buttons .button:nth-child(2)',
 			]
 		);

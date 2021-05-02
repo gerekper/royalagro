@@ -9,43 +9,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_ThreesixtySlider extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-threesixtyslider';
-	}
-
-	public function get_title() {
-		return __( '360 Slider', 'dynamic-content-for-elementor' );
-	}
-	public function get_description() {
-		return __( 'Generate a rotation through a series of images', 'dynamic-content-for-elementor' );
-	}
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/360-viewer/';
-	}
-	public function get_icon() {
-		return 'icon-dyn-360';
-	}
 	public function get_script_depends() {
-		return [ 'dce-threesixtyslider-lib', 'dce-threesixtyslider' ];
+		return [ 'dce-threesixtyslider-lib', 'dce-360-slider' ];
 	}
 	public function get_style_depends() {
 		return [ 'dce-threesixtySlider' ];
 	}
-	public static function get_position() {
-		return 3;
-	}
 
 	public function show_in_panel() {
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( 'install_plugins' ) ) {
 				return false;
 		}
 			return true;
 	}
 
 	protected function _register_controls() {
-		if ( current_user_can( 'manage_options' ) || ! is_admin() ) {
+		if ( current_user_can( 'install_plugins' ) || ! is_admin() ) {
 				$this->_register_controls_content();
-		} elseif ( ! current_user_can( 'manage_options' ) && is_admin() ) {
+		} elseif ( ! current_user_can( 'install_plugins' ) && is_admin() ) {
 			$this->register_controls_non_admin_notice();
 		}
 	}
@@ -110,11 +91,40 @@ class DCE_Widget_ThreesixtySlider extends DCE_Widget_Prototype {
 			]
 		);
 		$this->add_control(
+			'disable_spin', [
+				'label' => __( 'Disable the initial spin on load', 'dynamic-content-for-elementor' ),
+				'type' => Controls_Manager::SWITCHER,
+				'return_value' => 'yes',
+				'frontend_available' => true,
+			]
+		);
+		$this->add_control(
 			'responsive', [
 				'label' => __( 'Responsive', 'dynamic-content-for-elementor' ),
 				'type' => Controls_Manager::HIDDEN,
 				'default' => 'yes',
 				'return_value' => 'yes',
+				'frontend_available' => true,
+			]
+		);
+		$this->add_control(
+			'play_speed',
+			[
+				'label' => __( 'Play Speed (ms)', 'dynamic-content-for-elementor' ),
+				'type' => Controls_Manager::SLIDER,
+				'default' => [
+					'size' => 100,
+					'unit' => 'ms',
+				],
+				'size_units' => [ 'ms' ],
+				'range' => [
+					'ms' => [
+						'min' => 100,
+						'max' => 1000,
+						'step' => 100,
+					],
+				],
+				'render_type' => 'template',
 				'frontend_available' => true,
 			]
 		);

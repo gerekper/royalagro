@@ -138,7 +138,7 @@ class DCE_Group_Control_Ajax_Page extends Group_Control_Base {
 			'label' => _x( 'Enter modal', 'Animation Control', 'dynamic-content-for-elementor' ),
 			'type' => Controls_Manager::SELECT,
 			'default' => 'ease',
-			'options' => Helper::get_anim_timingFunctions(),
+			'options' => Helper::get_anim_timing_functions(),
 			'selectors' => [
 				'body.modal-p-on.modal-p-{{ID}} .wrap-p .modal-p' => 'animation-timing-function: {{VALUE}}; -webkit-animation-timing-function: {{VALUE}};',
 			],
@@ -150,7 +150,7 @@ class DCE_Group_Control_Ajax_Page extends Group_Control_Base {
 			'label' => _x( 'Close modal', 'Animation Control', 'dynamic-content-for-elementor' ),
 			'type' => Controls_Manager::SELECT,
 			'default' => 'ease',
-			'options' => Helper::get_anim_timingFunctions(),
+			'options' => Helper::get_anim_timing_functions(),
 			'selectors' => [
 				'body.modal-p-off.modal-p-{{ID}} .wrap-p .modal-p' => 'animation-timing-function: {{VALUE}}; -webkit-animation-timing-function: {{VALUE}};',
 			],
@@ -254,7 +254,7 @@ class DCE_Group_Control_Ajax_Page extends Group_Control_Base {
 			'label' => _x( 'Exit', 'Animation Control', 'dynamic-content-for-elementor' ),
 			'type' => Controls_Manager::SELECT,
 			'default' => 'ease',
-			'options' => Helper::get_anim_timingFunctions(),
+			'options' => Helper::get_anim_timing_functions(),
 			'selectors' => [
 				'body.modal-p-on.modal-p-{{ID}} #dce-wrap' => 'animation-timing-function: {{VALUE}}; -webkit-animation-timing-function: {{VALUE}};',
 			],
@@ -266,7 +266,7 @@ class DCE_Group_Control_Ajax_Page extends Group_Control_Base {
 			'label' => _x( 'Return', 'Animation Control', 'dynamic-content-for-elementor' ),
 			'type' => Controls_Manager::SELECT,
 			'default' => 'ease',
-			'options' => Helper::get_anim_timingFunctions(),
+			'options' => Helper::get_anim_timing_functions(),
 			'selectors' => [
 				'body.modal-p-off.modal-p-{{ID}} #dce-wrap' => 'animation-timing-function: {{VALUE}}; -webkit-animation-timing-function: {{VALUE}};',
 			],

@@ -10,7 +10,7 @@ namespace Happy_Addons_Pro\Widget;
 use Elementor\Controls_Manager;
 use Elementor\Icons_Manager;
 use Elementor\Modules\DynamicTags\Module as TagsModule;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Background;
@@ -591,7 +591,7 @@ class Timeline extends Base {
 			[
 				'name' => 'content_box_typography',
 				'label' => __('Typography', 'happy-addons-pro'),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .ha-timeline-content',
 			]
 		);
@@ -930,7 +930,7 @@ class Timeline extends Base {
 			[
 				'name' => 'title_typography',
 				'label' => __('Typography', 'happy-addons-pro'),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .ha-timeline-title',
 			]
 		);
@@ -993,7 +993,7 @@ class Timeline extends Base {
 			[
 				'name' => 'date_typography',
 				'label' => __('Date Typography', 'happy-addons-pro'),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .ha-timeline-date .date',
 				'condition' => [
 					'show_date' => 'yes'
@@ -1066,7 +1066,7 @@ class Timeline extends Base {
 			[
 				'name' => 'time_typography',
 				'label' => __('Time Typography', 'happy-addons-pro'),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .ha-timeline-date .time',
 				'condition' => [
 					'show_time' => 'yes'
@@ -1150,7 +1150,7 @@ class Timeline extends Base {
 			[
 				'name' => 'button_typography',
 				'label' => __('Typography', 'happy-addons-pro'),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+				'scheme' => Typography::TYPOGRAPHY_4,
 				'selector' => '{{WRAPPER}} .ha-timeline-button',
 			]
 		);
@@ -1351,7 +1351,7 @@ class Timeline extends Base {
 					?>
 					<?php
 					if ($item['title']) {
-						printf('<%1$s %2$s>%3$s</%1$s>', tag_escape($settings['title_tag']), $this->get_render_attribute_string($title_key), esc_html($item['title']));
+						printf('<%1$s %2$s>%3$s</%1$s>', ha_escape_tags($settings['title_tag']), $this->get_render_attribute_string($title_key), esc_html($item['title']));
 					}
 
 					if ($item['content']) {

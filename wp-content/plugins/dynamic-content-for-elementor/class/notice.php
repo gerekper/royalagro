@@ -12,7 +12,7 @@ class Notice {
 		<div class="error notice-error notice dce-generic-notice">
 			<div class="img-responsive pull-left" style="float: left; margin-right: 20px;"><img src="<?php echo DCE_URL; ?>/assets/media/dce.png" title="Dynamic Content for Elementor" height="36" width="36"></div>
 			<p><strong><?php _e( 'Welcome to Dynamic Content for Elementor!', 'dynamic-content-for-elementor' ); ?></strong><br />
-			<?php _e( 'It seems that your copy is not activated, please <a href="' . admin_url() . 'admin.php?page=dce_opt&tab=license">activate it</a> or <a href="https://www.dynamic.ooo/pricing" target="blank">buy a new license</a>.', 'dynamic-content-for-elementor' ); ?></p>
+			<?php _e( 'It seems that your copy is not activated, please <a href="' . admin_url() . 'admin.php?page=dce-license">activate it</a> or <a href="https://www.dynamic.ooo/pricing" target="blank">buy a new license</a>.', 'dynamic-content-for-elementor' ); ?></p>
 		</div>
 	<?php }
 	}
@@ -35,7 +35,7 @@ class Notice {
 			<?php if ( $msg ) {
 				echo wp_kses_post( $msg );
 			} else {
-				_e( get_option( 'dce_notice' ), 'dynamic-content-for-elementor' ); } ?></p>
+				echo get_option( 'dce_notice' ); } ?></p>
 		</div>
 	<?php }
 
@@ -46,7 +46,7 @@ class Notice {
 			<?php if ( $msg ) {
 				echo wp_kses_post( $msg );
 			} else {
-				_e( get_option( 'dce_notice' ), 'dynamic-content-for-elementor' ); } ?></p>
+				echo get_option( 'dce_notice' ); } ?></p>
 		</div>
 	<?php }
 
@@ -57,7 +57,7 @@ class Notice {
 			<?php if ( $msg ) {
 				echo wp_kses_post( $msg );
 			} else {
-				_e( get_option( 'dce_notice' ), 'dynamic-content-for-elementor' ); } ?></p>
+				echo get_option( 'dce_notice' ); } ?></p>
 		</div>
 	<?php }
 

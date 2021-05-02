@@ -11,38 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_Panorama extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-panorama';
-	}
-
-	public function get_title() {
-		return __( 'Panorama', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_description() {
-		return __( 'Display a spherical picture in 360 grades through VR mode', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/panorama/';
-	}
-
-	public function get_icon() {
-		return 'icon-dyn-panorama';
-	}
-
-	// public function get_script_depends() {
-	// 	return [ 'dce-aframe' ];
-	// }
-
-	public static function get_position() {
-		return 3;
-	}
-
-	/* public function get_style_depends() {
-	  return [ 'dce-panorama' ];
-	  } */
-
 	protected function _register_controls() {
 		$this->start_controls_section(
 				'section_panorama', [

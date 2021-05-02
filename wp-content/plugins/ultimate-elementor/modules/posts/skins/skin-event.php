@@ -9,9 +9,9 @@ namespace UltimateElementor\Modules\Posts\Skins;
 
 use Elementor\Controls_Manager;
 use Elementor\Widget_Base;
-use Elementor\Scheme_Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Group_Control_Border;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
 
@@ -336,9 +336,8 @@ class Skin_Event extends Skin_Base {
 				array(
 					'label'     => __( 'Background Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_1,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_PRIMARY,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-post__datebox' => 'background-color: {{VALUE}};',
@@ -350,7 +349,9 @@ class Skin_Event extends Skin_Base {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'datebox_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_2,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_SECONDARY,
+					),
 					'selector' => '{{WRAPPER}} .uael-post__datebox',
 				)
 			);

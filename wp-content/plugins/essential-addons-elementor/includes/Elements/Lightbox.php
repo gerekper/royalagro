@@ -8,7 +8,7 @@ use \Elementor\Group_Control_Border;
 use \Elementor\Group_Control_Box_Shadow;
 use \Elementor\Group_Control_Typography;
 use \Elementor\Plugin;
-use \Elementor\Scheme_Typography;
+use \Elementor\Core\Schemes\Typography;
 use \Elementor\Utils;
 use \Elementor\Widget_Base;
 use \Essential_Addons_Elementor\Classes\Helper;
@@ -734,7 +734,7 @@ class Lightbox extends Widget_Base
 			[
 				'name'                  => 'title_typography',
 				'label'                 => __('Typography', 'essential-addons-elementor'),
-				'scheme'                => Scheme_Typography::TYPOGRAPHY_4,
+				'scheme'                => Typography::TYPOGRAPHY_4,
 				'selector'              => '.eael-lightbox-popup-window-{{ID}} .eael-lightbox-header .eael-lightbox-title, .eael-lightbox-modal-window-{{ID}} .eael-lightbox-header .eael-lightbox-title',
 			]
 		);
@@ -1060,7 +1060,7 @@ class Lightbox extends Widget_Base
 			Group_Control_Typography::get_type(),
 			[
 				'name'      => 'eael_lightbox_open_btn_typography',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'    => Typography::TYPOGRAPHY_1,
 				'selector'  => '{{WRAPPER}} .eael-lightbox-btn > span'
 			]
 		);
@@ -1203,7 +1203,7 @@ class Lightbox extends Widget_Base
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'eael_lightbox_content_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '.eael-lightbox-container .eael-lightbox-content'
 			]
 		);

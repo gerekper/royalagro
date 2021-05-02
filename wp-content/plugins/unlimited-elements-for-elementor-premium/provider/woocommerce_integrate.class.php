@@ -328,7 +328,8 @@ class UniteCreatorWooIntegrate{
     	//add currency
     	$arrProduct["woo_currency"] = $this->currency;
     	$arrProduct["woo_currency_symbol"] = $this->currencySymbol;
-		    	
+		
+    	
     	//put add to cart link
     	$arrProduct = $this->addAddToCartData($arrProduct, $productID, $productSku);
     	

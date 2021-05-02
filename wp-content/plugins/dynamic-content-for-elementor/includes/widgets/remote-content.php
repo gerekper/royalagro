@@ -10,29 +10,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_RemoteContent extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-remotecontent';
-	}
-
-	public function get_title() {
-		return __( 'Remote Content', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_description() {
-		return __( 'Dynamically read every type of content from the web, incorporate text blocks, pictures and more from external sources. Compatible with REST APIs, including the native ones from WordPress, and allows to format the resulting value in JSON', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/remote-content/';
-	}
-
-	public function get_icon() {
-		return 'icon-dyn-remotecontent';
-	}
-
 	public function show_in_panel() {
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( 'install_plugins' ) ) {
 			return false;
 		}
 		return true;
@@ -40,9 +20,9 @@ class DCE_Widget_RemoteContent extends DCE_Widget_Prototype {
 
 	protected function _register_controls() {
 
-		if ( current_user_can( 'manage_options' ) || ! is_admin() ) {
+		if ( current_user_can( 'install_plugins' ) || ! is_admin() ) {
 			$this->register_controls_content();
-		} elseif ( ! current_user_can( 'manage_options' ) && is_admin() ) {
+		} elseif ( ! current_user_can( 'install_plugins' ) && is_admin() ) {
 			$this->register_controls_non_admin_notice();
 		}
 	}
@@ -406,19 +386,19 @@ class DCE_Widget_RemoteContent extends DCE_Widget_Prototype {
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 		if (
-			current_user_can( 'manage_options' )
+			current_user_can( 'install_plugins' )
 			&& \Elementor\Plugin::$instance->editor->is_edit_mode()
 			&& empty( $settings['url'] )
 		) {
 			_e( 'Add remote url to begin', 'dynamic-content-for-elementor' );
 		} elseif (
-			! current_user_can( 'manage_options' )
+			! current_user_can( 'install_plugins' )
 			&& \Elementor\Plugin::$instance->editor->is_edit_mode()
 		) {
 			$this->render_non_admin_notice();
 		} elseif (
 			(
-				current_user_can( 'manage_options' )
+				current_user_can( 'install_plugins' )
 				&& \Elementor\Plugin::$instance->editor->is_edit_mode()
 				&& ! empty( $settings['url'] )
 			)

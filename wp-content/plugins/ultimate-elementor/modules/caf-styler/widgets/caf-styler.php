@@ -12,8 +12,8 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Group_Control_Background;
 
 // UltimateElementor Classes.
@@ -251,9 +251,8 @@ class CafStyler extends Common_Widget {
 			array(
 				'label'     => __( 'Label Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'default'   => '',
 				'selectors' => array(
@@ -268,9 +267,8 @@ class CafStyler extends Common_Widget {
 			array(
 				'label'     => __( 'Input Text / Placeholder Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} input.form-control, {{WRAPPER}} form input[type="text"], {{WRAPPER}} form input[type="password"], {{WRAPPER}} form input[type="email"], {{WRAPPER}} form input[type="url"], {{WRAPPER}} form input[type="date"], {{WRAPPER}} form input[type="month"], {{WRAPPER}} form input[type="time"], {{WRAPPER}} form input[type="file"], {{WRAPPER}} form input[type="datetime"], {{WRAPPER}} form input[type="datetime-local"], {{WRAPPER}} form input[type="week"], {{WRAPPER}} form input[type="number"], {{WRAPPER}} form input[type="search"], {{WRAPPER}} form input[type="tel"], {{WRAPPER}} form input[type="color"], {{WRAPPER}} form select, {{WRAPPER}} form textarea, {{WRAPPER}} .uael-caf-form .caldera-grid form input[type=checkbox]:checked:after, {{WRAPPER}} .uael-caf-form .ccselect2-chosen, {{WRAPPER}} form .trumbowyg-editor, {{WRAPPER}} .uael-caf-form form input::placeholder, {{WRAPPER}} .uael-caf-form form textarea::placeholder' => 'color: {{VALUE}}; opacity: 1;',
@@ -289,9 +287,8 @@ class CafStyler extends Common_Widget {
 			array(
 				'label'     => __( 'Field Description Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'default'   => '',
 				'selectors' => array(
@@ -593,9 +590,8 @@ class CafStyler extends Common_Widget {
 			array(
 				'label'     => __( 'Selected Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'condition' => array(
 					'caf_radio_check_custom!' => '',
@@ -632,9 +628,8 @@ class CafStyler extends Common_Widget {
 			array(
 				'label'     => __( 'Border Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'condition' => array(
 					'caf_radio_check_custom!' => '',
@@ -814,9 +809,8 @@ class CafStyler extends Common_Widget {
 						'types'          => array( 'classic', 'gradient' ),
 						'fields_options' => array(
 							'color' => array(
-								'scheme' => array(
-									'type'  => Scheme_Color::get_type(),
-									'value' => Scheme_Color::COLOR_4,
+								'global' => array(
+									'default' => Global_Colors::COLOR_ACCENT,
 								),
 							),
 						),
@@ -1005,7 +999,9 @@ class CafStyler extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'caf_message_typo',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector' => '{{WRAPPER}} .uael-caf-form .has-error .caldera_ajax_error_block',
 				)
 			);
@@ -1088,7 +1084,9 @@ class CafStyler extends Common_Widget {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'caf_success_validation_typo',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				),
 				'selector' => '{{WRAPPER}} .uael-caf-form .caldera-grid .alert-success',
 			)
 		);
@@ -1243,7 +1241,9 @@ class CafStyler extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'form_label_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector' => '{{WRAPPER}} .uael-caf-form .form-group label.control-label',
 				)
 			);
@@ -1261,7 +1261,9 @@ class CafStyler extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'input_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector' => '{{WRAPPER}} .uael-caf-form input:not([type=submit]):not([type=button]):not([type=image]), {{WRAPPER}} .uael-caf-form .form-group textarea, {{WRAPPER}} .uael-caf-form .form-group select,{{WRAPPER}} .uael-caf-form .form-group .ccselect2-choice, {{WRAPPER}} .uael-caf-form .checkbox label, {{WRAPPER}} .uael-caf-form .checkbox-inline label, {{WRAPPER}} .uael-caf-form .radio label,{{WRAPPER}} .uael-caf-form .radio-inline label, {{WRAPPER}} .uael-caf-form .uael-caf-select-custom',
 				)
 			);
@@ -1279,7 +1281,9 @@ class CafStyler extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'input_desc_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector' => '{{WRAPPER}} .uael-caf-form .help-block',
 				)
 			);
@@ -1297,7 +1301,9 @@ class CafStyler extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'btn_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					),
 					'selector' => '{{WRAPPER}} .uael-caf-form .form-group input[type="submit"], {{WRAPPER}} .uael-caf-form .form-group input[type="button"], {{WRAPPER}} .uael-caf-form .btn-default, {{WRAPPER}} .uael-caf-form .btn-success, {{WRAPPER}} .uael-caf-form .cf-uploader-trigger',
 				)
 			);

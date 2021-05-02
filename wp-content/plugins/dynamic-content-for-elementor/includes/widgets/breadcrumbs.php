@@ -13,29 +13,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_Breadcrumbs extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dce-breadcrumbs';
-	}
-
-	public function get_title() {
-		return __( 'Breadcrumbs', 'dynamic-content-for-elementor' );
-	}
-	public function get_description() {
-		return __( 'Insert breadcrumbs and generate paths inside your page automatically', 'dynamic-content-for-elementor' );
-	}
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/breadcrumbs/';
-	}
-	public function get_icon() {
-		return 'icon-dyn-breadcrumbs';
-	}
 	public function get_style_depends() {
 		return [
 			'dce-breadcrumbs',
 		];
-	}
-	public static function get_position() {
-		return 4;
 	}
 
 	protected function _register_controls() {
@@ -398,31 +379,25 @@ class DCE_Widget_Breadcrumbs extends DCE_Widget_Prototype {
 					$userdata = get_userdata( $author );
 
 					// Display author name
-					echo '<li class="item-current item-current-' . $userdata->user_nicename . '"><span class="bread-current bread-current-' . $userdata->user_nicename . '" title="' . $userdata->display_name . '">' . 'Author: ' . $userdata->display_name . '</span></li>';
+					echo '<li class="item-current item-current-' . $userdata->user_nicename . '"><span class="bread-current bread-current-' . $userdata->user_nicename . '" title="' . $userdata->display_name . '">' . __( 'Author', 'dynamic-content-for-elementor' ) . $userdata->display_name . '</span></li>';
 
 				} elseif ( get_query_var( 'paged' ) ) {
 
 					// Paginated archives
-					echo '<li class="item-current item-current-' . get_query_var( 'paged' ) . '"><span class="bread-current bread-current-' . get_query_var( 'paged' ) . '" title="Page ' . get_query_var( 'paged' ) . '">' . __( 'Page' ) . ' ' . get_query_var( 'paged' ) . '</span></li>';
+					echo '<li class="item-current item-current-' . get_query_var( 'paged' ) . '"><span class="bread-current bread-current-' . get_query_var( 'paged' ) . '" title="Page ' . get_query_var( 'paged' ) . '">' . __( 'Page', 'dynamic-content-for-elementor' ) . ' ' . get_query_var( 'paged' ) . '</span></li>';
 
 				} elseif ( is_search() ) {
-
 					// Search results page
 					echo '<li class="item-current item-current-' . get_search_query() . '"><span class="bread-current bread-current-' . get_search_query() . '" title="Search results for: ' . get_search_query() . '">Search results for: ' . get_search_query() . '</span></li>';
 
 				} elseif ( is_404() ) {
-
 					// 404 page
-					echo '<li>' . 'Error 404' . '</li>';
+					echo '<li>Error 404</li>';
 				}
 			}
 
 			echo '</ul>';
 		}
-	}
-
-	protected function _content_template() {
-
 	}
 
 	private function is_yoast_breadcrumbs() {

@@ -13,7 +13,7 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Repeater;
 
 defined( 'ABSPATH' ) || die();
@@ -454,7 +454,7 @@ class Price_Menu extends Base {
 			[
 				'name' => 'typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+				'scheme' => Typography::TYPOGRAPHY_4,
 				'selector' => '{{WRAPPER}} .ha-price-menu .ha-price-menu-title',
 			]
 		);
@@ -557,7 +557,7 @@ class Price_Menu extends Base {
 			[
 				'name' => 'badge_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+				'scheme' => Typography::TYPOGRAPHY_4,
 				'exclude' => [
 					'letter_spacing'
 				],
@@ -656,7 +656,7 @@ class Price_Menu extends Base {
 			[
 				'name' => 'counter_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+				'scheme' => Typography::TYPOGRAPHY_4,
 				'selector' => '{{WRAPPER}} .ha-price-menu.ha-price-menu-counter .ha-price-menu-title::before',
 				'condition' => [
 					'item_counter' => 'yes',
@@ -790,7 +790,7 @@ class Price_Menu extends Base {
 			[
 				'name' => 'price_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .ha-price-menu .ha-price-menu-price',
 			]
 		);
@@ -820,7 +820,7 @@ class Price_Menu extends Base {
 			[
 				'name' => 'old_price_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .ha-price-menu .ha-price-menu-old-price',
 			]
 		);
@@ -954,7 +954,7 @@ class Price_Menu extends Base {
 			[
 				'name' => 'desc_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .ha-price-menu .ha-price-menu-desc p',
 			]
 		);

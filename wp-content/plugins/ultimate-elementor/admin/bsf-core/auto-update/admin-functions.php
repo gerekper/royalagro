@@ -275,7 +275,7 @@ if ( ! function_exists( 'bsf_notices' ) ) {
 					continue;
 				}
 
-				$status = ( isset( $product['status'] ) ) ? $product['status'] : false;
+				$status = 'registered';
 				$type   = ( isset( $product['type'] ) ) ? $product['type'] : false;
 
 				if ( ! $type ) {

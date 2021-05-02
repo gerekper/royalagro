@@ -12,8 +12,8 @@ use Elementor\Controls_Manager;
 use Elementor\Utils;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Repeater;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Image_Size;
@@ -1123,9 +1123,8 @@ class HowTo extends Common_Widget {
 				array(
 					'label'     => __( 'Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_1,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_PRIMARY,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-howto-title-text' => 'color: {{VALUE}};',
@@ -1137,7 +1136,9 @@ class HowTo extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'heading_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+					),
 					'selector' => '{{WRAPPER}} .uael-howto-title-text',
 				)
 			);
@@ -1190,9 +1191,8 @@ class HowTo extends Common_Widget {
 				array(
 					'label'     => __( 'Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-howto-description' => 'color: {{VALUE}};',
@@ -1204,7 +1204,9 @@ class HowTo extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'desc_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector' => '{{WRAPPER}} .uael-howto-description',
 				)
 			);
@@ -1355,9 +1357,8 @@ class HowTo extends Common_Widget {
 				array(
 					'label'     => __( 'Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-howto-time-needed, {{WRAPPER}} .uael-howto-estimated-cost' => 'color: {{VALUE}};',
@@ -1369,7 +1370,9 @@ class HowTo extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'time_cost_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector' => '{{WRAPPER}} .uael-howto-time-needed, {{WRAPPER}} .uael-howto-estimated-cost',
 				)
 			);
@@ -1457,9 +1460,8 @@ class HowTo extends Common_Widget {
 				array(
 					'label'     => __( 'Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_2,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_SECONDARY,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-howto-heading' => 'color: {{VALUE}};',
@@ -1471,7 +1473,9 @@ class HowTo extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'common_title_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_2,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_SECONDARY,
+					),
 					'selector' => '{{WRAPPER}} .uael-howto-heading',
 				)
 			);
@@ -1490,9 +1494,8 @@ class HowTo extends Common_Widget {
 				array(
 					'label'     => __( 'Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-howto-content' => 'color: {{VALUE}};',
@@ -1504,7 +1507,9 @@ class HowTo extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'common_content_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector' => '{{WRAPPER}} .uael-howto-content',
 				)
 			);
@@ -1541,9 +1546,8 @@ class HowTo extends Common_Widget {
 				array(
 					'label'     => __( 'Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_2,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_SECONDARY,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-howto-steps-text' => 'color: {{VALUE}};',
@@ -1555,7 +1559,9 @@ class HowTo extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'steps_title_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_2,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_SECONDARY,
+					),
 					'selector' => '{{WRAPPER}} .uael-howto-steps-text',
 				)
 			);
@@ -1574,9 +1580,8 @@ class HowTo extends Common_Widget {
 				array(
 					'label'     => __( 'Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_2,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_SECONDARY,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-howto-steps-title, {{WRAPPER}} .uael-howto-steps-title a' => 'color: {{VALUE}};',
@@ -1588,7 +1593,9 @@ class HowTo extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'steps_content_title_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_2,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_SECONDARY,
+					),
 					'selector' => '{{WRAPPER}} .uael-howto-steps-title, {{WRAPPER}} .uael-howto-steps-title a',
 				)
 			);
@@ -1607,9 +1614,8 @@ class HowTo extends Common_Widget {
 				array(
 					'label'     => __( 'Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-howto-steps-desc' => 'color: {{VALUE}};',
@@ -1621,7 +1627,9 @@ class HowTo extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'steps_section_content_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector' => '{{WRAPPER}} .uael-howto-steps-desc',
 				)
 			);

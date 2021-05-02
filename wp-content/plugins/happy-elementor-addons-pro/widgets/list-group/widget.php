@@ -12,7 +12,7 @@ use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Icons_Manager;
 use Elementor\Repeater;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Utils;
 
 defined( 'ABSPATH' ) || die();
@@ -978,7 +978,7 @@ class List_Group extends Base {
             [
                 'name' => 'title_typography',
                 'selector' => '{{WRAPPER}} .ha-text .ha-list-title',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                'scheme' => Typography::TYPOGRAPHY_3,
             ]
         );
 
@@ -1049,7 +1049,7 @@ class List_Group extends Base {
             [
                 'name' => 'description_typography',
                 'selector' => '{{WRAPPER}} .ha-text .ha-list-detail',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                'scheme' => Typography::TYPOGRAPHY_3,
             ]
         );
 
@@ -1163,7 +1163,7 @@ class List_Group extends Base {
 					'font_size' => ['']
 				],
 				'selector' => '{{WRAPPER}} .ha-badge',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+				'scheme' => Typography::TYPOGRAPHY_2,
 			]
 		);
 

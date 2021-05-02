@@ -14,50 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_Terms extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-terms';
-	}
-
-	public function get_title() {
-		return __( 'Terms & Taxonomy', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_description() {
-		return __( 'Insert your post taxonomies', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/terms-and-taxonomy/';
-	}
-
-	public function get_icon() {
-		return 'icon-dyn-terms';
-	}
-
 	public function get_style_depends() {
 		return [ 'dce-terms' ];
 	}
 
-	public static function get_position() {
-		return 3;
-	}
-
-	public function show_in_panel() {
-		if (! current_user_can('manage_options')) {
-			return false;
-		}
-		return true;
-	}
-
 	protected function _register_controls() {
-		if (current_user_can('manage_options') || ! is_admin()) {
-			$this->_register_controls_content();
-		} elseif (! current_user_can('manage_options') && is_admin()) {
-			$this->register_controls_non_admin_notice();
-		}
-	}
-
-	protected function _register_controls_content() {
 
 		$this->start_controls_section(
 				'section_content', [
@@ -96,24 +57,6 @@ class DCE_Widget_Terms extends DCE_Widget_Prototype {
 				]
 		);
 
-		$this->add_control(
-				'html_tag', [
-					'label' => __( 'HTML Tag', 'dynamic-content-for-elementor' ),
-					'type' => Controls_Manager::HIDDEN,
-					'options' => [
-						'h1' => __( 'H1', 'dynamic-content-for-elementor' ),
-						'h2' => __( 'H2', 'dynamic-content-for-elementor' ),
-						'h3' => __( 'H3', 'dynamic-content-for-elementor' ),
-						'h4' => __( 'H4', 'dynamic-content-for-elementor' ),
-						'h5' => __( 'H5', 'dynamic-content-for-elementor' ),
-						'h6' => __( 'H6', 'dynamic-content-for-elementor' ),
-						'p' => __( 'p', 'dynamic-content-for-elementor' ),
-						'div' => __( 'div', 'dynamic-content-for-elementor' ),
-						'span' => __( 'span', 'dynamic-content-for-elementor' ),
-					],
-					'default' => 'div',
-				]
-		);
 		$this->add_control(
 				'separator', [
 					'label' => __( 'Separator', 'dynamic-content-for-elementor' ),
@@ -653,7 +596,7 @@ class DCE_Widget_Terms extends DCE_Widget_Prototype {
 				Group_Control_Typography::get_type(), [
 					'name' => 'typography',
 					'label' => __( 'Typography', 'dynamic-content-for-elementor' ),
-					'selector' => '{{WRAPPER}} .dce-terms .dce-term-item',
+					'selector' => '{{WRAPPER}} .dce-terms',
 				]
 		);
 

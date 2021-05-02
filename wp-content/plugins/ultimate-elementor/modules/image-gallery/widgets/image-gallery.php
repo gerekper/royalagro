@@ -15,8 +15,8 @@ use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Border;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Control_Media;
 
 // UltimateElementor Classes.
@@ -1602,7 +1602,9 @@ class Image_Gallery extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'      => 'all_typography',
-					'scheme'    => Scheme_Typography::TYPOGRAPHY_4,
+					'global'    => array(
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					),
 					'condition' => array(
 						'gallery_style'          => array( 'grid', 'masonry', 'justified' ),
 						'masonry_filters_enable' => 'yes',
@@ -1685,9 +1687,8 @@ class Image_Gallery extends Common_Widget {
 					array(
 						'label'     => __( 'Text Color', 'uael' ),
 						'type'      => Controls_Manager::COLOR,
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_4,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_ACCENT,
 						),
 						'selectors' => array(
 							'{{WRAPPER}} .uael-img-gallery-tabs-dropdown .uael-filters-dropdown-button, {{WRAPPER}} .uael-gallery-parent .uael-masonry-filters .uael-masonry-filter' => 'color: {{VALUE}};',
@@ -1761,9 +1762,8 @@ class Image_Gallery extends Common_Widget {
 					array(
 						'label'     => __( 'Background Active / Hover Color', 'uael' ),
 						'type'      => Controls_Manager::COLOR,
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_4,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_ACCENT,
 						),
 						'selectors' => array(
 							'{{WRAPPER}} .uael-gallery-parent .uael-masonry-filters .uael-masonry-filter:hover, {{WRAPPER}} .uael-gallery-parent .uael-masonry-filters .uael-current' => 'background-color: {{VALUE}};',
@@ -1780,9 +1780,8 @@ class Image_Gallery extends Common_Widget {
 					array(
 						'label'     => __( 'Border Hover Color', 'uael' ),
 						'type'      => Controls_Manager::COLOR,
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_4,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_ACCENT,
 						),
 						'selectors' => array(
 							'{{WRAPPER}} .uael-gallery-parent .uael-masonry-filters .uael-masonry-filter:hover, {{WRAPPER}} .uael-gallery-parent .uael-masonry-filters .uael-current' => 'border-color: {{VALUE}};',

@@ -218,7 +218,15 @@ class UniteCreatorSettingsWork extends UniteSettingsAdvancedUC{
 		dmp("addPostsListPicker - function for override");
 		exit();
 	}
-
+	
+	/**
+	 * add listing picker, function for override
+	 */
+	protected function addListingPicker($name,$value,$title,$extra){
+		
+		dmp("addListingPicker - function for override");
+		exit();
+	}
 	
 	/**
 	 * add post terms settings
@@ -484,6 +492,7 @@ class UniteCreatorSettingsWork extends UniteSettingsAdvancedUC{
 			case UniteCreatorDialogParam::PARAM_WOO_CATS:
 			case UniteCreatorDialogParam::PARAM_USERS:
 			case UniteCreatorDialogParam::PARAM_TEMPLATE:
+			case UniteCreatorDialogParam::PARAM_LISTING:
 				
 				return(true);
 			break;
@@ -696,11 +705,22 @@ class UniteCreatorSettingsWork extends UniteSettingsAdvancedUC{
 				$this->addPostsListPicker($name,$value,$title,$extra);
 			break;
 			case UniteCreatorDialogParam::PARAM_POST_TERMS:
+				
+				$extra["for_woocommerce"] = UniteFunctionsUC::getVal($param, "for_woocommerce");
+				
 				$this->addPostTermsPicker($name,$value,$title,$extra);
 			break;
 			case UniteCreatorDialogParam::PARAM_WOO_CATS:
 				$this->addWooCatsPicker($name,$value,$title,$extra);
-			break;			
+			break;
+			case UniteCreatorDialogParam::PARAM_LISTING:
+				
+				$this->addListingPicker($name,$value,$title,$extra);
+			
+			break;
+			case UniteCreatorDialogParam::PARAM_WOO_CATS:
+				$this->addWooCatsPicker($name,$value,$title,$extra);
+			break;
 			case UniteCreatorDialogParam::PARAM_USERS:
 				$this->addUsersPicker($name,$value,$title,$extra);
 			break;

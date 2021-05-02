@@ -1087,6 +1087,7 @@ class Premium_Tables extends Widget_Base {
 		$docs = array(
 			'https://premiumaddons.com/docs/table-widget-tutorial' => __( 'Getting started »', 'premium-addons-pro' ),
 			'https://premiumaddons.com/docs/importing-table-widget-data-from-csv-file/' => __( 'How to import data from CSV file »', 'premium-addons-pro' ),
+			'https://premiumaddons.com/docs/how-to-add-links-to-csv-file-in-premium-elementor-table-widget/' => __( 'How to add links/images to CSV file »', 'premium-addons-pro' ),
 			'https://premiumaddons.com/docs/add-google-sheets-to-elementor-table-widget-tutorial' => __( 'How to import data from Google Spreadsheet »', 'premium-addons-pro' ),
 		);
 

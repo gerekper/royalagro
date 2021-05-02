@@ -12,8 +12,8 @@ use Elementor\Widget_Base;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Skin_Base as Elementor_Skin_Base;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -213,9 +213,8 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				array(
 					'label'     => __( 'Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_1,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_PRIMARY,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-reviewer-name a, {{WRAPPER}} .uael-reviewer-name' => 'color: {{VALUE}}',
@@ -297,9 +296,8 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				array(
 					'label'     => __( 'Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_2,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_SECONDARY,
 					),
 					'default'   => '#adadad',
 					'selectors' => array(
@@ -450,9 +448,8 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				array(
 					'label'     => __( 'Text Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-review-content' => 'color: {{VALUE}}',
@@ -508,9 +505,8 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				array(
 					'label'     => __( 'Read More Text Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_4,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_ACCENT,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} a.uael-reviews-read-more' => 'color: {{VALUE}};',
@@ -903,7 +899,9 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				array(
 					'name'     => 'name_typography',
 					'label'    => __( 'Reviewer Name', 'uael' ),
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+					),
 					'selector' => '{{WRAPPER}} .uael-reviewer-name a, {{WRAPPER}} .uael-reviewer-name',
 				)
 			);
@@ -913,7 +911,9 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				array(
 					'name'     => 'date_time_typography',
 					'label'    => __( 'Review Date', 'uael' ),
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector' => '{{WRAPPER}} .uael-review-time',
 				)
 			);
@@ -923,7 +923,9 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				array(
 					'name'     => 'content_typography',
 					'label'    => __( 'Review Content', 'uael' ),
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector' => '{{WRAPPER}} .uael-review-content',
 				)
 			);
@@ -933,7 +935,9 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				array(
 					'name'     => 'readmore_typography',
 					'label'    => __( 'Read More Text', 'uael' ),
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					),
 					'selector' => '{{WRAPPER}} .uael-reviews-read-more',
 				)
 			);

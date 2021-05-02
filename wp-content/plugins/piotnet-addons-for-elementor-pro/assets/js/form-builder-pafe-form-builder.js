@@ -201,9 +201,13 @@ function parseFloatWithRemoveSepChar(text, separator_char) {
 			if ($($element).hasClass('elementor-use-native') || $($element).hasClass('flatpickr-custom-options')) { 
 				return;
 			}
+
+			var minDate = $($element).attr('min') ? flatpickr.parseDate($($element).attr('min'), "Y-m-d") : null,
+				maxDate = $($element).attr('max') ? flatpickr.parseDate($($element).attr('max'), "Y-m-d") : null;
+
 			var options = {
-				minDate: $($element).attr('min') || null,
-				maxDate: $($element).attr('max') || null,
+				minDate: minDate,
+				maxDate: maxDate,
 				dateFormat: $($element).attr('data-date-format') || null,
 				defaultDate: $($element).attr('data-pafe-form-builder-value') || null,
 				allowInput: true,
@@ -220,8 +224,8 @@ function parseFloatWithRemoveSepChar(text, separator_char) {
 
 			if ($($element).data('pafe-form-builder-date-range') != undefined) {
 				var options = {
-					minDate: $($element).attr('min') || null,
-					maxDate: $($element).attr('max') || null,
+					minDate: minDate,
+					maxDate: maxDate,
 					dateFormat: $($element).attr('data-date-format') || null,
 					defaultDate: $($element).attr('data-pafe-form-builder-value') || null,
 					allowInput: true,
@@ -301,18 +305,25 @@ function parseFloatWithRemoveSepChar(text, separator_char) {
 	}
 
 	function round(value, decimals, decimalsSymbol, seperatorsSymbol, decimalsShow) {
+		var afterRound = Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 		if (decimalsShow == '') {
-			return FormatNumberBy3( Number(Math.round(value+'e'+decimals)+'e-'+decimals), decimalsSymbol, seperatorsSymbol );
+			return FormatNumberBy3( afterRound, decimalsSymbol, seperatorsSymbol );
 		} else {
-			return FormatNumberBy3( Number(Math.round(value+'e'+decimals)+'e-'+decimals).toFixed(decimals), decimalsSymbol, seperatorsSymbol );
+			var afterFixed = Number(afterRound.toFixed(decimals));
+			var formattedNumber = FormatNumberBy3( afterFixed, decimalsSymbol, seperatorsSymbol );
+			if (Number.isInteger(afterFixed) && decimals > 0) {
+				formattedNumber += decimalsSymbol + '0'.repeat(decimals);
+			}
+			return formattedNumber;
 		}
 	}
 
 	function roundValue(value, decimals, decimalsShow) {
+		var afterRound = Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 		if (decimalsShow == '') {
-			return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+			return afterRound;
 		} else {
-			return Number(Math.round(value+'e'+decimals)+'e-'+decimals).toFixed(decimals);
+			return Number(afterRound.toFixed(decimals));
 		}
 	}
 
@@ -648,7 +659,14 @@ function parseFloatWithRemoveSepChar(text, separator_char) {
 									this.setCustomValidity("");
 								}
 							}
-							if ( !$(this)[0].checkValidity() && $(this).closest('.pafe-form-builder-conditional-logic-hidden').length == 0 && $(this).closest('[data-pafe-form-builder-conditional-logic]').css('display') != 'none' &&  $(this).closest('[data-pafe-signature]').length == 0 ) {
+
+							var isValid = $(this)[0].checkValidity();
+							var next_ele = $($(this)[0]).next()[0];
+							if ($(next_ele).hasClass('flatpickr-mobile')) {
+								isValid = next_ele.checkValidity();
+							}
+
+							if ( !isValid && $(this).closest('.pafe-form-builder-conditional-logic-hidden').length == 0 && $(this).closest('[data-pafe-form-builder-conditional-logic]').css('display') != 'none' &&  $(this).closest('[data-pafe-signature]').length == 0 ) {
 								if ($(this).css('display') == 'none' || $(this).data('pafe-form-builder-image-select') != undefined || $(this).data('pafe-form-builder-select-autocomplete') != undefined)  {
 									$(this).closest('.elementor-field-group').find('[data-pafe-form-builder-required]').html(requiredText);
 								} else {
@@ -1296,8 +1314,14 @@ jQuery(document).ready(function( $ ) {
 				if ($(this).attr('oninvalid') != undefined) {
 					requiredText = $(this).attr('oninvalid').replace("this.setCustomValidity('","").replace("')","");
 				}
+
+				var isValid = $(this)[0].checkValidity();
+				var next_ele = $($(this)[0]).next()[0];
+				if ($(next_ele).hasClass('flatpickr-mobile')) {
+					isValid = next_ele.checkValidity();
+				}
 				
-				if ( !$(this)[0].checkValidity() && $(this).closest('.pafe-form-builder-conditional-logic-hidden').length == 0 && $(this).closest('[data-pafe-form-builder-conditional-logic]').css('display') != 'none' && $(this).data('pafe-form-builder-honeypot') == undefined &&  $(this).closest('[data-pafe-signature]').length == 0 || checked == 0 && $checkboxRequired.length > 0 && $(this).closest('.elementor-element').css('display') != 'none') {
+				if ( !isValid && $(this).closest('.pafe-form-builder-conditional-logic-hidden').length == 0 && $(this).closest('[data-pafe-form-builder-conditional-logic]').css('display') != 'none' && $(this).data('pafe-form-builder-honeypot') == undefined &&  $(this).closest('[data-pafe-signature]').length == 0 || checked == 0 && $checkboxRequired.length > 0 && $(this).closest('.elementor-element').css('display') != 'none') {
 					if ($(this).css('display') == 'none' || $(this).closest('div').css('display') == 'none' || $(this).data('pafe-form-builder-image-select') != undefined || $checkboxRequired.length > 0) {
 						$(this).closest('.elementor-field-group').find('[data-pafe-form-builder-required]').html(requiredText);
 					} else {
@@ -1369,8 +1393,14 @@ jQuery(document).ready(function( $ ) {
 							this.setCustomValidity("");
 						}
 					}
-					
-					if ( !$(this)[0].checkValidity() && $(this).closest('.pafe-form-builder-conditional-logic-hidden').length == 0 && $(this).closest('[data-pafe-form-builder-conditional-logic]').css('display') != 'none' && $(this).data('pafe-form-builder-honeypot') == undefined &&  $(this).closest('[data-pafe-signature]').length == 0 || checked == 0 && $checkboxRequired.length > 0 && $(this).closest('.elementor-element').css('display') != 'none') {
+
+					var isValid = $(this)[0].checkValidity();
+					var next_ele = $($(this)[0]).next()[0];
+					if ($(next_ele).hasClass('flatpickr-mobile')) {
+						isValid = next_ele.checkValidity();
+					}
+
+					if ( !isValid && $(this).closest('.pafe-form-builder-conditional-logic-hidden').length == 0 && $(this).closest('[data-pafe-form-builder-conditional-logic]').css('display') != 'none' && $(this).data('pafe-form-builder-honeypot') == undefined &&  $(this).closest('[data-pafe-signature]').length == 0 || checked == 0 && $checkboxRequired.length > 0 && $(this).closest('.elementor-element').css('display') != 'none') {
 						if ($(this).css('display') == 'none' || $(this).closest('div').css('display') == 'none' || $(this).data('pafe-form-builder-image-select') != undefined || $checkboxRequired.length > 0) {
 							$(this).closest('.elementor-field-group').find('[data-pafe-form-builder-required]').html(requiredText);
 						} else {
@@ -2862,18 +2892,25 @@ jQuery(document).ready(function($) {
 	}
 
 	function round(value, decimals, decimalsSymbol, seperatorsSymbol, decimalsShow) {
+		var afterRound = Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 		if (decimalsShow == '') {
-			return FormatNumberBy3( Number(Math.round(value+'e'+decimals)+'e-'+decimals), decimalsSymbol, seperatorsSymbol );
+			return FormatNumberBy3( afterRound, decimalsSymbol, seperatorsSymbol );
 		} else {
-			return FormatNumberBy3( Number(Math.round(value+'e'+decimals)+'e-'+decimals).toFixed(decimals), decimalsSymbol, seperatorsSymbol );
+			var afterFixed = Number(afterRound.toFixed(decimals));
+			var formattedNumber = FormatNumberBy3( afterFixed, decimalsSymbol, seperatorsSymbol );
+			if (Number.isInteger(afterFixed) && decimals > 0) {
+				formattedNumber += decimalsSymbol + '0'.repeat(decimals);
+			}
+			return formattedNumber;
 		}
 	}
 
 	function roundValue(value, decimals, decimalsShow) {
+		var afterRound = Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 		if (decimalsShow == '') {
-			return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+			return afterRound;
 		} else {
-			return Number(Math.round(value+'e'+decimals)+'e-'+decimals).toFixed(decimals);
+			return Number(afterRound.toFixed(decimals));
 		}
 	}
 
@@ -3666,9 +3703,13 @@ jQuery(document).ready(function($) {
 							if ($element.hasClass('elementor-use-native') || $element.hasClass('flatpickr-custom-options')) { 
 								return;
 							}
+
+							var minDate = $($element).attr('min') ? flatpickr.parseDate($($element).attr('min'), "Y-m-d") : null,
+								maxDate = $($element).attr('max') ? flatpickr.parseDate($($element).attr('max'), "Y-m-d") : null;
+
 							var options = {
-								minDate: $element.attr('min') || null,
-								maxDate: $element.attr('max') || null,
+								minDate: minDate,
+								maxDate: maxDate,
 								dateFormat: $element.attr('data-date-format') || null,
 								defaultDate: $element.attr('data-pafe-form-builder-value') || null,
 								allowInput: true,
@@ -3685,8 +3726,8 @@ jQuery(document).ready(function($) {
 
 							if ($element.data('pafe-form-builder-date-range') != undefined) {
 								var options = {
-									minDate: $element.attr('min') || null,
-									maxDate: $element.attr('max') || null,
+									minDate: minDate,
+									maxDate: maxDate,
 									dateFormat: $element.attr('data-date-format') || null,
 									defaultDate: $element.attr('data-pafe-form-builder-value') || null,
 									allowInput: true,
@@ -4004,9 +4045,13 @@ jQuery(document).ready(function($) {
 				if ($element.hasClass('elementor-use-native')) { 
 					return;
 				}
+
+				var minDate = $($element).attr('min') ? flatpickr.parseDate($($element).attr('min'), "Y-m-d") : null,
+					maxDate = $($element).attr('max') ? flatpickr.parseDate($($element).attr('max'), "Y-m-d") : null;
+
 				var options = {
-					minDate: $element.attr('min') || null,
-					maxDate: $element.attr('max') || null,
+					minDate: minDate,
+					maxDate: maxDate,
 					dateFormat: $element.attr('data-date-format') || null,
 					defaultDate: $element.attr('data-pafe-form-builder-value') || null,
 					allowInput: true

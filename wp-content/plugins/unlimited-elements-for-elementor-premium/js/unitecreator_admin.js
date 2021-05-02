@@ -573,7 +573,7 @@ function UniteCreatorAdmin(){
 		jQuery("#uc_tab_itemattr .unite_settings_wrapper").hide();
 		
 		var itemTabText = param["items_panel_text"];
-				
+		
 		jQuery(".uc-postsitems-related").remove();
 		jQuery("#uc_tab_itemattr").append("<div class='uc-postsitems-related'>"+itemTabText+"</div>");
 		
@@ -637,6 +637,11 @@ function UniteCreatorAdmin(){
 			var param = arrParams[index];
 			
 			switch(param.type){
+				case "uc_listing":
+					param["items_param_type"] = "uc_listing";
+					param["items_panel_text"] = "Items as listing mode";
+					return(param);
+				break;
 				case "uc_posts_list":
 					param["items_param_type"] = "uc_post";
 					param["items_panel_text"] = "Items as posts mode";

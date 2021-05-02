@@ -47,6 +47,15 @@ class DCE_Widget_Prototype extends Widget_Base {
 	 */
 	public $settings;
 
+	public $categories;
+	public $name;
+	public $title;
+	public $description;
+	public $icon;
+	public $plugin_depends = [];
+	public $doc_url = 'https://www.dynamic.ooo';
+	public $keywords = [];
+
 	/**
 	 * Raw Data.
 	 *
@@ -59,22 +68,58 @@ class DCE_Widget_Prototype extends Widget_Base {
 	 */
 	public $data;
 
-	public $docs = 'https://www.dynamic.ooo';
+	public function __construct( $data = [], $args = null ) {
+		parent::__construct( $data, $args );
+
+		$class = explode( '\\', get_called_class() );
+		$class = array_pop( $class );
+
+		$info = Widgets::get_widget_info( $class );
+
+		if ( isset( $info['category'] ) ) {
+			$this->categories = $info['category'];
+		}
+		if ( isset( $info['name'] ) ) {
+			$this->name = $info['name'];
+		}
+		if ( isset( $info['title'] ) ) {
+			$this->title = $info['title'];
+		}
+		if ( isset( $info['description'] ) ) {
+			$this->description = $info['description'];
+		}
+		if ( isset( $info['icon'] ) ) {
+			$this->icon = $info['icon'];
+		}
+		if ( isset( $info['plugin_depends'] ) ) {
+			$this->plugin_depends = $info['plugin_depends'];
+		}
+		if ( isset( $info['doc_url'] ) ) {
+			$this->doc_url = $info['doc_url'];
+		}
+		if ( isset( $info['keywords'] ) ) {
+			$this->keywords = $info['keywords'];
+		}
+	}
 
 	public function get_name() {
-		return 'dce-prototype';
+		return $this->name;
 	}
 
 	public function get_title() {
-		return __( 'Prototype', 'dynamic-content-for-elementor' );
+		return $this->title;
 	}
 
 	public function get_description() {
-		return __( 'Another Dynamic Widget', 'dynamic-content-for-elementor' );
+		return $this->description;
 	}
 
 	public function get_docs() {
-		return $this->docs;
+		return $this->doc_url;
+	}
+
+	public function get_keywords() {
+		return $this->keywords;
 	}
 
 	public function get_help_url() {
@@ -86,7 +131,7 @@ class DCE_Widget_Prototype extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-animation';
+		return $this->icon;
 	}
 
 	public function is_reload_preview_required() {
@@ -94,67 +139,11 @@ class DCE_Widget_Prototype extends Widget_Base {
 	}
 
 	public function get_categories() {
-		$grouped_widgets = Widgets::get_widgets_by_group();
-		$fullname = basename( get_class( $this ) );
-		$pieces = explode( '\\', $fullname );
-		$name = end( $pieces );
-		foreach ( $grouped_widgets as $gkey => $group ) {
-			foreach ( $group as $wkey => $widget ) {
-				if ( $widget == $name ) {
-					return [ 'dynamic-content-for-elementor-' . strtolower( $gkey ) ];
-				}
-			}
-		}
-		return [ 'dynamic-content-for-elementor' ];
-	}
-
-	public static function get_position() {
-		return 666;
-	}
-
-	public static function get_satisfy_dependencies( $ret = false ) {
-		$widgetClass = get_called_class();
-		$myWdgt = new $widgetClass();
-		return $myWdgt->satisfy_dependencies( $ret );
+		return [ 'dynamic-content-for-elementor-' . strtolower( $this->categories ) ];
 	}
 
 	public function get_plugin_depends() {
-		return [];
-	}
-
-	public function satisfy_dependencies( $ret = false, $deps = [] ) {
-		if ( empty( $deps ) ) {
-			$deps = $this->get_plugin_depends();
-		}
-		$depsDisabled = [];
-		if ( ! empty( $deps ) ) {
-			$isActive = true;
-			foreach ( $deps as $pkey => $plugin ) {
-				if ( ! is_numeric( $pkey ) ) {
-					if ( ! Helper::is_plugin_active( $pkey ) ) {
-						$isActive = false;
-					}
-				} else {
-					if ( ! Helper::is_plugin_active( $plugin ) ) {
-						$isActive = false;
-					}
-				}
-				if ( ! $isActive ) {
-					if ( ! $ret ) {
-						return false;
-					}
-					if ( is_numeric( $pkey ) ) {
-						$depsDisabled[] = $plugin;
-					} else {
-						$depsDisabled[] = $pkey;
-					}
-				}
-			}
-		}
-		if ( $ret ) {
-			return $depsDisabled;
-		}
-		return true;
+		return $this->plugin_depends;
 	}
 
 	protected function _register_controls() {
@@ -174,7 +163,7 @@ class DCE_Widget_Prototype extends Widget_Base {
 			[
 				'type' => Controls_Manager::RAW_HTML,
 				'raw' => __( 'You will need administrator capabilities to edit this widget.', 'dynamic-content-for-elementor' ),
-				'content_classes' => 'dce-notice',
+				'content_classes' => 'elementor-panel-alert elementor-panel-alert-warning',
 			]
 		);
 

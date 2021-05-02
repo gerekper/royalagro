@@ -19,22 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_ReadMore extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-readmore';
-	}
-
-	public function get_title() {
-		return __( 'Read More', 'dynamic-content-for-elementor' );
-	}
-	public function get_description() {
-		return __( 'Add a "Read More" button below your post or on the block in the archive, create a call-to-action.', 'dynamic-content-for-elementor' );
-	}
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/read-more-button/';
-	}
-	public function get_icon() {
-		return 'icon-dyn-readmore';
-	}
 	public function get_style_depends() {
 		return [ 'dce-readmore' ];
 	}
@@ -42,26 +26,7 @@ class DCE_Widget_ReadMore extends DCE_Widget_Prototype {
 		return [ 'dce-ajaxmodal' ];
 	}
 
-	public static function get_position() {
-		return 3;
-	}
-	
-	public function show_in_panel() {
-		if (! current_user_can('manage_options')) {
-			return false;
-		}
-		return true;
-	}
-
 	protected function _register_controls() {
-		if (current_user_can('manage_options') || ! is_admin()) {
-			$this->_register_controls_content();
-		} elseif (! current_user_can('manage_options') && is_admin()) {
-			$this->register_controls_non_admin_notice();
-		}
-	}
-
-	protected function _register_controls_content() {
 		$post_type_object = get_post_type_object( get_post_type() );
 
 		$this->start_controls_section(
@@ -895,7 +860,7 @@ class DCE_Widget_ReadMore extends DCE_Widget_Prototype {
 		if ( $link ) {
 			$html .= sprintf( '<a id="dce-readmore-' . $this->get_id() . '" class="dce-btn-readmore%4$s%5$s%6$s" href="%1$s" %2$s%8$s%7$s>%3$s</a>', $link, $target, $title, $animation_class, $effect_class, $icon_class . $class_typebutton, $data_text_effect, $nofollow );
 		} else {
-			$html_tag = $settings['html_tag'] ? $settings['html_tag'] : 'span';
+			$html_tag = $settings['html_tag'] ? \DynamicContentForElementor\Helper::validate_html_tag( $settings['html_tag'] ) : 'span';
 			$html .= sprintf( '<%1$s id="dce-readmore-' . $this->get_id() . '" class="dce-btn-readmore%2$s%3$s%4$s">%5$s</%s>', $html_tag, $animation_class, $effect_class, $icon_class . $class_typebutton, $title );
 		}
 		$scriptLetters = '';

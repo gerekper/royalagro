@@ -231,6 +231,7 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 				
 				// Delete cached license key status.
 			wp_cache_delete( $license_key . '_license_status' );
+
 		}
 
 		/**
@@ -241,9 +242,10 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 		public function is_edd( $license_key ) {
 
 			// Purchase key length for EDD is 32 characters.
-		
+			
+
 				return true;
-		
+			
 		}
 
 		/**
@@ -346,6 +348,7 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 		 * @param int    $product_id Product ID.
 		 */
 		public function get_remote_license_status( $purchase_key, $product_id ) {
+
 			// Check if license status is cached.
 			$cache_key = 'B5E0B5F8DD8689E6ACA49DD6E6E1A930' . '_license_status';
 			$cached    = wp_cache_get( $cache_key );
@@ -649,11 +652,12 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 				return $links;
 			}
 
-			$status         = 'active';
+			$status         = 'inactive';
 			$license_string = __( 'Activate License', 'bsf-core' );
-			
-			$status         = 'active';
-			$license_string = __( 'License', 'bsf-core' );
+			if ( self::bsf_is_active_license( $product_id ) ) {
+				$status         = 'active';
+				$license_string = __( 'License', 'bsf-core' );
+			}
 
 			$product_id = $args['product_id'];
 

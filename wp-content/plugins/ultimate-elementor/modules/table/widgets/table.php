@@ -13,8 +13,8 @@ use Elementor\Repeater;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 
 // UltimateElementor Classes.
 use UltimateElementor\Base\Common_Widget;
@@ -898,7 +898,9 @@ class Table extends Common_Widget {
 			array(
 				'name'     => 'header_typography',
 				'label'    => __( 'Typography', 'uael' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+				),
 				'selector' => '{{WRAPPER}} th.uael-table-col',
 			)
 		);
@@ -963,9 +965,8 @@ class Table extends Common_Widget {
 					array(
 						'label'     => __( 'Row Text Color', 'uael' ),
 						'type'      => Controls_Manager::COLOR,
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_3,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_TEXT,
 						),
 						'selectors' => array(
 							'{{WRAPPER}} thead .uael-table-row th .uael-table__text' => 'color: {{VALUE}};',
@@ -1165,7 +1166,9 @@ class Table extends Common_Widget {
 			array(
 				'name'     => 'cell_typography',
 				'label'    => __( 'Typography', 'uael' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				),
 				'selector' => '{{WRAPPER}} td .uael-table__text-inner,{{WRAPPER}} td .uael-align-icon--left,{{WRAPPER}} td .uael-align-icon--right',
 			)
 		);
@@ -1257,9 +1260,8 @@ class Table extends Common_Widget {
 					array(
 						'label'     => __( 'Row Color', 'uael' ),
 						'type'      => Controls_Manager::COLOR,
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_3,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_TEXT,
 						),
 						'selectors' => array(
 							'{{WRAPPER}} tbody td.uael-table-col .uael-table__text' => 'color: {{VALUE}};',
@@ -1754,7 +1756,9 @@ class Table extends Common_Widget {
 				array(
 					'name'     => 'label_typography',
 					'label'    => __( 'Typography', 'uael' ),
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector' => '{{WRAPPER}} .uael-advance-heading label, {{WRAPPER}} .uael-advance-heading select, {{WRAPPER}} .uael-advance-heading input',
 				)
 			);

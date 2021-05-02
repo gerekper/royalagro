@@ -8,7 +8,7 @@
 namespace Happy_Addons_Pro\Widget;
 
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Background;
@@ -718,7 +718,7 @@ class Advanced_Data_Table extends Base {
 			[
 				'name' => 'head_typography',
 				'selector' => '{{WRAPPER}} .ha-advanced-table__head .ha-advanced-table__head-column-cell',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 
@@ -793,7 +793,7 @@ class Advanced_Data_Table extends Base {
 			[
 				'name' => 'row_typography',
 				'selector' => '{{WRAPPER}} .ha-advanced-table__body .ha-advanced-table__body-row-cell',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 

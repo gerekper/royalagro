@@ -23,29 +23,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_Meta extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dce-meta';
-	}
-
-	public function get_title() {
-		return __( 'Post Meta', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_description() {
-		return __( 'Display every post meta saved in the DB', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/meta-fields/';
-	}
-
-	public function get_icon() {
-		return 'icon-dyn-customfields';
-	}
-
 	public function show_in_panel() {
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( 'install_plugins' ) ) {
 			return false;
 		}
 		return true;
@@ -53,9 +33,9 @@ class DCE_Widget_Meta extends DCE_Widget_Prototype {
 
 	protected function _register_controls() {
 
-		if ( current_user_can( 'manage_options' ) || ! is_admin() ) {
+		if ( current_user_can( 'install_plugins' ) || ! is_admin() ) {
 			$this->_register_controls_content();
-		} elseif ( ! current_user_can( 'manage_options' ) && is_admin() ) {
+		} elseif ( ! current_user_can( 'install_plugins' ) && is_admin() ) {
 			$this->register_controls_non_admin_notice();
 		}
 	}
@@ -373,7 +353,7 @@ class DCE_Widget_Meta extends DCE_Widget_Prototype {
 				[
 					'label' => __( 'Source Format', 'dynamic-content-for-elementor' ),
 					'type' => Controls_Manager::TEXT,
-					'description' => '<a target="_blank" href="https://www.php.net/manual/en/function.date.php">' . __( 'Use standard PHP format character' ) . '</a>' . __( ', you can also use "timestamp"' ),
+					'description' => '<a target="_blank" href="https://www.php.net/manual/en/function.date.php">' . __( 'Use standard PHP format character', 'dynamic-content-for-elementor' ) . '</a>' . __( ', you can also use "timestamp"', 'dynamic-content-for-elementor' ),
 					'placeholder' => __( 'YmdHis, d/m/Y, m-d-y', 'dynamic-content-for-elementor' ),
 				]
 		);
@@ -1701,7 +1681,7 @@ class DCE_Widget_Meta extends DCE_Widget_Prototype {
 
 					case 'multiple':
 					case 'checkboxes':
-					case 'radio';
+					case 'radio':
 					case 'select':
 						$meta_html = '';
 						if ( ! empty( $meta_value ) ) {
@@ -2230,7 +2210,8 @@ class DCE_Widget_Meta extends DCE_Widget_Prototype {
 
 			$img_url = Group_Control_Image_Size::get_attachment_image_src( $image_id, 'dce_meta_image_size', $settings );
 		} else {
-			$img_url_full = $img_url = $meta_value;
+			$img_url = $meta_value;
+			$img_url_full = $img_url;
 		}
 		// CAPTION
 		$caption = '';

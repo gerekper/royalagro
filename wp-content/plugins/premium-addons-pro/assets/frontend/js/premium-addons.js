@@ -2966,6 +2966,35 @@
             settings = $accordElem.data("settings"),
             $window = $(window);
 
+        if (elementorFrontend.isEditMode()) {
+
+            $accordElem.find(".premium-accord-temp").each(function (index, img) {
+
+                var templateID = $(img).data("template");
+
+                if (undefined !== templateID) {
+                    $.ajax({
+                        type: "GET",
+                        url: PremiumSettings.ajaxurl,
+                        dataType: "html",
+                        data: {
+                            action: "get_elementor_template_content",
+                            templateID: templateID
+                        }
+                    }).success(function (response) {
+
+                        var data = JSON.parse(response).data;
+
+                        if (undefined !== data.template_content) {
+                            $(img).html(data.template_content);
+                            $window.resize();
+                        }
+                    });
+                }
+            });
+
+        }
+
         $window.resize(function () {
 
             if (settings.hide_desc > $window.outerWidth()) {
@@ -2983,8 +3012,30 @@
         if (!$accordElem.find('.premium-accordion-li-active').length)
             return;
 
+        var height = (settings.height && 'px' === settings.height.unit) ? settings.height.size : $scope.find('.premium-accordion-vertical .premium-accordion-ul').height() * settings.height.size * 0.01;
+
+        if (height) {
+            $accordElem.find('.premium-accordion-li-active').attr('style', 'height: ' + height + 'px !important');
+
+            var count = $accordElem.find('.premium-accordion-li:not(.premium-accordion-li-active)').length;
+
+            $accordElem.find('.premium-accordion-li:not(.premium-accordion-li-active)').attr('style', 'height: calc( (' + $scope.find('.premium-accordion-vertical .premium-accordion-ul').height() + 'px - ' + height + 'px ) /' + count + ')');
+
+            $scope.find('.premium-accordion-vertical .premium-accordion-ul').css('height', $scope.find('.premium-accordion-vertical .premium-accordion-ul').height() + 'px');
+        } else {
+            $accordElem.find('.premium-accordion-li:not(.premium-accordion-li-active)').addClass('premium-accordion-li-inactive');
+        }
 
         $accordElem.mouseover(function () {
+            if (height) {
+                $accordElem.find('.premium-accordion-li').css('height', settings.initialHeight);
+                $scope.find('.premium-accordion-vertical .premium-accordion-ul').css('height', 'unset');
+
+            } else {
+                $accordElem.find('.premium-accordion-li-inactive').removeClass('premium-accordion-li-inactive');
+            }
+
+            $accordElem.find('.premium-accordion-li-inactive').removeClass('premium-accordion-li-inactive');
 
             $accordElem.find('.premium-accordion-li-active').removeClass('premium-accordion-li-active');
 

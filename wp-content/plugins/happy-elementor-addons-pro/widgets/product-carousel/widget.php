@@ -14,7 +14,7 @@ use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Utils;
 use Elementor\Repeater;
 use Elementor\Icons_Manager;
@@ -646,7 +646,7 @@ class Product_Carousel extends Base {
             [
                 'name' => 'badge_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .ha-product-carousel-on-sale span',
             ]
 		);
@@ -708,7 +708,7 @@ class Product_Carousel extends Base {
                 'name' => 'name_typography',
                 'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '{{WRAPPER}} .ha-product-carousel-title',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+				'scheme' => Typography::TYPOGRAPHY_2,
             ]
         );
 
@@ -750,7 +750,7 @@ class Product_Carousel extends Base {
                 'name' => 'price_typography',
                 'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '{{WRAPPER}} .ha-product-carousel-price',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
             ]
         );
 
@@ -870,7 +870,7 @@ class Product_Carousel extends Base {
                 'name' => 'add_to_cart_typography',
                 'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '{{WRAPPER}} .ha-product-carousel-add-to-cart a',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
             ]
         );
 
@@ -1415,7 +1415,7 @@ class Product_Carousel extends Base {
                 'name' => 'qv_btn_typography',
                 'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '{{WRAPPER}} .ha-product-carousel-quick-view-wrap',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
             ]
         );
 
@@ -1517,7 +1517,7 @@ class Product_Carousel extends Base {
 				'name' => 'qv_title_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '.ha-pqv.ha-pqv--{{ID}} .ha-pqv__title',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+				'scheme' => Typography::TYPOGRAPHY_2,
 			]
 		);
 
@@ -1589,7 +1589,7 @@ class Product_Carousel extends Base {
 				'name' => 'qv_price_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '.ha-pqv.ha-pqv--{{ID}} .ha-pqv__price',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 
@@ -1630,7 +1630,7 @@ class Product_Carousel extends Base {
 				'name' => 'qv_summary_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '.ha-pqv.ha-pqv--{{ID}} .ha-pqv__summary',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 
@@ -1692,7 +1692,7 @@ class Product_Carousel extends Base {
 				'name' => 'qv_cart_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '.ha-pqv.ha-pqv--{{ID}} .ha-pqv__cart .button',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 

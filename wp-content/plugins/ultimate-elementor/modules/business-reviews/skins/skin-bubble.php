@@ -9,8 +9,8 @@ namespace UltimateElementor\Modules\BusinessReviews\Skins;
 
 use Elementor\Controls_Manager;
 use Elementor\Widget_Base;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
@@ -154,9 +154,8 @@ class Skin_Bubble extends Skin_Base {
 			array(
 				'label'     => __( 'Text Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-review-content' => 'color: {{VALUE}}',

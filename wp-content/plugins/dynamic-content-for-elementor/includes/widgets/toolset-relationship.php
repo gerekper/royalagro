@@ -17,48 +17,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_ToolsetRelationship extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-toolset-relation';
-	}
-
-	public function get_title() {
-		return __( 'TOOLSET Relationship', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_description() {
-		return __( 'Display related posts', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/toolset-relationship/';
-	}
-
-	public function get_icon() {
-		return 'icon-dyn-relation';
-	}
-
-	public function get_plugin_depends() {
-		return array( 'types' => 'toolset' );
-	}
 	public function get_style_depends() {
 		return [ 'dce-relationship' ];
 	}
-	public function show_in_panel() {
-		if (! current_user_can('manage_options')) {
-			return false;
-		}
-		return true;
-	}
 
 	protected function _register_controls() {
-		if (current_user_can('manage_options') || ! is_admin()) {
-			$this->_register_controls_content();
-		} elseif (! current_user_can('manage_options') && is_admin()) {
-			$this->register_controls_non_admin_notice();
-		}
-	}
-
-	protected function _register_controls_content() {
 		$rels = Helper::get_toolset_fields( 'post' );
 
 		$this->start_controls_section(
@@ -504,9 +467,9 @@ class DCE_Widget_ToolsetRelationship extends DCE_Widget_Prototype {
 									?>
 									<li>
 										<a class="dce-view-item dce-tab-item<?php echo ( ! $i ) ? ' dce-tab-item-active' : ''; ?>" href="#dce-toolset-relational-post-<?php echo $this->get_id() . '-' . $pkey; ?>" onclick="jQuery('.elementor-element-<?php echo $this->get_id(); ?> .dce-toolset-relational-post').hide();jQuery('.elementor-element-<?php echo $this->get_id(); ?> .dce-tab-item-active').removeClass('dce-tab-item-active');jQuery(jQuery(this).attr('href')).show();jQuery(this).addClass('dce-tab-item-active'); return false;">
-											<<?php echo $settings['toolset_relation_tag']; ?> class="elementor-heading-title">
+											<<?php echo \DynamicContentForElementor\Helper::validate_html_tag( $settings['toolset_relation_tag'] ); ?> class="elementor-heading-title">
 									<?php echo $alabel; ?>
-											</<?php echo $settings['toolset_relation_tag']; ?>>
+											</<?php echo \DynamicContentForElementor\Helper::validate_html_tag( $settings['toolset_relation_tag'] ); ?>>
 										</a>
 									</li>
 									<?php
@@ -549,15 +512,15 @@ class DCE_Widget_ToolsetRelationship extends DCE_Widget_Prototype {
 																							} else {
 																								jQuery(jQuery(this).attr('href')).slideUp();
 																							} return false;">
-													<<?php echo $settings['toolset_relation_tag']; ?> class="elementor-heading-title">
+													<<?php echo \DynamicContentForElementor\Helper::validate_html_tag( $settings['toolset_relation_tag'] ); ?> class="elementor-heading-title">
 												<?php echo $labels[ $post->ID ]; ?>
-													</<?php echo $settings['toolset_relation_tag']; ?>>
+													</<?php echo \DynamicContentForElementor\Helper::validate_html_tag( $settings['toolset_relation_tag'] ); ?>>
 												</a>
 											</div>
 										<?php
 									}
 									$is_hidden = false;
-									if ( in_array( $settings['toolset_relation_format'], array( 'accordion', 'select' ) ) ) { // && $settings['toolset_relation_render'] != 'title') {
+									if ( in_array( $settings['toolset_relation_format'], array( 'accordion', 'select' ) ) ) {
 										if ( ( $settings['toolset_relation_close'] && ! $rkey ) || $rkey ) {
 											$is_hidden = true;
 										}
@@ -578,7 +541,7 @@ class DCE_Widget_ToolsetRelationship extends DCE_Widget_Prototype {
 							if ( $settings['toolset_relation_link'] ) {
 								echo '<a class="dce-toolset-relational-post-link" href="' . get_permalink( $post->ID ) . '">';
 							}
-							echo '<' . $settings['toolset_relation_tag'] . ' class="elementor-heading-title">' . get_the_title( $post->ID ) . '</' . $settings['toolset_relation_tag'] . '>';
+							echo '<' . \DynamicContentForElementor\Helper::validate_html_tag( $settings['toolset_relation_tag'] ) . ' class="elementor-heading-title">' . get_the_title( $post->ID ) . '</' . \DynamicContentForElementor\Helper::validate_html_tag( $settings['toolset_relation_tag'] ) . '>';
 							if ( $settings['toolset_relation_link'] ) {
 								echo '</a>';
 							}
@@ -605,6 +568,7 @@ class DCE_Widget_ToolsetRelationship extends DCE_Widget_Prototype {
 								break;
 							case 'tab':
 								echo '</div>';
+								break;
 							case 'grid':
 							case 'select':
 								echo '</div>';

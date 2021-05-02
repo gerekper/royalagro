@@ -3,7 +3,7 @@ namespace Essential_Addons_Elementor\Pro\Elements;
 
 use \Elementor\Controls_Manager;
 use \Elementor\Group_Control_Background;
-use \Elementor\Scheme_Typography;
+use \Elementor\Core\Schemes\Typography;
 use \Elementor\Group_Control_Border;
 use \Elementor\Group_Control_Box_Shadow;
 use \Elementor\Group_Control_Typography;
@@ -579,7 +579,7 @@ class Toggle extends Widget_Base {
             [
                 'name'              => 'label_typography_primary',
                 'label'             => __( 'Typography', 'essential-addons-elementor' ),
-                'scheme'            => Scheme_Typography::TYPOGRAPHY_4,
+                'scheme'            => Typography::TYPOGRAPHY_4,
                 'selector'          => '{{WRAPPER}} .eael-primary-toggle-label',
                 'separator'         => 'before',
             ]
@@ -623,7 +623,7 @@ class Toggle extends Widget_Base {
             [
                 'name'              => 'label_typography_secondary',
                 'label'             => __( 'Typography', 'essential-addons-elementor' ),
-                'scheme'            => Scheme_Typography::TYPOGRAPHY_4,
+                'scheme'            => Typography::TYPOGRAPHY_4,
                 'selector'          => '{{WRAPPER}} .eael-secondary-toggle-label',
                 'separator'         => 'before',
             ]
@@ -689,7 +689,7 @@ class Toggle extends Widget_Base {
             [
                 'name'              => 'content_typography',
                 'label'             => __( 'Typography', 'essential-addons-elementor' ),
-                'scheme'            => Scheme_Typography::TYPOGRAPHY_4,
+                'scheme'            => Typography::TYPOGRAPHY_4,
                 'selector'          => '{{WRAPPER}} .eael-toggle-content-wrap',
             ]
         );

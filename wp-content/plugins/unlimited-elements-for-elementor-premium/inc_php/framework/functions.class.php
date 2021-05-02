@@ -1535,6 +1535,26 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 				
 		}
 		
+		/**
+		 * return if the array is id's array
+		 */
+		public static function isValidIDsArray($arr){
+			
+			if(is_array($arr) == false)
+				return(false);
+				
+			if(empty($arr))
+				return(true);
+			
+			foreach($arr as $key=>$value){
+				
+				if(is_numeric($key) == false || is_numeric($value) == false)
+					return(false);
+			}
+
+			return(true);
+		}
+		
 		
 		/**
 		 * validate that the value is alphanumeric

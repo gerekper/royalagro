@@ -11,7 +11,7 @@ use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Happy_Addons\Elementor\Controls\Group_Control_Foreground;
 use Happy_Addons_Pro\Helpers;
 
@@ -415,7 +415,7 @@ class Advanced_Tabs extends Base {
 			[
 				'name' => 'nav_typography',
 				'selector' => '{{WRAPPER}} .ha-tabs-{{ID}} > .ha-tabs__nav > .ha-tab__title, {{WRAPPER}} .ha-tabs-{{ID}} > .ha-tabs__content > .ha-tab__title',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+				'scheme' => Typography::TYPOGRAPHY_2,
 			]
 		);
 
@@ -703,7 +703,7 @@ class Advanced_Tabs extends Base {
 			[
 				'name' => 'content_typography',
 				'selector' => '{{WRAPPER}} .ha-tabs-{{ID}} > .ha-tabs__content > .ha-tab__content',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 

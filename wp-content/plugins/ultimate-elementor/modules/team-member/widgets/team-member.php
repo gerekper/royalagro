@@ -11,8 +11,8 @@ namespace UltimateElementor\Modules\TeamMember\Widgets;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Utils;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Border;
@@ -319,9 +319,8 @@ class Team_Member extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_4,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_ACCENT,
 				),
 				'default'   => '',
 				'selectors' => array(
@@ -822,9 +821,8 @@ class Team_Member extends Common_Widget {
 				array(
 					'label'     => __( 'Border Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_1,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_PRIMARY,
 					),
 					'condition' => array(
 						'image_border!' => 'none',
@@ -841,9 +839,8 @@ class Team_Member extends Common_Widget {
 				array(
 					'label'     => __( 'Border Hover Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_2,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_SECONDARY,
 					),
 					'default'   => '',
 					'selectors' => array(
@@ -908,7 +905,9 @@ class Team_Member extends Common_Widget {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'name_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				),
 				'selector' => '{{WRAPPER}} .uael-team-name',
 			)
 		);
@@ -918,9 +917,8 @@ class Team_Member extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_PRIMARY,
 				),
 				'default'   => '',
 				'selectors' => array(
@@ -953,7 +951,9 @@ class Team_Member extends Common_Widget {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'designation_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				),
 				'selector' => '{{WRAPPER}} .uael-team-desig',
 			)
 		);
@@ -963,9 +963,8 @@ class Team_Member extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_SECONDARY,
 				),
 				'default'   => '',
 				'selectors' => array(
@@ -999,7 +998,9 @@ class Team_Member extends Common_Widget {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'desc_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				),
 				'selector' => '{{WRAPPER}} .uael-team-desc',
 			)
 		);
@@ -1009,9 +1010,8 @@ class Team_Member extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'default'   => '',
 				'selectors' => array(
@@ -1251,9 +1251,8 @@ class Team_Member extends Common_Widget {
 				array(
 					'label'     => __( 'Border Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_1,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_PRIMARY,
 					),
 					'condition' => array(
 						'social_icon_border!' => 'none',
@@ -1270,9 +1269,8 @@ class Team_Member extends Common_Widget {
 			array(
 				'label'     => __( 'Border Hover Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_SECONDARY,
 				),
 				'default'   => '',
 				'selectors' => array(

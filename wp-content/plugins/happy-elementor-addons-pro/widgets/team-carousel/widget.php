@@ -9,7 +9,7 @@ namespace Happy_Addons_Pro\Widget;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Repeater;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Utils;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
@@ -796,7 +796,7 @@ class Team_Carousel extends Base {
             [
                 'name' => 'title_typography',
                 'selector' => '{{WRAPPER}} .ha-member-name',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+                'scheme' => Typography::TYPOGRAPHY_2,
             ]
         );
 
@@ -845,7 +845,7 @@ class Team_Carousel extends Base {
             [
                 'name' => 'job_title_typography',
                 'selector' => '{{WRAPPER}} .ha-member-position',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                'scheme' => Typography::TYPOGRAPHY_3,
             ]
         );
 
@@ -894,7 +894,7 @@ class Team_Carousel extends Base {
             [
                 'name' => 'bio_typography',
                 'selector' => '{{WRAPPER}} .ha-member-bio',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                'scheme' => Typography::TYPOGRAPHY_3,
             ]
         );
 
@@ -1533,7 +1533,7 @@ class Team_Carousel extends Base {
                         <div class="ha-member-body">
                             <?php if ( $member['title'] ) :
                                 printf( '<%1$s %2$s>%3$s</%1$s>',
-                                    tag_escape( $settings['title_tag'] ),
+                                    ha_escape_tags( $settings['title_tag'] ),
                                     $this->get_render_attribute_string( $title ),
                                     esc_html( $member['title'] )
                                 );

@@ -1,6 +1,5 @@
 (function ($) {
     var WidgetElements_NextPrevHandler = function ($scope, $) {
-        //
         if (typeof $('#main').ajaxify === "function") {
             $('#main').ajaxify({
                 /* basic config parameters */

@@ -22,7 +22,7 @@
 	<div class="wrap about-wrap full-width-layout">
 		<h1><?php _e( 'Introducing <strong>Dynamic Content for Elementor</strong>', 'dynamic-content-for-elementor' ); ?> <?php echo DCE_VERSION; ?></h1>
 
-		<p class="about-text"><?php _e( 'Your most useful widgets for Elementor', 'dynamic-content-for-elementor' ); ?></p>
+		<p class="about-text"><?php _e( 'The most unique toolkit for Elementor for creating powerful websites and professional content', 'dynamic-content-for-elementor' ); ?></p>
 
 					<p class="about-text">
 				 by <a href="https://www.dynamic.ooo" target="_blank">Dynamic.ooo</a>
@@ -32,9 +32,9 @@
 
 		<h2 class="nav-tab-wrapper wp-clearfix">
 			<a href="<?php echo admin_url( 'admin.php?page=dce_info' ); ?>" class="nav-tab nav-tab-active">What’s New</a>
-			<a href="<?php echo admin_url( 'admin.php?page=dce_opt&tab=settings' ); ?>" class="nav-tab">Settings</a>
-			<a href="<?php echo admin_url( 'admin.php?page=dce_opt&tab=widgets' ); ?>" class="nav-tab">Widgets</a>
-			<a href="<?php echo admin_url( 'admin.php?page=dce_opt&tab=license' ); ?>" class="nav-tab">License</a>
+			<a href="<?php echo admin_url( 'admin.php?page=dce-features&tab=settings' ); ?>" class="nav-tab">Settings</a>
+			<a href="<?php echo admin_url( 'admin.php?page=dce-features&tab=widgets' ); ?>" class="nav-tab">Widgets</a>
+			<a href="<?php echo admin_url( 'admin.php?page=dce-license' ); ?>" class="nav-tab">License</a>
 		</h2>
 
 

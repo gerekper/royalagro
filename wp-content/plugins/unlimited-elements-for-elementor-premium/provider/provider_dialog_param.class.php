@@ -43,6 +43,10 @@ class UniteCreatorDialogParam extends UniteCreatorDialogParamWork{
 		$this->arrParams[] = self::PARAM_WOO_CATS;
 		$this->arrParams[] = self::PARAM_USERS;		
 		$this->arrParams[] = self::PARAM_TEMPLATE;
+		
+		if(GlobalsUC::$inDev == true)
+			$this->arrParams[] = self::PARAM_LISTING;
+		
 		$this->arrParams[] = self::PARAM_TYPOGRAPHY;
 		$this->arrParams[] = self::PARAM_MARGINS;
 		$this->arrParams[] = self::PARAM_PADDING;
@@ -55,7 +59,7 @@ class UniteCreatorDialogParam extends UniteCreatorDialogParamWork{
 		$this->arrParams[] = self::PARAM_BORDER_DIMENTIONS;
 		$this->arrParams[] = self::PARAM_CSS_FILTERS;
 		$this->arrParams[] = self::PARAM_HOVER_ANIMATIONS;
-					
+		
 		$this->arrParams = $this->filterMainParams($this->arrParams);
 	}
 	

@@ -8,8 +8,8 @@
 namespace UltimateElementor\Modules\Woocommerce\Widgets;
 
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
@@ -422,7 +422,9 @@ class Woo_Add_To_Cart extends Common_Widget {
 			array(
 				'name'     => 'button_typography',
 				'selector' => '{{WRAPPER}} .uael-button,{{WRAPPER}} .uael-add-to-cart button',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+				),
 			)
 		);
 
@@ -455,9 +457,8 @@ class Woo_Add_To_Cart extends Common_Widget {
 						'selector'       => '{{WRAPPER}} .uael-button,{{WRAPPER}} .uael-add-to-cart button',
 						'fields_options' => array(
 							'color' => array(
-								'scheme' => array(
-									'type'  => Scheme_Color::get_type(),
-									'value' => Scheme_Color::COLOR_4,
+								'global' => array(
+									'default' => Global_Colors::COLOR_ACCENT,
 								),
 							),
 						),
@@ -517,9 +518,8 @@ class Woo_Add_To_Cart extends Common_Widget {
 						'selectors' => array(
 							'{{WRAPPER}} .added_to_cart' => 'color: {{VALUE}};',
 						),
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_4,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_ACCENT,
 						),
 						'condition' => array(
 							'enable_single_product_page!' => 'yes',
@@ -555,9 +555,8 @@ class Woo_Add_To_Cart extends Common_Widget {
 						'selector'       => '{{WRAPPER}} .uael-button:focus, {{WRAPPER}} .uael-button:hover,{{WRAPPER}} .uael-add-to-cart button:hover',
 						'fields_options' => array(
 							'color' => array(
-								'scheme' => array(
-									'type'  => Scheme_Color::get_type(),
-									'value' => Scheme_Color::COLOR_4,
+								'global' => array(
+									'default' => Global_Colors::COLOR_ACCENT,
 								),
 							),
 						),
@@ -569,9 +568,8 @@ class Woo_Add_To_Cart extends Common_Widget {
 					array(
 						'label'     => __( 'Border Hover Color', 'uael' ),
 						'type'      => Controls_Manager::COLOR,
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_4,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_ACCENT,
 						),
 						'condition' => array(
 							'button_border_border!' => '',
@@ -601,9 +599,8 @@ class Woo_Add_To_Cart extends Common_Widget {
 						'selectors' => array(
 							'{{WRAPPER}} .added_to_cart:hover' => 'color: {{VALUE}};',
 						),
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_3,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_TEXT,
 						),
 						'condition' => array(
 							'enable_single_product_page!' => 'yes',

@@ -167,7 +167,6 @@ class UniteCreatorTemplateEngine extends UniteCreatorTemplateEngineWork{
 		echo UniteProviderFunctionsUC::escCombinedHtml($htmlTags);
 	}
 	
-		
 	
 	/**
 	 * add extra functions to twig

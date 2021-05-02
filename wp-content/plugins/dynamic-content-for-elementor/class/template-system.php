@@ -83,7 +83,7 @@ class TemplateSystem {
 			if ( ! is_admin() ) { // necessary, if remove it will work also in admin result
 				add_action( 'pre_get_posts', array( $this, 'enfold_customization_author_archives' ) );
 			}
-			Metabox::initTemplateSystem();
+			Metabox::init_template_system();
 		}
 	}
 
@@ -121,7 +121,7 @@ class TemplateSystem {
 		$args = array(
 			'public' => true,
 		);
-		if ( current_user_can( 'manage_options' ) ) {
+		if ( current_user_can( 'install_plugins' ) ) {
 			// Column Template for terms
 			$taxonomyesRegistered = get_taxonomies( $args, 'names', 'and' );
 			$dceExcludedTaxonomies = self::$excluded_taxonomies;
@@ -160,7 +160,7 @@ class TemplateSystem {
 			if ( $datopagina ) {
 				if ( $datopagina != 1 ) {
 					echo '<a href="' . get_permalink( $datopagina ) . '" target="blank">' . get_the_title( $datopagina ) . '</a> - ';
-					echo '<a href="' . admin_url( 'post.php?post=' . $datopagina . '&action=edit' ) . '" target="blank">' . __( 'Edit' ) . '</a>';
+					echo '<a href="' . admin_url( 'post.php?post=' . $datopagina . '&action=edit' ) . '" target="blank">' . __( 'Edit', 'dynamic-content-for-elementor' ) . '</a>';
 				} else {
 					echo '<b>' . __( 'None', 'dynamic-content-for-elementor' ) . '</b>';
 				}
@@ -184,7 +184,7 @@ class TemplateSystem {
 			if ( $head_term ) {
 				if ( $head_term != 1 ) {
 					$content .= '<b>' . __( 'HEAD', 'dynamic-content-for-elementor' ) . '</b> <a href="' . get_permalink( $head_term ) . '" target="blank">' . get_the_title( $head_term ) . '</a> - ';
-					$content .= '<a href="' . admin_url( 'post.php?post=' . $head_term . '&action=edit' ) . '" target="blank">' . __( 'Edit' ) . '</a><br>';
+					$content .= '<a href="' . admin_url( 'post.php?post=' . $head_term . '&action=edit' ) . '" target="blank">' . __( 'Edit', 'dynamic-content-for-elementor' ) . '</a><br>';
 				} else {
 					$content = '<b>' . __( 'None', 'dynamic-content-for-elementor' ) . '</b>';
 				}
@@ -192,7 +192,7 @@ class TemplateSystem {
 			if ( $block_term ) {
 				if ( $head_term != 1 ) {
 					$content .= '<b>' . __( 'BLOCK', 'dynamic-content-for-elementor' ) . '</b> <a href="' . get_permalink( $block_term ) . '" target="blank">' . get_the_title( $block_term ) . '</a> - ';
-					$content .= '<a href="' . admin_url( 'post.php?post=' . $block_term . '&action=edit' ) . '" target="blank">' . __( 'Edit' ) . '</a><br>';
+					$content .= '<a href="' . admin_url( 'post.php?post=' . $block_term . '&action=edit' ) . '" target="blank">' . __( 'Edit', 'dynamic-content-for-elementor' ) . '</a><br>';
 				} else {
 					$content = '<b>' . __( 'None', 'dynamic-content-for-elementor' ) . '</b>';
 				}
@@ -200,7 +200,7 @@ class TemplateSystem {
 			if ( $single_term ) {
 				if ( $head_term != 1 ) {
 					$content .= '<b>' . __( 'SINGLE', 'dynamic-content-for-elementor' ) . '</b> <a href="' . get_permalink( $single_term ) . '" target="blank">' . get_the_title( $single_term ) . '</a> - ';
-					$content .= '<a href="' . admin_url( 'post.php?post=' . $single_term . '&action=edit' ) . '" target="blank">' . __( 'Edit' ) . '</a><br>';
+					$content .= '<a href="' . admin_url( 'post.php?post=' . $single_term . '&action=edit' ) . '" target="blank">' . __( 'Edit', 'dynamic-content-for-elementor' ) . '</a><br>';
 				} else {
 					$content = '<b>' . __( 'None', 'dynamic-content-for-elementor' ) . '</b>';
 				}
@@ -267,7 +267,8 @@ class TemplateSystem {
 				global $user;
 				global $current_user;
 				$original_user = $current_user;
-				$user = $current_user = get_user_by( 'ID', $atts['user_id'] );
+				$current_user = get_user_by( 'ID', $atts['user_id'] );
+				$user = $current_user;
 			}
 
 			if ( ! empty( $atts['term_id'] ) ) {
@@ -333,9 +334,9 @@ class TemplateSystem {
 				if ( ! empty( $atts['author_id'] ) ) {
 					$optionals .= ' data-author="' . $atts['author_id'] . '"';
 				}
-				$pagina_temlate = '<div class="dce-elementor-template-placeholder" data-id="' . $atts['id'] . '"' . $optionals . '></div>';
+				$template_page = '<div class="dce-elementor-template-placeholder" data-id="' . $atts['id'] . '"' . $optionals . '></div>';
 			} else {
-				$pagina_temlate = self::get_template( $dce_default_template, $inlinecss );
+				$template_page = self::get_template( $dce_default_template, $inlinecss );
 			}
 
 			if ( ! empty( $atts['post_id'] ) ) {
@@ -350,7 +351,7 @@ class TemplateSystem {
 			}
 			$wp_query->queried_object = $original_queried_object;
 			$wp_query->queried_object_id = $original_queried_object_id;
-			return $pagina_temlate;
+			return $template_page;
 		}
 	}
 
@@ -398,7 +399,7 @@ class TemplateSystem {
 		$dce_default_template = '';
 		$inlinecss = false;
 		$dce_elementor_templates = '';
-		$pagina_temlate = '';
+		$template_page = '';
 
 		if ( $cptype != '' ) {
 
@@ -449,7 +450,7 @@ class TemplateSystem {
 
 		$dce_default_template = '';
 		$dce_elementor_templates = '';
-		$pagina_temlate = '';
+		$template_page = '';
 
 		if ( $cptype != '' ) {
 
@@ -712,7 +713,7 @@ class TemplateSystem {
 			}
 
 			$dce_default_template = '';
-			$pagina_temlate = '';
+			$template_page = '';
 
 			// ciclo i termini e ne ricavo l'id del template
 			$taxonomyesRegistered = get_taxonomies( array( 'public' => true ) );

@@ -876,17 +876,17 @@ class Breadcrumbs extends Base {
 		$home_icon = '';
 		if($settings['home_icon']['value']){
 			//$attributes = ! empty( $settings['home_icon']['value'] ) ? 'class="' . esc_attr($settings['home_icon']['value']) . '"' : '';
-			$home_icon = sprintf( '<%1$s class="%2$s" aria-hidden="true"></%1$s>', tag_escape( 'i' ), esc_attr( $settings['home_icon']['value'] ) );
+			$home_icon = sprintf( '<%1$s class="%2$s" aria-hidden="true"></%1$s>', ha_escape_tags( 'i' ), esc_attr( $settings['home_icon']['value'] ) );
 		}
 
 		$separator = '';
 		if( 'icon' === $settings['separator_type'] && $settings['separator_icon']['value'] ){
-			$icon = sprintf( '<%1$s class="%2$s" aria-hidden="true"></%1$s>', tag_escape( 'i' ), esc_attr( $settings['separator_icon']['value'] ) );
+			$icon = sprintf( '<%1$s class="%2$s" aria-hidden="true"></%1$s>', ha_escape_tags( 'i' ), esc_attr( $settings['separator_icon']['value'] ) );
 			$attributes = 'class="ha-breadcrumbs-separator-icon"';
-			$separator = sprintf( '<%1$s %2$s>%3$s</%1$s>', tag_escape( 'span' ), $attributes, $icon );
+			$separator = sprintf( '<%1$s %2$s>%3$s</%1$s>', ha_escape_tags( 'span' ), $attributes, $icon );
 		}elseif( 'text' === $settings['separator_type'] && $settings['separator_text'] ){
 			$attributes = 'class="ha-breadcrumbs-separator-text"';
-			$separator = sprintf( '<%1$s %2$s>%3$s</%1$s>', tag_escape( 'span' ), $attributes, esc_html( $settings['separator_text'] ) );
+			$separator = sprintf( '<%1$s %2$s>%3$s</%1$s>', ha_escape_tags( 'span' ), $attributes, esc_html( $settings['separator_text'] ) );
 		}
 
 		$labels = array(

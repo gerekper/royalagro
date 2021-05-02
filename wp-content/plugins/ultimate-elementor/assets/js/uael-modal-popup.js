@@ -343,7 +343,7 @@
 	 * Resize event
 	 *
 	 */
-	$( window ).on( 'resize', function() {
+	$( window ).resize( function() {
 		UAELModalPopup._center();
 	} );
 
@@ -410,7 +410,7 @@
 
 		UAELModalPopup._center();
 
-		$( '.uael-modal-content-data' ).on( 'resize', function() {
+		$( '.uael-modal-content-data' ).resize( function() {
 	        UAELModalPopup._center();
 	    } );
 

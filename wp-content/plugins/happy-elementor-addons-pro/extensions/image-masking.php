@@ -31,7 +31,7 @@ class Image_Masking {
 
 		$element->start_injection( [
 			'type' => 'control',
-			'at' => 'after',
+			'at' => $args['at'],
 			'of' => $args['of'],
 		] );
 
@@ -54,21 +54,26 @@ class Image_Masking {
 	public static function widget_to_args_map( $widget_name = '' ) {
 		$map = [
 			'image' => [
+				'at' => 'after',
 				'of' => 'image',
-				'selector' => '.elementor-image',
+				// 'selector' => '.elementor-image', // remove after elementor 3.21 update
+				'selector' => '.elementor-image, {{WRAPPER}} .elementor-widget-container',
 				'condition' => []
 			],
 			'image-box' => [
+				'at' => 'after',
 				'of' => 'image',
 				'selector' => '.elementor-image-box-img',
 				'condition' => []
 			],
 			'ha-card' => [
+				'at' => 'after',
 				'of' => 'image',
 				'selector' => '.ha-card-figure img',
 				'condition' => []
 			],
 			'ha-infobox' => [
+				'at' => 'after',
 				'of' => 'image',
 				'selector' => '.ha-infobox-figure.ha-infobox-figure--image',
 				'condition' => [
@@ -76,12 +81,14 @@ class Image_Masking {
 				]
 			],
 			'ha-promo-box' => [
+				'at' => 'after',
 				'of' => 'image',
 				'selector' => '.ha-promo-box-thumb',
 				'condition' => []
 			],
 			'ha-member' => [
-				'of' => 'image',
+				'at' => 'before',
+				'of' => 'thumbnail_size',
 				'selector' => '.ha-member-figure',
 				'condition' => []
 			]

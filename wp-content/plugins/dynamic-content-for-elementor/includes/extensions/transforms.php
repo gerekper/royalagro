@@ -10,16 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class DCE_Extension_Transforms extends DCE_Extension_Prototype {
-
 	public $name = 'Transforms';
 	public $has_controls = true;
-	public static function get_description() {
-		return __( 'Apply CSS Transforms to Element', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/transforms/';
-	}
 
 	private function add_controls( $element, $args ) {
 
@@ -27,7 +19,7 @@ class DCE_Extension_Transforms extends DCE_Extension_Prototype {
 
 		$element->add_control(
 				'enabled_transform', [
-					'label' => __( 'Enable Transforms', 'dynamic-content-for-elementor' ),
+					'label' => __( 'Transforms', 'dynamic-content-for-elementor' ),
 					'type' => Controls_Manager::SWITCHER,
 				]
 		);
@@ -71,13 +63,9 @@ class DCE_Extension_Transforms extends DCE_Extension_Prototype {
 		$settings = $widget->get_settings_for_display();
 
 		if ( $settings['enabled_transform'] ) {
-
-			if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
-
-			}
 			$content = '<div class="dce-transforms"><div class="dce-transforms-wrap">' . $content . '</div></div>';
 		}
-		return $content; // mostro il widget
+		return $content; // show the widget
 	}
 
 }

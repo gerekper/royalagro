@@ -11,8 +11,8 @@ namespace UltimateElementor\Modules\RegistrationForm\Widgets;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Widget_Button;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
@@ -463,9 +463,8 @@ class RegistrationForm extends Common_Widget {
 				array(
 					'label'     => __( 'Text Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-registration-loggedin-message' => 'color: {{VALUE}};',
@@ -482,7 +481,9 @@ class RegistrationForm extends Common_Widget {
 				array(
 					'name'      => 'loggedin_message_typography',
 					'selector'  => '{{WRAPPER}} .uael-registration-loggedin-message',
-					'scheme'    => Scheme_Typography::TYPOGRAPHY_3,
+					'global'    => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'condition' => array(
 						'logged_in_text!' => '',
 						'hide_form'       => 'true',
@@ -682,9 +683,8 @@ class RegistrationForm extends Common_Widget {
 				array(
 					'label'      => __( 'Text Color', 'uael' ),
 					'type'       => Controls_Manager::COLOR,
-					'scheme'     => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_4,
+					'global'     => array(
+						'default' => Global_Colors::COLOR_ACCENT,
 					),
 					'selectors'  => array(
 						'{{WRAPPER}} .uael-rform-footer, {{WRAPPER}} .uael-rform-footer a' => 'color: {{VALUE}};',
@@ -712,7 +712,9 @@ class RegistrationForm extends Common_Widget {
 				array(
 					'name'       => 'footer_text_typography',
 					'selector'   => '{{WRAPPER}} .uael-rform-footer',
-					'scheme'     => Scheme_Typography::TYPOGRAPHY_4,
+					'global'     => array(
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					),
 					'conditions' => array(
 						'relation' => 'or',
 						'terms'    => array(
@@ -776,7 +778,9 @@ class RegistrationForm extends Common_Widget {
 				array(
 					'name'      => 'strength_checker_typography',
 					'selector'  => '{{WRAPPER}} .uael-pass-notice',
-					'scheme'    => Scheme_Typography::TYPOGRAPHY_4,
+					'global'    => array(
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					),
 					'condition' => array(
 						'strength_checker' => 'yes',
 					),
@@ -1479,9 +1483,8 @@ class RegistrationForm extends Common_Widget {
 				array(
 					'label'     => __( 'Text Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .elementor-field-group > label, {{WRAPPER}} .elementor-field-subgroup label' => 'color: {{VALUE}};',
@@ -1494,7 +1497,9 @@ class RegistrationForm extends Common_Widget {
 				array(
 					'name'     => 'label_typography',
 					'selector' => '{{WRAPPER}} .elementor-field-group > label',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 				)
 			);
 
@@ -1552,9 +1557,8 @@ class RegistrationForm extends Common_Widget {
 					'selectors' => array(
 						'{{WRAPPER}} .elementor-field-group .elementor-field' => 'color: {{VALUE}};',
 					),
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 				)
 			);
@@ -1576,7 +1580,9 @@ class RegistrationForm extends Common_Widget {
 				array(
 					'name'     => 'field_typography',
 					'selector' => '{{WRAPPER}} .elementor-field-group .elementor-field',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 				)
 			);
 
@@ -1721,7 +1727,9 @@ class RegistrationForm extends Common_Widget {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'acceptance_typo',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				),
 				'selector' => '{{WRAPPER}} .uael-registration-form .acceptance-conditions, {{WRAPPER}} .uael-registration-form .elementor-field-option .checkbox-label',
 			)
 		);
@@ -1776,9 +1784,8 @@ class RegistrationForm extends Common_Widget {
 				array(
 					'label'     => __( 'Border Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_1,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_PRIMARY,
 					),
 					'default'   => '#eaeaea',
 					'selectors' => array(
@@ -1844,7 +1851,9 @@ class RegistrationForm extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'button_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					),
 					'selector' => '{{WRAPPER}} .elementor-button',
 				)
 			);
@@ -1892,9 +1901,8 @@ class RegistrationForm extends Common_Widget {
 							'selector'       => '{{WRAPPER}} .elementor-button',
 							'fields_options' => array(
 								'color' => array(
-									'scheme' => array(
-										'type'  => Scheme_Color::get_type(),
-										'value' => Scheme_Color::COLOR_4,
+									'global' => array(
+										'default' => Global_Colors::COLOR_ACCENT,
 									),
 								),
 							),
@@ -1950,9 +1958,8 @@ class RegistrationForm extends Common_Widget {
 							'selector'       => '{{WRAPPER}} .elementor-button:hover',
 							'fields_options' => array(
 								'color' => array(
-									'scheme' => array(
-										'type'  => Scheme_Color::get_type(),
-										'value' => Scheme_Color::COLOR_4,
+									'global' => array(
+										'default' => Global_Colors::COLOR_ACCENT,
 									),
 								),
 							),
@@ -2075,7 +2082,9 @@ class RegistrationForm extends Common_Widget {
 					Group_Control_Typography::get_type(),
 					array(
 						'name'     => 'error_message_typo',
-						'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+						'global'   => array(
+							'default' => Global_Typography::TYPOGRAPHY_TEXT,
+						),
 						'selector' => '{{WRAPPER}} .uael-register-error',
 					)
 				);
@@ -2146,7 +2155,9 @@ class RegistrationForm extends Common_Widget {
 					Group_Control_Typography::get_type(),
 					array(
 						'name'     => 'message_validation_typo',
-						'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+						'global'   => array(
+							'default' => Global_Typography::TYPOGRAPHY_TEXT,
+						),
 						'selector' => '{{WRAPPER}} .uael-registration-message, {{WRAPPER}} .uael-reg-preview-message',
 					)
 				);

@@ -140,17 +140,10 @@
 
             self.checkRemoteAnchors();
 
-            $("a").on("click", function (event) {
+            self.checkLocalAnchors();
 
-                var href = $(this).attr("href");
-
-                if (href) {
-
-                    href = href.replace('#/', '');
-
-                    self.checkAnchors(href);
-                }
-
+            $(document).on('elementor/popup/show', function () {
+                self.checkLocalAnchors();
             });
 
             $(window)
@@ -192,6 +185,23 @@
                     });
             }
         };
+
+        self.checkLocalAnchors = function () {
+
+            $("a").on("click", function (event) {
+
+                var href = $(this).attr("href");
+
+                if (href) {
+
+                    href = href.replace('#/', '');
+
+                    self.checkAnchors(href);
+                }
+
+            });
+
+        }
 
         self.checkRemoteAnchors = function () {
 

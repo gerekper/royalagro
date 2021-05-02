@@ -6,6 +6,7 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Icons_Manager;
+use Elementor\Utils;
 use DynamicContentForElementor\Helper;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -16,30 +17,6 @@ class DCE_Widget_Content extends DCE_Widget_Prototype {
 
 	public static $remove_recursion_loop = [];
 
-	public function get_name() {
-		return 'dyncontel-content';
-	}
-
-	public function get_title() {
-		return __( 'Content', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_description() {
-		return __( 'Retrieve the post content', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/content/';
-	}
-
-	public function get_icon() {
-		return 'icon-dyn-content';
-	}
-
-	public static function get_position() {
-		return 2;
-	}
-
 	public function get_script_depends() {
 		return [ 'imagesloaded', 'dce-content-js' ];
 	}
@@ -47,22 +24,7 @@ class DCE_Widget_Content extends DCE_Widget_Prototype {
 		return [ 'dce-content' ];
 	}
 
-	public function show_in_panel() {
-		if (! current_user_can('manage_options')) {
-			return false;
-		}
-		return true;
-	}
-
 	protected function _register_controls() {
-		if (current_user_can('manage_options') || ! is_admin()) {
-			$this->_register_controls_content();
-		} elseif (! current_user_can('manage_options') && is_admin()) {
-			$this->register_controls_non_admin_notice();
-		}
-	}
-
-	protected function _register_controls_content() {
 		$post_type_object = get_post_type_object( get_post_type() );
 
 		$this->start_controls_section(
@@ -485,7 +447,7 @@ class DCE_Widget_Content extends DCE_Widget_Prototype {
 		$id_page = Helper::get_the_id( $settings['other_post_source'] );
 		$type_page = get_post_type( $id_page );
 
-		$default_content = __( 'This is the text place holder for post content.', 'dynamic-content-for-elementor' ) . ' ' . 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut risus id lectus hendrerit mattis. Nunc augue risus, dignissim vel nibh quis, gravida ultrices tortor. Nam volutpat nec est sed molestie. Mauris pellentesque diam in arcu bibendum convallis. Aenean non nisi et velit eleifend lobortis. Fusce lobortis tortor enim, eget elementum urna varius mollis. Vivamus imperdiet dignissim tincidunt. Praesent sit amet nulla lobortis, tempor ipsum id, feugiat felisss.';
+		$default_content = __( 'This is the text place holder for post content.', 'dynamic-content-for-elementor' ) . ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut risus id lectus hendrerit mattis. Nunc augue risus, dignissim vel nibh quis, gravida ultrices tortor. Nam volutpat nec est sed molestie. Mauris pellentesque diam in arcu bibendum convallis. Aenean non nisi et velit eleifend lobortis. Fusce lobortis tortor enim, eget elementum urna varius mollis. Vivamus imperdiet dignissim tincidunt. Praesent sit amet nulla lobortis, tempor ipsum id, feugiat felisss.';
 
 		$target = ( ! empty( $settings['link'] ) && $settings['link']['is_external'] ) ? 'target="_blank"' : '';
 		$animation_class = '';
@@ -497,9 +459,9 @@ class DCE_Widget_Content extends DCE_Widget_Prototype {
 			if ( $settings['use_content_limit'] ) {
 				$content = wp_strip_all_tags( substr( $content, 0, $settings['count_content_limit'] ) . ' ...' );
 			}
-			$html = sprintf( '<%1$s class="dce-content %2$s"><div class="dce-content-wrapper">', $settings['html_tag'], $animation_class );
+			$html = sprintf( '<%1$s class="dce-content %2$s"><div class="dce-content-wrapper">', \DynamicContentForElementor\Helper::validate_html_tag( $settings['html_tag'] ), $animation_class );
 			$html .= $content;
-			$html .= sprintf( '</div></%s>', $settings['html_tag'] );
+			$html .= sprintf( '</div></%s>', \DynamicContentForElementor\Helper::validate_html_tag( $settings['html_tag'] ) );
 		} else {
 
 			// All other Taxonomies
@@ -585,13 +547,13 @@ class DCE_Widget_Content extends DCE_Widget_Prototype {
 					break;
 			}
 
-			$html = sprintf( '<%1$s class="dce-content %2$s"><div class="dce-content-wrapper">', $settings['html_tag'], $animation_class );
+			$html = sprintf( '<%1$s class="dce-content %2$s"><div class="dce-content-wrapper">', \DynamicContentForElementor\Helper::validate_html_tag( $settings['html_tag'] ), $animation_class );
 			if ( $link ) {
 				$html .= sprintf( '<a class="dce-content-link" href="%1$s" %2$s>%3$s</a>', $link, $target, $content );
 			} else {
 				$html .= $content;
 			}
-			$html .= sprintf( '</div></%s>', $settings['html_tag'] );
+			$html .= sprintf( '</div></%s>', \DynamicContentForElementor\Helper::validate_html_tag( $settings['html_tag'] ) );
 		}
 
 		if ( $settings['no_shortcode'] ) {

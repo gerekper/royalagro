@@ -268,11 +268,46 @@ class Premium_Image_Accordion extends Widget_Base {
 		$condition = array( 'content_switcher' => 'yes' );
 
 		$accordion_repeater->add_control(
+			'content_type',
+			array(
+				'label'     => __( 'Content Type', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::SELECT,
+				'options'   => array(
+					'custom'   => __( 'Custom Content', 'premium-addons-pro' ),
+					'template' => __( 'Elementor Template', 'premium-addons-pro' ),
+				),
+				'default'   => 'custom',
+				'condition' => array(
+					'content_switcher' => 'yes',
+				),
+			)
+		);
+
+		$accordion_repeater->add_control(
+			'temp_content',
+			array(
+				'label'       => __( 'Elementor Template', 'premium-addons-pro' ),
+				'type'        => Controls_Manager::SELECT2,
+				'options'     => $this->getTemplateInstance()->get_elementor_page_list(),
+				'label_block' => true,
+				'condition'   => array(
+					'content_switcher' => 'yes',
+					'content_type'     => 'template',
+				),
+			)
+		);
+
+		$accordion_repeater->add_control(
 			'icon_switcher',
 			array(
 				'label'     => __( 'Icon', 'premium-addons-pro' ),
 				'type'      => Controls_Manager::SWITCHER,
-				'condition' => array_merge( array(), $condition ),
+				'condition' => array_merge(
+					array(
+						'content_type' => 'custom',
+					),
+					$condition
+				),
 			)
 		);
 
@@ -287,7 +322,9 @@ class Premium_Image_Accordion extends Widget_Base {
 				),
 				'default'   => 'icon',
 				'condition' => array(
-					'icon_switcher' => 'yes',
+					'content_type'     => 'custom',
+					'content_switcher' => 'yes',
+					'icon_switcher'    => 'yes',
 				),
 			)
 		);
@@ -305,6 +342,7 @@ class Premium_Image_Accordion extends Widget_Base {
 				),
 				'condition'        => array_merge(
 					array(
+						'content_type'  => 'custom',
 						'icon_switcher' => 'yes',
 						'icon_type'     => 'icon',
 					),
@@ -325,6 +363,7 @@ class Premium_Image_Accordion extends Widget_Base {
 					array(
 						'icon_switcher' => 'yes',
 						'icon_type'     => 'animation',
+						'content_type'  => 'custom',
 					),
 					$condition
 				),
@@ -340,6 +379,7 @@ class Premium_Image_Accordion extends Widget_Base {
 				'default'      => 'true',
 				'condition'    => array_merge(
 					array(
+						'content_type'  => 'custom',
 						'icon_switcher' => 'yes',
 						'icon_type'     => 'animation',
 					),
@@ -356,6 +396,7 @@ class Premium_Image_Accordion extends Widget_Base {
 				'return_value' => 'true',
 				'condition'    => array_merge(
 					array(
+						'content_type'  => 'custom',
 						'icon_switcher' => 'yes',
 						'icon_type'     => 'animation',
 					),
@@ -370,7 +411,12 @@ class Premium_Image_Accordion extends Widget_Base {
 				'label'     => __( 'Title', 'premium-addons-pro' ),
 				'type'      => Controls_Manager::TEXT,
 				'dynamic'   => array( 'active' => true ),
-				'condition' => array_merge( array(), $condition ),
+				'condition' => array_merge(
+					array(
+						'content_type' => 'custom',
+					),
+					$condition
+				),
 			)
 		);
 
@@ -380,7 +426,12 @@ class Premium_Image_Accordion extends Widget_Base {
 				'label'     => __( 'Description', 'premium-addons-pro' ),
 				'type'      => Controls_Manager::TEXTAREA,
 				'dynamic'   => array( 'active' => true ),
-				'condition' => array_merge( array(), $condition ),
+				'condition' => array_merge(
+					array(
+						'content_type' => 'custom',
+					),
+					$condition
+				),
 			)
 		);
 
@@ -568,6 +619,27 @@ class Premium_Image_Accordion extends Widget_Base {
 			)
 		);
 
+		$this->add_responsive_control(
+			'active_img_size',
+			array(
+				'label'       => __( 'Hovered Image Size', 'premium-addons-pro' ),
+				'type'        => Controls_Manager::HIDDEN,
+				'size_units'  => array( 'px', '%' ),
+				'render_type' => 'template',
+				'range'       => array(
+					'px' => array(
+						'min' => 0,
+						'max' => 1000,
+					),
+				),
+				'selectors'   => array(
+					'{{WRAPPER}} .premium-accordion-horizontal .premium-accordion-li-active' => 'width: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .premium-accordion-horizontal .premium-accordion-li-inactive' => 'width: calc(100% - {{SIZE}}{{UNIT}} )',
+				),
+
+			)
+		);
+
 		$this->add_control(
 			'direction_type',
 			array(
@@ -618,6 +690,7 @@ class Premium_Image_Accordion extends Widget_Base {
 				'label'       => __( 'Image Height', 'premium-addons-pro' ),
 				'type'        => Controls_Manager::SLIDER,
 				'size_units'  => array( 'px', 'em', 'vh' ),
+				'render_type' => 'template',
 				'range'       => array(
 					'px' => array(
 						'min' => 0,
@@ -755,6 +828,7 @@ class Premium_Image_Accordion extends Widget_Base {
 		);
 
 		$padding = is_rtl() ? 'left' : 'right';
+
 		$this->add_responsive_control(
 			'image_spacing',
 			array(
@@ -762,10 +836,21 @@ class Premium_Image_Accordion extends Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .premium-accordion-section:not(.premium-accordion-skew) .premium-accordion-horizontal .premium-accordion-li:not(:last-child)' => 'padding-' . $padding . ': {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .premium-accordion-section:not(.premium-accordion-skew) .premium-accordion-horizontal .premium-accordion-li:not(:last-child) .premium-accordion-overlay-wrap ' => 'width: calc(100% - {{SIZE}}{{UNIT}});',
+					'{{WRAPPER}} .premium-accordion-horizontal:not(.premium-accordion-skew) .premium-accordion-li:not(:last-child)' => 'padding-' . $padding . ': {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .premium-accordion-horizontal:not(.premium-accordion-skew) .premium-accordion-li:not(:last-child) .premium-accordion-overlay-wrap ' => 'width: calc(100% - {{SIZE}}{{UNIT}});',
 					'{{WRAPPER}} .premium-accordion-skew .premium-accordion-ul' => 'border-spacing: {{SIZE}}{{UNIT}} 0;',
 					'{{WRAPPER}} .premium-accordion-vertical .premium-accordion-li:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'image_spacing_color',
+			array(
+				'label'     => __( 'Spacer Color', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .premium-accordion-ul' => 'background-color: {{VALUE}}',
 				),
 			)
 		);
@@ -1205,8 +1290,12 @@ class Premium_Image_Accordion extends Widget_Base {
 
 		$id = $this->get_id();
 
+		$active_height = ( 'vertical' === $settings['direction_type'] ) ? $settings['active_img_size'] : false;
+
 		$accordion_settings = array(
-			'hide_desc' => $settings['hide_description_thresold'],
+			'hide_desc'     => $settings['hide_description_thresold'],
+			'initialHeight' => $settings['height']['size'],
+			'height'        => $active_height,
 		);
 
 		$direction = 'premium-accordion-' . $settings['direction_type'];
@@ -1214,15 +1303,24 @@ class Premium_Image_Accordion extends Widget_Base {
 		$this->add_render_attribute( 'accordion', 'class', 'premium-accordion-section' );
 
 		if ( $settings['skew'] && 'horizontal' === $settings['direction_type'] ) {
-			$this->add_render_attribute( 'accordion', 'class', 'premium-accordion-skew' );
-			$this->add_render_attribute( 'accordion', 'data-skew', $settings['skew_direction'] );
+			$this->add_render_attribute(
+				'accordion',
+				array(
+					'class'     => 'premium-accordion-skew',
+					'data-skew' => $settings['skew_direction'],
+				)
+			);
+
 		}
 
-		$this->add_render_attribute( 'accordion', 'id', 'premium-accordion-section-' . $id );
-
-		$this->add_render_attribute( 'accordion', 'data-settings', wp_json_encode( $accordion_settings ) );
-
-		$this->add_render_attribute( 'accordion_wrap', 'class', $direction );
+		$this->add_render_attribute(
+			'accordion',
+			array(
+				'id'            => 'premium-accordion-section-' . $id,
+				'class'         => $direction,
+				'data-settings' => wp_json_encode( $accordion_settings ),
+			)
+		);
 
 		$this->add_render_attribute(
 			'accordion_list',
@@ -1243,23 +1341,63 @@ class Premium_Image_Accordion extends Widget_Base {
 							<?php
 							foreach ( $settings['image_content'] as $index => $item ) :
 
-								$title = $this->get_repeater_setting_key( 'image_title', 'image_content', $index );
+								if ( 'custom' === $item['content_type'] ) {
 
-								$description = $this->get_repeater_setting_key( 'image_desc', 'image_content', $index );
+									$title = $this->get_repeater_setting_key( 'image_title', 'image_content', $index );
 
-								$this->add_render_attribute( $title, 'class', 'premium-accordion-title' );
+									$description = $this->get_repeater_setting_key( 'image_desc', 'image_content', $index );
 
-								$this->add_inline_editing_attributes( $title, 'none' );
+									$this->add_render_attribute( $title, 'class', 'premium-accordion-title' );
 
-								$this->add_render_attribute( $description, 'class', 'premium-accordion-description' );
+									$this->add_inline_editing_attributes( $title, 'none' );
 
-								$this->add_inline_editing_attributes( $description, 'basic' );
+									$this->add_render_attribute( $description, 'class', 'premium-accordion-description' );
+
+									$this->add_inline_editing_attributes( $description, 'basic' );
+
+									if ( 'yes' === $item['content_switcher'] && 'yes' === $item['icon_switcher'] ) {
+										if ( 'animation' === $item['icon_type'] ) {
+
+											$lottie_key = 'icon_lottie_' . $index;
+
+											$this->add_render_attribute(
+												$lottie_key,
+												array(
+													'class' => array(
+														'premium-accordion-icon',
+														'premium-lottie-animation',
+													),
+													'data-lottie-url' => $item['lottie_url'],
+													'data-lottie-loop' => $item['lottie_loop'],
+													'data-lottie-reverse' => $item['lottie_reverse'],
+												)
+											);
+										}
+									}
+								}
+
+								$list_item_key = 'img_index_' . $index;
+
+								$this->add_render_attribute(
+									$list_item_key,
+									'class',
+									array(
+										'premium-accordion-li',
+										'elementor-repeater-item-' . $item['_id'],
+									)
+								);
+
+								if ( ! empty( $settings['default_active'] ) && ( $settings['default_active'] - 1 ) === $index ) {
+
+									$this->add_render_attribute( $list_item_key, 'class', 'premium-accordion-li-active' );
+
+								}
 
 								$item_link = 'link_' . $index;
 
-								$separator_link_type = $item['link_type'];
+								$link_type = $item['link_type'];
 
-								$link_url = ( 'url' === $separator_link_type ) ? $item['link']['url'] : get_permalink( $item['existing_link'] );
+								$link_url = ( 'url' === $link_type ) ? $item['link']['url'] : get_permalink( $item['existing_link'] );
 
 								if ( 'yes' === $item['link_switcher'] ) {
 
@@ -1282,97 +1420,68 @@ class Premium_Image_Accordion extends Widget_Base {
 									}
 								}
 
-								$list_item_key = 'img_index_' . $index;
-
-								$this->add_render_attribute(
-									$list_item_key,
-									'class',
-									array(
-										'premium-accordion-li',
-										'elementor-repeater-item-' . $item['_id'],
-									)
-								);
-
-								if ( ! empty( $settings['default_active'] ) && ( $settings['default_active'] - 1 ) === $index ) {
-
-									$this->add_render_attribute( $list_item_key, 'class', 'premium-accordion-li-active' );
-
-								}
-
-								if ( 'yes' === $item['content_switcher'] && 'yes' === $item['icon_switcher'] ) {
-									if ( 'animation' === $item['icon_type'] ) {
-
-										$lottie_key = 'icon_lottie_' . $index;
-
-										$this->add_render_attribute(
-											$lottie_key,
-											array(
-												'class' => array(
-													'premium-accordion-icon',
-													'premium-lottie-animation',
-												),
-												'data-lottie-url' => $item['lottie_url'],
-												'data-lottie-loop' => $item['lottie_loop'],
-												'data-lottie-reverse' => $item['lottie_reverse'],
-											)
-										);
-									}
-								}
-
 								?>
 
 								<li <?php echo wp_kses_post( $this->get_render_attribute_string( $list_item_key ) ); ?>>
 									<?php if ( ! $settings['skew'] || 'vertical' === $settings['direction_type'] ) : ?>
 										<div class="premium-accordion-background"></div>
 									<?php endif; ?>
+
 									<?php if ( 'yes' === $item['link_switcher'] && 'yes' === $item['link_whole'] ) : ?>
 										<a <?php echo wp_kses_post( $this->get_render_attribute_string( $item_link ) ); ?>></a>
 									<?php endif ?>
 
 									<div class="premium-accordion-overlay-wrap">
 										<?php if ( 'yes' === $item['content_switcher'] ) : ?>
-										<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'content' ) ); ?>>
-
-											<?php
-											if ( 'yes' === $item['icon_switcher'] ) :
-												if ( 'icon' === $item['icon_type'] ) :
-
-													$icon_migrated = isset( $item['__fa4_migrated']['icon_updated'] );
-													$icon_new      = empty( $item['icon'] ) && Icons_Manager::is_migration_allowed();
-
-													if ( $icon_new || $icon_migrated ) :
-														Icons_Manager::render_icon(
-															$item['icon_updated'],
-															array(
-																'class'       => 'premium-accordion-icon',
-																'aria-hidden' => 'true',
-															)
-														);
-													else :
-														?>
-														<i class="<?php echo wp_kses_post( $item['icon'] ); ?>"></i>
-													<?php endif; ?>
+											<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'content' ) ); ?>>
+												<?php if ( 'template' === $item['content_type'] ) : ?>
+													<?php echo $this->getTemplateInstance()->get_template_content( $item['temp_content'] ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 												<?php else : ?>
-													<div <?php echo wp_kses_post( $this->get_render_attribute_string( $lottie_key ) ); ?>></div>
-												<?php endif ?>
-											<?php endif; ?>
+													<?php
+													if ( 'yes' === $item['icon_switcher'] ) :
+														if ( 'icon' === $item['icon_type'] ) :
 
-											<?php if ( ! empty( $item['image_title'] ) ) : ?>
-												<h3 <?php echo wp_kses_post( $this->get_render_attribute_string( $title ) ); ?>>
-													<?php echo wp_kses_post( $item['image_title'] ); ?>
-												</h3>
-											<?php endif ?>
-											<?php if ( ! empty( $item['image_desc'] ) ) : ?>
-												<div <?php echo wp_kses_post( $this->get_render_attribute_string( $description ) ); ?>>
-													<?php echo wp_kses_post( $item['image_desc'] ); ?>
-												</div>
-											<?php endif ?>
-											<?php if ( 'yes' === $item['link_switcher'] && 'yes' !== $item['link_whole'] ) : ?>
-												<a class="premium-accordion-item-link-title" <?php echo wp_kses_post( $this->get_render_attribute_string( $item_link ) ); ?>>
-												<?php echo wp_kses_post( $item['link_title'] ); ?>
-												</a>
-											<?php endif; ?>
-										</div>
+															$icon_migrated = isset( $item['__fa4_migrated']['icon_updated'] );
+															$icon_new      = empty( $item['icon'] ) && Icons_Manager::is_migration_allowed();
+
+															if ( $icon_new || $icon_migrated ) :
+																Icons_Manager::render_icon(
+																	$item['icon_updated'],
+																	array(
+																		'class'       => 'premium-accordion-icon',
+																		'aria-hidden' => 'true',
+																	)
+																);
+															else :
+																?>
+															<i class="<?php echo wp_kses_post( $item['icon'] ); ?>"></i>
+															<?php endif; ?>
+														<?php else : ?>
+														<div <?php echo wp_kses_post( $this->get_render_attribute_string( $lottie_key ) ); ?>></div>
+													<?php endif ?>
+													<?php endif; ?>
+
+													<?php if ( ! empty( $item['image_title'] ) ) : ?>
+														<h3 <?php echo wp_kses_post( $this->get_render_attribute_string( $title ) ); ?>>
+															<?php echo wp_kses_post( $item['image_title'] ); ?>
+														</h3>
+													<?php endif ?>
+
+													<?php if ( ! empty( $item['image_desc'] ) ) : ?>
+														<div <?php echo wp_kses_post( $this->get_render_attribute_string( $description ) ); ?>>
+															<?php echo wp_kses_post( $item['image_desc'] ); ?>
+														</div>
+													<?php endif; ?>
+
+												<?php endif; ?>
+
+												<?php if ( 'yes' === $item['link_switcher'] && 'yes' !== $item['link_whole'] ) : ?>
+													<a class="premium-accordion-item-link-title" <?php echo wp_kses_post( $this->get_render_attribute_string( $item_link ) ); ?>>
+														<?php echo wp_kses_post( $item['link_title'] ); ?>
+													</a>
+												<?php endif; ?>
+
+											</div>
 										<?php endif; ?>
 									</div>
 								</li>
@@ -1401,15 +1510,24 @@ class Premium_Image_Accordion extends Widget_Base {
 
 				accordionSetting.hide_desc = settings.hide_description_thresold;
 
+			var activeHeight = ( 'vertical' === settings.direction_type ) ? settings.active_img_size : false;
+
+			accordionSetting.height = activeHeight;
+			accordionSetting.initialHeight = settings.height.size;
+
 			var direction = 'premium-accordion-' + settings.direction_type;
 
-			view.addRenderAttribute('accordion', 'class', 'premium-accordion-section');
-			view.addRenderAttribute('accordion', 'id', 'premium-accordion-section-'+ view.getIDInt() );
-			view.addRenderAttribute('accordion', 'data-settings', JSON.stringify( accordionSetting ) );
+			view.addRenderAttribute('accordion', {
+				'id': 'premium-accordion-section-'+ view.getIDInt(),
+				'class': 'premium-accordion-section',
+				'data-settings': JSON.stringify( accordionSetting )
+			});
 
 			if( settings.skew && 'horizontal' === settings.direction_type ) {
-				view.addRenderAttribute('accordion', 'class', 'premium-accordion-skew' );
-				view.addRenderAttribute('accordion', 'data-skew', settings.skew_direction );
+				view.addRenderAttribute('accordion', {
+					'class': 'premium-accordion-skew',
+					'data-skew': settings.skew_direction
+				});
 			}
 
 			view.addRenderAttribute('accordion_wrap', 'class', direction );
@@ -1429,21 +1547,38 @@ class Premium_Image_Accordion extends Widget_Base {
 							<#
 							_.each( settings.image_content, function( item , index ) {
 
-								var title       = view.getRepeaterSettingKey( 'image_title', 'image_content', index );
-								var description = view.getRepeaterSettingKey( 'image_desc', 'image_content', index );
+								if ( 'template' === item.content_type ) {
+									var title       = view.getRepeaterSettingKey( 'image_title', 'image_content', index );
+									var description = view.getRepeaterSettingKey( 'image_desc', 'image_content', index );
 
-								view.addRenderAttribute( title, 'class', 'premium-accordion-title');
-								view.addInlineEditingAttributes( title,'none' );
+									view.addRenderAttribute( title, 'class', 'premium-accordion-title' );
+									view.addInlineEditingAttributes( title,'none' );
 
-								view.addRenderAttribute(description, 'class', 'premium-accordion-description');
-								view.addInlineEditingAttributes(description, 'basic' );
+									view.addRenderAttribute( description, 'class', 'premium-accordion-description' );
+									view.addInlineEditingAttributes( description, 'basic' );
+
+									if ( item.content_switcher === 'yes' && item.icon_switcher === 'yes' ) {
+										if( item.icon_type === 'animation' ) {
+
+											var lottieKey = 'icon_lottie_' + index;
+
+											view.addRenderAttribute( lottieKey, {
+												'class': [ 'premium-accordion-icon', 'premium-lottie-animation' ],
+												'data-lottie-url': item.lottie_url,
+												'data-lottie-loop': item.lottie_loop,
+												'data-lottie-reverse': item.lottie_reverse
+											});
+
+										}
+									}
+								}
 
 								var itemLink = 'link_' + index;
-								var separatorLinkType, linkUrl, linkTitle;
+								var linkType, linkUrl, linkTitle;
 
-								separatorLinkType = item.link_type;
+								linkType = item.link_type;
 								linkTitle = item.link_title;
-								linkUrl= 'url' ===  separatorLinkType  ? item.link.url : item.existing_link;
+								linkUrl= 'url' ===  linkType  ? item.link.url : item.existing_link;
 
 								if( 'yes' === item.link_switcher ) {
 									view.addRenderAttribute(itemLink, 'class', 'premium-accordion-item-link');
@@ -1476,75 +1611,58 @@ class Premium_Image_Accordion extends Widget_Base {
 
 								}
 
-								var imageObj = {
-									id       : item.image.id,
-									url      : item.image.url,
-									size     : item.thumbnail_size,
-									dimension: item.thumbnail_custom_dimension,
-									model    : view.getEditModel()
-								};
-
-								var imageUrl  = elementor.imagesManager.getImageUrl( imageObj );
-
-								if ( item.content_switcher === 'yes' && item.icon_switcher === 'yes' ) {
-									if( item.icon_type === 'animation' ) {
-
-										var lottieKey = 'icon_lottie_' + index;
-
-										view.addRenderAttribute( lottieKey, 'class', [ 'premium-accordion-icon', 'premium-lottie-animation' ] );
-
-										view.addRenderAttribute( lottieKey, 'data-lottie-url', item.lottie_url );
-										view.addRenderAttribute( lottieKey, 'data-lottie-loop', item.lottie_loop );
-										view.addRenderAttribute( lottieKey, 'data-lottie-reverse', item.lottie_reverse );
-
-									}
-								}
-
 							#>
-								<li {{{ view.getRenderAttributeString( listItemKey ) }}}>
-									<# if( ! settings.skew || 'vertical' === settings.direction_type ) { #>
-										<div class="premium-accordion-background"></div>
-									<# } #>
-									<# if( item.link_switcher === 'yes' && item.link_whole === 'yes' ) { #>
-										<a {{{ view.getRenderAttributeString( itemLink ) }}}></a>
-									<# } #>
+							<li {{{ view.getRenderAttributeString( listItemKey ) }}}>
+								<# if( ! settings.skew || 'vertical' === settings.direction_type ) { #>
+									<div class="premium-accordion-background"></div>
+								<# } #>
 
-									<div class="premium-accordion-overlay-wrap">
-										<# if( item.content_switcher === 'yes' ) { #>
+								<# if( item.link_switcher === 'yes' && item.link_whole === 'yes' ) { #>
+									<a {{{ view.getRenderAttributeString( itemLink ) }}}></a>
+								<# } #>
+
+								<div class="premium-accordion-overlay-wrap">
+									<# if ( item.content_switcher === 'yes' ) { #>
 										<div {{{ view.getRenderAttributeString( 'content' ) }}}>
-
-										<# if( item.icon_switcher === 'yes' ) {
-											if( item.icon_type === 'icon' ) {
-
-												var listIconHTML = elementor.helpers.renderIcon( view, item.icon_updated, { 'class': 'premium-accordion-icon', 'aria-hidden': true }, 'i' , 'object' ),
-													listIconMigrated = elementor.helpers.isIconMigrated( item, 'icon_updated' );
-
-												if ( listIconHTML && listIconHTML.rendered && ( ! item.icon || listIconMigrated ) ) { #>
-													{{{ listIconHTML.value }}}
-												<# } else { #>
-													<i class="premium-accordion-icon {{ item.icon }}" aria-hidden="true"></i>
-												<# } #>
+											<# if ( 'template' === item.content_type ) { #>
+												<div class="premium-accord-temp" data-template="{{item.temp_content}}"></div>
 											<# } else { #>
-												<div {{{ view.getRenderAttributeString( lottieKey ) }}}></div>
+												<# if( item.icon_switcher === 'yes' ) {
+													if( item.icon_type === 'icon' ) {
+
+														var listIconHTML = elementor.helpers.renderIcon( view, item.icon_updated, { 'class': 'premium-accordion-icon', 'aria-hidden': true }, 'i' , 'object' ),
+															listIconMigrated = elementor.helpers.isIconMigrated( item, 'icon_updated' );
+
+														if ( listIconHTML && listIconHTML.rendered && ( ! item.icon || listIconMigrated ) ) { #>
+															{{{ listIconHTML.value }}}
+														<# } else { #>
+															<i class="premium-accordion-icon {{ item.icon }}" aria-hidden="true"></i>
+														<# } #>
+													<# } else { #>
+														<div {{{ view.getRenderAttributeString( lottieKey ) }}}></div>
+													<# } #>
+												<# } #>
+
+												<# if( '' != item.image_title ) { #>
+													<h3 {{{ view.getRenderAttributeString( title ) }}} >{{{item.image_title}}}</h3>
+												<# } #>
+
+												<# if( '' != item.image_desc ) { #>
+													<div  {{{ view.getRenderAttributeString( description ) }}}>{{{item.image_desc}}}</div>
+												<# } #>
+
 											<# } #>
-										<# } #>
 
-										<# if( '' != item.image_title ) { #>
-											<h3 {{{ view.getRenderAttributeString( title ) }}} >{{{item.image_title}}}</h3>
-										<# } #>
-										<# if( '' != item.image_desc ) { #>
-											<div  {{{ view.getRenderAttributeString( description ) }}}>{{{item.image_desc}}}</div>
-										<# } #>
-										<# if( 'yes' === item.link_switcher && 'yes' !== item.link_whole ) { #>
-											<a class="premium-accordion-item-link-title" {{{ view.getRenderAttributeString( itemLink ) }}}>
-												{{{item.link_title}}}
-											</a>
-										<# } #>
+											<# if( 'yes' === item.link_switcher && 'yes' !== item.link_whole ) { #>
+												<a class="premium-accordion-item-link-title" {{{ view.getRenderAttributeString( itemLink ) }}}>
+													{{{item.link_title}}}
+												</a>
+											<# } #>
 										</div>
-										<# } #>
-									</div>
+									<# } #>
+								</div>
 
-								</li>
+							</li>
 							<# }) #>
 						</ul>
 					</div>

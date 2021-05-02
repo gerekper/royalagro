@@ -13,26 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_IconFormat extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-iconformat';
-	}
-
-	public function get_description() {
-		return __( 'Add an icon for your post format and identify its type', 'dynamic-content-for-elementor' );
-	}
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/icon-format/';
-	}
-	public function get_title() {
-		return __( 'Icon Format', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_icon() {
-		return 'icon-dyn-formats';
-	}
-	public static function get_position() {
-		return 4;
-	}
 	public function get_style_depends() {
 		return [ 'dce-iconFormat' ];
 	}

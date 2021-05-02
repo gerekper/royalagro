@@ -9,7 +9,7 @@ use \Elementor\Group_Control_Border;
 use \Elementor\Group_Control_Box_Shadow;
 use \Elementor\Group_Control_Typography;
 use Elementor\Repeater;
-use \Elementor\Scheme_Typography;
+use \Elementor\Core\Schemes\Typography;
 use \Elementor\Utils;
 use \Elementor\Widget_Base;
 
@@ -1029,7 +1029,7 @@ class Team_Member_Carousel extends Widget_Base
             [
                 'name'     => 'member_name_typography',
                 'label'    => __('Typography', 'essential-addons-elementor'),
-                'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+                'scheme'   => Typography::TYPOGRAPHY_4,
                 'selector' => '{{WRAPPER}} .eael-tm-name',
             ]
         );
@@ -1092,8 +1092,8 @@ class Team_Member_Carousel extends Widget_Base
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '',
                 'scheme'    => [
-                    'type'  => \Elementor\Scheme_Color::get_type(),
-                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                    'type'  => \Elementor\Core\Schemes\Color::get_type(),
+                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eael-tm-title-divider' => 'border-bottom-color: {{VALUE}}',
@@ -1232,7 +1232,7 @@ class Team_Member_Carousel extends Widget_Base
             [
                 'name'     => 'member_position_typography',
                 'label'    => __('Typography', 'essential-addons-elementor'),
-                'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+                'scheme'   => Typography::TYPOGRAPHY_4,
                 'selector' => '{{WRAPPER}} .eael-tm-position',
             ]
         );
@@ -1295,8 +1295,8 @@ class Team_Member_Carousel extends Widget_Base
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '',
                 'scheme'    => [
-                    'type'  => \Elementor\Scheme_Color::get_type(),
-                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                    'type'  => \Elementor\Core\Schemes\Color::get_type(),
+                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eael-tm-position-divider' => 'border-bottom-color: {{VALUE}}',
@@ -1435,7 +1435,7 @@ class Team_Member_Carousel extends Widget_Base
             [
                 'name'     => 'member_description_typography',
                 'label'    => __('Typography', 'essential-addons-elementor'),
-                'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+                'scheme'   => Typography::TYPOGRAPHY_4,
                 'selector' => '{{WRAPPER}} .eael-tm-description',
             ]
         );
@@ -1498,8 +1498,8 @@ class Team_Member_Carousel extends Widget_Base
                 'type'      => Controls_Manager::COLOR,
                 'default'   => '',
                 'scheme'    => [
-                    'type'  => \Elementor\Scheme_Color::get_type(),
-                    'value' => \Elementor\Scheme_Color::COLOR_1,
+                    'type'  => \Elementor\Core\Schemes\Color::get_type(),
+                    'value' => \Elementor\Core\Schemes\Color::COLOR_1,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .eael-tm-description-divider' => 'border-bottom-color: {{VALUE}}',

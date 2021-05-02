@@ -20,58 +20,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_Acf extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-acf';
-	}
-
-	public function get_title() {
-		return __( 'ACF Fields', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_description() {
-		return __( 'Add a custom field created with Advanced Custom Fields.', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/acf-fields/';
-	}
-
-	public function get_icon() {
-		return 'icon-dyn-acffields';
-	}
-
 	public function get_script_depends() {
-		return [ 'elementor-dialog' ];
+		return [ 'elementor-dialog', 'dce-acf' ];
 	}
 
 	public function get_style_depends() {
 		return [ 'dce-acf' ];
 	}
 
-	public static function get_position() {
-		return 1;
-	}
-
-	public function get_plugin_depends() {
-		return [ 'acf' ];
-	}
-
-	public function show_in_panel() {
-		if (! current_user_can('manage_options')) {
-			return false;
-		}
-		return true;
-	}
-
 	protected function _register_controls() {
-		if (current_user_can('manage_options') || ! is_admin()) {
-			$this->_register_controls_content();
-		} elseif (! current_user_can('manage_options') && is_admin()) {
-			$this->register_controls_non_admin_notice();
-		}
-	}
-
-	protected function _register_controls_content() {
 
 		$this->start_controls_section(
 			'section_content',
@@ -90,6 +47,7 @@ class DCE_Widget_Acf extends DCE_Widget_Prototype {
 				'dynamic' => [
 					'active' => false,
 				],
+				'frontend_available' => true,
 			]
 		);
 
@@ -118,6 +76,7 @@ class DCE_Widget_Acf extends DCE_Widget_Prototype {
 				//'terms-taxonomy' => __( 'Terms Taxonomy', 'dynamic-content-for-elementor' )
 				],
 				'default' => 'text',
+				'frontend_available' => true,
 			]
 		);
 
@@ -136,6 +95,7 @@ class DCE_Widget_Acf extends DCE_Widget_Prototype {
 			[
 				'label' => __( 'Enable Currency Mode', 'dynamic-content-for-elementor' ),
 				'type' => Controls_Manager::SWITCHER,
+				'frontend_available' => true,
 				'condition' => [
 					'acf_type' => 'number',
 				],
@@ -148,6 +108,7 @@ class DCE_Widget_Acf extends DCE_Widget_Prototype {
 				'type' => Controls_Manager::SELECT,
 				'options' => Helper::number_format_currency(),
 				'default' => 'en-US',
+				'frontend_available' => true,
 				'condition' => [
 					'acf_currency_mode!' => '',
 					'acf_type' => 'number',
@@ -159,6 +120,7 @@ class DCE_Widget_Acf extends DCE_Widget_Prototype {
 			[
 				'label' => __( 'Enable Decimal Place', 'dynamic-content-for-elementor' ),
 				'type' => Controls_Manager::SWITCHER,
+				'frontend_available' => true,
 				'condition' => [
 					'acf_type' => 'number',
 				],
@@ -172,6 +134,7 @@ class DCE_Widget_Acf extends DCE_Widget_Prototype {
 				'min' => 1,
 				'max' => 15,
 				'default' => 2,
+				'frontend_available' => true,
 				'condition' => [
 					'acf_settoDecimal!' => '',
 					'acf_type' => 'number',
@@ -593,7 +556,7 @@ class DCE_Widget_Acf extends DCE_Widget_Prototype {
 			'date_format',
 			[
 				'label' => __( 'Format date', 'dynamic-content-for-elementor' ),
-				'description' => '<a target="_blank" href="https://www.php.net/manual/en/function.date.php">' . __( 'Use standard PHP format character' ) . '</a>',
+				'description' => '<a target="_blank" href="https://www.php.net/manual/en/function.date.php">' . __( 'Use standard PHP format character', 'dynamic-content-for-elementor' ) . '</a>',
 				'type' => Controls_Manager::TEXT,
 				'default' => 'F j, Y, g:i a',
 				'label_block' => true,
@@ -751,7 +714,7 @@ class DCE_Widget_Acf extends DCE_Widget_Prototype {
 				'label' => __( 'Text Color', 'dynamic-content-for-elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .dynamic-content-for-elementor-acf .edc-acf' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .dynamic-content-for-elementor-acf' => 'color: {{VALUE}};',
 				],
 				'condition' => [
 					'acf_type' => [ 'text', 'date', 'textarea', 'select', 'list', 'wysiwyg', 'number', 'empty' ],
@@ -1096,7 +1059,7 @@ class DCE_Widget_Acf extends DCE_Widget_Prototype {
 				'label' => __( 'Text Color Hover', 'dynamic-content-for-elementor' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .dynamic-content-for-elementor-acf a:hover .edc-acf' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .dynamic-content-for-elementor-acf a:hover' => 'color: {{VALUE}};',
 				],
 				'condition' => [
 					'link_to!' => 'none',
@@ -1806,9 +1769,6 @@ class DCE_Widget_Acf extends DCE_Widget_Prototype {
 
 		$idFields = $settings['acf_field_list'];
 		$typeField = $settings['acf_type'];
-		$currencytypeField = $settings['acf_currency_type'];
-		$settoDecimal = $settings['acf_settoDecimal'];
-		$DecimalOptions = $settings['acf_integerDecimalOpt'];
 
 		$fieldSettings = Helper::get_acf_field_settings( $idFields );
 
@@ -1857,7 +1817,7 @@ class DCE_Widget_Acf extends DCE_Widget_Prototype {
 					case 'radio':
 						if ( is_array( $acf_field_value ) ) {
 							if ( $settings['list_array_return'] == '' ) {
-								$acfResult .= '<span class="dce-acf-list"><span class="dce-acf-list-label">' . $acf_field_value['label'] . ': </span>' . '<span class="dce-acf-list-value">' . $acf_field_value['value'] . '</span></span>';
+								$acfResult .= '<span class="dce-acf-list"><span class="dce-acf-list-label">' . $acf_field_value['label'] . ': </span><span class="dce-acf-list-value">' . $acf_field_value['value'] . '</span></span>';
 							} elseif ( $settings['list_array_return'] == 'label' ) {
 								$acfResult .= '<span class="dce-acf-list dce-acf-list-label">' . $acf_field_value['label'] . '</span>';
 							} elseif ( $settings['list_array_return'] == 'value' ) {
@@ -1875,7 +1835,7 @@ class DCE_Widget_Acf extends DCE_Widget_Prototype {
 								}
 								if ( is_array( $field ) ) {
 									if ( $settings['list_array_return'] == '' ) {
-										$acfResult .= '<span class="dce-acf-list"><span class="dce-acf-list-label">' . $field['label'] . ': </span>' . '<span class="dce-acf-list-value">' . $field['value'] . '</span></span>';
+										$acfResult .= '<span class="dce-acf-list"><span class="dce-acf-list-label">' . $field['label'] . ': </span><span class="dce-acf-list-value">' . $field['value'] . '</span></span>';
 									} elseif ( $settings['list_array_return'] == 'label' ) {
 										$acfResult .= '<span class="dce-acf-list dce-acf-list-label">' . $field['label'] . '</span>';
 									} elseif ( $settings['list_array_return'] == 'value' ) {
@@ -2172,33 +2132,12 @@ class DCE_Widget_Acf extends DCE_Widget_Prototype {
 			if ( $settings['acf_dynamic'] ) {
 				$acfResult = Helper::get_dynamic_value( $acfResult );
 			}
-			if ( $settings['acf_currency_mode'] != '' && $typeField != 'empty' && $settoDecimal != '' ) {
-				?>
-				<script type='text/javascript'>
-				var acfValNum = new Number(<?php echo $acfResult; ?>).toLocaleString("<?php echo $currencytypeField; ?>", {minimumFractionDigits: <?php echo $DecimalOptions; ?>,
-				maximumFractionDigits: <?php echo $DecimalOptions; ?>  });
-				</script>
-				<?php $acfResult = '<div class="edc-acf" id="edc-acf-cur"><script>document.getElementById("edc-acf-cur").innerHTML = acfValNum;</script></div>';
-			}
-			if ( $settings['acf_currency_mode'] != '' && $typeField != 'empty' && $settoDecimal == '' ) {
-				?>
-				<script type='text/javascript'>
-				var acfValNum = new Number(<?php echo $acfResult; ?>).toLocaleString("<?php echo $currencytypeField; ?>");</script>
-				<?php $acfResult = '<div class="edc-acf" id="edc-acf-cur"><script>document.getElementById("edc-acf-cur").innerHTML = acfValNum;</script></div>';
-			}
-			if ( $settings['acf_currency_mode'] == '' && $typeField != 'empty' && $settoDecimal != '' ) {
-				?>
-			   <script type='text/javascript'>
-				var acfValNum = new Number(<?php echo $acfResult; ?>).toFixed(<?php echo $DecimalOptions; ?>);
-				</script>
-				<?php  $acfResult = '<div class="edc-acf" id="edc-acf-cur"><script>document.getElementById("edc-acf-cur").innerHTML = acfValNum;</script></div>';
-			}
-			if ( $settings['acf_currency_mode'] == '' && $typeField != 'empty' && $settoDecimal == '' ) {
-				$acfResult = '<div class="edc-acf">' . $acfResult . '</div>';
+			if ( $settings['acf_currency_mode'] || $settings['acf_settoDecimal'] ) {
+				$acfResult = '<div id=' . $settings['acf_field_list'] . '>' . $acfResult . '</div>';
 			}
 			$tagField = 'div';
 			if ( $settings['html_tag'] ) {
-				$tagField = $settings['html_tag'];
+				$tagField = \DynamicContentForElementor\Helper::validate_html_tag( $settings['html_tag'] );
 			}
 			$html = '<' . $tagField . ' class="dynamic-content-for-elementor-acf ' . $animation_class . '">';
 			if ( $settings['acf_text_before'] != '' ) {

@@ -10,8 +10,8 @@ class Metabox {
 	public function init() {
 	}
 
-	public static function initTemplateSystem() {
-		if ( ! current_user_can( 'manage_options' ) ) {
+	public static function init_template_system() {
+		if ( ! current_user_can( 'install_plugins' ) ) {
 			return;
 		}
 

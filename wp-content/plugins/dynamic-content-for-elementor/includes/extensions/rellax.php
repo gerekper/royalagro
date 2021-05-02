@@ -9,7 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class DCE_Extension_Rellax extends DCE_Extension_Prototype {
-
 	public $name = 'Rellax';
 	public $has_controls = true;
 	public $common_sections_actions = array(
@@ -24,14 +23,6 @@ class DCE_Extension_Rellax extends DCE_Extension_Prototype {
 		),
 	);
 
-	public static function get_description() {
-		return __( 'Rellax Parallax rules for widgets and rows', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/rellax-parallax/';
-	}
-
 	public function get_script_depends() {
 		return [ 'dce-rellaxjs-lib', 'dce-rellax' ];
 	}
@@ -42,7 +33,7 @@ class DCE_Extension_Rellax extends DCE_Extension_Prototype {
 
 		$element->add_control(
 			'enabled_rellax', [
-				'label' => __( 'Enable Rellax', 'dynamic-content-for-elementor' ),
+				'label' => __( 'Rellax', 'dynamic-content-for-elementor' ),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => '',
 				'label_on' => __( 'Yes', 'dynamic-content-for-elementor' ),
@@ -138,12 +129,7 @@ class DCE_Extension_Rellax extends DCE_Extension_Prototype {
 	public function rellax_render_template( $content, $widget ) {
 		$settings = $widget->get_settings_for_display();
 		if ( isset( $settings['enabled_rellax'] ) && $settings['enabled_rellax'] == 'yes' ) {
-
 			$this->_enqueue_alles();
-
-			if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
-
-			}
 			$id_item = $widget->get_id();
 			$content = '<div id="rellax-' . $id_item . '" class="rellax" data-rellax-percentage="' . $settings['percentage_rellax']['size'] . '" data-rellax-zindex="' . $settings['zindex_rellax'] . '">' . $content . '</div>';
 		}

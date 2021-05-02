@@ -20,30 +20,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_AnimatedOffcanvasMenu extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dce-animatedoffcanvasmenu';
-	}
-
-	public function get_title() {
-		return __( 'Animated Off-Canvas Menu', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_description() {
-		return __( 'Off-canvas menu is positioned outside of the viewport and slide in when activated.', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/animated-offcanvas-menu/';
-	}
-
-	public function get_icon() {
-		return 'icon-dyn-animatedoffcanvasmenu';
-	}
-
-	public static function get_position() {
-		return 1;
-	}
-
 	public function get_script_depends() {
 		return [ 'dce-gsap-lib', 'dce-animatedoffcanvasmenu-js' ];
 	}
@@ -174,7 +150,7 @@ class DCE_Widget_AnimatedOffcanvasMenu extends DCE_Widget_Prototype {
 
 		$this->start_controls_section(
 			'section_animatedoffcanvasmenu_animations_time', [
-				'label' => __('Animations Time', 'dynamic-content-for-elementor'),
+				'label' => __( 'Animations Time', 'dynamic-content-for-elementor' ),
 			]
 		);
 		$this->add_control(
@@ -197,8 +173,8 @@ class DCE_Widget_AnimatedOffcanvasMenu extends DCE_Widget_Prototype {
 				'render_type' => 'template',
 				'frontend_available' => true,
 				'condition' => [
-					'side_background!' => ''
-				]
+					'side_background!' => '',
+				],
 			]
 		);
 
@@ -1368,7 +1344,7 @@ class DCE_Widget_AnimatedOffcanvasMenu extends DCE_Widget_Prototype {
 			'hover_timingFunction', [
 				'label' => __( 'Hover Animation Timing function', 'dynamic-content-for-elementor' ),
 				'type' => Controls_Manager::SELECT,
-				'groups' => Helper::get_anim_timingFunctions(),
+				'groups' => Helper::get_anim_timing_functions(),
 				'default' => 'ease-in-out',
 				'separator' => 'before',
 				'label_block' => true,

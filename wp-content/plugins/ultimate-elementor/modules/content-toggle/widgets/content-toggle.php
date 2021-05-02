@@ -9,12 +9,12 @@ namespace UltimateElementor\Modules\ContentToggle\Widgets;
 
 // Elementor Classes.
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 
 use UltimateElementor\Base\Common_Widget;
 use UltimateElementor\Classes\UAEL_Helper;
@@ -373,9 +373,8 @@ class ContentToggle extends Common_Widget {
 			array(
 				'label'     => __( 'Color 1', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_4,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_ACCENT,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-rbs-slider' => 'background-color: {{VALUE}};',
@@ -393,9 +392,8 @@ class ContentToggle extends Common_Widget {
 			array(
 				'label'     => __( 'Color 2', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 
 				'selectors' => array(
@@ -414,9 +412,8 @@ class ContentToggle extends Common_Widget {
 			array(
 				'label'     => __( 'Controller Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_4,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_ACCENT,
 				),
 				'default'   => '#ffffff',
 				'selectors' => array(
@@ -478,9 +475,8 @@ class ContentToggle extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_PRIMARY,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-rbs-head-1' => 'color: {{VALUE}};',
@@ -495,7 +491,9 @@ class ContentToggle extends Common_Widget {
 			array(
 				'name'     => 'section_heading_1_typo',
 				'selector' => '{{WRAPPER}} .uael-rbs-head-1',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				),
 			)
 		);
 
@@ -515,9 +513,8 @@ class ContentToggle extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_PRIMARY,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-rbs-head-2' => 'color: {{VALUE}};',
@@ -532,7 +529,9 @@ class ContentToggle extends Common_Widget {
 			array(
 				'name'     => 'section_heading_2_typo',
 				'selector' => '{{WRAPPER}} .uael-rbs-head-2',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				),
 			)
 		);
 
@@ -714,9 +713,8 @@ class ContentToggle extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'condition' => array(
 					'rbs_select_section_1' => 'content',
@@ -733,7 +731,9 @@ class ContentToggle extends Common_Widget {
 			array(
 				'name'      => 'section_content_1_typo',
 				'selector'  => '{{WRAPPER}} .uael-rbs-content-1.uael-rbs-section-1',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_3,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				),
 				'condition' => array(
 					'rbs_select_section_1' => 'content',
 				),
@@ -759,9 +759,8 @@ class ContentToggle extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'condition' => array(
 					'rbs_select_section_2' => 'content',
@@ -778,7 +777,9 @@ class ContentToggle extends Common_Widget {
 			array(
 				'name'      => 'section_content_2_typo',
 				'selector'  => '{{WRAPPER}} .uael-rbs-content-2.uael-rbs-section-2',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_3,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				),
 				'condition' => array(
 					'rbs_select_section_2' => 'content',
 				),

@@ -5,7 +5,7 @@ namespace Essential_Addons_Elementor\Pro\Elements;
 use \Elementor\Controls_Manager;
 use \Elementor\Group_Control_Background;
 use Elementor\Repeater;
-use \Elementor\Scheme_Typography;
+use \Elementor\Core\Schemes\Typography;
 use \Elementor\Group_Control_Border;
 use \Elementor\Group_Control_Box_Shadow;
 use \Elementor\Group_Control_Typography;
@@ -708,8 +708,8 @@ class Content_Timeline extends Widget_Base
 			[
 				'name' => 'eael_timeline_title_typography',
 				'label' => __('Typography', 'essential-addons-elementor'),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-        'selector' =>'{{WRAPPER}} .eael-content-timeline-content .eael-timeline-title',
+				'scheme' => Typography::TYPOGRAPHY_1,
+                'selector' =>'{{WRAPPER}} .eael-content-timeline-content .eael-timeline-title',
 			]
 		);
 
@@ -769,7 +769,7 @@ class Content_Timeline extends Widget_Base
 			[
 				'name' => 'eael_timeline_excerpt_typography',
 				'label' => __('Excerpt Typography', 'essential-addons-elementor'),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .eael-content-timeline-content p',
 			]
 		);
@@ -812,7 +812,7 @@ class Content_Timeline extends Widget_Base
 			[
 				'name' => 'eael_timeline_date_typography',
 				'label' => __('Date Typography', 'essential-addons-elementor'),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .eael-content-timeline-content .eael-date',
 			]
 		);

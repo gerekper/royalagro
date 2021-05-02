@@ -10,8 +10,8 @@ namespace UltimateElementor\Modules\PriceTable\Widgets;
 // Elementor Classes.
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
@@ -543,9 +543,8 @@ class Price_Table extends Common_Widget {
 			array(
 				'label'      => __( 'Icon Color', 'uael' ),
 				'type'       => Controls_Manager::COLOR,
-				'scheme'     => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_4,
+				'global'     => array(
+					'default' => Global_Colors::COLOR_ACCENT,
 				),
 				'conditions' => array(
 					'relation' => 'and',
@@ -1150,9 +1149,8 @@ class Price_Table extends Common_Widget {
 			array(
 				'label'     => __( 'Background Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_SECONDARY,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-price-table-header' => 'background-color: {{VALUE}};',
@@ -1234,9 +1232,8 @@ class Price_Table extends Common_Widget {
 					array(
 						'label'     => __( 'Color', 'uael' ),
 						'type'      => Controls_Manager::COLOR,
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_3,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_TEXT,
 						),
 						'default'   => '',
 						'selectors' => array(
@@ -1281,9 +1278,8 @@ class Price_Table extends Common_Widget {
 					array(
 						'label'     => __( 'Color', 'uael' ),
 						'type'      => Controls_Manager::COLOR,
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_3,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_TEXT,
 						),
 						'default'   => '',
 						'selectors' => array(
@@ -1346,9 +1342,8 @@ class Price_Table extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_PRIMARY,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-price-table-heading' => 'color: {{VALUE}}',
@@ -1360,7 +1355,9 @@ class Price_Table extends Common_Widget {
 			array(
 				'name'     => 'heading_typography',
 				'selector' => '{{WRAPPER}} .uael-price-table-heading',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				),
 			)
 		);
 
@@ -1401,9 +1398,8 @@ class Price_Table extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'condition' => array(
 					'pricetable_style!' => '2',
@@ -1418,7 +1414,9 @@ class Price_Table extends Common_Widget {
 			array(
 				'name'      => 'sub_heading_typography',
 				'selector'  => '{{WRAPPER}} .uael-price-table-subheading',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_2,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_SECONDARY,
+				),
 				'condition' => array(
 					'pricetable_style!' => '2',
 				),
@@ -1474,9 +1472,8 @@ class Price_Table extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'condition' => array(
 					'pricetable_style' => '2',
@@ -1491,7 +1488,9 @@ class Price_Table extends Common_Widget {
 			array(
 				'name'      => 'sub_heading_typography_style2',
 				'selector'  => '{{WRAPPER}} .uael-price-table-subheading',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_2,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_SECONDARY,
+				),
 				'condition' => array(
 					'pricetable_style' => '2',
 				),
@@ -1635,7 +1634,9 @@ class Price_Table extends Common_Widget {
 			array(
 				'name'     => 'price_typography',
 				'selector' => '{{WRAPPER}} .uael-pricing-value',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				),
 			)
 		);
 
@@ -1793,9 +1794,8 @@ class Price_Table extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_SECONDARY,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-price-table-original-price' => 'color: {{VALUE}};',
@@ -1812,7 +1812,9 @@ class Price_Table extends Common_Widget {
 			array(
 				'name'      => 'original_price_typography',
 				'selector'  => '{{WRAPPER}} .uael-price-table-original-price',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				),
 				'condition' => array(
 					'sale'            => 'yes',
 					'original_price!' => '',
@@ -1873,9 +1875,8 @@ class Price_Table extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_SECONDARY,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-price-table-duration' => 'color: {{VALUE}}',
@@ -1891,7 +1892,9 @@ class Price_Table extends Common_Widget {
 			array(
 				'name'      => 'duration_typography',
 				'selector'  => '{{WRAPPER}} .uael-price-table-duration',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_2,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_SECONDARY,
+				),
 				'condition' => array(
 					'duration!' => '',
 				),
@@ -2166,9 +2169,8 @@ class Price_Table extends Common_Widget {
 			array(
 				'label'     => __( 'Text Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-price-table-features-list' => 'color: {{VALUE}}',
@@ -2181,7 +2183,9 @@ class Price_Table extends Common_Widget {
 			array(
 				'name'     => 'features_list_typography',
 				'selector' => '{{WRAPPER}} .uael-price-table-features-list li',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				),
 			)
 		);
 
@@ -2274,9 +2278,8 @@ class Price_Table extends Common_Widget {
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ddd',
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'condition' => array(
 					'price_features_layout' => array( 'divider', 'borderbox' ),
@@ -2644,9 +2647,8 @@ class Price_Table extends Common_Widget {
 			array(
 				'label'     => __( 'Text Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_4,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_ACCENT,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} a.uael-pricebox-cta-link' => 'color: {{VALUE}};',
@@ -2662,7 +2664,9 @@ class Price_Table extends Common_Widget {
 			array(
 				'name'      => 'link_typography',
 				'selector'  => '{{WRAPPER}} a.uael-pricebox-cta-link',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_4,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+				),
 				'condition' => array(
 					'price_cta_type' => 'link',
 				),
@@ -2686,7 +2690,9 @@ class Price_Table extends Common_Widget {
 			array(
 				'name'      => 'button_typography',
 				'selector'  => '{{WRAPPER}} .elementor-button, {{WRAPPER}} a.elementor-button',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_4,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+				),
 				'condition' => array(
 					'price_cta_type' => 'button',
 				),
@@ -2760,9 +2766,8 @@ class Price_Table extends Common_Widget {
 				array(
 					'label'     => __( 'Background Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_4,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_ACCENT,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .elementor-button' => 'background-color: {{VALUE}};',
@@ -2959,9 +2964,8 @@ class Price_Table extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-price-table-disclaimer' => 'color: {{VALUE}}',
@@ -2976,7 +2980,9 @@ class Price_Table extends Common_Widget {
 			array(
 				'name'      => 'additional_info_typography',
 				'selector'  => '{{WRAPPER}} .uael-price-table-disclaimer',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_3,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				),
 				'condition' => array(
 					'footer_additional_info!' => '',
 				),
@@ -3031,9 +3037,8 @@ class Price_Table extends Common_Widget {
 			array(
 				'label'     => __( 'Background Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_4,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_ACCENT,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-price-table-ribbon-content' => 'background-color: {{VALUE}}',
@@ -3075,7 +3080,9 @@ class Price_Table extends Common_Widget {
 			array(
 				'name'     => 'ribbon_typography',
 				'selector' => '{{WRAPPER}} .uael-price-table-ribbon-content',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+				),
 			)
 		);
 

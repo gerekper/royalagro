@@ -8,7 +8,7 @@
  * Plugin Name: Dynamic Content for Elementor
  * Plugin URI: https://www.dynamic.ooo/
  * Description: The most unique toolkit for Elementor for creating powerful websites and professional content.
- * Version: 1.13.6
+ * Version: 1.14.3
  * Requires at least: 5.2
  * Requires PHP: 5.6
  * Author: Dynamic.ooo
@@ -17,7 +17,7 @@
  * Domain Path: /languages
  * License: GPL-3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.txt
- * Elementor tested up to: 3.1.4
+ * Elementor tested up to: 3.2.0
  * Elementor Pro tested up to: 3.2.0
  *
  * This program is free software: you can redistribute it and/or modify
@@ -58,6 +58,7 @@
  * - imagesLoaded, Copyright (c) Dave DeSandro, License: MIT, https://imagesloaded.desandro.com
  * - InfiniteScroll, License: GPL v3, https://infinite-scroll.com/
  * - Isotope, GPL v3, http://isotope.metafizzy.co
+ * - Javascript implementation of the Symfony/ExpressionLanguage, Copyright (c) @jameskfry, License: MIT, https://www.npmjs.com/package/expression-language
  * - jQuery Easing, Copyright (c) 2008 George McGinley Smith, License: BSD, http://gsgd.co.uk/sandbox/jquery/easing/
  * - jQuery inertiaScroll, Copyright(c) 2017 Go Nishiduka, License: MIT
  * - jsPDF, Copyright (c) 2010-2020 James Hall,  License: MIT, https://github.com/MrRio/jsPDF (c) 2015-2020 yWorks GmbH, https://www.yworks.com/
@@ -127,14 +128,16 @@ function dce_load() {
 		return;
 	}
 
-	if ( version_compare( phpversion(), DCE_PHP_VERSION_SUGGESTED, '<' ) ) {
+	if ( version_compare( phpversion(), DCE_PHP_VERSION_REQUIRED, '<' ) ) {
 		add_action( 'admin_notices', 'dce_old_php_version' );
+	} elseif ( version_compare( phpversion(), DCE_PHP_VERSION_SUGGESTED, '<' ) ) {
+		add_action( 'admin_notices', 'dce_suggest_new_php_version' );
 	}
 
 	new \DynamicContentForElementor\Plugin();
 
-	\DynamicContentForElementor\License::do_rollback();
-	\DynamicContentForElementor\License::check_for_updates( __FILE__ );
+	\DynamicContentForElementor\LicenseSystem::do_rollback();
+	\DynamicContentForElementor\LicenseSystem::check_for_updates( __FILE__ );
 }
 
 /**
@@ -151,6 +154,10 @@ function dce_fail_load() {
 }
 
 function dce_old_php_version() {
+	\DynamicContentForElementor\Notice::dce_admin_notice__warning( sprintf( __( 'You are using PHP version %1$s. As of May 15, 2021 we will no longer provide updates for this PHP version and you will no longer be able to update the plugin. Ask your provider to use PHP version %2$s+.', 'dynamic-content-for-elementor' ), phpversion(), DCE_PHP_VERSION_SUGGESTED ) );
+}
+
+function dce_suggest_new_php_version() {
 	\DynamicContentForElementor\Notice::dce_admin_notice__warning( sprintf( __( 'You are using PHP version %1$s. It\'s suggested to use PHP version %2$s+.', 'dynamic-content-for-elementor' ), phpversion(), DCE_PHP_VERSION_SUGGESTED ) );
 }
 

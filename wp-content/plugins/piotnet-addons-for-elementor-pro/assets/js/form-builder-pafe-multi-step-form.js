@@ -54,7 +54,13 @@ jQuery(document).ready(function( $ ) {
 					requiredText = $(this).attr('oninvalid').replace("this.setCustomValidity('","").replace("')","");
 				}
 
-				if ( ( !$(this)[0].checkValidity() || checked == 0 && $checkboxRequired.length > 0 ) && $(this).closest('.pafe-form-builder-conditional-logic-hidden').length == 0 && $(this).closest('[data-pafe-form-builder-conditional-logic]').css('display') != 'none' && $(this).data('pafe-form-builder-honeypot') == undefined &&  $(this).closest('[data-pafe-signature]').length == 0 || checked == 0 && $checkboxRequired.length > 0 && $(this).closest('.elementor-element').css('display') != 'none') {
+				var isValid = $(this)[0].checkValidity();
+				var next_ele = $($(this)[0]).next()[0];
+				if ($(next_ele).hasClass('flatpickr-mobile')) {
+					isValid = next_ele.checkValidity();
+				}
+
+				if ( ( !isValid || checked == 0 && $checkboxRequired.length > 0 ) && $(this).closest('.pafe-form-builder-conditional-logic-hidden').length == 0 && $(this).closest('[data-pafe-form-builder-conditional-logic]').css('display') != 'none' && $(this).data('pafe-form-builder-honeypot') == undefined &&  $(this).closest('[data-pafe-signature]').length == 0 || checked == 0 && $checkboxRequired.length > 0 && $(this).closest('.elementor-element').css('display') != 'none') {
 					if ($(this).css('display') == 'none' || $(this).closest('div').css('display') == 'none' || $(this).data('pafe-form-builder-image-select') != undefined || $checkboxRequired.length > 0) {
 						$(this).closest('.elementor-field-group').find('[data-pafe-form-builder-required]').html(requiredText);
 					} else {

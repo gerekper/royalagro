@@ -8,8 +8,8 @@
 namespace UltimateElementor\Modules\Woocommerce\Widgets;
 
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
@@ -889,7 +889,9 @@ class Woo_Categories extends Common_Widget {
 					'name'      => 'cat_content_count_typography',
 					'label'     => __( 'Count', 'uael' ),
 					'selector'  => '{{WRAPPER}} .uael-woo-categories li.product .uael-category__title-wrap .uael-count',
-					'scheme'    => Scheme_Typography::TYPOGRAPHY_4,
+					'global'    => array(
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					),
 					'separator' => 'after',
 				)
 			);
@@ -950,7 +952,9 @@ class Woo_Categories extends Common_Widget {
 					'name'      => 'cat_desc_typography',
 					'label'     => '',
 					'selector'  => '{{WRAPPER}} .uael-woo-categories .uael-term-description',
-					'scheme'    => Scheme_Typography::TYPOGRAPHY_3,
+					'global'    => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'condition' => array(
 						'display_cat_desc' => 'yes',
 					),
@@ -973,9 +977,8 @@ class Woo_Categories extends Common_Widget {
 						array(
 							'label'     => __( 'Color', 'uael' ),
 							'type'      => Controls_Manager::COLOR,
-							'scheme'    => array(
-								'type'  => Scheme_Color::get_type(),
-								'value' => Scheme_Color::COLOR_3,
+							'global'    => array(
+								'default' => Global_Colors::COLOR_TEXT,
 							),
 							'selectors' => array(
 								'{{WRAPPER}} .uael-woo-categories .uael-term-description' => 'color: {{VALUE}};',
@@ -1014,9 +1017,8 @@ class Woo_Categories extends Common_Widget {
 						array(
 							'label'     => __( 'Color', 'uael' ),
 							'type'      => Controls_Manager::COLOR,
-							'scheme'    => array(
-								'type'  => Scheme_Color::get_type(),
-								'value' => Scheme_Color::COLOR_3,
+							'global'    => array(
+								'default' => Global_Colors::COLOR_TEXT,
 							),
 							'selectors' => array(
 								'{{WRAPPER}} .uael-woo-categories li.product-category > a:hover .uael-term-description' => 'color: {{VALUE}};',

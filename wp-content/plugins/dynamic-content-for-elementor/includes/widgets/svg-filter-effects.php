@@ -16,23 +16,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_SvgFilterEffects extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-filtereffects';
-	}
-
-	public function get_title() {
-		return __( 'SVG Filter Effects', 'dynamic-content-for-elementor' );
-	}
-	public function get_icon() {
-		return 'icon-dyn-svgfe';
-	}
-	public function get_description() {
-		return __( 'The FilterEffects widget operates using primitive SVG filters', 'dynamic-content-for-elementor' );
-	}
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/svg-fe-filtereffects/';
-	}
-
 	public function get_script_depends() {
 		return [ 'dce-gsap-lib', 'dce-svgfe' ];
 	}
@@ -40,16 +23,16 @@ class DCE_Widget_SvgFilterEffects extends DCE_Widget_Prototype {
 		return [ 'dce-svg' ];
 	}
 	public function show_in_panel() {
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( 'install_plugins' ) ) {
 			return false;
 		}
 		return true;
 	}
 
 	protected function _register_controls() {
-		if ( current_user_can( 'manage_options' ) || ! is_admin() ) {
+		if ( current_user_can( 'install_plugins' ) || ! is_admin() ) {
 			$this->_register_controls_content();
-		} elseif ( ! current_user_can( 'manage_options' ) && is_admin() ) {
+		} elseif ( ! current_user_can( 'install_plugins' ) && is_admin() ) {
 			$this->register_controls_non_admin_notice();
 		}
 	}
@@ -227,7 +210,7 @@ class DCE_Widget_SvgFilterEffects extends DCE_Widget_Prototype {
 			'easing_animation_ease', [
 				'label' => __( 'Equation', 'dynamic-content-for-elementor' ),
 				'type' => Controls_Manager::SELECT,
-				'options' => [ '' => __( 'Default', 'dynamic-content-for-elementor' ) ] + Helper::get_gsap_timingFunctions(),
+				'options' => [ '' => __( 'Default', 'dynamic-content-for-elementor' ) ] + Helper::get_gsap_timing_functions(),
 				'default' => 'Power3',
 				'frontend_available' => true,
 				'label_block' => false,

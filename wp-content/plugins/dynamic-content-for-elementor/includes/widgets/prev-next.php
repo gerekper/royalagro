@@ -15,28 +15,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_NextPrev extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-post-nextprev';
-	}
-
-	public function get_title() {
-		return __( 'Prev Next', 'dynamic-content-for-elementor' );
-	}
-	public function get_description() {
-		return __( 'Access pages adjacent the selected post based on a category/taxonomy or tag', 'dynamic-content-for-elementor' );
-	}
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/prevnext/';
-	}
-	public function get_icon() {
-		return 'icon-dyn-prevnext';
-	}
-	public function get_script_depends() {
-		return [];
-	}
-	public static function get_position() {
-		return 4;
-	}
 	public function get_style_depends() {
 		return [ 'dce-nextPrev' ];
 	}

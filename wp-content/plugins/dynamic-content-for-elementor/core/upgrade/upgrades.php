@@ -1,14 +1,136 @@
 <?php
 namespace DynamicContentForElementor\Core\Upgrade;
 
+use DynamicContentForElementor\Extensions;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
 class Upgrades {
+	/**
+	 * split ACF Repeater widget in old and new version
+	 */
+	public static function _v_1_14_0_split_acf_repeater( $updater ) {
+		if ( get_option( 'dce_acfrepeater_newversion', 'yes' ) !== 'yes' ) {
+			return false;
+		}
+		$changes = [
+			[
+				'callback' => [ 'DynamicContentForElementor\Core\Upgrade\Upgrades', '_change_widget_name' ],
+				'data' => 'dce-acf-repeater-v2',
+			],
+		];
+		return self::_update_widget_settings( 'dyncontel-acf-repeater', $updater, $changes );
+	}
+
+	/**
+	 * We want to change setting "Results per page/Number of Posts" default values for Dynamic Posts v1 and v2
+	 */
+	public static function _v_1_14_0_dynamic_posts_results_per_page_default( $updater ) {
+		$changes = [
+			[
+				'callback' => [ 'DynamicContentForElementor\Core\Upgrade\Upgrades', '_widget_settings_save_old_default' ],
+				'control_ids' => [
+					'num_posts' => '-1',
+				],
+			],
+		];
+		return self::_update_widget_settings( 'dyncontel-acfposts', $updater, $changes );
+	}
+
+	public static function _v_1_14_0_dynamic_posts_v2_results_per_page_default( $updater ) {
+		$changes = [
+			[
+				'callback' => [ 'DynamicContentForElementor\Core\Upgrade\Upgrades', '_widget_settings_save_old_default' ],
+				'control_ids' => [
+					'num_posts' => '-1',
+				],
+			],
+		];
+		return self::_update_widget_settings( 'dce-dynamicposts-v2', $updater, $changes );
+	}
+
+	public static function _v_1_14_0_update_excluded_extensions_option( $updater ) {
+		$excluded_extensions = json_decode( get_option( 'WP-DCE-1_excluded_extensions' ), true );
+		$excluded_extensions = $excluded_extensions ? $excluded_extensions : [];
+		// Old option had names as array values, it's not useful, just use true:
+		array_walk( $excluded_extensions, function ( &$k, $_ ) {
+			$k = true;
+		} );
+		$all_extensions = Extensions::get_extensions_info();
+		// excplicitly set all extensions not specified as false (not excluded):
+		array_walk( $all_extensions, function ( &$k, $_ ) {
+			$k = false;
+		} );
+		$excluded_extensions += $all_extensions;
+		update_option( 'dce_excluded_extensions', wp_json_encode( $excluded_extensions ) );
+		delete_option( 'WP-DCE-1_excluded_extensions' );
+	}
+
+	/**
+	 * Remove WP-DCE-1 from all options and set new options with "dce_" prefix
+	 */
+	public static function _v_1_14_0_update_options( $updater ) {
+		$excluded_widgets = json_decode( get_option( 'WP-DCE-1_excluded_widgets' ), true );
+		if ( $excluded_widgets ) {
+			update_option( 'dce_excluded_widgets', wp_json_encode( $excluded_widgets ) );
+		}
+
+		$excluded_documents = json_decode( get_option( 'WP-DCE-1_excluded_documents' ), true );
+		if ( $excluded_documents ) {
+			update_option( 'dce_excluded_page_settings', wp_json_encode( $excluded_documents ) );
+		}
+
+		$excluded_globals = json_decode( get_option( 'WP-DCE-1_excluded_globals' ), true );
+
+		// Set Option for Frontend Navigator
+		if ( isset( $excluded_globals['DCE_Frontend_Navigator_Enable_Visitor'] ) ) {
+			update_option( 'dce_frontend_navigator', 'active-visitors' );
+		} elseif ( ! isset( $excluded_globals['DCE_Frontend_Navigator'] ) ) {
+			update_option( 'dce_frontend_navigator', 'active' );
+		} else {
+			update_option( 'dce_frontend_navigator', 'inactive' );
+		}
+
+		if ( $excluded_globals ) {
+			update_option( 'dce_excluded_global_settings', wp_json_encode( $excluded_globals ) );
+		}
+
+		$license_activated = get_option( 'WP-DCE-1_license_activated' );
+		
+		update_option( 'dce_license_activated', 1 );
+		
+
+		$license_domain = get_option( 'WP-DCE-1_license_domain' );
+		if ( $license_domain ) {
+			update_option( 'dce_license_domain', $license_domain );
+		}
+
+		$license_key = get_option( 'WP-DCE-1_license_key' );
+		
+		update_option( 'dce_license_key', 'dce-aaaa-bbbb-cccc-dddd-eeee-ff' );
+		
+
+		$license_expiration = get_option( 'WP-DCE-1_license_expiration' );
+		
+		update_option( 'dce_license_expiration', '2030.06.01' );
+		
+		delete_option( 'WP-DCE-1_excluded_widgets' );
+		delete_option( 'WP-DCE-1_excluded_documents' );
+		delete_option( 'WP-DCE-1_excluded_globals' );
+		delete_option( 'WP-DCE-1_active_widgets' );
+		delete_option( 'WP-DCE-1_active_extensions' );
+		delete_option( 'WP-DCE-1_active_documents' );
+		delete_option( 'WP-DCE-1_active_globals' );
+		delete_option( 'WP-DCE-1_license_activated' );
+		delete_option( 'WP-DCE-1_license_domain' );
+		delete_option( 'WP-DCE-1_license_key' );
+		delete_option( 'WP-DCE-1_license_expiration' );
+	}
 
 	public static function _v_1_12_4_remove_option_api_array( $updater ) {
-		 $dce_apis = get_option( 'WP-DCE-1_apis', [] );
+		$dce_apis = get_option( 'WP-DCE-1_apis', [] );
 		if ( isset( $dce_apis['dce_api_gmaps'] ) ) {
 			update_option( 'dce_google_maps_api', $dce_apis['dce_api_gmaps'] );
 		}
@@ -79,6 +201,16 @@ class Upgrades {
 			update_option( 'dce_acfrepeater_newversion', 'yes' );
 		}
 		return false;
+	}
+
+	public static function _change_widget_name( $element, $args ) {
+		$widget_id = $args['widget_id'];
+		if ( empty( $element['widgetType'] ) || $widget_id !== $element['widgetType'] ) {
+			return $element;
+		}
+		$element['widgetType'] = $args['data'];
+		$args['do_update'] = true;
+		return $element;
 	}
 
 	public static function _pdf_form_new_svg_repeater( $element, $args ) {
@@ -166,8 +298,13 @@ class Upgrades {
 				$args = [
 					'do_update' => &$do_update,
 					'widget_id' => $widget_id,
-					'control_ids' => $change['control_ids'],
 				];
+				if ( isset( $change['control_ids'] ) ) {
+					$args['control_ids'] = $change['control_ids'];
+				}
+				if ( isset( $change['data'] ) ) {
+					$args['data'] = $change['data'];
+				}
 				if ( isset( $change['prefix'] ) ) {
 					$args['prefix'] = $change['prefix'];
 					$args['new_id'] = $change['new_id'];

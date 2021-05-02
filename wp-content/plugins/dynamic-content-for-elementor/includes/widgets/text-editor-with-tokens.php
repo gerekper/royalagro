@@ -16,39 +16,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_Tokens extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dce-tokens';
-	}
-
-	public static function get_position() {
-		return 6;
-	}
-
-	public function get_title() {
-		return __( 'Text Editor with Tokens', 'dynamic-content-for-elementor' );
-	}
-	public function get_description() {
-		return __( 'Add Tokens to show values from posts, users and otions', 'dynamic-content-for-elementor' );
-	}
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/tokens/';
-	}
-	public function get_icon() {
-		return 'icon-dyn-tokens';
-	}
-
 	public function show_in_panel() {
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( 'install_plugins' ) ) {
 			return false;
 		}
 		return true;
 	}
 
 	protected function _register_controls() {
-		if ( current_user_can( 'manage_options' ) || ! is_admin() ) {
+		if ( current_user_can( 'install_plugins' ) || ! is_admin() ) {
 			$this->register_controls_content();
-		} elseif ( ! current_user_can( 'manage_options' ) && is_admin() ) {
+		} elseif ( ! current_user_can( 'install_plugins' ) && is_admin() ) {
 			$this->register_controls_non_admin_notice();
 		}
 	}
@@ -405,12 +384,12 @@ class DCE_Widget_Tokens extends DCE_Widget_Prototype {
 
 		$settings = $this->get_settings_for_display( null, true );
 
-		if ( current_user_can( 'manage_options' ) && \Elementor\Plugin::$instance->editor->is_edit_mode() && $settings['text_w_tokens'] == '' ) {
+		if ( current_user_can( 'install_plugins' ) && \Elementor\Plugin::$instance->editor->is_edit_mode() && $settings['text_w_tokens'] == '' ) {
 			_e( 'Add text to the widget and fill it with Tokens', 'dynamic-content-for-elementor' );
-		} elseif ( ! current_user_can( 'manage_options' ) && \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
+		} elseif ( ! current_user_can( 'install_plugins' ) && \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
 			$this->render_non_admin_notice();
 		} elseif (
-			( current_user_can( 'manage_options' ) && \Elementor\Plugin::$instance->editor->is_edit_mode() && $settings['text_w_tokens'] != '' )
+			( current_user_can( 'install_plugins' ) && \Elementor\Plugin::$instance->editor->is_edit_mode() && $settings['text_w_tokens'] != '' )
 			||
 			( ! is_admin() && $settings['text_w_tokens'] != '' ) ) {
 			$this->add_render_attribute( 'tokens', 'class', [ 'dce-tokens' ] );
@@ -419,8 +398,8 @@ class DCE_Widget_Tokens extends DCE_Widget_Prototype {
 			<?php
 			$text_w_tokens = $settings['text_w_tokens'];
 			if ( $settings['dce_html_tag'] ) {
-				$text_w_tokens = str_replace( '[', '<' . $settings['dce_html_tag'] . ' class="dce-token">[', $text_w_tokens );
-				$text_w_tokens = str_replace( ']', ']</' . $settings['dce_html_tag'] . '>', $text_w_tokens );
+				$text_w_tokens = str_replace( '[', '<' . \DynamicContentForElementor\Helper::validate_html_tag( $settings['dce_html_tag'] ) . ' class="dce-token">[', $text_w_tokens );
+				$text_w_tokens = str_replace( ']', ']</' . \DynamicContentForElementor\Helper::validate_html_tag( $settings['dce_html_tag'] ) . '>', $text_w_tokens );
 			}
 			echo Helper::get_dynamic_value( $text_w_tokens );
 			?>

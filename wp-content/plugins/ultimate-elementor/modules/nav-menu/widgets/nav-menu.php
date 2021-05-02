@@ -12,8 +12,8 @@ use Elementor\Controls_Manager;
 use Elementor\Utils;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Repeater;
@@ -1106,7 +1106,9 @@ class Nav_Menu extends Common_Widget {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'menu_typography',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				),
 				'separator' => 'before',
 				'selector'  => '{{WRAPPER}} .menu-item a.uael-menu-item',
 			)
@@ -1126,9 +1128,8 @@ class Nav_Menu extends Common_Widget {
 						array(
 							'label'     => __( 'Text Color', 'uael' ),
 							'type'      => Controls_Manager::COLOR,
-							'scheme'    => array(
-								'type'  => Scheme_Color::get_type(),
-								'value' => Scheme_Color::COLOR_3,
+							'global'    => array(
+								'default' => Global_Colors::COLOR_TEXT,
 							),
 							'default'   => '',
 							'selectors' => array(
@@ -1166,9 +1167,8 @@ class Nav_Menu extends Common_Widget {
 						array(
 							'label'     => __( 'Text Color', 'uael' ),
 							'type'      => Controls_Manager::COLOR,
-							'scheme'    => array(
-								'type'  => Scheme_Color::get_type(),
-								'value' => Scheme_Color::COLOR_4,
+							'global'    => array(
+								'default' => Global_Colors::COLOR_ACCENT,
 							),
 							'selectors' => array(
 								'{{WRAPPER}} .menu-item a.uael-menu-item:hover,
@@ -1203,9 +1203,8 @@ class Nav_Menu extends Common_Widget {
 						array(
 							'label'     => __( 'Link Hover Effect Color', 'uael' ),
 							'type'      => Controls_Manager::COLOR,
-							'scheme'    => array(
-								'type'  => Scheme_Color::get_type(),
-								'value' => Scheme_Color::COLOR_4,
+							'global'    => array(
+								'default' => Global_Colors::COLOR_ACCENT,
 							),
 							'default'   => '',
 							'selectors' => array(
@@ -1461,7 +1460,9 @@ class Nav_Menu extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'      => 'dropdown_typography',
-					'scheme'    => Scheme_Typography::TYPOGRAPHY_4,
+					'global'    => array(
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					),
 					'separator' => 'before',
 					'exclude'   => array( 'line_height' ),
 					'selector'  => '{{WRAPPER}} .sub-menu li a.uael-sub-menu-item,

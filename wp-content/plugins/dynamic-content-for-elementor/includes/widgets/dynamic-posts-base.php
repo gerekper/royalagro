@@ -427,7 +427,7 @@ class DCE_Widget_DynamicPosts_Base extends DCE_Widget_Prototype {
 		);
 		$this->add_control(
 		  'images_mask', [
-			  'label' => __( 'Select PNG mask', 'dynamic-content-for-elementor', 'smoothscroll' ),
+			  'label' => __( 'Select PNG mask', 'dynamic-content-for-elementor' ),
 			  'type' => 'images_selector',
 			  'toggle' => false,
 			  'type_selector' => 'image',
@@ -2539,7 +2539,7 @@ class DCE_Widget_DynamicPosts_Base extends DCE_Widget_Prototype {
 		$repeater_metafield->add_control(
 			'metafield_date_format_source', [
 				'label' => __( 'Date Format: SOURCE', 'dynamic-content-for-elementor' ),
-				'description' => '<a target="_blank" href="https://www.php.net/manual/en/function.date.php">' . __( 'Use standard PHP format character' ) . '</a>' . __( ', you can also use "timestamp"' ),
+				'description' => '<a target="_blank" href="https://www.php.net/manual/en/function.date.php">' . __( 'Use standard PHP format character', 'dynamic-content-for-elementor' ) . '</a>' . __( ', you can also use "timestamp"', 'dynamic-content-for-elementor' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => 'F j, Y, g:i a',
 				'placeholder' => __( 'YmdHis, d/m/Y, m-d-y', 'dynamic-content-for-elementor' ),
@@ -2968,7 +2968,7 @@ class DCE_Widget_DynamicPosts_Base extends DCE_Widget_Prototype {
 			'hover_text_effect_timingFunction', [
 				'label' => __( 'Effect Timing function', 'dynamic-content-for-elementor' ),
 				'type' => Controls_Manager::SELECT,
-				'groups' => Helper::get_anim_timingFunctions(),
+				'groups' => Helper::get_anim_timing_functions(),
 				'default' => 'ease-in-out',
 				'selectors' => [
 					'{{WRAPPER}} .dce-post-item .dce-hover-effect-content' => 'transition-timing-function: {{VALUE}}; -webkit-transition-timing-function: {{VALUE}};',
@@ -3011,7 +3011,7 @@ class DCE_Widget_DynamicPosts_Base extends DCE_Widget_Prototype {
 			'hover_text_effect_timingFunction_in', [
 				'label' => __( 'Effect Timing function', 'dynamic-content-for-elementor' ),
 				'type' => Controls_Manager::SELECT,
-				'groups' => Helper::get_anim_timingFunctions(),
+				'groups' => Helper::get_anim_timing_functions(),
 				'default' => 'ease-in-out',
 				'selectors' => [
 					'{{WRAPPER}} .dce-post-item:hover .dce-hover-effect-content.dce-open' => 'animation-timing-function: {{VALUE}}; -webkit-animation-timing-function: {{VALUE}};',
@@ -3075,7 +3075,7 @@ class DCE_Widget_DynamicPosts_Base extends DCE_Widget_Prototype {
 			'hover_text_effect_timingFunction_out', [
 				'label' => __( 'Effect Timing function', 'dynamic-content-for-elementor' ),
 				'type' => Controls_Manager::SELECT,
-				'groups' => Helper::get_anim_timingFunctions(),
+				'groups' => Helper::get_anim_timing_functions(),
 				'default' => 'ease-in-out',
 				'selectors' => [
 					'{{WRAPPER}} .dce-post-item .dce-hover-effect-content.dce-close' => 'animation-timing-function: {{VALUE}}; -webkit-animation-timing-function: {{VALUE}};',

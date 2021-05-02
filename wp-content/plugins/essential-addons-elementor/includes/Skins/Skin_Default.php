@@ -12,7 +12,7 @@ use \Elementor\Controls_Manager;
 use \Elementor\Group_Control_Border;
 use \Elementor\Group_Control_Box_Shadow;
 use \Elementor\Group_Control_Typography;
-use \Elementor\Scheme_Typography;
+use \Elementor\Core\Schemes\Typography;
 
 class Skin_Default extends Skin_Base
 {
@@ -209,7 +209,7 @@ class Skin_Default extends Skin_Base
             [
                 'name' => 'eael_advanced_menu_item_typography',
                 'label' => __('Typography', 'essential-addons-elementor'),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                'scheme' => Typography::TYPOGRAPHY_1,
                 'selector' => '{{WRAPPER}} .eael-advanced-menu li > a, .eael-advanced-menu-container .eael-advanced-menu-toggle-text',
             ]
         );
@@ -496,7 +496,7 @@ class Skin_Default extends Skin_Base
             [
                 'name' => 'eael_advanced_menu_dropdown_item_typography',
                 'label' => __('Typography', 'essential-addons-elementor'),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                'scheme' => Typography::TYPOGRAPHY_1,
                 'selector' => '{{WRAPPER}} .eael-advanced-menu li ul li > a',
             ]
         );

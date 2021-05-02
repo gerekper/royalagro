@@ -13,7 +13,7 @@ use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Repeater;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Happy_Addons\Elementor\Controls\Group_Control_Foreground;
 use Happy_Addons_Pro\Helpers;
 
@@ -288,7 +288,7 @@ class Accordion extends Base {
             [
                 'name' => 'title_typography',
                 'selector' => '{{WRAPPER}} .ha-accordion__item-title',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+                'scheme' => Typography::TYPOGRAPHY_2,
             ]
         );
 
@@ -456,7 +456,7 @@ class Accordion extends Base {
             [
                 'name' => 'content_typography',
                 'selector' => '{{WRAPPER}} .ha-accordion__item-content',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                'scheme' => Typography::TYPOGRAPHY_3,
             ]
         );
 

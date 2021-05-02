@@ -34,12 +34,12 @@ $dce_col_xs = $dce_default_options[ $dce_block_template . '_col_xs' ];
 			echo do_shortcode( '[dce-elementor-template id="' . $dce_default_template . '"]' );
 		} else {
 			?>
-			<h2><span class="icon-magnifier"></span> <?php echo __( 'Search' ); ?></h2>
+			<h2><span class="icon-magnifier"></span> <?php _e( 'Search', 'dynamic-content-for-elementor' ); ?></h2>
 			<?php
 			if ( have_posts() ) : ?>
 
 				<header class="page-header">
-					<span class="search-page-title"><?php printf( __( 'Search for: %s' ), get_search_query() ); ?></span>
+					<span class="search-page-title"><?php printf( __( 'Search for: %s', 'dynamic-content-for-elementor' ), get_search_query() ); ?></span>
 				</header><!-- .page-header -->
 
 				<div class="grid-search-page grid-page grid-col-md-<?php echo $dce_col_md; ?> grid-col-sm-<?php echo $dce_col_sm; ?> grid-col-xs-<?php echo $dce_col_xs; ?>">

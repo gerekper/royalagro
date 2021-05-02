@@ -6,7 +6,7 @@ use \Elementor\Group_Control_Background;
 use \Elementor\Group_Control_Border;
 use \Elementor\Group_Control_Box_Shadow;
 use \Elementor\Group_Control_Typography;
-use \Elementor\Scheme_Typography;
+use \Elementor\Core\Schemes\Typography;
 use \Elementor\Utils;
 use \Elementor\Widget_Base;
 
@@ -703,7 +703,7 @@ class Image_Comparison extends Widget_Base {
             [
                 'name'      => 'label_typography',
                 'label'     => __( 'Typography', 'essential-addons-elementor' ),
-                'scheme'    => Scheme_Typography::TYPOGRAPHY_4,
+                'scheme'    => Typography::TYPOGRAPHY_4,
                 'selector'  => '{{WRAPPER}} .twentytwenty-before-label:before, {{WRAPPER}} .twentytwenty-after-label:before',
                 'separator' => 'before',
             ]

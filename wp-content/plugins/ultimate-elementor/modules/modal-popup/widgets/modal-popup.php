@@ -13,8 +13,8 @@ use Elementor\Utils;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Group_Control_Background;
 use Elementor\Control_Media;
 use Elementor\Modules\DynamicTags\Module as TagsModule;
@@ -944,9 +944,8 @@ class Modal_Popup extends Common_Widget {
 				array(
 					'label'     => __( 'Icon Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-modal-action i' => 'color: {{VALUE}};',
@@ -963,9 +962,8 @@ class Modal_Popup extends Common_Widget {
 				array(
 					'label'     => __( 'Icon Hover Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-modal-action i:hover' => 'color: {{VALUE}};',
@@ -1418,9 +1416,8 @@ class Modal_Popup extends Common_Widget {
 				array(
 					'label'     => __( 'Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_1,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_PRIMARY,
 					),
 					'selectors' => array(
 						'.uamodal-{{ID}} .uael-modal-title-wrap .uael-modal-title' => 'color: {{VALUE}};',
@@ -1434,9 +1431,8 @@ class Modal_Popup extends Common_Widget {
 				array(
 					'label'     => __( 'Background Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_2,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_SECONDARY,
 					),
 					'selectors' => array(
 						'.uamodal-{{ID}} .uael-modal-title-wrap' => 'background-color: {{VALUE}};',
@@ -1469,7 +1465,9 @@ class Modal_Popup extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'title_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+					),
 					'selector' => '.uamodal-{{ID}} .uael-modal-title-wrap .uael-modal-title, {{WRAPPER}} .uael-modal-title-wrap .uael-modal-title',
 				)
 			);
@@ -1498,9 +1496,8 @@ class Modal_Popup extends Common_Widget {
 				array(
 					'label'     => __( 'Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 					'selectors' => array(
 						'.uamodal-{{ID}} .uael-content' => 'color: {{VALUE}};',
@@ -1862,7 +1859,9 @@ class Modal_Popup extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'      => 'content_typography',
-					'scheme'    => Scheme_Typography::TYPOGRAPHY_3,
+					'global'    => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector'  => '.uamodal-{{ID}} .uael-content .uael-text-editor',
 					'separator' => 'before',
 					'condition' => array(
@@ -1909,7 +1908,9 @@ class Modal_Popup extends Common_Widget {
 				array(
 					'name'      => 'btn_typography',
 					'label'     => __( 'Typography', 'uael' ),
-					'scheme'    => Scheme_Typography::TYPOGRAPHY_4,
+					'global'    => array(
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					),
 					'selector'  => '{{WRAPPER}} .uael-modal-action-wrap a.elementor-button, {{WRAPPER}} .uael-modal-action-wrap .elementor-button',
 					'condition' => array(
 						'modal_on' => 'button',
@@ -1957,9 +1958,8 @@ class Modal_Popup extends Common_Widget {
 							),
 							'fields_options' => array(
 								'color' => array(
-									'scheme' => array(
-										'type'  => Scheme_Color::get_type(),
-										'value' => Scheme_Color::COLOR_4,
+									'global' => array(
+										'default' => Global_Colors::COLOR_ACCENT,
 									),
 								),
 							),
@@ -1997,9 +1997,8 @@ class Modal_Popup extends Common_Widget {
 						array(
 							'label'     => __( 'Background Color', 'uael' ),
 							'type'      => Controls_Manager::COLOR,
-							'scheme'    => array(
-								'type'  => Scheme_Color::get_type(),
-								'value' => Scheme_Color::COLOR_4,
+							'global'    => array(
+								'default' => Global_Colors::COLOR_ACCENT,
 							),
 							'selectors' => array(
 								'{{WRAPPER}} .uael-modal-action-wrap a.elementor-button:hover, {{WRAPPER}} .uael-modal-action-wrap .elementor-button:hover' => 'background-color: {{VALUE}};',
@@ -2121,9 +2120,8 @@ class Modal_Popup extends Common_Widget {
 				array(
 					'label'     => __( 'Text Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-modal-action' => 'color: {{VALUE}};',
@@ -2140,9 +2138,8 @@ class Modal_Popup extends Common_Widget {
 					'label'     => __( 'Text Hover Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
 					'default'   => '',
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-modal-action:hover' => 'color: {{VALUE}};',
@@ -2158,7 +2155,9 @@ class Modal_Popup extends Common_Widget {
 				array(
 					'name'      => 'cta_text_typography',
 					'label'     => __( 'Typography', 'uael' ),
-					'scheme'    => Scheme_Typography::TYPOGRAPHY_4,
+					'global'    => array(
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					),
 					'selector'  => '{{WRAPPER}} .uael-modal-action-wrap .uael-modal-action',
 					'condition' => array(
 						'modal_on' => 'text',

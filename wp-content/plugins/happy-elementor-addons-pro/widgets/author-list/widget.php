@@ -14,7 +14,7 @@ use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Utils;
 use Elementor\Repeater;
 use Elementor\Icons_Manager;
@@ -523,7 +523,7 @@ class Author_List extends Base {
             [
                 'name' => 'name_typography',
                 'label' => __( 'Typography', 'happy-addons-pro' ),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                'scheme' => Typography::TYPOGRAPHY_3,
                 'exclude' => [
                     'line_height'
                 ],
@@ -598,7 +598,7 @@ class Author_List extends Base {
             [
                 'name' => 'post_count_typography',
                 'label' => __( 'Typography', 'happy-addons-pro' ),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                'scheme' => Typography::TYPOGRAPHY_3,
                 'exclude' => [
                     'line_height'
                 ],
@@ -664,7 +664,7 @@ class Author_List extends Base {
             [
                 'name' => 'email_typography',
                 'label' => __( 'Typography', 'happy-addons-pro' ),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                'scheme' => Typography::TYPOGRAPHY_3,
                 'exclude' => [
                     'line_height'
                 ],
@@ -730,7 +730,7 @@ class Author_List extends Base {
             [
                 'name' => 'description_typography',
                 'label' => __( 'Typography', 'happy-addons-pro' ),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                'scheme' => Typography::TYPOGRAPHY_3,
                 'exclude' => [
                     'line_height'
                 ],

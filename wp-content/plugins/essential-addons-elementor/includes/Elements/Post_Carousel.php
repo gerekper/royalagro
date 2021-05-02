@@ -6,7 +6,7 @@ use \Elementor\Controls_Manager;
 use \Elementor\Group_Control_Border;
 use \Elementor\Group_Control_Box_Shadow;
 use \Elementor\Group_Control_Typography;
-use \Elementor\Scheme_Typography;
+use \Elementor\Core\Schemes\Typography;
 use \Elementor\Widget_Base;
 use \Essential_Addons_Elementor\Classes\Helper;
 
@@ -602,7 +602,7 @@ class Post_Carousel extends Widget_Base
             [
                 'name'     => 'eael_post_grid_title_typography',
                 'label'    => __('Typography', 'essential-addons-elementor'),
-                'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+                'scheme'   => Typography::TYPOGRAPHY_1,
                 'selector' => '{{WRAPPER}} .eael-entry-title, {{WRAPPER}} .eael-entry-title > a',
             ]
         );
@@ -675,7 +675,7 @@ class Post_Carousel extends Widget_Base
             [
                 'name'     => 'eael_post_grid_excerpt_typography',
                 'label'    => __('Excerpt Typography', 'essential-addons-elementor'),
-                'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+                'scheme'   => Typography::TYPOGRAPHY_3,
                 'selector' => '{{WRAPPER}} .eael-grid-post-excerpt p',
             ]
         );
@@ -724,7 +724,7 @@ class Post_Carousel extends Widget_Base
             [
                 'name'     => 'eael_post_grid_terms_typography',
                 'label'    => __('Meta Typography', 'essential-addons-elementor'),
-                'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+                'scheme'   => Typography::TYPOGRAPHY_3,
                 'selector' => '{{WRAPPER}} .post-carousel-categories li a, {{WRAPPER}} .post-meta-categories li, {{WRAPPER}} .post-meta-categories li a',
             ]
         );
@@ -784,7 +784,7 @@ class Post_Carousel extends Widget_Base
             [
                 'name'     => 'eael_post_grid_meta_date_typography',
                 'label'    => __('Meta Date Typography', 'essential-addons-elementor'),
-                'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+                'scheme'   => Typography::TYPOGRAPHY_3,
                 'selector' => '{{WRAPPER}} .eael-meta-posted-on',
             ]
         );
@@ -885,8 +885,8 @@ class Post_Carousel extends Widget_Base
             [
                 'name'     => 'eael_post_grid_meta_header_typography',
                 'label'    => __('Meta Typography', 'essential-addons-elementor'),
-                'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
-                'selector' => '{{WRAPPER}} .eael-entry-meta > span',
+                'scheme'   => Typography::TYPOGRAPHY_3,
+                'selector' => '{{WRAPPER}} .eael-entry-meta > span,{{WRAPPER}} .eael-entry-meta > .eael-posted-by,{{WRAPPER}} .eael-entry-meta > .eael-posted-on',
             ]
         );
 

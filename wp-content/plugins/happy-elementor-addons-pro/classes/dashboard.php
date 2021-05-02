@@ -19,7 +19,6 @@ class Dashboard {
 
     public static function add_activate_license_notice() {
         return;
-        
         ?>
         <style>
             .ha-notice {
@@ -73,7 +72,8 @@ class Dashboard {
 
     public static function add_tabs( $tabs ) {
         $tabs['pro'] = [
-            'title' => esc_html(  __( 'License', 'happy-addons-pro' )  ),
+           'title' => esc_html(  __( 'License', 'happy-addons-pro' )  ),
+
             'href' => admin_url( 'admin.php?page=happy-addons-license' ),
         ];
         return $tabs;
@@ -90,6 +90,7 @@ class Dashboard {
         array_push( $links, sprintf( '<a style="color:#e2498a; font-weight: bold;" href="%s">%s</a>',
             admin_url( 'admin.php?page=happy-addons-license' ),
             __( 'License', 'happy-addons-pro' )
+
         ) );
 
         return array_merge( $links, $default_links );

@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_DynamicTag_Token extends Tag {
 
-	static $acf_names = [];
+	protected static $acf_names = [];
 
 	public function get_name() {
 		return 'dce-token';
@@ -35,32 +35,22 @@ class DCE_DynamicTag_Token extends Tag {
 		return 'https://www.dynamic.ooo/widget/dynamic-tag-token/';
 	}
 
-	/**
-	 * Register Controls
-	 *
-	 * Registers the Dynamic tag controls
-	 *
-	 * @since 2.0.0
-	 * @access protected
-	 *
-	 * @return void
-	 */
 	protected function _register_controls() {
 
-		if ( current_user_can( 'manage_options' ) || ! is_admin() ) {
+		if ( current_user_can( 'install_plugins' ) || ! is_admin() ) {
 			$this->register_controls_settings();
-		} elseif ( ! current_user_can( 'manage_options' ) && is_admin() ) {
+		} elseif ( ! current_user_can( 'install_plugins' ) && is_admin() ) {
 			$this->register_controls_non_admin_notice();
 		}
 	}
 
 	protected function register_controls_non_admin_notice() {
 		$this->add_control(
-			'html_notice',
+		'html_notice',
 			[
 				'type' => Controls_Manager::RAW_HTML,
 				'raw' => __( 'You will need administrator capabilities to edit this dynamic tag.', 'dynamic-content-for-elementor' ),
-				'content_classes' => 'dce-notice',
+				'content_classes' => 'elementor-panel-alert elementor-panel-alert-warning',
 			]
 		);
 
@@ -71,24 +61,24 @@ class DCE_DynamicTag_Token extends Tag {
 		$objects = array( 'post', 'user', 'term' );
 
 		$this->add_control(
-				'dce_token_wizard',
-				[
-					'label' => __( 'Wizard mode', 'dynamic-content-for-elementor' ),
-					'type' => \Elementor\Controls_Manager::SWITCHER,
-				]
+			'dce_token_wizard',
+			[
+				'label' => __( 'Wizard mode', 'dynamic-content-for-elementor' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+			]
 		);
 
 		$this->add_control(
-				'dce_token',
-				[
-					'label' => __( 'Token', 'dynamic-content-for-elementor' ),
-					'type' => \Elementor\Controls_Manager::TEXT,
-					'label_block' => true,
-					'placeholder' => '[post:title], [post:meta_key], [user:display_name], [term:name], [wp_query:posts]',
-					'condition' => [
-						'dce_token_wizard' => '',
-					],
-				]
+			'dce_token',
+			[
+				'label' => __( 'Token', 'dynamic-content-for-elementor' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'label_block' => true,
+				'placeholder' => '[post:title], [post:meta_key], [user:display_name], [term:name], [wp_query:posts]',
+				'condition' => [
+					'dce_token_wizard' => '',
+				],
+			]
 		);
 
 		$obj_opt = [
@@ -132,76 +122,76 @@ class DCE_DynamicTag_Token extends Tag {
 			];
 		}
 		$this->add_control(
-				'dce_token_object', [
-					'label' => __( 'Object', 'dynamic-content-for-elementor' ),
-					'label_block' => true,
-					'type' => Controls_Manager::CHOOSE,
-					'options' => $obj_opt,
-					'default' => 'post',
-					'toggle' => false,
-					'condition' => [
-						'dce_token_wizard!' => '',
-					],
-				]
+			'dce_token_object', [
+				'label' => __( 'Object', 'dynamic-content-for-elementor' ),
+				'label_block' => true,
+				'type' => Controls_Manager::CHOOSE,
+				'options' => $obj_opt,
+				'default' => 'post',
+				'toggle' => false,
+				'condition' => [
+					'dce_token_wizard!' => '',
+				],
+			]
 		);
 
 		$this->add_control(
-				'dce_token_field_date',
-				[
-					'label' => __( 'Date Modificator', 'dynamic-content-for-elementor' ),
-					'type' => \Elementor\Controls_Manager::TEXT,
-					'placeholder' => '+1 week, -2 months, yesterday, timestamp',
-					'description' => __( 'A time modificator compatible with strtotime or a timestamp', 'dynamic-content-for-elementor' ),
-					'label_block' => true,
-					'condition' => [
-						'dce_token_wizard!' => '',
-						'dce_token_object' => 'date',
-					],
-				]
+			'dce_token_field_date',
+			[
+				'label' => __( 'Date Modificator', 'dynamic-content-for-elementor' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'placeholder' => '+1 week, -2 months, yesterday, timestamp',
+				'description' => __( 'A time modificator compatible with strtotime or a timestamp', 'dynamic-content-for-elementor' ),
+				'label_block' => true,
+				'condition' => [
+					'dce_token_wizard!' => '',
+					'dce_token_object' => 'date',
+				],
+			]
 		);
 		$this->add_control(
-				'dce_token_field_date_format',
-				[
-					'label' => __( 'Date Format', 'dynamic-content-for-elementor' ),
-					'type' => \Elementor\Controls_Manager::TEXT,
-					'placeholder' => 'Y-m-d H:i:s',
-					'label_block' => true,
-					'condition' => [
-						'dce_token_wizard!' => '',
-						'dce_token_object' => 'date',
-					],
-				]
+			'dce_token_field_date_format',
+			[
+				'label' => __( 'Date Format', 'dynamic-content-for-elementor' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'placeholder' => 'Y-m-d H:i:s',
+				'label_block' => true,
+				'condition' => [
+					'dce_token_wizard!' => '',
+					'dce_token_object' => 'date',
+				],
+			]
 		);
 
 		$this->add_control(
-				'dce_token_field_system',
-				[
-					'label' => __( 'Field', 'dynamic-content-for-elementor' ),
-					'type' => \Elementor\Controls_Manager::TEXT,
-					'label_block' => true,
-					'placeholder' => __( '_GET, _POST, _SERVER, MY_CONSTANT', 'dynamic-content-for-elementor' ),
-					'condition' => [
-						'dce_token_wizard!' => '',
-						'dce_token_object' => 'system',
-					],
-				]
+			'dce_token_field_system',
+			[
+				'label' => __( 'Field', 'dynamic-content-for-elementor' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'label_block' => true,
+				'placeholder' => __( '_GET, _POST, _SERVER, MY_CONSTANT', 'dynamic-content-for-elementor' ),
+				'condition' => [
+					'dce_token_wizard!' => '',
+					'dce_token_object' => 'system',
+				],
+			]
 		);
 
 		foreach ( $objects as $aobj ) {
 			$this->add_control(
-					'dce_token_field_' . $aobj,
-					[
-						'label' => __( 'Field', 'dynamic-content-for-elementor' ),
-						'type' => 'ooo_query',
-						'placeholder' => __( 'Meta key or Field Name', 'dynamic-content-for-elementor' ),
-						'label_block' => true,
-						'query_type' => 'fields',
-						'object_type' => $aobj,
-						'condition' => [
-							'dce_token_wizard!' => '',
-							'dce_token_object' => $aobj,
-						],
-					]
+				'dce_token_field_' . $aobj,
+				[
+					'label' => __( 'Field', 'dynamic-content-for-elementor' ),
+					'type' => 'ooo_query',
+					'placeholder' => __( 'Meta key or Field Name', 'dynamic-content-for-elementor' ),
+					'label_block' => true,
+					'query_type' => 'fields',
+					'object_type' => $aobj,
+					'condition' => [
+						'dce_token_wizard!' => '',
+						'dce_token_object' => $aobj,
+					],
+				]
 			);
 		}
 
@@ -261,24 +251,13 @@ class DCE_DynamicTag_Token extends Tag {
 					],
 				]
 		);
-		/*$this->add_control(
-				'dce_token_source',
-				[
-					'label' => __('Source', 'dynamic-content-for-elementor'),
-					'type' => \Elementor\Controls_Manager::TEXT,
-					'label_block' => true,
-					'condition' => [
-						'dce_token_wizard!' => '',
-					],
-				]
-		);*/
 		foreach ( $objects as $aobj ) {
 			$this->add_control(
 					'dce_token_source_' . $aobj,
 					[
 						'label' => __( 'Source', 'dynamic-content-for-elementor' ),
 						'type' => 'ooo_query',
-						'placeholder' => __( 'Search ' . ucfirst( $aobj ), 'dynamic-content-for-elementor' ),
+						'placeholder' => __( 'Search', 'dynamic-content-for-elementor' ) . ' ' . ucfirst( $aobj ),
 						'label_block' => true,
 						'query_type' => $aobj . 's',
 						'condition' => [
@@ -344,7 +323,7 @@ class DCE_DynamicTag_Token extends Tag {
 	public function render() {
 
 		if (
-			! current_user_can( 'manage_options' )
+			! current_user_can( 'install_plugins' )
 			&& \Elementor\Plugin::$instance->editor->is_edit_mode()
 		) {
 
@@ -352,7 +331,7 @@ class DCE_DynamicTag_Token extends Tag {
 
 		} elseif (
 			(
-				current_user_can( 'manage_options' )
+				current_user_can( 'install_plugins' )
 				&& \Elementor\Plugin::$instance->editor->is_edit_mode()
 			)
 			||

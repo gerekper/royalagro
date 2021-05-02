@@ -211,6 +211,29 @@ class QueryControl extends Module {
 		return $results;
 	}
 
+	protected function get_acf_flexible_content_layouts( $data ) {
+		$groups = acf_get_field_groups();
+		$layouts = [];
+		foreach ( $groups as $group ) {
+			$group_fields = acf_get_fields( $group );
+			foreach ( $group_fields as $fields ) {
+				if ( $fields['type'] == 'flexible_content' ) {
+					foreach ( $fields as $field_key => $field_value ) {
+						if ( is_array( $field_value ) && self::array_key_matches_regex( '/layout_[a-zA-Z0-9]+/', $field_value ) ) {
+							foreach ( $field_value as $layout_single ) {
+									$layouts[] = [
+										'id' => $layout_single['name'],
+										'text' => $layout_single['name'],
+									];
+							}
+						}
+					}
+				}
+			}
+		}
+		return $layouts;
+	}
+
 	protected function get_acfposts( $data ) {
 		$data['object_type'] = array( 'text', 'textarea', 'select', 'number', 'date_time_picker', 'date_picker', 'oembed', 'file', 'url', 'image', 'wysiwyg' );
 		$results = $this->get_acf( $data );
@@ -231,6 +254,16 @@ class QueryControl extends Module {
 			'text' => __( 'Core > Date [post_date] (datetime)', 'dynamic-content-for-elementor' ),
 		);
 		return $results;
+	}
+
+	protected function array_key_matches_regex( $regex, $array ) {
+		$postkeys = array_keys( $array );
+		foreach ( $postkeys as $key ) {
+			if ( preg_match( $regex, $key ) ) {
+				return $key;
+			}
+		}
+		return false;
 	}
 
 	protected function get_terms( $data ) {
@@ -339,6 +372,15 @@ class QueryControl extends Module {
 			if ( $acf ) {
 				$results[ $aid ] = $acf->post_title;
 			}
+		}
+		return $results;
+	}
+
+	protected function get_value_titles_for_acf_flexible_content_layouts( $request ) {
+		$ids = (array) $request['id'];
+		$results = [];
+		foreach ( $ids as $aid ) {
+			$results[ $aid ] = $aid;
 		}
 		return $results;
 	}

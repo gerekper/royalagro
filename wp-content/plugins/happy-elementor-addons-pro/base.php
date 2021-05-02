@@ -66,7 +66,7 @@ class Base {
         // Active license page and checker
         $args = [
             'type'       => 'submenu',
-            'menu_title' => esc_html(__( 'License', 'happy-addons-pro' ) ),
+            'menu_title' => esc_html( __( 'License', 'happy-addons-pro' )),
             'page_title' => 'License - Happy Elementor Addons',
             'menu_slug'  => 'happy-addons-license',
             'parent_slug' => 'happy-addons',

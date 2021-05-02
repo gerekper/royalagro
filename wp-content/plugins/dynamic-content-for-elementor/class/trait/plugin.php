@@ -10,7 +10,8 @@ trait Trait_Plugin {
 			return self::$checked_plugins[ $plugin ];
 		}
 
-		self::$checked_plugins[ $plugin ] = $is_active = self::is_acf_pro( $plugin ) || self::is_plugin_must_use( $plugin ) || self::is_plugin_active_for_local( $plugin ) || self::is_plugin_active_for_network( $plugin );
+		$is_active = self::is_acf_pro( $plugin ) || self::is_plugin_must_use( $plugin ) || self::is_plugin_active_for_local( $plugin ) || self::is_plugin_active_for_network( $plugin );
+		self::$checked_plugins[ $plugin ] = $is_active;
 		return $is_active;
 	}
 	public static function is_acf_pro( $plugin ) {
@@ -140,6 +141,38 @@ trait Trait_Plugin {
 		} else {
 			return false;
 		}
+	}
+
+	public static function check_plugin_dependencies( $ret = false, $deps = [] ) {
+		$depsDisabled = [];
+		if ( ! empty( $deps ) ) {
+			$isActive = true;
+			foreach ( $deps as $pkey => $plugin ) {
+				if ( ! is_numeric( $pkey ) ) {
+					if ( ! Helper::is_plugin_active( $pkey ) ) {
+						$isActive = false;
+					}
+				} else {
+					if ( ! Helper::is_plugin_active( $plugin ) ) {
+						$isActive = false;
+					}
+				}
+				if ( ! $isActive ) {
+					if ( ! $ret ) {
+						return false;
+					}
+					if ( is_numeric( $pkey ) ) {
+						$depsDisabled[] = $plugin;
+					} else {
+						$depsDisabled[] = $pkey;
+					}
+				}
+			}
+		}
+		if ( $ret ) {
+			return $depsDisabled;
+		}
+		return true;
 	}
 
 }

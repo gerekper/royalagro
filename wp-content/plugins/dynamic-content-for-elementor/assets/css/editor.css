@@ -186,23 +186,6 @@
   opacity: 1;
 }
 
-.dce-notice {
-  background: #fff;
-  border-left: 4px solid #fff;
-  border-left-color: rgb(255, 255, 255);
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
-  margin: 20px 0;
-  padding: 1px 12px;
-}
-
-.dce-notice-success {
-  border-left-color: #46b450;
-}
-
-.dce-notice-error {
-  border-left-color: #dc3232;
-}
-
 .color-dce {
   color: #e52600;
 }

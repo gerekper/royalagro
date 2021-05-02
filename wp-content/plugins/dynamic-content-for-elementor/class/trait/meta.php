@@ -76,7 +76,8 @@ trait Trait_Meta {
 	public static function get_user_metas( $grouped = false, $like = '', $info = true ) {
 		global $wp_meta_keys;
 
-		$userMetas = $userMetasGrouped = array();
+		$userMetasGrouped = array();
+		$userMetas = $userMetasGrouped;
 
 		// ACF
 		$acf_groups = get_posts(array(
@@ -144,7 +145,8 @@ trait Trait_Meta {
 			$manual_metas = $metas;
 			foreach ( $manual_metas as $ameta ) {
 				if ( substr( $ameta, 0, 1 ) == '_' ) {
-					$ameta = $tmp = substr( $ameta, 1 );
+					$tmp = substr( $ameta, 1 );
+					$ameta = $tmp;
 					if ( in_array( $tmp, $manual_metas ) ) {
 						continue;
 					}
@@ -166,7 +168,8 @@ trait Trait_Meta {
 	public static function get_term_metas( $grouped = false, $like = '' ) {
 		global $wp_meta_keys;
 
-		$termMetas = $termMetasGrouped = array();
+		$termMetasGrouped = array();
+		$termMetas = $termMetasGrouped;
 
 		// ACF
 		$acf_groups = get_posts(array(
@@ -225,7 +228,8 @@ trait Trait_Meta {
 			$manual_metas = $metas;
 			foreach ( $manual_metas as $ameta ) {
 				if ( substr( $ameta, 0, 1 ) == '_' ) {
-					$ameta = $tmp = substr( $ameta, 1 );
+					$tmp = substr( $ameta, 1 );
+					$ameta = $tmp;
 					if ( in_array( $tmp, $manual_metas ) ) {
 						continue;
 					}
@@ -271,13 +275,6 @@ trait Trait_Meta {
 				$pods_fields = array_keys( self::get_pods_fields() );
 				if ( ! empty( $pods_fields ) && in_array( $meta_key, $pods_fields, true ) ) {
 					$meta_value = pods_field_display( $meta_key, $post_id );
-				}
-			}
-
-			// ToolSet
-			if ( Helper::is_plugin_active( 'wpcf' ) ) {
-				$toolset_fields = array_keys( self::get_toolset_fields() );
-				if ( ! empty( $toolset_fields ) && in_array( $meta_key, $toolset_fields, true ) ) {
 				}
 			}
 		}
@@ -337,12 +334,12 @@ trait Trait_Meta {
 				switch ( $meta_type ) {
 					case 'gallery':
 						return 'image';
-
 					case 'embed':
 						if ( strpos( $meta_value, 'https://www.youtube.com/' ) !== false || strpos( $meta_value, 'https://youtu.be/' ) !== false ) {
 							return 'youtube';
+						} else {
+							return $meta_type;
 						}
-
 					default:
 						return $meta_type;
 				}
@@ -372,9 +369,6 @@ trait Trait_Meta {
 						return 'video';
 					}
 
-					// Validate url
-					if ( filter_var( $meta_value, FILTER_SANITIZE_URL ) !== false ) {
-					}
 					if ( substr( $meta_value, 0, 7 ) == 'http://' || substr( $meta_value, 0, 8 ) == 'https://' ) {
 						return 'url';
 					}
@@ -409,20 +403,14 @@ trait Trait_Meta {
 			}
 		}
 
-		// ToolSet
-		if ( Helper::is_plugin_active( 'wpcf' ) ) {
-			$toolset_fields = array_keys( self::get_toolset_fields() );
-			if ( ! empty( $toolset_fields ) && in_array( $meta_key, $toolset_fields, true ) ) {
-			}
-		}
-
 		return $meta_value;
 	}
 
 	public static function get_post_metas( $grouped = false, $like = '', $info = true ) {
 		global $wp_meta_keys;
 
-		$postMetas = $postMetasGrouped = array();
+		$postMetasGrouped = array();
+		$postMetas = $postMetasGrouped;
 
 		// REGISTERED in FUNCTION
 		$cpts = self::get_post_types();
@@ -783,6 +771,28 @@ trait Trait_Meta {
 		return self::get_acf_fields( array( 'post_object', 'relationship' ) );
 	}
 
+	public static function get_acf_flexible_content_sub_fields_by_row( $key, $row ) {
+		if ( ! self::is_acf_active() ) {
+			return [];
+		}
+		$fields = get_field( $key );
+
+		$sub_fields = [];
+
+		$row_counter = 0;
+		if ( $fields ) {
+			foreach ( $fields as $field_key => $field_value ) {
+				$row_counter++;
+				if ( $row_counter === $row ) {
+					$sub_fields[] = $field_value;
+					break;
+				}
+			}
+		}
+		unset( $sub_fields[0]['acf_fc_layout'] );
+		return $sub_fields[0];
+	}
+
 	public static function get_acf_repeater_fields( $key ) {
 		if ( isset( self::$meta_fields[ $key ]['fields'] ) ) {
 			return self::$meta_fields[ $key ]['fields'];
@@ -910,12 +920,12 @@ trait Trait_Meta {
 
 		$dataACFieldPost = self::get_acf_field_post( $idField );
 
-		// field in REPEATER
+		// field in a Repeater or in a Flexible content
 		if ( $dataACFieldPost ) {
 			$parentID = $dataACFieldPost->post_parent;
 			$parent_settings = self::get_acf_field_settings( $parentID );
 
-			if ( isset( $parent_settings['type'] ) && $parent_settings['type'] == 'repeater' ) {
+			if ( isset( $parent_settings['type'] ) && ( $parent_settings['type'] == 'repeater' || $parent_settings['type'] == 'flexible_content' ) ) {
 				$parent_post = get_post( $parentID );
 				$row = acf_get_loop( 'active' );
 				if ( ! $row ) {

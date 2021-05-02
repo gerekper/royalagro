@@ -22,11 +22,12 @@ class Elements {
 		if ( ! is_admin() && ! Helper::is_edit_mode() ) {
 			// elements report
 			add_action( 'elementor/frontend/widget/before_render', array( $this, 'start_element' ), 11, 2 );
-			$excluded_globals = json_decode( get_option( DCE_PRODUCT_ID . '_excluded_globals' ), true );
-			if ( empty( $excluded_globals['DCE_Frontend_Navigator'] ) ) {
+			$option = get_option( 'dce_frontend_navigator' );
+
+			if ( $option == 'active' || $option == 'active-visitors' ) {
 
 				self::$user_can_elementor = Helper::user_can_elementor();
-				if ( self::$user_can_elementor || ( isset( $_GET['dce-nav'] ) && ! empty( $excluded_globals['DCE_Frontend_Navigator_Enable_Visitor'] ) ) ) {
+				if ( self::$user_can_elementor || ( isset( $_GET['dce-nav'] ) && $option == 'active-visitors' ) ) {
 
 					add_action( 'elementor/frontend/builder_content_data', array( $this, 'start_element' ), 11, 2 ); // template start
 					add_action( 'elementor/frontend/the_content', array( $this, 'end_element' ), 11, 2 ); // template end
@@ -117,7 +118,8 @@ class Elements {
 				if ( $template ) {
 					$type = 'template';
 					$name = $template->post_name;
-					$template_id = $id = $template->ID;
+					$id = $template->ID;
+					$template_id = $id;
 
 					self::$elementor_current = $element;
 				}
@@ -163,7 +165,8 @@ class Elements {
 			if ( $template ) {
 				$type = 'template';
 				$name = $template->post_name;
-				$template_id = $id = $template->ID;
+				$id = $template->ID;
+				$template_id = $id;
 			}
 		}
 
@@ -487,9 +490,9 @@ class Elements {
 
 					<?php
 					$element_settings = false;
-									if ( self::$user_can_elementor ) {
-										if ( ! empty( $element_settings ) ) {
-											?>
+					if ( self::$user_can_elementor ) {
+						if ( ! empty( $element_settings ) ) {
+							?>
 											<button class="elementor-button elementor-button-info elementor-size-xs elementor-navigator__element__infobox__copy_mini tooltip-target" aria-hidden="true" data-tooltip="Copy" original-title="Copy" data-clipboard-action="copy" data-clipboard-target="#elementor-navigator__element__settings_<?php echo $id; ?>">
 												<i class="eicon-copy"></i>
 											</button>
@@ -498,16 +501,16 @@ class Elements {
 											<i class="eicon-pencil"></i> <?php _e( 'Edit', 'elementor' ); ?>
 										</a>
 										<?php
-									} else {
-										if ( ! empty( $element_settings ) ) {
-											?>
+					} else {
+						if ( ! empty( $element_settings ) ) {
+							?>
 											<button class="elementor-button elementor-button-info elementor-size-xs elementor-navigator__element__infobox__copy" data-clipboard-action="copy" data-clipboard-target="#elementor-navigator__element__settings_<?php echo $id; ?>">
 												<i class="eicon-copy"></i> <?php _e( 'Copy', 'elementor' ); ?>
 											</button>
 											<?php
-										}
-									}
-									?>
+						}
+					}
+					?>
 								</div>
 
 							</div>

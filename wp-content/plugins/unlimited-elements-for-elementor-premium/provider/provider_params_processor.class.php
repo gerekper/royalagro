@@ -243,6 +243,155 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 	
 	protected function z_______________POSTS____________(){}
 
+	/**
+	 * get post ids from post meta
+	 */
+	private function getPostListData_getIDsFromPostMeta($value, $name, $showDebugQuery){
+		
+		$postIDs = UniteFunctionsUC::getVal($value, $name."_includeby_postmeta_postid");
+				
+		$metaName = UniteFunctionsUC::getVal($value, $name."_includeby_postmeta_metafield");
+		
+		$errorMessagePrefix = "Get post ids from meta error: ";
+		
+		if(empty($metaName)){
+			
+				if($showDebugQuery == true)
+					dmp($errorMessagePrefix." no meta field selected");
+			
+			return(null);
+		}
+		
+		if(!empty($postIDs)){
+			if(is_array($postIDs))
+				$postID = $postIDs[0];
+			else
+				$postID = $postIDs;
+		}
+		else{		//current post
+			
+			$post = get_post();
+			if(empty($post)){
+				
+				if($showDebugQuery == true)
+					dmp($errorMessagePrefix." no post found");
+				return(null);
+			}
+				
+			$postID = $post->ID;
+		}
+		
+		if(empty($postID)){
+				
+			if($showDebugQuery == true)
+				dmp($errorMessagePrefix." no post found");
+			
+			return(null);
+		}
+		
+		//show the post title
+		if($showDebugQuery == true){
+		
+			$post = get_post($postID);
+			$title = $post->post_title;
+			$postType = $post->post_type;
+			
+			dmp("Getting post id's from meta fields from post: <b>$postID - $title ($postType) </b>");
+		}
+		
+		$arrPostIDs = get_post_meta($postID, $metaName, true);
+		
+		if(is_array($arrPostIDs) == false){
+			$arrPostIDs = explode(",", $arrPostIDs);
+		}
+		
+		$isValidIDs = UniteFunctionsUC::isValidIDsArray($arrPostIDs);
+		
+		if(empty($arrPostIDs) || $isValidIDs == false){
+		
+			if($showDebugQuery){
+				
+				$metaKeys = UniteFunctionsWPUC::getPostMetaKeys($postID, null, true);
+				if(empty($metaKeys))
+					$metaKeys = array();
+				
+				dmp($errorMessagePrefix." no post ids found");
+					
+				if(array_search($metaName, $metaKeys) === false){
+					dmp("maybe you intent to use one of those meta keys:");
+					dmp($metaKeys);
+				}
+			}
+			
+			return(null);
+		}
+		
+		if($showDebugQuery == true){
+			$strPosts = implode(",", $arrPostIDs);
+			dmp("Found post ids : $strPosts");
+		}
+		
+		return($arrPostIDs);
+	}
+	
+	
+	/**
+	 * get post ids from php function
+	 */
+	private function getPostListData_getIDsFromPHPFunction($value, $name, $showDebugQuery){
+		
+		$functionName = UniteFunctionsUC::getVal($value, $name."_includeby_function_name");
+		
+		$errorTextPrefix = "get post id's by PHP Function error: ";
+				
+		if(empty($functionName)){
+			
+			if($showDebugQuery)
+				dmp($errorTextPrefix."no functon name given");
+			
+			return(null);
+		}
+
+		if(is_string($functionName) == false)
+			return(false);
+		
+		if(strpos($functionName, "get") !== 0){
+			
+			if($showDebugQuery)
+				dmp($errorTextPrefix."function <b>$functionName</b> should start with 'get'. like getMyPersonalPosts()");
+			
+			return(null);
+		}
+		
+		if(function_exists($functionName) == false){
+			
+			if($showDebugQuery)
+				dmp($errorTextPrefix."function <b>$functionName</b> not exists.");
+			
+			return(null);
+		}
+				
+		$argument = UniteFunctionsUC::getVal($value, $name."_includeby_function_addparam");
+		
+		$arrIDs = call_user_func_array($functionName, array($argument));
+		
+		$isValid = UniteFunctionsUC::isValidIDsArray($arrIDs);
+		
+		if($isValid == false){
+			
+			if($showDebugQuery)
+				dmp($errorTextPrefix."function <b>$functionName</b> returns invalid id's array.");
+			
+			return(null);
+		}
+		
+		if($showDebugQuery == true){
+			dmp("php function <b>$functionName(\"$argument\")</b> output: ");
+			dmp($arrIDs);
+		}
+		
+		return($arrIDs);
+	}
 		
 	/**
 	 * get post category taxonomy
@@ -914,6 +1063,10 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 		$arrIDsOnSale = array();
 		$arrRecentProducts = array();
 		$arrIDsPopular = array();
+		$arrIDsPHPFunction = array();
+		$arrIDsPostMeta = array();
+		
+		$makePostINOrder = false;
 		
 		foreach($arrIncludeBy as $includeby){
 						
@@ -1056,6 +1209,16 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 					}
 					
 				break;
+				case "php_function":
+					
+					$arrIDsPHPFunction = $this->getPostListData_getIDsFromPHPFunction($value, $name, $showDebugQuery);
+					
+				break;
+				case "ids_from_meta":
+					
+					$arrIDsPostMeta = $this->getPostListData_getIDsFromPostMeta($value, $name, $showDebugQuery);
+					
+				break;
 			}
 			
 		}
@@ -1072,6 +1235,23 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 		}
 		
 		if(!empty($arrIDsPopular)){
+			$makePostINOrder = true;
+			$arrPostInIDs = $arrIDsPopular;
+		}
+		
+		if(!empty($arrIDsPHPFunction)){
+			$arrPostInIDs = $arrIDsPHPFunction;
+			$makePostINOrder = true;
+		}
+		
+		if(!empty($arrIDsPostMeta)){
+			$arrPostInIDs = $arrIDsPostMeta;
+			$makePostINOrder = true;
+		}
+		
+		//make order as "post__id"	
+			
+		if($makePostINOrder == true){
 			
 			//set order
 			$args["orderby"] = "post__in";
@@ -1080,10 +1260,9 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 			if($orderDir == "ASC")
 				$arrIDsPopular = array_reverse($arrIDsPopular);
 			
-			unset($args["order"]);
-			
-			$arrPostInIDs = $arrIDsPopular;
+			unset($args["order"]);			
 		}
+				
 		
 		if(!empty($arrPostInIDs))
 			$args["post__in"] = $arrPostInIDs;
@@ -1388,7 +1567,7 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 		$source = UniteFunctionsUC::getVal($value, "{$name}_source");
 		
 		$arrPosts = array();
-				
+		
 		switch($source){
 			case "manual":
 				
@@ -1439,13 +1618,22 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 			$arrImageSizes["desktop"] = $imageSize;
 		}
 		
+		//prepare listing output. no items prepare for the listing
 		
+		$useForListing = UniteFunctionsUC::getVal($param, "use_for_listing");
+		$useForListing = UniteFunctionsUC::strToBool($useForListing);
+				
+		if($useForListing == true){
+			$arrData = $arrPosts;
+			return($arrData);
+		}
+				
 		$arrData = array();
 		foreach($arrPosts as $post){
 			
 			$arrData[] = $this->getPostDataByObj($post, $arrPostAdditions, $arrImageSizes);
 		}
-
+		
 		
 		return($arrData);
 	}

@@ -27,7 +27,7 @@ class DCE_Group_Control_Animation_Element extends Group_Control_Base {
 		$fields = [];
 
 		$fields['controls'] = [
-			'label' => __( '', 'dynamic-content-for-elementor' ),
+			'label' => '',
 			'type' => Controls_Manager::CHOOSE,
 			'default' => 'running',
 			'toggle' => false,
@@ -173,7 +173,7 @@ class DCE_Group_Control_Animation_Element extends Group_Control_Base {
 			'label' => _x( 'Timing Function', 'Animation Control', 'dynamic-content-for-elementor' ),
 			'type' => Controls_Manager::SELECT,
 			'default' => 'linear',
-			'options' => Helper::get_anim_timingFunctions(),
+			'options' => Helper::get_anim_timing_functions(),
 			'selectors' => [
 				'{{SELECTOR}}' => 'animation-timing-function: {{VALUE}}; -webkit-animation-timing-function: {{VALUE}};',
 			],

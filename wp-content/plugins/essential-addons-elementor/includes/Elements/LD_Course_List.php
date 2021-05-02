@@ -13,7 +13,7 @@ use \Elementor\Group_Control_Box_Shadow;
 use \Elementor\Group_Control_Typography;
 use \Elementor\Utils;
 use \Elementor\Widget_Base;
-use \Elementor\Scheme_Typography;
+use \Elementor\Core\Schemes\Typography;
 use \Elementor\Group_Control_Background;
 use \Essential_Addons_Elementor\Classes\Helper;
 
@@ -730,7 +730,7 @@ class LD_Course_List extends Widget_Base
                 [
                     'name'                  => 'tags_typography',
                     'label'                 => __('Typography', 'essential-addons-elementor'),
-                    'scheme'                => Scheme_Typography::TYPOGRAPHY_4,
+                    'scheme'                => Typography::TYPOGRAPHY_4,
                     'selector'              => '.eael-learndash-wrapper .eael-learn-dash-course .eael-learn-dash-course-inner .course-tag',
                 ]
             );
@@ -885,7 +885,7 @@ class LD_Course_List extends Widget_Base
                 [
                     'name'                  => 'title_typography',
                     'label'                 => __('Typography', 'essential-addons-elementor'),
-                    'scheme'                => Scheme_Typography::TYPOGRAPHY_4,
+                    'scheme'                => Typography::TYPOGRAPHY_4,
                     'selector'              => '{{WRAPPER}} .eael-learndash-wrapper .eael-learn-dash-course .eael-learn-dash-course-inner .eael-learn-deash-course-content-card .course-card-title, {{WRAPPER}} .eael-learn-dash-course.eael-course-layout-3.card-style .card-body .course-card-title',
                 ]
             );
@@ -1394,7 +1394,7 @@ class LD_Course_List extends Widget_Base
                 [
                     'name'                  => 'course_meta_typography',
                     'label'                 => __('Typography', 'essential-addons-elementor'),
-                    'scheme'                => Scheme_Typography::TYPOGRAPHY_4,
+                    'scheme'                => Typography::TYPOGRAPHY_4,
                     'selector'              => '{{WRAPPER}} .eael-learn-dash-course .eael-learn-dash-course-inner .eael-learn-deash-course-content-card .eael-learn-dash-course-meta-card span',
                 ]
             );
@@ -1493,7 +1493,7 @@ class LD_Course_List extends Widget_Base
                 [
                     'name'                  => 'button_typography',
                     'label'                 => __('Typography', 'essential-addons-elementor'),
-                    'scheme'                => Scheme_Typography::TYPOGRAPHY_4,
+                    'scheme'                => Typography::TYPOGRAPHY_4,
                     'selector'              => '{{WRAPPER}} .eael-learn-dash-course .eael-learn-dash-course-inner .eael-course-button',
                 ]
             );

@@ -38,6 +38,15 @@ class Marvin {
 		$type    = isset( $_POST['type'] ) ? $_POST['type'] : 'import';
 		$content = isset( $_POST['content'] ) ? wp_unslash( $_POST['content'] ) : '';
 
+		if ( ! wp_verify_nonce( $nonce, self::ACTION ) ||
+			! current_user_can( 'edit_posts' )
+		) {
+			wp_send_json_error(
+				__( 'You are not allowed to complete this task, thank you.', 'happy-addons-pro' ),
+				403
+			);
+		}
+
 		if ( empty( $content ) ) {
 			wp_send_json_error( __( 'Sorry, cannot process empty content!', 'happy-addons-pro' ) );
 		}
@@ -99,7 +108,7 @@ class Marvin {
 	 * @return void
 	 */
 	public static function enqueue() {
-		if ( apply_filters( 'happyaddons_marvin_active', true )  ) {
+		if ( apply_filters( 'happyaddons_marvin_active', true ) ) {
 			wp_enqueue_script(
 				'marvin-ls',
 				HAPPY_ADDONS_PRO_ASSETS . 'admin/js/marvin-ls.min.js',

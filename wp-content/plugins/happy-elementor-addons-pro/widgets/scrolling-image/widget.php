@@ -10,7 +10,7 @@ namespace Happy_Addons_Pro\Widget;
 use Elementor\Controls_Manager;
 use Elementor\Icons_Manager;
 use Elementor\Modules\DynamicTags\Module as TagsModule;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Background;
@@ -639,7 +639,7 @@ class Scrolling_Image extends Base {
 			[
 				'name' => 'title_typography',
 				'label' => __('Typography', 'happy-addons-pro'),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .ha-scrolling-image-title',
 			]
 		);
@@ -706,7 +706,7 @@ class Scrolling_Image extends Base {
 						$this->add_link_attributes( $repeater_key, $value['link'] );
 					}
 					?>
-					<<?php echo tag_escape($item_tag) . ' ' . $this->get_render_attribute_string( $repeater_key ); ?>>
+					<<?php echo ha_escape_tags($item_tag) . ' ' . $this->get_render_attribute_string( $repeater_key ); ?>>
 						<?php
 						if ( ! empty( $image ) ) {
 							printf( '<figure class="ha-scrolling-image"><img src="%s" alt="%s" title="%s"></figure>',
@@ -720,7 +720,7 @@ class Scrolling_Image extends Base {
 							printf('<span class="ha-scrolling-image-title">%s</span>', esc_html( $value['title'] ) );
 						}
 						?>
-					</<?php echo tag_escape($item_tag); ?>>
+					</<?php echo ha_escape_tags($item_tag); ?>>
 				<?php endforeach;
 			endfor;
 			?>

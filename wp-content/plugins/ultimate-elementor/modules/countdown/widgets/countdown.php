@@ -10,8 +10,8 @@ namespace UltimateElementor\Modules\Countdown\Widgets;
 // Elementor Classes.
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Utils;
 
 // UltimateElementor Classes.
@@ -854,9 +854,8 @@ class Countdown extends Common_Widget {
 			array(
 				'label'     => __( 'Background Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_PRIMARY,
 				),
 				'default'   => '#f5f5f5',
 				'selectors' => array(
@@ -897,9 +896,8 @@ class Countdown extends Common_Widget {
 			array(
 				'label'     => __( 'Border Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_PRIMARY,
 				),
 				'default'   => '#eaeaea',
 				'selectors' => array(
@@ -985,7 +983,9 @@ class Countdown extends Common_Widget {
 			array(
 				'name'     => 'digits_typography',
 				'selector' => '{{WRAPPER}} .uael-countdown-wrapper .uael-countdown-item,{{WRAPPER}} .uael-countdown-wrapper .uael-countdown-separator',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				),
 			)
 		);
 
@@ -994,9 +994,8 @@ class Countdown extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'default'   => '#050054',
 				'selectors' => array(
@@ -1033,7 +1032,9 @@ class Countdown extends Common_Widget {
 			array(
 				'name'     => 'labels_typography',
 				'selector' => '{{WRAPPER}} .uael-item-label',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				),
 			)
 		);
 
@@ -1042,9 +1043,8 @@ class Countdown extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'default'   => '#3d424d;',
 				'selectors' => array(
@@ -1110,7 +1110,9 @@ class Countdown extends Common_Widget {
 			array(
 				'name'      => 'message_typography',
 				'selector'  => '{{WRAPPER}} .uael-expire-show-message',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_3,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				),
 				'condition' => array(
 					'expire_actions' => 'show_message',
 				),
@@ -1122,9 +1124,8 @@ class Countdown extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'default'   => '',
 				'selectors' => array(

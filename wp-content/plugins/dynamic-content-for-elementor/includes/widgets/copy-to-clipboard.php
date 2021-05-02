@@ -16,41 +16,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_Clipboard extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dce-copy-to-clipboard';
-	}
-
-	public function get_title() {
-		return __( 'Copy to Clipboard', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_description() {
-		return __( 'Copy a custom text to User Clipboard', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/button-copy-to-clipboard/';
-	}
-
-	public function get_icon() {
-		return 'icon-dyn-buttoncopy';
-	}
-
 	public function get_script_depends() {
 		return [ 'dce-clipboard-js' ];
 	}
 
 	public function show_in_panel() {
-		if (! current_user_can('manage_options')) {
+		if ( ! current_user_can( 'install_plugins' ) ) {
 			return false;
 		}
 		return true;
 	}
 
 	protected function _register_controls() {
-		if (current_user_can('manage_options') || ! is_admin()) {
+		if ( current_user_can( 'install_plugins' ) || ! is_admin() ) {
 			$this->_register_controls_content();
-		} elseif (! current_user_can('manage_options') && is_admin()) {
+		} elseif ( ! current_user_can( 'install_plugins' ) && is_admin() ) {
 			$this->register_controls_non_admin_notice();
 		}
 	}
@@ -853,10 +833,10 @@ class DCE_Widget_Clipboard extends DCE_Widget_Prototype {
 				),
 			));
 			if ( $settings['dce_clipboard_code_type'] ) {
-				wp_enqueue_script( 'dce-codemirror-mode', DCE_URL . 'assets/lib/codemirror/mode/' . $settings['dce_clipboard_code_type'] . '/' . $settings['dce_clipboard_code_type'] . '.js' );
+				wp_enqueue_script( 'dce-codemirror-mode', DCE_URL . 'assets/lib/codemirror/mode/' . $settings['dce_clipboard_code_type'] . '/' . $settings['dce_clipboard_code_type'] . '.js', '', DCE_VERSION );
 			}
 			if ( $settings['dce_clipboard_code_theme'] ) {
-				wp_enqueue_style( 'dce-codemirror-theme', DCE_URL . 'assets/lib/codemirror/theme/' . $settings['dce_clipboard_code_theme'] . '.css' );
+				wp_enqueue_style( 'dce-codemirror-theme', DCE_URL . 'assets/lib/codemirror/theme/' . $settings['dce_clipboard_code_theme'] . '.css', '', DCE_VERSION );
 			}
 		}
 
@@ -898,7 +878,7 @@ class DCE_Widget_Clipboard extends DCE_Widget_Prototype {
 			<?php
 			if ( $settings['dce_clipboard_type'] == 'text' ) {
 				$this->add_render_attribute( 'input', 'type', 'text' );
-				$this->add_render_attribute( 'input', 'value', Helper::get_dynamic_value($settings['dce_clipboard_text']) );
+				$this->add_render_attribute( 'input', 'value', Helper::get_dynamic_value( $settings['dce_clipboard_text'] ) );
 				$this->add_render_attribute( 'input', 'class', 'dce-form-control' );
 
 				?>
@@ -919,7 +899,7 @@ class DCE_Widget_Clipboard extends DCE_Widget_Prototype {
 				$this->add_render_attribute( 'input', 'class', 'dce-block' );
 				?>
 				<?php $this->render_text(); ?>
-				<textarea <?php echo $this->get_render_attribute_string( 'input' ); ?>><?php echo $settings['dce_clipboard_type'] == 'textarea' ? Helper::get_dynamic_value($settings['dce_clipboard_textarea']) : $settings['dce_clipboard_code']; ?></textarea>
+				<textarea <?php echo $this->get_render_attribute_string( 'input' ); ?>><?php echo $settings['dce_clipboard_type'] == 'textarea' ? Helper::get_dynamic_value( $settings['dce_clipboard_textarea'] ) : $settings['dce_clipboard_code']; ?></textarea>
 			<?php } ?>
 		</div>
 

@@ -12,8 +12,8 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Group_Control_Background;
 
 // UltimateElementor Classes.
@@ -346,9 +346,8 @@ class WpfStyler extends Common_Widget {
 				array(
 					'label'     => __( 'Label Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 					'default'   => '',
 					'selectors' => array(
@@ -374,9 +373,8 @@ class WpfStyler extends Common_Widget {
 				array(
 					'label'     => __( 'Input Text / Placeholder Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-wpf-style .wpforms-form .wpforms-field input:not([type=submit]):not([type=image]):not([type=button]):not([type=file]):not([type=radio]):not([type=checkbox]), 
@@ -397,9 +395,8 @@ class WpfStyler extends Common_Widget {
 				array(
 					'label'     => __( 'Sublabel / Description Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 					'default'   => '',
 					'selectors' => array(
@@ -693,9 +690,8 @@ class WpfStyler extends Common_Widget {
 				array(
 					'label'     => __( 'Selected Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 					'condition' => array(
 						'wpf_radio_check_custom!' => '',
@@ -892,9 +888,8 @@ class WpfStyler extends Common_Widget {
 							'types'          => array( 'classic', 'gradient' ),
 							'fields_options' => array(
 								'color' => array(
-									'scheme' => array(
-										'type'  => Scheme_Color::get_type(),
-										'value' => Scheme_Color::COLOR_4,
+									'global' => array(
+										'default' => Global_Colors::COLOR_ACCENT,
 									),
 								),
 							),
@@ -1067,7 +1062,9 @@ class WpfStyler extends Common_Widget {
 					Group_Control_Typography::get_type(),
 					array(
 						'name'     => 'wpf_message_typo',
-						'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+						'global'   => array(
+							'default' => Global_Typography::TYPOGRAPHY_TEXT,
+						),
 						'selector' => '{{WRAPPER}} .uael-wpf-style label.wpforms-error',
 					)
 				);
@@ -1123,7 +1120,9 @@ class WpfStyler extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'wpf_validation_typo',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector' => '{{WRAPPER}} .uael-wpf-style .wpforms-confirmation-container-full,
 					{{WRAPPER}} .uael-wpf-style .wpforms-confirmation-container',
 				)
@@ -1371,7 +1370,9 @@ class WpfStyler extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'      => 'title_typography',
-					'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
+					'global'    => array(
+						'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+					),
 					'selector'  => '{{WRAPPER}} .uael-wpf-style .wpforms-title',
 					'condition' => array(
 						'form_title_option!' => 'none',
@@ -1384,9 +1385,8 @@ class WpfStyler extends Common_Widget {
 				array(
 					'label'     => __( 'Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_1,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_PRIMARY,
 					),
 					'condition' => array(
 						'form_title_option!' => 'none',
@@ -1415,7 +1415,9 @@ class WpfStyler extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'      => 'desc_typography',
-					'scheme'    => Scheme_Typography::TYPOGRAPHY_2,
+					'global'    => array(
+						'default' => Global_Typography::TYPOGRAPHY_SECONDARY,
+					),
 					'selector'  => '{{WRAPPER}} .uael-wpf-style .wpforms-description',
 					'condition' => array(
 						'form_title_option!' => 'none',
@@ -1428,9 +1430,8 @@ class WpfStyler extends Common_Widget {
 				array(
 					'label'     => __( 'Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 					'condition' => array(
 						'form_title_option!' => 'none',
@@ -1456,7 +1457,9 @@ class WpfStyler extends Common_Widget {
 				array(
 					'name'     => 'form_label_typography',
 					'label'    => 'Label Typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector' => '{{WRAPPER}} .uael-wpf-style .wpforms-form .wpforms-field-label,
 									{{WRAPPER}} .uael-wpf-style .wpforms-form .wpforms-field-radio li label, 
 									{{WRAPPER}} .uael-wpf-style .wpforms-form .wpforms-field-checkbox li label,
@@ -1480,7 +1483,9 @@ class WpfStyler extends Common_Widget {
 				array(
 					'name'     => 'input_typography',
 					'label'    => 'Input Text Typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector' => '{{WRAPPER}} .uael-wpf-style .wpforms-form .wpforms-field input:not([type=submit]):not([type=image]):not([type=button]):not([type=file]):not([type=radio]):not([type=checkbox]), 
 						{{WRAPPER}} .uael-wpf-style .wpforms-form .wpforms-field input::placeholder, 
 						{{WRAPPER}} .uael-wpf-style .wpforms-form .wpforms-field textarea, 
@@ -1496,7 +1501,9 @@ class WpfStyler extends Common_Widget {
 				array(
 					'name'     => 'input_desc_typography',
 					'label'    => 'Sublabel / Description Typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector' => '{{WRAPPER}} .uael-wpf-style .wpforms-form .wpforms-field-description,
 									{{WRAPPER}} .uael-wpf-style .wpforms-form .wpforms-field-sublabel,
 									{{WRAPPER}} .uael-wpf-style .wpforms-form .wpforms-field-likert_scale thead tr th',
@@ -1517,7 +1524,9 @@ class WpfStyler extends Common_Widget {
 				array(
 					'name'     => 'btn_typography',
 					'label'    => __( 'Typography', 'uael' ),
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					),
 					'selector' => '{{WRAPPER}} .uael-wpf-style .wpforms-form button[type=submit], {{WRAPPER}} .uael-wpf-style .wpforms-form .wpforms-page-button',
 				)
 			);

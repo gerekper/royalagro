@@ -8,7 +8,7 @@
 namespace Happy_Addons_Pro\Widget;
 
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Background;
@@ -683,7 +683,7 @@ class Instagram_Feed extends Base {
 			[
 				'name' => 'title_button_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+				'scheme' => Typography::TYPOGRAPHY_4,
 				'selector' => '{{WRAPPER}} .ha-insta-title',
 			]
 		);
@@ -748,7 +748,7 @@ class Instagram_Feed extends Base {
 			[
 				'name' => 'button_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+				'scheme' => Typography::TYPOGRAPHY_4,
 				'selector' => '{{WRAPPER}} .ha-insta-load-more',
 			]
 		);
@@ -967,7 +967,7 @@ class Instagram_Feed extends Base {
 			<?php if ('ha-hover-info' == $settings['view_style']): ?>
 				<?php foreach ($instagram_data as $key => $single): ?>
 					<?php if('yes' == $settings['show_link']){$this->set_render_attribute('instagram-item', 'href', esc_url($single['permalink']));} ?>
-					<<?php echo tag_escape($item_tag).' '.$this->get_render_attribute_string('instagram-item');?>>
+					<<?php echo ha_escape_tags($item_tag).' '.$this->get_render_attribute_string('instagram-item');?>>
 						<?php $image_src = ($single['media_type'] == 'VIDEO') ? $single['thumbnail_url'] : $single['media_url']; ?>
 						<img src="<?php echo esc_url($image_src); ?>" alt="">
 						<div class="ha-insta-content">
@@ -977,14 +977,14 @@ class Instagram_Feed extends Base {
 							</div>
 							<?php endif;?>
 						</div>
-					</<?php echo tag_escape($item_tag);?>><!-- Item wrap End-->
+					</<?php echo ha_escape_tags($item_tag);?>><!-- Item wrap End-->
 				<?php endforeach; ?>
 			<?php endif; ?>
 		<!-- Hover Push Start-->
 			<?php if ('ha-hover-push' == $settings['view_style']): ?>
 				<?php foreach ($instagram_data as $key => $single): ?>
 					<?php if('yes' == $settings['show_link']){$this->set_render_attribute('instagram-item', 'href', esc_url($single['permalink']));} ?>
-					<<?php echo tag_escape($item_tag).' '.$this->get_render_attribute_string('instagram-item');?>>
+					<<?php echo ha_escape_tags($item_tag).' '.$this->get_render_attribute_string('instagram-item');?>>
 						<?php $image_src = ($single['media_type'] == 'VIDEO') ? $single['thumbnail_url'] : $single['media_url']; ?>
 						<img src="<?php echo esc_url($image_src); ?>" alt="">
 						<div class="ha-insta-likes-comments">
@@ -994,7 +994,7 @@ class Instagram_Feed extends Base {
 								</div>
 							<?php endif;?>
 						</div>
-					</<?php echo tag_escape($item_tag);?>>
+					</<?php echo ha_escape_tags($item_tag);?>>
 				<?php endforeach; ?>
 			<?php endif; ?>
 		<!-- Feed View Start-->

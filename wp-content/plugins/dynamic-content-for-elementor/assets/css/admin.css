@@ -93,7 +93,7 @@ body.admin_page_dce_info {
 }
 .dce-form-table, .dce-metabox-holder {
   max-width: 1000px;
-  margin-bottom: 15px;
+  margin: 15px 0;
 }
 .dce-form-table h3 {
   margin: 4px;
@@ -971,4 +971,314 @@ body.admin_page_dce_info {
 
 .dce-disabled {
   opacity: 0.5;
+}
+
+
+/* Dashboard */
+.dce-modules {
+  margin-bottom: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.dce-container h3 {
+  font-size: 3em;
+  font-weight: 700;
+}
+
+.dce-modules>div.dce-feature {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ccc;
+  width: 19%;
+  min-height: 150px;
+  margin: 0 .5% 1% .5%;
+  padding: 25px 25px 20px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.dce-modules>div.dce-feature p {
+  line-height: normal;
+  text-align: center;
+}
+.dce-modules>div.dce-feature p.used {
+  background: #eee;
+  padding: 10px;
+  font-size: 10px;
+  border-radius: 20px;
+}
+.dce-modules>div.dce-feature p.legacy {
+  background: #AB0000;
+  color: white;
+  padding: 10px;
+  font-size: 10px;
+  border-radius: 20px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .dce-modules>div.dce-feature {
+    width: 23%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .dce-modules>div.dce-feature {
+    width: 31%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+
+  /* For tablets: */
+  .dce-modules>div.dce-feature {
+    width: 31%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+
+  /* For smartphone: */
+  .dce-modules>div.dce-feature {
+    width: 44%;
+  }
+}
+
+.dce-modules>div.dce-feature .icon {
+  text-align: center;
+  font-size: 6em;
+  margin-bottom: 20px;
+  align-content: center;
+}
+
+.dce-modules>div.dce-feature h4 {
+  display: block;
+  font-size: 1.6em;
+  line-height: 1.2em;
+  text-align: center;
+  margin: 0;
+  padding-bottom: 0
+}
+
+.dce-feature .dce-column-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.dce-modules>div.dce-feature.widget-activated {
+  /* background: #EFFDEF; */
+}
+
+.dce-modules>div.dce-feature.required-plugin {
+  background: #FDEFEF;
+}
+
+.dce-modules>div.dce-feature .warning {
+  text-align: center;
+}
+
+.dce-help a {
+  text-decoration: none !important;
+}
+.dce-feature {
+  position: absolute;
+}
+.dce-check {
+  margin-top: 20px;
+  height: 50px;
+}
+.dce-check [id^="dce-feature-"]
+{
+    display: none !important;
+}
+.dce-check label
+{
+    position: absolute;
+    top: 10%;
+    right: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    background-color: #f72414;
+    transform: translateY(-25%);
+    border-radius: 50%;
+    box-shadow: 0 7px 10px #ffbeb8;
+    cursor: pointer;
+    transition: 0.2s ease transform, 0.2s ease background-color, 0.2s ease box-shadow;
+    overflow: hidden;
+    z-index: 1;
+}
+.dce-check-all {
+  position: relative;
+}
+.dce-check-all label {
+  margin: 0;
+}
+
+.dce-check label:before
+{
+    content: "";
+    position: absolute;
+    top: 33%;
+    right: 0;
+    left: 0;
+    width: 35px;
+    height: 35px;
+    margin: 0 auto;
+    background-color: #fff;
+    transform: translateY(-25%);
+    border-radius: 50%;
+    box-shadow: inset 0 7px 10px #ffbeb8;
+    transition: 0.2s ease width, 0.2s ease height;
+}
+
+.dce-check label:hover:before
+{
+    top: 34%;
+    width: 30px;
+    height: 30px;
+    box-shadow: inset 0 7px 10px #ff9d96;
+}
+
+.dce-check label:active
+{
+    transform: translateY(-10%) scale(0.9);
+}
+
+.dce-check #tick_mark
+{
+    position: absolute;
+    top: -1px;
+    right: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    margin-left: 6px;
+    transform: rotateZ(-40deg);
+}
+
+.dce-check #tick_mark:before, .dce-check #tick_mark:after
+{
+    content: "";
+    position: absolute;
+    background-color: #fff;
+    border-radius: 2px;
+    opacity: 0;
+    transition: 0.2s ease transform, 0.2s ease opacity;
+}
+
+.dce-check #tick_mark:before
+{
+    left: 0;
+    bottom: 0;
+    width: 5px;
+    height: 15px;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.23);
+    transform: translateY(-34px)
+}
+
+.dce-check #tick_mark:after
+{
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.23);
+    transform: translateX(39px)
+}
+
+.dce-check [id^="dce-feature-"]:checked + label
+{
+    background-color: #07d410;
+    box-shadow: 0 3px 5px #92ff97;
+}
+
+.dce-check [id^="dce-feature-"]:checked + label:before
+{
+    width: 0;
+    height: 0;
+}
+
+.dce-check [id^="dce-feature-"]:checked + label #tick_mark:before, .dce-check [id^="dce-feature-"]:checked + label #tick_mark:after
+{
+    transform: translate(0);
+    opacity: 1;
+}
+
+.dce-check #tick_mark_small
+{
+    position: absolute;
+    top: -1px;
+    right: 0;
+    left: 0;
+    width: 7px;
+    height: 7px;
+    margin: 0 auto;
+    margin-left: 3px;
+    transform: rotateZ(-40deg);
+}
+
+.dce-check #tick_mark_small:before, .dce-check #tick_mark_small:after
+{
+    content: "";
+    position: absolute;
+    background-color: #fff;
+    border-radius: 1px;
+    opacity: 0;
+    transition: 0.2s ease transform, 0.2s ease opacity;
+}
+
+.dce-check #tick_mark_small:before
+{
+    left: 0;
+    bottom: 0;
+    width: 3px;
+    height: 7px;
+    box-shadow: -1px 0 3px rgba(0,0,0,0.23);
+    transform: translateY(-34px)
+}
+
+.dce-check #tick_mark_small:after
+{
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.23);
+    transform: translateX(39px)
+}
+
+.dce-check-all label
+{
+    top: 10%;
+    right: 0;
+    left: 0;
+    width: 25px;
+    height: 25px;
+    transform: translateY(-25%);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s ease transform, 0.2s ease background-color, 0.2s ease box-shadow;
+    overflow: hidden;
+    z-index: 1;
+}
+.dce-check-all label:before
+{
+    content: "";
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    transform: translateY(-25%);
+    transition: 0.2s ease width, 0.2s ease height;
+    background-color: #f72414;
 }

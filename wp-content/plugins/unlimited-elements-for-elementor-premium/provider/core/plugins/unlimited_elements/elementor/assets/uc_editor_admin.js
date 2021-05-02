@@ -179,6 +179,8 @@ function UniteCreatorElementorEditorAdmin(){
 		var isCurrentTaxRelevant = objTax.hasOwnProperty(selectedTax);
 		if(isCurrentTaxRelevant == false && firstVisibleOption){
 			
+			trace("trigger 1");
+			
 			selectPostTaxonomy.val(firstVisibleOption).trigger("change");
 		}
 			
@@ -227,9 +229,15 @@ function UniteCreatorElementorEditorAdmin(){
 			placeholder:placeholder
 		});
 				
-		if(jQuery.isEmptyObject(selectedCatID) == false)
-			objSelectPostCategory.val(selectedCatID).trigger("change");
-		
+		if(jQuery.isEmptyObject(selectedCatID) == false){
+			
+			objSelectPostCategory.val(selectedCatID);
+			
+			//var newSelectedCatID = objSelectPostCategory.select2("val");
+			
+			objSelectPostCategory.trigger("change");
+			
+		}
 	}
 	
 	/**
@@ -568,6 +576,7 @@ function UniteCreatorElementorEditorAdmin(){
 			arrInitIDs.push(item.id);
 		}
 		
+		trace("trigger 3");
 		objSelect.val(arrInitIDs).trigger("change");
 		
 	}
@@ -576,7 +585,7 @@ function UniteCreatorElementorEditorAdmin(){
 	 * init post id's selector
 	 */
 	function initPostIDsSelect(objSelect){
-				
+		
 		var widgetSettings = getLastOpenedWidgetSettings();
 		
 		var settingName = objSelect.data("setting");

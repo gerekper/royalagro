@@ -13,7 +13,7 @@ use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Control_Media;
 use Elementor\Repeater;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Utils;
 
 defined( 'ABSPATH' ) || die();
@@ -541,7 +541,7 @@ class Testimonial_Carousel extends Base {
                 'name' => 'testimonial_typography',
                 'label' => __( 'Typography', 'happy-addons-pro' ),
                 'selector' => '{{WRAPPER}} .ha-testimonial-carousel__content',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                'scheme' => Typography::TYPOGRAPHY_3,
             ]
         );
 
@@ -710,7 +710,7 @@ class Testimonial_Carousel extends Base {
                 'name' => 'name_typography',
                 'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '{{WRAPPER}} .ha-testimonial-carousel__reviewer-name',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+				'scheme' => Typography::TYPOGRAPHY_2,
             ]
 		);
 
@@ -752,7 +752,7 @@ class Testimonial_Carousel extends Base {
                 'name' => 'title_typography',
                 'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '{{WRAPPER}} .ha-testimonial-carousel__reviewer-title',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
             ]
 		);
 

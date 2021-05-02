@@ -10,8 +10,8 @@ namespace UltimateElementor\Modules\BusinessHours\Widgets;
 // Elementor Classes.
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Repeater;
 
 // UltimateElementor Classes.
@@ -173,9 +173,8 @@ class Business_Hours extends Common_Widget {
 			array(
 				'label'     => __( 'Day Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_SECONDARY,
 				),
 				'default'   => '#db6159',
 				'selectors' => array(
@@ -194,9 +193,8 @@ class Business_Hours extends Common_Widget {
 			array(
 				'label'     => __( 'Time Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_4,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_ACCENT,
 				),
 				'default'   => '#db6159',
 				'selectors' => array(
@@ -446,9 +444,8 @@ class Business_Hours extends Common_Widget {
 			array(
 				'label'     => __( 'Day Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-business-day' => 'color: {{VALUE}};',
@@ -463,7 +460,9 @@ class Business_Hours extends Common_Widget {
 			array(
 				'label'    => __( 'Day Typography', 'uael' ),
 				'name'     => 'business_day_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				),
 				'selector' => '{{WRAPPER}} .heading-date',
 			)
 		);
@@ -474,9 +473,8 @@ class Business_Hours extends Common_Widget {
 			array(
 				'label'     => __( 'Time Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-business-time' => 'color: {{VALUE}};',
@@ -490,7 +488,9 @@ class Business_Hours extends Common_Widget {
 			array(
 				'label'    => __( 'Time Typography', 'uael' ),
 				'name'     => 'business_timings_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				),
 				'selector' => '{{WRAPPER}} .heading-time',
 			)
 		);

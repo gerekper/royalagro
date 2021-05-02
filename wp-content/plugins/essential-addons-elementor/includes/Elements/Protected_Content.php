@@ -7,7 +7,7 @@ use \Elementor\Group_Control_Border;
 use \Elementor\Group_Control_Box_Shadow;
 use \Elementor\Group_Control_Typography;
 use \Elementor\Plugin;
-use \Elementor\Scheme_Typography;
+use \Elementor\Core\Schemes\Typography;
 use \Elementor\Widget_Base;
 use \Essential_Addons_Elementor\Pro\Classes\Helper;
 
@@ -344,7 +344,7 @@ class Protected_Content extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'eael_protected_content_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_2,
+				'scheme'   => Typography::TYPOGRAPHY_2,
 				'selector' => '{{WRAPPER}} .eael-protected-content .protected-content',
 			]
 		);
@@ -426,7 +426,7 @@ class Protected_Content extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name'      => 'eael_protected_content_message_text_typography',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_2,
+				'scheme'    => Typography::TYPOGRAPHY_2,
 				'selector'  => '{{WRAPPER}} .eael-protected-content-message',
 				'condition' => [
 					'eael_protected_content_message_type' => 'text',
@@ -505,7 +505,7 @@ class Protected_Content extends Widget_Base {
             Group_Control_Typography::get_type(),
             [
                 'name' => 'eael_protected_content_error_message_text_typography',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+                'scheme' => Typography::TYPOGRAPHY_2,
                 'selector' => '{{WRAPPER}} .protected-content-error-msg',
                 'condition' => [
                     'eael_protected_content_message_type' => 'text',

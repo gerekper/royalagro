@@ -13,8 +13,8 @@ use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 
 // UltimateElementor Classes.
 use UltimateElementor\Base\Common_Widget;
@@ -939,7 +939,9 @@ class Offcanvas extends Common_Widget {
 			array(
 				'name'      => 'btn_typography',
 				'label'     => __( 'Typography', 'uael' ),
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_4,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+				),
 				'selector'  => '{{WRAPPER}} .uael-offcanvas-action-wrap a.elementor-button, {{WRAPPER}} .uael-offcanvas-action-wrap .elementor-button',
 				'condition' => array(
 					'offcanvas_on' => 'button',
@@ -1001,9 +1003,8 @@ class Offcanvas extends Common_Widget {
 					'condition' => array(
 						'offcanvas_on' => 'button',
 					),
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_4,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_ACCENT,
 					),
 				)
 			);
@@ -1086,9 +1087,8 @@ class Offcanvas extends Common_Widget {
 					'condition' => array(
 						'offcanvas_on' => 'button',
 					),
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_4,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_ACCENT,
 					),
 				)
 			);
@@ -1163,9 +1163,8 @@ class Offcanvas extends Common_Widget {
 					array(
 						'label'     => __( 'Icon Color', 'uael' ),
 						'type'      => Controls_Manager::COLOR,
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_3,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_TEXT,
 						),
 						'default'   => '',
 						'selectors' => array(
@@ -1210,9 +1209,8 @@ class Offcanvas extends Common_Widget {
 					array(
 						'label'     => __( 'Icon Color', 'uael' ),
 						'type'      => Controls_Manager::COLOR,
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_3,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_TEXT,
 						),
 						'default'   => '',
 						'selectors' => array(
@@ -1417,7 +1415,9 @@ class Offcanvas extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'      => 'menu_typography',
-					'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
+					'global'    => array(
+						'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+					),
 					'selector'  => '{{WRAPPER}} .uael-offcanvas-menu',
 					'condition' => array(
 						'content_type' => 'menu',
@@ -1465,9 +1465,8 @@ class Offcanvas extends Common_Widget {
 					array(
 						'label'     => __( 'Text Color', 'uael' ),
 						'type'      => Controls_Manager::COLOR,
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_3,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_TEXT,
 						),
 						'default'   => '',
 						'selectors' => array(
@@ -1493,9 +1492,8 @@ class Offcanvas extends Common_Widget {
 					array(
 						'label'     => __( 'Text Color', 'uael' ),
 						'type'      => Controls_Manager::COLOR,
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_4,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_ACCENT,
 						),
 						'selectors' => array(
 							'{{WRAPPER}} .uael-offcanvas-menu .menu-item a:hover' => 'color: {{VALUE}}',
@@ -1541,7 +1539,9 @@ class Offcanvas extends Common_Widget {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'submenu_typography',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				),
 				'selector'  => '{{WRAPPER}} .uael-offcanvas-menu .sub-menu',
 				'condition' => array(
 					'content_type'     => 'menu',
@@ -1589,9 +1589,8 @@ class Offcanvas extends Common_Widget {
 				array(
 					'label'     => __( 'Text Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 					'default'   => '',
 					'selectors' => array(
@@ -1621,9 +1620,8 @@ class Offcanvas extends Common_Widget {
 					array(
 						'label'     => __( 'Text Color', 'uael' ),
 						'type'      => Controls_Manager::COLOR,
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_4,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_ACCENT,
 						),
 						'selectors' => array(
 							'{{WRAPPER}} .uael-offcanvas-menu .sub-menu a:hover' => 'color: {{VALUE}}',
@@ -1680,9 +1678,8 @@ class Offcanvas extends Common_Widget {
 				array(
 					'label'     => __( 'Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 					'selectors' => array(
 						'.uaoffcanvas-{{ID}} .uael-offcanvas-content' => 'color: {{VALUE}};',
@@ -1698,7 +1695,9 @@ class Offcanvas extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'      => 'content_typography',
-					'scheme'    => Scheme_Typography::TYPOGRAPHY_3,
+					'global'    => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector'  => '.uaoffcanvas-{{ID}} .uael-offcanvas-content .uael-text-editor',
 					'separator' => 'before',
 					'condition' => array(

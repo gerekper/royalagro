@@ -12,8 +12,8 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Group_Control_Background;
 
 // UltimateElementor Classes.
@@ -280,9 +280,8 @@ class CfStyler extends Common_Widget {
 				array(
 					'label'     => __( 'Label Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 					'default'   => '',
 					'selectors' => array(
@@ -296,9 +295,8 @@ class CfStyler extends Common_Widget {
 				array(
 					'label'     => __( 'Input Text / Placeholder Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-cf7-style .wpcf7 input:not([type=submit]),{{WRAPPER}} .uael-cf7-style .wpcf7 input::placeholder, {{WRAPPER}} .uael-cf7-style .wpcf7 select, {{WRAPPER}} .uael-cf7-style .wpcf7 textarea, {{WRAPPER}} .uael-cf7-style .wpcf7 textarea::placeholder,{{WRAPPER}} .uael-cf7-style .uael-cf7-select-custom:after' => 'color: {{VALUE}};',
@@ -567,9 +565,8 @@ class CfStyler extends Common_Widget {
 				array(
 					'label'     => __( 'Selected Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 					'condition' => array(
 						'cf7_radio_check_adv!' => '',
@@ -766,9 +763,8 @@ class CfStyler extends Common_Widget {
 							'types'          => array( 'classic', 'gradient' ),
 							'fields_options' => array(
 								'color' => array(
-									'scheme' => array(
-										'type'  => Scheme_Color::get_type(),
-										'value' => Scheme_Color::COLOR_4,
+									'global' => array(
+										'default' => Global_Colors::COLOR_ACCENT,
 									),
 								),
 							),
@@ -970,7 +966,9 @@ class CfStyler extends Common_Widget {
 					Group_Control_Typography::get_type(),
 					array(
 						'name'     => 'cf7_message_typo',
-						'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+						'global'   => array(
+							'default' => Global_Typography::TYPOGRAPHY_TEXT,
+						),
 						'selector' => '{{WRAPPER}} .uael-cf7-style span.wpcf7-not-valid-tip',
 					)
 				);
@@ -1109,7 +1107,9 @@ class CfStyler extends Common_Widget {
 					Group_Control_Typography::get_type(),
 					array(
 						'name'     => 'cf7_validation_typo',
-						'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+						'global'   => array(
+							'default' => Global_Typography::TYPOGRAPHY_TEXT,
+						),
 						'selector' => '{{WRAPPER}} .uael-cf7-style .wpcf7 .wpcf7-validation-errors, {{WRAPPER}} .uael-cf7-style div.wpcf7-mail-sent-ng,{{WRAPPER}} .uael-cf7-style .wpcf7-mail-sent-ok,{{WRAPPER}} .uael-cf7-style .wpcf7-acceptance-missing,{{WRAPPER}} .uael-cf7-style .wpcf7 form .wpcf7-response-output',
 					)
 				);
@@ -1211,7 +1211,9 @@ class CfStyler extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'form_label_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector' => '{{WRAPPER}} .uael-cf7-style .wpcf7 form.wpcf7-form label',
 				)
 			);
@@ -1229,7 +1231,9 @@ class CfStyler extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'input_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector' => '{{WRAPPER}} .uael-cf7-style .wpcf7 input:not([type=submit]), {{WRAPPER}} .uael-cf7-style .wpcf7 input::placeholder, {{WRAPPER}} .wpcf7 select,{{WRAPPER}} .uael-cf7-style .wpcf7 textarea, {{WRAPPER}} .uael-cf7-style .wpcf7 textarea::placeholder, {{WRAPPER}} .uael-cf7-style input[type=range]::-webkit-slider-thumb,{{WRAPPER}} .uael-cf7-style .uael-cf7-select-custom',
 				)
 			);
@@ -1248,7 +1252,9 @@ class CfStyler extends Common_Widget {
 				array(
 					'name'     => 'btn_typography',
 					'label'    => __( 'Typography', 'uael' ),
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					),
 					'selector' => '{{WRAPPER}} .uael-cf7-style input[type=submit]',
 				)
 			);
@@ -1269,7 +1275,9 @@ class CfStyler extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'      => 'radio_check_typography',
-					'scheme'    => Scheme_Typography::TYPOGRAPHY_4,
+					'global'    => array(
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					),
 					'condition' => array(
 						'cf7_radio_check_adv!' => '',
 					),

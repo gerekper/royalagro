@@ -9,18 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class DCE_Extension_Animations extends DCE_Extension_Prototype {
-
 	public $name = 'Animations';
 	public $has_controls = true;
 	protected $is_common = true;
-
-	public static function get_description() {
-		return __( 'Predefined CSS-Animations with keyframe.', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/loop-animations/';
-	}
 
 	private function add_controls( $element, $args ) {
 
@@ -28,7 +19,7 @@ class DCE_Extension_Animations extends DCE_Extension_Prototype {
 
 		$element->add_control(
 				'enabled_animations', [
-					'label' => __( 'Enable Animations', 'dynamic-content-for-elementor' ),
+					'label' => __( 'Animations', 'dynamic-content-for-elementor' ),
 					'type' => Controls_Manager::SWITCHER,
 					'return_value' => 'yes',
 				]

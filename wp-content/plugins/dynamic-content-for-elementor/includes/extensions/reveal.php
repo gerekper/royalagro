@@ -10,17 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class DCE_Extension_Reveal extends DCE_Extension_Prototype {
-
 	public $name = 'Reveal';
 	public $has_controls = true;
-
-	public static function get_description() {
-		return __( 'Reveal animation on scroll for Widgets', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/scroll-reveals/';
-	}
 
 	public function get_style_depends() {
 		return [ 'dce-reveal' ];
@@ -36,7 +27,7 @@ class DCE_Extension_Reveal extends DCE_Extension_Prototype {
 
 		$element->add_control(
 			'enabled_reveal', [
-				'label' => __( 'Enable Reveal', 'dynamic-content-for-elementor' ),
+				'label' => __( 'Reveal', 'dynamic-content-for-elementor' ),
 				'type' => Controls_Manager::SWITCHER,
 				'return_value' => 'yes',
 				'frontend_available' => true,
@@ -109,9 +100,6 @@ class DCE_Extension_Reveal extends DCE_Extension_Prototype {
 				'type' => Controls_Manager::COLOR,
 				'frontend_available' => true,
 				'default' => '#ccc',
-				/*'selectors' => [
-					'{{WRAPPER}} .cd-modal-action .btn' => 'color: {{VALUE}};',
-				],*/
 				'condition' => [
 					'enabled_reveal' => 'yes',
 				],
@@ -121,7 +109,6 @@ class DCE_Extension_Reveal extends DCE_Extension_Prototype {
 	}
 
 	protected function add_actions() {
-
 		// Activate controls for widgets
 		add_action('elementor/element/common/dce_section_reveal_advanced/before_section_end', function( $element, $args ) {
 			$this->add_controls( $element, $args );
@@ -130,7 +117,6 @@ class DCE_Extension_Reveal extends DCE_Extension_Prototype {
 		add_filter( 'elementor/widget/print_template', array( $this, 'reveal_print_template' ), 9, 2 );
 
 		add_action( 'elementor/widget/render_content', array( $this, 'reveal_render_template' ), 9, 2 );
-
 	}
 
 	public function reveal_print_template( $content, $widget ) {
@@ -147,12 +133,7 @@ class DCE_Extension_Reveal extends DCE_Extension_Prototype {
 	public function reveal_render_template( $content, $widget ) {
 		$settings = $widget->get_settings_for_display();
 		if ( $settings['enabled_reveal'] ) {
-
 			$this->_enqueue_alles();
-
-			if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
-
-			}
 			$id_item = $widget->get_id();
 			$content = '<div id="reveal-' . $id_item . '" class="revealFx">' . $content . '</div>';
 		}

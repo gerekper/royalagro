@@ -192,7 +192,7 @@ class Skin_Gridtofullscreen3d extends Skin_Grid {
 			'gridtofullscreen3d_easing_morph_ease_to_fullscreen', [
 				'label' => __( 'Equation to fullscreen', 'dynamic-content-for-elementor' ),
 				'type' => Controls_Manager::SELECT,
-				'options' => [ '' => __( 'Default', 'dynamic-content-for-elementor' ) ] + Helper::get_gsap_timingFunctions(),
+				'options' => [ '' => __( 'Default', 'dynamic-content-for-elementor' ) ] + Helper::get_gsap_timing_functions(),
 				'default' => '',
 				'frontend_available' => true,
 				'label_block' => false,
@@ -235,7 +235,7 @@ class Skin_Gridtofullscreen3d extends Skin_Grid {
 			'gridtofullscreen3d_easing_morph_ease_to_grid', [
 				'label' => __( 'Equation to fullscreen', 'dynamic-content-for-elementor' ),
 				'type' => Controls_Manager::SELECT,
-				'options' => [ '' => __( 'Default', 'dynamic-content-for-elementor' ) ] + Helper::get_gsap_timingFunctions(),
+				'options' => [ '' => __( 'Default', 'dynamic-content-for-elementor' ) ] + Helper::get_gsap_timing_functions(),
 				'default' => '',
 				'frontend_available' => true,
 				'label_block' => false,

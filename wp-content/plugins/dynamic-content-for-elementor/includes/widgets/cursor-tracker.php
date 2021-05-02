@@ -14,25 +14,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_CursorTracker extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-cursorTracker';
-	}
-
-	public function get_title() {
-		return __( 'Cursor Tracker', 'dynamic-content-for-elementor' );
-	}
-	public function get_description() {
-		return __( 'An element that follows the cursor and indicates the level of scrolling', 'dynamic-content-for-elementor' );
-	}
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/cursor-tracker/';
-	}
-	public function get_icon() {
-		return 'icon-dyn-cursor-tracker';
-	}
-	public static function get_position() {
-		return 1;
-	}
 	public function get_script_depends() {
 		return [ 'dce-gsap-lib', 'dce-cursorTracker-js' ];
 	}
@@ -43,83 +24,82 @@ class DCE_Widget_CursorTracker extends DCE_Widget_Prototype {
 
 	protected function _register_controls() {
 		$this->start_controls_section(
-				'section_cursorTracker_settings', [
-					'label' => __( 'Cursor', 'dynamic-content-for-elementor' ),
-				]
+			'section_cursorTracker_settings', [
+				'label' => __( 'Cursor', 'dynamic-content-for-elementor' ),
+			]
 		);
 
 		$this->add_responsive_control(
-				'cursortracker_dimension',
-				[
-					'label' => __( 'Dimension', 'dynamic-content-for-elementor' ),
-					'type' => Controls_Manager::SLIDER,
-					'default' => [
-						'size' => '',
-						'unit' => 'px',
+			'cursortracker_dimension',
+			[
+				'label' => __( 'Dimension', 'dynamic-content-for-elementor' ),
+				'type' => Controls_Manager::SLIDER,
+				'default' => [
+					'size' => '',
+					'unit' => 'px',
+				],
+				'range' => [
+					'px' => [
+						'min' => 10,
+						'max' => 500,
+						'step' => 1,
 					],
-					'range' => [
-						'px' => [
-							'min' => 10,
-							'max' => 500,
-							'step' => 1,
-						],
-					],
-					'selectors' => [
-						'#cursors-{{ID}}' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
-					],
-				]
+				],
+				'selectors' => [
+					'#cursors-{{ID}}' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+				],
+			]
 		);
 
 		$this->start_controls_tabs( 'cursortracker_colors' );
 
 		$this->start_controls_tab(
-				'cursortracker_normal',
-				[
-					'label' => __( 'Normal', 'dynamic-content-for-elementor' ),
-
-				]
+			'cursortracker_normal',
+			[
+				'label' => __( 'Normal', 'dynamic-content-for-elementor' ),
+			]
 		);
 		$this->add_responsive_control(
-				'cursortracker_strokesize',
-				[
-					'label' => __( 'Stroke Width', 'dynamic-content-for-elementor' ),
-					'type' => Controls_Manager::SLIDER,
-					'default' => [
-						'size' => '',
-						'unit' => 'px',
+			'cursortracker_strokesize',
+			[
+				'label' => __( 'Stroke Width', 'dynamic-content-for-elementor' ),
+				'type' => Controls_Manager::SLIDER,
+				'default' => [
+					'size' => '',
+					'unit' => 'px',
+				],
+				'range' => [
+					'px' => [
+						'min' => 1,
+						'max' => 40,
+						'step' => 1,
 					],
-					'range' => [
-						'px' => [
-							'min' => 1,
-							'max' => 40,
-							'step' => 1,
-						],
-					],
-					'selectors' => [
-						'#cursors-{{ID}} .progress-wrap svg.progress-circle path.dce-cursortrack-path1, #cursors-{{ID}} .progress-wrap svg.progress-circle path.dce-cursortrack-path2' => 'stroke-width: {{SIZE}};',
-					],
-				]
+				],
+				'selectors' => [
+					'#cursors-{{ID}} .progress-wrap svg.progress-circle path.dce-cursortrack-path1, #cursors-{{ID}} .progress-wrap svg.progress-circle path.dce-cursortrack-path2' => 'stroke-width: {{SIZE}};',
+				],
+			]
 		);
 		$this->add_control(
-				'cursortracker_color_opacity',
-				[
-					'label' => __( 'Opacity', 'dynamic-content-for-elementor' ),
-					'type' => Controls_Manager::SLIDER,
-					'default' => [
-						'size' => '',
-						'unit' => '%',
+			'cursortracker_color_opacity',
+			[
+				'label' => __( 'Opacity', 'dynamic-content-for-elementor' ),
+				'type' => Controls_Manager::SLIDER,
+				'default' => [
+					'size' => '',
+					'unit' => '%',
+				],
+				'range' => [
+					'%' => [
+						'min' => 0.1,
+						'max' => 1,
+						'step' => 0.1,
 					],
-					'range' => [
-						'%' => [
-							'min' => 0.1,
-							'max' => 1,
-							'step' => 0.1,
-						],
-					],
-					'selectors' => [
-						'#cursors-{{ID}} .progress-wrap svg.progress-circle path.dce-cursortrack-path2' => 'opacity: {{SIZE}};',
-					],
-				]
+				],
+				'selectors' => [
+					'#cursors-{{ID}} .progress-wrap svg.progress-circle path.dce-cursortrack-path2' => 'opacity: {{SIZE}};',
+				],
+			]
 		);
 		$this->add_control(
 			'cursortracker_color_circle', [
@@ -260,28 +240,28 @@ class DCE_Widget_CursorTracker extends DCE_Widget_Prototype {
 			]
 		);
 		$this->add_responsive_control(
-				'cursortracker_strokesize_scrollprogress',
-				[
-					'label' => __( 'Stroke Width', 'dynamic-content-for-elementor' ),
-					'type' => Controls_Manager::SLIDER,
-					'default' => [
-						'size' => '',
-						'unit' => 'px',
+			'cursortracker_strokesize_scrollprogress',
+			[
+				'label' => __( 'Stroke Width', 'dynamic-content-for-elementor' ),
+				'type' => Controls_Manager::SLIDER,
+				'default' => [
+					'size' => '',
+					'unit' => 'px',
+				],
+				'range' => [
+					'px' => [
+						'min' => 1,
+						'max' => 40,
+						'step' => 1,
 					],
-					'range' => [
-						'px' => [
-							'min' => 1,
-							'max' => 40,
-							'step' => 1,
-						],
-					],
-					'selectors' => [
-						'#cursors-{{ID}} .progress-wrap svg.progress-circle path.dce-cursortrack-path1' => 'stroke-width: {{SIZE}};',
-					],
-					'condition' => [
-						'cursortracker_scroll!' => '',
-					],
-				]
+				],
+				'selectors' => [
+					'#cursors-{{ID}} .progress-wrap svg.progress-circle path.dce-cursortrack-path1' => 'stroke-width: {{SIZE}};',
+				],
+				'condition' => [
+					'cursortracker_scroll!' => '',
+				],
+			]
 		);
 		$this->add_control(
 			'cursortracker_color_scrollprogress', [
@@ -349,7 +329,4 @@ class DCE_Widget_CursorTracker extends DCE_Widget_Prototype {
 
 	}
 
-	protected function _content_template() {
-
-	}
 }

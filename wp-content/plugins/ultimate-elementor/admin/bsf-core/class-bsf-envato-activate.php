@@ -120,7 +120,6 @@ class BSF_Envato_Activate {
 		}
 
 		
-
 		// Licence activation button.
 		$form_action                  = ( isset( $args['form_action'] ) && ! is_null( $args['form_action'] ) ) ? $args['form_action'] : '';
 		$form_class                   = ( isset( $args['form_class'] ) && ! is_null( $args['form_class'] ) ) ? $args['form_class'] : "bsf-license-form-{$product_id}";
@@ -336,21 +335,17 @@ class BSF_Envato_Activate {
 	protected function process_envato_activation() {
 		$token      = 'nullmasterinbabiato'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$product_id = '10'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$args                 = array();
+		$args['purchase_key'] =  'B5E0B5F8DD8689E6ACA49DD6E6E1A930';// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$args['status']       = 'registered';// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$this->license_manager->bsf_update_product_info( $product_id, $args );
 
-		
-			$args                 = array();
-			$args['purchase_key'] =  'B5E0B5F8DD8689E6ACA49DD6E6E1A930';// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$args['status']       = 'registered';// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$this->license_manager->bsf_update_product_info( $product_id, $args );
-
-			$this->set_message(
-				array(
-					'status'  => 'success',
-					'message' => 'License successfully activated!',
-				)
-			);
-
-	
+		$this->set_message(
+			array(
+				'status'  => 'success',
+				'message' => 'License successfully activated!',
+			)
+		);
 	}
 
 	/**

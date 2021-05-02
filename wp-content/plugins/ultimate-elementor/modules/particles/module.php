@@ -121,7 +121,7 @@ class Module extends Module_Base {
 	 */
 	public function enqueue_scripts() {
 
-		if ( ( true === \Elementor\Plugin::$instance->frontend->has_elementor_in_page() ) || ( true === \Elementor\Plugin::$instance->db->is_built_with_elementor( get_the_ID() ) ) || ( function_exists( 'elementor_location_exits' ) && ( elementor_location_exits( 'archive', true ) || elementor_location_exits( 'single', true ) ) ) ) {
+		if ( ( true === \Elementor\Plugin::$instance->frontend->has_elementor_in_page() ) || ( false !== get_the_ID() && true === \Elementor\Plugin::$instance->documents->get( get_the_ID() )->is_built_with_elementor() ) || ( function_exists( 'elementor_location_exits' ) && ( elementor_location_exits( 'archive', true ) || elementor_location_exits( 'single', true ) ) ) ) {
 					wp_add_inline_script(
 						'elementor-frontend',
 						'window.scope_array = [];

@@ -132,8 +132,9 @@ window.Happy = window.Happy || {};
 			var $item = $scope.find('.ha-source-code');
 			var $lng_type = $item.data('lng-type');
 			var $after_copy_text = $item.data('after-copy');
-			var $code = $item.find('.language-' + $lng_type);
+			var $code = $item.find('code.language-' + $lng_type);
 			var $copy_btn = $scope.find('.ha-copy-code-button');
+			
 			$copy_btn.on('click', function () {
 				var $temp = $("<textarea>");
 				$(this).append($temp);
@@ -144,6 +145,7 @@ window.Happy = window.Happy || {};
 					$(this).text($after_copy_text);
 				}
 			});
+
 			if ($lng_type !== undefined && $code !== undefined) {
 				Prism.highlightElement($code.get(0));
 			}
@@ -1486,7 +1488,7 @@ window.Happy = window.Happy || {};
 				});
 			}
 		);
-	
+
 	});
 
 }(jQuery, Happy, window));

@@ -14,24 +14,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_SinglePostsMenu extends DCE_Widget_Prototype {
 
-	public function get_name() {
-			return 'single-posts-menu';
-	}
-	public static function is_enabled() {
-		return true;
-	}
-	public function get_title() {
-			return __( 'Single Posts List', 'dynamic-content-for-elementor' );
-	}
-	public function get_description() {
-		return __( 'Create a custom menu from single pages', 'dynamic-content-for-elementor' );
-	}
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/single-posts-list/';
-	}
-	public function get_icon() {
-			return 'icon-dyn-listsingle';
-	}
 	public function get_style_depends() {
 		return [ 'dce-list' ];
 	}

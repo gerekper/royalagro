@@ -14,46 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_TitleType extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-titleType';
-	}
-
-	public function get_title() {
-		return __( 'Title Type', 'dynamic-content-for-elementor' );
-	}
-	public function get_description() {
-		return __( 'Insert the title of the post type on a page', 'dynamic-content-for-elementor' );
-	}
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/title-type/';
-	}
-	public function get_icon() {
-		return 'icon-dyn-title-type';
-	}
-
-	public static function get_position() {
-		return 1;
-	}
 	public function get_style_depends() {
 		return [ 'dce-title' ];
 	}
-	
-	public function show_in_panel() {
-		if (! current_user_can('manage_options')) {
-			return false;
-		}
-		return true;
-	}
 
 	protected function _register_controls() {
-		if (current_user_can('manage_options') || ! is_admin()) {
-			$this->_register_controls_content();
-		} elseif (! current_user_can('manage_options') && is_admin()) {
-			$this->register_controls_non_admin_notice();
-		}
-	}
-
-	protected function _register_controls_content() {
 
 		$post_type_object = get_post_type_object( get_post_type() );
 
@@ -269,13 +234,13 @@ class DCE_Widget_TitleType extends DCE_Widget_Prototype {
 
 		$animation_class = ! empty( $settings['hover_animation'] ) ? 'elementor-animation-' . $settings['hover_animation'] : '';
 
-		$html = sprintf( '<%1$s class="dynamic-content-for-elementor-title %2$s">', $settings['html_tag'], $animation_class );
+		$html = sprintf( '<%1$s class="dynamic-content-for-elementor-title %2$s">', \DynamicContentForElementor\Helper::validate_html_tag( $settings['html_tag'] ), $animation_class );
 		if ( $link ) {
 			$html .= sprintf( '<a href="%1$s" %2$s>%3$s</a>', $link, $target, $title );
 		} else {
 			$html .= $title;
 		}
-		$html .= sprintf( '</%s>', $settings['html_tag'] );
+		$html .= sprintf( '</%s>', \DynamicContentForElementor\Helper::validate_html_tag( $settings['html_tag'] ) );
 
 		echo $html;
 	}

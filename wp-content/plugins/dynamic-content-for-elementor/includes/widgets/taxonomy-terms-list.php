@@ -18,26 +18,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_TaxonomyTermsMenu extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'taxonomy-terms-menu';
-	}
-
-	public function get_title() {
-		return __( 'Taxonomy Terms List', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_description() {
-		return __( 'Write a taxonomy for your article', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/taxonomy-terms-list/';
-	}
-
-	public function get_icon() {
-		return 'icon-dyn-parenttax';
-	}
-
 	public function get_style_depends() {
 		return [ 'dce-list' ];
 	}
@@ -48,7 +28,7 @@ class DCE_Widget_TaxonomyTermsMenu extends DCE_Widget_Prototype {
 		$this->start_controls_section(
 				'section_content',
 				[
-					'label' => __( 'Menu of terms from Taxonomy', 'dynamic-content-for-elementor' ),
+					'label' => $this->get_title(),
 				]
 		);
 		$this->add_control(
@@ -57,7 +37,7 @@ class DCE_Widget_TaxonomyTermsMenu extends DCE_Widget_Prototype {
 					'label' => __( 'Select Taxonomy', 'dynamic-content-for-elementor' ),
 					'type' => Controls_Manager::SELECT,
 					'options' => Helper::get_taxonomies(),
-					'default' => '',
+					'default' => 'category',
 				]
 		);
 		foreach ( $taxonomies as $tkey => $atax ) {

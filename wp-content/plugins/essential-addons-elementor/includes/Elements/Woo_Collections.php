@@ -4,7 +4,7 @@ namespace Essential_Addons_Elementor\Pro\Elements;
 
 use \Elementor\Controls_Manager;
 use \Elementor\Group_Control_Typography;
-use \Elementor\Scheme_Typography;
+use \Elementor\Core\Schemes\Typography;
 use \Elementor\Utils;
 use \Elementor\Widget_Base;
 use \Essential_Addons_Elementor\Pro\Classes\Helper;
@@ -444,7 +444,7 @@ class Woo_Collections extends Widget_Base
             [
                 'name' => 'eael_woo_collections_title_typography',
                 'label' => __('Title', 'essential-addons-elementor'),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                'scheme' => Typography::TYPOGRAPHY_1,
                 'selector' => '{{WRAPPER}} .eael-woo-collections-overlay-inner h2',
             ]
         );
@@ -480,7 +480,7 @@ class Woo_Collections extends Widget_Base
             [
                 'name' => 'eael_woo_collections_span_typography',
                 'label' => __('Subtitle', 'essential-addons-elementor'),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+                'scheme' => Typography::TYPOGRAPHY_1,
                 'selector' => '{{WRAPPER}} .eael-woo-collections-overlay-inner span',
                 'separator' => 'before',
             ]

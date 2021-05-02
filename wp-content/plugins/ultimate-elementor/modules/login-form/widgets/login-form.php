@@ -10,8 +10,8 @@ namespace UltimateElementor\Modules\LoginForm\Widgets;
 // Elementor Classes.
 use Elementor\Controls_Manager;
 use Elementor\Widget_Button;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
@@ -730,9 +730,8 @@ class LoginForm extends Common_Widget {
 				array(
 					'label'     => __( 'Text Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_2,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_SECONDARY,
 					),
 					'condition' => array(
 						'enable_separator' => 'yes',
@@ -747,7 +746,9 @@ class LoginForm extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'      => 'separator_typography',
-					'scheme'    => Scheme_Typography::TYPOGRAPHY_2,
+					'global'    => array(
+						'default' => Global_Typography::TYPOGRAPHY_SECONDARY,
+					),
 					'condition' => array(
 						'enable_separator' => 'yes',
 					),
@@ -1109,9 +1110,8 @@ class LoginForm extends Common_Widget {
 				array(
 					'label'      => __( 'Text Color', 'uael' ),
 					'type'       => Controls_Manager::COLOR,
-					'scheme'     => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_4,
+					'global'     => array(
+						'default' => Global_Colors::COLOR_ACCENT,
 					),
 					'selectors'  => array(
 						'{{WRAPPER}} .uael-login-form-footer, {{WRAPPER}} .uael-login-form-footer a' => 'color: {{VALUE}};',
@@ -1125,7 +1125,9 @@ class LoginForm extends Common_Widget {
 				array(
 					'name'       => 'footer_text_typography',
 					'selector'   => '{{WRAPPER}} .uael-login-form-footer',
-					'scheme'     => Scheme_Typography::TYPOGRAPHY_4,
+					'global'     => array(
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					),
 					'conditions' => $show_reg_condition,
 				)
 			);
@@ -1529,9 +1531,8 @@ class LoginForm extends Common_Widget {
 				array(
 					'label'      => __( 'Color', 'uael' ),
 					'type'       => Controls_Manager::COLOR,
-					'scheme'     => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'     => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 					'default'    => '',
 					'selectors'  => array(
@@ -1559,7 +1560,9 @@ class LoginForm extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'       => 'label_typo',
-					'scheme'     => Scheme_Typography::TYPOGRAPHY_3,
+					'global'     => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector'   => '{{WRAPPER}} .elementor-field-label, {{WRAPPER}} .uael-loginform-error, {{WRAPPER}} .uael-logged-in-message',
 					'conditions' => array(
 						'relation' => 'or',
@@ -1584,7 +1587,9 @@ class LoginForm extends Common_Widget {
 				array(
 					'label'     => __( 'Remember Me Typography', 'uael' ),
 					'name'      => 'rememberme_typo',
-					'scheme'    => Scheme_Typography::TYPOGRAPHY_3,
+					'global'    => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector'  => '{{WRAPPER}} .uael-login-form-remember',
 					'condition' => array(
 						'show_remember_me'  => 'yes',
@@ -1628,9 +1633,8 @@ class LoginForm extends Common_Widget {
 				array(
 					'label'     => __( 'Text / Placeholder Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_3,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_TEXT,
 					),
 					'default'   => '',
 					'selectors' => array(
@@ -1657,7 +1661,9 @@ class LoginForm extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'field_typo',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector' => '{{WRAPPER}} .elementor-field, {{WRAPPER}} .elementor-field::placeholder',
 				)
 			);
@@ -1878,7 +1884,9 @@ class LoginForm extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'button_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					),
 					'selector' => '{{WRAPPER}} .elementor-button, {{WRAPPER}} .elementor-button svg',
 				)
 			);
@@ -1921,9 +1929,8 @@ class LoginForm extends Common_Widget {
 						array(
 							'label'     => __( 'Background Color', 'uael' ),
 							'type'      => Controls_Manager::COLOR,
-							'scheme'    => array(
-								'type'  => Scheme_Color::get_type(),
-								'value' => Scheme_Color::COLOR_4,
+							'global'    => array(
+								'default' => Global_Colors::COLOR_ACCENT,
 							),
 							'selectors' => array(
 								'{{WRAPPER}} .elementor-button' => 'background-color: {{VALUE}};',
@@ -1985,9 +1992,8 @@ class LoginForm extends Common_Widget {
 						array(
 							'label'     => __( 'Background Color', 'uael' ),
 							'type'      => Controls_Manager::COLOR,
-							'scheme'    => array(
-								'type'  => Scheme_Color::get_type(),
-								'value' => Scheme_Color::COLOR_4,
+							'global'    => array(
+								'default' => Global_Colors::COLOR_ACCENT,
 							),
 							'selectors' => array(
 								'{{WRAPPER}} .elementor-button:hover' => 'background-color: {{VALUE}};',
@@ -2034,7 +2040,9 @@ class LoginForm extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'validation_message_typo',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector' => '{{WRAPPER}} .uael-loginform-error',
 				)
 			);

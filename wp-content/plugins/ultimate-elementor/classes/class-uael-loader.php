@@ -54,7 +54,7 @@ if ( ! class_exists( 'UAEL_Loader' ) ) {
 			define( 'UAEL_BASE', plugin_basename( UAEL_FILE ) );
 			define( 'UAEL_DIR', plugin_dir_path( UAEL_FILE ) );
 			define( 'UAEL_URL', plugins_url( '/', UAEL_FILE ) );
-			define( 'UAEL_VER', '1.30.0' );
+			define( 'UAEL_VER', '1.30.2' );
 			define( 'UAEL_MODULES_DIR', UAEL_DIR . 'modules/' );
 			define( 'UAEL_MODULES_URL', UAEL_URL . 'modules/' );
 			define( 'UAEL_SLUG', 'uae' );
@@ -76,6 +76,14 @@ if ( ! class_exists( 'UAEL_Loader' ) ) {
 				/* TO DO */
 				add_action( 'admin_notices', array( $this, 'uael_fails_to_load' ) );
 				add_action( 'network_admin_notices', array( $this, 'uael_fails_to_load' ) );
+				return;
+			}
+
+			$required_elementor_version = '3.0.0';
+
+			if ( defined( 'ELEMENTOR_VERSION' ) && ( ! version_compare( ELEMENTOR_VERSION, $required_elementor_version, '>=' ) ) ) {
+				add_action( 'admin_notices', array( $this, 'elementor_outdated' ) );
+				add_action( 'network_admin_notices', array( $this, 'elementor_outdated' ) );
 				return;
 			}
 
@@ -173,7 +181,7 @@ if ( ! class_exists( 'UAEL_Loader' ) ) {
 		public function uael_fails_to_load() {
 			$class = 'notice notice-error';
 			/* translators: %s: html tags */
-			$message = sprintf( __( 'The %1$sUltimate Addon for Elementor%2$s plugin requires %1$sElementor%2$s plugin installed & activated.', 'uael' ), '<strong>', '</strong>' );
+			$message = sprintf( __( 'The %1$sUltimate Addons for Elementor%2$s plugin requires %1$sElementor%2$s plugin installed & activated.', 'uael' ), '<strong>', '</strong>' );
 
 			$plugin = 'elementor/elementor.php';
 
@@ -184,6 +192,44 @@ if ( ! class_exists( 'UAEL_Loader' ) ) {
 
 				$action_url   = wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . $plugin . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $plugin );
 				$button_label = __( 'Activate Elementor', 'uael' );
+
+			} else {
+				if ( ! current_user_can( 'install_plugins' ) ) {
+					return;
+				}
+
+				$action_url   = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=elementor' ), 'install-plugin_elementor' );
+				$button_label = __( 'Install Elementor', 'uael' );
+			}
+
+			$button = '<p><a href="' . $action_url . '" class="button-primary">' . $button_label . '</a></p><p></p>';
+
+			printf( '<div class="%1$s"><p>%2$s</p>%3$s</div>', esc_attr( $class ), wp_kses_post( $message ), wp_kses_post( $button ) );
+		}
+
+
+		/**
+		 * Fires admin notice when Elementor version is outdated.
+		 *
+		 * @since 1.30.1
+		 *
+		 * @return void
+		 */
+		public function elementor_outdated() {
+			$class = 'notice notice-error';
+			/* translators: %s: html tags */
+			$message = sprintf( __( 'The %1$sUltimate Addons for Elementor%2$s plugin has stopped working because you are using an older version of %1$sElementor%2$s plugin.', 'uael' ), '<strong>', '</strong>' );
+
+			$plugin = 'elementor/elementor.php';
+
+			if ( _is_elementor_installed() ) {
+				if ( ! current_user_can( 'install_plugins' ) ) {
+					return;
+				}
+
+				$action_url = wp_nonce_url( self_admin_url( 'update.php?action=upgrade-plugin&amp;plugin=' ) . $plugin . '&amp;', 'upgrade-plugin_' . $plugin );
+
+				$button_label = __( 'Update Elementor', 'uael' );
 
 			} else {
 				if ( ! current_user_can( 'install_plugins' ) ) {

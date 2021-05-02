@@ -16,7 +16,7 @@ trait Trait_String {
 		$content = str_replace( '<p></p>', '', $content );
 		return $content;
 	}
-	
+
 	public static function escape_json_string( $value ) {
 		// # list from www.json.org: (\b backspace, \f formfeed)
 		$escapers = array( '\\', '/', '"', "\n", "\r", "\t", "\x08", "\x0c" );
@@ -156,7 +156,7 @@ trait Trait_String {
 	*
 	* @return bool
 	*/
-	function is_json( $obj ) {
+	public function is_json( $obj ) {
 		return is_string( $obj )
 		   && is_array( json_decode( $obj, true ) )
 		   && json_last_error() === JSON_ERROR_NONE;

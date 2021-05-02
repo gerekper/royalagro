@@ -602,9 +602,37 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 			
 			
 			return($arrDataOutput);
-						
 		}
 		
+		/**
+		 * get post terms titles
+		 */
+		public static function getPostTermsTitles($post){
+			
+			$arrTermsWithTax = self::getPostTerms($post);
+			
+			if(empty($arrTermsWithTax))
+				return(array());
+			
+			$arrTitles = array();
+			
+			foreach($arrTermsWithTax as $taxanomy=>$arrTerms){
+				
+				if(empty($arrTerms))
+					continue;
+				
+				foreach($arrTerms as $term){
+					
+					$name = UniteFunctionsUC::getVal($term, "name");
+					if(empty($name))
+						continue;
+					
+					$arrTitles[] = $name;
+				}
+			}
+			
+			return($arrTitles);
+		}
 		
 		
 		/**
@@ -1161,7 +1189,7 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 		/**
 		 * get post meta data
 		 */
-		public static function getPostMetaKeys($postID, $prefix = null){
+		public static function getPostMetaKeys($postID, $prefix = null, $includeUnderscore = false){
 			
 			$postMeta = get_post_meta($postID);
 			
@@ -1175,7 +1203,7 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 				
 				$firstSign = $key[0];
 				
-				if($firstSign == "_")
+				if($firstSign == "_" && $includeUnderscore == false)
 					continue;
 				
 				if(!empty($prefix))
@@ -1381,7 +1409,6 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 			else
 				$arrCategories = explode(",", $category);
 			
-			
 			foreach($arrCategories as $cat){
 				
 				//check for empty category - mean all categories
@@ -1412,10 +1439,10 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 				if($isExclude == true){
 					$arrSearchItem["operator"] = "NOT IN";
 				}
-					
+				
 				$arrQuery[] = $arrSearchItem;
 			}
-			
+						
 			return($arrQuery);
 		}
 		
@@ -1430,15 +1457,38 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 			if($category == "all" && empty($excludeCategory))
 				return(null);
 			
+			
 			//get the query
 			$arrQuery = array();
+			$arrQueryExclude = array();
 			
 			if(!empty($category))
 				$arrQuery = self::getPosts_getTaxQuery_getArrQuery($arrQuery, $category, $categoryRelation, $isIncludeChildren, false);
 			
+			$numQueryItems = count($arrQuery);
+				
 			if(!empty($excludeCategory))
-				$arrQuery = self::getPosts_getTaxQuery_getArrQuery($arrQuery, $excludeCategory, $categoryRelation, $isExcludeChildren, true);
+				$arrQueryExclude = self::getPosts_getTaxQuery_getArrQuery($arrQueryExclude, $excludeCategory, $categoryRelation, $isExcludeChildren, true);
 			
+			//make nested - if both filled
+			if(!empty($arrQueryExclude) && !empty($arrQuery) && $numQueryItems > 1 && $categoryRelation === "OR"){
+				
+				//check and add relation
+				$arrQuery["relation"] = "OR";
+				
+				$arrQueryCombined = array();
+				$arrQueryCombined[] = $arrQuery;
+				$arrQueryCombined[] = $arrQueryExclude;
+				
+				return($arrQueryCombined);
+			}
+			
+			
+			//in case there is exclude only
+			if(!empty($arrQueryExclude))
+				$arrQuery = array_merge($arrQuery, $arrQueryExclude);
+			
+			//for single query
 			if(empty($arrQuery))
 				return(null);
 			
@@ -1446,7 +1496,7 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 				return($arrQuery);
 				
 			//check and add relation
-			if($categoryRelation === "OR" && !empty($category))
+			if($categoryRelation === "OR" && $numQueryItems > 1)
 				$arrQuery["relation"] = "OR";
 			
 			return($arrQuery);			
@@ -1491,7 +1541,7 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 			
 			$categoryExcludeChildren = UniteFunctionsUC::getVal($filters, "category_exclude_children");
 			$categoryExcludeChildren = UniteFunctionsUC::strToBool($categoryExcludeChildren);
-						
+			
 			$arrTax = self::getPosts_getTaxQuery($category, $categoryRelation, $categoryIncludeChildren, $excludeCategory, $categoryExcludeChildren);
 			
 			$search = UniteFunctionsUC::getVal($filters, "search");
@@ -2597,6 +2647,9 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 		 * check if archive location
 		 */
 		public static function isArchiveLocation(){
+			
+			if(is_single())
+				return(false);
 			
 			if(( is_archive() || is_tax() || is_home() || is_search() ))
 				return(true);

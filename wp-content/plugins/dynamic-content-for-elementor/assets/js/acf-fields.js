@@ -38,13 +38,35 @@ var isAdminBar = false,
 
         var elementSettings = get_acf_ElementSettings($scope);
 
+		if( elementSettings.acf_type == 'number' ) {
+			var acfNumbers = document.querySelectorAll("#" + elementSettings.acf_field_list);
+			if ( elementSettings.acf_currency_mode && elementSettings.acf_settoDecimal ) {
+				acfNumbers.forEach(function(acfNumber) {
+					number = acfNumber.innerHTML;
+					number = new Number(number).toLocaleString( elementSettings.acf_currency_type, { minimumFractionDigits: elementSettings.acf_integerDecimalOpt, maximumFractionDigits: elementSettings.acf_integerDecimalOpt });
+					acfNumber.innerHTML = number;
+				});
+			} else if ( elementSettings.acf_currency_mode && !elementSettings.acf_settoDecimal ) {
+				acfNumbers.forEach(function(acfNumber) {
+					number = acfNumber.innerHTML;
+					number = new Number(number).toLocaleString( elementSettings.acf_currency_type );
+					acfNumber.innerHTML = number;
+				});
+			} else if ( !elementSettings.acf_currency_mode && elementSettings.acf_settoDecimal ) {
+				acfNumbers.forEach(function(acfNumber) {
+					number = acfNumber.innerHTML;
+					number = new Number(number).toFixed( elementSettings.acf_integerDecimalOpt );
+					acfNumber.innerHTML = number;
+				});
+			}
+		}
+
         if (elementSettings.drop_cap) {
             var target = $scope.find('p:first');
             if (!target.length) {
                 target = $scope.find('.edc-acf:first');
             }
             dropCap(target);
-
         }
         var bindEvents = function () {
             $scope.find('.elementor-custom-embed-image-overlay').on('click', handleVideo);
@@ -54,7 +76,6 @@ var isAdminBar = false,
                 alert(elementSettings.lightbox);
             } else {
                 $(this).fadeOut(1000, function () {
-
                     $(this).remove();
                     playVideo();
                 });
@@ -63,7 +84,6 @@ var isAdminBar = false,
         var playVideo = function () {
             var $videoFrame = $scope.find('iframe'),
                     newSourceUrl = $videoFrame[0].src.replace('&autoplay=0', '');
-
             $videoFrame[0].src = newSourceUrl + '&autoplay=1';
         };
         bindEvents();

@@ -80,7 +80,7 @@ $settings = UAEL_Helper::get_white_labels();
 											<?php esc_attr_e( 'Hide White Label', 'uael' ); ?>
 										</label>
 										</p>
-										<p class="admin-help"><?php esc_attr_e( 'Enable this option to hide White Label settings. Re-activate the Ultimate Addon for Elementor to enable this settings tab again.', 'uael' ); ?></p>
+										<p class="admin-help"><?php esc_attr_e( 'Enable this option to hide White Label settings. Re-activate the Ultimate Addons for Elementor to enable this settings tab again.', 'uael' ); ?></p>
 									</div>
 									<div class="clear"></div>
 								</div>

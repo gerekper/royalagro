@@ -71,7 +71,7 @@
 
 		$scope.find( '.uael-share-btn-print .uael-share-btn .uael-share-btn__icon i' ).each(function() {			
 			$( this ).removeClass( 'fab' ).addClass( "fa" ).addClass( "fa-print" );
-		});		
+		});
 
 	};
 

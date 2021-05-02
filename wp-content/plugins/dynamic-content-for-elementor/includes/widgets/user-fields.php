@@ -21,33 +21,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_User extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dce-user-fields';
-	}
-
-	public function get_title() {
-		return __( 'User Fields', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_description() {
-		return __( 'Display any user field', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/user-fields/';
-	}
-
-	public function get_icon() {
-		return 'icon-dyn-userfields';
-	}
-
-	public static function get_position() {
-		return 1;
-	}
-
 	public function show_in_panel() {
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( 'install_plugins' ) ) {
 			return false;
 		}
 		return true;
@@ -55,9 +31,9 @@ class DCE_Widget_User extends DCE_Widget_Prototype {
 
 	protected function _register_controls() {
 
-		if ( current_user_can( 'manage_options' ) || ! is_admin() ) {
+		if ( current_user_can( 'install_plugins' ) || ! is_admin() ) {
 			$this->_register_controls_content();
-		} elseif ( ! current_user_can( 'manage_options' ) && is_admin() ) {
+		} elseif ( ! current_user_can( 'install_plugins' ) && is_admin() ) {
 			$this->register_controls_non_admin_notice();
 		}
 	}
@@ -423,7 +399,7 @@ class DCE_Widget_User extends DCE_Widget_Prototype {
 				[
 					'label' => __( 'Source Format', 'dynamic-content-for-elementor' ),
 					'type' => Controls_Manager::TEXT,
-					'description' => '<a target="_blank" href="https://www.php.net/manual/en/function.date.php">' . __( 'Use standard PHP format character' ) . '</a>' . __( ', you can also use "timestamp"' ),
+					'description' => '<a target="_blank" href="https://www.php.net/manual/en/function.date.php">' . __( 'Use standard PHP format character', 'dynamic-content-for-elementor' ) . '</a>' . __( ', you can also use "timestamp"', 'dynamic-content-for-elementor' ),
 					'placeholder' => __( 'YmdHis, d/m/Y, m-d-y', 'dynamic-content-for-elementor' ),
 				]
 		);
@@ -1742,7 +1718,7 @@ class DCE_Widget_User extends DCE_Widget_Prototype {
 						$post = get_post();
 						$authordata = get_user_by( 'ID', $post->post_author );
 					}
-					$user_id = $authordata->ID; //get_the_author_meta('ID'); $author_id;
+					$user_id = $authordata->ID;
 				}
 				break;
 			default:
@@ -2215,7 +2191,7 @@ class DCE_Widget_User extends DCE_Widget_Prototype {
 					echo '<span class="tx-before">' . $settings['user_text_before'] . '</span>';
 				}
 				if ( $settings['dce_user_tag'] ) {
-					echo '<' . $settings['dce_user_tag'] . ' class="dce-meta-wrapper">';
+					echo '<' . \DynamicContentForElementor\Helper::validate_html_tag( $settings['dce_user_tag'] ) . ' class="dce-meta-wrapper">';
 				}
 
 				// FALLBACK
@@ -2241,7 +2217,7 @@ class DCE_Widget_User extends DCE_Widget_Prototype {
 				}
 
 				if ( $settings['dce_user_tag'] ) {
-					echo '</' . $settings['dce_user_tag'] . '>';
+					echo '</' . \DynamicContentForElementor\Helper::validate_html_tag( $settings['dce_user_tag'] ) . '>';
 				}
 				echo '</div>';
 			}

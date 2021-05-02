@@ -9,8 +9,8 @@ namespace UltimateElementor\Modules\Woocommerce\Skins;
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Background;
 
@@ -254,9 +254,8 @@ class Skin_Grid_Default extends Skin_Grid_Base {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-woocommerce .uael-woo-product-category' => 'color: {{VALUE}};',
@@ -271,7 +270,9 @@ class Skin_Grid_Default extends Skin_Grid_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'product_category_typography',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_3,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				),
 				'selector'  => '{{WRAPPER}} .uael-woocommerce .uael-woo-product-category',
 				'condition' => array(
 					$this->get_control_id( 'show_category' ) => 'yes',
@@ -315,9 +316,8 @@ class Skin_Grid_Default extends Skin_Grid_Base {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_PRIMARY,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-woocommerce .uael-loop-product__link, {{WRAPPER}} .uael-woocommerce .woocommerce-loop-product__title' => 'color: {{VALUE}};',
@@ -333,9 +333,8 @@ class Skin_Grid_Default extends Skin_Grid_Base {
 			array(
 				'label'     => __( 'Hover Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_PRIMARY,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-woocommerce .uael-loop-product__link:hover .woocommerce-loop-product__title' => 'color: {{VALUE}};',
@@ -350,7 +349,9 @@ class Skin_Grid_Default extends Skin_Grid_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'product_title_typography',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				),
 				'selector'  => '{{WRAPPER}} .uael-woocommerce .uael-loop-product__link, {{WRAPPER}} .uael-woocommerce .woocommerce-loop-product__title',
 				'condition' => array(
 					$this->get_control_id( 'show_title' ) => 'yes',
@@ -394,9 +395,8 @@ class Skin_Grid_Default extends Skin_Grid_Base {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_4,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_ACCENT,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-woocommerce .star-rating, {{WRAPPER}} .uael-woocommerce .star-rating::before' => 'color: {{VALUE}};',
@@ -443,9 +443,8 @@ class Skin_Grid_Default extends Skin_Grid_Base {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-woocommerce li.product .price' => 'color: {{VALUE}};',
@@ -475,7 +474,9 @@ class Skin_Grid_Default extends Skin_Grid_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'product_price_typography',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_3,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				),
 				'selector'  => '{{WRAPPER}} .uael-woocommerce li.product .price',
 				'condition' => array(
 					$this->get_control_id( 'show_price' ) => 'yes',
@@ -519,9 +520,8 @@ class Skin_Grid_Default extends Skin_Grid_Base {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-woocommerce .uael-woo-products-description' => 'color: {{VALUE}};',
@@ -536,7 +536,9 @@ class Skin_Grid_Default extends Skin_Grid_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'product_short_desc_typography',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_3,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				),
 				'selector'  => '{{WRAPPER}} .uael-woocommerce .uael-woo-products-description',
 				'condition' => array(
 					$this->get_control_id( 'show_short_desc' ) => 'yes',
@@ -626,9 +628,8 @@ class Skin_Grid_Default extends Skin_Grid_Base {
 						),
 						'fields_options' => array(
 							'color' => array(
-								'scheme' => array(
-									'type'  => Scheme_Color::get_type(),
-									'value' => Scheme_Color::COLOR_4,
+								'global' => array(
+									'default' => Global_Colors::COLOR_ACCENT,
 								),
 							),
 						),
@@ -683,7 +684,9 @@ class Skin_Grid_Default extends Skin_Grid_Base {
 			array(
 				'name'      => 'product_add_cart_typography',
 				'selector'  => '{{WRAPPER}} .uael-woocommerce .uael-woo-products-summary-wrap .button',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_4,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+				),
 				'condition' => array(
 					$this->get_control_id( 'show_add_cart' ) => 'yes',
 				),
@@ -937,9 +940,8 @@ class Skin_Grid_Default extends Skin_Grid_Base {
 				array(
 					'label'     => __( 'Background Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_4,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_ACCENT,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-woocommerce .uael-onsale' => 'background-color: {{VALUE}};',
@@ -954,7 +956,9 @@ class Skin_Grid_Default extends Skin_Grid_Base {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'      => 'sale_flash_typography',
-					'scheme'    => Scheme_Typography::TYPOGRAPHY_3,
+					'global'    => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector'  => '{{WRAPPER}} .uael-woocommerce .uael-onsale',
 					'condition' => array(
 						$this->get_control_id( 'show_sale' ) => 'yes',
@@ -1151,9 +1155,8 @@ class Skin_Grid_Default extends Skin_Grid_Base {
 				array(
 					'label'     => __( 'Background Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_2,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_SECONDARY,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-woocommerce .uael-featured' => 'background-color: {{VALUE}};',
@@ -1168,7 +1171,9 @@ class Skin_Grid_Default extends Skin_Grid_Base {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'      => 'featured_flash_typography',
-					'scheme'    => Scheme_Typography::TYPOGRAPHY_3,
+					'global'    => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector'  => '{{WRAPPER}} .uael-woocommerce .uael-featured',
 					'condition' => array(
 						$this->get_control_id( 'show_featured' ) => 'yes',

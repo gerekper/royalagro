@@ -8,8 +8,8 @@
 namespace UltimateElementor\Modules\Woocommerce\Widgets;
 
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Border;
@@ -921,9 +921,8 @@ class Woo_Products extends Common_Widget {
 					array(
 						'label'     => __( 'Text Color', 'uael' ),
 						'type'      => Controls_Manager::COLOR,
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_4,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_ACCENT,
 						),
 						'selectors' => array(
 							'{{WRAPPER}} nav.uael-woocommerce-pagination ul li > .page-numbers' => 'color: {{VALUE}};',
@@ -957,9 +956,8 @@ class Woo_Products extends Common_Widget {
 					array(
 						'label'     => __( 'Border Color', 'uael' ),
 						'type'      => Controls_Manager::COLOR,
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_4,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_ACCENT,
 						),
 						'selectors' => array(
 							'{{WRAPPER}} nav.uael-woocommerce-pagination ul li .page-numbers, {{WRAPPER}} nav.uael-woocommerce-pagination ul li span.current' => 'border-color: {{VALUE}};',
@@ -1008,9 +1006,8 @@ class Woo_Products extends Common_Widget {
 					array(
 						'label'     => __( 'Background Hover Color', 'uael' ),
 						'type'      => Controls_Manager::COLOR,
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_4,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_ACCENT,
 						),
 						'selectors' => array(
 							'{{WRAPPER}} nav.uael-woocommerce-pagination ul li .page-numbers:focus, {{WRAPPER}} nav.uael-woocommerce-pagination ul li .page-numbers:hover, {{WRAPPER}} nav.uael-woocommerce-pagination ul li span.current' => 'background-color: {{VALUE}};',
@@ -1028,9 +1025,8 @@ class Woo_Products extends Common_Widget {
 					array(
 						'label'     => __( 'Border Hover Color', 'uael' ),
 						'type'      => Controls_Manager::COLOR,
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_4,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_ACCENT,
 						),
 						'selectors' => array(
 							'{{WRAPPER}} nav.uael-woocommerce-pagination ul li .page-numbers:focus, {{WRAPPER}} nav.uael-woocommerce-pagination ul li .page-numbers:hover, {{WRAPPER}} nav.uael-woocommerce-pagination ul li span.current' => 'border-color: {{VALUE}};',
@@ -1052,7 +1048,9 @@ class Woo_Products extends Common_Widget {
 			array(
 				'name'      => 'pagination_typography',
 				'selector'  => '{{WRAPPER}} nav.uael-woocommerce-pagination ul li > .page-numbers',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_4,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+				),
 				'condition' => array(
 					'_skin'                => array( 'grid-default', 'grid-franko' ),
 					'products_layout_type' => 'grid',

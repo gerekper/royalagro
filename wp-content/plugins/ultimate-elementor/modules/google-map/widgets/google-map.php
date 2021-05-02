@@ -12,7 +12,7 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Repeater;
 
 // UltimateElementor Classes.
@@ -646,7 +646,9 @@ class GoogleMap extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'title_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector' => '{{WRAPPER}} .gm-style .uael-infowindow-title',
 				)
 			);

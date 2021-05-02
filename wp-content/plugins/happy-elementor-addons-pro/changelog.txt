@@ -1,3 +1,12 @@
+# v1.17.0 - 25 April 2021
+
+- Tweak: Image Masking map rearrange
+- Tweak: Removed `Elementor\Scheme_Typography` deprecated function
+- Tweak: Happy Elementor Addons not active when Elementor doesn’t meet minimum version requirements
+- Fix: Feature List svg icon color issue
+- Fix: Source Code widget issue
+- Fix: Security patches
+
 # v1.16.0 - 11 April 2021
 
 - New: Single Image Scroll widget

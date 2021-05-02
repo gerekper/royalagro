@@ -224,7 +224,7 @@ abstract class Skin_Style {
 		$node_id   = self::$node_id;
 		$is_editor = \Elementor\Plugin::instance()->editor->is_edit_mode();
 
-		$placeid = $settings['place_id'];
+		$placeid = $settings['place_id'] . '&language=' . $settings['language_id'];
 		$api_key = '';
 
 		$integration_options = UAEL_Helper::get_integrations_options();
@@ -551,8 +551,7 @@ abstract class Skin_Style {
 			if ( 'google' === $type ) {
 				$user_review_url = explode( '/reviews', $value->author_url );
 				array_pop( $user_review_url );
-				$review_url = $user_review_url[0] . '/place/' . $settings['place_id'];
-
+				$review_url                          = $user_review_url[0] . '/place/' . $settings['place_id'];
 				$review['source']                    = 'google';
 				$review['author_name']               = $value->author_name;
 				$review['author_url']                = $value->author_url;

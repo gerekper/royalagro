@@ -3,6 +3,7 @@ namespace DynamicContentForElementor\Includes\Skins;
 
 use Elementor\Skin_Base as Elementor_Skin_Base;
 use Elementor\Widget_Base;
+use Elementor\Utils;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Border;
@@ -1163,9 +1164,9 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		$this->add_search_filter_class();
 		$fallback = $this->parent->get_settings( 'fallback' );
 
-		if( 'masonry' === $this->get_instance_value( 'grid_type' ) ) {
+		if ( 'masonry' === $this->get_instance_value( 'grid_type' ) ) {
 			if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
-				Helper::notice('', __('This feature is not seen correctly in the Elementor editor due to technical limitations but works correctly in the frontend.', 'dynamic-content-for-elementor'));
+				Helper::notice( '', __( 'This feature is not seen correctly in the Elementor editor due to technical limitations but works correctly in the frontend.', 'dynamic-content-for-elementor' ) );
 			}
 		}
 
@@ -1440,7 +1441,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 
 	protected function render_title( $settings ) {
 
-		$html_tag = ! empty( $settings['html_tag'] ) ? $settings['html_tag'] : 'h3';
+		$html_tag = ! empty( \DynamicContentForElementor\Helper::validate_html_tag( $settings['html_tag'] ) ) ? \DynamicContentForElementor\Helper::validate_html_tag( $settings['html_tag'] ) : 'h3';
 		$title_text = get_the_title() ? esc_html( get_the_title() ) : get_the_ID();
 
 		$use_link = $settings['use_link'];
@@ -1470,7 +1471,8 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 		}
 		?>
 		<div class="dce-post-button">
-			<a <?php echo $this->parent->get_render_attribute_string( $attribute_button ); ?> <?php if( $open_target_blank ) { echo 'target="_blank"'; } ?>>
+			<a <?php echo $this->parent->get_render_attribute_string( $attribute_button ); ?> <?php if ( $open_target_blank ) {
+				echo 'target="_blank"'; } ?>>
 			<?php echo $readmore_text; ?>
 			</a>
 		</div>

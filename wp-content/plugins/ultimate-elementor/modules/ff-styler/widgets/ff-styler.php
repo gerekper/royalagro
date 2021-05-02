@@ -10,9 +10,9 @@ namespace UltimateElementor\Modules\FfStyler\Widgets;
 // Elementor Classes.
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
@@ -336,9 +336,8 @@ class FfStyler extends Common_Widget {
 			array(
 				'label'     => __( 'Label Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'default'   => '',
 				'selectors' => array(
@@ -357,9 +356,8 @@ class FfStyler extends Common_Widget {
 			array(
 				'label'     => __( 'Input Text / Placeholder Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'default'   => '',
 				'selectors' => array(
@@ -635,9 +633,8 @@ class FfStyler extends Common_Widget {
 			array(
 				'label'     => __( 'Selected Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'condition' => array(
 					'ff_radio_check_custom!' => '',
@@ -842,9 +839,8 @@ class FfStyler extends Common_Widget {
 				'types'          => array( 'classic', 'gradient' ),
 				'fields_options' => array(
 					'color' => array(
-						'scheme' => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_4,
+						'global' => array(
+							'default' => Global_Colors::COLOR_ACCENT,
 						),
 					),
 				),
@@ -1122,7 +1118,9 @@ class FfStyler extends Common_Widget {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'ff_message_typo',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				),
 				'selector' => '{{WRAPPER}} .uael-ff-style .fluentform .ff-el-is-error .error',
 			)
 		);
@@ -1236,7 +1234,9 @@ class FfStyler extends Common_Widget {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'cf7_success_validation_typo',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				),
 				'selector' => '{{WRAPPER}} .uael-ff-style .fluentform .ff-message-success',
 			)
 		);
@@ -1440,7 +1440,9 @@ class FfStyler extends Common_Widget {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'section_title_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				),
 				'selector' => '{{WRAPPER}} .uael-ff-style .fluentform .ff-el-section-title',
 			)
 		);
@@ -1450,9 +1452,8 @@ class FfStyler extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_PRIMARY,
 				),
 				'default'   => '',
 				'selectors' => array(
@@ -1475,7 +1476,9 @@ class FfStyler extends Common_Widget {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'section_desc_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_2,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_SECONDARY,
+				),
 				'selector' => '{{WRAPPER}} .uael-ff-style .ff-section_break_desk',
 			)
 		);
@@ -1485,9 +1488,8 @@ class FfStyler extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_SECONDARY,
 				),
 				'default'   => '',
 				'selectors' => array(
@@ -1724,7 +1726,9 @@ class FfStyler extends Common_Widget {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'title_typography',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				),
 				'selector'  => '{{WRAPPER}} .uael-ff-form-title',
 				'condition' => array(
 					'form_title_option!' => 'no',
@@ -1737,9 +1741,8 @@ class FfStyler extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_PRIMARY,
 				),
 				'condition' => array(
 					'form_title_option!' => 'no',
@@ -1768,7 +1771,9 @@ class FfStyler extends Common_Widget {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'desc_typography',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_2,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_SECONDARY,
+				),
 				'selector'  => '{{WRAPPER}} .uael-ff-form-desc',
 				'condition' => array(
 					'form_title_option!' => 'no',
@@ -1780,9 +1785,8 @@ class FfStyler extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'condition' => array(
 					'form_title_option!' => 'no',
@@ -1808,7 +1812,9 @@ class FfStyler extends Common_Widget {
 			array(
 				'name'     => 'form_label_typography',
 				'label'    => 'Label Typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				),
 				'selector' => '{{WRAPPER}} .uael-ff-style .fluentform .ff-el-input--label label,
 					{{WRAPPER}} .uael-ff-style .fluentform .ff-el-form-check-input + span',
 			)
@@ -1819,7 +1825,9 @@ class FfStyler extends Common_Widget {
 			array(
 				'name'     => 'input_typography',
 				'label'    => 'Text Typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				),
 				'selector' => '{{WRAPPER}} .uael-ff-style .ff-el-input--content input:not([type="radio"]):not([type="checkbox"]):not([type="submit"]):not([type="button"]):not([type="image"]):not([type="file"]),
 				{{WRAPPER}} .uael-ff-style .ff-el-input--content textarea,
 				{{WRAPPER}} .uael-ff-style .fluentform select,
@@ -1841,7 +1849,9 @@ class FfStyler extends Common_Widget {
 			array(
 				'name'     => 'btn_typography',
 				'label'    => __( 'Typography', 'uael' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+				),
 				'selector' => '{{WRAPPER}} .uael-ff-style .ff_submit_btn_wrapper button.ff-btn-submit,
 				{{WRAPPER}} .uael-ff-style .fluentform .step-nav button.ff-btn-secondary,
 				{{WRAPPER}} .uael-ff-style .fluentform .ff_upload_btn',

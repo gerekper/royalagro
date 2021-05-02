@@ -11,7 +11,7 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Background;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 
 defined( 'ABSPATH' ) || die();
 
@@ -460,7 +460,7 @@ class Hover_Box extends Base {
                 'name' => 'pre_title_typography',
                 'label' => __( 'Typography', 'happy-addons-pro' ),
                 'selector' => '{{WRAPPER}} .ha-hover-sub-title',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                'scheme' => Typography::TYPOGRAPHY_3,
             ]
         );
 
@@ -533,7 +533,7 @@ class Hover_Box extends Base {
             [
                 'name' => 'title_typography',
                 'selector' => '{{WRAPPER}} .ha-hover-title',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+                'scheme' => Typography::TYPOGRAPHY_2,
             ]
         );
 
@@ -552,7 +552,7 @@ class Hover_Box extends Base {
             [
                 'name' => 'description_typography',
                 'selector' => '{{WRAPPER}} .ha-hover-description',
-                'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+                'scheme' => Typography::TYPOGRAPHY_3,
             ]
         );
 
@@ -612,9 +612,9 @@ class Hover_Box extends Base {
 
                         <div>
                             <?php if( $settings['title'] ): ?>
-                                <<?php echo tag_escape( $settings['title_tag'] ); ?> <?php $this->print_render_attribute_string( 'title' ); ?>>
+                                <<?php echo ha_escape_tags( $settings['title_tag'] ); ?> <?php $this->print_render_attribute_string( 'title' ); ?>>
                                     <?php echo esc_html( $settings['title'] ); ?>
-                                </<?php echo tag_escape( $settings['title_tag'] ); ?>>
+                                </<?php echo ha_escape_tags( $settings['title_tag'] ); ?>>
                             <?php endif;?>
 
                             <?php if( $settings['detail'] ): ?>

@@ -1,8 +1,8 @@
 <?php
 namespace DynamicContentForElementor;
 
-use DynamicContentForElementor\Documents\PageSettings_Scrollify;
-use DynamicContentForElementor\Documents\PageSettings_InertiaScroll;
+use DynamicContentForElementor\PageSettings\PageSettings_Scrollify;
+use DynamicContentForElementor\PageSettings\PageSettings_InertiaScroll;
 use DynamicContentForElementor\Helper;
 use DynamicContentForElementor\Core\Upgrade\Manager as UpgradeManager;
 
@@ -52,14 +52,19 @@ class Plugin {
 	public function instances() {
 		$this->controls = new Controls();
 		$this->extensions = new Extensions();
-		$this->documents = new Documents();
+		$this->page_settings = new PageSettings();
 		$this->settings = new Settings();
+		// Dashboard
+		$this->api = new Dashboard\Api();
+		$this->templatesystem = new Dashboard\TemplateSystem();
+		$this->license = new Dashboard\License();
+
 		$this->info = new Info();
 		$this->widgets = new Widgets();
 		new Ajax();
 		new Assets();
-		new Dashboard();
-		new License();
+		new Dashboard\Dashboard();
+		new LicenseSystem();
 		new TemplateSystem();
 		new Elements();
 
@@ -67,7 +72,7 @@ class Plugin {
 	}
 
 	private function init_wpml_compatibility() {
-			new Compatibility\WPML();
+		new Compatibility\WPML();
 	}
 
 	/**
@@ -80,7 +85,7 @@ class Plugin {
 	public function add_dce_to_elementor() {
 
 		// Global Settings Panel
-		\DynamicContentForElementor\Includes\Settings\Settings_Manager::init();
+		\DynamicContentForElementor\GlobalSettings::init();
 
 		$this->upgrade = UpgradeManager::instance();
 		// Controls
@@ -92,8 +97,8 @@ class Plugin {
 		// Extensions
 		$this->extensions->on_extensions_registered();
 
-		// Documents
-		$this->documents->on_documents_registered();
+		// Page Settings
+		$this->page_settings->on_page_settings_registered();
 
 		// Widgets
 		add_action( 'elementor/widgets/widgets_registered', [ $this->widgets, 'on_widgets_registered' ] );
@@ -101,60 +106,113 @@ class Plugin {
 	}
 
 	public function add_dce_menu() {
-		// TemplateSystem sotto Template
-		if ( defined( '\Elementor\TemplateLibrary\Source_Local::ADMIN_MENU_SLUG' ) && current_user_can( 'manage_options' ) ) {
-			add_submenu_page(
-				\Elementor\TemplateLibrary\Source_Local::ADMIN_MENU_SLUG,
-				__( 'Dynamic Template System', 'dynamic-content-for-elementor' ),
-				__( 'Template System', 'dynamic-content-for-elementor' ),
-				'publish_posts',
-				'dce_templatesystem',
-				array(
-					$this->settings,
-					'dce_setting_templatesystem',
-				)
-			);
-		}
 
-		// Dynamic Content sotto Elementor
-		add_submenu_page(
-			\Elementor\Settings::PAGE_ID,
-			__( 'Dynamic Content Settings', 'dynamic-content-for-elementor' ),
-			__( 'Dynamic Content', 'dynamic-content-for-elementor' ),
+		// Dynamic Content - Menu
+		add_menu_page(
+			'Dynamic Content for Elementor',
+			'Dynamic Content',
 			'manage_options',
-			'dce_opt',
+			'dce-features',
+			[
+				$this->settings,
+				'dce_setting_page',
+			],
+			'data:image/svg+xml;base64,' . $this->dce_get_icon_svg(),
+			'58.6'
+		);
+
+		// Dynamic Content - Features
+		add_submenu_page(
+			'dce-features',
+			'Dynamic Content for Elementor - ' . __( 'Features', 'dynamic-content-for-elementor' ),
+			__( 'Features', 'dynamic-content-for-elementor' ),
+			'manage_options',
+			'dce-features',
 			[
 				$this->settings,
 				'dce_setting_page',
 			]
 		);
 
-		// La pagina Informazioni che appare alla prima attivazione del plugin.
+		// Dynamic Content - Template System
 		add_submenu_page(
-				'admin.php', __( 'Dynamic Content for Elementor', 'dynamic-content-for-elementor' ), __( 'Dynamic Content for Elementor', 'dynamic-content-for-elementor' ), 'manage_options', 'dce_info', array(
-					$this->info,
-					'dce_information_plugin',
-				)
+			'dce-features',
+			'Dynamic Content for Elementor - ' . __( 'Template System', 'dynamic-content-for-elementor' ),
+			__( 'Template System', 'dynamic-content-for-elementor' ),
+			'manage_options',
+			'dce-templatesystem',
+			[
+				$this->templatesystem,
+				'display_form',
+			]
+		);
+
+		// Dynamic Content - APIs
+		add_submenu_page(
+			'dce-features',
+			'Dynamic Content for Elementor - ' . __( 'APIs', 'dynamic-content-for-elementor' ),
+			__( 'APIs', 'dynamic-content-for-elementor' ),
+			'install_plugins',
+			'dce-apis',
+			[
+				$this->api,
+				'display_form',
+			]
+		);
+
+		// Dynamic Content - License
+		add_submenu_page(
+			'dce-features',
+			'Dynamic Content for Elementor - ' . __( 'License', 'dynamic-content-for-elementor' ),
+			__( 'License', 'dynamic-content-for-elementor' ),
+			'install_plugins',
+			'dce-license',
+			[
+				$this->license,
+				'show_license_form',
+			]
 		);
 	}
 
 	public static function plugin_action_links( $links ) {
-		$links['config'] = '<a title="Configuration" href="' . admin_url() . 'admin.php?page=dce_opt">' . __( 'Configuration', 'dynamic-content-for-elementor' ) . '</a>';
+		$links['config'] = '<a title="Configuration" href="' . admin_url() . 'admin.php?page=dce-features">' . __( 'Configuration', 'dynamic-content-for-elementor' ) . '</a>';
 		return $links;
 	}
 
 	public function plugin_row_meta( $plugin_meta, $plugin_file ) {
-  		if ( 'dynamic-content-for-elementor/dynamic-content-for-elementor.php' === $plugin_file ) {
-  			$row_meta = [
-  				'docs' => '<a href="https://help.dynamic.ooo/" aria-label="' . esc_attr( __( 'View Documentation', 'dynamic-content-for-elementor' ) ) . '" target="_blank">' . __( 'Docs', 'dynamic-content-for-elementor' ) . '</a>',
-  				'community' => '<a href="http://facebook.com/groups/dynamic.ooo" aria-label="' . esc_attr( __( 'Facebook Community', 'dynamic-content-for-elementor' ) ) . '" target="_blank">' . __( 'FB Community', 'dynamic-content-for-elementor' ) . '</a>',
-  			];
+		if ( 'dynamic-content-for-elementor/dynamic-content-for-elementor.php' === $plugin_file ) {
+			$row_meta = [
+				'docs' => '<a href="https://help.dynamic.ooo/" aria-label="' . esc_attr( __( 'View Documentation', 'dynamic-content-for-elementor' ) ) . '" target="_blank">' . __( 'Docs', 'dynamic-content-for-elementor' ) . '</a>',
+				'community' => '<a href="http://facebook.com/groups/dynamic.ooo" aria-label="' . esc_attr( __( 'Facebook Community', 'dynamic-content-for-elementor' ) ) . '" target="_blank">' . __( 'FB Community', 'dynamic-content-for-elementor' ) . '</a>',
+			];
 
-  			$plugin_meta = array_merge( $plugin_meta, $row_meta );
-  		}
+			$plugin_meta = array_merge( $plugin_meta, $row_meta );
+		}
 
-  		return $plugin_meta;
-  	}
+		return $plugin_meta;
+	}
+
+	public static function dce_get_icon_svg( $base64 = true ) {
+		$svg = '<?xml version="1.0" encoding="utf-8"?>
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+					viewBox="0 0 330.3 246.9" style="enable-background:new 0 0 330.3 246.9;" xml:space="preserve">
+					<style type="text/css">
+						.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#ffffff;}
+					</style>
+					<g id="Livello_2">
+						<g id="Livello_1-2">
+							<path class="st0" d="M298.4,155.1c-17.5-0.1-31.7-14.4-31.6-31.9s14.4-31.7,31.9-31.6c17.5,0.1,31.6,14.3,31.6,31.7
+								C330.2,140.9,315.9,155.1,298.4,155.1z M298.4,63.7c-17.5-0.1-31.7-14.4-31.6-31.9c0.1-17.5,14.4-31.7,31.9-31.6
+								c17.5,0.1,31.6,14.3,31.6,31.8C330.2,49.6,315.9,63.7,298.4,63.7z M114.2,246.9H0V0h91.8c83.3,0,147.1,36.3,147.1,127
+								C238.9,200.4,186.9,246.9,114.2,246.9z M121.5,66.7L73.1,183.1h18.1l48.4-116.4H121.5z M298.4,183c17.5,0.1,31.7,14.4,31.6,31.9
+								c-0.1,17.5-14.4,31.7-31.9,31.6c-17.5-0.1-31.6-14.3-31.6-31.7C266.5,197.2,280.8,183,298.4,183C298.4,183,298.4,183,298.4,183z"
+								/>
+						</g>
+					</g>
+					</svg>';
+		return base64_encode( $svg );
+	}
+
 
 	public function dce_allow_posts_pagination( $preempt, $wp_query ) {
 

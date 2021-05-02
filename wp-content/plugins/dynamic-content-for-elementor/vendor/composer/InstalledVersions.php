@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '5aa60e7415a369382014e180d885213ac58ff002',
+    'reference' => '85fd557fb599883f044331a2631a7bd0903aae1b',
     'name' => '__root__',
   ),
   'versions' => 
@@ -42,7 +42,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '5aa60e7415a369382014e180d885213ac58ff002',
+      'reference' => '85fd557fb599883f044331a2631a7bd0903aae1b',
     ),
     'awps/font-awesome-php' => 
     array (
@@ -143,6 +143,47 @@ private static $installed = array (
       ),
       'reference' => '5fa61b65e612ce1ae15f69b3d223cb14ecc60e32',
     ),
+    'psr/cache' => 
+    array (
+      'pretty_version' => '1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'd11b50ad223250cf17b86e38383413f5a6764bf8',
+    ),
+    'psr/cache-implementation' => 
+    array (
+      'provided' => 
+      array (
+        0 => '1.0|2.0',
+      ),
+    ),
+    'psr/container' => 
+    array (
+      'pretty_version' => '1.1.1',
+      'version' => '1.1.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '8622567409010282b7aeebe4bb841fe98b58dcaf',
+    ),
+    'psr/log' => 
+    array (
+      'pretty_version' => '1.1.3',
+      'version' => '1.1.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '0f73288fd15629204f9d42b7055f72dacbe811fc',
+    ),
+    'psr/simple-cache-implementation' => 
+    array (
+      'provided' => 
+      array (
+        0 => '1.0',
+      ),
+    ),
     'sabberworm/php-css-parser' => 
     array (
       'pretty_version' => '8.3.1',
@@ -154,12 +195,12 @@ private static $installed = array (
     ),
     'stripe/stripe-php' => 
     array (
-      'pretty_version' => 'v7.75.0',
-      'version' => '7.75.0.0',
+      'pretty_version' => 'v7.77.0',
+      'version' => '7.77.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'd377a667cd789b99ccab768441a5a2160cc4ea80',
+      'reference' => 'f6724447481f6fb8c2e714165e092adad9ca470a',
     ),
     'sunra/php-simple-html-dom-parser' => 
     array (
@@ -169,6 +210,31 @@ private static $installed = array (
       array (
       ),
       'reference' => '75b9b1cb64502d8f8c04dc11b5906b969af247c6',
+    ),
+    'symfony/cache' => 
+    array (
+      'pretty_version' => 'v4.4.21',
+      'version' => '4.4.21.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'b7ff54be3f3eb1ce09643692f0c309b1b27bc992',
+    ),
+    'symfony/cache-contracts' => 
+    array (
+      'pretty_version' => 'v2.2.0',
+      'version' => '2.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '8034ca0b61d4dd967f3698aaa1da2507b631d0cb',
+    ),
+    'symfony/cache-implementation' => 
+    array (
+      'provided' => 
+      array (
+        0 => '1.0|2.0',
+      ),
     ),
     'symfony/css-selector' => 
     array (
@@ -188,6 +254,15 @@ private static $installed = array (
       ),
       'reference' => 'ef97bcfbae5b384b4ca6c8d57b617722f15241a6',
     ),
+    'symfony/expression-language' => 
+    array (
+      'pretty_version' => 'v3.4.47',
+      'version' => '3.4.47.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'de38e66398fca1fcb9c48e80279910e6889cb28f',
+    ),
     'symfony/polyfill-ctype' => 
     array (
       'pretty_version' => 'v1.22.1',
@@ -206,14 +281,50 @@ private static $installed = array (
       ),
       'reference' => '5232de97ee3b75b0360528dae24e73db49566ab1',
     ),
-    'tecnickcom/tcpdf' => 
+    'symfony/polyfill-php70' => 
     array (
-      'pretty_version' => '6.3.5',
-      'version' => '6.3.5.0',
+      'pretty_version' => 'v1.20.0',
+      'version' => '1.20.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '19a535eaa7fb1c1cac499109deeb1a7a201b4549',
+      'reference' => '5f03a781d984aae42cebd18e7912fa80f02ee644',
+    ),
+    'symfony/polyfill-php80' => 
+    array (
+      'pretty_version' => 'v1.22.1',
+      'version' => '1.22.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'dc3063ba22c2a1fd2f45ed856374d79114998f91',
+    ),
+    'symfony/service-contracts' => 
+    array (
+      'pretty_version' => 'v2.2.0',
+      'version' => '2.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'd15da7ba4957ffb8f1747218be9e1a121fd298a1',
+    ),
+    'symfony/var-exporter' => 
+    array (
+      'pretty_version' => 'v5.2.4',
+      'version' => '5.2.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '5aed4875ab514c8cb9b6ff4772baa25fa4c10307',
+    ),
+    'tecnickcom/tcpdf' => 
+    array (
+      'pretty_version' => '6.4.1',
+      'version' => '6.4.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '5ba838befdb37ef06a16d9f716f35eb03cb1b329',
     ),
     'telegram-bot/api' => 
     array (
@@ -235,12 +346,12 @@ private static $installed = array (
     ),
     'yahnis-elsts/plugin-update-checker' => 
     array (
-      'pretty_version' => 'v4.10',
-      'version' => '4.10.0.0',
+      'pretty_version' => 'v4.11',
+      'version' => '4.11.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '0edd15f67822464af8a23285ce367b30d515a855',
+      'reference' => '3155f2d3f1ca5e7ed3f25b256f020e370515af43',
     ),
   ),
 );

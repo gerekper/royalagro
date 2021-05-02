@@ -716,14 +716,7 @@ class DCE_Query extends \WP_Query {
 			$p_status = array();
 			$e_status = array();
 			// DCE
-			/*if ( in_array( 'any', $q_status ) ) {
-				foreach ( get_post_stati( array( 'exclude_from_search' => true ) ) as $status ) {
-					if ( ! in_array( $status, $q_status ) ) {
-						$e_status[] = "{$wpdb->posts}.post_status <> '$status'";
-					}
-				}
-			} else {*/
-			foreach ( get_post_stati() as $status ) {
+			foreach ( get_post_statuses() as $status ) {
 				if ( in_array( $status, $q_status ) ) {
 					if ( 'private' == $status ) {
 						$p_status[] = "{$wpdb->posts}.post_status = '$status'";
@@ -732,7 +725,6 @@ class DCE_Query extends \WP_Query {
 					}
 				}
 			}
-			//}
 
 			if ( empty( $q['perm'] ) || 'readable' != $q['perm'] ) {
 				$r_status = array_merge( $r_status, $p_status );
@@ -770,7 +762,7 @@ class DCE_Query extends \WP_Query {
 			$where .= " AND ({$wpdb->posts}.post_status = 'publish'";
 
 			// Add public states.
-			$public_states = get_post_stati( array( 'public' => true ) );
+			$public_states = get_post_statuses( array( 'public' => true ) );
 			foreach ( (array) $public_states as $state ) {
 				if ( 'publish' == $state ) { // Publish is hard-coded above.
 					continue;
@@ -780,7 +772,7 @@ class DCE_Query extends \WP_Query {
 
 			if ( $this->is_admin ) {
 				// Add protected states that should show in the admin all list.
-				$admin_all_states = get_post_stati(
+				$admin_all_states = get_post_statuses(
 					array(
 						'protected'              => true,
 						'show_in_admin_all_list' => true,
@@ -793,7 +785,7 @@ class DCE_Query extends \WP_Query {
 
 			if ( is_user_logged_in() ) {
 				// Add private states that are limited to viewing by the author of a post or someone who has caps to read private states.
-				$private_states = get_post_stati( array( 'private' => true ) );
+				$private_states = get_post_statuses( array( 'private' => true ) );
 				foreach ( (array) $private_states as $state ) {
 					$where .= current_user_can( $read_private_cap ) ? " OR {$wpdb->posts}.post_status = '$state'" : " OR {$wpdb->posts}.post_author = $user_id AND {$wpdb->posts}.post_status = '$state'";
 				}
@@ -1170,7 +1162,8 @@ class DCE_Query extends \WP_Query {
 			$found_rows = 'SQL_CALC_FOUND_ROWS';
 		}
 
-		$this->request = $old_request = "SELECT $found_rows $distinct $fields FROM {$wpdb->posts} $join WHERE 1=1 $where $groupby $orderby $limits";
+		$old_request = "SELECT $found_rows $distinct $fields FROM {$wpdb->posts} $join WHERE 1=1 $where $groupby $orderby $limits";
+		$this->request = $old_request;
 
 		if ( ! $q['suppress_filters'] ) {
 			/**

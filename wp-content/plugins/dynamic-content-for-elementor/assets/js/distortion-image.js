@@ -1,7 +1,6 @@
 (function ($) {
     var WidgetElements_imagesDistortionHandler = function ($scope, $) {
 
-	// ---------------------------------------------------------
         // planetary
 
         var contentDistortion = $scope.find('.dce_distortion-content');
@@ -19,7 +18,6 @@
         var value_scalex = Number(containerDistortion.attr('data-scalex'));
         var value_scaley = Number(containerDistortion.attr('data-scaley'));
 
-        //
         var uniform_selected = {};
 
         switch(fragment_style) {
@@ -72,8 +70,8 @@
 
         if($('.dg').length) $('.dg').empty();
         let sketch = new Sketch({
-			content: contentDistortion[0], //document.getElementById("dce_distortion-content"),
-			container: containerDistortion[0], //document.getElementById("dce_distortion-slider"),
+			content: contentDistortion[0],
+			container: containerDistortion[0],
 
 			debug: false,
 			duration: speedDistortion,
@@ -84,7 +82,6 @@
 
     };
 
-    // Make sure you run this code under Elementor..
     $(window).on('elementor/frontend/init', function () {
         elementorFrontend.hooks.addAction('frontend/element_ready/dyncontel-imagesDistortion.default', WidgetElements_imagesDistortionHandler);
     });

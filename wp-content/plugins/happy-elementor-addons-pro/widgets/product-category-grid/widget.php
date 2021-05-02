@@ -8,7 +8,7 @@
 namespace Happy_Addons_Pro\Widget;
 
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
@@ -70,6 +70,9 @@ class Product_Category_Grid extends Base {
 	 * Get parent category list
 	 */
 	protected function get_parent_cats() {
+		if ( ! class_exists( 'WooCommerce' ) ) {
+			return;
+		}
 		$parent_categories = [ 'none' => __( 'None', 'happy-addons-pro' ) ];
 
 		$args = array(
@@ -87,6 +90,9 @@ class Product_Category_Grid extends Base {
 	 * Get all category list
 	 */
 	protected function get_all_cats_list() {
+		if ( ! class_exists( 'WooCommerce' ) ) {
+			return;
+		}
 		$cats_list = [];
 
 		$args = [
@@ -499,7 +505,7 @@ class Product_Category_Grid extends Base {
 			[
 				'name' => 'load_more_btn_typography',
 				'selector' => '{{WRAPPER}} .ha-product-cat-grid-load-more-btn',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+				'scheme' => Typography::TYPOGRAPHY_4,
 			]
 		);
 

@@ -12,26 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_BgCanvas extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-bgcanvas';
-	}
-
-	public function get_title() {
-		return __( 'BG Canvas', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_icon() {
-		return 'icon-dyn-canvas';
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/webgl-threejs-background-canvas/';
-	}
-
-	public function get_description() {
-		return __( 'Easily integrate in your site WebGL with Canvas for Shader effects', 'dynamic-content-for-elementor' );
-	}
-
 	public function get_script_depends() {
 		return [
 			'dce-threejs-lib',

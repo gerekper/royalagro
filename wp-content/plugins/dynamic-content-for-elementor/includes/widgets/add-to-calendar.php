@@ -16,26 +16,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_Calendar extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dce_add_to_calendar';
-	}
-
-	public function get_title() {
-		return __( 'Add to Calendar', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_icon() {
-		return 'icon-dyn-buttoncalendar';
-	}
-
-	public function get_description() {
-		return __( 'Add an event to your personal calendar', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/button-calendar/';
-	}
-
 	protected function _register_controls() {
 
 		$this->start_controls_section(
@@ -545,7 +525,8 @@ class DCE_Widget_Calendar extends DCE_Widget_Prototype {
 				$date_format = 'Y-m-d H:i';
 			}
 			// START
-			$init_start = $start = ( $settings['dce_calendar_datetime_format'] != 'string' ) ? $settings['dce_calendar_datetime_start'] : $settings['dce_calendar_datetime_start_string'];
+			$start = ( $settings['dce_calendar_datetime_format'] != 'string' ) ? $settings['dce_calendar_datetime_start'] : $settings['dce_calendar_datetime_start_string'];
+			$init_start = $start;
 			if ( empty( $start ) ) {
 				$start = new \DateTime();
 			} else {
@@ -555,7 +536,8 @@ class DCE_Widget_Calendar extends DCE_Widget_Prototype {
 				$cal_url .= '&dates=' . urlencode( get_gmt_from_date( $start->format( 'Y-m-d H:i' ), 'Ymd\\THi00\\Z' ) );
 			}
 			// END
-			$init_end = $end = ( $settings['dce_calendar_datetime_format'] != 'string' ) ? $settings['dce_calendar_datetime_end'] : $settings['dce_calendar_datetime_end_string'];
+			$end = ( $settings['dce_calendar_datetime_format'] != 'string' ) ? $settings['dce_calendar_datetime_end'] : $settings['dce_calendar_datetime_end_string'];
+			$init_end = $end;
 			if ( empty( $end ) && $start ) {
 				$end = new \DateTime( $start->format( 'Y-m-d H:i' ) );
 				$end = $end->modify( '+ 1 day' );

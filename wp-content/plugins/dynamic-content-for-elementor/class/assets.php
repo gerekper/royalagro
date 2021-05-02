@@ -7,6 +7,7 @@ class Assets {
 	public static $dce_styles = [];
 	public static $dce_scripts = [];
 	public static $styles = array(
+		'dce-hidden-label' => 'assets/css/hidden-label.css',
 		'dce-globalsettings' => 'assets/css/global-settings.css',
 		'dce-style' => '/assets/css/style.css',
 		'dce-animations' => '/assets/css/animations.css',
@@ -15,7 +16,8 @@ class Assets {
 		'dce-acfRelationship' => '/assets/css/acf-relationship.css',
 		'dce-acfslider' => '/assets/css/acf-slider.css',
 		'dce-acfGallery' => '/assets/css/acf-gallery.css',
-		'dce-acfRepeater' => '/assets/css/acf-repeater.css',
+		'dce-acf-repeater' => '/assets/css/acf-repeater.css',
+		'dce-acf-repeater-v2' => '/assets/css/acf-repeater-v2.css',
 		'dce-google-maps' => '/assets/css/dynamic-google-maps.css',
 		'dce-pods' => '/assets/css/pods-fields.css',
 		'dce-pods-gallery' => '/assets/css/pods-gallery.css',
@@ -87,6 +89,7 @@ class Assets {
 		}
 		$paypal_currency = get_option( 'dce_paypal_api_currency', 'USD' );
 		self::$vendor_js = [
+			'dce-expressionlanguage' => '/assets/lib/expressionlanguage/expressionlanguage.min.js',
 			'dce-html2canvas' => '/assets/lib/html2canvas/html2canvas.min.js',
 			'dce-jspdf' => 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.1.1/jspdf.umd.min.js',
 			'dce-aframe' => 'https://cdnjs.cloudflare.com/ajax/libs/aframe/1.0.4/aframe.min.js',
@@ -178,7 +181,10 @@ class Assets {
 	}
 
 	public static $scripts = array(
-
+		'dce-conditional-fields' => [
+			'path' => '/assets/js/conditional-fields.js',
+			'deps' => [ 'dce-expressionlanguage']
+		],
 		'dce-stripe' => [
 			'path' => '/assets/js/stripe.js',
 			'deps' => [ 'dce-stripe-js' ],
@@ -191,6 +197,8 @@ class Assets {
 			'path' => '/assets/js/pdf-button-js-converter.js',
 			'deps' => [ 'dce-jspdf', 'dce-html2canvas' ],
 		],
+		'dce-dynamic-select' => '/assets/js/dynamic-select.js',
+		'dce-hidden-label' => '/assets/js/hidden-label.js',
 		'dce-main' => '/assets/js/main.js',
 		'dce-admin-js' => 'assets/js/admin.js',
 		'dce-globalsettings-js' => [
@@ -201,6 +209,7 @@ class Assets {
 			'path' => '/assets/js/visibility.js',
 			'deps' => [ 'dce-script-editor' ],
 		],
+		'dce-acf' => '/assets/js/acf-fields.js',
 		'dce-ajaxmodal' => '/assets/js/ajax-modal.js',
 		'dce-cookie' => '/assets/js/cookie.js',
 		'dce-settings' => '/assets/js/settings.js',
@@ -209,7 +218,7 @@ class Assets {
 		'dce-acfgallery' => '/assets/js/acf-gallery.js',
 		'dce-acfslider-js' => '/assets/js/acf-slider.js',
 		'dce-parallax-js' => '/assets/js/parallax.js',
-		'dce-threesixtyslider' => '/assets/js/360-slider.js',
+		'dce-360-slider' => '/assets/js/360-slider.js',
 		'dce-twentytwenty' => '/assets/js/after-before.js',
 		'dce-tilt' => '/assets/js/tilt.js',
 		'dce-acf_posts' => '/assets/js/dynamic-posts.js',
@@ -224,7 +233,8 @@ class Assets {
 		'dce-dynamicPosts-crossroadsslideshow' => '/assets/js/dynamic-posts-v2-skin-crossroads-slideshow.js',
 		'dce-dynamicPosts-nextpost' => '/assets/js/dynamic-posts-v2-skin-next-post.js',
 		'dce-dynamicPosts-3d' => '/assets/js/dynamic-posts-v2-skin-3d.js',
-		'dce-acf_repeater' => '/assets/js/acf-repeater.js',
+		'dce-acf-repeater' => '/assets/js/acf-repeater.js',
+		'dce-acf-repeater-v2' => '/assets/js/acf-repeater-v2.js',
 		'dce-content-js' => '/assets/js/content.js',
 		'dce-dynamic_users' => '/assets/js/dynamic-users.js',
 		'dce-acf_fields' => '/assets/js/acf-fields.js',
@@ -280,6 +290,9 @@ class Assets {
 			}
 		});
 
+		// Dashboard
+		add_action( 'admin_head', [ $this, 'dce_icons' ] );
+
 		// Scripts
 		add_action( 'wp_enqueue_scripts', [ $this, 'register_scripts' ] );
 		add_action( 'elementor/frontend/after_enqueue_scripts', [ $this, 'dce_frontend_enqueue_scripts' ] );
@@ -316,7 +329,7 @@ class Assets {
 			wp_enqueue_script( 'dce-globalsettings-js' );
 			wp_enqueue_style( 'dce-globalsettings' );
 
-			$settings_controls = ( new \DynamicContentForElementor\Includes\Settings\Settings_Manager() )->dce_settings();
+			$settings_controls = ( new \DynamicContentForElementor\GlobalSettings() )->dce_settings();
 			wp_localize_script( 'dce-globalsettings-js', 'dceGlobalSettings', $settings_controls );
 		}
 	}
@@ -682,6 +695,18 @@ class Assets {
 		wp_enqueue_style( 'dce-admin-css' );
 		// Enqueue Admin Script
 		wp_enqueue_script( 'dce-admin-js', DCE_URL . 'assets/js/admin.js', [], DCE_VERSION );
+	}
+
+	public function dce_icons() {
+		// Register styles
+		wp_register_style(
+			'dce-style-icons',
+			plugins_url( '/assets/css/icons.css', DCE__FILE__ ),
+			[],
+			DCE_VERSION
+		);
+		// Enqueue styles Icons
+		wp_enqueue_style( 'dce-style-icons' );
 	}
 
 	/**

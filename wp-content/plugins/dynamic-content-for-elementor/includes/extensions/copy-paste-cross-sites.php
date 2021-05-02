@@ -8,17 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Extension_CopyPaste extends DCE_Extension_Prototype {
 
-	public $name = 'Copy&Paste Cross Sites';
-
 	private $is_common = false;
-
-	public static function get_description() {
-		return __( 'Copy and Paste any element from a site to another', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/copy-paste-cross-site/';
-	}
 
 	protected function add_actions() {
 
@@ -35,6 +25,5 @@ class DCE_Extension_CopyPaste extends DCE_Extension_Prototype {
 		});
 
 	}
-
 
 }

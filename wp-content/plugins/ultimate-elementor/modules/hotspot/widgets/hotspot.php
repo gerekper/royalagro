@@ -11,8 +11,8 @@ namespace UltimateElementor\Modules\Hotspot\Widgets;
 use Elementor\Controls_Manager;
 use Elementor\Utils;
 use Elementor\Repeater;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
@@ -1114,7 +1114,9 @@ class Hotspot extends Common_Widget {
 				array(
 					'name'     => 'hotspot_typography',
 					'selector' => '{{WRAPPER}} .uael-hotspot-content',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 				)
 			);
 
@@ -1145,9 +1147,8 @@ class Hotspot extends Common_Widget {
 						array(
 							'label'     => __( 'Background Color', 'uael' ),
 							'type'      => Controls_Manager::COLOR,
-							'scheme'    => array(
-								'type'  => Scheme_Color::get_type(),
-								'value' => Scheme_Color::COLOR_1,
+							'global'    => array(
+								'default' => Global_Colors::COLOR_PRIMARY,
 							),
 							'selectors' => array(
 								'{{WRAPPER}} .uael-hotspot-content, 
@@ -1203,9 +1204,8 @@ class Hotspot extends Common_Widget {
 						array(
 							'label'     => __( 'Border Color', 'uael' ),
 							'type'      => Controls_Manager::COLOR,
-							'scheme'    => array(
-								'type'  => Scheme_Color::get_type(),
-								'value' => Scheme_Color::COLOR_1,
+							'global'    => array(
+								'default' => Global_Colors::COLOR_PRIMARY,
 							),
 							'condition' => array(
 								'hotspot_border!' => 'none',
@@ -1272,9 +1272,8 @@ class Hotspot extends Common_Widget {
 						array(
 							'label'     => __( 'Background Color', 'uael' ),
 							'type'      => Controls_Manager::COLOR,
-							'scheme'    => array(
-								'type'  => Scheme_Color::get_type(),
-								'value' => Scheme_Color::COLOR_1,
+							'global'    => array(
+								'default' => Global_Colors::COLOR_PRIMARY,
 							),
 							'selectors' => array(
 								'{{WRAPPER}} .uael-hotspot-content:hover, 
@@ -1575,9 +1574,8 @@ class Hotspot extends Common_Widget {
 							),
 							'fields_options' => array(
 								'color' => array(
-									'scheme' => array(
-										'type'  => Scheme_Color::get_type(),
-										'value' => Scheme_Color::COLOR_4,
+									'global' => array(
+										'default' => Global_Colors::COLOR_ACCENT,
 									),
 								),
 							),
@@ -1676,9 +1674,8 @@ class Hotspot extends Common_Widget {
 							),
 							'fields_options' => array(
 								'color' => array(
-									'scheme' => array(
-										'type'  => Scheme_Color::get_type(),
-										'value' => Scheme_Color::COLOR_4,
+									'global' => array(
+										'default' => Global_Colors::COLOR_ACCENT,
 									),
 								),
 							),

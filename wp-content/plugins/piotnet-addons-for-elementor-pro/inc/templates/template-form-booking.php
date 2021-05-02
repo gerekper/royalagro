@@ -98,7 +98,6 @@
 			<?php endif; ?>
 			<?php if (!empty($settings['pafe_form_booking_field_price_show']) && !empty($item['pafe_form_booking_price_text'])) : ?>
 				<div class="pafe-form-booking__price">
-                    <?php echo $item['pafe_form_booking_price']; ?>
                     <?php echo $item['pafe_form_booking_price_text']; ?>
 				</div>
 			<?php endif; ?>

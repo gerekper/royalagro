@@ -8,7 +8,7 @@
 namespace Happy_Addons_Pro\Widget;
 
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
@@ -714,7 +714,7 @@ class Image_Scroller extends Base {
 					'font_size' => ['']
 				],
 				'selector' => '{{WRAPPER}} .ha-badge',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 
@@ -845,7 +845,7 @@ class Image_Scroller extends Base {
 
 		?>
 
-		<<?php echo tag_escape($item_tag) . ' ' . $this->get_render_attribute_string( 'wrapper' ); ?>>
+		<<?php echo ha_escape_tags($item_tag) . ' ' . $this->get_render_attribute_string( 'wrapper' ); ?>>
 			<figure <?php $this->print_render_attribute_string( 'container' ); ?>>
 				<?php echo Group_Control_Image_Size::get_attachment_image_html( $settings,'thumbnail','scroller_image' ); ?>
 			</figure>
@@ -859,7 +859,7 @@ class Image_Scroller extends Base {
 					<i class="hm hm-scrolling-image"></i>
 				</span>
 			<?php endif;?>
-		</<?php echo tag_escape($item_tag); ?>>
+		</<?php echo ha_escape_tags($item_tag); ?>>
 		<?php
 	}
 

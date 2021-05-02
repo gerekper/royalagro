@@ -19,28 +19,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_FeaturedImage extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-featured-image';
-	}
-
-	public function get_title() {
-		return __( 'Featured Image', 'dynamic-content-for-elementor' );
-	}
-	public function get_description() {
-		return __( 'Add a featured image on your article', 'dynamic-content-for-elementor' );
-	}
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/featured-image/';
-	}
-	public function get_icon() {
-		return 'icon-dyn-image';
-	}
 	public function get_style_depends() {
 		return [ 'dce-featuredImage' ];
-	}
-
-	public static function get_position() {
-		return 3;
 	}
 
 	protected function _register_controls() {

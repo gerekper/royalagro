@@ -1,5 +1,18 @@
 
 
+version 1.4.71
+
+-change: added option for woocommerce categories in terms selection
+-feature: added option to take post id's from php function in post selection
+-bug fix: fixed price issues in woocommerce related grids
+-feature: added option for get posts by meta field that located in current or different post
+-feature: added twig filter: wc_price for native price filtering
+-feature: added post terms titles to post data debug
+-bug fix: fixed include and exclude terms mismatch with nested tax query
+-bug fix: fixed pagination on search pages
+
+
+
 version 1.4.70
 
 -bug fix: when bulk moving attribute it now always goes to general category

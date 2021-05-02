@@ -9,8 +9,8 @@ namespace UltimateElementor\Modules\Posts\Skins;
 
 use Elementor\Controls_Manager;
 use Elementor\Widget_Base;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Border;
@@ -521,7 +521,9 @@ class Skin_Feed extends Skin_Base {
 			array(
 				'name'      => 'filter_typography',
 				'selector'  => '{{WRAPPER}} .uael-posts-tabs-dropdown .uael-filters-dropdown-button,{{WRAPPER}} .uael-post__header-filter',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_4,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+				),
 				'condition' => array(
 					$this->get_control_id( 'show_filters' ) => 'yes',
 				),
@@ -673,9 +675,8 @@ class Skin_Feed extends Skin_Base {
 						'label'     => __( 'Text Color', 'uael' ),
 						'type'      => Controls_Manager::COLOR,
 						'default'   => '',
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_4,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_ACCENT,
 						),
 						'selectors' => array(
 							'{{WRAPPER}} .uael-grid-pagination a.page-numbers' => 'color: {{VALUE}};',
@@ -789,9 +790,8 @@ class Skin_Feed extends Skin_Base {
 					array(
 						'label'     => __( 'Text Active Color', 'uael' ),
 						'type'      => Controls_Manager::COLOR,
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_4,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_ACCENT,
 						),
 						'selectors' => array(
 							'{{WRAPPER}} .uael-grid-pagination span.page-numbers.current' => 'color: {{VALUE}};',
@@ -908,9 +908,8 @@ class Skin_Feed extends Skin_Base {
 						'label'     => __( 'Text Color', 'uael' ),
 						'type'      => Controls_Manager::COLOR,
 						'default'   => '#ffffff',
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_4,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_ACCENT,
 						),
 						'selectors' => array(
 							'{{WRAPPER}} .uael-post__load-more' => 'color: {{VALUE}};',
@@ -930,9 +929,8 @@ class Skin_Feed extends Skin_Base {
 						'selectors' => array(
 							'{{WRAPPER}} .uael-post__load-more' => 'background-color: {{VALUE}};',
 						),
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_4,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_ACCENT,
 						),
 						'condition' => array(
 							$this->get_control_id( 'pagination' ) => 'infinite',
@@ -1074,9 +1072,8 @@ class Skin_Feed extends Skin_Base {
 			array(
 				'label'     => __( 'Loader Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_PRIMARY,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-post-inf-loader > div' => 'background-color: {{VALUE}};',
@@ -1116,7 +1113,9 @@ class Skin_Feed extends Skin_Base {
 			array(
 				'name'      => 'load_more_pagination_typography',
 				'selector'  => '{{WRAPPER}} .uael-post__load-more',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_4,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+				),
 				'condition' => array(
 					$this->get_control_id( 'pagination' ) => 'infinite',
 					$this->get_control_id( 'infinite_event' ) => 'click',
@@ -1129,7 +1128,9 @@ class Skin_Feed extends Skin_Base {
 			array(
 				'name'      => 'pagination_typography',
 				'selector'  => '{{WRAPPER}} .uael-grid-pagination a.page-numbers, {{WRAPPER}} .uael-grid-pagination span.page-numbers.current',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_4,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+				),
 				'condition' => array(
 					$this->get_control_id( 'pagination' ) => 'numbers',
 				),
@@ -1371,9 +1372,8 @@ class Skin_Feed extends Skin_Base {
 				array(
 					'label'     => __( 'Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_4,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_ACCENT,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-post__terms' => 'color: {{VALUE}};',
@@ -1387,9 +1387,8 @@ class Skin_Feed extends Skin_Base {
 				array(
 					'label'     => __( 'Hover Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_2,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_SECONDARY,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-post__terms a:hover' => 'color: {{VALUE}};',
@@ -1414,7 +1413,9 @@ class Skin_Feed extends Skin_Base {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'term_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_2,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_SECONDARY,
+					),
 					'selector' => '{{WRAPPER}} .uael-post__terms',
 				)
 			);
@@ -1678,9 +1679,8 @@ class Skin_Feed extends Skin_Base {
 			array(
 				'label'     => __( 'Separator Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_4,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_ACCENT,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-post__separator' => 'background-color: {{VALUE}};',

@@ -14,8 +14,8 @@ use Elementor\Utils;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Css_Filter;
 use Elementor\Group_Control_Text_Shadow;
@@ -387,9 +387,8 @@ class Retina_Image extends Common_Widget {
 			array(
 				'label'     => __( 'Border Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_PRIMARY,
 				),
 				'condition' => array(
 					'retina_image_border!' => 'none',
@@ -553,9 +552,8 @@ class Retina_Image extends Common_Widget {
 				'selectors' => array(
 					'{{WRAPPER}} .widget-image-caption' => 'color: {{VALUE}};',
 				),
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 			)
 		);
@@ -576,7 +574,9 @@ class Retina_Image extends Common_Widget {
 			array(
 				'name'     => 'caption_typography',
 				'selector' => '{{WRAPPER}} .widget-image-caption',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'global'   => array(
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				),
 			)
 		);
 

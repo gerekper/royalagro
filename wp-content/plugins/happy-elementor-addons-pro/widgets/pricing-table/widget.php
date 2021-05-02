@@ -11,7 +11,7 @@ use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Icons_Manager;
 use Elementor\Repeater;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
@@ -696,7 +696,7 @@ class Pricing_Table extends Base {
 			[
 				'name' => 'title_typography',
 				'selector' => '{{WRAPPER}} .ha-pricing-table-title',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+				'scheme' => Typography::TYPOGRAPHY_2,
 			]
 		);
 
@@ -842,7 +842,7 @@ class Pricing_Table extends Base {
 			[
 				'name' => 'price_typography',
 				'selector' => '{{WRAPPER}} .ha-pricing-table-price-text',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 
@@ -902,7 +902,7 @@ class Pricing_Table extends Base {
 			[
 				'name' => 'currency_typography',
 				'selector' => '{{WRAPPER}} .ha-pricing-table-currency',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 
@@ -972,7 +972,7 @@ class Pricing_Table extends Base {
 			[
 				'name' => 'original_price_typography',
 				'selector' => '{{WRAPPER}} .ha-pricing-table-original-price .ha-pricing-table-currency,{{WRAPPER}} .ha-pricing-table-original-price .ha-pricing-table-price-text',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 
@@ -1013,7 +1013,7 @@ class Pricing_Table extends Base {
 			[
 				'name' => 'period_typography',
 				'selector' => '{{WRAPPER}} .ha-pricing-table-period',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 
@@ -1099,7 +1099,7 @@ class Pricing_Table extends Base {
 			[
 				'name' => 'features_title_typography',
 				'selector' => '{{WRAPPER}} .ha-pricing-table-features-title',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+				'scheme' => Typography::TYPOGRAPHY_2,
 			]
 		);
 
@@ -1141,7 +1141,7 @@ class Pricing_Table extends Base {
 			[
 				'name' => 'features_list_typography',
 				'selector' => '{{WRAPPER}} .ha-pricing-table-features-list > li',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 
@@ -1200,7 +1200,7 @@ class Pricing_Table extends Base {
 			[
 				'name' => 'description_typography',
 				'selector' => '{{WRAPPER}} .ha-pricing-table-description',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 		$this->end_controls_section();
@@ -1278,7 +1278,7 @@ class Pricing_Table extends Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'price_tooltip_typography',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .ha-pricing-table-feature-tooltip-text',
 			]
 		);
@@ -1359,7 +1359,7 @@ class Pricing_Table extends Base {
 			[
 				'name' => 'button_typography',
 				'selector' => '{{WRAPPER}} .ha-pricing-table-btn',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+				'scheme' => Typography::TYPOGRAPHY_4,
 			]
 		);
 
@@ -1518,7 +1518,7 @@ class Pricing_Table extends Base {
 			[
 				'name' => 'footer_description_typography',
 				'selector' => '{{WRAPPER}} .ha-pricing-table-footer-description',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 		$this->end_controls_section();
@@ -1601,7 +1601,7 @@ class Pricing_Table extends Base {
 				'name' => 'badge_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '{{WRAPPER}} .ha-pricing-table-badge',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 

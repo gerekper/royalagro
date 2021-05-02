@@ -15,12 +15,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_DynamicPosts_v2 extends DCE_Widget_DynamicPosts_Base {
 
+	
+
+
 	public function get_name() {
 		return 'dce-dynamicposts-v2';
-	}
-
-	public static function get_position() {
-		return 1;
 	}
 
 	protected $depended_scripts = [
@@ -98,45 +97,21 @@ class DCE_Widget_DynamicPosts_v2 extends DCE_Widget_DynamicPosts_Base {
 	}
 
 	protected function _enqueue_scripts() {
-		// if( $this->get_id() == $this->get_settings( '_skin' ) ){
 		$scripts = $this->get_script_depends();
 		if ( isset( $scripts ) && ! empty( $scripts ) ) {
 			foreach ( $scripts as $script ) {
 				wp_enqueue_script( $script );
 			}
 		}
-		// }
 	}
 
 	protected function _enqueue_styles() {
-		// if( $this->get_id() == $this->get_settings( '_skin' ) ){
 		$styles = $this->get_style_depends();
 		if ( isset( $styles ) && ! empty( $styles ) ) {
 			foreach ( $styles as $style ) {
 				wp_enqueue_style( $style );
 			}
 		}
-		// }
-	}
-
-	public function get_title() {
-		return __( 'Dynamic Posts v2', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_description() {
-		return __( 'Dynamic Posts v2 allows to build archives from lists of articles with four different queries. You can display the list with various layouts and use them to shape blocks', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/dynamic-posts-v2';
-	}
-
-	public function get_icon() {
-		return 'icon-dynamic_posts';
-	}
-
-	public function get_keywords() {
-		return [ 'dynamic', 'ooo', 'posts', 'timeline', 'grid', 'slide', 'carousel', '3d', 'skin', 'custom', 'custom post type', 'cpt', 'item', 'loop' ];
 	}
 
 	protected function _register_skins() {
@@ -149,22 +124,7 @@ class DCE_Widget_DynamicPosts_v2 extends DCE_Widget_DynamicPosts_Base {
 		$this->add_skin( new Skins\Skin_CrossroadsSlideshow( $this ) );
 	}
 
-	public function show_in_panel() {
-		if (! current_user_can('manage_options')) {
-			return false;
-		}
-		return true;
-	}
-
 	protected function _register_controls() {
-		if (current_user_can('manage_options') || ! is_admin()) {
-			$this->_register_controls_content();
-		} elseif (! current_user_can('manage_options') && is_admin()) {
-			$this->register_controls_non_admin_notice();
-		}
-	}
-
-	protected function _register_controls_content() {
 		parent::_register_controls();
 
 		$taxonomies = Helper::get_taxonomies();
@@ -369,7 +329,7 @@ class DCE_Widget_DynamicPosts_v2 extends DCE_Widget_DynamicPosts_Base {
 				],
 			]
 		);
-		if( Helper::is_pods_active() ) {
+		if ( Helper::is_pods_active() ) {
 			$this->add_control(
 				'pods_relationship_field',
 				[
@@ -455,7 +415,7 @@ class DCE_Widget_DynamicPosts_v2 extends DCE_Widget_DynamicPosts_Base {
 			[
 				'label' => __( 'Results per page', 'dynamic-content-for-elementor' ),
 				'type' => Controls_Manager::NUMBER,
-				'default' => '-1',
+				'default' => '10',
 				'condition' => [
 					'query_type' => [ 'get_cpt', 'dynamic_mode', 'relationship', 'pods_relationship', 'search_page', 'post_parent' ],
 				],
@@ -1448,7 +1408,7 @@ class DCE_Widget_DynamicPosts_v2 extends DCE_Widget_DynamicPosts_Base {
 
 		// Query Type - Search Page
 		if ( $settings['query_type'] == 'search_page' ) {
-			if( empty($post_type) ) {
+			if ( empty( $post_type ) ) {
 				$post_type[] = 'any';
 			}
 			if ( is_search() ) {

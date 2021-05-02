@@ -14,18 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Extension_Video extends DCE_Extension_Prototype {
 
-	public $name = 'Advanced Video Controls';
-	public static $docs = 'https://www.dynamic.ooo/widget/advanced-video-controls/';
 	private $is_common = false;
-	public $has_action = false;
-
-	public function get_docs() {
-		return self::$docs;
-	}
-
-	public static function get_description() {
-		return __( 'Advanced Video features for Elementor Video Widget', 'dynamic-content-for-elementor' );
-	}
 
 	public function get_name() {
 		return 'dce_video';

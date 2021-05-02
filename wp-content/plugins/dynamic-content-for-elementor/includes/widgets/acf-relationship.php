@@ -18,17 +18,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_Relationship extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-acf-relation';
-	}
-
-	public function get_title() {
-		return __( 'ACF Relationship', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_description() {
-		return __( 'Display related posts easily selected, also in reverse mode', 'dynamic-content-for-elementor' );
-	}
 	public function get_style_depends() {
 		return [
 			'dce-acfRelationship',
@@ -38,30 +27,7 @@ class DCE_Widget_Relationship extends DCE_Widget_Prototype {
 		return 'https://www.dynamic.ooo/widget/acf-relationship/';
 	}
 
-	public function get_icon() {
-		return 'icon-dyn-relation';
-	}
-
-	public function get_plugin_depends() {
-		return [ 'acf' ];
-	}
-
-	public function show_in_panel() {
-		if (! current_user_can('manage_options')) {
-			return false;
-		}
-		return true;
-	}
-
 	protected function _register_controls() {
-		if (current_user_can('manage_options') || ! is_admin()) {
-			$this->_register_controls_content();
-		} elseif (! current_user_can('manage_options') && is_admin()) {
-			$this->register_controls_non_admin_notice();
-		}
-	}
-
-	protected function _register_controls_content() {
 
 		$this->start_controls_section(
 			'section_content',
@@ -731,9 +697,9 @@ class DCE_Widget_Relationship extends DCE_Widget_Prototype {
 						?>
 							<li>
 								<a class="dce-view-item dce-tab-item<?php echo ( ! $i ) ? ' dce-tab-item-active' : ''; ?>" href="#dce-acf-relational-post-<?php echo $this->get_id() . '-' . $pkey; ?>" onclick="jQuery('.elementor-element-<?php echo $this->get_id(); ?> .dce-acf-relational-post').hide();jQuery('.elementor-element-<?php echo $this->get_id(); ?> .dce-tab-item-active').removeClass('dce-tab-item-active');jQuery(jQuery(this).attr('href')).show();jQuery(this).addClass('dce-tab-item-active'); return false;">
-									<<?php echo $settings['acf_relation_tag']; ?> class="elementor-heading-title">
+									<<?php echo \DynamicContentForElementor\Helper::validate_html_tag( $settings['acf_relation_tag'] ); ?> class="elementor-heading-title">
 							<?php echo $alabel; ?>
-									</<?php echo $settings['acf_relation_tag']; ?>>
+									</<?php echo \DynamicContentForElementor\Helper::validate_html_tag( $settings['acf_relation_tag'] ); ?>>
 								</a>
 							</li>
 							<?php
@@ -783,9 +749,9 @@ class DCE_Widget_Relationship extends DCE_Widget_Prototype {
 																				  } else {
 																					  jQuery(jQuery(this).attr('href')).slideUp();
 																				  } return false;">
-										  <<?php echo $settings['acf_relation_tag']; ?> class="elementor-heading-title">
+										  <<?php echo \DynamicContentForElementor\Helper::validate_html_tag( $settings['acf_relation_tag'] ); ?> class="elementor-heading-title">
 								<?php echo $labels[ $post->ID ]; ?>
-										  </<?php echo $settings['acf_relation_tag']; ?>>
+										  </<?php echo \DynamicContentForElementor\Helper::validate_html_tag( $settings['acf_relation_tag'] ); ?>>
 									  </a>
 								  </div>
 							  <?php
@@ -819,7 +785,7 @@ class DCE_Widget_Relationship extends DCE_Widget_Prototype {
 				if ( $settings['acf_relation_link'] ) {
 					echo '<a class="dce-acf-relational-post-link" href="' . get_permalink() . '">';
 				}
-				echo '<' . $settings['acf_relation_tag'] . ' class="elementor-heading-title">' . get_the_title() . '</' . $settings['acf_relation_tag'] . '>';
+				echo '<' . \DynamicContentForElementor\Helper::validate_html_tag( $settings['acf_relation_tag'] ) . ' class="elementor-heading-title">' . get_the_title() . '</' . \DynamicContentForElementor\Helper::validate_html_tag( $settings['acf_relation_tag'] ) . '>';
 				if ( $settings['acf_relation_link'] ) {
 					echo '</a>';
 				}

@@ -15,10 +15,9 @@ class Widgets_Manager {
 	public static function init() {
 		add_filter( 'happyaddons_get_widgets_map', [ __CLASS__, 'add_widgets_map' ] );
 
-		
-		add_action( 'elementor/widgets/widgets_registered', [ __CLASS__, 'register' ], 20 );
-		
-	}
+       add_action( 'elementor/widgets/widgets_registered', [ __CLASS__, 'register' ], 20 );
+
+    }
 
 	public static function add_widgets_map( $widgets ) {
 		$widgets = array_merge( $widgets, self::get_local_widgets_map() );

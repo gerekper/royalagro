@@ -1376,11 +1376,12 @@ class UniteCreatorElementorWidget extends Widget_Base {
     		case UniteCreatorDialogParam::PARAM_USERS:
     		case UniteCreatorDialogParam::PARAM_TEMPLATE:
     		case UniteCreatorDialogParam::PARAM_MENU:
+    		case UniteCreatorDialogParam::PARAM_LISTING:
     			
     			$settings = new UniteCreatorSettings();
     			  
     			$arrChildParams = $settings->getMultipleCreatorParams($param);
-    			    			
+    			
     			foreach($arrChildParams as $childParam)
     				$this->addElementorParamUC($childParam,$objControls);
     			
@@ -1389,9 +1390,7 @@ class UniteCreatorElementorWidget extends Widget_Base {
     			
     			$param["all_cats_mode"] = true;
     			
-    			//add current posts settings
-    			$isArchiveLocation = UniteFunctionsWPUC::isArchiveLocation();
-    			    			
+    			//add current posts settings    			   
     			$param["add_current_posts"] = true;
     			
     			$settings = new UniteCreatorSettings();
@@ -1769,6 +1768,17 @@ class UniteCreatorElementorWidget extends Widget_Base {
     	return($arrOutput);    	
     }
     
+    /**
+     * put listing sections
+     */
+    private function putListingSections($listingParam){
+    	
+    	if(GlobalsUC::$inDev == false)
+    		return(false);
+    	
+    	//dmP("put listing sections");exit();
+    	
+    }
     
     /**
      * register controls with not consolidated addon
@@ -1807,7 +1817,9 @@ class UniteCreatorElementorWidget extends Widget_Base {
          $hasPostsList = false;
 	     $postListParam = null;
          
-	     	     
+	     $hasListing = false;
+         $listingParam = null;
+	     
 	     //foreach the categories
          foreach($arrCatsAndParams as $catID => $arrCat){
          	
@@ -1852,8 +1864,13 @@ class UniteCreatorElementorWidget extends Widget_Base {
 	          			
 	          			if($showImageSizes == true)
 	          				$this->addImageSizesControl($postListParam, $this->objControls);
-	          				          			
+	          			
 	          			continue;
+	          		}
+	          		
+	          		if($type == UniteCreatorDialogParam::PARAM_LISTING){
+	          			$hasListing = true;
+	          			$listingParam = $param;
 	          		}
 	          		
 	          		$this->addElementorParamUC($param);
@@ -1879,12 +1896,16 @@ class UniteCreatorElementorWidget extends Widget_Base {
 	                'label' => $labelPosts,
 	              )
 	        );
-          	  	          
+          	  
           	  $this->addElementorParamUC($postListParam);
 	          
 	          $this->end_controls_section();
           }
-
+		
+          if($hasListing == true)
+          	$this->putListingSections($listingParam);
+          
+          	
           //add no attributes section
          if($isNoSettings == true){
          	
@@ -2712,9 +2733,8 @@ class UniteCreatorElementorWidget extends Widget_Base {
     		return("");
     	
     	$isArchivePage = UniteFunctionsWPUC::isArchiveLocation();
-    		
-    	//validate post source, enable only on current
     	
+    	//validate post source, enable only on current
     	if($isArchivePage == true){
     	
 	    	$postListName = UniteFunctionsUC::getVal($arrPostListParam, "name");

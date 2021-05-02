@@ -2973,7 +2973,7 @@ class Smart_Post_List extends Base {
 				<?php
 				if (  $settings['widget_title'] ) {
 					printf( '<%1$s %2$s>%3$s</%1$s>',
-						tag_escape( $settings['widget_title_tag'] ),
+						ha_escape_tags( $settings['widget_title_tag'] ),
 						'class="ha-spl-widget-title"',
 						esc_html( $settings['widget_title'] )
 					);

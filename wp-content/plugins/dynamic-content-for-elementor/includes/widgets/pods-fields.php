@@ -21,24 +21,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_Pods extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-pods';
-	}
-
-	public function get_title() {
-		return __( 'PODS Fields', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_icon() {
-		return 'icon-dyn-acffields';
-	}
-	public function get_description() {
-		return __( 'Add a customized field realized with Pods', 'dynamic-content-for-elementor' );
-	}
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/pods-fields/';
-	}
-
 	public function get_script_depends() {
 		return [ 'elementor-dialog' ];
 	}
@@ -47,26 +29,7 @@ class DCE_Widget_Pods extends DCE_Widget_Prototype {
 		return [ 'dce-pods' ];
 	}
 
-	public function get_plugin_depends() {
-		return array( 'pods' => 'pods' );
-	}
-
-	public function show_in_panel() {
-		if (! current_user_can('manage_options')) {
-			return false;
-		}
-		return true;
-	}
-
 	protected function _register_controls() {
-		if (current_user_can('manage_options') || ! is_admin()) {
-			$this->_register_controls_content();
-		} elseif (! current_user_can('manage_options') && is_admin()) {
-			$this->register_controls_non_admin_notice();
-		}
-	}
-
-	protected function _register_controls_content() {
 
 		$this->start_controls_section(
 				'section_content', [
@@ -629,7 +592,7 @@ class DCE_Widget_Pods extends DCE_Widget_Prototype {
 
 		$animation_class = ! empty( $settings['hover_animation'] ) ? 'elementor-animation-' . $settings['hover_animation'] : '';
 
-		$html .= sprintf( '<%1$s class="dynamic-content-for-elementor-pods %2$s">', $settings['html_tag'], $animation_class );
+		$html .= sprintf( '<%1$s class="dynamic-content-for-elementor-pods %2$s">', \DynamicContentForElementor\Helper::validate_html_tag( $settings['html_tag'] ), $animation_class );
 
 		// Email
 		if ( $pod_type == 'email' && $settings['pods_field_email_target'] ) {
@@ -676,7 +639,7 @@ class DCE_Widget_Pods extends DCE_Widget_Prototype {
 			$html .= $pod_value;
 		}
 
-		$html .= sprintf( '</%s>', $settings['html_tag'] );
+		$html .= sprintf( '</%s>', \DynamicContentForElementor\Helper::validate_html_tag( $settings['html_tag'] ) );
 
 		if ( $link ) {
 			$html = sprintf( '<a href="%1$s" %2$s>%3$s</a>', $link, $target, $html );

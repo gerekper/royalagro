@@ -32,30 +32,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_Pdf extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dce_pdf_button';
-	}
-
-	public static function is_enabled() {
-		return true;
-	}
-
-	public function get_title() {
-		return __( 'PDF Button', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_icon() {
-		return 'icon-dyn-buttonpdf';
-	}
-
-	public function get_description() {
-		return __( 'Export your content in PDF, generate them dynamically and stylized', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/pdf-button/';
-	}
-
 	protected function _register_controls() {
 
 		$this->start_controls_section(
@@ -715,7 +691,7 @@ class DCE_Widget_Pdf extends DCE_Widget_Prototype {
 	/**
 	 * Provides settings for the js converter with better key names and defaults.
 	 */
-	static function polish_settings( $settings ) {
+	public static function polish_settings( $settings ) {
 		$defaults = [
 			'converter' => 'js',
 			'source_type' => 'post',

@@ -14,8 +14,8 @@ use Elementor\Utils;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Css_Filter;
@@ -583,9 +583,8 @@ class Infobox extends Common_Widget {
 				array(
 					'label'      => __( 'Icon Color', 'uael' ),
 					'type'       => Controls_Manager::COLOR,
-					'scheme'     => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_1,
+					'global'     => array(
+						'default' => Global_Colors::COLOR_PRIMARY,
 					),
 					'conditions' => array(
 						'relation' => 'and',
@@ -647,9 +646,8 @@ class Infobox extends Common_Widget {
 				array(
 					'label'     => __( 'Background Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_2,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_SECONDARY,
 					),
 					'default'   => '',
 					'condition' => array(
@@ -690,9 +688,8 @@ class Infobox extends Common_Widget {
 				array(
 					'label'     => __( 'Border Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_1,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_PRIMARY,
 					),
 					'condition' => array(
 						'uael_infobox_image_type' => array( 'icon', 'photo' ),
@@ -1104,9 +1101,8 @@ class Infobox extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_4,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_ACCENT,
 				),
 				'condition' => array(
 					'infobox_separator' => 'yes',
@@ -1403,9 +1399,8 @@ class Infobox extends Common_Widget {
 					),
 					'fields_options' => array(
 						'color' => array(
-							'scheme' => array(
-								'type'  => Scheme_Color::get_type(),
-								'value' => Scheme_Color::COLOR_4,
+							'global' => array(
+								'default' => Global_Colors::COLOR_ACCENT,
 							),
 						),
 					),
@@ -1555,9 +1550,8 @@ class Infobox extends Common_Widget {
 					),
 					'fields_options' => array(
 						'color' => array(
-							'scheme' => array(
-								'type'  => Scheme_Color::get_type(),
-								'value' => Scheme_Color::COLOR_4,
+							'global' => array(
+								'default' => Global_Colors::COLOR_ACCENT,
 							),
 						),
 					),
@@ -1660,7 +1654,9 @@ class Infobox extends Common_Widget {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'prefix_typography',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_2,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_SECONDARY,
+				),
 				'selector'  => '{{WRAPPER}} .uael-infobox-title-prefix',
 				'condition' => array(
 					'infobox_title_prefix!' => '',
@@ -1672,9 +1668,8 @@ class Infobox extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'default'   => '',
 				'condition' => array(
@@ -1748,7 +1743,9 @@ class Infobox extends Common_Widget {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'title_typography',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				),
 				'selector'  => '{{WRAPPER}} .uael-infobox-title',
 				'condition' => array(
 					'infobox_title!' => '',
@@ -1760,9 +1757,8 @@ class Infobox extends Common_Widget {
 			array(
 				'label'     => __( 'Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_PRIMARY,
 				),
 				'default'   => '',
 				'condition' => array(
@@ -1832,7 +1828,9 @@ class Infobox extends Common_Widget {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'desc_typography',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_3,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_TEXT,
+				),
 				'selector'  => '{{WRAPPER}} .uael-infobox-text',
 				'condition' => array(
 					'infobox_description!' => '',
@@ -1844,9 +1842,8 @@ class Infobox extends Common_Widget {
 			array(
 				'label'     => __( 'Description Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_TEXT,
 				),
 				'default'   => '',
 				'condition' => array(
@@ -1902,7 +1899,9 @@ class Infobox extends Common_Widget {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'cta_typography',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_2,
+				'global'    => array(
+					'default' => Global_Typography::TYPOGRAPHY_SECONDARY,
+				),
 				'selector'  => '{{WRAPPER}} .uael-infobox-cta-link, {{WRAPPER}} .elementor-button, {{WRAPPER}} a.elementor-button',
 				'condition' => array(
 					'infobox_cta_type' => array( 'link', 'button' ),
@@ -1914,9 +1913,8 @@ class Infobox extends Common_Widget {
 			array(
 				'label'     => __( 'Link Color', 'uael' ),
 				'type'      => Controls_Manager::COLOR,
-				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_4,
+				'global'    => array(
+					'default' => Global_Colors::COLOR_ACCENT,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .uael-infobox-cta-link' => 'color: {{VALUE}};',

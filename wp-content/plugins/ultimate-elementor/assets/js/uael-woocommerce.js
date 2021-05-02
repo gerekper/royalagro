@@ -403,7 +403,7 @@
 			var slider_selector = cat_slider.find('ul.products'),
 				slider_options 	= JSON.parse( cat_slider.attr('data-cat_slider') );
 
-			slider_selector.slick(slider_options);
+			WidgetUAELSlickCall( slider_selector, slider_options );
 		}
 	}
 
@@ -424,7 +424,8 @@
 			var slider_selector = slider_wrapper.find('ul.products'),
 				slider_options 	= JSON.parse( slider_wrapper.attr('data-woo_slider') );
 
-			slider_selector.slick(slider_options);
+			WidgetUAELSlickCall( slider_selector, slider_options );
+
 		}
 
 		if ( ! elementorFrontend.isEditMode()  ) {
@@ -433,6 +434,27 @@
 			/* Style specific cart button */
 			RegisterUAELAddCart( $scope, $ );
 		}
+
+	}
+
+	/**
+	 * Function for slick call.
+	 *
+	 */
+	 var WidgetUAELSlickCall = function( slider_selector, slider_options ) {
+
+		// Slick slider has issue with the tablet breakpoint. So, we are managing this with a tweak.
+		var tablet_breakpoint = ( 'undefined' !== slider_options.responsive[0].breakpoint ) ? slider_options.responsive[0].breakpoint : '';
+
+		if( tablet_breakpoint == $( window ).width() ) {
+			slider_options.mobileFirst = true;
+		}
+
+		slider_selector.slick( slider_options );
+
+		window.addEventListener( "resize", function( event ) {			
+			slider_selector.slick( 'resize' );
+		});
 
 	}
 

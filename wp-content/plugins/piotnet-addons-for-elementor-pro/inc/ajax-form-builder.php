@@ -1042,7 +1042,14 @@
 									'label' => 'Payment Status',
 								);
 							}
-
+							if($form['settings']['form_database_hidden_field_option'] && !empty($form['settings']['form_database_list_hidden_field'])){
+								$field_database_hidden = $form['settings']['form_database_list_hidden_field'];
+								foreach($field_database_hidden as $hidden_value){
+									if(!empty($fields_database[$hidden_value['form_database_hidden_field']]['value'])){
+										$fields_database[$hidden_value['form_database_hidden_field']]['value'] = '********';
+									}
+								}
+							}
 							update_post_meta( $form_database_post_id, '_pafe_form_builder_fields_database', json_encode($fields_database, JSON_UNESCAPED_UNICODE) );
 
 							foreach ($fields_database as $field) {

@@ -20,36 +20,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_PopUp extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-popup';
-	}
-
-	public function get_title() {
-		return __( 'Modals', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_description() {
-		return __( 'Add a modal inside your page', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/popups/';
-	}
-
-	public function get_icon() {
-		return 'icon-dyn-popups';
-	}
-
 	public function get_script_depends() {
 		return [ 'dce-jquery-visible', 'dce-cookie', 'dce-modals' ];
 	}
 
 	public function get_style_depends() {
 		return [ 'animatecss', 'dce-animations', 'dce-modal' ];
-	}
-
-	public static function get_position() {
-		return 5;
 	}
 
 	protected function _register_controls() {
@@ -464,7 +440,7 @@ class DCE_Widget_PopUp extends DCE_Widget_Prototype {
 				'open_timingFunction', [
 					'label' => __( 'Timing function', 'dynamic-content-for-elementor' ),
 					'type' => Controls_Manager::SELECT,
-					'groups' => Helper::get_anim_timingFunctions(),
+					'groups' => Helper::get_anim_timing_functions(),
 					'default' => 'ease-in-out',
 					'frontend_available' => true,
 					'condition' => [
@@ -551,7 +527,7 @@ class DCE_Widget_PopUp extends DCE_Widget_Prototype {
 				'close_timingFunction', [
 					'label' => __( 'Timing function', 'dynamic-content-for-elementor' ),
 					'type' => Controls_Manager::SELECT,
-					'groups' => Helper::get_anim_timingFunctions(),
+					'groups' => Helper::get_anim_timing_functions(),
 					'default' => 'ease-in-out',
 					'frontend_available' => true,
 					'condition' => [
@@ -2016,7 +1992,6 @@ class DCE_Widget_PopUp extends DCE_Widget_Prototype {
 				</div>
 			</div>
 			<?php
-		} else {
 		}
 	}
 

@@ -23,25 +23,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_Toolset extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-toolset';
-	}
-
-	public function get_title() {
-		return __( 'TOOLSET Fields', 'dynamic-content-for-elementor' );
-	}
-
-	public function get_icon() {
-		return 'icon-dyn-acffields';
-	}
-
-	public function get_description() {
-		return __( 'Add a customized field realized with Toolset', 'dynamic-content-for-elementor' );
-	}
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/toolset-fields/';
-	}
-
 	public function get_script_depends() {
 		return [ 'elementor-dialog' ];
 	}
@@ -49,11 +30,6 @@ class DCE_Widget_Toolset extends DCE_Widget_Prototype {
 	public function get_style_depends() {
 		return [ 'dce-toolset' ];
 	}
-
-	public function get_plugin_depends() {
-		return array( 'types' => 'toolset' );
-	}
-
 
 	protected function _register_controls() {
 
@@ -560,7 +536,7 @@ class DCE_Widget_Toolset extends DCE_Widget_Prototype {
 	protected function get_toolset_fields() {
 
 		$fieldList = array();
-		$fieldList[0] = 'Select the field';
+		$fieldList[0] = __( 'Select the field', 'dynamic-content-for-elementor' );
 		if ( Helper::is_plugin_active( 'types' ) ) {
 			$toolset_groups = wpcf_admin_fields_get_groups();
 			foreach ( $toolset_groups as $group ) {
@@ -576,8 +552,8 @@ class DCE_Widget_Toolset extends DCE_Widget_Prototype {
 						$a['group'] = $group['slug'];
 						$a['field'] = $field_key;
 						$a['type'] = $field['type'];
-						$index = json_encode( $a );
-						$options[ json_encode( $a ) ] = $field['name'] . ' (' . $field['type'] . ')';
+						$index = wp_json_encode( $a );
+						$options[ wp_json_encode( $a ) ] = $field['name'] . ' (' . $field['type'] . ')';
 					}
 					if ( empty( $options ) ) {
 						continue;
@@ -701,9 +677,9 @@ class DCE_Widget_Toolset extends DCE_Widget_Prototype {
 						case 'default':
 							$data = $f->value;
 							break;
-						case 'timestamp';
+						case 'timestamp':
 							$data = $timestamp;
-break;
+							break;
 						case 'custom':
 							$data = strftime( $settings['toolset_date_custom_format'], $timestamp );
 							break;
@@ -758,9 +734,9 @@ break;
 				break;
 		}
 		$animation_class = ! empty( $settings['hover_animation'] ) ? 'elementor-animation-' . $settings['hover_animation'] : '';
-		$render = sprintf( '<%1$s class="dynamic-content-for-elementor-toolset %2$s">', $settings['html_tag'], $animation_class );
+		$render = sprintf( '<%1$s class="dynamic-content-for-elementor-toolset %2$s">', \DynamicContentForElementor\Helper::validate_html_tag( $settings['html_tag'] ), $animation_class );
 		$render .= $html;
-		$render .= sprintf( '</%s>', $settings['html_tag'] );
+		$render .= sprintf( '</%s>', \DynamicContentForElementor\Helper::validate_html_tag( $settings['html_tag'] ) );
 		echo $render;
 	}
 }

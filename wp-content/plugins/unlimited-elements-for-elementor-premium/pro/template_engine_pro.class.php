@@ -80,22 +80,37 @@ class UniteCreatorTemplateEnginePro extends UniteCreatorTemplateEngine{
 		return($value);
 	}
 	
+	
 	/**
-	 * get data by filters
+	  * validate the GET php function
 	 */
-	public function getByPHPFunction($funcName = null){
-		
+	private function validateGETPHPFunction($funcName){
+				
 		if(empty($funcName))
 			UniteFunctionsUC::throwError("With getByPHPFunction you can get data from every php function starting with 'get_' example getByPHPFunction(\"get_post\",15)");
 		
 		if(is_string($funcName) == false)
 			UniteFunctionsUC::throwError("function name in wrong format");
 		
-		if(strpos($funcName, "get_") !== 0 && strpos($funcName, "_get_") === false)
-			UniteFunctionsUC::throwError("getByPHPFunction: Function '{$funcName}' is not containing with 'get_', can't run it, sorry");
-		
 		if(function_exists($funcName) == false)
 			UniteFunctionsUC::throwError("getByPHPFunction: Function '{$funcName}' not exists");
+			
+		$arrAllowed = array("wc_price");
+		if(array_search($funcName, $arrAllowed) !== false)
+			return(true);
+		
+		if(strpos($funcName, "get_") !== 0 && strpos($funcName, "_get_") === false)
+			UniteFunctionsUC::throwError("getByPHPFunction: Function '{$funcName}' is not containing with 'get_', can't run it, sorry");
+				
+	}
+	
+	
+	/**
+	 * get data by filters
+	 */
+	public function getByPHPFunction($funcName = null){
+		
+		$this->validateGETPHPFunction($funcName);
 		
 		$args = func_get_args();
 		

@@ -44,7 +44,6 @@ function downloadPDF() {
 		orientation: jsconv.orientation,
 		unit: jsconv.marginUnit,
 		compress: true
-			
 	});
 	const pdfWidth = doc.internal.pageSize.getWidth();
 	const pdfHeight = doc.internal.pageSize.getHeight();
@@ -79,6 +78,7 @@ function downloadPDF() {
 		doc.save(jsconv.title);
 	});
 }
+jQuery(window).trigger('dce/jsconvpdf/before');
 downloadPDF();
 if (pdfButton.length > 0) {
 		pdfButton[0].style.display = pdfButtonDisplay;

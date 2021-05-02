@@ -13,8 +13,8 @@ use Elementor\Utils;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Widget_Button;
 use Elementor\Group_Control_Background;
 // UltimateElementor Classes.
@@ -398,7 +398,9 @@ class Marketing_Button extends Common_Widget {
 				array(
 					'name'     => 'all_typography',
 					'label'    => __( 'Title Typography', 'uael' ),
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					),
 					'selector' => '{{WRAPPER}} .uael-marketing-button-title',
 				)
 			);
@@ -408,7 +410,9 @@ class Marketing_Button extends Common_Widget {
 				array(
 					'name'     => 'desc_typography',
 					'label'    => __( 'Description Typography', 'uael' ),
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_TEXT,
+					),
 					'selector' => '{{WRAPPER}} .uael-marketing-button .uael-marketing-button-desc',
 				)
 			);
@@ -531,9 +535,8 @@ class Marketing_Button extends Common_Widget {
 							'selector'       => '{{WRAPPER}} a.elementor-button',
 							'fields_options' => array(
 								'color' => array(
-									'scheme' => array(
-										'type'  => Scheme_Color::get_type(),
-										'value' => Scheme_Color::COLOR_4,
+									'global' => array(
+										'default' => Global_Colors::COLOR_ACCENT,
 									),
 								),
 							),
@@ -607,9 +610,8 @@ class Marketing_Button extends Common_Widget {
 							'selector'       => '{{WRAPPER}} a.elementor-button:hover',
 							'fields_options' => array(
 								'color' => array(
-									'scheme' => array(
-										'type'  => Scheme_Color::get_type(),
-										'value' => Scheme_Color::COLOR_4,
+									'global' => array(
+										'default' => Global_Colors::COLOR_ACCENT,
 									),
 								),
 							),

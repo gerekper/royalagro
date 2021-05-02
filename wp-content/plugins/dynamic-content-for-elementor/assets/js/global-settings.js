@@ -2,7 +2,6 @@
 var is_animsition = false;
 var is_trackerheader = false;
 (function ($) {
-    //
     var structure_wrapper = '';
     var structure_header = '';
 

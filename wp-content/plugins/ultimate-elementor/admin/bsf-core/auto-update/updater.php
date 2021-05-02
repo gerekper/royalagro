@@ -123,13 +123,11 @@ if ( ! function_exists( 'bsf_check_product_update' ) ) {
 							$brainstrom_products['plugins'][ $key ]['tested']            = $tested_upto;
 
 							// Deregister status for plugin.
-							// Deregister status for plugin.
 							
 							$brainstrom_products['plugins'][ $key ]['status'] = 'registered';
 							$is_update = true;
 						}
 					}
-
 
 					foreach ( $bsf_product_themes as $key => $theme ) {
 						if ( ! isset( $theme['id'] ) ) {
@@ -148,9 +146,9 @@ if ( ! function_exists( 'bsf_check_product_update' ) ) {
 							$brainstrom_products['themes'][ $key ]['download_url']      = $download_url;
 							$brainstrom_products['themes'][ $key ]['download_url_beta'] = $download_url_beta;
 							$is_update = true;
-
-							// Deregister status for theme.
 							
+							
+							// Deregister status for theme.
 							$brainstrom_products['themes'][ $key ]['status'] = 'registered';
 							
 						}

@@ -33,8 +33,19 @@ trait Trait_Elementor {
 		return \Elementor\Plugin::instance()->templates_manager->get_source( 'local' )->get_items();
 	}
 
-	public static function get_element_by_id( $element_id = null, $post_id = null ) {
-		$settings = array();
+	public static function get_element_by_id_with_post_id( $element_id, $post_id ) {
+		$elementor_data = self::get_elementor_data( $post_id, '_elementor_data', true );
+		if ( $elementor_data ) {
+			if ( $element_id ) {
+				$element = self::array_find_deep_value( $elementor_data, $element_id, 'id' );
+				if ( isset( $element['id'] ) ) {
+					return $element;
+				}
+			}
+		}
+	}
+
+	public static function get_element_by_id( $element_id, $post_id = null ) {
 		if ( ! $post_id ) {
 			$post_id = get_the_ID();
 			if ( ! $post_id && isset( $_GET['post'] ) ) {
@@ -46,26 +57,16 @@ trait Trait_Elementor {
 		}
 
 		if ( $post_id ) {
-			$elementor_data = self::get_elementor_data( $post_id, '_elementor_data', true );
-			if ( $elementor_data ) {
-				if ( $element_id ) {
-					$element = self::array_find_deep_value( $elementor_data, $element_id, 'id' );
-					if ( isset( $element['id'] ) ) {
-						return $element;
-					}
-				}
-			}
-		}
-
-		$ext_post_id = self::get_post_id_by_element_id( $element_id );
-		if ( $ext_post_id ) {
-			$element = self::get_element_by_id( $element_id, $ext_post_id );
+			$element = get_element_by_id_with_post_id( $element_id, $post_id );
 			if ( $element ) {
 				return $element;
 			}
 		}
-
-		return false;
+		$ext_post_id = self::get_post_id_by_element_id( $element_id );
+		if ( $ext_post_id ) {
+			$element = self::get_element_by_id_with_post_id( $element_id, $ext_post_id );
+			return $element;
+		}
 	}
 
 	public static function get_post_id_by_element_data( $data, $post_id = 0 ) {
@@ -98,7 +99,7 @@ trait Trait_Elementor {
 			// find element settings (because it may not be on post, but in a template)
 			global $wpdb;
 			$table = $wpdb->prefix . 'postmeta';
-			$query = 'SELECT post_id FROM ' . $table . " WHERE meta_key LIKE '_elementor_data' AND meta_value LIKE '%\"id\":\"" . esc_sql( $element_id ) . "\",%'";
+			$query = 'SELECT post_id FROM ' . esc_sql( $table ) . " WHERE meta_key LIKE '_elementor_data' AND meta_value LIKE '%\"id\":\"" . esc_sql( $element_id ) . "\",%'";
 			if ( $post_id ) {
 				$query .= ' AND post_id = ' . esc_sql( $post_id );
 			} else {
@@ -110,8 +111,8 @@ trait Trait_Elementor {
 			$results = $wpdb->get_results( $query );
 			if ( ! empty( $results ) ) {
 				$result = reset( $results );
-				$post_id = reset( $result );
-				$ext_post_id = self::$documents[ $element_id ] = $post_id;
+				$ext_post_id = reset( $result );
+				self::$documents[ $element_id ] = $ext_post_id;
 			}
 		}
 		if ( $post_id && ! $ext_post_id ) {
@@ -209,7 +210,7 @@ trait Trait_Elementor {
 				$v = self::escape_json_string( $v );
 			});
 		}
-		$post_meta_prepared = json_encode( $post_meta );
+		$post_meta_prepared = wp_json_encode( $post_meta );
 		$post_meta_prepared = wp_slash( $post_meta_prepared );
 		update_metadata( 'post', $post_id, '_elementor_data', $post_meta_prepared );
 	}
@@ -234,7 +235,7 @@ trait Trait_Elementor {
 			array_walk_recursive($post_meta, function ( $v, $k ) {
 				$v = self::escape_json_string( $v );
 			});
-			$post_meta_prepared = json_encode( $post_meta );
+			$post_meta_prepared = wp_json_encode( $post_meta );
 			$post_meta_prepared = wp_slash( $post_meta_prepared );
 			update_metadata( 'post', $post_id, '_elementor_data', $post_meta_prepared );
 		}
@@ -355,7 +356,7 @@ trait Trait_Elementor {
 			$demoPage = get_post_meta( get_the_ID(), 'demo_id', true ); // using get_the_id to retrive Template ID
 			if ( $demoPage ) {
 				$id_page = $demoPage;
-				$product = self::wooc_data( $id_page ); //wc_get_product( $id_page );
+				$product = self::wooc_data( $id_page );
 				$post = get_post( $id_page );
 			}
 
@@ -522,5 +523,10 @@ trait Trait_Elementor {
 			'gallery', //\Elementor\Modules\DynamicTags\Module::GALLERY_CATEGORY,
 			'color', //\Elementor\Modules\DynamicTags\Module::COLOR_CATEGORY,
 		];
+	}
+
+	public static function validate_html_tag( $tag ) {
+		$allowed_tags = array_merge( [ 'code' ], \Elementor\Utils::ALLOWED_HTML_WRAPPER_TAGS );
+		return in_array( strtolower( $tag ), $allowed_tags ) ? $tag : 'div';
 	}
 }

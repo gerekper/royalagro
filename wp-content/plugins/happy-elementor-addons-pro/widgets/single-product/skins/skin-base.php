@@ -3,7 +3,7 @@ namespace Happy_Addons_Pro\Widget\Skins\Single_Product;
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Core\Schemes;
 use Elementor\Utils;
@@ -517,7 +517,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 			[
 				'name' => 'badge_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'exclude' => [
 					'line_height'
 				],
@@ -661,7 +661,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 			[
 				'name' => 'discount_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'exclude' => [
 					'line_height'
 				],
@@ -1206,7 +1206,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				'name' => 'title_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '{{WRAPPER}} .ha-single-product__title',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+				'scheme' => Typography::TYPOGRAPHY_2,
 			]
 		);
 
@@ -1285,7 +1285,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				'name' => 'excerpt_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '{{WRAPPER}} .ha-single-product__desc',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'condition' => [
 					$this->get_control_id( 'excerpt_length!' ) => '',
 				],
@@ -1346,7 +1346,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				'name' => 'price_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '{{WRAPPER}} .ha-single-product__price',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'condition' => [
 					$this->get_control_id( 'show_price' ) => 'yes',
 				],
@@ -1420,7 +1420,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 			[
 				'name' => 'cart_btn_typography',
 				'selector' => '{{WRAPPER}} .button, {{WRAPPER}} .added_to_cart',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+				'scheme' => Typography::TYPOGRAPHY_4,
 				'condition' => [
 					$this->get_control_id( 'show_cart_button' ) => 'yes',
 				],
@@ -1621,7 +1621,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 			[
 				'name' => 'qv_btn_typography',
 				'selector' => '{{WRAPPER}} .ha-pqv-btn',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+				'scheme' => Typography::TYPOGRAPHY_4,
 				'condition' => [
 					$this->get_control_id( 'show_quick_view_button' ) => 'yes',
 				],
@@ -1824,7 +1824,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				'name' => 'qv_title_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '.ha-pqv.ha-pqv--{{ID}} .ha-pqv__title',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+				'scheme' => Typography::TYPOGRAPHY_2,
 			]
 		);
 
@@ -1896,7 +1896,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				'name' => 'qv_price_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '.ha-pqv.ha-pqv--{{ID}} .ha-pqv__price',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 
@@ -1937,7 +1937,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				'name' => 'qv_summary_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '.ha-pqv.ha-pqv--{{ID}} .ha-pqv__summary',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 
@@ -1999,7 +1999,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				'name' => 'qv_cart_typography',
 				'label' => __( 'Typography', 'happy-addons-pro' ),
 				'selector' => '.ha-pqv.ha-pqv--{{ID}} .ha-pqv__cart .button',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 

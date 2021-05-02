@@ -13,8 +13,8 @@ use Elementor\Utils;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Repeater;
 use Elementor\Widget_Button;
 use Elementor\Group_Control_Background;
@@ -1039,9 +1039,8 @@ class Video_Gallery extends Common_Widget {
 				array(
 					'label'     => __( 'Title Color', 'uael' ),
 					'type'      => Controls_Manager::COLOR,
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_1,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_PRIMARY,
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .uael-video-gallery-title-text' => 'color: {{VALUE}};',
@@ -1058,7 +1057,9 @@ class Video_Gallery extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'      => 'filter_title_typography',
-					'scheme'    => Scheme_Typography::TYPOGRAPHY_4,
+					'global'    => array(
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					),
 					'selector'  => '{{WRAPPER}} .uael-video-gallery-title-text',
 					'condition' => array(
 						'layout'            => 'grid',
@@ -1148,7 +1149,9 @@ class Video_Gallery extends Common_Widget {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => 'all_typography',
-					'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+					'global'   => array(
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					),
 					'selector' => '{{WRAPPER}} .uael-video__gallery-filter,{{WRAPPER}} .uael-vgallery-tabs-dropdown .uael-filters-dropdown-button',
 				)
 			);
@@ -1212,9 +1215,8 @@ class Video_Gallery extends Common_Widget {
 					array(
 						'label'     => __( 'Text Color', 'uael' ),
 						'type'      => Controls_Manager::COLOR,
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_4,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_ACCENT,
 						),
 						'selectors' => array(
 							'{{WRAPPER}} .uael-vgallery-tabs-dropdown .uael-filters-dropdown-button, {{WRAPPER}} .uael-video__gallery-filter' => 'color: {{VALUE}};',
@@ -1268,9 +1270,8 @@ class Video_Gallery extends Common_Widget {
 					array(
 						'label'     => __( 'Background Active / Hover Color', 'uael' ),
 						'type'      => Controls_Manager::COLOR,
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_4,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_ACCENT,
 						),
 						'selectors' => array(
 							'{{WRAPPER}} .uael-video__gallery-filter:hover, {{WRAPPER}} .uael-video__gallery-filter.uael-filter__current' => 'background-color: {{VALUE}};',
@@ -1283,9 +1284,8 @@ class Video_Gallery extends Common_Widget {
 					array(
 						'label'     => __( 'Border Hover Color', 'uael' ),
 						'type'      => Controls_Manager::COLOR,
-						'scheme'    => array(
-							'type'  => Scheme_Color::get_type(),
-							'value' => Scheme_Color::COLOR_4,
+						'global'    => array(
+							'default' => Global_Colors::COLOR_ACCENT,
 						),
 						'selectors' => array(
 							'{{WRAPPER}} .uael-video__gallery-filter:hover, {{WRAPPER}} .uael-video__gallery-filter.uael-filter__current' => 'border-color: {{VALUE}};',
@@ -1736,7 +1736,9 @@ class Video_Gallery extends Common_Widget {
 				array(
 					'name'      => 'caption_typography',
 					'selector'  => '{{WRAPPER}} .uael-video__caption',
-					'scheme'    => Scheme_Typography::TYPOGRAPHY_4,
+					'global'    => array(
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					),
 					'condition' => array(
 						'show_caption' => 'yes',
 					),
@@ -1784,7 +1786,9 @@ class Video_Gallery extends Common_Widget {
 				array(
 					'name'      => 'tag_typography',
 					'selector'  => '{{WRAPPER}} .uael-video__tags',
-					'scheme'    => Scheme_Typography::TYPOGRAPHY_4,
+					'global'    => array(
+						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+					),
 					'condition' => array(
 						'show_tag' => 'yes',
 					),
@@ -1856,9 +1860,8 @@ class Video_Gallery extends Common_Widget {
 						'{{WRAPPER}} .slick-slider .slick-arrow' => 'border-color: {{VALUE}}; border-style: solid;',
 						'{{WRAPPER}} .slick-slider .slick-arrow i' => 'color: {{VALUE}};',
 					),
-					'scheme'    => array(
-						'type'  => Scheme_Color::get_type(),
-						'value' => Scheme_Color::COLOR_4,
+					'global'    => array(
+						'default' => Global_Colors::COLOR_ACCENT,
 					),
 					'condition' => array(
 						'navigation' => array( 'arrows', 'both' ),

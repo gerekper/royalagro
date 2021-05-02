@@ -1,36 +1,28 @@
-/* 
- * DCE COPY/PASTE
- * dynamic.ooo
- */
+jQuery(window).on('elementor:init', function () {
+    elementor.hooks.addFilter('elements/widget/contextMenuGroups', function (groups, widget) {
+            return dceAddPasteAction(groups, widget);
+    });
+    elementor.hooks.addFilter('elements/column/contextMenuGroups', function (groups, column) {
+            return dceAddPasteAction(groups, column);
+    });
+    elementor.hooks.addFilter('elements/section/contextMenuGroups', function (groups, section) {
+            return dceAddPasteAction(groups, section);
+    });
+});
 
-//if (navigator.clipboard && typeof navigator.clipboard.readText === "function") {
-    jQuery(window).on('elementor:init', function () {   
-        elementor.hooks.addFilter('elements/widget/contextMenuGroups', function (groups, widget) {
-                return dceAddPasteAction(groups, widget);
-        });
-        elementor.hooks.addFilter('elements/column/contextMenuGroups', function (groups, column) {
-                return dceAddPasteAction(groups, column);
-        });
-        elementor.hooks.addFilter('elements/section/contextMenuGroups', function (groups, section) {
-                return dceAddPasteAction(groups, section);
-        });
+// add context menu item to add-section
+jQuery(window).on('load', function () {
+    setInterval(function () {
+        if (!jQuery('.elementor-context-menu-list__group-paste .elementor-context-menu-list__item-dce_paste').length) {
+            jQuery('.elementor-context-menu-list__group-paste .elementor-context-menu-list__item-paste').after(
+                '<div class="elementor-context-menu-list__item elementor-context-menu-list__item-dce_paste"><div class="elementor-context-menu-list__item__icon"></div><div class="elementor-context-menu-list__item__title">Paste from Clipboard</div></div>'
+            );
+        }
+    }, 1000);
+    jQuery(document).on('click', '.elementor-context-menu-list__group-paste .elementor-context-menu-list__item-dce_paste', function () {
+        dcePasteFromClipboard(false, this);
     });
-    
-    // add context menu item to add-section
-    jQuery(window).on('load', function () {
-        setInterval(function () {            
-            if (!jQuery('.elementor-context-menu-list__group-paste .elementor-context-menu-list__item-dce_paste').length) {
-                jQuery('.elementor-context-menu-list__group-paste .elementor-context-menu-list__item-paste').after(
-                    '<div class="elementor-context-menu-list__item elementor-context-menu-list__item-dce_paste"><div class="elementor-context-menu-list__item__icon"></div><div class="elementor-context-menu-list__item__title">Paste from Clipboard</div></div>'
-                );
-            }
-        }, 1000);
-        jQuery(document).on('click', '.elementor-context-menu-list__group-paste .elementor-context-menu-list__item-dce_paste', function () {
-            dcePasteFromClipboard(false, this);
-        });
-    });
-    
-//}
+});
 
 jQuery(window).on('load', function () {
 
@@ -41,7 +33,7 @@ jQuery(window).on('load', function () {
 
     /*
      // Web Storage API
-     var item_id = "dceSharedData";      
+     var item_id = "dceSharedData";
      jQuery('#dce-copy-paste').on('change', function() {
      window.localStorage.setItem(item_id, jQuery(this).val());
      });
@@ -85,7 +77,7 @@ function dceAddPasteAction(groups, element) {
     }
     jQuery.each(groups, function( index, value ) {
         if (value.name == 'transfer' || value.name == 'clipboard' || value.name == 'paste') {
-            groups[index].actions.push(                                    
+            groups[index].actions.push(
                 {
                     name: 'dce_paste',
                     title: 'Paste from Clipboard',
@@ -130,11 +122,11 @@ function dcePasteFromClipboard(pasteAction, pasteBtn) {
         jQuery(pasteBtn).closest('.elementor-context-menu').hide()
         dceAddCopyPasteFallback('', 'paste', cid, pasteAction, pasteBtn);
         jQuery('#dce_copy_paste__textarea').select();
-        document.execCommand("paste"); 
+        document.execCommand("paste");
         var text = jQuery('#dce_copy_paste_textarea').val();
         if (text) {
             jQuery('#dce_copy_paste__btn').trigger('click');
-        }   
+        }
     }
     return true;
 }
@@ -164,10 +156,9 @@ function dceAddCopyPasteFallback(value = '', action = 'copy', cid, pasteAction, 
 function dcePasteAction(text, pasteAction, pasteBtn, cid) {
     if (isJson(text)) {
         var transferData = JSON.parse(text);
-        //if (transferData.elements.length) {
             elementorCommon.storage.set('clipboard', transferData); // >= 2.8
             elementorCommon.storage.set('transfer', transferData); // <= 2.7
-            
+
             if (pasteAction) {
                 if (!pasteAction.callback()) {
                     // not working on PasteStyle action...so fallback
@@ -180,13 +171,12 @@ function dcePasteAction(text, pasteAction, pasteBtn, cid) {
                         setTimeout(function() {
                             jQuery(pasteBtnSelector).trigger('click');
                         }, 100);
-                        
+
                     }
                 }
             } else {
                 jQuery(pasteBtn).prev().trigger('click');
-            }                        
-        //}
+            }
         jQuery('#dce_copy_paste').remove();
     } else {
         alert('Invalid Element saved in Clipboard:\r\n------------------\r\n' + text);

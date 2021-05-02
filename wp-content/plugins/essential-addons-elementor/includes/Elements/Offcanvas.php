@@ -7,7 +7,7 @@ use \Elementor\Group_Control_Border;
 use \Elementor\Group_Control_Box_Shadow;
 use \Elementor\Group_Control_Typography;
 use Elementor\Repeater;
-use \Elementor\Scheme_Typography;
+use \Elementor\Core\Schemes\Typography;
 use \Elementor\Widget_Base;
 use \Essential_Addons_Elementor\Pro\Classes\Helper;
 
@@ -703,7 +703,7 @@ class Offcanvas extends Widget_Base
             [
                 'name' => 'text_typography',
                 'label' => __('Typography', 'essential-addons-elementor'),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+                'scheme' => Typography::TYPOGRAPHY_4,
                 'selector' => '.eael-offcanvas-content-{{ID}} .eael-offcanvas-body, .eael-offcanvas-content-{{ID}} .eael-offcanvas-body *:not(.fas):not(.eicon):not(.fab):not(.far):not(.fa)',
                 'condition' => [
                     'content_type' => ['sidebar', 'custom'],
@@ -755,7 +755,7 @@ class Offcanvas extends Widget_Base
             [
                 'name' => 'links_typography',
                 'label' => __('Typography', 'essential-addons-elementor'),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+                'scheme' => Typography::TYPOGRAPHY_4,
                 'selector' => '.eael-offcanvas-content-{{ID}} .eael-offcanvas-body a',
                 'condition' => [
                     'content_type' => ['sidebar', 'custom'],
@@ -825,7 +825,7 @@ class Offcanvas extends Widget_Base
             [
                 'name' => 'eael_offcanvas_title_typography',
                 'label' => __('Typography', 'essential-addons-elementor'),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+                'scheme' => Typography::TYPOGRAPHY_4,
                 'selector' => '.eael-offcanvas-content-{{ID}} .eael-offcanvas-title h3',
             ]
         );
@@ -1078,7 +1078,7 @@ class Offcanvas extends Widget_Base
             [
                 'name' => 'button_typography',
                 'label' => __('Typography', 'essential-addons-elementor'),
-                'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+                'scheme' => Typography::TYPOGRAPHY_4,
                 'selector' => '{{WRAPPER}} .eael-offcanvas-toggle',
             ]
         );

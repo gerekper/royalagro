@@ -21,7 +21,7 @@ class Info {
 	*
 	* @since 0.1.0
 	*/
-	function dce_redirect_information() {
+	public function dce_redirect_information() {
 		if ( get_option( 'dce_do_activation_redirect', false ) ) {
 			delete_option( 'dce_do_activation_redirect' );
 			if ( ! is_multisite() ) {

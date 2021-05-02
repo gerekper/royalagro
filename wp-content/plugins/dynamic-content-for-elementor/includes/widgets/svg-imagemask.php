@@ -13,39 +13,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DCE_Widget_SvgImagemask extends DCE_Widget_Prototype {
 
-	public function get_name() {
-		return 'dyncontel-svgimagemask';
-	}
-
-	public function get_title() {
-		return __( 'SVG Imagemask', 'dynamic-content-for-elementor' );
-	}
-	public function get_icon() {
-		return 'icon-dyn-svgmask';
-	}
-	public function get_script_depends() {
-		return [];
-	}
 	public function get_style_depends() {
 		return [ 'dce-svg' ];
 	}
-	public function get_description() {
-		return __( 'The SVGMask widget operates through the mask attribute of svg', 'dynamic-content-for-elementor' );
-	}
-	public function get_docs() {
-		return 'https://www.dynamic.ooo/widget/svg-mask/';
-	}
+
 	public function show_in_panel() {
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( 'install_plugins' ) ) {
 			return false;
 		}
 		return true;
 	}
 
 	protected function _register_controls() {
-		if ( current_user_can( 'manage_options' ) || ! is_admin() ) {
+		if ( current_user_can( 'install_plugins' ) || ! is_admin() ) {
 			$this->_register_controls_content();
-		} elseif ( ! current_user_can( 'manage_options' ) && is_admin() ) {
+		} elseif ( ! current_user_can( 'install_plugins' ) && is_admin() ) {
 			$this->register_controls_non_admin_notice();
 		}
 	}
