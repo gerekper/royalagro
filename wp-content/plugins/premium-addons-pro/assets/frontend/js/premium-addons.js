@@ -2964,7 +2964,9 @@
 
         var $accordElem = $scope.find('.premium-accordion-section'),
             settings = $accordElem.data("settings"),
-            $window = $(window);
+            $window = $(window),
+            $accordItems = $accordElem.find('.premium-accordion-li'),
+            count = $accordItems.length;
 
         if (elementorFrontend.isEditMode()) {
 
@@ -2995,52 +2997,67 @@
 
         }
 
-        $window.resize(function () {
-
-            if (settings.hide_desc > $window.outerWidth()) {
-
-                $accordElem.find('.premium-accordion-description').css('display', 'none');
-
-            } else {
-
-                $accordElem.find('.premium-accordion-description').css('display', 'block');
-
-            }
-
-        });
-
-        if (!$accordElem.find('.premium-accordion-li-active').length)
-            return;
-
-        var height = (settings.height && 'px' === settings.height.unit) ? settings.height.size : $scope.find('.premium-accordion-vertical .premium-accordion-ul').height() * settings.height.size * 0.01;
-
-        if (height) {
-            $accordElem.find('.premium-accordion-li-active').attr('style', 'height: ' + height + 'px !important');
-
-            var count = $accordElem.find('.premium-accordion-li:not(.premium-accordion-li-active)').length;
-
-            $accordElem.find('.premium-accordion-li:not(.premium-accordion-li-active)').attr('style', 'height: calc( (' + $scope.find('.premium-accordion-vertical .premium-accordion-ul').height() + 'px - ' + height + 'px ) /' + count + ')');
-
-            $scope.find('.premium-accordion-vertical .premium-accordion-ul').css('height', $scope.find('.premium-accordion-vertical .premium-accordion-ul').height() + 'px');
-        } else {
-            $accordElem.find('.premium-accordion-li:not(.premium-accordion-li-active)').addClass('premium-accordion-li-inactive');
+        //Trigger Hovered Image Width Function on page load only if Default Index option value is set.
+        if ($accordElem.find('.premium-accordion-li-active').length) {
+            resizeImgs();
         }
 
-        $accordElem.mouseover(function () {
-            if (height) {
-                $accordElem.find('.premium-accordion-li').css('height', settings.initialHeight);
-                $scope.find('.premium-accordion-vertical .premium-accordion-ul').css('height', 'unset');
+        $window.resize(function () {
 
-            } else {
-                $accordElem.find('.premium-accordion-li-inactive').removeClass('premium-accordion-li-inactive');
-            }
+            $accordElem.find('.premium-accordion-description').css('display', settings.hide_desc > $window.outerWidth() ? 'none' : 'block');
 
-            $accordElem.find('.premium-accordion-li-inactive').removeClass('premium-accordion-li-inactive');
-
-            $accordElem.find('.premium-accordion-li-active').removeClass('premium-accordion-li-active');
-
+            resizeImgs();
         });
 
+        $accordItems.hover(function () {
+
+            if (!$(this).hasClass('premium-accordion-li-active')) {
+
+                $accordItems.removeClass('premium-accordion-li-active');
+
+                $(this).addClass('premium-accordion-li-active');
+            }
+
+            resizeImgs();
+        });
+
+        $accordItems.mouseleave(function () {
+            $accordElem.find('.premium-accordion-li, .premium-accordion-ul, .premium-accordion-overlay-wrap').attr('style', '');
+            $accordItems.removeClass('premium-accordion-li-active');
+        });
+
+        function resizeImgs() {
+
+            var currentDevice = elementorFrontend.getCurrentDeviceMode();
+
+            if ('horizontal' === settings.dir) {
+
+                if (settings.imgSize[currentDevice]) {
+                    var width = 'width: calc( (100% - ' + settings.imgSize[currentDevice] + '% ) /' + (count - 1) + ')';
+                    $accordElem.find('.premium-accordion-li:not(.premium-accordion-li-active)').attr('style', width);
+                }
+
+            } else {
+                var initialHeight = ('' === settings.initialHeight[currentDevice]) ? 200 : settings.initialHeight[currentDevice],
+                    height = ('' === settings.imgSize[currentDevice]) ? 400 : initialHeight * count * settings.imgSize[currentDevice] * 0.01;
+
+                $accordElem.find('.premium-accordion-li-active').attr('style', 'height: ' + height + 'px !important');
+
+                if ('' !== settings.imgSize[currentDevice]) {
+                    $accordElem.find('.premium-accordion-li:not(.premium-accordion-li-active)').attr('style', 'height: calc( (' + initialHeight * count + 'px - ' + height + 'px ) /' + (count - 1) + ')');
+                }
+            }
+
+            if (100 === settings.imgSize[currentDevice]) {
+                $accordElem.find('.premium-accordion-li').css({
+                    'padding': 0,
+                    'margin': 0
+                });
+
+                $accordElem.find('.premium-accordion-overlay-wrap').css('width', '100%');
+                $accordElem.find('.premium-accordion-ul').css('borderSpacing', '0 0');
+            }
+        }
     };
 
     // Background Transition Handler

@@ -31,7 +31,7 @@
 		<div class="wp-badge dce"><div class="text-right o-layout__item u-1/6@desktop"><img class="dce-logo" src="<?php echo DCE_URL; ?>assets/media/dce.png" /></div></div>
 
 		<h2 class="nav-tab-wrapper wp-clearfix">
-			<a href="<?php echo admin_url( 'admin.php?page=dce_info' ); ?>" class="nav-tab nav-tab-active">What’s New</a>
+			<a href="<?php echo admin_url( 'admin.php?page=dce-features' ); ?>" class="nav-tab nav-tab-active">What’s New</a>
 			<a href="<?php echo admin_url( 'admin.php?page=dce-features&tab=settings' ); ?>" class="nav-tab">Settings</a>
 			<a href="<?php echo admin_url( 'admin.php?page=dce-features&tab=widgets' ); ?>" class="nav-tab">Widgets</a>
 			<a href="<?php echo admin_url( 'admin.php?page=dce-license' ); ?>" class="nav-tab">License</a>

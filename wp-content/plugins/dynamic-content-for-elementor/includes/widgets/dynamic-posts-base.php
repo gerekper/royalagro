@@ -1030,7 +1030,7 @@ class DCE_Widget_DynamicPosts_Base extends DCE_Widget_Prototype {
 		$this->add_control(
 			'native_templatemode_enable', [
 				'label' => __( 'Template System Block', 'dynamic-content-for-elementor' ),
-				'description' => __( 'Use the template associated with the type (Menu: Elementor > Dynamic Content > Template System) to manage the appearance of the individual elements of the grid ', 'dynamic-content-for-elementor' ),
+				'description' => __( 'Use the template associated with the type (Menu: Dynamic Content > Template System) to manage the appearance of the individual elements of the grid ', 'dynamic-content-for-elementor' ),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => '',
 				'render_type' => 'template',

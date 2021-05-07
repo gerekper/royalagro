@@ -835,6 +835,53 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 			return($output);
 		}
 		
+		/**
+		 * get rating array from rating number. used to help to draw stars
+		 */
+		public static function getRatingArray($rating){
+				    	
+	    	$arrRating = array();
+	    	
+	    	$empty = array(
+	    		"type"=>"empty",
+	    		"class"=>"far fa-star",
+	    	);
+	    	$full = array(
+	    		"type"=>"full",
+	    		"class"=>"fas fa-star",
+	    	);
+	    	$half = array(
+	    		"type"=>"half",
+	    		"class"=>"fas fa-star-half-alt",
+	    	);
+	    	
+	    	
+	    	for($i=1;$i<=5;$i++){
+	    		
+	    		$low = floor($rating);
+	    		
+	    		if($rating == 0){
+	    			$arrRating[] = $empty;
+	    			continue;
+	    		}
+	    			    		
+	    	    if($rating < $i && $rating > ($i-1)){
+	    			$arrRating[] = $half;
+	    			continue;
+	    	    }
+	    	    
+	    		
+	    		if($i <= $low){
+	    			$arrRating[] = $full;
+	    			continue;
+	    		}
+	    			    	    	
+	    		$arrRating[] = $empty;
+	    	}
+			
+	    	
+	    	return($arrRating);
+		}
 		
 		
 	} //end class

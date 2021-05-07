@@ -128,7 +128,7 @@ function initializeConditionalFields($form) {
 			try {
 				result = lang.evaluate(cond.condition, values);
 			} catch (error) {
-				$form.prepend(`<div class="error">Condition Error (field ""<code>${cond.id}</code>"): ${error}</div>`);
+				$form.prepend(`<div class="error">Conditional Fields v2 Error (the error is on the conditions of field ""<code>${cond.id}</code>"): ${error}</div>`);
 			}
 			const $fieldInputs = fields[cond.id].inputs;
 			const $fieldWrapper = fields[cond.id].wrapper;

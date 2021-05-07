@@ -47,7 +47,7 @@ class HiddenLabel extends \ElementorPro\Modules\Forms\Fields\Field_Base {
 			'dce_hidden_label_id' => [
 				'name' => 'dce_hidden_label_id',
 				'label' => __( 'Field ID', 'dynamic-content-for-elementor' ),
-				'description' => __( 'The ID of the field we should get the selected choice label from. ', 'dynamic-content-for-elementor'),
+				'description' => __( 'The ID of the field we should get the selected choice label from. ', 'dynamic-content-for-elementor' ),
 				'label_block' => true,
 				'type' => \Elementor\Controls_Manager::TEXT,
 				'tab' => 'content',

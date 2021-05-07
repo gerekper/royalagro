@@ -812,6 +812,14 @@ class UniteCreatorDialogParamWork{
 			$this->putCheckbox("show_image_sizes", __("Show Image Sizes Select", "unlimited-elements-for-elementor"));
 		?>
 		
+		<?php if(GlobalsUC::$inDev == true):?>
+		<div class="vert_sap10"></div>
+		
+		<?php 
+			$this->putCheckbox("is_filterable", __("Enable Filterable Options", "unlimited-elements-for-elementor"));
+		?>
+		<?php endif?>
+		
 		<div class="vert_sap10"></div>
 		<hr>
 		<div class="vert_sap10"></div>

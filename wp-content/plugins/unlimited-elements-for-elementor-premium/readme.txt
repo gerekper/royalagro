@@ -521,6 +521,12 @@ Note : This plugin works with Elementor. Make sure you have [Elementor](https://
 
 == Changelog ==
 
+version 1.4.72 = 2021-05-02
+
+* Feature: added rating stars helper placeholder for woocommerce
+* Feature: added option to include js file after elementor-frontend
+* Fix: fixed new typography deprecation message
+
 
 version 1.4.71 = 2021-04-22
 

@@ -25,7 +25,7 @@ class Info {
 		if ( get_option( 'dce_do_activation_redirect', false ) ) {
 			delete_option( 'dce_do_activation_redirect' );
 			if ( ! is_multisite() ) {
-				exit( wp_safe_redirect( 'admin.php?page=dce_info' ) );
+				exit( wp_safe_redirect( 'admin.php?page=dce-features' ) );
 			}
 		}
 	}

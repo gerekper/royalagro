@@ -215,7 +215,7 @@ class UniteProviderFunctionsUC{
 		$version = UNLIMITED_ELEMENTS_VERSION;
 		if(GlobalsUC::$inDev == true)
 			$version = time();
-		
+				
 		wp_register_script($handle , $url, $deps, $version, $inFooter);
 		wp_enqueue_script($handle);
 	}

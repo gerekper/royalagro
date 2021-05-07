@@ -6,13 +6,13 @@
  *
  * @wordpress-plugin
  * Plugin Name: Dynamic Content for Elementor
- * Plugin URI: https://www.dynamic.ooo/
+ * Plugin URI: https://www.dynamic.ooo/?utm_source=wp-plugins&utm_campaign=plugin-uri&utm_medium=wp-dash
  * Description: The most unique toolkit for Elementor for creating powerful websites and professional content.
- * Version: 1.14.3
+ * Version: 1.14.4
  * Requires at least: 5.2
  * Requires PHP: 5.6
  * Author: Dynamic.ooo
- * Author URI: https://www.dynamic.ooo/
+ * Author URI: https://www.dynamic.ooo/?utm_source=wp-plugins&utm_campaign=plugin-uri&utm_medium=wp-dash
  * Text Domain: dynamic-content-for-elementor
  * Domain Path: /languages
  * License: GPL-3.0
@@ -107,6 +107,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once __DIR__ . '/constants.php';
 require_once DCE_PATH . 'vendor/autoload.php';
+
+if ( version_compare( phpversion(), '7.1', '>=' ) ) {
+	require_once __DIR__ . '/vendor/symfony/polyfill-php80/bootstrap.php';
+}
 
 add_action( 'plugins_loaded', 'dce_load' );
 register_activation_hook( DCE__FILE__, 'dce_activate' );

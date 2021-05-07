@@ -4,10 +4,9 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit79295a72471b7e0e113c5526d1acc54a
+class ComposerStaticInit456a44a31af7e959ea85718f5cdf5124
 {
     public static $files = array (
-        'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '49a1299791c25c6fd83542c6fedacddd' => __DIR__ . '/..' . '/yahnis-elsts/plugin-update-checker/load-v4p11.php',
@@ -50,6 +49,7 @@ class ComposerStaticInit79295a72471b7e0e113c5526d1acc54a
         ),
         'M' => 
         array (
+            'McAskill\\Composer\\' => 18,
             'MatthiasMullie\\PathConverter\\' => 29,
         ),
         'F' => 
@@ -154,6 +154,10 @@ class ComposerStaticInit79295a72471b7e0e113c5526d1acc54a
         'PayPalCheckoutSdk\\' => 
         array (
             0 => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk',
+        ),
+        'McAskill\\Composer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mcaskill/composer-exclude-files/src',
         ),
         'MatthiasMullie\\PathConverter\\' => 
         array (
@@ -516,6 +520,7 @@ class ComposerStaticInit79295a72471b7e0e113c5526d1acc54a
         'MatthiasMullie\\PathConverter\\Converter' => __DIR__ . '/..' . '/matthiasmullie/path-converter/src/Converter.php',
         'MatthiasMullie\\PathConverter\\ConverterInterface' => __DIR__ . '/..' . '/matthiasmullie/path-converter/src/ConverterInterface.php',
         'MatthiasMullie\\PathConverter\\NoConverter' => __DIR__ . '/..' . '/matthiasmullie/path-converter/src/NoConverter.php',
+        'McAskill\\Composer\\ExcludeFilePlugin' => __DIR__ . '/..' . '/mcaskill/composer-exclude-files/src/ExcludeFilePlugin.php',
         'PDF417' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/pdf417.php',
         'PHPHtmlParser\\Content' => __DIR__ . '/..' . '/paquettg/php-html-parser/src/PHPHtmlParser/Content.php',
         'PHPHtmlParser\\Curl' => __DIR__ . '/..' . '/paquettg/php-html-parser/src/PHPHtmlParser/Curl.php',
@@ -956,6 +961,7 @@ class ComposerStaticInit79295a72471b7e0e113c5526d1acc54a
         'Symfony\\Component\\Cache\\Traits\\PhpArrayTrait' => __DIR__ . '/..' . '/symfony/cache/Traits/PhpArrayTrait.php',
         'Symfony\\Component\\Cache\\Traits\\PhpFilesTrait' => __DIR__ . '/..' . '/symfony/cache/Traits/PhpFilesTrait.php',
         'Symfony\\Component\\Cache\\Traits\\ProxyTrait' => __DIR__ . '/..' . '/symfony/cache/Traits/ProxyTrait.php',
+        'Symfony\\Component\\Cache\\Traits\\RedisClusterNodeProxy' => __DIR__ . '/..' . '/symfony/cache/Traits/RedisClusterNodeProxy.php',
         'Symfony\\Component\\Cache\\Traits\\RedisClusterProxy' => __DIR__ . '/..' . '/symfony/cache/Traits/RedisClusterProxy.php',
         'Symfony\\Component\\Cache\\Traits\\RedisProxy' => __DIR__ . '/..' . '/symfony/cache/Traits/RedisProxy.php',
         'Symfony\\Component\\Cache\\Traits\\RedisTrait' => __DIR__ . '/..' . '/symfony/cache/Traits/RedisTrait.php',
@@ -1200,10 +1206,10 @@ class ComposerStaticInit79295a72471b7e0e113c5526d1acc54a
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit79295a72471b7e0e113c5526d1acc54a::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit79295a72471b7e0e113c5526d1acc54a::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit79295a72471b7e0e113c5526d1acc54a::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit79295a72471b7e0e113c5526d1acc54a::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit456a44a31af7e959ea85718f5cdf5124::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit456a44a31af7e959ea85718f5cdf5124::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit456a44a31af7e959ea85718f5cdf5124::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit456a44a31af7e959ea85718f5cdf5124::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -1954,7 +1954,7 @@ class LD_Course_List extends Widget_Base
                     $users = [];
                 }
                 $short_desc = get_post_meta($course->ID, '_learndash_course_grid_short_description', true);
-                $image = wp_get_attachment_image_src(get_post_thumbnail_id($course->ID), 'medium');
+                $image = wp_get_attachment_image_src(get_post_thumbnail_id($course->ID), 'large');
                 $image_alt = get_post_meta(get_post_thumbnail_id($course->ID), '_wp_attachment_image_alt', true);
                 $access_list = count($users);
                 $button_text = get_post_meta($course->ID, '_learndash_course_grid_custom_button_text', true);

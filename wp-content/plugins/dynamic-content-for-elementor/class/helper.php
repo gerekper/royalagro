@@ -32,4 +32,26 @@ class Helper {
 		return 'en';
 	}
 
+	/**
+	 * A list of safe tage for `validate_html_tag` method.
+	 */
+	const ALLOWED_HTML_WRAPPER_TAGS = [
+		'article',
+		'aside',
+		'div',
+		'footer',
+		'h1',
+		'h2',
+		'h3',
+		'h4',
+		'h5',
+		'h6',
+		'header',
+		'main',
+		'nav',
+		'p',
+		'section',
+		'span',
+	];
+
 }

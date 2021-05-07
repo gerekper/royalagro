@@ -46,7 +46,7 @@ class DCE_Extension_Visibility extends DCE_Extension_Prototype {
 		'context' => 'Context',
 		'woocommerce' => 'WooCommerce',
 		'random' => 'Random',
-		'custom' => 'Custom condition',
+		'custom' => 'Custom Condition',
 		'events' => 'Events',
 		'repeater' => 'Advanced',
 		'fallback' => 'Fallback',
@@ -463,69 +463,67 @@ class DCE_Extension_Visibility extends DCE_Extension_Prototype {
 			);
 
 			$element->add_control(
-					'dce_visibility_dom',
-					[
-						'label' => __( 'Keep HTML', 'dynamic-content-for-elementor' ),
-						'type' => Controls_Manager::SWITCHER,
-						'description' => __( 'Keep the HTML element in the DOM and hide this element via CSS.', 'dynamic-content-for-elementor' ),
-						'condition' => [
-							'enabled_visibility' => 'yes',
+				'dce_visibility_dom',
+				[
+					'label' => __( 'Keep HTML', 'dynamic-content-for-elementor' ),
+					'type' => Controls_Manager::SWITCHER,
+					'description' => __( 'Keep the HTML element in the DOM and hide this element via CSS.', 'dynamic-content-for-elementor' ),
+					'condition' => [
+						'enabled_visibility' => 'yes',
+					],
+					'separator' => 'before',
+				]
+			);
+
+			$element->add_control(
+				'dce_visibility_mode',
+				[
+					'label' => __( 'Composition mode', 'dynamic-content-for-elementor' ),
+					'type' => Controls_Manager::HIDDEN,
+					'default' => 'quick',
+				]
+			);
+			
+			$element->add_control(
+				'dce_visibility_selected',
+				[
+					'label' => __( 'Display mode', 'dynamic-content-for-elementor' ),
+					'description' => __( 'Hide or Show an element when a condition is triggered.', 'dynamic-content-for-elementor' ),
+					'type' => Controls_Manager::CHOOSE,
+					'options' => [
+						'yes' => [
+							'title' => __( 'SHOW', 'dynamic-content-for-elementor' ),
+							'icon' => 'fa fa-eye',
 						],
-						'separator' => 'before',
-					]
-			);
-
-			if ( defined( 'DVE_PLUGIN_BASE' ) || true ) {
-						$element->add_control(
-							'dce_visibility_mode',
-							[
-								'label' => __( 'Composition mode', 'dynamic-content-for-elementor' ),
-								'type' => Controls_Manager::HIDDEN,
-								'default' => 'quick',
-							]
-						);
-			}
-
-			$element->add_control(
-						'dce_visibility_selected',
-						[
-							'label' => __( 'Display mode', 'dynamic-content-for-elementor' ),
-							'description' => __( 'Hide or Show an element when a condition is triggered.', 'dynamic-content-for-elementor' ),
-							'type' => Controls_Manager::CHOOSE,
-							'options' => [
-								'yes' => [
-									'title' => __( 'SHOW', 'dynamic-content-for-elementor' ),
-									'icon' => 'fa fa-eye',
-								],
-								'hide' => [
-									'title' => __( 'HIDE', 'dynamic-content-for-elementor' ),
-									'icon' => 'fa fa-eye-slash',
-								],
-							],
-							'default' => 'yes',
-							'toggle' => false,
-							'condition' => [
-								'enabled_visibility' => 'yes',
-								'dce_visibility_hidden' => '',
-							],
-						]
+						'hide' => [
+							'title' => __( 'HIDE', 'dynamic-content-for-elementor' ),
+							'icon' => 'fa fa-eye-slash',
+						],
+					],
+					'default' => 'yes',
+					'toggle' => false,
+					'condition' => [
+						'enabled_visibility' => 'yes',
+						'dce_visibility_hidden' => '',
+					],
+				]
 			);
 
 			$element->add_control(
-						'dce_visibility_logical_connective',
-						[
-							'label' => __( 'Logical connective', 'dynamic-content-for-elementor' ),
-							'description' => __( 'This setting determines how the conditions are combined. If OR is selected the condition is satisfied when at least one condition is satisfied. If AND is selected all conditions must be satisfied.', 'dynamic-content-for-elementor' ),
-							'type' => Controls_Manager::SWITCHER,
-							'default' => 'or',
-							'return_value' => 'and',
-							'label_on' => __( 'AND', 'dynamic-content-for-elementor' ),
-							'label_off' => __( 'OR', 'dynamic-content-for-elementor' ),
-							'condition' => [
-								'enabled_visibility' => 'yes',
-								'dce_visibility_hidden' => '',
-							],
-						]
+				'dce_visibility_logical_connective',
+				[
+					'label' => __( 'Logical connective', 'dynamic-content-for-elementor' ),
+					'description' => __( 'This setting determines how the conditions are combined. If OR is selected the condition is satisfied when at least one condition is satisfied. If AND is selected all conditions must be satisfied.', 'dynamic-content-for-elementor' ),
+					'type' => Controls_Manager::SWITCHER,
+					'default' => 'or',
+					'return_value' => 'and',
+					'label_on' => __( 'AND', 'dynamic-content-for-elementor' ),
+					'label_off' => __( 'OR', 'dynamic-content-for-elementor' ),
+					'condition' => [
+						'enabled_visibility' => 'yes',
+						'dce_visibility_hidden' => '',
+					],
+				]
 			);
 
 			$_triggers = self::$tabs;
@@ -550,32 +548,32 @@ class DCE_Extension_Visibility extends DCE_Extension_Prototype {
 			);
 
 			if ( WP_DEBUG ) {
-					$element->add_control(
-						'dce_visibility_debug',
-						[
-							'label' => __( 'DEBUG', 'dynamic-content-for-elementor' ),
-							'type' => Controls_Manager::SWITCHER,
-							'description' => __( 'Enable to get a report of triggered rule which hide elements in frontend. WP_DEBUG must be active.', 'dynamic-content-for-elementor' ),
-							'separator' => 'before',
-							'condition' => [
-								'enabled_visibility' => 'yes',
-								'dce_visibility_hidden' => '',
-							],
-						]
-				);
+				$element->add_control(
+					'dce_visibility_debug',
+					[
+						'label' => __( 'DEBUG', 'dynamic-content-for-elementor' ),
+						'type' => Controls_Manager::SWITCHER,
+						'description' => __( 'Enable to get a report of triggered rule which hide elements in frontend. WP_DEBUG must be active.', 'dynamic-content-for-elementor' ),
+						'separator' => 'before',
+						'condition' => [
+							'enabled_visibility' => 'yes',
+							'dce_visibility_hidden' => '',
+						],
+					]
+			);
 			}
 
 			if ( defined( 'DVE_PLUGIN_BASE' ) ) {
 				$element->add_control(
-							'dce_visibility_review',
-							[
-								'label' => '<b>' . __( 'Did you enjoy Dynamic Visibility extension?', 'dynamic-content-for-elementor' ) . '</b>',
-								'type' => \Elementor\Controls_Manager::RAW_HTML,
-								'raw' => __( 'Please leave us a', 'dynamic-content-for-elementor' )
-								. ' <a target="_blank" href="https://wordpress.org/support/plugin/dynamic-visibility-for-elementor/reviews/?filter=5/#new-post">★★★★★</a> '
-								. __( 'rating.<br>We really appreciate your support!', 'dynamic-content-for-elementor' ),
-								'separator' => 'before',
-							]
+					'dce_visibility_review',
+					[
+						'label' => '<b>' . __( 'Did you enjoy Dynamic Visibility extension?', 'dynamic-content-for-elementor' ) . '</b>',
+						'type' => \Elementor\Controls_Manager::RAW_HTML,
+						'raw' => __( 'Please leave us a', 'dynamic-content-for-elementor' )
+						. ' <a target="_blank" href="https://wordpress.org/support/plugin/dynamic-visibility-for-elementor/reviews/?filter=5/#new-post">★★★★★</a> '
+						. __( 'rating.<br>We really appreciate your support!', 'dynamic-content-for-elementor' ),
+						'separator' => 'before',
+					]
 				);
 			}
 		}
@@ -702,7 +700,7 @@ class DCE_Extension_Visibility extends DCE_Extension_Prototype {
 				[
 					'label' => __( 'Selected Users', 'dynamic-content-for-elementor' ),
 					'type' => Controls_Manager::TEXT,
-					'description' => __( 'Write here the list of users who will be able to view (or not) this element. You can use their ID, email or username. Simply separate them by a comma. (e.g. \"23, email@yoursite.com, username\")', 'dynamic-content-for-elementor' ),
+					'description' => __( 'Type here the list of users who will be able to view (or not) this element. You can use their ID, email or username. Simply separate them by a comma. (e.g. \"23, email@yoursite.com, username\")', 'dynamic-content-for-elementor' ),
 					'separator' => 'before',
 				]
 			);
@@ -763,7 +761,7 @@ class DCE_Extension_Visibility extends DCE_Extension_Prototype {
 				[
 					'label' => __( 'Remote IP', 'dynamic-content-for-elementor' ),
 					'type' => Controls_Manager::TEXT,
-					'description' => __( 'Write here the list of IP who will be able to view this element.<br>Separate IPs by comma. (ex. "123.123.123.123, 8.8.8.8, 4.4.4.4")', 'dynamic-content-for-elementor' )
+					'description' => __( 'Type here the list of IP who will be able to view this element.<br>Separate IPs by comma. (ex. "123.123.123.123, 8.8.8.8, 4.4.4.4")', 'dynamic-content-for-elementor' )
 					. '<br><b>' . __( 'Your current IP is: ', 'dynamic-content-for-elementor' ) . sanitize_text_field( $_SERVER['REMOTE_ADDR'] ) . '</b>',
 					'separator' => 'before',
 				]
@@ -1891,13 +1889,13 @@ class DCE_Extension_Visibility extends DCE_Extension_Prototype {
 		}
 
 		if ( $section == 'custom' ) {
-			if ( defined( 'DVE_PLUGIN_BASE' ) ) { //  Feature not present in FREE version
+			if ( ! defined( 'DCE_PATH' ) ) { //  Feature not present in FREE version
 				$element->add_control(
 					'dce_visibility_custom_hide',
 					[
-						'label' => __( 'Only in PRO', 'dynamic-content-for-elementor' ),
+						'raw' => __( 'Feature available only in Dynamic Content for Elementor, paid version.', 'dynamic-content-for-elementor' ),
 						'type' => \Elementor\Controls_Manager::RAW_HTML,
-						'raw' => '<style>.elementor-control-dce_section_visibility_custom { display: none !important; }</style>',
+						'content_classes' => 'elementor-panel-alert elementor-panel-alert-warning',
 					]
 				);
 			} else {
@@ -1909,7 +1907,7 @@ class DCE_Extension_Visibility extends DCE_Extension_Prototype {
 							'type' => Controls_Manager::CODE,
 							'language' => 'php',
 							'default' => '',
-							'description' => __( 'Write here a function that returns a boolean value. You can use all WP variables and functions.', 'dynamic-content-for-elementor' ),
+							'description' => __( 'Type here a function that returns a boolean value. You can use all WP variables and functions.', 'dynamic-content-for-elementor' ),
 						]
 					);
 				}
@@ -1925,7 +1923,7 @@ class DCE_Extension_Visibility extends DCE_Extension_Prototype {
 					'description' => __( 'If you want to show something when the element is hidden', 'dynamic-content-for-elementor' ),
 				]
 			);
-			if ( defined( 'DVE_PLUGIN_BASE' ) ) { // free version don't support template shortcode
+			if ( ! defined( 'DCE_PATH' ) ) { // free version doesn't support template shortcode
 				$element->add_control(
 					'dce_visibility_fallback_type',
 					[
@@ -3428,7 +3426,7 @@ class DCE_Extension_Visibility extends DCE_Extension_Prototype {
 									}
 									?>
 
-									<?php if ( ! defined( 'DVE_PLUGIN_BASE' ) ) { ?>
+									<?php if ( defined( 'DCE_PATH' ) ) { ?>
 										// Dynamic Content for Elementor
 										// Hide other elements
 										<?php if ( ! empty( $css_classes ) && ! empty( $settings['_element_id'] ) ) { ?>
@@ -3463,7 +3461,7 @@ class DCE_Extension_Visibility extends DCE_Extension_Prototype {
 									}
 								} ?>
 
-								<?php if ( ! defined( 'DVE_PLUGIN_BASE' ) ){ ?>
+								<?php if ( defined( 'DCE_PATH' ) ){ ?>
 									// Dynamic Content for Elementor
 									<?php if ( ! empty( $settings['_css_classes'] ) && ! empty( $settings['_element_id'] ) ) { ?>
 										// The element has got a CSS ID and a CSS Class

@@ -118,6 +118,7 @@ class License {
 			<div class="dce-notice dce-warning dce-notice-warning">
 				<h3><?php _e( 'Beta release', 'dynamic-content-for-elementor' ); ?></h3>
 				<form action="" method="post">
+					<?php wp_nonce_field( 'dce-settings-page', 'dce-settings-page' ); ?>
 					<label><input type="checkbox" name="dce_beta" value="beta"<?php if ( $dce_beta ) {
 						?> checked="checked"<?php } ?>> <?php _e( 'Enable BETA releases (IMPORTANT: do NOT enable if you need a stable version).', 'dynamic-content-for-elementor' ); ?></label>
 					<input type="hidden" name="beta_status" value="1" id="beta_status">
@@ -132,6 +133,7 @@ class License {
 				<div class="dce-notice dce-<?php echo $dce_backup ? 'success' : 'error'; ?> dce-notice-<?php echo $dce_backup ? 'success' : 'error'; ?>">
 					<h3><?php _e( 'Safe upgrade', 'dynamic-content-for-elementor' ); ?></h3>
 					<form action="" method="post">
+						<?php wp_nonce_field( 'dce-settings-page', 'dce-settings-page' ); ?>
 						<label><input type="checkbox" name="dce_backup_disable" value="backup"<?php if ( $dce_backup ) {
 							?> checked="checked"<?php } ?>> <?php _e( 'Perform a plugin Backup of the current version before the update action that allows easy Rollback.', 'dynamic-content-for-elementor' ); ?></label>
 						<input type="hidden" name="backup_status" value="1" id="backup_status">
@@ -150,9 +152,10 @@ class License {
 					$rollback_versions[ $bak_version ] = $bak_version;
 				}
 				?>
-				<div class="elementor-panel-alert elementor-panel-alert-warning">
+				<div class="dce-notice dce-success dce-notice-success">
 					<h3><?php _e( 'Rollback version', 'dynamic-content-for-elementor' ); ?></h3>
 					<form action="" method="post">
+						<?php wp_nonce_field( 'dce-settings-page', 'dce-settings-page' ); ?>
 						<h4><?php _e( 'Your current version', 'dynamic-content-for-elementor' ); ?>: <?php echo DCE_VERSION; ?></h4>
 						<p><?php echo sprintf( __( 'Experiencing an issue with Dynamic Content for Elementor version %s? Rollback to a previous version before the issue appeares.', 'dynamic-content-for-elementor' ), DCE_VERSION ); ?>
 						<label><?php _e( 'Select version', 'dynamic-content-for-elementor' ); ?>:</label>

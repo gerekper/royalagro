@@ -408,7 +408,7 @@ class Premium_Whatsapp_Chat extends Widget_Base {
 				),
 				'selectors'  => array(
 					'{{WRAPPER}} .premium-whatsapp-icon' => 'font-size: {{SIZE}}{{UNIT}}',
-					'{{WRAPPER}} .premium-whatsapp-image, {{WRAPPER}} .premium-whatsapp-link svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .premium-whatsapp-image, {{WRAPPER}} .premium-whatsapp-link svg' => 'width: {{SIZE}}{{UNIT}} !important; height: {{SIZE}}{{UNIT}} !important',
 				),
 				'condition'  => array(
 					'icon_switcher'           => 'yes',

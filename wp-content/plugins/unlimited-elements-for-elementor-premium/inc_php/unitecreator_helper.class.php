@@ -1298,7 +1298,7 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 				$handle = GlobalsUC::PLUGIN_NAME."-".$scriptName;
 
 			$url = GlobalsUC::$urlPlugin .$folder."/".$scriptName.".js";
-						
+			
 			UniteProviderFunctionsUC::addScript($handle, $url, $inFooter);
 		}
 		

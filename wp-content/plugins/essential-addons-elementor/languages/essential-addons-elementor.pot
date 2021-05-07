@@ -69,11 +69,11 @@ msgstr ""
 msgid "Disable Selected Menu"
 msgstr ""
 
-#: ../includes/Elements/Advanced_Menu.php:122, ../includes/Elements/Advanced_Menu.php:163, ../includes/Elements/Content_Timeline.php:214, ../includes/Elements/Dynamic_Filterable_Gallery.php:185, ../includes/Elements/Dynamic_Filterable_Gallery.php:197, ../includes/Elements/Dynamic_Filterable_Gallery.php:269, ../includes/Elements/Dynamic_Filterable_Gallery.php:331, ../includes/Elements/Flip_Carousel.php:100, ../includes/Elements/Flip_Carousel.php:129, ../includes/Elements/Flip_Carousel.php:141, ../includes/Elements/Flip_Carousel.php:169, ../includes/Elements/Flip_Carousel.php:181, ../includes/Elements/Flip_Carousel.php:193, ../includes/Elements/Flip_Carousel.php:205, ../includes/Elements/Flip_Carousel.php:217, ../includes/Elements/Flip_Carousel.php:285, ../includes/Elements/Flip_Carousel.php:436, ../includes/Elements/Google_Map.php:331, ../includes/Elements/Google_Map.php:457, ../includes/Elements/Image_Hot_Spots.php:200, ../includes/Elements/Image_Hot_Spots.php:325, ../includes/Elements/Image_Hot_Spots.php:349, ../includes/Elements/Lightbox.php:124, ../includes/Elements/Lightbox.php:176, ../includes/Elements/Lightbox.php:550, ../includes/Elements/Lightbox.php:563, ../includes/Elements/Lightbox.php:576, ../includes/Elements/Logo_Carousel.php:321, ../includes/Elements/Logo_Carousel.php:354, ../includes/Elements/Logo_Carousel.php:366, ../includes/Elements/Logo_Carousel.php:404, ../includes/Elements/Logo_Carousel.php:416, ../includes/Elements/Logo_Carousel.php:513, ../includes/Elements/Logo_Carousel.php:571, ../includes/Elements/Offcanvas.php:386, ../includes/Elements/Offcanvas.php:398, ../includes/Elements/Offcanvas.php:411, ../includes/Elements/Offcanvas.php:423, ../includes/Elements/One_Page_Navigation.php:183, ../includes/Elements/Post_Carousel.php:202, ../includes/Elements/Post_Carousel.php:234, ../includes/Elements/Post_Carousel.php:249, ../includes/Elements/Post_Carousel.php:283, ../includes/Elements/Post_Carousel.php:295, ../includes/Elements/Post_Carousel.php:342, ../includes/Elements/Post_Carousel.php:467, ../includes/Elements/Post_Carousel.php:1181, ../includes/Elements/Post_List.php:135, ../includes/Elements/Post_List.php:152, ../includes/Elements/Post_List.php:192, ../includes/Elements/Post_List.php:207, ../includes/Elements/Post_List.php:251, ../includes/Elements/Post_List.php:354, ../includes/Elements/Post_List.php:426, ../includes/Elements/Post_List.php:437, ../includes/Elements/Post_List.php:448, ../includes/Elements/Post_List.php:495, ../includes/Elements/Post_List.php:517, ../includes/Elements/Post_List.php:528, ../includes/Elements/Post_List.php:563, ../includes/Elements/Post_List.php:630, ../includes/Elements/Post_List.php:645, ../includes/Elements/Price_Menu.php:264, ../includes/Elements/Price_Menu.php:279, ../includes/Elements/Static_Product.php:287, ../includes/Elements/Static_Product.php:712, ../includes/Elements/Static_Product.php:968, ../includes/Elements/Team_Member_Carousel.php:369, ../includes/Elements/Team_Member_Carousel.php:550, ../includes/Elements/Team_Member_Carousel.php:599, ../includes/Elements/Team_Member_Carousel.php:633, ../includes/Elements/Team_Member_Carousel.php:645, ../includes/Elements/Testimonial_Slider.php:298, ../includes/Elements/Testimonial_Slider.php:330, ../includes/Elements/Testimonial_Slider.php:345, ../includes/Elements/Testimonial_Slider.php:379, ../includes/Elements/Testimonial_Slider.php:391, ../includes/Elements/Testimonial_Slider.php:402, ../includes/Elements/Twitter_Feed_Carousel.php:333, ../includes/Elements/Twitter_Feed_Carousel.php:365, ../includes/Elements/Twitter_Feed_Carousel.php:389, ../includes/Elements/Twitter_Feed_Carousel.php:401, ../includes/Extensions/Content_Protection.php:41, ../includes/Traits/Extender.php:56, ../includes/Traits/Extender.php:859
+#: ../includes/Elements/Advanced_Menu.php:122, ../includes/Elements/Advanced_Menu.php:163, ../includes/Elements/Content_Timeline.php:214, ../includes/Elements/Dynamic_Filterable_Gallery.php:185, ../includes/Elements/Dynamic_Filterable_Gallery.php:197, ../includes/Elements/Dynamic_Filterable_Gallery.php:269, ../includes/Elements/Dynamic_Filterable_Gallery.php:331, ../includes/Elements/Flip_Carousel.php:100, ../includes/Elements/Flip_Carousel.php:129, ../includes/Elements/Flip_Carousel.php:141, ../includes/Elements/Flip_Carousel.php:169, ../includes/Elements/Flip_Carousel.php:181, ../includes/Elements/Flip_Carousel.php:193, ../includes/Elements/Flip_Carousel.php:205, ../includes/Elements/Flip_Carousel.php:217, ../includes/Elements/Flip_Carousel.php:285, ../includes/Elements/Flip_Carousel.php:436, ../includes/Elements/Google_Map.php:331, ../includes/Elements/Google_Map.php:457, ../includes/Elements/Image_Hot_Spots.php:200, ../includes/Elements/Image_Hot_Spots.php:325, ../includes/Elements/Image_Hot_Spots.php:349, ../includes/Elements/Lightbox.php:124, ../includes/Elements/Lightbox.php:176, ../includes/Elements/Lightbox.php:550, ../includes/Elements/Lightbox.php:563, ../includes/Elements/Lightbox.php:576, ../includes/Elements/Logo_Carousel.php:321, ../includes/Elements/Logo_Carousel.php:354, ../includes/Elements/Logo_Carousel.php:366, ../includes/Elements/Logo_Carousel.php:404, ../includes/Elements/Logo_Carousel.php:416, ../includes/Elements/Logo_Carousel.php:513, ../includes/Elements/Logo_Carousel.php:571, ../includes/Elements/Offcanvas.php:386, ../includes/Elements/Offcanvas.php:398, ../includes/Elements/Offcanvas.php:411, ../includes/Elements/Offcanvas.php:423, ../includes/Elements/One_Page_Navigation.php:183, ../includes/Elements/Post_Carousel.php:202, ../includes/Elements/Post_Carousel.php:234, ../includes/Elements/Post_Carousel.php:249, ../includes/Elements/Post_Carousel.php:283, ../includes/Elements/Post_Carousel.php:295, ../includes/Elements/Post_Carousel.php:342, ../includes/Elements/Post_Carousel.php:467, ../includes/Elements/Post_Carousel.php:1181, ../includes/Elements/Post_List.php:135, ../includes/Elements/Post_List.php:152, ../includes/Elements/Post_List.php:192, ../includes/Elements/Post_List.php:207, ../includes/Elements/Post_List.php:251, ../includes/Elements/Post_List.php:357, ../includes/Elements/Post_List.php:429, ../includes/Elements/Post_List.php:440, ../includes/Elements/Post_List.php:451, ../includes/Elements/Post_List.php:498, ../includes/Elements/Post_List.php:520, ../includes/Elements/Post_List.php:531, ../includes/Elements/Post_List.php:566, ../includes/Elements/Post_List.php:633, ../includes/Elements/Post_List.php:648, ../includes/Elements/Price_Menu.php:264, ../includes/Elements/Price_Menu.php:279, ../includes/Elements/Static_Product.php:287, ../includes/Elements/Static_Product.php:712, ../includes/Elements/Static_Product.php:968, ../includes/Elements/Team_Member_Carousel.php:369, ../includes/Elements/Team_Member_Carousel.php:550, ../includes/Elements/Team_Member_Carousel.php:599, ../includes/Elements/Team_Member_Carousel.php:633, ../includes/Elements/Team_Member_Carousel.php:645, ../includes/Elements/Testimonial_Slider.php:298, ../includes/Elements/Testimonial_Slider.php:330, ../includes/Elements/Testimonial_Slider.php:345, ../includes/Elements/Testimonial_Slider.php:379, ../includes/Elements/Testimonial_Slider.php:391, ../includes/Elements/Testimonial_Slider.php:402, ../includes/Elements/Twitter_Feed_Carousel.php:333, ../includes/Elements/Twitter_Feed_Carousel.php:365, ../includes/Elements/Twitter_Feed_Carousel.php:389, ../includes/Elements/Twitter_Feed_Carousel.php:401, ../includes/Extensions/Content_Protection.php:41, ../includes/Traits/Extender.php:56, ../includes/Traits/Extender.php:862
 msgid "Yes"
 msgstr ""
 
-#: ../includes/Elements/Advanced_Menu.php:123, ../includes/Elements/Advanced_Menu.php:164, ../includes/Elements/Content_Timeline.php:218, ../includes/Elements/Dynamic_Filterable_Gallery.php:186, ../includes/Elements/Dynamic_Filterable_Gallery.php:198, ../includes/Elements/Dynamic_Filterable_Gallery.php:273, ../includes/Elements/Dynamic_Filterable_Gallery.php:332, ../includes/Elements/Flip_Carousel.php:101, ../includes/Elements/Flip_Carousel.php:130, ../includes/Elements/Flip_Carousel.php:142, ../includes/Elements/Flip_Carousel.php:170, ../includes/Elements/Flip_Carousel.php:182, ../includes/Elements/Flip_Carousel.php:194, ../includes/Elements/Flip_Carousel.php:206, ../includes/Elements/Flip_Carousel.php:218, ../includes/Elements/Flip_Carousel.php:286, ../includes/Elements/Flip_Carousel.php:437, ../includes/Elements/Google_Map.php:332, ../includes/Elements/Google_Map.php:458, ../includes/Elements/Image_Hot_Spots.php:201, ../includes/Elements/Image_Hot_Spots.php:326, ../includes/Elements/Image_Hot_Spots.php:350, ../includes/Elements/Lightbox.php:125, ../includes/Elements/Lightbox.php:177, ../includes/Elements/Lightbox.php:551, ../includes/Elements/Lightbox.php:564, ../includes/Elements/Lightbox.php:577, ../includes/Elements/Logo_Carousel.php:322, ../includes/Elements/Logo_Carousel.php:355, ../includes/Elements/Logo_Carousel.php:367, ../includes/Elements/Logo_Carousel.php:405, ../includes/Elements/Logo_Carousel.php:417, ../includes/Elements/Logo_Carousel.php:514, ../includes/Elements/Logo_Carousel.php:572, ../includes/Elements/Offcanvas.php:387, ../includes/Elements/Offcanvas.php:399, ../includes/Elements/Offcanvas.php:412, ../includes/Elements/Offcanvas.php:424, ../includes/Elements/One_Page_Navigation.php:184, ../includes/Elements/Post_Carousel.php:203, ../includes/Elements/Post_Carousel.php:235, ../includes/Elements/Post_Carousel.php:250, ../includes/Elements/Post_Carousel.php:284, ../includes/Elements/Post_Carousel.php:296, ../includes/Elements/Post_Carousel.php:343, ../includes/Elements/Post_Carousel.php:468, ../includes/Elements/Post_Carousel.php:1182, ../includes/Elements/Post_List.php:136, ../includes/Elements/Post_List.php:153, ../includes/Elements/Post_List.php:193, ../includes/Elements/Post_List.php:208, ../includes/Elements/Post_List.php:252, ../includes/Elements/Post_List.php:355, ../includes/Elements/Post_List.php:427, ../includes/Elements/Post_List.php:438, ../includes/Elements/Post_List.php:449, ../includes/Elements/Post_List.php:496, ../includes/Elements/Post_List.php:518, ../includes/Elements/Post_List.php:529, ../includes/Elements/Post_List.php:564, ../includes/Elements/Post_List.php:631, ../includes/Elements/Post_List.php:646, ../includes/Elements/Price_Menu.php:265, ../includes/Elements/Price_Menu.php:280, ../includes/Elements/Static_Product.php:288, ../includes/Elements/Static_Product.php:713, ../includes/Elements/Static_Product.php:969, ../includes/Elements/Team_Member_Carousel.php:370, ../includes/Elements/Team_Member_Carousel.php:551, ../includes/Elements/Team_Member_Carousel.php:600, ../includes/Elements/Team_Member_Carousel.php:634, ../includes/Elements/Team_Member_Carousel.php:646, ../includes/Elements/Testimonial_Slider.php:299, ../includes/Elements/Testimonial_Slider.php:331, ../includes/Elements/Testimonial_Slider.php:346, ../includes/Elements/Testimonial_Slider.php:380, ../includes/Elements/Testimonial_Slider.php:392, ../includes/Elements/Testimonial_Slider.php:403, ../includes/Elements/Twitter_Feed_Carousel.php:334, ../includes/Elements/Twitter_Feed_Carousel.php:366, ../includes/Elements/Twitter_Feed_Carousel.php:390, ../includes/Elements/Twitter_Feed_Carousel.php:402, ../includes/Extensions/Content_Protection.php:42, ../includes/Traits/Extender.php:57, ../includes/Traits/Extender.php:860
+#: ../includes/Elements/Advanced_Menu.php:123, ../includes/Elements/Advanced_Menu.php:164, ../includes/Elements/Content_Timeline.php:218, ../includes/Elements/Dynamic_Filterable_Gallery.php:186, ../includes/Elements/Dynamic_Filterable_Gallery.php:198, ../includes/Elements/Dynamic_Filterable_Gallery.php:273, ../includes/Elements/Dynamic_Filterable_Gallery.php:332, ../includes/Elements/Flip_Carousel.php:101, ../includes/Elements/Flip_Carousel.php:130, ../includes/Elements/Flip_Carousel.php:142, ../includes/Elements/Flip_Carousel.php:170, ../includes/Elements/Flip_Carousel.php:182, ../includes/Elements/Flip_Carousel.php:194, ../includes/Elements/Flip_Carousel.php:206, ../includes/Elements/Flip_Carousel.php:218, ../includes/Elements/Flip_Carousel.php:286, ../includes/Elements/Flip_Carousel.php:437, ../includes/Elements/Google_Map.php:332, ../includes/Elements/Google_Map.php:458, ../includes/Elements/Image_Hot_Spots.php:201, ../includes/Elements/Image_Hot_Spots.php:326, ../includes/Elements/Image_Hot_Spots.php:350, ../includes/Elements/Lightbox.php:125, ../includes/Elements/Lightbox.php:177, ../includes/Elements/Lightbox.php:551, ../includes/Elements/Lightbox.php:564, ../includes/Elements/Lightbox.php:577, ../includes/Elements/Logo_Carousel.php:322, ../includes/Elements/Logo_Carousel.php:355, ../includes/Elements/Logo_Carousel.php:367, ../includes/Elements/Logo_Carousel.php:405, ../includes/Elements/Logo_Carousel.php:417, ../includes/Elements/Logo_Carousel.php:514, ../includes/Elements/Logo_Carousel.php:572, ../includes/Elements/Offcanvas.php:387, ../includes/Elements/Offcanvas.php:399, ../includes/Elements/Offcanvas.php:412, ../includes/Elements/Offcanvas.php:424, ../includes/Elements/One_Page_Navigation.php:184, ../includes/Elements/Post_Carousel.php:203, ../includes/Elements/Post_Carousel.php:235, ../includes/Elements/Post_Carousel.php:250, ../includes/Elements/Post_Carousel.php:284, ../includes/Elements/Post_Carousel.php:296, ../includes/Elements/Post_Carousel.php:343, ../includes/Elements/Post_Carousel.php:468, ../includes/Elements/Post_Carousel.php:1182, ../includes/Elements/Post_List.php:136, ../includes/Elements/Post_List.php:153, ../includes/Elements/Post_List.php:193, ../includes/Elements/Post_List.php:208, ../includes/Elements/Post_List.php:252, ../includes/Elements/Post_List.php:358, ../includes/Elements/Post_List.php:430, ../includes/Elements/Post_List.php:441, ../includes/Elements/Post_List.php:452, ../includes/Elements/Post_List.php:499, ../includes/Elements/Post_List.php:521, ../includes/Elements/Post_List.php:532, ../includes/Elements/Post_List.php:567, ../includes/Elements/Post_List.php:634, ../includes/Elements/Post_List.php:649, ../includes/Elements/Price_Menu.php:265, ../includes/Elements/Price_Menu.php:280, ../includes/Elements/Static_Product.php:288, ../includes/Elements/Static_Product.php:713, ../includes/Elements/Static_Product.php:969, ../includes/Elements/Team_Member_Carousel.php:370, ../includes/Elements/Team_Member_Carousel.php:551, ../includes/Elements/Team_Member_Carousel.php:600, ../includes/Elements/Team_Member_Carousel.php:634, ../includes/Elements/Team_Member_Carousel.php:646, ../includes/Elements/Testimonial_Slider.php:299, ../includes/Elements/Testimonial_Slider.php:331, ../includes/Elements/Testimonial_Slider.php:346, ../includes/Elements/Testimonial_Slider.php:380, ../includes/Elements/Testimonial_Slider.php:392, ../includes/Elements/Testimonial_Slider.php:403, ../includes/Elements/Twitter_Feed_Carousel.php:334, ../includes/Elements/Twitter_Feed_Carousel.php:366, ../includes/Elements/Twitter_Feed_Carousel.php:390, ../includes/Elements/Twitter_Feed_Carousel.php:402, ../includes/Extensions/Content_Protection.php:42, ../includes/Traits/Extender.php:57, ../includes/Traits/Extender.php:863
 msgid "No"
 msgstr ""
 
@@ -81,15 +81,15 @@ msgstr ""
 msgid "Hamburger Alignment"
 msgstr ""
 
-#: ../includes/Elements/Advanced_Menu.php:137, ../includes/Elements/Content_Timeline.php:686, ../includes/Elements/Content_Timeline.php:744, ../includes/Elements/Counter.php:302, ../includes/Elements/Divider.php:312, ../includes/Elements/Divider.php:626, ../includes/Elements/Divider.php:727, ../includes/Elements/Divider.php:862, ../includes/Elements/Dynamic_Filterable_Gallery.php:421, ../includes/Elements/Dynamic_Filterable_Gallery.php:1014, ../includes/Elements/Dynamic_Filterable_Gallery.php:1045, ../includes/Elements/Dynamic_Filterable_Gallery.php:1443, ../includes/Elements/Image_Comparison.php:537, ../includes/Elements/Image_Hot_Spots.php:272, ../includes/Elements/Image_Hot_Spots.php:379, ../includes/Elements/Interactive_Card.php:233, ../includes/Elements/Interactive_Card.php:316, ../includes/Elements/Interactive_Card.php:471, ../includes/Elements/Interactive_Card.php:771, ../includes/Elements/Interactive_Card.php:972, ../includes/Elements/LD_Course_List.php:661, ../includes/Elements/LD_Course_List.php:1724, ../includes/Elements/Lightbox.php:423, ../includes/Elements/Lightbox.php:662, ../includes/Elements/Logo_Carousel.php:429, ../includes/Elements/Mailchimp.php:716, ../includes/Elements/Offcanvas.php:351, ../includes/Elements/Offcanvas.php:554, ../includes/Elements/Offcanvas.php:939, ../includes/Elements/One_Page_Navigation.php:304, ../includes/Elements/Post_Block.php:296, ../includes/Elements/Post_Block.php:366, ../includes/Elements/Post_Block.php:456, ../includes/Elements/Post_Block.php:484, ../includes/Elements/Post_Carousel.php:582, ../includes/Elements/Post_Carousel.php:650, ../includes/Elements/Post_Carousel.php:864, ../includes/Elements/Post_List.php:932, ../includes/Elements/Post_List.php:1127, ../includes/Elements/Post_List.php:1179, ../includes/Elements/Post_List.php:1235, ../includes/Elements/Post_List.php:1380, ../includes/Elements/Post_List.php:1432, ../includes/Elements/Post_List.php:1488, ../includes/Elements/Price_Menu.php:232, ../includes/Elements/Protected_Content.php:360, ../includes/Elements/Protected_Content.php:445, ../includes/Elements/Protected_Content.php:524, ../includes/Elements/Protected_Content.php:597, ../includes/Elements/Static_Product.php:478, ../includes/Elements/Static_Product.php:505, ../includes/Elements/Team_Member_Carousel.php:675, ../includes/Elements/Team_Member_Carousel.php:873, ../includes/Elements/Testimonial_Slider.php:529, ../includes/Elements/Toggle.php:271, ../includes/Elements/Toggle.php:657, ../includes/Elements/Woo_Collections.php:355, ../includes/Elements/Woo_Collections.php:388, ../includes/Extensions/Content_Protection.php:284, ../includes/Extensions/Content_Protection.php:366, ../includes/Extensions/Content_Protection.php:445, ../includes/Extensions/EAEL_Tooltip_Section.php:80, ../includes/Skins/Skin_Default.php:191, ../includes/Skins/Skin_Default.php:478, ../includes/Skins/Skin_Five.php:240, ../includes/Skins/Skin_Five.php:550, ../includes/Skins/Skin_Four.php:191, ../includes/Skins/Skin_Four.php:498, ../includes/Skins/Skin_One.php:239, ../includes/Skins/Skin_One.php:546, ../includes/Skins/Skin_Seven.php:191, ../includes/Skins/Skin_Seven.php:498, ../includes/Skins/Skin_Six.php:191, ../includes/Skins/Skin_Six.php:500, ../includes/Skins/Skin_Three.php:210, ../includes/Skins/Skin_Three.php:520, ../includes/Skins/Skin_Two.php:210, ../includes/Skins/Skin_Two.php:520, ../includes/Traits/Extender.php:180, ../includes/Traits/Extender.php:542
+#: ../includes/Elements/Advanced_Menu.php:137, ../includes/Elements/Content_Timeline.php:686, ../includes/Elements/Content_Timeline.php:744, ../includes/Elements/Counter.php:302, ../includes/Elements/Divider.php:312, ../includes/Elements/Divider.php:626, ../includes/Elements/Divider.php:727, ../includes/Elements/Divider.php:862, ../includes/Elements/Dynamic_Filterable_Gallery.php:421, ../includes/Elements/Dynamic_Filterable_Gallery.php:1014, ../includes/Elements/Dynamic_Filterable_Gallery.php:1045, ../includes/Elements/Dynamic_Filterable_Gallery.php:1443, ../includes/Elements/Flip_Carousel.php:613, ../includes/Elements/Image_Comparison.php:537, ../includes/Elements/Image_Hot_Spots.php:272, ../includes/Elements/Image_Hot_Spots.php:379, ../includes/Elements/Interactive_Card.php:233, ../includes/Elements/Interactive_Card.php:316, ../includes/Elements/Interactive_Card.php:471, ../includes/Elements/Interactive_Card.php:771, ../includes/Elements/Interactive_Card.php:972, ../includes/Elements/LD_Course_List.php:661, ../includes/Elements/LD_Course_List.php:1724, ../includes/Elements/Lightbox.php:423, ../includes/Elements/Lightbox.php:662, ../includes/Elements/Logo_Carousel.php:429, ../includes/Elements/Mailchimp.php:716, ../includes/Elements/Offcanvas.php:351, ../includes/Elements/Offcanvas.php:554, ../includes/Elements/Offcanvas.php:939, ../includes/Elements/One_Page_Navigation.php:304, ../includes/Elements/Post_Block.php:296, ../includes/Elements/Post_Block.php:366, ../includes/Elements/Post_Block.php:456, ../includes/Elements/Post_Block.php:484, ../includes/Elements/Post_Carousel.php:582, ../includes/Elements/Post_Carousel.php:650, ../includes/Elements/Post_Carousel.php:864, ../includes/Elements/Post_List.php:935, ../includes/Elements/Post_List.php:1150, ../includes/Elements/Post_List.php:1202, ../includes/Elements/Post_List.php:1258, ../includes/Elements/Post_List.php:1403, ../includes/Elements/Post_List.php:1455, ../includes/Elements/Post_List.php:1511, ../includes/Elements/Price_Menu.php:232, ../includes/Elements/Protected_Content.php:360, ../includes/Elements/Protected_Content.php:445, ../includes/Elements/Protected_Content.php:524, ../includes/Elements/Protected_Content.php:597, ../includes/Elements/Static_Product.php:478, ../includes/Elements/Static_Product.php:505, ../includes/Elements/Team_Member_Carousel.php:675, ../includes/Elements/Team_Member_Carousel.php:873, ../includes/Elements/Testimonial_Slider.php:529, ../includes/Elements/Toggle.php:271, ../includes/Elements/Toggle.php:657, ../includes/Elements/Woo_Collections.php:355, ../includes/Elements/Woo_Collections.php:388, ../includes/Extensions/Content_Protection.php:284, ../includes/Extensions/Content_Protection.php:366, ../includes/Extensions/Content_Protection.php:445, ../includes/Extensions/EAEL_Tooltip_Section.php:80, ../includes/Skins/Skin_Default.php:191, ../includes/Skins/Skin_Default.php:478, ../includes/Skins/Skin_Five.php:240, ../includes/Skins/Skin_Five.php:550, ../includes/Skins/Skin_Four.php:191, ../includes/Skins/Skin_Four.php:498, ../includes/Skins/Skin_One.php:239, ../includes/Skins/Skin_One.php:546, ../includes/Skins/Skin_Seven.php:191, ../includes/Skins/Skin_Seven.php:498, ../includes/Skins/Skin_Six.php:191, ../includes/Skins/Skin_Six.php:500, ../includes/Skins/Skin_Three.php:210, ../includes/Skins/Skin_Three.php:520, ../includes/Skins/Skin_Two.php:210, ../includes/Skins/Skin_Two.php:520, ../includes/Traits/Extender.php:180, ../includes/Traits/Extender.php:542
 msgid "Left"
 msgstr ""
 
-#: ../includes/Elements/Advanced_Menu.php:141, ../includes/Elements/Content_Timeline.php:690, ../includes/Elements/Content_Timeline.php:748, ../includes/Elements/Counter.php:306, ../includes/Elements/Divider.php:316, ../includes/Elements/Divider.php:361, ../includes/Elements/Divider.php:630, ../includes/Elements/Divider.php:731, ../includes/Elements/Divider.php:866, ../includes/Elements/Dynamic_Filterable_Gallery.php:425, ../includes/Elements/Dynamic_Filterable_Gallery.php:1018, ../includes/Elements/Dynamic_Filterable_Gallery.php:1049, ../includes/Elements/Dynamic_Filterable_Gallery.php:1447, ../includes/Elements/Image_Comparison.php:541, ../includes/Elements/Interactive_Card.php:775, ../includes/Elements/Interactive_Card.php:976, ../includes/Elements/LD_Course_List.php:665, ../includes/Elements/LD_Course_List.php:1728, ../includes/Elements/Lightbox.php:427, ../includes/Elements/Lightbox.php:666, ../includes/Elements/Mailchimp.php:720, ../includes/Elements/Offcanvas.php:558, ../includes/Elements/Offcanvas.php:943, ../includes/Elements/Post_Block.php:300, ../includes/Elements/Post_Block.php:370, ../includes/Elements/Post_Block.php:460, ../includes/Elements/Post_Block.php:488, ../includes/Elements/Post_Carousel.php:586, ../includes/Elements/Post_Carousel.php:654, ../includes/Elements/Post_Carousel.php:868, ../includes/Elements/Post_List.php:936, ../includes/Elements/Post_List.php:1131, ../includes/Elements/Post_List.php:1183, ../includes/Elements/Post_List.php:1239, ../includes/Elements/Post_List.php:1384, ../includes/Elements/Post_List.php:1436, ../includes/Elements/Post_List.php:1492, ../includes/Elements/Price_Menu.php:236, ../includes/Elements/Price_Menu.php:921, ../includes/Elements/Protected_Content.php:364, ../includes/Elements/Protected_Content.php:449, ../includes/Elements/Protected_Content.php:528, ../includes/Elements/Protected_Content.php:601, ../includes/Elements/Static_Product.php:482, ../includes/Elements/Static_Product.php:509, ../includes/Elements/Team_Member_Carousel.php:679, ../includes/Elements/Team_Member_Carousel.php:877, ../includes/Elements/Testimonial_Slider.php:533, ../includes/Elements/Toggle.php:275, ../includes/Elements/Toggle.php:661, ../includes/Elements/Woo_Collections.php:356, ../includes/Elements/Woo_Collections.php:392, ../includes/Extensions/Content_Protection.php:288, ../includes/Extensions/Content_Protection.php:370, ../includes/Extensions/Content_Protection.php:449, ../includes/Skins/Skin_Default.php:195, ../includes/Skins/Skin_Default.php:482, ../includes/Skins/Skin_Five.php:244, ../includes/Skins/Skin_Five.php:554, ../includes/Skins/Skin_Four.php:195, ../includes/Skins/Skin_Four.php:502, ../includes/Skins/Skin_One.php:243, ../includes/Skins/Skin_One.php:550, ../includes/Skins/Skin_Seven.php:195, ../includes/Skins/Skin_Seven.php:502, ../includes/Skins/Skin_Six.php:195, ../includes/Skins/Skin_Six.php:504, ../includes/Skins/Skin_Three.php:214, ../includes/Skins/Skin_Three.php:524, ../includes/Skins/Skin_Two.php:214, ../includes/Skins/Skin_Two.php:524, ../includes/Traits/Extender.php:184, ../includes/Traits/Extender.php:546
+#: ../includes/Elements/Advanced_Menu.php:141, ../includes/Elements/Content_Timeline.php:690, ../includes/Elements/Content_Timeline.php:748, ../includes/Elements/Counter.php:306, ../includes/Elements/Divider.php:316, ../includes/Elements/Divider.php:361, ../includes/Elements/Divider.php:630, ../includes/Elements/Divider.php:731, ../includes/Elements/Divider.php:866, ../includes/Elements/Dynamic_Filterable_Gallery.php:425, ../includes/Elements/Dynamic_Filterable_Gallery.php:1018, ../includes/Elements/Dynamic_Filterable_Gallery.php:1049, ../includes/Elements/Dynamic_Filterable_Gallery.php:1447, ../includes/Elements/Flip_Carousel.php:617, ../includes/Elements/Image_Comparison.php:541, ../includes/Elements/Interactive_Card.php:775, ../includes/Elements/Interactive_Card.php:976, ../includes/Elements/LD_Course_List.php:665, ../includes/Elements/LD_Course_List.php:1728, ../includes/Elements/Lightbox.php:427, ../includes/Elements/Lightbox.php:666, ../includes/Elements/Mailchimp.php:720, ../includes/Elements/Offcanvas.php:558, ../includes/Elements/Offcanvas.php:943, ../includes/Elements/Post_Block.php:300, ../includes/Elements/Post_Block.php:370, ../includes/Elements/Post_Block.php:460, ../includes/Elements/Post_Block.php:488, ../includes/Elements/Post_Carousel.php:586, ../includes/Elements/Post_Carousel.php:654, ../includes/Elements/Post_Carousel.php:868, ../includes/Elements/Post_List.php:939, ../includes/Elements/Post_List.php:1154, ../includes/Elements/Post_List.php:1206, ../includes/Elements/Post_List.php:1262, ../includes/Elements/Post_List.php:1407, ../includes/Elements/Post_List.php:1459, ../includes/Elements/Post_List.php:1515, ../includes/Elements/Price_Menu.php:236, ../includes/Elements/Price_Menu.php:921, ../includes/Elements/Protected_Content.php:364, ../includes/Elements/Protected_Content.php:449, ../includes/Elements/Protected_Content.php:528, ../includes/Elements/Protected_Content.php:601, ../includes/Elements/Static_Product.php:482, ../includes/Elements/Static_Product.php:509, ../includes/Elements/Team_Member_Carousel.php:679, ../includes/Elements/Team_Member_Carousel.php:877, ../includes/Elements/Testimonial_Slider.php:533, ../includes/Elements/Toggle.php:275, ../includes/Elements/Toggle.php:661, ../includes/Elements/Woo_Collections.php:356, ../includes/Elements/Woo_Collections.php:392, ../includes/Extensions/Content_Protection.php:288, ../includes/Extensions/Content_Protection.php:370, ../includes/Extensions/Content_Protection.php:449, ../includes/Skins/Skin_Default.php:195, ../includes/Skins/Skin_Default.php:482, ../includes/Skins/Skin_Five.php:244, ../includes/Skins/Skin_Five.php:554, ../includes/Skins/Skin_Four.php:195, ../includes/Skins/Skin_Four.php:502, ../includes/Skins/Skin_One.php:243, ../includes/Skins/Skin_One.php:550, ../includes/Skins/Skin_Seven.php:195, ../includes/Skins/Skin_Seven.php:502, ../includes/Skins/Skin_Six.php:195, ../includes/Skins/Skin_Six.php:504, ../includes/Skins/Skin_Three.php:214, ../includes/Skins/Skin_Three.php:524, ../includes/Skins/Skin_Two.php:214, ../includes/Skins/Skin_Two.php:524, ../includes/Traits/Extender.php:184, ../includes/Traits/Extender.php:546
 msgid "Center"
 msgstr ""
 
-#: ../includes/Elements/Advanced_Menu.php:145, ../includes/Elements/Content_Timeline.php:694, ../includes/Elements/Content_Timeline.php:752, ../includes/Elements/Counter.php:310, ../includes/Elements/Divider.php:320, ../includes/Elements/Divider.php:634, ../includes/Elements/Divider.php:735, ../includes/Elements/Divider.php:870, ../includes/Elements/Dynamic_Filterable_Gallery.php:429, ../includes/Elements/Dynamic_Filterable_Gallery.php:1022, ../includes/Elements/Dynamic_Filterable_Gallery.php:1053, ../includes/Elements/Dynamic_Filterable_Gallery.php:1451, ../includes/Elements/Image_Comparison.php:545, ../includes/Elements/Image_Hot_Spots.php:273, ../includes/Elements/Image_Hot_Spots.php:380, ../includes/Elements/Interactive_Card.php:237, ../includes/Elements/Interactive_Card.php:317, ../includes/Elements/Interactive_Card.php:475, ../includes/Elements/Interactive_Card.php:779, ../includes/Elements/Interactive_Card.php:980, ../includes/Elements/LD_Course_List.php:669, ../includes/Elements/LD_Course_List.php:1732, ../includes/Elements/Lightbox.php:431, ../includes/Elements/Lightbox.php:670, ../includes/Elements/Logo_Carousel.php:430, ../includes/Elements/Mailchimp.php:724, ../includes/Elements/Offcanvas.php:355, ../includes/Elements/Offcanvas.php:562, ../includes/Elements/Offcanvas.php:947, ../includes/Elements/One_Page_Navigation.php:308, ../includes/Elements/Post_Block.php:304, ../includes/Elements/Post_Block.php:374, ../includes/Elements/Post_Block.php:464, ../includes/Elements/Post_Block.php:492, ../includes/Elements/Post_Carousel.php:590, ../includes/Elements/Post_Carousel.php:658, ../includes/Elements/Post_Carousel.php:872, ../includes/Elements/Post_List.php:940, ../includes/Elements/Post_List.php:1135, ../includes/Elements/Post_List.php:1187, ../includes/Elements/Post_List.php:1243, ../includes/Elements/Post_List.php:1388, ../includes/Elements/Post_List.php:1440, ../includes/Elements/Post_List.php:1496, ../includes/Elements/Price_Menu.php:240, ../includes/Elements/Protected_Content.php:368, ../includes/Elements/Protected_Content.php:453, ../includes/Elements/Protected_Content.php:532, ../includes/Elements/Protected_Content.php:605, ../includes/Elements/Static_Product.php:486, ../includes/Elements/Static_Product.php:513, ../includes/Elements/Team_Member_Carousel.php:683, ../includes/Elements/Team_Member_Carousel.php:881, ../includes/Elements/Testimonial_Slider.php:537, ../includes/Elements/Toggle.php:279, ../includes/Elements/Toggle.php:665, ../includes/Elements/Woo_Collections.php:357, ../includes/Elements/Woo_Collections.php:396, ../includes/Extensions/Content_Protection.php:292, ../includes/Extensions/Content_Protection.php:374, ../includes/Extensions/Content_Protection.php:453, ../includes/Extensions/EAEL_Tooltip_Section.php:81, ../includes/Skins/Skin_Default.php:199, ../includes/Skins/Skin_Default.php:486, ../includes/Skins/Skin_Five.php:248, ../includes/Skins/Skin_Five.php:558, ../includes/Skins/Skin_Four.php:199, ../includes/Skins/Skin_Four.php:506, ../includes/Skins/Skin_One.php:247, ../includes/Skins/Skin_One.php:554, ../includes/Skins/Skin_Seven.php:199, ../includes/Skins/Skin_Seven.php:506, ../includes/Skins/Skin_Six.php:199, ../includes/Skins/Skin_Six.php:508, ../includes/Skins/Skin_Three.php:218, ../includes/Skins/Skin_Three.php:528, ../includes/Skins/Skin_Two.php:218, ../includes/Skins/Skin_Two.php:528, ../includes/Traits/Extender.php:188, ../includes/Traits/Extender.php:550
+#: ../includes/Elements/Advanced_Menu.php:145, ../includes/Elements/Content_Timeline.php:694, ../includes/Elements/Content_Timeline.php:752, ../includes/Elements/Counter.php:310, ../includes/Elements/Divider.php:320, ../includes/Elements/Divider.php:634, ../includes/Elements/Divider.php:735, ../includes/Elements/Divider.php:870, ../includes/Elements/Dynamic_Filterable_Gallery.php:429, ../includes/Elements/Dynamic_Filterable_Gallery.php:1022, ../includes/Elements/Dynamic_Filterable_Gallery.php:1053, ../includes/Elements/Dynamic_Filterable_Gallery.php:1451, ../includes/Elements/Flip_Carousel.php:621, ../includes/Elements/Image_Comparison.php:545, ../includes/Elements/Image_Hot_Spots.php:273, ../includes/Elements/Image_Hot_Spots.php:380, ../includes/Elements/Interactive_Card.php:237, ../includes/Elements/Interactive_Card.php:317, ../includes/Elements/Interactive_Card.php:475, ../includes/Elements/Interactive_Card.php:779, ../includes/Elements/Interactive_Card.php:980, ../includes/Elements/LD_Course_List.php:669, ../includes/Elements/LD_Course_List.php:1732, ../includes/Elements/Lightbox.php:431, ../includes/Elements/Lightbox.php:670, ../includes/Elements/Logo_Carousel.php:430, ../includes/Elements/Mailchimp.php:724, ../includes/Elements/Offcanvas.php:355, ../includes/Elements/Offcanvas.php:562, ../includes/Elements/Offcanvas.php:947, ../includes/Elements/One_Page_Navigation.php:308, ../includes/Elements/Post_Block.php:304, ../includes/Elements/Post_Block.php:374, ../includes/Elements/Post_Block.php:464, ../includes/Elements/Post_Block.php:492, ../includes/Elements/Post_Carousel.php:590, ../includes/Elements/Post_Carousel.php:658, ../includes/Elements/Post_Carousel.php:872, ../includes/Elements/Post_List.php:943, ../includes/Elements/Post_List.php:1158, ../includes/Elements/Post_List.php:1210, ../includes/Elements/Post_List.php:1266, ../includes/Elements/Post_List.php:1411, ../includes/Elements/Post_List.php:1463, ../includes/Elements/Post_List.php:1519, ../includes/Elements/Price_Menu.php:240, ../includes/Elements/Protected_Content.php:368, ../includes/Elements/Protected_Content.php:453, ../includes/Elements/Protected_Content.php:532, ../includes/Elements/Protected_Content.php:605, ../includes/Elements/Static_Product.php:486, ../includes/Elements/Static_Product.php:513, ../includes/Elements/Team_Member_Carousel.php:683, ../includes/Elements/Team_Member_Carousel.php:881, ../includes/Elements/Testimonial_Slider.php:537, ../includes/Elements/Toggle.php:279, ../includes/Elements/Toggle.php:665, ../includes/Elements/Woo_Collections.php:357, ../includes/Elements/Woo_Collections.php:396, ../includes/Extensions/Content_Protection.php:292, ../includes/Extensions/Content_Protection.php:374, ../includes/Extensions/Content_Protection.php:453, ../includes/Extensions/EAEL_Tooltip_Section.php:81, ../includes/Skins/Skin_Default.php:199, ../includes/Skins/Skin_Default.php:486, ../includes/Skins/Skin_Five.php:248, ../includes/Skins/Skin_Five.php:558, ../includes/Skins/Skin_Four.php:199, ../includes/Skins/Skin_Four.php:506, ../includes/Skins/Skin_One.php:247, ../includes/Skins/Skin_One.php:554, ../includes/Skins/Skin_Seven.php:199, ../includes/Skins/Skin_Seven.php:506, ../includes/Skins/Skin_Six.php:199, ../includes/Skins/Skin_Six.php:508, ../includes/Skins/Skin_Three.php:218, ../includes/Skins/Skin_Three.php:528, ../includes/Skins/Skin_Two.php:218, ../includes/Skins/Skin_Two.php:528, ../includes/Traits/Extender.php:188, ../includes/Traits/Extender.php:550
 msgid "Right"
 msgstr ""
 
@@ -109,11 +109,11 @@ msgstr ""
 msgid "Hamburger Menu"
 msgstr ""
 
-#: ../includes/Elements/Advanced_Menu.php:200, ../includes/Elements/Content_Timeline.php:381, ../includes/Elements/Content_Timeline.php:884, ../includes/Elements/Content_Timeline.php:938, ../includes/Elements/Content_Timeline.php:1088, ../includes/Elements/Content_Timeline.php:1142, ../includes/Elements/Counter.php:944, ../includes/Elements/Dynamic_Filterable_Gallery.php:462, ../includes/Elements/Dynamic_Filterable_Gallery.php:596, ../includes/Elements/Dynamic_Filterable_Gallery.php:662, ../includes/Elements/Dynamic_Filterable_Gallery.php:730, ../includes/Elements/Dynamic_Filterable_Gallery.php:832, ../includes/Elements/Dynamic_Filterable_Gallery.php:922, ../includes/Elements/Dynamic_Filterable_Gallery.php:967, ../includes/Elements/Dynamic_Filterable_Gallery.php:1152, ../includes/Elements/Dynamic_Filterable_Gallery.php:1249, ../includes/Elements/Dynamic_Filterable_Gallery.php:1297, ../includes/Elements/Flip_Carousel.php:346, ../includes/Elements/Flip_Carousel.php:565, ../includes/Elements/Google_Map.php:951, ../includes/Elements/Image_Comparison.php:609, ../includes/Elements/Image_Comparison.php:665, ../includes/Elements/Image_Hot_Spots.php:750, ../includes/Elements/Image_Hot_Spots.php:814, ../includes/Elements/Image_Hot_Spots.php:870, ../includes/Elements/Instagram_Feed.php:577, ../includes/Elements/Instagram_Feed.php:641, ../includes/Elements/Interactive_Card.php:692, ../includes/Elements/Interactive_Card.php:797, ../includes/Elements/Interactive_Card.php:994, ../includes/Elements/Interactive_Card.php:1414, ../includes/Elements/Interactive_Card.php:1488, ../includes/Elements/Interactive_Card.php:1618, ../includes/Elements/Interactive_Card.php:1672, ../includes/Elements/Interactive_Card.php:1725, ../includes/Elements/Lightbox.php:685, ../includes/Elements/Lightbox.php:1092, ../includes/Elements/Lightbox.php:1144, ../includes/Elements/Logo_Carousel.php:797, ../includes/Elements/Logo_Carousel.php:853, ../includes/Elements/Mailchimp.php:579, ../includes/Elements/Mailchimp.php:640, ../includes/Elements/Offcanvas.php:592, ../includes/Elements/Offcanvas.php:1032, ../includes/Elements/Offcanvas.php:1118, ../includes/Elements/One_Page_Navigation.php:486, ../includes/Elements/One_Page_Navigation.php:542, ../includes/Elements/One_Page_Navigation.php:587, ../includes/Elements/One_Page_Navigation.php:631, ../includes/Elements/Post_Block.php:579, ../includes/Elements/Post_Carousel.php:1041, ../includes/Elements/Post_Carousel.php:1097, ../includes/Elements/Post_List.php:663, ../includes/Elements/Post_List.php:849, ../includes/Elements/Price_Menu.php:305, ../includes/Elements/Price_Menu.php:622, ../includes/Elements/Price_Menu.php:781, ../includes/Elements/Protected_Content.php:677, ../includes/Elements/Protected_Content.php:724, ../includes/Elements/Protected_Content.php:837, ../includes/Elements/Protected_Content.php:883, ../includes/Elements/Static_Product.php:990, ../includes/Elements/Static_Product.php:1201, ../includes/Elements/Static_Product.php:1268, ../includes/Elements/Static_Product.php:1455, ../includes/Elements/Static_Product.php:1511, ../includes/Elements/Team_Member_Carousel.php:796, ../includes/Elements/Team_Member_Carousel.php:1711, ../includes/Elements/Team_Member_Carousel.php:1781, ../includes/Elements/Team_Member_Carousel.php:1916, ../includes/Elements/Team_Member_Carousel.php:1972, ../includes/Elements/Testimonial_Slider.php:493, ../includes/Elements/Testimonial_Slider.php:1069, ../includes/Elements/Testimonial_Slider.php:1125, ../includes/Elements/Twitter_Feed_Carousel.php:468, ../includes/Elements/Twitter_Feed_Carousel.php:968, ../includes/Elements/Twitter_Feed_Carousel.php:1024, ../includes/Elements/Woo_Collections.php:555, ../includes/Extensions/Content_Protection.php:534, ../includes/Extensions/Content_Protection.php:600, ../includes/Extensions/Content_Protection.php:666, ../includes/Extensions/Content_Protection.php:730, ../includes/Extensions/EAEL_Tooltip_Section.php:236, ../includes/Skins/Skin_Default.php:65, ../includes/Skins/Skin_Default.php:119, ../includes/Skins/Skin_Default.php:233, ../includes/Skins/Skin_Default.php:336, ../includes/Skins/Skin_Default.php:383, ../includes/Skins/Skin_Default.php:430, ../includes/Skins/Skin_Default.php:519, ../includes/Skins/Skin_Default.php:593, ../includes/Skins/Skin_Default.php:640, ../includes/Skins/Skin_Default.php:687, ../includes/Skins/Skin_Five.php:65, ../includes/Skins/Skin_Five.php:137, ../includes/Skins/Skin_Five.php:305, ../includes/Skins/Skin_Five.php:408, ../includes/Skins/Skin_Five.php:455, ../includes/Skins/Skin_Five.php:502, ../includes/Skins/Skin_Five.php:614, ../includes/Skins/Skin_Five.php:688, ../includes/Skins/Skin_Five.php:735, ../includes/Skins/Skin_Five.php:782, ../includes/Skins/Skin_Four.php:65, ../includes/Skins/Skin_Four.php:119, ../includes/Skins/Skin_Four.php:253, ../includes/Skins/Skin_Four.php:356, ../includes/Skins/Skin_Four.php:403, ../includes/Skins/Skin_Four.php:450, ../includes/Skins/Skin_Four.php:559, ../includes/Skins/Skin_Four.php:633, ../includes/Skins/Skin_Four.php:680, ../includes/Skins/Skin_Four.php:727, ../includes/Skins/Skin_One.php:65, ../includes/Skins/Skin_One.php:119, ../includes/Skins/Skin_One.php:301, ../includes/Skins/Skin_One.php:404, ../includes/Skins/Skin_One.php:451, ../includes/Skins/Skin_One.php:498, ../includes/Skins/Skin_One.php:607, ../includes/Skins/Skin_One.php:681, ../includes/Skins/Skin_One.php:728, ../includes/Skins/Skin_One.php:775, ../includes/Skins/Skin_Seven.php:65, ../includes/Skins/Skin_Seven.php:119, ../includes/Skins/Skin_Seven.php:253, ../includes/Skins/Skin_Seven.php:356, ../includes/Skins/Skin_Seven.php:403, ../includes/Skins/Skin_Seven.php:450, ../includes/Skins/Skin_Seven.php:559, ../includes/Skins/Skin_Seven.php:633, ../includes/Skins/Skin_Seven.php:680, ../includes/Skins/Skin_Seven.php:727, ../includes/Skins/Skin_Six.php:65, ../includes/Skins/Skin_Six.php:119, ../includes/Skins/Skin_Six.php:254, ../includes/Skins/Skin_Six.php:357, ../includes/Skins/Skin_Six.php:405, ../includes/Skins/Skin_Six.php:452, ../includes/Skins/Skin_Six.php:561, ../includes/Skins/Skin_Six.php:636, ../includes/Skins/Skin_Six.php:684, ../includes/Skins/Skin_Six.php:731, ../includes/Skins/Skin_Three.php:65, ../includes/Skins/Skin_Three.php:137, ../includes/Skins/Skin_Three.php:274, ../includes/Skins/Skin_Three.php:377, ../includes/Skins/Skin_Three.php:425, ../includes/Skins/Skin_Three.php:472, ../includes/Skins/Skin_Three.php:581, ../includes/Skins/Skin_Three.php:656, ../includes/Skins/Skin_Three.php:704, ../includes/Skins/Skin_Three.php:751, ../includes/Skins/Skin_Two.php:66, ../includes/Skins/Skin_Two.php:137, ../includes/Skins/Skin_Two.php:274, ../includes/Skins/Skin_Two.php:377, ../includes/Skins/Skin_Two.php:425, ../includes/Skins/Skin_Two.php:472, ../includes/Skins/Skin_Two.php:581, ../includes/Skins/Skin_Two.php:656, ../includes/Skins/Skin_Two.php:704, ../includes/Skins/Skin_Two.php:751, ../includes/Traits/Extender.php:237, ../includes/Traits/Extender.php:663, ../includes/Traits/Extender.php:754, ../includes/Traits/Extender.php:2080, ../includes/Traits/Extender.php:2104, ../includes/Traits/Extender.php:2241, ../includes/Traits/Extender.php:2271
+#: ../includes/Elements/Advanced_Menu.php:200, ../includes/Elements/Content_Timeline.php:381, ../includes/Elements/Content_Timeline.php:884, ../includes/Elements/Content_Timeline.php:938, ../includes/Elements/Content_Timeline.php:1088, ../includes/Elements/Content_Timeline.php:1142, ../includes/Elements/Counter.php:944, ../includes/Elements/Dynamic_Filterable_Gallery.php:462, ../includes/Elements/Dynamic_Filterable_Gallery.php:596, ../includes/Elements/Dynamic_Filterable_Gallery.php:662, ../includes/Elements/Dynamic_Filterable_Gallery.php:730, ../includes/Elements/Dynamic_Filterable_Gallery.php:832, ../includes/Elements/Dynamic_Filterable_Gallery.php:922, ../includes/Elements/Dynamic_Filterable_Gallery.php:967, ../includes/Elements/Dynamic_Filterable_Gallery.php:1152, ../includes/Elements/Dynamic_Filterable_Gallery.php:1249, ../includes/Elements/Dynamic_Filterable_Gallery.php:1297, ../includes/Elements/Flip_Carousel.php:346, ../includes/Elements/Flip_Carousel.php:565, ../includes/Elements/Google_Map.php:951, ../includes/Elements/Image_Comparison.php:609, ../includes/Elements/Image_Comparison.php:665, ../includes/Elements/Image_Hot_Spots.php:750, ../includes/Elements/Image_Hot_Spots.php:814, ../includes/Elements/Image_Hot_Spots.php:870, ../includes/Elements/Instagram_Feed.php:577, ../includes/Elements/Instagram_Feed.php:641, ../includes/Elements/Interactive_Card.php:692, ../includes/Elements/Interactive_Card.php:797, ../includes/Elements/Interactive_Card.php:994, ../includes/Elements/Interactive_Card.php:1414, ../includes/Elements/Interactive_Card.php:1488, ../includes/Elements/Interactive_Card.php:1618, ../includes/Elements/Interactive_Card.php:1672, ../includes/Elements/Interactive_Card.php:1725, ../includes/Elements/Lightbox.php:685, ../includes/Elements/Lightbox.php:1092, ../includes/Elements/Lightbox.php:1144, ../includes/Elements/Logo_Carousel.php:797, ../includes/Elements/Logo_Carousel.php:853, ../includes/Elements/Mailchimp.php:579, ../includes/Elements/Mailchimp.php:640, ../includes/Elements/Offcanvas.php:592, ../includes/Elements/Offcanvas.php:1032, ../includes/Elements/Offcanvas.php:1118, ../includes/Elements/One_Page_Navigation.php:486, ../includes/Elements/One_Page_Navigation.php:542, ../includes/Elements/One_Page_Navigation.php:587, ../includes/Elements/One_Page_Navigation.php:631, ../includes/Elements/Post_Block.php:579, ../includes/Elements/Post_Carousel.php:1041, ../includes/Elements/Post_Carousel.php:1097, ../includes/Elements/Post_List.php:666, ../includes/Elements/Post_List.php:852, ../includes/Elements/Price_Menu.php:305, ../includes/Elements/Price_Menu.php:622, ../includes/Elements/Price_Menu.php:781, ../includes/Elements/Protected_Content.php:677, ../includes/Elements/Protected_Content.php:724, ../includes/Elements/Protected_Content.php:837, ../includes/Elements/Protected_Content.php:883, ../includes/Elements/Static_Product.php:990, ../includes/Elements/Static_Product.php:1201, ../includes/Elements/Static_Product.php:1268, ../includes/Elements/Static_Product.php:1455, ../includes/Elements/Static_Product.php:1511, ../includes/Elements/Team_Member_Carousel.php:796, ../includes/Elements/Team_Member_Carousel.php:1711, ../includes/Elements/Team_Member_Carousel.php:1781, ../includes/Elements/Team_Member_Carousel.php:1916, ../includes/Elements/Team_Member_Carousel.php:1972, ../includes/Elements/Testimonial_Slider.php:493, ../includes/Elements/Testimonial_Slider.php:1069, ../includes/Elements/Testimonial_Slider.php:1125, ../includes/Elements/Twitter_Feed_Carousel.php:468, ../includes/Elements/Twitter_Feed_Carousel.php:968, ../includes/Elements/Twitter_Feed_Carousel.php:1024, ../includes/Elements/Woo_Collections.php:555, ../includes/Extensions/Content_Protection.php:534, ../includes/Extensions/Content_Protection.php:600, ../includes/Extensions/Content_Protection.php:666, ../includes/Extensions/Content_Protection.php:730, ../includes/Extensions/EAEL_Tooltip_Section.php:236, ../includes/Skins/Skin_Default.php:65, ../includes/Skins/Skin_Default.php:119, ../includes/Skins/Skin_Default.php:233, ../includes/Skins/Skin_Default.php:336, ../includes/Skins/Skin_Default.php:383, ../includes/Skins/Skin_Default.php:430, ../includes/Skins/Skin_Default.php:519, ../includes/Skins/Skin_Default.php:593, ../includes/Skins/Skin_Default.php:640, ../includes/Skins/Skin_Default.php:687, ../includes/Skins/Skin_Five.php:65, ../includes/Skins/Skin_Five.php:137, ../includes/Skins/Skin_Five.php:305, ../includes/Skins/Skin_Five.php:408, ../includes/Skins/Skin_Five.php:455, ../includes/Skins/Skin_Five.php:502, ../includes/Skins/Skin_Five.php:614, ../includes/Skins/Skin_Five.php:688, ../includes/Skins/Skin_Five.php:735, ../includes/Skins/Skin_Five.php:782, ../includes/Skins/Skin_Four.php:65, ../includes/Skins/Skin_Four.php:119, ../includes/Skins/Skin_Four.php:253, ../includes/Skins/Skin_Four.php:356, ../includes/Skins/Skin_Four.php:403, ../includes/Skins/Skin_Four.php:450, ../includes/Skins/Skin_Four.php:559, ../includes/Skins/Skin_Four.php:633, ../includes/Skins/Skin_Four.php:680, ../includes/Skins/Skin_Four.php:727, ../includes/Skins/Skin_One.php:65, ../includes/Skins/Skin_One.php:119, ../includes/Skins/Skin_One.php:301, ../includes/Skins/Skin_One.php:404, ../includes/Skins/Skin_One.php:451, ../includes/Skins/Skin_One.php:498, ../includes/Skins/Skin_One.php:607, ../includes/Skins/Skin_One.php:681, ../includes/Skins/Skin_One.php:728, ../includes/Skins/Skin_One.php:775, ../includes/Skins/Skin_Seven.php:65, ../includes/Skins/Skin_Seven.php:119, ../includes/Skins/Skin_Seven.php:253, ../includes/Skins/Skin_Seven.php:356, ../includes/Skins/Skin_Seven.php:403, ../includes/Skins/Skin_Seven.php:450, ../includes/Skins/Skin_Seven.php:559, ../includes/Skins/Skin_Seven.php:633, ../includes/Skins/Skin_Seven.php:680, ../includes/Skins/Skin_Seven.php:727, ../includes/Skins/Skin_Six.php:65, ../includes/Skins/Skin_Six.php:119, ../includes/Skins/Skin_Six.php:254, ../includes/Skins/Skin_Six.php:357, ../includes/Skins/Skin_Six.php:405, ../includes/Skins/Skin_Six.php:452, ../includes/Skins/Skin_Six.php:561, ../includes/Skins/Skin_Six.php:636, ../includes/Skins/Skin_Six.php:684, ../includes/Skins/Skin_Six.php:731, ../includes/Skins/Skin_Three.php:65, ../includes/Skins/Skin_Three.php:137, ../includes/Skins/Skin_Three.php:274, ../includes/Skins/Skin_Three.php:377, ../includes/Skins/Skin_Three.php:425, ../includes/Skins/Skin_Three.php:472, ../includes/Skins/Skin_Three.php:581, ../includes/Skins/Skin_Three.php:656, ../includes/Skins/Skin_Three.php:704, ../includes/Skins/Skin_Three.php:751, ../includes/Skins/Skin_Two.php:66, ../includes/Skins/Skin_Two.php:137, ../includes/Skins/Skin_Two.php:274, ../includes/Skins/Skin_Two.php:377, ../includes/Skins/Skin_Two.php:425, ../includes/Skins/Skin_Two.php:472, ../includes/Skins/Skin_Two.php:581, ../includes/Skins/Skin_Two.php:656, ../includes/Skins/Skin_Two.php:704, ../includes/Skins/Skin_Two.php:751, ../includes/Traits/Extender.php:237, ../includes/Traits/Extender.php:663, ../includes/Traits/Extender.php:757, ../includes/Traits/Extender.php:2083, ../includes/Traits/Extender.php:2107, ../includes/Traits/Extender.php:2244, ../includes/Traits/Extender.php:2274
 msgid "Background Color"
 msgstr ""
 
-#: ../includes/Elements/Advanced_Menu.php:212, ../includes/Elements/Flip_Carousel.php:553, ../includes/Elements/Image_Comparison.php:338, ../includes/Elements/Image_Comparison.php:401, ../includes/Elements/Instagram_Feed.php:475, ../includes/Elements/Interactive_Card.php:1737, ../includes/Elements/Lightbox.php:1450, ../includes/Elements/Lightbox.php:1521, ../includes/Elements/Post_Block.php:593, ../includes/Elements/Post_List.php:954, ../includes/Elements/Twitter_Feed_Carousel.php:681, ../includes/Traits/Extender.php:616, ../includes/Traits/Extender.php:708
+#: ../includes/Elements/Advanced_Menu.php:212, ../includes/Elements/Flip_Carousel.php:553, ../includes/Elements/Image_Comparison.php:338, ../includes/Elements/Image_Comparison.php:401, ../includes/Elements/Instagram_Feed.php:475, ../includes/Elements/Interactive_Card.php:1737, ../includes/Elements/Lightbox.php:1450, ../includes/Elements/Lightbox.php:1521, ../includes/Elements/Post_Block.php:593, ../includes/Elements/Post_List.php:977, ../includes/Elements/Twitter_Feed_Carousel.php:681, ../includes/Traits/Extender.php:616, ../includes/Traits/Extender.php:711
 msgid "Icon Color"
 msgstr ""
 
@@ -141,7 +141,7 @@ msgstr ""
 msgid "Content Source"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:88, ../includes/Elements/Google_Map.php:771, ../includes/Extensions/EAEL_Particle_Section.php:62, ../includes/Traits/Extender.php:45, ../includes/Traits/Extender.php:3767, ../includes/Traits/Extender.php:3802
+#: ../includes/Elements/Content_Timeline.php:88, ../includes/Elements/Google_Map.php:771, ../includes/Extensions/EAEL_Particle_Section.php:62, ../includes/Traits/Extender.php:45, ../includes/Traits/Extender.php:3770, ../includes/Traits/Extender.php:3805
 msgid "Custom"
 msgstr ""
 
@@ -185,7 +185,7 @@ msgstr ""
 msgid "Image"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:152, ../includes/Elements/Content_Timeline.php:194, ../includes/Elements/Counter.php:86, ../includes/Elements/Counter.php:101, ../includes/Elements/Counter.php:333, ../includes/Elements/Divider.php:113, ../includes/Elements/Divider.php:254, ../includes/Elements/Divider.php:712, ../includes/Elements/Image_Hot_Spots.php:144, ../includes/Elements/Image_Hot_Spots.php:154, ../includes/Elements/Interactive_Card.php:1749, ../includes/Elements/Lightbox.php:331, ../includes/Elements/Lightbox.php:862, ../includes/Elements/Offcanvas.php:842, ../includes/Elements/Static_Product.php:364, ../includes/Elements/Static_Product.php:412, ../includes/Elements/Twitter_Feed_Carousel.php:1353, ../includes/Skins/Skin_Default.php:296, ../includes/Skins/Skin_Default.php:553, ../includes/Skins/Skin_Five.php:368, ../includes/Skins/Skin_Five.php:648, ../includes/Skins/Skin_Four.php:316, ../includes/Skins/Skin_Four.php:593, ../includes/Skins/Skin_One.php:364, ../includes/Skins/Skin_One.php:641, ../includes/Skins/Skin_Seven.php:316, ../includes/Skins/Skin_Seven.php:593, ../includes/Skins/Skin_Six.php:317, ../includes/Skins/Skin_Six.php:596, ../includes/Skins/Skin_Three.php:337, ../includes/Skins/Skin_Three.php:616, ../includes/Skins/Skin_Two.php:337, ../includes/Skins/Skin_Two.php:616, ../includes/Traits/Extender.php:376, ../includes/Traits/Extender.php:3830
+#: ../includes/Elements/Content_Timeline.php:152, ../includes/Elements/Content_Timeline.php:194, ../includes/Elements/Counter.php:86, ../includes/Elements/Counter.php:101, ../includes/Elements/Counter.php:333, ../includes/Elements/Divider.php:113, ../includes/Elements/Divider.php:254, ../includes/Elements/Divider.php:712, ../includes/Elements/Image_Hot_Spots.php:144, ../includes/Elements/Image_Hot_Spots.php:154, ../includes/Elements/Interactive_Card.php:1749, ../includes/Elements/Lightbox.php:331, ../includes/Elements/Lightbox.php:862, ../includes/Elements/Offcanvas.php:842, ../includes/Elements/Static_Product.php:364, ../includes/Elements/Static_Product.php:412, ../includes/Elements/Twitter_Feed_Carousel.php:1353, ../includes/Skins/Skin_Default.php:296, ../includes/Skins/Skin_Default.php:553, ../includes/Skins/Skin_Five.php:368, ../includes/Skins/Skin_Five.php:648, ../includes/Skins/Skin_Four.php:316, ../includes/Skins/Skin_Four.php:593, ../includes/Skins/Skin_One.php:364, ../includes/Skins/Skin_One.php:641, ../includes/Skins/Skin_Seven.php:316, ../includes/Skins/Skin_Seven.php:593, ../includes/Skins/Skin_Six.php:317, ../includes/Skins/Skin_Six.php:596, ../includes/Skins/Skin_Three.php:337, ../includes/Skins/Skin_Three.php:616, ../includes/Skins/Skin_Two.php:337, ../includes/Skins/Skin_Two.php:616, ../includes/Traits/Extender.php:376, ../includes/Traits/Extender.php:3833
 msgid "Icon"
 msgstr ""
 
@@ -201,15 +201,15 @@ msgstr ""
 msgid "Icon Image Size"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:210, ../includes/Elements/Post_List.php:597, ../includes/Elements/Twitter_Feed_Carousel.php:220
+#: ../includes/Elements/Content_Timeline.php:210, ../includes/Elements/Post_List.php:600, ../includes/Elements/Twitter_Feed_Carousel.php:220
 msgid "Show Read More"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:230, ../includes/Elements/Post_List.php:612
+#: ../includes/Elements/Content_Timeline.php:230, ../includes/Elements/Post_List.php:615
 msgid "Label Text"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:234, ../includes/Elements/Dynamic_Filterable_Gallery.php:309, ../includes/Elements/Interactive_Card.php:439, ../includes/Elements/Post_List.php:616
+#: ../includes/Elements/Content_Timeline.php:234, ../includes/Elements/Dynamic_Filterable_Gallery.php:309, ../includes/Elements/Interactive_Card.php:439, ../includes/Elements/Post_List.php:619
 msgid "Read More"
 msgstr ""
 
@@ -241,23 +241,23 @@ msgstr ""
 msgid "Active Line Color"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:373, ../includes/Elements/Instagram_Feed.php:203, ../includes/Elements/LD_Course_List.php:515, ../includes/Elements/Post_List.php:1519, ../includes/Elements/Twitter_Feed_Carousel.php:417
+#: ../includes/Elements/Content_Timeline.php:373, ../includes/Elements/Instagram_Feed.php:203, ../includes/Elements/LD_Course_List.php:515, ../includes/Elements/Post_List.php:1542, ../includes/Elements/Twitter_Feed_Carousel.php:417
 msgid "Card Style"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:395, ../includes/Elements/Content_Timeline.php:836, ../includes/Elements/Content_Timeline.php:1040, ../includes/Elements/Counter.php:470, ../includes/Elements/Counter.php:992, ../includes/Elements/Dynamic_Filterable_Gallery.php:474, ../includes/Elements/Dynamic_Filterable_Gallery.php:548, ../includes/Elements/Dynamic_Filterable_Gallery.php:744, ../includes/Elements/Dynamic_Filterable_Gallery.php:979, ../includes/Elements/Dynamic_Filterable_Gallery.php:1309, ../includes/Elements/Flip_Carousel.php:358, ../includes/Elements/Google_Map.php:962, ../includes/Elements/Image_Comparison.php:715, ../includes/Elements/Image_Hot_Spots.php:716, ../includes/Elements/Instagram_Feed.php:528, ../includes/Elements/Interactive_Card.php:704, ../includes/Elements/Interactive_Card.php:872, ../includes/Elements/Interactive_Card.php:1006, ../includes/Elements/Interactive_Card.php:1346, ../includes/Elements/Interactive_Card.php:1570, ../includes/Elements/LD_Course_List.php:687, ../includes/Elements/LD_Course_List.php:1550, ../includes/Elements/Lightbox.php:722, ../includes/Elements/Lightbox.php:793, ../includes/Elements/Lightbox.php:1021, ../includes/Elements/Lightbox.php:1416, ../includes/Elements/Logo_Carousel.php:489, ../includes/Elements/Logo_Carousel.php:893, ../includes/Elements/Logo_Carousel.php:1053, ../includes/Elements/Mailchimp.php:251, ../includes/Elements/Mailchimp.php:531, ../includes/Elements/Mailchimp.php:742, ../includes/Elements/Offcanvas.php:512, ../includes/Elements/Offcanvas.php:662, ../includes/Elements/Offcanvas.php:1089, ../includes/Elements/One_Page_Navigation.php:368, ../includes/Elements/One_Page_Navigation.php:444, ../includes/Elements/One_Page_Navigation.php:675, ../includes/Elements/Post_Carousel.php:1137, ../includes/Elements/Post_Carousel.php:1319, ../includes/Elements/Post_List.php:674, ../includes/Elements/Post_List.php:893, ../includes/Elements/Post_List.php:1003, ../includes/Elements/Post_List.php:1539, ../includes/Elements/Post_List.php:1895, ../includes/Elements/Price_Menu.php:336, ../includes/Elements/Price_Menu.php:396, ../includes/Elements/Price_Menu.php:829, ../includes/Elements/Protected_Content.php:382, ../includes/Elements/Protected_Content.php:467, ../includes/Elements/Protected_Content.php:546, ../includes/Elements/Protected_Content.php:619, ../includes/Elements/Static_Product.php:882, ../includes/Elements/Static_Product.php:1088, ../includes/Elements/Static_Product.php:1365, ../includes/Elements/Team_Member_Carousel.php:709, ../includes/Elements/Team_Member_Carousel.php:832, ../includes/Elements/Team_Member_Carousel.php:1747, ../includes/Elements/Team_Member_Carousel.php:2012, ../includes/Elements/Testimonial_Slider.php:571, ../includes/Elements/Testimonial_Slider.php:751, ../includes/Elements/Testimonial_Slider.php:1165, ../includes/Elements/Testimonial_Slider.php:1301, ../includes/Elements/Twitter_Feed_Carousel.php:495, ../includes/Elements/Twitter_Feed_Carousel.php:554, ../includes/Elements/Twitter_Feed_Carousel.php:587, ../includes/Elements/Twitter_Feed_Carousel.php:1064, ../includes/Elements/Twitter_Feed_Carousel.php:1203, ../includes/Elements/Woo_Collections.php:228, ../includes/Elements/Woo_Collections.php:533, ../includes/Extensions/Content_Protection.php:309, ../includes/Extensions/Content_Protection.php:391, ../includes/Extensions/Content_Protection.php:470, ../includes/Extensions/EAEL_Tooltip_Section.php:318, ../includes/Skins/Skin_Default.php:152, ../includes/Skins/Skin_Five.php:201, ../includes/Skins/Skin_Four.php:152, ../includes/Skins/Skin_One.php:176, ../includes/Skins/Skin_Seven.php:152, ../includes/Skins/Skin_Six.php:152, ../includes/Skins/Skin_Three.php:171, ../includes/Skins/Skin_Two.php:171, ../includes/Traits/Extender.php:891, ../includes/Traits/Extender.php:2168, ../includes/Traits/Extender.php:2378, ../includes/Traits/Extender.php:2510
+#: ../includes/Elements/Content_Timeline.php:395, ../includes/Elements/Content_Timeline.php:836, ../includes/Elements/Content_Timeline.php:1040, ../includes/Elements/Counter.php:470, ../includes/Elements/Counter.php:992, ../includes/Elements/Dynamic_Filterable_Gallery.php:474, ../includes/Elements/Dynamic_Filterable_Gallery.php:548, ../includes/Elements/Dynamic_Filterable_Gallery.php:744, ../includes/Elements/Dynamic_Filterable_Gallery.php:979, ../includes/Elements/Dynamic_Filterable_Gallery.php:1309, ../includes/Elements/Flip_Carousel.php:358, ../includes/Elements/Google_Map.php:962, ../includes/Elements/Image_Comparison.php:715, ../includes/Elements/Image_Hot_Spots.php:716, ../includes/Elements/Instagram_Feed.php:528, ../includes/Elements/Interactive_Card.php:704, ../includes/Elements/Interactive_Card.php:872, ../includes/Elements/Interactive_Card.php:1006, ../includes/Elements/Interactive_Card.php:1346, ../includes/Elements/Interactive_Card.php:1570, ../includes/Elements/LD_Course_List.php:687, ../includes/Elements/LD_Course_List.php:1550, ../includes/Elements/Lightbox.php:722, ../includes/Elements/Lightbox.php:793, ../includes/Elements/Lightbox.php:1021, ../includes/Elements/Lightbox.php:1416, ../includes/Elements/Logo_Carousel.php:489, ../includes/Elements/Logo_Carousel.php:893, ../includes/Elements/Logo_Carousel.php:1053, ../includes/Elements/Mailchimp.php:251, ../includes/Elements/Mailchimp.php:531, ../includes/Elements/Mailchimp.php:742, ../includes/Elements/Offcanvas.php:512, ../includes/Elements/Offcanvas.php:662, ../includes/Elements/Offcanvas.php:1089, ../includes/Elements/One_Page_Navigation.php:368, ../includes/Elements/One_Page_Navigation.php:444, ../includes/Elements/One_Page_Navigation.php:675, ../includes/Elements/Post_Carousel.php:1137, ../includes/Elements/Post_Carousel.php:1319, ../includes/Elements/Post_List.php:677, ../includes/Elements/Post_List.php:896, ../includes/Elements/Post_List.php:1026, ../includes/Elements/Post_List.php:1562, ../includes/Elements/Post_List.php:1918, ../includes/Elements/Price_Menu.php:336, ../includes/Elements/Price_Menu.php:396, ../includes/Elements/Price_Menu.php:829, ../includes/Elements/Protected_Content.php:382, ../includes/Elements/Protected_Content.php:467, ../includes/Elements/Protected_Content.php:546, ../includes/Elements/Protected_Content.php:619, ../includes/Elements/Static_Product.php:882, ../includes/Elements/Static_Product.php:1088, ../includes/Elements/Static_Product.php:1365, ../includes/Elements/Team_Member_Carousel.php:709, ../includes/Elements/Team_Member_Carousel.php:832, ../includes/Elements/Team_Member_Carousel.php:1747, ../includes/Elements/Team_Member_Carousel.php:2012, ../includes/Elements/Testimonial_Slider.php:571, ../includes/Elements/Testimonial_Slider.php:751, ../includes/Elements/Testimonial_Slider.php:1165, ../includes/Elements/Testimonial_Slider.php:1301, ../includes/Elements/Twitter_Feed_Carousel.php:495, ../includes/Elements/Twitter_Feed_Carousel.php:554, ../includes/Elements/Twitter_Feed_Carousel.php:587, ../includes/Elements/Twitter_Feed_Carousel.php:1064, ../includes/Elements/Twitter_Feed_Carousel.php:1203, ../includes/Elements/Woo_Collections.php:228, ../includes/Elements/Woo_Collections.php:533, ../includes/Extensions/Content_Protection.php:309, ../includes/Extensions/Content_Protection.php:391, ../includes/Extensions/Content_Protection.php:470, ../includes/Extensions/EAEL_Tooltip_Section.php:318, ../includes/Skins/Skin_Default.php:152, ../includes/Skins/Skin_Five.php:201, ../includes/Skins/Skin_Four.php:152, ../includes/Skins/Skin_One.php:176, ../includes/Skins/Skin_Seven.php:152, ../includes/Skins/Skin_Six.php:152, ../includes/Skins/Skin_Three.php:171, ../includes/Skins/Skin_Two.php:171, ../includes/Traits/Extender.php:894, ../includes/Traits/Extender.php:2171, ../includes/Traits/Extender.php:2381, ../includes/Traits/Extender.php:2513
 msgid "Padding"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:407, ../includes/Elements/Content_Timeline.php:789, ../includes/Elements/Content_Timeline.php:848, ../includes/Elements/Content_Timeline.php:1052, ../includes/Elements/Counter.php:491, ../includes/Elements/Counter.php:682, ../includes/Elements/Counter.php:971, ../includes/Elements/Dynamic_Filterable_Gallery.php:486, ../includes/Elements/Dynamic_Filterable_Gallery.php:560, ../includes/Elements/Dynamic_Filterable_Gallery.php:756, ../includes/Elements/Flip_Carousel.php:370, ../includes/Elements/Flip_Carousel.php:483, ../includes/Elements/Google_Map.php:900, ../includes/Elements/Google_Map.php:973, ../includes/Elements/Instagram_Feed.php:540, ../includes/Elements/Interactive_Card.php:1361, ../includes/Elements/Interactive_Card.php:1582, ../includes/Elements/LD_Course_List.php:700, ../includes/Elements/LD_Course_List.php:741, ../includes/Elements/LD_Course_List.php:909, ../includes/Elements/LD_Course_List.php:961, ../includes/Elements/LD_Course_List.php:1562, ../includes/Elements/Lightbox.php:1033, ../includes/Elements/Lightbox.php:1393, ../includes/Elements/Mailchimp.php:262, ../includes/Elements/Mailchimp.php:543, ../includes/Elements/Mailchimp.php:753, ../includes/Elements/One_Page_Navigation.php:356, ../includes/Elements/Post_Carousel.php:515, ../includes/Elements/Post_Carousel.php:613, ../includes/Elements/Post_Carousel.php:686, ../includes/Elements/Post_Carousel.php:735, ../includes/Elements/Post_Carousel.php:795, ../includes/Elements/Post_Carousel.php:896, ../includes/Elements/Post_List.php:685, ../includes/Elements/Post_List.php:904, ../includes/Elements/Post_List.php:1015, ../includes/Elements/Post_List.php:1686, ../includes/Elements/Post_List.php:1729, ../includes/Elements/Post_List.php:1881, ../includes/Elements/Price_Menu.php:817, ../includes/Elements/Protected_Content.php:631, ../includes/Elements/Static_Product.php:893, ../includes/Elements/Static_Product.php:1103, ../includes/Elements/Static_Product.php:1377, ../includes/Elements/Team_Member_Carousel.php:528, ../includes/Elements/Team_Member_Carousel.php:697, ../includes/Elements/Team_Member_Carousel.php:2148, ../includes/Elements/Testimonial_Slider.php:558, ../includes/Elements/Testimonial_Slider.php:739, ../includes/Extensions/Content_Protection.php:485
+#: ../includes/Elements/Content_Timeline.php:407, ../includes/Elements/Content_Timeline.php:789, ../includes/Elements/Content_Timeline.php:848, ../includes/Elements/Content_Timeline.php:1052, ../includes/Elements/Counter.php:491, ../includes/Elements/Counter.php:682, ../includes/Elements/Counter.php:971, ../includes/Elements/Dynamic_Filterable_Gallery.php:486, ../includes/Elements/Dynamic_Filterable_Gallery.php:560, ../includes/Elements/Dynamic_Filterable_Gallery.php:756, ../includes/Elements/Flip_Carousel.php:370, ../includes/Elements/Flip_Carousel.php:483, ../includes/Elements/Google_Map.php:900, ../includes/Elements/Google_Map.php:973, ../includes/Elements/Instagram_Feed.php:540, ../includes/Elements/Interactive_Card.php:1361, ../includes/Elements/Interactive_Card.php:1582, ../includes/Elements/LD_Course_List.php:700, ../includes/Elements/LD_Course_List.php:741, ../includes/Elements/LD_Course_List.php:909, ../includes/Elements/LD_Course_List.php:961, ../includes/Elements/LD_Course_List.php:1562, ../includes/Elements/Lightbox.php:1033, ../includes/Elements/Lightbox.php:1393, ../includes/Elements/Mailchimp.php:262, ../includes/Elements/Mailchimp.php:543, ../includes/Elements/Mailchimp.php:753, ../includes/Elements/One_Page_Navigation.php:356, ../includes/Elements/Post_Carousel.php:515, ../includes/Elements/Post_Carousel.php:613, ../includes/Elements/Post_Carousel.php:686, ../includes/Elements/Post_Carousel.php:735, ../includes/Elements/Post_Carousel.php:795, ../includes/Elements/Post_Carousel.php:896, ../includes/Elements/Post_List.php:688, ../includes/Elements/Post_List.php:907, ../includes/Elements/Post_List.php:1038, ../includes/Elements/Post_List.php:1709, ../includes/Elements/Post_List.php:1752, ../includes/Elements/Post_List.php:1904, ../includes/Elements/Price_Menu.php:817, ../includes/Elements/Protected_Content.php:631, ../includes/Elements/Static_Product.php:893, ../includes/Elements/Static_Product.php:1103, ../includes/Elements/Static_Product.php:1377, ../includes/Elements/Team_Member_Carousel.php:528, ../includes/Elements/Team_Member_Carousel.php:697, ../includes/Elements/Team_Member_Carousel.php:2148, ../includes/Elements/Testimonial_Slider.php:558, ../includes/Elements/Testimonial_Slider.php:739, ../includes/Extensions/Content_Protection.php:485
 msgid "Margin"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:420, ../includes/Elements/Content_Timeline.php:897, ../includes/Elements/Content_Timeline.php:1101, ../includes/Elements/Counter.php:442, ../includes/Elements/Dynamic_Filterable_Gallery.php:499, ../includes/Elements/Dynamic_Filterable_Gallery.php:609, ../includes/Elements/Dynamic_Filterable_Gallery.php:675, ../includes/Elements/Dynamic_Filterable_Gallery.php:769, ../includes/Elements/Dynamic_Filterable_Gallery.php:992, ../includes/Elements/Dynamic_Filterable_Gallery.php:1322, ../includes/Elements/Flip_Carousel.php:383, ../includes/Elements/Flip_Carousel.php:578, ../includes/Elements/Google_Map.php:985, ../includes/Elements/Image_Comparison.php:361, ../includes/Elements/Image_Comparison.php:622, ../includes/Elements/Image_Comparison.php:678, ../includes/Elements/Image_Hot_Spots.php:763, ../includes/Elements/Image_Hot_Spots.php:826, ../includes/Elements/Instagram_Feed.php:426, ../includes/Elements/Instagram_Feed.php:590, ../includes/Elements/Interactive_Card.php:888, ../includes/Elements/Interactive_Card.php:923, ../includes/Elements/Interactive_Card.php:1019, ../includes/Elements/Interactive_Card.php:1051, ../includes/Elements/Interactive_Card.php:1430, ../includes/Elements/Interactive_Card.php:1631, ../includes/Elements/Lightbox.php:712, ../includes/Elements/Lightbox.php:1480, ../includes/Elements/Lightbox.php:1551, ../includes/Elements/Logo_Carousel.php:467, ../includes/Elements/Logo_Carousel.php:822, ../includes/Elements/Logo_Carousel.php:1025, ../includes/Elements/Mailchimp.php:274, ../includes/Elements/Mailchimp.php:592, ../includes/Elements/Mailchimp.php:776, ../includes/Elements/Offcanvas.php:490, ../includes/Elements/Offcanvas.php:608, ../includes/Elements/Offcanvas.php:1057, ../includes/Elements/One_Page_Navigation.php:334, ../includes/Elements/One_Page_Navigation.php:499, ../includes/Elements/Post_Block.php:151, ../includes/Elements/Post_Block.php:238, ../includes/Elements/Post_Carousel.php:381, ../includes/Elements/Post_Carousel.php:1066, ../includes/Elements/Post_Carousel.php:1297, ../includes/Elements/Post_List.php:697, ../includes/Elements/Post_List.php:1562, ../includes/Elements/Post_List.php:1610, ../includes/Elements/Post_List.php:1952, ../includes/Elements/Price_Menu.php:349, ../includes/Elements/Price_Menu.php:842, ../includes/Elements/Protected_Content.php:690, ../includes/Elements/Protected_Content.php:737, ../includes/Elements/Team_Member_Carousel.php:734, ../includes/Elements/Team_Member_Carousel.php:809, ../includes/Elements/Team_Member_Carousel.php:968, ../includes/Elements/Team_Member_Carousel.php:1724, ../includes/Elements/Team_Member_Carousel.php:1941, ../includes/Elements/Team_Member_Carousel.php:2126, ../includes/Elements/Testimonial_Slider.php:584, ../includes/Elements/Testimonial_Slider.php:765, ../includes/Elements/Testimonial_Slider.php:1094, ../includes/Elements/Testimonial_Slider.php:1279, ../includes/Elements/Toggle.php:405, ../includes/Elements/Toggle.php:446, ../includes/Elements/Twitter_Feed_Carousel.php:512, ../includes/Elements/Twitter_Feed_Carousel.php:602, ../includes/Elements/Twitter_Feed_Carousel.php:993, ../includes/Elements/Twitter_Feed_Carousel.php:1181, ../includes/Elements/Twitter_Feed_Carousel.php:1330, ../includes/Elements/Woo_Collections.php:273, ../includes/Extensions/Content_Protection.php:550, ../includes/Extensions/Content_Protection.php:616, ../includes/Skins/Skin_Default.php:79, ../includes/Skins/Skin_Default.php:132, ../includes/Skins/Skin_Five.php:79, ../includes/Skins/Skin_Five.php:150, ../includes/Skins/Skin_Four.php:79, ../includes/Skins/Skin_Four.php:132, ../includes/Skins/Skin_One.php:79, ../includes/Skins/Skin_One.php:132, ../includes/Skins/Skin_Seven.php:79, ../includes/Skins/Skin_Seven.php:132, ../includes/Skins/Skin_Six.php:79, ../includes/Skins/Skin_Six.php:132, ../includes/Skins/Skin_Three.php:79, ../includes/Skins/Skin_Three.php:150, ../includes/Skins/Skin_Two.php:80, ../includes/Skins/Skin_Two.php:150
+#: ../includes/Elements/Content_Timeline.php:420, ../includes/Elements/Content_Timeline.php:897, ../includes/Elements/Content_Timeline.php:1101, ../includes/Elements/Counter.php:442, ../includes/Elements/Dynamic_Filterable_Gallery.php:499, ../includes/Elements/Dynamic_Filterable_Gallery.php:609, ../includes/Elements/Dynamic_Filterable_Gallery.php:675, ../includes/Elements/Dynamic_Filterable_Gallery.php:769, ../includes/Elements/Dynamic_Filterable_Gallery.php:992, ../includes/Elements/Dynamic_Filterable_Gallery.php:1322, ../includes/Elements/Flip_Carousel.php:383, ../includes/Elements/Flip_Carousel.php:578, ../includes/Elements/Google_Map.php:985, ../includes/Elements/Image_Comparison.php:361, ../includes/Elements/Image_Comparison.php:622, ../includes/Elements/Image_Comparison.php:678, ../includes/Elements/Image_Hot_Spots.php:763, ../includes/Elements/Image_Hot_Spots.php:826, ../includes/Elements/Instagram_Feed.php:426, ../includes/Elements/Instagram_Feed.php:590, ../includes/Elements/Interactive_Card.php:888, ../includes/Elements/Interactive_Card.php:923, ../includes/Elements/Interactive_Card.php:1019, ../includes/Elements/Interactive_Card.php:1051, ../includes/Elements/Interactive_Card.php:1430, ../includes/Elements/Interactive_Card.php:1631, ../includes/Elements/Lightbox.php:712, ../includes/Elements/Lightbox.php:1480, ../includes/Elements/Lightbox.php:1551, ../includes/Elements/Logo_Carousel.php:467, ../includes/Elements/Logo_Carousel.php:822, ../includes/Elements/Logo_Carousel.php:1025, ../includes/Elements/Mailchimp.php:274, ../includes/Elements/Mailchimp.php:592, ../includes/Elements/Mailchimp.php:776, ../includes/Elements/Offcanvas.php:490, ../includes/Elements/Offcanvas.php:608, ../includes/Elements/Offcanvas.php:1057, ../includes/Elements/One_Page_Navigation.php:334, ../includes/Elements/One_Page_Navigation.php:499, ../includes/Elements/Post_Block.php:151, ../includes/Elements/Post_Block.php:238, ../includes/Elements/Post_Carousel.php:381, ../includes/Elements/Post_Carousel.php:1066, ../includes/Elements/Post_Carousel.php:1297, ../includes/Elements/Post_List.php:700, ../includes/Elements/Post_List.php:1585, ../includes/Elements/Post_List.php:1633, ../includes/Elements/Post_List.php:1975, ../includes/Elements/Price_Menu.php:349, ../includes/Elements/Price_Menu.php:842, ../includes/Elements/Protected_Content.php:690, ../includes/Elements/Protected_Content.php:737, ../includes/Elements/Team_Member_Carousel.php:734, ../includes/Elements/Team_Member_Carousel.php:809, ../includes/Elements/Team_Member_Carousel.php:968, ../includes/Elements/Team_Member_Carousel.php:1724, ../includes/Elements/Team_Member_Carousel.php:1941, ../includes/Elements/Team_Member_Carousel.php:2126, ../includes/Elements/Testimonial_Slider.php:584, ../includes/Elements/Testimonial_Slider.php:765, ../includes/Elements/Testimonial_Slider.php:1094, ../includes/Elements/Testimonial_Slider.php:1279, ../includes/Elements/Toggle.php:405, ../includes/Elements/Toggle.php:446, ../includes/Elements/Twitter_Feed_Carousel.php:512, ../includes/Elements/Twitter_Feed_Carousel.php:602, ../includes/Elements/Twitter_Feed_Carousel.php:993, ../includes/Elements/Twitter_Feed_Carousel.php:1181, ../includes/Elements/Twitter_Feed_Carousel.php:1330, ../includes/Elements/Woo_Collections.php:273, ../includes/Extensions/Content_Protection.php:550, ../includes/Extensions/Content_Protection.php:616, ../includes/Skins/Skin_Default.php:79, ../includes/Skins/Skin_Default.php:132, ../includes/Skins/Skin_Five.php:79, ../includes/Skins/Skin_Five.php:150, ../includes/Skins/Skin_Four.php:79, ../includes/Skins/Skin_Four.php:132, ../includes/Skins/Skin_One.php:79, ../includes/Skins/Skin_One.php:132, ../includes/Skins/Skin_Seven.php:79, ../includes/Skins/Skin_Seven.php:132, ../includes/Skins/Skin_Six.php:79, ../includes/Skins/Skin_Six.php:132, ../includes/Skins/Skin_Three.php:79, ../includes/Skins/Skin_Three.php:150, ../includes/Skins/Skin_Two.php:80, ../includes/Skins/Skin_Two.php:150
 msgid "Border"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:428, ../includes/Elements/Content_Timeline.php:905, ../includes/Elements/Content_Timeline.php:1109, ../includes/Elements/Counter.php:455, ../includes/Elements/Divider.php:912, ../includes/Elements/Dynamic_Filterable_Gallery.php:507, ../includes/Elements/Dynamic_Filterable_Gallery.php:617, ../includes/Elements/Dynamic_Filterable_Gallery.php:683, ../includes/Elements/Dynamic_Filterable_Gallery.php:777, ../includes/Elements/Dynamic_Filterable_Gallery.php:894, ../includes/Elements/Dynamic_Filterable_Gallery.php:1220, ../includes/Elements/Flip_Carousel.php:391, ../includes/Elements/Flip_Carousel.php:534, ../includes/Elements/Google_Map.php:992, ../includes/Elements/Image_Comparison.php:272, ../includes/Elements/Image_Comparison.php:372, ../includes/Elements/Image_Comparison.php:632, ../includes/Elements/Image_Comparison.php:688, ../includes/Elements/Image_Hot_Spots.php:773, ../includes/Elements/Image_Hot_Spots.php:834, ../includes/Elements/Instagram_Feed.php:434, ../includes/Elements/Instagram_Feed.php:598, ../includes/Elements/Interactive_Card.php:716, ../includes/Elements/Interactive_Card.php:1441, ../includes/Elements/Interactive_Card.php:1639, ../includes/Elements/Interactive_Promo.php:231, ../includes/Elements/LD_Course_List.php:551, ../includes/Elements/LD_Course_List.php:633, ../includes/Elements/LD_Course_List.php:796, ../includes/Elements/LD_Course_List.php:1033, ../includes/Elements/LD_Course_List.php:1159, ../includes/Elements/LD_Course_List.php:1538, ../includes/Elements/LD_Course_List.php:1641, ../includes/Elements/Lightbox.php:780, ../includes/Elements/Lightbox.php:945, ../includes/Elements/Lightbox.php:1493, ../includes/Elements/Lightbox.php:1564, ../includes/Elements/Logo_Carousel.php:477, ../includes/Elements/Logo_Carousel.php:832, ../includes/Elements/Logo_Carousel.php:1038, ../includes/Elements/Mailchimp.php:281, ../includes/Elements/Mailchimp.php:385, ../includes/Elements/Mailchimp.php:600, ../includes/Elements/Mailchimp.php:764, ../includes/Elements/Offcanvas.php:500, ../includes/Elements/Offcanvas.php:621, ../includes/Elements/Offcanvas.php:1067, ../includes/Elements/One_Page_Navigation.php:344, ../includes/Elements/One_Page_Navigation.php:509, ../includes/Elements/Post_Block.php:159, ../includes/Elements/Post_Carousel.php:389, ../includes/Elements/Post_Carousel.php:504, ../includes/Elements/Post_Carousel.php:1076, ../includes/Elements/Post_Carousel.php:1307, ../includes/Elements/Post_Carousel.php:1397, ../includes/Elements/Post_List.php:704, ../includes/Elements/Post_List.php:1027, ../includes/Elements/Post_List.php:1059, ../includes/Elements/Post_List.php:1274, ../includes/Elements/Post_List.php:1570, ../includes/Elements/Post_List.php:1618, ../includes/Elements/Post_List.php:1829, ../includes/Elements/Price_Menu.php:359, ../includes/Elements/Price_Menu.php:852, ../includes/Elements/Protected_Content.php:643, ../includes/Elements/Protected_Content.php:803, ../includes/Elements/Static_Product.php:550, ../includes/Elements/Static_Product.php:756, ../includes/Elements/Static_Product.php:905, ../includes/Elements/Team_Member_Carousel.php:820, ../includes/Elements/Team_Member_Carousel.php:978, ../includes/Elements/Team_Member_Carousel.php:1735, ../includes/Elements/Team_Member_Carousel.php:1951, ../includes/Elements/Team_Member_Carousel.php:2136, ../includes/Elements/Testimonial_Slider.php:592, ../includes/Elements/Testimonial_Slider.php:784, ../includes/Elements/Testimonial_Slider.php:1104, ../includes/Elements/Testimonial_Slider.php:1289, ../includes/Elements/Testimonial_Slider.php:1454, ../includes/Elements/Toggle.php:415, ../includes/Elements/Toggle.php:456, ../includes/Elements/Toggle.php:490, ../includes/Elements/Twitter_Feed_Carousel.php:520, ../includes/Elements/Twitter_Feed_Carousel.php:612, ../includes/Elements/Twitter_Feed_Carousel.php:1003, ../includes/Elements/Twitter_Feed_Carousel.php:1191, ../includes/Elements/Woo_Collections.php:250, ../includes/Extensions/Content_Protection.php:500, ../includes/Extensions/EAEL_Tooltip_Section.php:287, ../includes/Skins/Skin_Default.php:140, ../includes/Skins/Skin_Five.php:189, ../includes/Skins/Skin_Four.php:140, ../includes/Skins/Skin_One.php:140, ../includes/Skins/Skin_Seven.php:140, ../includes/Skins/Skin_Six.php:140, ../includes/Skins/Skin_Three.php:158, ../includes/Skins/Skin_Two.php:158, ../includes/Traits/Extender.php:689, ../includes/Traits/Extender.php:2149, ../includes/Traits/Extender.php:2317, ../includes/Traits/Extender.php:2362
+#: ../includes/Elements/Content_Timeline.php:428, ../includes/Elements/Content_Timeline.php:905, ../includes/Elements/Content_Timeline.php:1109, ../includes/Elements/Counter.php:455, ../includes/Elements/Divider.php:912, ../includes/Elements/Dynamic_Filterable_Gallery.php:507, ../includes/Elements/Dynamic_Filterable_Gallery.php:617, ../includes/Elements/Dynamic_Filterable_Gallery.php:683, ../includes/Elements/Dynamic_Filterable_Gallery.php:777, ../includes/Elements/Dynamic_Filterable_Gallery.php:894, ../includes/Elements/Dynamic_Filterable_Gallery.php:1220, ../includes/Elements/Flip_Carousel.php:391, ../includes/Elements/Flip_Carousel.php:534, ../includes/Elements/Google_Map.php:992, ../includes/Elements/Image_Comparison.php:272, ../includes/Elements/Image_Comparison.php:372, ../includes/Elements/Image_Comparison.php:632, ../includes/Elements/Image_Comparison.php:688, ../includes/Elements/Image_Hot_Spots.php:773, ../includes/Elements/Image_Hot_Spots.php:834, ../includes/Elements/Instagram_Feed.php:434, ../includes/Elements/Instagram_Feed.php:598, ../includes/Elements/Interactive_Card.php:716, ../includes/Elements/Interactive_Card.php:1441, ../includes/Elements/Interactive_Card.php:1639, ../includes/Elements/Interactive_Promo.php:231, ../includes/Elements/LD_Course_List.php:551, ../includes/Elements/LD_Course_List.php:633, ../includes/Elements/LD_Course_List.php:796, ../includes/Elements/LD_Course_List.php:1033, ../includes/Elements/LD_Course_List.php:1159, ../includes/Elements/LD_Course_List.php:1538, ../includes/Elements/LD_Course_List.php:1641, ../includes/Elements/Lightbox.php:780, ../includes/Elements/Lightbox.php:945, ../includes/Elements/Lightbox.php:1493, ../includes/Elements/Lightbox.php:1564, ../includes/Elements/Logo_Carousel.php:477, ../includes/Elements/Logo_Carousel.php:832, ../includes/Elements/Logo_Carousel.php:1038, ../includes/Elements/Mailchimp.php:281, ../includes/Elements/Mailchimp.php:385, ../includes/Elements/Mailchimp.php:600, ../includes/Elements/Mailchimp.php:764, ../includes/Elements/Offcanvas.php:500, ../includes/Elements/Offcanvas.php:621, ../includes/Elements/Offcanvas.php:1067, ../includes/Elements/One_Page_Navigation.php:344, ../includes/Elements/One_Page_Navigation.php:509, ../includes/Elements/Post_Block.php:159, ../includes/Elements/Post_Carousel.php:389, ../includes/Elements/Post_Carousel.php:504, ../includes/Elements/Post_Carousel.php:1076, ../includes/Elements/Post_Carousel.php:1307, ../includes/Elements/Post_Carousel.php:1397, ../includes/Elements/Post_List.php:707, ../includes/Elements/Post_List.php:1050, ../includes/Elements/Post_List.php:1082, ../includes/Elements/Post_List.php:1297, ../includes/Elements/Post_List.php:1593, ../includes/Elements/Post_List.php:1641, ../includes/Elements/Post_List.php:1852, ../includes/Elements/Price_Menu.php:359, ../includes/Elements/Price_Menu.php:852, ../includes/Elements/Protected_Content.php:643, ../includes/Elements/Protected_Content.php:803, ../includes/Elements/Static_Product.php:550, ../includes/Elements/Static_Product.php:756, ../includes/Elements/Static_Product.php:905, ../includes/Elements/Team_Member_Carousel.php:820, ../includes/Elements/Team_Member_Carousel.php:978, ../includes/Elements/Team_Member_Carousel.php:1735, ../includes/Elements/Team_Member_Carousel.php:1951, ../includes/Elements/Team_Member_Carousel.php:2136, ../includes/Elements/Testimonial_Slider.php:592, ../includes/Elements/Testimonial_Slider.php:784, ../includes/Elements/Testimonial_Slider.php:1104, ../includes/Elements/Testimonial_Slider.php:1289, ../includes/Elements/Testimonial_Slider.php:1454, ../includes/Elements/Toggle.php:415, ../includes/Elements/Toggle.php:456, ../includes/Elements/Toggle.php:490, ../includes/Elements/Twitter_Feed_Carousel.php:520, ../includes/Elements/Twitter_Feed_Carousel.php:612, ../includes/Elements/Twitter_Feed_Carousel.php:1003, ../includes/Elements/Twitter_Feed_Carousel.php:1191, ../includes/Elements/Woo_Collections.php:250, ../includes/Extensions/Content_Protection.php:500, ../includes/Extensions/EAEL_Tooltip_Section.php:287, ../includes/Skins/Skin_Default.php:140, ../includes/Skins/Skin_Five.php:189, ../includes/Skins/Skin_Four.php:140, ../includes/Skins/Skin_One.php:140, ../includes/Skins/Skin_Seven.php:140, ../includes/Skins/Skin_Six.php:140, ../includes/Skins/Skin_Three.php:158, ../includes/Skins/Skin_Two.php:158, ../includes/Traits/Extender.php:692, ../includes/Traits/Extender.php:2152, ../includes/Traits/Extender.php:2320, ../includes/Traits/Extender.php:2365
 msgid "Border Radius"
 msgstr ""
 
@@ -269,7 +269,7 @@ msgstr ""
 msgid "Bullet Size"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:480, ../includes/Elements/Flip_Carousel.php:495, ../includes/Elements/Image_Hot_Spots.php:689, ../includes/Elements/Interactive_Card.php:1762, ../includes/Elements/Offcanvas.php:976, ../includes/Elements/Static_Product.php:1064, ../includes/Elements/Static_Product.php:1344, ../includes/Elements/Team_Member_Carousel.php:1663, ../includes/Traits/Extender.php:493
+#: ../includes/Elements/Content_Timeline.php:480, ../includes/Elements/Flip_Carousel.php:495, ../includes/Elements/Image_Hot_Spots.php:689, ../includes/Elements/Interactive_Card.php:1762, ../includes/Elements/Offcanvas.php:976, ../includes/Elements/Post_List.php:957, ../includes/Elements/Static_Product.php:1064, ../includes/Elements/Static_Product.php:1344, ../includes/Elements/Team_Member_Carousel.php:1663, ../includes/Traits/Extender.php:493
 msgid "Icon Size"
 msgstr ""
 
@@ -305,39 +305,39 @@ msgstr ""
 msgid "Color & Typography"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:659, ../includes/Elements/Interactive_Card.php:1127, ../includes/Elements/Interactive_Card.php:1200, ../includes/Elements/Post_Block.php:261, ../includes/Elements/Post_Carousel.php:543, ../includes/Elements/Post_List.php:1093, ../includes/Elements/Post_List.php:1343, ../includes/Elements/Twitter_Feed_Carousel.php:737
+#: ../includes/Elements/Content_Timeline.php:659, ../includes/Elements/Interactive_Card.php:1127, ../includes/Elements/Interactive_Card.php:1200, ../includes/Elements/Post_Block.php:261, ../includes/Elements/Post_Carousel.php:543, ../includes/Elements/Post_List.php:1116, ../includes/Elements/Post_List.php:1366, ../includes/Elements/Twitter_Feed_Carousel.php:737
 msgid "Title Style"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:668, ../includes/Elements/Post_Block.php:270, ../includes/Elements/Post_Carousel.php:552, ../includes/Elements/Post_List.php:1101, ../includes/Elements/Post_List.php:1352, ../includes/Elements/Twitter_Feed_Carousel.php:641, ../includes/Elements/Woo_Collections.php:455
+#: ../includes/Elements/Content_Timeline.php:668, ../includes/Elements/Post_Block.php:270, ../includes/Elements/Post_Carousel.php:552, ../includes/Elements/Post_List.php:1124, ../includes/Elements/Post_List.php:1375, ../includes/Elements/Twitter_Feed_Carousel.php:641, ../includes/Elements/Woo_Collections.php:455
 msgid "Title Color"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:682, ../includes/Elements/Post_Block.php:292, ../includes/Elements/Post_Carousel.php:578, ../includes/Elements/Post_List.php:1123, ../includes/Elements/Post_List.php:1376
+#: ../includes/Elements/Content_Timeline.php:682, ../includes/Elements/Post_Block.php:292, ../includes/Elements/Post_Carousel.php:578, ../includes/Elements/Post_List.php:1146, ../includes/Elements/Post_List.php:1399
 msgid "Title Alignment"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:710, ../includes/Elements/Counter.php:674, ../includes/Elements/Counter.php:862, ../includes/Elements/Counter.php:905, ../includes/Elements/Counter.php:960, ../includes/Elements/Divider.php:662, ../includes/Elements/Image_Comparison.php:705, ../includes/Elements/Image_Hot_Spots.php:904, ../includes/Elements/LD_Course_List.php:732, ../includes/Elements/LD_Course_List.php:887, ../includes/Elements/LD_Course_List.php:935, ../includes/Elements/LD_Course_List.php:995, ../includes/Elements/LD_Course_List.php:1139, ../includes/Elements/LD_Course_List.php:1367, ../includes/Elements/LD_Course_List.php:1396, ../includes/Elements/LD_Course_List.php:1495, ../includes/Elements/LD_Course_List.php:1676, ../includes/Elements/LD_Course_List.php:1758, ../includes/Elements/Lightbox.php:736, ../includes/Elements/Logo_Carousel.php:655, ../includes/Elements/Offcanvas.php:705, ../includes/Elements/Offcanvas.php:757, ../includes/Elements/Offcanvas.php:827, ../includes/Elements/Offcanvas.php:1080, ../includes/Elements/One_Page_Navigation.php:663, ../includes/Elements/Post_Block.php:318, ../includes/Elements/Post_Carousel.php:604, ../includes/Elements/Post_List.php:841, ../includes/Elements/Post_List.php:1148, ../includes/Elements/Post_List.php:1401, ../includes/Elements/Post_List.php:1786, ../includes/Elements/Price_Menu.php:437, ../includes/Elements/Price_Menu.php:653, ../includes/Elements/Price_Menu.php:731, ../includes/Elements/Team_Member_Carousel.php:1031, ../includes/Elements/Team_Member_Carousel.php:1234, ../includes/Elements/Team_Member_Carousel.php:1437, ../includes/Elements/Toggle.php:581, ../includes/Elements/Toggle.php:625, ../includes/Elements/Toggle.php:691, ../includes/Elements/Woo_Collections.php:437, ../includes/Skins/Skin_Default.php:211, ../includes/Skins/Skin_Default.php:498, ../includes/Skins/Skin_Five.php:260, ../includes/Skins/Skin_Five.php:570, ../includes/Skins/Skin_Four.php:211, ../includes/Skins/Skin_Four.php:518, ../includes/Skins/Skin_One.php:259, ../includes/Skins/Skin_One.php:566, ../includes/Skins/Skin_Seven.php:211, ../includes/Skins/Skin_Seven.php:518, ../includes/Skins/Skin_Six.php:211, ../includes/Skins/Skin_Six.php:520, ../includes/Skins/Skin_Three.php:231, ../includes/Skins/Skin_Three.php:540, ../includes/Skins/Skin_Two.php:231, ../includes/Skins/Skin_Two.php:540
+#: ../includes/Elements/Content_Timeline.php:710, ../includes/Elements/Counter.php:674, ../includes/Elements/Counter.php:862, ../includes/Elements/Counter.php:905, ../includes/Elements/Counter.php:960, ../includes/Elements/Divider.php:662, ../includes/Elements/Image_Comparison.php:705, ../includes/Elements/Image_Hot_Spots.php:904, ../includes/Elements/LD_Course_List.php:732, ../includes/Elements/LD_Course_List.php:887, ../includes/Elements/LD_Course_List.php:935, ../includes/Elements/LD_Course_List.php:995, ../includes/Elements/LD_Course_List.php:1139, ../includes/Elements/LD_Course_List.php:1367, ../includes/Elements/LD_Course_List.php:1396, ../includes/Elements/LD_Course_List.php:1495, ../includes/Elements/LD_Course_List.php:1676, ../includes/Elements/LD_Course_List.php:1758, ../includes/Elements/Lightbox.php:736, ../includes/Elements/Logo_Carousel.php:655, ../includes/Elements/Offcanvas.php:705, ../includes/Elements/Offcanvas.php:757, ../includes/Elements/Offcanvas.php:827, ../includes/Elements/Offcanvas.php:1080, ../includes/Elements/One_Page_Navigation.php:663, ../includes/Elements/Post_Block.php:318, ../includes/Elements/Post_Carousel.php:604, ../includes/Elements/Post_List.php:844, ../includes/Elements/Post_List.php:1171, ../includes/Elements/Post_List.php:1424, ../includes/Elements/Post_List.php:1809, ../includes/Elements/Price_Menu.php:437, ../includes/Elements/Price_Menu.php:653, ../includes/Elements/Price_Menu.php:731, ../includes/Elements/Team_Member_Carousel.php:1031, ../includes/Elements/Team_Member_Carousel.php:1234, ../includes/Elements/Team_Member_Carousel.php:1437, ../includes/Elements/Toggle.php:581, ../includes/Elements/Toggle.php:625, ../includes/Elements/Toggle.php:691, ../includes/Elements/Woo_Collections.php:437, ../includes/Skins/Skin_Default.php:211, ../includes/Skins/Skin_Default.php:498, ../includes/Skins/Skin_Five.php:260, ../includes/Skins/Skin_Five.php:570, ../includes/Skins/Skin_Four.php:211, ../includes/Skins/Skin_Four.php:518, ../includes/Skins/Skin_One.php:259, ../includes/Skins/Skin_One.php:566, ../includes/Skins/Skin_Seven.php:211, ../includes/Skins/Skin_Seven.php:518, ../includes/Skins/Skin_Six.php:211, ../includes/Skins/Skin_Six.php:520, ../includes/Skins/Skin_Three.php:231, ../includes/Skins/Skin_Three.php:540, ../includes/Skins/Skin_Two.php:231, ../includes/Skins/Skin_Two.php:540
 msgid "Typography"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:719, ../includes/Elements/Post_Block.php:341, ../includes/Elements/Post_Carousel.php:625, ../includes/Elements/Post_List.php:1156, ../includes/Elements/Post_List.php:1409
+#: ../includes/Elements/Content_Timeline.php:719, ../includes/Elements/Post_Block.php:341, ../includes/Elements/Post_Carousel.php:625, ../includes/Elements/Post_List.php:1179, ../includes/Elements/Post_List.php:1432
 msgid "Excerpt Style"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:728, ../includes/Elements/Post_Block.php:350, ../includes/Elements/Post_Carousel.php:634, ../includes/Elements/Post_List.php:1164, ../includes/Elements/Post_List.php:1417
+#: ../includes/Elements/Content_Timeline.php:728, ../includes/Elements/Post_Block.php:350, ../includes/Elements/Post_Carousel.php:634, ../includes/Elements/Post_List.php:1187, ../includes/Elements/Post_List.php:1440
 msgid "Excerpt Color"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:740, ../includes/Elements/Post_Block.php:362, ../includes/Elements/Post_Carousel.php:646, ../includes/Elements/Post_List.php:1175, ../includes/Elements/Post_List.php:1428
+#: ../includes/Elements/Content_Timeline.php:740, ../includes/Elements/Post_Block.php:362, ../includes/Elements/Post_Carousel.php:646, ../includes/Elements/Post_List.php:1198, ../includes/Elements/Post_List.php:1451
 msgid "Excerpt Alignment"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:756, ../includes/Elements/Counter.php:314, ../includes/Elements/Offcanvas.php:566, ../includes/Elements/Post_Block.php:378, ../includes/Elements/Post_Block.php:496, ../includes/Elements/Post_Carousel.php:662, ../includes/Elements/Post_List.php:1191, ../includes/Elements/Post_List.php:1444, ../includes/Elements/Price_Menu.php:244
+#: ../includes/Elements/Content_Timeline.php:756, ../includes/Elements/Counter.php:314, ../includes/Elements/Offcanvas.php:566, ../includes/Elements/Post_Block.php:378, ../includes/Elements/Post_Block.php:496, ../includes/Elements/Post_Carousel.php:662, ../includes/Elements/Post_List.php:1214, ../includes/Elements/Post_List.php:1467, ../includes/Elements/Price_Menu.php:244
 msgid "Justified"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:771, ../includes/Elements/Post_Block.php:392, ../includes/Elements/Post_Carousel.php:677, ../includes/Elements/Post_List.php:1204, ../includes/Elements/Post_List.php:1457
+#: ../includes/Elements/Content_Timeline.php:771, ../includes/Elements/Post_Block.php:392, ../includes/Elements/Post_Carousel.php:677, ../includes/Elements/Post_List.php:1227, ../includes/Elements/Post_List.php:1480
 msgid "Excerpt Typography"
 msgstr ""
 
@@ -349,7 +349,7 @@ msgstr ""
 msgid "Date Color"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:814, ../includes/Elements/Post_List.php:1256, ../includes/Elements/Post_List.php:1751
+#: ../includes/Elements/Content_Timeline.php:814, ../includes/Elements/Post_List.php:1279, ../includes/Elements/Post_List.php:1774
 msgid "Date Typography"
 msgstr ""
 
@@ -357,19 +357,19 @@ msgstr ""
 msgid "Load More Button Style"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:867, ../includes/Elements/Content_Timeline.php:1071, ../includes/Elements/Dynamic_Filterable_Gallery.php:579, ../includes/Elements/Dynamic_Filterable_Gallery.php:825, ../includes/Elements/Dynamic_Filterable_Gallery.php:1145, ../includes/Elements/Image_Comparison.php:331, ../includes/Elements/Image_Hot_Spots.php:731, ../includes/Elements/Instagram_Feed.php:560, ../includes/Elements/Interactive_Card.php:1389, ../includes/Elements/Interactive_Card.php:1601, ../includes/Elements/LD_Course_List.php:525, ../includes/Elements/LD_Course_List.php:1487, ../includes/Elements/Lightbox.php:1073, ../includes/Elements/Lightbox.php:1274, ../includes/Elements/Lightbox.php:1440, ../includes/Elements/Logo_Carousel.php:503, ../includes/Elements/Logo_Carousel.php:790, ../includes/Elements/Logo_Carousel.php:984, ../includes/Elements/Mailchimp.php:562, ../includes/Elements/Offcanvas.php:731, ../includes/Elements/Offcanvas.php:1025, ../includes/Elements/One_Page_Navigation.php:467, ../includes/Elements/Post_Carousel.php:1034, ../includes/Elements/Post_Carousel.php:1277, ../includes/Elements/Post_List.php:1532, ../includes/Elements/Protected_Content.php:659, ../includes/Elements/Protected_Content.php:819, ../includes/Elements/Static_Product.php:797, ../includes/Elements/Static_Product.php:1163, ../includes/Elements/Static_Product.php:1425, ../includes/Elements/Team_Member_Carousel.php:1692, ../includes/Elements/Team_Member_Carousel.php:1909, ../includes/Elements/Team_Member_Carousel.php:2094, ../includes/Elements/Testimonial_Slider.php:1062, ../includes/Elements/Testimonial_Slider.php:1247, ../includes/Elements/Twitter_Feed_Carousel.php:961, ../includes/Elements/Twitter_Feed_Carousel.php:1149, ../includes/Traits/Extender.php:613, ../includes/Traits/Extender.php:2077, ../includes/Traits/Extender.php:2239
+#: ../includes/Elements/Content_Timeline.php:867, ../includes/Elements/Content_Timeline.php:1071, ../includes/Elements/Dynamic_Filterable_Gallery.php:579, ../includes/Elements/Dynamic_Filterable_Gallery.php:825, ../includes/Elements/Dynamic_Filterable_Gallery.php:1145, ../includes/Elements/Image_Comparison.php:331, ../includes/Elements/Image_Hot_Spots.php:731, ../includes/Elements/Instagram_Feed.php:560, ../includes/Elements/Interactive_Card.php:1389, ../includes/Elements/Interactive_Card.php:1601, ../includes/Elements/LD_Course_List.php:525, ../includes/Elements/LD_Course_List.php:1487, ../includes/Elements/Lightbox.php:1073, ../includes/Elements/Lightbox.php:1274, ../includes/Elements/Lightbox.php:1440, ../includes/Elements/Logo_Carousel.php:503, ../includes/Elements/Logo_Carousel.php:790, ../includes/Elements/Logo_Carousel.php:984, ../includes/Elements/Mailchimp.php:562, ../includes/Elements/Offcanvas.php:731, ../includes/Elements/Offcanvas.php:1025, ../includes/Elements/One_Page_Navigation.php:467, ../includes/Elements/Post_Carousel.php:1034, ../includes/Elements/Post_Carousel.php:1277, ../includes/Elements/Post_List.php:1555, ../includes/Elements/Protected_Content.php:659, ../includes/Elements/Protected_Content.php:819, ../includes/Elements/Static_Product.php:797, ../includes/Elements/Static_Product.php:1163, ../includes/Elements/Static_Product.php:1425, ../includes/Elements/Team_Member_Carousel.php:1692, ../includes/Elements/Team_Member_Carousel.php:1909, ../includes/Elements/Team_Member_Carousel.php:2094, ../includes/Elements/Testimonial_Slider.php:1062, ../includes/Elements/Testimonial_Slider.php:1247, ../includes/Elements/Twitter_Feed_Carousel.php:961, ../includes/Elements/Twitter_Feed_Carousel.php:1149, ../includes/Traits/Extender.php:613, ../includes/Traits/Extender.php:2080, ../includes/Traits/Extender.php:2242
 msgid "Normal"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:872, ../includes/Elements/Content_Timeline.php:926, ../includes/Elements/Content_Timeline.php:1076, ../includes/Elements/Content_Timeline.php:1130, ../includes/Elements/Counter.php:929, ../includes/Elements/Dynamic_Filterable_Gallery.php:584, ../includes/Elements/Dynamic_Filterable_Gallery.php:650, ../includes/Elements/Image_Comparison.php:597, ../includes/Elements/Image_Comparison.php:653, ../includes/Elements/Image_Hot_Spots.php:879, ../includes/Elements/Instagram_Feed.php:565, ../includes/Elements/Instagram_Feed.php:629, ../includes/Elements/Interactive_Card.php:1399, ../includes/Elements/Interactive_Card.php:1473, ../includes/Elements/Interactive_Card.php:1606, ../includes/Elements/Interactive_Card.php:1660, ../includes/Elements/Lightbox.php:1080, ../includes/Elements/Lightbox.php:1132, ../includes/Elements/Mailchimp.php:567, ../includes/Elements/Mailchimp.php:628, ../includes/Elements/Offcanvas.php:689, ../includes/Elements/Offcanvas.php:1044, ../includes/Elements/Offcanvas.php:1130, ../includes/Elements/One_Page_Navigation.php:647, ../includes/Elements/Price_Menu.php:607, ../includes/Elements/Protected_Content.php:334, ../includes/Elements/Protected_Content.php:413, ../includes/Elements/Protected_Content.php:491, ../includes/Elements/Protected_Content.php:825, ../includes/Elements/Protected_Content.php:871, ../includes/Elements/Static_Product.php:1173, ../includes/Elements/Static_Product.php:1240, ../includes/Elements/Static_Product.php:1430, ../includes/Elements/Static_Product.php:1487, ../includes/Elements/Team_Member_Carousel.php:1040, ../includes/Elements/Team_Member_Carousel.php:1243, ../includes/Elements/Team_Member_Carousel.php:1446, ../includes/Elements/Toggle.php:556, ../includes/Elements/Toggle.php:600, ../includes/Elements/Toggle.php:678, ../includes/Elements/Woo_Collections.php:565, ../includes/Extensions/Content_Protection.php:251, ../includes/Extensions/Content_Protection.php:333, ../includes/Extensions/Content_Protection.php:651, ../includes/Extensions/Content_Protection.php:715, ../includes/Skins/Skin_Default.php:220, ../includes/Skins/Skin_Default.php:369, ../includes/Skins/Skin_Default.php:507, ../includes/Skins/Skin_Default.php:626, ../includes/Skins/Skin_Five.php:292, ../includes/Skins/Skin_Five.php:441, ../includes/Skins/Skin_Five.php:602, ../includes/Skins/Skin_Five.php:721, ../includes/Skins/Skin_Four.php:240, ../includes/Skins/Skin_Four.php:389, ../includes/Skins/Skin_Four.php:547, ../includes/Skins/Skin_Four.php:666, ../includes/Skins/Skin_One.php:288, ../includes/Skins/Skin_One.php:437, ../includes/Skins/Skin_One.php:595, ../includes/Skins/Skin_One.php:714, ../includes/Skins/Skin_Seven.php:240, ../includes/Skins/Skin_Seven.php:389, ../includes/Skins/Skin_Seven.php:547, ../includes/Skins/Skin_Seven.php:666, ../includes/Skins/Skin_Six.php:240, ../includes/Skins/Skin_Six.php:390, ../includes/Skins/Skin_Six.php:549, ../includes/Skins/Skin_Six.php:669, ../includes/Skins/Skin_Three.php:260, ../includes/Skins/Skin_Three.php:410, ../includes/Skins/Skin_Three.php:569, ../includes/Skins/Skin_Three.php:689, ../includes/Skins/Skin_Two.php:260, ../includes/Skins/Skin_Two.php:410, ../includes/Skins/Skin_Two.php:569, ../includes/Skins/Skin_Two.php:689, ../includes/Traits/Extender.php:626, ../includes/Traits/Extender.php:718
+#: ../includes/Elements/Content_Timeline.php:872, ../includes/Elements/Content_Timeline.php:926, ../includes/Elements/Content_Timeline.php:1076, ../includes/Elements/Content_Timeline.php:1130, ../includes/Elements/Counter.php:929, ../includes/Elements/Dynamic_Filterable_Gallery.php:584, ../includes/Elements/Dynamic_Filterable_Gallery.php:650, ../includes/Elements/Image_Comparison.php:597, ../includes/Elements/Image_Comparison.php:653, ../includes/Elements/Image_Hot_Spots.php:879, ../includes/Elements/Instagram_Feed.php:565, ../includes/Elements/Instagram_Feed.php:629, ../includes/Elements/Interactive_Card.php:1399, ../includes/Elements/Interactive_Card.php:1473, ../includes/Elements/Interactive_Card.php:1606, ../includes/Elements/Interactive_Card.php:1660, ../includes/Elements/Lightbox.php:1080, ../includes/Elements/Lightbox.php:1132, ../includes/Elements/Mailchimp.php:567, ../includes/Elements/Mailchimp.php:628, ../includes/Elements/Offcanvas.php:689, ../includes/Elements/Offcanvas.php:1044, ../includes/Elements/Offcanvas.php:1130, ../includes/Elements/One_Page_Navigation.php:647, ../includes/Elements/Price_Menu.php:607, ../includes/Elements/Protected_Content.php:334, ../includes/Elements/Protected_Content.php:413, ../includes/Elements/Protected_Content.php:491, ../includes/Elements/Protected_Content.php:825, ../includes/Elements/Protected_Content.php:871, ../includes/Elements/Static_Product.php:1173, ../includes/Elements/Static_Product.php:1240, ../includes/Elements/Static_Product.php:1430, ../includes/Elements/Static_Product.php:1487, ../includes/Elements/Team_Member_Carousel.php:1040, ../includes/Elements/Team_Member_Carousel.php:1243, ../includes/Elements/Team_Member_Carousel.php:1446, ../includes/Elements/Toggle.php:556, ../includes/Elements/Toggle.php:600, ../includes/Elements/Toggle.php:678, ../includes/Elements/Woo_Collections.php:565, ../includes/Extensions/Content_Protection.php:251, ../includes/Extensions/Content_Protection.php:333, ../includes/Extensions/Content_Protection.php:651, ../includes/Extensions/Content_Protection.php:715, ../includes/Skins/Skin_Default.php:220, ../includes/Skins/Skin_Default.php:369, ../includes/Skins/Skin_Default.php:507, ../includes/Skins/Skin_Default.php:626, ../includes/Skins/Skin_Five.php:292, ../includes/Skins/Skin_Five.php:441, ../includes/Skins/Skin_Five.php:602, ../includes/Skins/Skin_Five.php:721, ../includes/Skins/Skin_Four.php:240, ../includes/Skins/Skin_Four.php:389, ../includes/Skins/Skin_Four.php:547, ../includes/Skins/Skin_Four.php:666, ../includes/Skins/Skin_One.php:288, ../includes/Skins/Skin_One.php:437, ../includes/Skins/Skin_One.php:595, ../includes/Skins/Skin_One.php:714, ../includes/Skins/Skin_Seven.php:240, ../includes/Skins/Skin_Seven.php:389, ../includes/Skins/Skin_Seven.php:547, ../includes/Skins/Skin_Seven.php:666, ../includes/Skins/Skin_Six.php:240, ../includes/Skins/Skin_Six.php:390, ../includes/Skins/Skin_Six.php:549, ../includes/Skins/Skin_Six.php:669, ../includes/Skins/Skin_Three.php:260, ../includes/Skins/Skin_Three.php:410, ../includes/Skins/Skin_Three.php:569, ../includes/Skins/Skin_Three.php:689, ../includes/Skins/Skin_Two.php:260, ../includes/Skins/Skin_Two.php:410, ../includes/Skins/Skin_Two.php:569, ../includes/Skins/Skin_Two.php:689, ../includes/Traits/Extender.php:626, ../includes/Traits/Extender.php:721
 msgid "Text Color"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:921, ../includes/Elements/Content_Timeline.php:1125, ../includes/Elements/Dynamic_Filterable_Gallery.php:915, ../includes/Elements/Dynamic_Filterable_Gallery.php:1242, ../includes/Elements/Image_Comparison.php:394, ../includes/Elements/Image_Hot_Spots.php:797, ../includes/Elements/Instagram_Feed.php:624, ../includes/Elements/Interactive_Card.php:1463, ../includes/Elements/Interactive_Card.php:1655, ../includes/Elements/LD_Course_List.php:596, ../includes/Elements/LD_Course_List.php:1576, ../includes/Elements/Lightbox.php:1122, ../includes/Elements/Lightbox.php:1511, ../includes/Elements/Logo_Carousel.php:551, ../includes/Elements/Logo_Carousel.php:846, ../includes/Elements/Logo_Carousel.php:1077, ../includes/Elements/Mailchimp.php:623, ../includes/Elements/Offcanvas.php:771, ../includes/Elements/Offcanvas.php:1111, ../includes/Elements/One_Page_Navigation.php:523, ../includes/Elements/Post_Carousel.php:1090, ../includes/Elements/Post_Carousel.php:1420, ../includes/Elements/Post_List.php:1592, ../includes/Elements/Protected_Content.php:706, ../includes/Elements/Protected_Content.php:865, ../includes/Elements/Static_Product.php:843, ../includes/Elements/Static_Product.php:1230, ../includes/Elements/Static_Product.php:1480, ../includes/Elements/Team_Member_Carousel.php:1762, ../includes/Elements/Team_Member_Carousel.php:1965, ../includes/Elements/Team_Member_Carousel.php:2169, ../includes/Elements/Testimonial_Slider.php:1118, ../includes/Elements/Testimonial_Slider.php:1322, ../includes/Elements/Twitter_Feed_Carousel.php:1017, ../includes/Elements/Twitter_Feed_Carousel.php:1224, ../includes/Extensions/EAEL_Tooltip_Section.php:152, ../includes/Skins/Skin_Default.php:362, ../includes/Skins/Skin_Default.php:619, ../includes/Skins/Skin_Five.php:434, ../includes/Skins/Skin_Five.php:714, ../includes/Skins/Skin_Four.php:382, ../includes/Skins/Skin_Four.php:659, ../includes/Skins/Skin_One.php:430, ../includes/Skins/Skin_One.php:707, ../includes/Skins/Skin_Seven.php:382, ../includes/Skins/Skin_Seven.php:659, ../includes/Skins/Skin_Six.php:383, ../includes/Skins/Skin_Six.php:662, ../includes/Skins/Skin_Three.php:403, ../includes/Skins/Skin_Three.php:682, ../includes/Skins/Skin_Two.php:403, ../includes/Skins/Skin_Two.php:682, ../includes/Traits/Extender.php:705
+#: ../includes/Elements/Content_Timeline.php:921, ../includes/Elements/Content_Timeline.php:1125, ../includes/Elements/Dynamic_Filterable_Gallery.php:915, ../includes/Elements/Dynamic_Filterable_Gallery.php:1242, ../includes/Elements/Image_Comparison.php:394, ../includes/Elements/Image_Hot_Spots.php:797, ../includes/Elements/Instagram_Feed.php:624, ../includes/Elements/Interactive_Card.php:1463, ../includes/Elements/Interactive_Card.php:1655, ../includes/Elements/LD_Course_List.php:596, ../includes/Elements/LD_Course_List.php:1576, ../includes/Elements/Lightbox.php:1122, ../includes/Elements/Lightbox.php:1511, ../includes/Elements/Logo_Carousel.php:551, ../includes/Elements/Logo_Carousel.php:846, ../includes/Elements/Logo_Carousel.php:1077, ../includes/Elements/Mailchimp.php:623, ../includes/Elements/Offcanvas.php:771, ../includes/Elements/Offcanvas.php:1111, ../includes/Elements/One_Page_Navigation.php:523, ../includes/Elements/Post_Carousel.php:1090, ../includes/Elements/Post_Carousel.php:1420, ../includes/Elements/Post_List.php:1615, ../includes/Elements/Protected_Content.php:706, ../includes/Elements/Protected_Content.php:865, ../includes/Elements/Static_Product.php:843, ../includes/Elements/Static_Product.php:1230, ../includes/Elements/Static_Product.php:1480, ../includes/Elements/Team_Member_Carousel.php:1762, ../includes/Elements/Team_Member_Carousel.php:1965, ../includes/Elements/Team_Member_Carousel.php:2169, ../includes/Elements/Testimonial_Slider.php:1118, ../includes/Elements/Testimonial_Slider.php:1322, ../includes/Elements/Twitter_Feed_Carousel.php:1017, ../includes/Elements/Twitter_Feed_Carousel.php:1224, ../includes/Extensions/EAEL_Tooltip_Section.php:152, ../includes/Skins/Skin_Default.php:362, ../includes/Skins/Skin_Default.php:619, ../includes/Skins/Skin_Five.php:434, ../includes/Skins/Skin_Five.php:714, ../includes/Skins/Skin_Four.php:382, ../includes/Skins/Skin_Four.php:659, ../includes/Skins/Skin_One.php:430, ../includes/Skins/Skin_One.php:707, ../includes/Skins/Skin_Seven.php:382, ../includes/Skins/Skin_Seven.php:659, ../includes/Skins/Skin_Six.php:383, ../includes/Skins/Skin_Six.php:662, ../includes/Skins/Skin_Three.php:403, ../includes/Skins/Skin_Three.php:682, ../includes/Skins/Skin_Two.php:403, ../includes/Skins/Skin_Two.php:682, ../includes/Traits/Extender.php:708
 msgid "Hover"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:950, ../includes/Elements/Content_Timeline.php:1154, ../includes/Elements/Image_Comparison.php:423, ../includes/Elements/Instagram_Feed.php:653, ../includes/Elements/Interactive_Card.php:1503, ../includes/Elements/Interactive_Card.php:1684, ../includes/Elements/Lightbox.php:1156, ../includes/Elements/Logo_Carousel.php:877, ../includes/Elements/Logo_Carousel.php:1102, ../includes/Elements/Mailchimp.php:652, ../includes/Elements/Offcanvas.php:1142, ../includes/Elements/One_Page_Navigation.php:554, ../includes/Elements/One_Page_Navigation.php:599, ../includes/Elements/Post_Carousel.php:1121, ../includes/Elements/Post_Carousel.php:1439, ../includes/Elements/Price_Menu.php:551, ../includes/Elements/Static_Product.php:1284, ../includes/Elements/Static_Product.php:1526, ../includes/Elements/Team_Member_Carousel.php:1793, ../includes/Elements/Team_Member_Carousel.php:1996, ../includes/Elements/Team_Member_Carousel.php:2188, ../includes/Elements/Testimonial_Slider.php:1149, ../includes/Elements/Testimonial_Slider.php:1341, ../includes/Elements/Twitter_Feed_Carousel.php:692, ../includes/Elements/Twitter_Feed_Carousel.php:1048, ../includes/Elements/Twitter_Feed_Carousel.php:1243, ../includes/Extensions/EAEL_Tooltip_Section.php:271, ../includes/Skins/Skin_Default.php:348, ../includes/Skins/Skin_Default.php:443, ../includes/Skins/Skin_Default.php:605, ../includes/Skins/Skin_Default.php:700, ../includes/Skins/Skin_Five.php:420, ../includes/Skins/Skin_Five.php:515, ../includes/Skins/Skin_Five.php:700, ../includes/Skins/Skin_Five.php:795, ../includes/Skins/Skin_Four.php:368, ../includes/Skins/Skin_Four.php:463, ../includes/Skins/Skin_Four.php:645, ../includes/Skins/Skin_Four.php:740, ../includes/Skins/Skin_One.php:416, ../includes/Skins/Skin_One.php:511, ../includes/Skins/Skin_One.php:693, ../includes/Skins/Skin_One.php:788, ../includes/Skins/Skin_Seven.php:368, ../includes/Skins/Skin_Seven.php:463, ../includes/Skins/Skin_Seven.php:645, ../includes/Skins/Skin_Seven.php:740, ../includes/Skins/Skin_Six.php:369, ../includes/Skins/Skin_Six.php:465, ../includes/Skins/Skin_Six.php:648, ../includes/Skins/Skin_Six.php:744, ../includes/Skins/Skin_Three.php:389, ../includes/Skins/Skin_Three.php:485, ../includes/Skins/Skin_Three.php:668, ../includes/Skins/Skin_Three.php:764, ../includes/Skins/Skin_Two.php:389, ../includes/Skins/Skin_Two.php:485, ../includes/Skins/Skin_Two.php:668, ../includes/Skins/Skin_Two.php:764, ../includes/Traits/Extender.php:773
+#: ../includes/Elements/Content_Timeline.php:950, ../includes/Elements/Content_Timeline.php:1154, ../includes/Elements/Image_Comparison.php:423, ../includes/Elements/Instagram_Feed.php:653, ../includes/Elements/Interactive_Card.php:1503, ../includes/Elements/Interactive_Card.php:1684, ../includes/Elements/Lightbox.php:1156, ../includes/Elements/Logo_Carousel.php:877, ../includes/Elements/Logo_Carousel.php:1102, ../includes/Elements/Mailchimp.php:652, ../includes/Elements/Offcanvas.php:1142, ../includes/Elements/One_Page_Navigation.php:554, ../includes/Elements/One_Page_Navigation.php:599, ../includes/Elements/Post_Carousel.php:1121, ../includes/Elements/Post_Carousel.php:1439, ../includes/Elements/Price_Menu.php:551, ../includes/Elements/Static_Product.php:1284, ../includes/Elements/Static_Product.php:1526, ../includes/Elements/Team_Member_Carousel.php:1793, ../includes/Elements/Team_Member_Carousel.php:1996, ../includes/Elements/Team_Member_Carousel.php:2188, ../includes/Elements/Testimonial_Slider.php:1149, ../includes/Elements/Testimonial_Slider.php:1341, ../includes/Elements/Twitter_Feed_Carousel.php:692, ../includes/Elements/Twitter_Feed_Carousel.php:1048, ../includes/Elements/Twitter_Feed_Carousel.php:1243, ../includes/Extensions/EAEL_Tooltip_Section.php:271, ../includes/Skins/Skin_Default.php:348, ../includes/Skins/Skin_Default.php:443, ../includes/Skins/Skin_Default.php:605, ../includes/Skins/Skin_Default.php:700, ../includes/Skins/Skin_Five.php:420, ../includes/Skins/Skin_Five.php:515, ../includes/Skins/Skin_Five.php:700, ../includes/Skins/Skin_Five.php:795, ../includes/Skins/Skin_Four.php:368, ../includes/Skins/Skin_Four.php:463, ../includes/Skins/Skin_Four.php:645, ../includes/Skins/Skin_Four.php:740, ../includes/Skins/Skin_One.php:416, ../includes/Skins/Skin_One.php:511, ../includes/Skins/Skin_One.php:693, ../includes/Skins/Skin_One.php:788, ../includes/Skins/Skin_Seven.php:368, ../includes/Skins/Skin_Seven.php:463, ../includes/Skins/Skin_Seven.php:645, ../includes/Skins/Skin_Seven.php:740, ../includes/Skins/Skin_Six.php:369, ../includes/Skins/Skin_Six.php:465, ../includes/Skins/Skin_Six.php:648, ../includes/Skins/Skin_Six.php:744, ../includes/Skins/Skin_Three.php:389, ../includes/Skins/Skin_Three.php:485, ../includes/Skins/Skin_Three.php:668, ../includes/Skins/Skin_Three.php:764, ../includes/Skins/Skin_Two.php:389, ../includes/Skins/Skin_Two.php:485, ../includes/Skins/Skin_Two.php:668, ../includes/Skins/Skin_Two.php:764, ../includes/Traits/Extender.php:776
 msgid "Border Color"
 msgstr ""
 
@@ -389,11 +389,11 @@ msgstr ""
 msgid "Read More Button Style"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:1231, ../includes/Elements/Post_Block.php:682, ../includes/Elements/Post_Carousel.php:1596, ../includes/Elements/Post_List.php:2170
+#: ../includes/Elements/Content_Timeline.php:1231, ../includes/Elements/Post_Block.php:682, ../includes/Elements/Post_Carousel.php:1596, ../includes/Elements/Post_List.php:2193
 msgid "<p class=\"no-posts-found\">No layout found!</p>"
 msgstr ""
 
-#: ../includes/Elements/Content_Timeline.php:1227, ../includes/Elements/Dynamic_Filterable_Gallery.php:1546, ../includes/Elements/Post_Block.php:678, ../includes/Elements/Post_Carousel.php:1592, ../includes/Elements/Post_List.php:2166
+#: ../includes/Elements/Content_Timeline.php:1227, ../includes/Elements/Dynamic_Filterable_Gallery.php:1546, ../includes/Elements/Post_Block.php:678, ../includes/Elements/Post_Carousel.php:1592, ../includes/Elements/Post_List.php:2189
 msgid "<p class=\"no-posts-found\">No posts found!</p>"
 msgstr ""
 
@@ -405,7 +405,7 @@ msgstr ""
 msgid "Icon Type"
 msgstr ""
 
-#: ../includes/Elements/Counter.php:82, ../includes/Elements/Dynamic_Filterable_Gallery.php:210, ../includes/Elements/Instagram_Feed.php:116, ../includes/Elements/Post_Block.php:552, ../includes/Elements/Post_Carousel.php:454, ../includes/Elements/Price_Menu.php:482, ../includes/Elements/Protected_Content.php:265, ../includes/Elements/Team_Member_Carousel.php:450, ../includes/Elements/Woo_Collections.php:419, ../includes/Extensions/Content_Protection.php:173, ../includes/Traits/Extender.php:3800
+#: ../includes/Elements/Counter.php:82, ../includes/Elements/Dynamic_Filterable_Gallery.php:210, ../includes/Elements/Instagram_Feed.php:116, ../includes/Elements/Post_Block.php:552, ../includes/Elements/Post_Carousel.php:454, ../includes/Elements/Price_Menu.php:482, ../includes/Elements/Protected_Content.php:265, ../includes/Elements/Team_Member_Carousel.php:450, ../includes/Elements/Woo_Collections.php:419, ../includes/Extensions/Content_Protection.php:173, ../includes/Traits/Extender.php:3803
 msgid "None"
 msgstr ""
 
@@ -457,15 +457,15 @@ msgstr ""
 msgid "H6"
 msgstr ""
 
-#: ../includes/Elements/Counter.php:185, ../includes/Elements/Divider.php:280, ../includes/Elements/Logo_Carousel.php:217, ../includes/Elements/Post_List.php:549, ../includes/Elements/Team_Member_Carousel.php:400, ../includes/Elements/Team_Member_Carousel.php:420
+#: ../includes/Elements/Counter.php:185, ../includes/Elements/Divider.php:280, ../includes/Elements/Logo_Carousel.php:217, ../includes/Elements/Post_List.php:552, ../includes/Elements/Team_Member_Carousel.php:400, ../includes/Elements/Team_Member_Carousel.php:420
 msgid "div"
 msgstr ""
 
-#: ../includes/Elements/Counter.php:186, ../includes/Elements/Divider.php:281, ../includes/Elements/Logo_Carousel.php:218, ../includes/Elements/Post_List.php:548, ../includes/Elements/Team_Member_Carousel.php:401, ../includes/Elements/Team_Member_Carousel.php:421
+#: ../includes/Elements/Counter.php:186, ../includes/Elements/Divider.php:281, ../includes/Elements/Logo_Carousel.php:218, ../includes/Elements/Post_List.php:551, ../includes/Elements/Team_Member_Carousel.php:401, ../includes/Elements/Team_Member_Carousel.php:421
 msgid "span"
 msgstr ""
 
-#: ../includes/Elements/Counter.php:187, ../includes/Elements/Divider.php:282, ../includes/Elements/Logo_Carousel.php:219, ../includes/Elements/Post_List.php:547, ../includes/Elements/Team_Member_Carousel.php:402, ../includes/Elements/Team_Member_Carousel.php:422
+#: ../includes/Elements/Counter.php:187, ../includes/Elements/Divider.php:282, ../includes/Elements/Logo_Carousel.php:219, ../includes/Elements/Post_List.php:550, ../includes/Elements/Team_Member_Carousel.php:402, ../includes/Elements/Team_Member_Carousel.php:422
 msgid "p"
 msgstr ""
 
@@ -473,11 +473,11 @@ msgstr ""
 msgid "Layout"
 msgstr ""
 
-#: ../includes/Elements/Counter.php:199, ../includes/Elements/LD_Course_List.php:126, ../includes/Traits/Extender.php:871
+#: ../includes/Elements/Counter.php:199, ../includes/Elements/LD_Course_List.php:126, ../includes/Traits/Extender.php:874
 msgid "Layout 1"
 msgstr ""
 
-#: ../includes/Elements/Counter.php:200, ../includes/Elements/LD_Course_List.php:127, ../includes/Traits/Extender.php:872
+#: ../includes/Elements/Counter.php:200, ../includes/Elements/LD_Course_List.php:127, ../includes/Traits/Extender.php:875
 msgid "Layout 2"
 msgstr ""
 
@@ -525,23 +525,23 @@ msgstr ""
 msgid "Counting Speed"
 msgstr ""
 
-#: ../includes/Elements/Counter.php:298, ../includes/Elements/Divider.php:307, ../includes/Elements/Dynamic_Filterable_Gallery.php:417, ../includes/Elements/LD_Course_List.php:657, ../includes/Elements/Lightbox.php:418, ../includes/Elements/Lightbox.php:658, ../includes/Elements/Offcanvas.php:550, ../includes/Elements/Offcanvas.php:934, ../includes/Elements/One_Page_Navigation.php:292, ../includes/Elements/Post_List.php:928, ../includes/Elements/Price_Menu.php:228, ../includes/Elements/Team_Member_Carousel.php:671, ../includes/Elements/Team_Member_Carousel.php:869, ../includes/Elements/Toggle.php:266, ../includes/Elements/Toggle.php:652, ../includes/Skins/Skin_Default.php:187, ../includes/Skins/Skin_Default.php:474, ../includes/Skins/Skin_Five.php:236, ../includes/Skins/Skin_Five.php:546, ../includes/Skins/Skin_Four.php:187, ../includes/Skins/Skin_Four.php:494, ../includes/Skins/Skin_One.php:235, ../includes/Skins/Skin_One.php:542, ../includes/Skins/Skin_Seven.php:187, ../includes/Skins/Skin_Seven.php:494, ../includes/Skins/Skin_Six.php:187, ../includes/Skins/Skin_Six.php:496, ../includes/Skins/Skin_Three.php:206, ../includes/Skins/Skin_Three.php:516, ../includes/Skins/Skin_Two.php:206, ../includes/Skins/Skin_Two.php:516, ../includes/Traits/Extender.php:176
+#: ../includes/Elements/Counter.php:298, ../includes/Elements/Divider.php:307, ../includes/Elements/Dynamic_Filterable_Gallery.php:417, ../includes/Elements/LD_Course_List.php:657, ../includes/Elements/Lightbox.php:418, ../includes/Elements/Lightbox.php:658, ../includes/Elements/Offcanvas.php:550, ../includes/Elements/Offcanvas.php:934, ../includes/Elements/One_Page_Navigation.php:292, ../includes/Elements/Post_List.php:931, ../includes/Elements/Price_Menu.php:228, ../includes/Elements/Team_Member_Carousel.php:671, ../includes/Elements/Team_Member_Carousel.php:869, ../includes/Elements/Toggle.php:266, ../includes/Elements/Toggle.php:652, ../includes/Skins/Skin_Default.php:187, ../includes/Skins/Skin_Default.php:474, ../includes/Skins/Skin_Five.php:236, ../includes/Skins/Skin_Five.php:546, ../includes/Skins/Skin_Four.php:187, ../includes/Skins/Skin_Four.php:494, ../includes/Skins/Skin_One.php:235, ../includes/Skins/Skin_One.php:542, ../includes/Skins/Skin_Seven.php:187, ../includes/Skins/Skin_Seven.php:494, ../includes/Skins/Skin_Six.php:187, ../includes/Skins/Skin_Six.php:496, ../includes/Skins/Skin_Three.php:206, ../includes/Skins/Skin_Three.php:516, ../includes/Skins/Skin_Two.php:206, ../includes/Skins/Skin_Two.php:516, ../includes/Traits/Extender.php:176
 msgid "Alignment"
 msgstr ""
 
-#: ../includes/Elements/Counter.php:345, ../includes/Elements/Image_Comparison.php:307, ../includes/Elements/Interactive_Promo.php:301, ../includes/Elements/LD_Course_List.php:533, ../includes/Elements/LD_Course_List.php:615, ../includes/Elements/LD_Course_List.php:766, ../includes/Elements/LD_Course_List.php:1092, ../includes/Elements/LD_Course_List.php:1125, ../includes/Elements/LD_Course_List.php:1517, ../includes/Elements/LD_Course_List.php:1596, ../includes/Elements/Lightbox.php:759, ../includes/Elements/Lightbox.php:1467, ../includes/Elements/Lightbox.php:1538, ../includes/Elements/Mailchimp.php:243, ../includes/Elements/Mailchimp.php:687, ../includes/Elements/Offcanvas.php:480, ../includes/Elements/Post_Carousel.php:352, ../includes/Elements/Post_Carousel.php:416, ../includes/Elements/Post_Carousel.php:477, ../includes/Elements/Post_Carousel.php:764, ../includes/Elements/Post_List.php:1552, ../includes/Elements/Post_List.php:1600, ../includes/Elements/Post_List.php:1818, ../includes/Elements/Post_List.php:1866, ../includes/Elements/Static_Product.php:770, ../includes/Elements/Static_Product.php:825, ../includes/Elements/Static_Product.php:861, ../includes/Elements/Static_Product.php:978, ../includes/Elements/Static_Product.php:1189, ../includes/Elements/Static_Product.php:1256, ../includes/Elements/Static_Product.php:1443, ../includes/Elements/Static_Product.php:1499, ../includes/Elements/Team_Member_Carousel.php:752, ../includes/Elements/Testimonial_Slider.php:623, ../includes/Elements/Twitter_Feed_Carousel.php:704, ../includes/Traits/Extender.php:907, ../includes/Traits/Extender.php:2353
+#: ../includes/Elements/Counter.php:345, ../includes/Elements/Image_Comparison.php:307, ../includes/Elements/Interactive_Promo.php:301, ../includes/Elements/LD_Course_List.php:533, ../includes/Elements/LD_Course_List.php:615, ../includes/Elements/LD_Course_List.php:766, ../includes/Elements/LD_Course_List.php:1092, ../includes/Elements/LD_Course_List.php:1125, ../includes/Elements/LD_Course_List.php:1517, ../includes/Elements/LD_Course_List.php:1596, ../includes/Elements/Lightbox.php:759, ../includes/Elements/Lightbox.php:1467, ../includes/Elements/Lightbox.php:1538, ../includes/Elements/Mailchimp.php:243, ../includes/Elements/Mailchimp.php:687, ../includes/Elements/Offcanvas.php:480, ../includes/Elements/Post_Carousel.php:352, ../includes/Elements/Post_Carousel.php:416, ../includes/Elements/Post_Carousel.php:477, ../includes/Elements/Post_Carousel.php:764, ../includes/Elements/Post_List.php:1575, ../includes/Elements/Post_List.php:1623, ../includes/Elements/Post_List.php:1841, ../includes/Elements/Post_List.php:1889, ../includes/Elements/Static_Product.php:770, ../includes/Elements/Static_Product.php:825, ../includes/Elements/Static_Product.php:861, ../includes/Elements/Static_Product.php:978, ../includes/Elements/Static_Product.php:1189, ../includes/Elements/Static_Product.php:1256, ../includes/Elements/Static_Product.php:1443, ../includes/Elements/Static_Product.php:1499, ../includes/Elements/Team_Member_Carousel.php:752, ../includes/Elements/Testimonial_Slider.php:623, ../includes/Elements/Twitter_Feed_Carousel.php:704, ../includes/Traits/Extender.php:910, ../includes/Traits/Extender.php:2356
 msgid "Background"
 msgstr ""
 
-#: ../includes/Elements/Counter.php:357, ../includes/Elements/Counter.php:604, ../includes/Elements/Counter.php:788, ../includes/Elements/Counter.php:846, ../includes/Elements/Counter.php:889, ../includes/Elements/Divider.php:646, ../includes/Elements/Divider.php:747, ../includes/Elements/Dynamic_Filterable_Gallery.php:844, ../includes/Elements/Dynamic_Filterable_Gallery.php:934, ../includes/Elements/Dynamic_Filterable_Gallery.php:1083, ../includes/Elements/Dynamic_Filterable_Gallery.php:1114, ../includes/Elements/Dynamic_Filterable_Gallery.php:1165, ../includes/Elements/Dynamic_Filterable_Gallery.php:1262, ../includes/Elements/Dynamic_Filterable_Gallery.php:1347, ../includes/Elements/Dynamic_Filterable_Gallery.php:1388, ../includes/Elements/Dynamic_Filterable_Gallery.php:1417, ../includes/Elements/Flip_Carousel.php:618, ../includes/Elements/Google_Map.php:1017, ../includes/Elements/Google_Map.php:1045, ../includes/Elements/Image_Comparison.php:452, ../includes/Elements/Image_Hot_Spots.php:738, ../includes/Elements/Image_Hot_Spots.php:803, ../includes/Elements/Interactive_Card.php:1107, ../includes/Elements/Interactive_Card.php:1136, ../includes/Elements/Interactive_Card.php:1165, ../includes/Elements/Interactive_Card.php:1209, ../includes/Elements/Interactive_Card.php:1246, ../includes/Elements/Interactive_Card.php:1293, ../includes/Elements/LD_Course_List.php:753, ../includes/Elements/LD_Course_List.php:896, ../includes/Elements/LD_Course_List.php:946, ../includes/Elements/LD_Course_List.php:1003, ../includes/Elements/LD_Course_List.php:1147, ../includes/Elements/LD_Course_List.php:1310, ../includes/Elements/LD_Course_List.php:1354, ../includes/Elements/LD_Course_List.php:1405, ../includes/Elements/LD_Course_List.php:1504, ../includes/Elements/LD_Course_List.php:1583, ../includes/Elements/LD_Course_List.php:1769, ../includes/Elements/Lightbox.php:698, ../includes/Elements/Lightbox.php:874, ../includes/Elements/Lightbox.php:1214, ../includes/Elements/Logo_Carousel.php:624, ../includes/Elements/Logo_Carousel.php:809, ../includes/Elements/Logo_Carousel.php:865, ../includes/Elements/Logo_Carousel.php:994, ../includes/Elements/Logo_Carousel.php:1087, ../includes/Elements/Offcanvas.php:741, ../includes/Elements/Offcanvas.php:781, ../includes/Elements/Offcanvas.php:814, ../includes/Elements/Offcanvas.php:854, ../includes/Elements/Offcanvas.php:1207, ../includes/Elements/Offcanvas.php:1263, ../includes/Elements/One_Page_Navigation.php:474, ../includes/Elements/One_Page_Navigation.php:530, ../includes/Elements/One_Page_Navigation.php:575, ../includes/Elements/Post_Carousel.php:1053, ../includes/Elements/Post_Carousel.php:1109, ../includes/Elements/Post_Carousel.php:1284, ../includes/Elements/Post_Carousel.php:1347, ../includes/Elements/Post_Carousel.php:1427, ../includes/Elements/Post_List.php:860, ../includes/Elements/Post_List.php:1717, ../includes/Elements/Post_List.php:1760, ../includes/Elements/Post_List.php:1806, ../includes/Elements/Post_List.php:1853, ../includes/Elements/Price_Menu.php:424, ../includes/Elements/Price_Menu.php:637, ../includes/Elements/Price_Menu.php:718, ../includes/Elements/Price_Menu.php:969, ../includes/Elements/Protected_Content.php:665, ../includes/Elements/Protected_Content.php:712, ../includes/Elements/Static_Product.php:804, ../includes/Elements/Static_Product.php:849, ../includes/Elements/Static_Product.php:925, ../includes/Elements/Team_Member_Carousel.php:1928, ../includes/Elements/Team_Member_Carousel.php:1984, ../includes/Elements/Team_Member_Carousel.php:2101, ../includes/Elements/Team_Member_Carousel.php:2176, ../includes/Elements/Testimonial_Slider.php:1081, ../includes/Elements/Testimonial_Slider.php:1137, ../includes/Elements/Testimonial_Slider.php:1254, ../includes/Elements/Testimonial_Slider.php:1329, ../includes/Elements/Twitter_Feed_Carousel.php:745, ../includes/Elements/Twitter_Feed_Carousel.php:774, ../includes/Elements/Twitter_Feed_Carousel.php:804, ../includes/Elements/Twitter_Feed_Carousel.php:980, ../includes/Elements/Twitter_Feed_Carousel.php:1036, ../includes/Elements/Twitter_Feed_Carousel.php:1156, ../includes/Elements/Twitter_Feed_Carousel.php:1231, ../includes/Elements/Twitter_Feed_Carousel.php:1387, ../includes/Extensions/Content_Protection.php:519, ../includes/Extensions/Content_Protection.php:585, ../includes/Extensions/EAEL_Tooltip_Section.php:256, ../includes/Skins/Skin_Default.php:324, ../includes/Skins/Skin_Default.php:417, ../includes/Skins/Skin_Default.php:581, ../includes/Skins/Skin_Default.php:674, ../includes/Skins/Skin_Five.php:396, ../includes/Skins/Skin_Five.php:489, ../includes/Skins/Skin_Five.php:676, ../includes/Skins/Skin_Five.php:769, ../includes/Skins/Skin_Four.php:344, ../includes/Skins/Skin_Four.php:437, ../includes/Skins/Skin_Four.php:621, ../includes/Skins/Skin_Four.php:714, ../includes/Skins/Skin_One.php:392, ../includes/Skins/Skin_One.php:485, ../includes/Skins/Skin_One.php:669, ../includes/Skins/Skin_One.php:762, ../includes/Skins/Skin_Seven.php:344, ../includes/Skins/Skin_Seven.php:437, ../includes/Skins/Skin_Seven.php:621, ../includes/Skins/Skin_Seven.php:714, ../includes/Skins/Skin_Six.php:345, ../includes/Skins/Skin_Six.php:439, ../includes/Skins/Skin_Six.php:624, ../includes/Skins/Skin_Six.php:718, ../includes/Skins/Skin_Three.php:365, ../includes/Skins/Skin_Three.php:459, ../includes/Skins/Skin_Three.php:644, ../includes/Skins/Skin_Three.php:738, ../includes/Skins/Skin_Two.php:365, ../includes/Skins/Skin_Two.php:459, ../includes/Skins/Skin_Two.php:644, ../includes/Skins/Skin_Two.php:738, ../includes/Traits/Extender.php:2091, ../includes/Traits/Extender.php:2115, ../includes/Traits/Extender.php:2126, ../includes/Traits/Extender.php:2249, ../includes/Traits/Extender.php:2279
+#: ../includes/Elements/Counter.php:357, ../includes/Elements/Counter.php:604, ../includes/Elements/Counter.php:788, ../includes/Elements/Counter.php:846, ../includes/Elements/Counter.php:889, ../includes/Elements/Divider.php:646, ../includes/Elements/Divider.php:747, ../includes/Elements/Dynamic_Filterable_Gallery.php:844, ../includes/Elements/Dynamic_Filterable_Gallery.php:934, ../includes/Elements/Dynamic_Filterable_Gallery.php:1083, ../includes/Elements/Dynamic_Filterable_Gallery.php:1114, ../includes/Elements/Dynamic_Filterable_Gallery.php:1165, ../includes/Elements/Dynamic_Filterable_Gallery.php:1262, ../includes/Elements/Dynamic_Filterable_Gallery.php:1347, ../includes/Elements/Dynamic_Filterable_Gallery.php:1388, ../includes/Elements/Dynamic_Filterable_Gallery.php:1417, ../includes/Elements/Flip_Carousel.php:644, ../includes/Elements/Google_Map.php:1017, ../includes/Elements/Google_Map.php:1045, ../includes/Elements/Image_Comparison.php:452, ../includes/Elements/Image_Hot_Spots.php:738, ../includes/Elements/Image_Hot_Spots.php:803, ../includes/Elements/Interactive_Card.php:1107, ../includes/Elements/Interactive_Card.php:1136, ../includes/Elements/Interactive_Card.php:1165, ../includes/Elements/Interactive_Card.php:1209, ../includes/Elements/Interactive_Card.php:1246, ../includes/Elements/Interactive_Card.php:1293, ../includes/Elements/LD_Course_List.php:753, ../includes/Elements/LD_Course_List.php:896, ../includes/Elements/LD_Course_List.php:946, ../includes/Elements/LD_Course_List.php:1003, ../includes/Elements/LD_Course_List.php:1147, ../includes/Elements/LD_Course_List.php:1310, ../includes/Elements/LD_Course_List.php:1354, ../includes/Elements/LD_Course_List.php:1405, ../includes/Elements/LD_Course_List.php:1504, ../includes/Elements/LD_Course_List.php:1583, ../includes/Elements/LD_Course_List.php:1769, ../includes/Elements/Lightbox.php:698, ../includes/Elements/Lightbox.php:874, ../includes/Elements/Lightbox.php:1214, ../includes/Elements/Logo_Carousel.php:624, ../includes/Elements/Logo_Carousel.php:809, ../includes/Elements/Logo_Carousel.php:865, ../includes/Elements/Logo_Carousel.php:994, ../includes/Elements/Logo_Carousel.php:1087, ../includes/Elements/Offcanvas.php:741, ../includes/Elements/Offcanvas.php:781, ../includes/Elements/Offcanvas.php:814, ../includes/Elements/Offcanvas.php:854, ../includes/Elements/Offcanvas.php:1207, ../includes/Elements/Offcanvas.php:1263, ../includes/Elements/One_Page_Navigation.php:474, ../includes/Elements/One_Page_Navigation.php:530, ../includes/Elements/One_Page_Navigation.php:575, ../includes/Elements/Post_Carousel.php:1053, ../includes/Elements/Post_Carousel.php:1109, ../includes/Elements/Post_Carousel.php:1284, ../includes/Elements/Post_Carousel.php:1347, ../includes/Elements/Post_Carousel.php:1427, ../includes/Elements/Post_List.php:863, ../includes/Elements/Post_List.php:1740, ../includes/Elements/Post_List.php:1783, ../includes/Elements/Post_List.php:1829, ../includes/Elements/Post_List.php:1876, ../includes/Elements/Price_Menu.php:424, ../includes/Elements/Price_Menu.php:637, ../includes/Elements/Price_Menu.php:718, ../includes/Elements/Price_Menu.php:969, ../includes/Elements/Protected_Content.php:665, ../includes/Elements/Protected_Content.php:712, ../includes/Elements/Static_Product.php:804, ../includes/Elements/Static_Product.php:849, ../includes/Elements/Static_Product.php:925, ../includes/Elements/Team_Member_Carousel.php:1928, ../includes/Elements/Team_Member_Carousel.php:1984, ../includes/Elements/Team_Member_Carousel.php:2101, ../includes/Elements/Team_Member_Carousel.php:2176, ../includes/Elements/Testimonial_Slider.php:1081, ../includes/Elements/Testimonial_Slider.php:1137, ../includes/Elements/Testimonial_Slider.php:1254, ../includes/Elements/Testimonial_Slider.php:1329, ../includes/Elements/Twitter_Feed_Carousel.php:745, ../includes/Elements/Twitter_Feed_Carousel.php:774, ../includes/Elements/Twitter_Feed_Carousel.php:804, ../includes/Elements/Twitter_Feed_Carousel.php:980, ../includes/Elements/Twitter_Feed_Carousel.php:1036, ../includes/Elements/Twitter_Feed_Carousel.php:1156, ../includes/Elements/Twitter_Feed_Carousel.php:1231, ../includes/Elements/Twitter_Feed_Carousel.php:1387, ../includes/Extensions/Content_Protection.php:519, ../includes/Extensions/Content_Protection.php:585, ../includes/Extensions/EAEL_Tooltip_Section.php:256, ../includes/Skins/Skin_Default.php:324, ../includes/Skins/Skin_Default.php:417, ../includes/Skins/Skin_Default.php:581, ../includes/Skins/Skin_Default.php:674, ../includes/Skins/Skin_Five.php:396, ../includes/Skins/Skin_Five.php:489, ../includes/Skins/Skin_Five.php:676, ../includes/Skins/Skin_Five.php:769, ../includes/Skins/Skin_Four.php:344, ../includes/Skins/Skin_Four.php:437, ../includes/Skins/Skin_Four.php:621, ../includes/Skins/Skin_Four.php:714, ../includes/Skins/Skin_One.php:392, ../includes/Skins/Skin_One.php:485, ../includes/Skins/Skin_One.php:669, ../includes/Skins/Skin_One.php:762, ../includes/Skins/Skin_Seven.php:344, ../includes/Skins/Skin_Seven.php:437, ../includes/Skins/Skin_Seven.php:621, ../includes/Skins/Skin_Seven.php:714, ../includes/Skins/Skin_Six.php:345, ../includes/Skins/Skin_Six.php:439, ../includes/Skins/Skin_Six.php:624, ../includes/Skins/Skin_Six.php:718, ../includes/Skins/Skin_Three.php:365, ../includes/Skins/Skin_Three.php:459, ../includes/Skins/Skin_Three.php:644, ../includes/Skins/Skin_Three.php:738, ../includes/Skins/Skin_Two.php:365, ../includes/Skins/Skin_Two.php:459, ../includes/Skins/Skin_Two.php:644, ../includes/Skins/Skin_Two.php:738, ../includes/Traits/Extender.php:2094, ../includes/Traits/Extender.php:2118, ../includes/Traits/Extender.php:2129, ../includes/Traits/Extender.php:2252, ../includes/Traits/Extender.php:2282
 msgid "Color"
 msgstr ""
 
-#: ../includes/Elements/Counter.php:373, ../includes/Elements/Divider.php:762, ../includes/Elements/Image_Hot_Spots.php:358, ../includes/Elements/Image_Hot_Spots.php:664, ../includes/Elements/LD_Course_List.php:1171, ../includes/Elements/Lightbox.php:890, ../includes/Elements/Lightbox.php:988, ../includes/Elements/Lightbox.php:1243, ../includes/Elements/Logo_Carousel.php:938, ../includes/Elements/Offcanvas.php:870, ../includes/Elements/Offcanvas.php:960, ../includes/Elements/Offcanvas.php:1222, ../includes/Elements/One_Page_Navigation.php:402, ../includes/Elements/Post_Carousel.php:1234, ../includes/Elements/Team_Member_Carousel.php:2054, ../includes/Elements/Testimonial_Slider.php:1207, ../includes/Elements/Twitter_Feed_Carousel.php:1109, ../includes/Extensions/EAEL_Tooltip_Section.php:196, ../includes/Traits/Extender.php:2297
+#: ../includes/Elements/Counter.php:373, ../includes/Elements/Divider.php:762, ../includes/Elements/Image_Hot_Spots.php:358, ../includes/Elements/Image_Hot_Spots.php:664, ../includes/Elements/LD_Course_List.php:1171, ../includes/Elements/Lightbox.php:890, ../includes/Elements/Lightbox.php:988, ../includes/Elements/Lightbox.php:1243, ../includes/Elements/Logo_Carousel.php:938, ../includes/Elements/Offcanvas.php:870, ../includes/Elements/Offcanvas.php:960, ../includes/Elements/Offcanvas.php:1222, ../includes/Elements/One_Page_Navigation.php:402, ../includes/Elements/Post_Carousel.php:1234, ../includes/Elements/Team_Member_Carousel.php:2054, ../includes/Elements/Testimonial_Slider.php:1207, ../includes/Elements/Twitter_Feed_Carousel.php:1109, ../includes/Extensions/EAEL_Tooltip_Section.php:196, ../includes/Traits/Extender.php:2300
 msgid "Size"
 msgstr ""
 
-#: ../includes/Elements/Counter.php:397, ../includes/Elements/Team_Member_Carousel.php:944, ../includes/Elements/Testimonial_Slider.php:712, ../includes/Traits/Extender.php:1187
+#: ../includes/Elements/Counter.php:397, ../includes/Elements/Team_Member_Carousel.php:944, ../includes/Elements/Testimonial_Slider.php:712, ../includes/Traits/Extender.php:1190
 msgid "Image Width"
 msgstr ""
 
@@ -605,7 +605,7 @@ msgstr ""
 msgid "Plain"
 msgstr ""
 
-#: ../includes/Elements/Divider.php:109, ../includes/Elements/Divider.php:241, ../includes/Elements/Divider.php:611, ../includes/Elements/Image_Hot_Spots.php:145, ../includes/Elements/Image_Hot_Spots.php:170, ../includes/Elements/Offcanvas.php:677, ../includes/Traits/Extender.php:2680
+#: ../includes/Elements/Divider.php:109, ../includes/Elements/Divider.php:241, ../includes/Elements/Divider.php:611, ../includes/Elements/Image_Hot_Spots.php:145, ../includes/Elements/Image_Hot_Spots.php:170, ../includes/Elements/Offcanvas.php:677, ../includes/Traits/Extender.php:2683
 msgid "Text"
 msgstr ""
 
@@ -637,11 +637,11 @@ msgstr ""
 msgid "Show Left Divider"
 msgstr ""
 
-#: ../includes/Elements/Divider.php:170, ../includes/Elements/Divider.php:206, ../includes/Elements/Image_Hot_Spots.php:256, ../includes/Elements/Interactive_Card.php:204, ../includes/Elements/Interactive_Card.php:424, ../includes/Elements/LD_Course_List.php:214, ../includes/Elements/LD_Course_List.php:237, ../includes/Elements/LD_Course_List.php:260, ../includes/Elements/LD_Course_List.php:283, ../includes/Elements/LD_Course_List.php:306, ../includes/Elements/LD_Course_List.php:329, ../includes/Elements/LD_Course_List.php:361, ../includes/Elements/LD_Course_List.php:384, ../includes/Elements/LD_Course_List.php:405, ../includes/Elements/LD_Course_List.php:425, ../includes/Elements/LD_Course_List.php:605, ../includes/Elements/LD_Course_List.php:1748, ../includes/Elements/Logo_Carousel.php:382, ../includes/Elements/One_Page_Navigation.php:195, ../includes/Elements/Post_Carousel.php:262, ../includes/Elements/Post_List.php:599, ../includes/Elements/Protected_Content.php:152, ../includes/Elements/Protected_Content.php:206, ../includes/Elements/Protected_Content.php:222, ../includes/Elements/Static_Product.php:174, ../includes/Elements/Static_Product.php:203, ../includes/Elements/Static_Product.php:1152, ../includes/Elements/Static_Product.php:1417, ../includes/Elements/Team_Member_Carousel.php:464, ../includes/Elements/Team_Member_Carousel.php:476, ../includes/Elements/Team_Member_Carousel.php:488, ../includes/Elements/Team_Member_Carousel.php:612, ../includes/Elements/Testimonial_Slider.php:358, ../includes/Elements/Testimonial_Slider.php:414, ../includes/Elements/Testimonial_Slider.php:485, ../includes/Elements/Woo_Collections.php:170, ../includes/Extensions/Content_Protection.php:126, ../includes/Extensions/EAEL_Tooltip_Section.php:115
+#: ../includes/Elements/Divider.php:170, ../includes/Elements/Divider.php:206, ../includes/Elements/Image_Hot_Spots.php:256, ../includes/Elements/Interactive_Card.php:204, ../includes/Elements/Interactive_Card.php:424, ../includes/Elements/LD_Course_List.php:214, ../includes/Elements/LD_Course_List.php:237, ../includes/Elements/LD_Course_List.php:260, ../includes/Elements/LD_Course_List.php:283, ../includes/Elements/LD_Course_List.php:306, ../includes/Elements/LD_Course_List.php:329, ../includes/Elements/LD_Course_List.php:361, ../includes/Elements/LD_Course_List.php:384, ../includes/Elements/LD_Course_List.php:405, ../includes/Elements/LD_Course_List.php:425, ../includes/Elements/LD_Course_List.php:605, ../includes/Elements/LD_Course_List.php:1748, ../includes/Elements/Logo_Carousel.php:382, ../includes/Elements/One_Page_Navigation.php:195, ../includes/Elements/Post_Carousel.php:262, ../includes/Elements/Post_List.php:602, ../includes/Elements/Protected_Content.php:152, ../includes/Elements/Protected_Content.php:206, ../includes/Elements/Protected_Content.php:222, ../includes/Elements/Static_Product.php:174, ../includes/Elements/Static_Product.php:203, ../includes/Elements/Static_Product.php:1152, ../includes/Elements/Static_Product.php:1417, ../includes/Elements/Team_Member_Carousel.php:464, ../includes/Elements/Team_Member_Carousel.php:476, ../includes/Elements/Team_Member_Carousel.php:488, ../includes/Elements/Team_Member_Carousel.php:612, ../includes/Elements/Testimonial_Slider.php:358, ../includes/Elements/Testimonial_Slider.php:414, ../includes/Elements/Testimonial_Slider.php:485, ../includes/Elements/Woo_Collections.php:170, ../includes/Extensions/Content_Protection.php:126, ../includes/Extensions/EAEL_Tooltip_Section.php:115
 msgid "Show"
 msgstr ""
 
-#: ../includes/Elements/Divider.php:171, ../includes/Elements/Divider.php:207, ../includes/Elements/Image_Hot_Spots.php:257, ../includes/Elements/Interactive_Card.php:205, ../includes/Elements/Interactive_Card.php:425, ../includes/Elements/LD_Course_List.php:218, ../includes/Elements/LD_Course_List.php:241, ../includes/Elements/LD_Course_List.php:264, ../includes/Elements/LD_Course_List.php:287, ../includes/Elements/LD_Course_List.php:310, ../includes/Elements/LD_Course_List.php:333, ../includes/Elements/LD_Course_List.php:365, ../includes/Elements/LD_Course_List.php:388, ../includes/Elements/LD_Course_List.php:409, ../includes/Elements/LD_Course_List.php:429, ../includes/Elements/LD_Course_List.php:606, ../includes/Elements/LD_Course_List.php:1749, ../includes/Elements/Logo_Carousel.php:383, ../includes/Elements/One_Page_Navigation.php:196, ../includes/Elements/Post_Carousel.php:263, ../includes/Elements/Post_List.php:600, ../includes/Elements/Protected_Content.php:153, ../includes/Elements/Protected_Content.php:207, ../includes/Elements/Protected_Content.php:223, ../includes/Elements/Static_Product.php:175, ../includes/Elements/Static_Product.php:204, ../includes/Elements/Static_Product.php:1153, ../includes/Elements/Static_Product.php:1418, ../includes/Elements/Team_Member_Carousel.php:465, ../includes/Elements/Team_Member_Carousel.php:477, ../includes/Elements/Team_Member_Carousel.php:489, ../includes/Elements/Team_Member_Carousel.php:613, ../includes/Elements/Testimonial_Slider.php:359, ../includes/Elements/Testimonial_Slider.php:415, ../includes/Elements/Testimonial_Slider.php:486, ../includes/Elements/Woo_Collections.php:171, ../includes/Extensions/Content_Protection.php:127, ../includes/Extensions/EAEL_Tooltip_Section.php:116
+#: ../includes/Elements/Divider.php:171, ../includes/Elements/Divider.php:207, ../includes/Elements/Image_Hot_Spots.php:257, ../includes/Elements/Interactive_Card.php:205, ../includes/Elements/Interactive_Card.php:425, ../includes/Elements/LD_Course_List.php:218, ../includes/Elements/LD_Course_List.php:241, ../includes/Elements/LD_Course_List.php:264, ../includes/Elements/LD_Course_List.php:287, ../includes/Elements/LD_Course_List.php:310, ../includes/Elements/LD_Course_List.php:333, ../includes/Elements/LD_Course_List.php:365, ../includes/Elements/LD_Course_List.php:388, ../includes/Elements/LD_Course_List.php:409, ../includes/Elements/LD_Course_List.php:429, ../includes/Elements/LD_Course_List.php:606, ../includes/Elements/LD_Course_List.php:1749, ../includes/Elements/Logo_Carousel.php:383, ../includes/Elements/One_Page_Navigation.php:196, ../includes/Elements/Post_Carousel.php:263, ../includes/Elements/Post_List.php:603, ../includes/Elements/Protected_Content.php:153, ../includes/Elements/Protected_Content.php:207, ../includes/Elements/Protected_Content.php:223, ../includes/Elements/Static_Product.php:175, ../includes/Elements/Static_Product.php:204, ../includes/Elements/Static_Product.php:1153, ../includes/Elements/Static_Product.php:1418, ../includes/Elements/Team_Member_Carousel.php:465, ../includes/Elements/Team_Member_Carousel.php:477, ../includes/Elements/Team_Member_Carousel.php:489, ../includes/Elements/Team_Member_Carousel.php:613, ../includes/Elements/Testimonial_Slider.php:359, ../includes/Elements/Testimonial_Slider.php:415, ../includes/Elements/Testimonial_Slider.php:486, ../includes/Elements/Woo_Collections.php:171, ../includes/Extensions/Content_Protection.php:127, ../includes/Extensions/EAEL_Tooltip_Section.php:116
 msgid "Hide"
 msgstr ""
 
@@ -737,7 +737,7 @@ msgstr ""
 msgid "Cards"
 msgstr ""
 
-#: ../includes/Elements/Dynamic_Filterable_Gallery.php:182, ../includes/Elements/Post_List.php:434, ../includes/Elements/Post_List.php:525
+#: ../includes/Elements/Dynamic_Filterable_Gallery.php:182, ../includes/Elements/Post_List.php:437, ../includes/Elements/Post_List.php:528
 msgid "Show Title"
 msgstr ""
 
@@ -829,7 +829,7 @@ msgstr ""
 msgid "Control Style"
 msgstr ""
 
-#: ../includes/Elements/Dynamic_Filterable_Gallery.php:645, ../includes/Elements/One_Page_Navigation.php:568, ../includes/Traits/Extender.php:2101, ../includes/Traits/Extender.php:2269
+#: ../includes/Elements/Dynamic_Filterable_Gallery.php:645, ../includes/Elements/One_Page_Navigation.php:568, ../includes/Traits/Extender.php:2104, ../includes/Traits/Extender.php:2272
 msgid "Active"
 msgstr ""
 
@@ -873,7 +873,7 @@ msgstr ""
 msgid "Item Content Style"
 msgstr ""
 
-#: ../includes/Elements/Dynamic_Filterable_Gallery.php:1338, ../includes/Elements/Post_List.php:1708
+#: ../includes/Elements/Dynamic_Filterable_Gallery.php:1338, ../includes/Elements/Post_List.php:1731
 msgid "Title Typography"
 msgstr ""
 
@@ -889,7 +889,7 @@ msgstr ""
 msgid "Read More Typography"
 msgstr ""
 
-#: ../includes/Elements/Dynamic_Filterable_Gallery.php:1437, ../includes/Elements/Interactive_Card.php:767, ../includes/Elements/Interactive_Card.php:968, ../includes/Elements/Static_Product.php:472, ../includes/Elements/Woo_Collections.php:384
+#: ../includes/Elements/Dynamic_Filterable_Gallery.php:1437, ../includes/Elements/Flip_Carousel.php:609, ../includes/Elements/Interactive_Card.php:767, ../includes/Elements/Interactive_Card.php:968, ../includes/Elements/Static_Product.php:472, ../includes/Elements/Woo_Collections.php:384
 msgid "Content Alignment"
 msgstr ""
 
@@ -1025,7 +1025,7 @@ msgstr ""
 msgid "Color &amp; Typography"
 msgstr ""
 
-#: ../includes/Elements/Flip_Carousel.php:609, ../includes/Elements/Interactive_Card.php:1156, ../includes/Elements/Interactive_Card.php:1284, ../includes/Elements/Testimonial_Slider.php:801, ../includes/Elements/Twitter_Feed_Carousel.php:765
+#: ../includes/Elements/Flip_Carousel.php:635, ../includes/Elements/Interactive_Card.php:1156, ../includes/Elements/Interactive_Card.php:1284, ../includes/Elements/Testimonial_Slider.php:801, ../includes/Elements/Twitter_Feed_Carousel.php:765
 msgid "Content Style"
 msgstr ""
 
@@ -1353,7 +1353,7 @@ msgstr ""
 msgid "SnazzyMaps Themes"
 msgstr ""
 
-#: ../includes/Elements/Google_Map.php:806, ../includes/Elements/Image_Hot_Spots.php:362, ../includes/Elements/LD_Course_List.php:125, ../includes/Elements/LD_Course_List.php:496, ../includes/Elements/Mailchimp.php:712, ../includes/Elements/Post_Carousel.php:317, ../includes/Elements/Testimonial_Slider.php:443, ../includes/Elements/Testimonial_Slider.php:525, ../includes/Extensions/EAEL_Particle_Section.php:80, ../includes/Skins/Skin_Default.php:26, ../includes/Skins/Skin_Default.php:180, ../includes/Skins/Skin_Default.php:467, ../includes/Skins/Skin_Five.php:229, ../includes/Skins/Skin_Five.php:539, ../includes/Skins/Skin_Four.php:180, ../includes/Skins/Skin_Four.php:487, ../includes/Skins/Skin_One.php:228, ../includes/Skins/Skin_One.php:535, ../includes/Skins/Skin_Seven.php:180, ../includes/Skins/Skin_Seven.php:487, ../includes/Skins/Skin_Six.php:180, ../includes/Skins/Skin_Six.php:489, ../includes/Skins/Skin_Three.php:199, ../includes/Skins/Skin_Three.php:509, ../includes/Skins/Skin_Two.php:199, ../includes/Skins/Skin_Two.php:509, ../includes/Traits/Extender.php:461, ../includes/Traits/Extender.php:3766, ../includes/Template/Content-Timeline/default.php:3, ../includes/Template/Dynamic-Filterable-Gallery/default.php:3, ../includes/Template/Post-Block/default.php:3, ../includes/Template/Post-Carousel/default.php:3, ../includes/Template/Post-List/default.php:3
+#: ../includes/Elements/Google_Map.php:806, ../includes/Elements/Image_Hot_Spots.php:362, ../includes/Elements/LD_Course_List.php:125, ../includes/Elements/LD_Course_List.php:496, ../includes/Elements/Mailchimp.php:712, ../includes/Elements/Post_Carousel.php:317, ../includes/Elements/Testimonial_Slider.php:443, ../includes/Elements/Testimonial_Slider.php:525, ../includes/Extensions/EAEL_Particle_Section.php:80, ../includes/Skins/Skin_Default.php:26, ../includes/Skins/Skin_Default.php:180, ../includes/Skins/Skin_Default.php:467, ../includes/Skins/Skin_Five.php:229, ../includes/Skins/Skin_Five.php:539, ../includes/Skins/Skin_Four.php:180, ../includes/Skins/Skin_Four.php:487, ../includes/Skins/Skin_One.php:228, ../includes/Skins/Skin_One.php:535, ../includes/Skins/Skin_Seven.php:180, ../includes/Skins/Skin_Seven.php:487, ../includes/Skins/Skin_Six.php:180, ../includes/Skins/Skin_Six.php:489, ../includes/Skins/Skin_Three.php:199, ../includes/Skins/Skin_Three.php:509, ../includes/Skins/Skin_Two.php:199, ../includes/Skins/Skin_Two.php:509, ../includes/Traits/Extender.php:461, ../includes/Traits/Extender.php:3769, ../includes/Template/Content-Timeline/default.php:3, ../includes/Template/Dynamic-Filterable-Gallery/default.php:3, ../includes/Template/Post-Block/default.php:3, ../includes/Template/Post-Carousel/default.php:3, ../includes/Template/Post-List/default.php:3
 msgid "Default"
 msgstr ""
 
@@ -1541,7 +1541,7 @@ msgstr ""
 msgid "Image Hotspots"
 msgstr ""
 
-#: ../includes/Elements/Image_Hot_Spots.php:114, ../includes/Elements/Post_List.php:1665, ../includes/Elements/Price_Menu.php:773, ../includes/Elements/Testimonial_Slider.php:1427, ../includes/Extensions/EAEL_Parallax_Section.php:194
+#: ../includes/Elements/Image_Hot_Spots.php:114, ../includes/Elements/Post_List.php:1688, ../includes/Elements/Price_Menu.php:773, ../includes/Elements/Testimonial_Slider.php:1427, ../includes/Extensions/EAEL_Parallax_Section.php:194
 msgid "Image Size"
 msgstr ""
 
@@ -2017,15 +2017,15 @@ msgstr ""
 msgid "Number of Columns"
 msgstr ""
 
-#: ../includes/Elements/Instagram_Feed.php:240, ../includes/Elements/LD_Course_List.php:189, ../includes/Elements/Post_List.php:482
+#: ../includes/Elements/Instagram_Feed.php:240, ../includes/Elements/LD_Course_List.php:189, ../includes/Elements/Post_List.php:485
 msgid "1 Column"
 msgstr ""
 
-#: ../includes/Elements/Instagram_Feed.php:241, ../includes/Elements/LD_Course_List.php:190, ../includes/Elements/Post_List.php:483
+#: ../includes/Elements/Instagram_Feed.php:241, ../includes/Elements/LD_Course_List.php:190, ../includes/Elements/Post_List.php:486
 msgid "2 Columns"
 msgstr ""
 
-#: ../includes/Elements/Instagram_Feed.php:242, ../includes/Elements/LD_Course_List.php:191, ../includes/Elements/Post_List.php:484
+#: ../includes/Elements/Instagram_Feed.php:242, ../includes/Elements/LD_Course_List.php:191, ../includes/Elements/Post_List.php:487
 msgid "3 Columns"
 msgstr ""
 
@@ -2057,7 +2057,7 @@ msgstr ""
 msgid "Show Username"
 msgstr ""
 
-#: ../includes/Elements/Instagram_Feed.php:305, ../includes/Traits/Extender.php:1343
+#: ../includes/Elements/Instagram_Feed.php:305, ../includes/Traits/Extender.php:1346
 msgid "Username"
 msgstr ""
 
@@ -2217,7 +2217,7 @@ msgstr ""
 msgid "Image Alignment"
 msgstr ""
 
-#: ../includes/Elements/Interactive_Card.php:330, ../includes/Elements/Post_Carousel.php:161, ../includes/Traits/Extender.php:1162, ../includes/Traits/Extender.php:1216
+#: ../includes/Elements/Interactive_Card.php:330, ../includes/Elements/Post_Carousel.php:161, ../includes/Traits/Extender.php:1165, ../includes/Traits/Extender.php:1219
 msgid "Image Height"
 msgstr ""
 
@@ -2569,7 +2569,7 @@ msgstr ""
 msgid "Hide course meta."
 msgstr ""
 
-#: ../includes/Elements/LD_Course_List.php:301, ../includes/Elements/LD_Course_List.php:465, ../includes/Elements/LD_Course_List.php:1346, ../includes/Elements/Post_List.php:1741
+#: ../includes/Elements/LD_Course_List.php:301, ../includes/Elements/LD_Course_List.php:465, ../includes/Elements/LD_Course_List.php:1346, ../includes/Elements/Post_List.php:1764
 msgid "Date"
 msgstr ""
 
@@ -2585,7 +2585,7 @@ msgstr ""
 msgid "Hide course excerpt"
 msgstr ""
 
-#: ../includes/Elements/LD_Course_List.php:344, ../includes/Elements/Post_List.php:457, ../includes/Elements/Post_List.php:571
+#: ../includes/Elements/LD_Course_List.php:344, ../includes/Elements/Post_List.php:460, ../includes/Elements/Post_List.php:574
 msgid "Excerpt Words"
 msgstr ""
 
@@ -2609,7 +2609,7 @@ msgstr ""
 msgid "A visual indicator of a student’s current progress in each course."
 msgstr ""
 
-#: ../includes/Elements/LD_Course_List.php:420, ../includes/Elements/LD_Course_List.php:1201, ../includes/Elements/Post_List.php:1644
+#: ../includes/Elements/LD_Course_List.php:420, ../includes/Elements/LD_Course_List.php:1201, ../includes/Elements/Post_List.php:1667
 msgid "Author Meta"
 msgstr ""
 
@@ -2697,7 +2697,7 @@ msgstr ""
 msgid "Bottom Space"
 msgstr ""
 
-#: ../includes/Elements/LD_Course_List.php:868, ../includes/Elements/Post_List.php:537, ../includes/Elements/Post_List.php:793
+#: ../includes/Elements/LD_Course_List.php:868, ../includes/Elements/Post_List.php:540, ../includes/Elements/Post_List.php:796
 msgid "Title Tag"
 msgstr ""
 
@@ -3011,7 +3011,7 @@ msgstr ""
 msgid "Extra Small"
 msgstr ""
 
-#: ../includes/Elements/Lightbox.php:994, ../includes/Elements/Offcanvas.php:966, ../includes/Traits/Extender.php:3776, ../includes/Traits/Extender.php:4051
+#: ../includes/Elements/Lightbox.php:994, ../includes/Elements/Offcanvas.php:966, ../includes/Traits/Extender.php:3779, ../includes/Traits/Extender.php:4054
 msgid "Medium"
 msgstr ""
 
@@ -3195,7 +3195,7 @@ msgstr ""
 msgid "Outside"
 msgstr ""
 
-#: ../includes/Elements/Logo_Carousel.php:1009, ../includes/Elements/Post_List.php:882, ../includes/Elements/Team_Member_Carousel.php:2113, ../includes/Elements/Testimonial_Slider.php:1266, ../includes/Elements/Twitter_Feed_Carousel.php:1168
+#: ../includes/Elements/Logo_Carousel.php:1009, ../includes/Elements/Post_List.php:885, ../includes/Elements/Team_Member_Carousel.php:2113, ../includes/Elements/Testimonial_Slider.php:1266, ../includes/Elements/Twitter_Feed_Carousel.php:1168
 msgid "Active Color"
 msgstr ""
 
@@ -3435,7 +3435,7 @@ msgstr ""
 msgid "Box"
 msgstr ""
 
-#: ../includes/Elements/Offcanvas.php:636, ../includes/Elements/Post_List.php:774
+#: ../includes/Elements/Offcanvas.php:636, ../includes/Elements/Post_List.php:777
 msgid "Bottom Spacing"
 msgstr ""
 
@@ -3535,7 +3535,7 @@ msgstr ""
 msgid "Spacing Between Items"
 msgstr ""
 
-#: ../includes/Elements/Post_Block.php:128, ../includes/Elements/Post_List.php:731
+#: ../includes/Elements/Post_Block.php:128, ../includes/Elements/Post_List.php:734
 msgid "Grid Gap"
 msgstr ""
 
@@ -3543,11 +3543,11 @@ msgstr ""
 msgid "Content Box Padding"
 msgstr ""
 
-#: ../includes/Elements/Post_Block.php:215, ../includes/Elements/Post_Carousel.php:430, ../includes/Elements/Post_List.php:1309, ../includes/Elements/Woo_Collections.php:297
+#: ../includes/Elements/Post_Block.php:215, ../includes/Elements/Post_Carousel.php:430, ../includes/Elements/Post_List.php:1332, ../includes/Elements/Woo_Collections.php:297
 msgid "Thumbnail Style"
 msgstr ""
 
-#: ../includes/Elements/Post_Block.php:281, ../includes/Elements/Post_Carousel.php:565, ../includes/Elements/Post_List.php:1112, ../includes/Elements/Post_List.php:1364
+#: ../includes/Elements/Post_Block.php:281, ../includes/Elements/Post_Carousel.php:565, ../includes/Elements/Post_List.php:1135, ../includes/Elements/Post_List.php:1387
 msgid "Title Hover Color"
 msgstr ""
 
@@ -3563,19 +3563,19 @@ msgstr ""
 msgid "Content Height"
 msgstr ""
 
-#: ../includes/Elements/Post_Block.php:431, ../includes/Elements/Post_Carousel.php:838, ../includes/Elements/Post_List.php:1212, ../includes/Elements/Post_List.php:1465
+#: ../includes/Elements/Post_Block.php:431, ../includes/Elements/Post_Carousel.php:838, ../includes/Elements/Post_List.php:1235, ../includes/Elements/Post_List.php:1488
 msgid "Meta Style"
 msgstr ""
 
-#: ../includes/Elements/Post_Block.php:440, ../includes/Elements/Post_Carousel.php:848, ../includes/Elements/Post_List.php:1220, ../includes/Elements/Post_List.php:1473
+#: ../includes/Elements/Post_Block.php:440, ../includes/Elements/Post_Carousel.php:848, ../includes/Elements/Post_List.php:1243, ../includes/Elements/Post_List.php:1496
 msgid "Meta Color"
 msgstr ""
 
-#: ../includes/Elements/Post_Block.php:452, ../includes/Elements/Post_Block.php:480, ../includes/Elements/Post_Carousel.php:860, ../includes/Elements/Post_List.php:1231, ../includes/Elements/Post_List.php:1484
+#: ../includes/Elements/Post_Block.php:452, ../includes/Elements/Post_Block.php:480, ../includes/Elements/Post_Carousel.php:860, ../includes/Elements/Post_List.php:1254, ../includes/Elements/Post_List.php:1507
 msgid "Meta Alignment"
 msgstr ""
 
-#: ../includes/Elements/Post_Block.php:513, ../includes/Elements/Post_Carousel.php:726, ../includes/Elements/Post_Carousel.php:887, ../includes/Elements/Post_List.php:1509
+#: ../includes/Elements/Post_Block.php:513, ../includes/Elements/Post_Carousel.php:726, ../includes/Elements/Post_Carousel.php:887, ../includes/Elements/Post_List.php:1532
 msgid "Meta Typography"
 msgstr ""
 
@@ -3603,7 +3603,7 @@ msgstr ""
 msgid "Post Carousel"
 msgstr ""
 
-#: ../includes/Elements/Post_Carousel.php:306, ../includes/Elements/Post_List.php:1266
+#: ../includes/Elements/Post_Carousel.php:306, ../includes/Elements/Post_List.php:1289
 msgid "Post Style"
 msgstr ""
 
@@ -3791,171 +3791,167 @@ msgstr ""
 msgid "Featured Post"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:310
-msgid "Featured Page"
-msgstr ""
-
-#: ../includes/Elements/Post_List.php:333
+#: ../includes/Elements/Post_List.php:336
 msgid "Featured Post Min Height"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:351
+#: ../includes/Elements/Post_List.php:354
 msgid "Equal Post Height"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:363
+#: ../includes/Elements/Post_List.php:366
 msgid "Post Min Height"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:387
+#: ../includes/Elements/Post_List.php:390
 msgid "Featured Post Width"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:405
+#: ../includes/Elements/Post_List.php:408
 msgid "List Area Width"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:423, ../includes/Elements/Post_List.php:514
+#: ../includes/Elements/Post_List.php:426, ../includes/Elements/Post_List.php:517
 msgid "Show Meta"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:445, ../includes/Elements/Post_List.php:560
+#: ../includes/Elements/Post_List.php:448, ../includes/Elements/Post_List.php:563
 msgid "Show Excerpt"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:471
+#: ../includes/Elements/Post_List.php:474
 msgid "List Post Settings"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:477
+#: ../includes/Elements/Post_List.php:480
 msgid "Post List Column(s)"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:492
+#: ../includes/Elements/Post_List.php:495
 msgid "Show Featured Image"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:541
+#: ../includes/Elements/Post_List.php:544
 msgid "h1"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:542
+#: ../includes/Elements/Post_List.php:545
 msgid "h2"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:543
+#: ../includes/Elements/Post_List.php:546
 msgid "h3"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:544
+#: ../includes/Elements/Post_List.php:547
 msgid "h4"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:545
+#: ../includes/Elements/Post_List.php:548
 msgid "h5"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:546
+#: ../includes/Elements/Post_List.php:549
 msgid "h6"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:583
-msgid "Expanison Indicator"
+#: ../includes/Elements/Post_List.php:586
+msgid "Expansion Indicator"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:587
+#: ../includes/Elements/Post_List.php:590
 msgid "..."
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:627
+#: ../includes/Elements/Post_List.php:630
 msgid "Show Author Meta"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:642
+#: ../includes/Elements/Post_List.php:645
 msgid "Show Category"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:656
+#: ../includes/Elements/Post_List.php:659
 msgid "Post List Style"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:755
+#: ../includes/Elements/Post_List.php:758
 msgid "Topbar Style"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:766
+#: ../includes/Elements/Post_List.php:769
 msgid "Topbar Border"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:801
+#: ../includes/Elements/Post_List.php:804
 msgid "Title Tag Background Color"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:812
+#: ../includes/Elements/Post_List.php:815
 msgid "Title Tag Color"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:824
+#: ../includes/Elements/Post_List.php:827
 msgid "Tag Typography"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:832
+#: ../includes/Elements/Post_List.php:835
 msgid "Category Filter"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:871
+#: ../includes/Elements/Post_List.php:874
 msgid "Active Background Color"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:917
+#: ../includes/Elements/Post_List.php:920
 msgid "Navigation Style"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:967
+#: ../includes/Elements/Post_List.php:990
 msgid "Icon Background Color"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:979
+#: ../includes/Elements/Post_List.php:1002
 msgid "Icon Hover Color"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:991
+#: ../includes/Elements/Post_List.php:1014
 msgid "Icon Background Hover Color"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:1048
+#: ../includes/Elements/Post_List.php:1071
 msgid "Featured Post Style"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:1321
+#: ../includes/Elements/Post_List.php:1344
 msgid "Thumbnail Space"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:1656
+#: ../includes/Elements/Post_List.php:1679
 msgid "Author Photo"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:1698
+#: ../includes/Elements/Post_List.php:1721
 msgid "Author Name"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:1773
+#: ../includes/Elements/Post_List.php:1796
 msgid "Category Style"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:1922
+#: ../includes/Elements/Post_List.php:1945
 msgid "Search Form Style"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:1933
+#: ../includes/Elements/Post_List.php:1956
 msgid "Form Width"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:1959
+#: ../includes/Elements/Post_List.php:1982
 msgid "Search Icon Color"
 msgstr ""
 
-#: ../includes/Elements/Post_List.php:2055
+#: ../includes/Elements/Post_List.php:2078
 msgid "Search"
 msgstr ""
 
@@ -5443,322 +5439,322 @@ msgstr ""
 msgid "Shikoba"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:820
+#: ../includes/Traits/Extender.php:823
 msgid "Header Image"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:840
+#: ../includes/Traits/Extender.php:843
 msgid "Pricing Position"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:845
+#: ../includes/Traits/Extender.php:848
 msgid "On Top"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:846
+#: ../includes/Traits/Extender.php:849
 msgid "At Bottom"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:857
+#: ../includes/Traits/Extender.php:860
 msgid "Icon Beside Title"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:867
+#: ../includes/Traits/Extender.php:870
 msgid "Header Layout"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:883
+#: ../includes/Traits/Extender.php:886
 msgid "Header Layout Two"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:1104
+#: ../includes/Traits/Extender.php:1107
 msgid "Automatic Update"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:1116
+#: ../includes/Traits/Extender.php:1119
 msgid "Stuck with something? Get help from live chat or support ticket."
 msgstr ""
 
-#: ../includes/Traits/Extender.php:1119
+#: ../includes/Traits/Extender.php:1122
 msgid "Initiate a Chat"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:1136
+#: ../includes/Traits/Extender.php:1139
 msgid "Join the Facebook community and discuss with fellow developers and users. Best way to connect with people and get feedback on your projects."
 msgstr ""
 
-#: ../includes/Traits/Extender.php:1140
+#: ../includes/Traits/Extender.php:1143
 msgid "Join Facebook Community"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:1148
+#: ../includes/Traits/Extender.php:1151
 msgid "Manage License"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:1297, ../includes/Traits/Extender.php:1417
+#: ../includes/Traits/Extender.php:1300, ../includes/Traits/Extender.php:1420
 msgid "Select Query"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:1310, ../includes/Traits/Extender.php:1431
+#: ../includes/Traits/Extender.php:1313, ../includes/Traits/Extender.php:1434
 msgid "Select Table"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:1320, ../includes/Traits/Extender.php:1442
+#: ../includes/Traits/Extender.php:1323, ../includes/Traits/Extender.php:1445
 msgid "MySQL Query"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:1331
+#: ../includes/Traits/Extender.php:1334
 msgid "Host"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:1355
+#: ../includes/Traits/Extender.php:1358
 msgid "Password"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:1368
+#: ../includes/Traits/Extender.php:1371
 msgid "Database"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:1382
+#: ../includes/Traits/Extender.php:1385
 msgid "Connect"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:1393
+#: ../includes/Traits/Extender.php:1396
 msgid "Disconnect"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:1454
+#: ../includes/Traits/Extender.php:1457
 msgid "API Key"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:1465
+#: ../includes/Traits/Extender.php:1468
 msgid "Sheet ID"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:1476
+#: ../includes/Traits/Extender.php:1479
 msgid "Table Range"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:1489
+#: ../includes/Traits/Extender.php:1492
 msgid "Table ID"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:1938, ../includes/Traits/Extender.php:1935
+#: ../includes/Traits/Extender.php:1941, ../includes/Traits/Extender.php:1938
 msgid "Multi Steps"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:1939
+#: ../includes/Traits/Extender.php:1942
 msgid "Split (Pro)"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:1936
+#: ../includes/Traits/Extender.php:1939
 msgid "Split"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:1964
+#: ../includes/Traits/Extender.php:1967
 msgid "Tabs Label"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:1972, ../includes/Traits/Extender.php:1977
+#: ../includes/Traits/Extender.php:1975, ../includes/Traits/Extender.php:1980
 msgid "Login"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:1984, ../includes/Traits/Extender.php:1989
+#: ../includes/Traits/Extender.php:1987, ../includes/Traits/Extender.php:1992
 msgid "Coupon"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:1995, ../includes/Traits/Extender.php:2000
+#: ../includes/Traits/Extender.php:1998, ../includes/Traits/Extender.php:2003
 msgid "Billing & Shipping"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2006, ../includes/Traits/Extender.php:2011
+#: ../includes/Traits/Extender.php:2009, ../includes/Traits/Extender.php:2014
 msgid "Payment"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2018
+#: ../includes/Traits/Extender.php:2021
 msgid "Previous/Next Label"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2026, ../includes/Traits/Extender.php:2031
+#: ../includes/Traits/Extender.php:2029, ../includes/Traits/Extender.php:2034
 msgid "Next"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2037, ../includes/Traits/Extender.php:2042
+#: ../includes/Traits/Extender.php:2040, ../includes/Traits/Extender.php:2045
 msgid "Previous"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2056
+#: ../includes/Traits/Extender.php:2059
 msgid "Tabs"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2212
+#: ../includes/Traits/Extender.php:2215
 msgid "Steps"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2261, ../includes/Traits/Extender.php:2287
+#: ../includes/Traits/Extender.php:2264, ../includes/Traits/Extender.php:2290
 msgid "Connector Color"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2346
+#: ../includes/Traits/Extender.php:2349
 msgid "Section"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2413
+#: ../includes/Traits/Extender.php:2416
 msgid "Previous/Next Button"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2556
+#: ../includes/Traits/Extender.php:2559
 msgid "Gap"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2584
+#: ../includes/Traits/Extender.php:2587
 msgid "Submit Form via AJAX"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2599
+#: ../includes/Traits/Extender.php:2602
 msgid "Social Login"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2603
+#: ../includes/Traits/Extender.php:2606
 msgid "Enable Login with Google"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2618
+#: ../includes/Traits/Extender.php:2621
 msgid "Text for Google Button"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2623, ../includes/Traits/Extender.php:2624
+#: ../includes/Traits/Extender.php:2626, ../includes/Traits/Extender.php:2627
 msgid "Login with Google"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2630
+#: ../includes/Traits/Extender.php:2633
 msgid "Enable Login with Facebook"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2645
+#: ../includes/Traits/Extender.php:2648
 msgid "Text for Facebook Button"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2650, ../includes/Traits/Extender.php:2651
+#: ../includes/Traits/Extender.php:2653, ../includes/Traits/Extender.php:2654
 msgid "Login with Facebook"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2658
+#: ../includes/Traits/Extender.php:2661
 msgid "Show Separator"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2676
+#: ../includes/Traits/Extender.php:2679
 msgid "Separator Type"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2679
+#: ../includes/Traits/Extender.php:2682
 msgid "Line"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2689
+#: ../includes/Traits/Extender.php:2692
 msgid "Separator Text"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2694
+#: ../includes/Traits/Extender.php:2697
 msgid "Or"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2695
+#: ../includes/Traits/Extender.php:2698
 msgid "Eg. Or"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2835
+#: ../includes/Traits/Extender.php:2838
 msgid "You are already logged in."
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2848, ../includes/Traits/Extender.php:2857
+#: ../includes/Traits/Extender.php:2851, ../includes/Traits/Extender.php:2860
 msgid "User data was not verified by Google"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2872, ../includes/Traits/Extender.php:2879
+#: ../includes/Traits/Extender.php:2875, ../includes/Traits/Extender.php:2882
 msgid "Facebook authorization failed"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2887
+#: ../includes/Traits/Extender.php:2890
 msgid "Facebook email validation failed"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2938, ../includes/Traits/Extender.php:2933, ../includes/Traits/Extender.php:2960
+#: ../includes/Traits/Extender.php:2941, ../includes/Traits/Extender.php:2936, ../includes/Traits/Extender.php:2963
 msgid "Logging user failed."
 msgstr ""
 
-#: ../includes/Traits/Extender.php:2964
+#: ../includes/Traits/Extender.php:2967
 msgid "You are logged in successfully"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:3276
+#: ../includes/Traits/Extender.php:3279
 msgid "Button Style"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:3750, ../includes/Traits/Extender.php:3820
+#: ../includes/Traits/Extender.php:3753, ../includes/Traits/Extender.php:3823
 msgid "Show Field Icons"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:3754
+#: ../includes/Traits/Extender.php:3757
 msgid "Show Password Strength Meter"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:3758
+#: ../includes/Traits/Extender.php:3761
 msgid "Show Password Strength Text"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:3762
+#: ../includes/Traits/Extender.php:3765
 msgid "Password Strength Text"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:3774, ../includes/Traits/Extender.php:4049
+#: ../includes/Traits/Extender.php:3777, ../includes/Traits/Extender.php:4052
 msgid "Very Weak"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:3775, ../includes/Traits/Extender.php:4050
+#: ../includes/Traits/Extender.php:3778, ../includes/Traits/Extender.php:4053
 msgid "Weak"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:3777, ../includes/Traits/Extender.php:4052
+#: ../includes/Traits/Extender.php:3780, ../includes/Traits/Extender.php:4055
 msgid "Strong"
 msgstr ""
 
 #. translators: %s: Strength of the Password eg. Bad, Good etc.
 #. translators: %s: Strength of the Password eg. Bad, Good etc.
 #. translators: %s: Strength of the Password eg. Bad, Good etc.
-#: ../includes/Traits/Extender.php:3782, ../includes/Traits/Extender.php:3785, ../includes/Traits/Extender.php:4080
+#: ../includes/Traits/Extender.php:3785, ../includes/Traits/Extender.php:3788, ../includes/Traits/Extender.php:4083
 msgid "%s Password"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:3786
+#: ../includes/Traits/Extender.php:3789
 msgid "Eg. Weak or Good etc."
 msgstr ""
 
-#: ../includes/Traits/Extender.php:3795, ../includes/Traits/Extender.php:4089
+#: ../includes/Traits/Extender.php:3798, ../includes/Traits/Extender.php:4092
 msgid "Password Hint"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:3801
+#: ../includes/Traits/Extender.php:3804
 msgid "WordPress Default"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:3806
+#: ../includes/Traits/Extender.php:3809
 msgid "Custom Password Hint"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:3808
+#: ../includes/Traits/Extender.php:3811
 msgid "Your custom password hint..."
 msgstr ""
 
-#: ../includes/Traits/Extender.php:4015
+#: ../includes/Traits/Extender.php:4018
 msgid "Strength Text Typography"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:4020
+#: ../includes/Traits/Extender.php:4023
 msgid "Password Hint Typography"
 msgstr ""
 
-#: ../includes/Traits/Extender.php:4044
+#: ../includes/Traits/Extender.php:4047
 msgid "Colors"
 msgstr ""
 

@@ -610,6 +610,16 @@ class UniteCreatorAddonView{
 					</span>
 					
 					<?php HelperHtmlUC::putDialogControlFieldsNotice() ?>
+					
+					<div class="vert_sap10"></div>
+					
+					<label>
+						<input id="uc_dialog_include_after_elementor_frontend" type="checkbox" name="include_after_elementor_frontend">
+						&nbsp;
+						<?php _e("Include after elementor-frontend.js", "unlimited-elements-for-elementor")?>
+						
+					</label>
+					
 				</div>
 			</div>
 			

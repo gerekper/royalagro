@@ -75,6 +75,14 @@
 					label="		Show &quot;Edit HTML&quot; Button in Widget Settings"
 					description="Show &quot;Edit HTML&quot; button in elementor panel widget settings">	
 				</field>
+				
+				<field name="enable_dynamic_visibility" 
+					type="boolean"
+					default="false" 
+					label="		Enable Dynamic Visibility"
+					hidden="true"
+					description="">	
+				</field>
 						
 				<field type="bulk_control_end"/>
 								

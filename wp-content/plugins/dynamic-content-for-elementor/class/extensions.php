@@ -348,6 +348,7 @@ class Extensions {
 				'icon' => 'icon-dyn-conditional-fields',
 				'plugin_depends' => [ 'elementor-pro' ],
 				'doc_url' => 'https://www.dynamic.ooo/widget/conditional-fields-v2-for-elementor-pro-form/',
+				'minimum_php' => '7.2',
 			],
 			'DCE_Extension_Form_WYSIWYG' => [
 				'name' => 'dce_extension_form_wysiwyg',
@@ -479,7 +480,9 @@ class Extensions {
 			foreach ( $extensions as $extension_class => $extension_info ) {
 				if ( ! isset( $excluded_extensions[ $extension_class ] ) ) {
 					$class = self::$namespace . $extension_class;
-					if ( Helper::check_plugin_dependencies( false, $extension_info['plugin_depends'] ) ) {
+					if ( Helper::check_plugin_dependencies( false, $extension_info['plugin_depends'] ) &&
+						( ! isset( $extension_info['minimum_php'] ) ||
+						version_compare( phpversion(), $extension_info['minimum_php'], '>=' ) ) ) {
 						$extension = new $class( $extension_info );
 						if ( isset( $extension->has_action ) && $extension->has_action ) {
 							$this->add_form_action( $extension );

@@ -520,6 +520,9 @@ class DCE_Extension_Form_Visibility extends DCE_Extension_Prototype {
 				'raw' => __( 'This extension is deprecated. You can continue to use it but we recommend that you use Conditional Fields v2 instead.', 'dynamic-content-for-elementor' ),
 				'type' => Controls_Manager::RAW_HTML,
 				'content_classes' => 'elementor-panel-alert elementor-panel-alert-warning',
+				'tab' => 'visibility',
+				'tabs_wrapper' => 'form_fields_tabs',
+				'inner_tab' => 'form_fields_visibility_tab',
 			);
 
 			$control_data['fields']['dce_field_visibility_mode'] = array(

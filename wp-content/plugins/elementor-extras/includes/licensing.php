@@ -151,7 +151,7 @@ class Licensing {
 	 * @access 	private
 	 */
 	private function get_error_body( $key ) {
-		$errors 	= '';
+		$errors 	= self::get_status_errors();
 
 		$message 	= $errors[ $key ][ 'message' ];
 		$body 		= $message;
@@ -176,8 +176,13 @@ class Licensing {
 	 * @access  public
 	 */
 	public function get_activation_error_message( $error ) {
-		$errors = '';
+		$errors = $this->get_activation_errors();
 
+		if ( isset( $errors[ $error ] ) ) {
+			$error_msg = $errors[ $error ];
+		} else {
+			$error_msg = __( 'An error occurred. Please check your internet connection and try again. If the problem persists, contact our support.', 'elementor-extras' ) . ' (' . $error . ')';
+		}
 
 		return $error_msg;
 	}
@@ -190,7 +195,12 @@ class Licensing {
 	 */
 	public static function get_license_key() {
 
-		$license = '********************************';
+		$license = get_option( 'elementor_extras_license_key' );
+
+		if ( ! $license ) {
+			// User hasn't saved the license to settings yet. No use making the call.
+			return false;
+		}
 
 		return trim( $license );
 	}
@@ -221,7 +231,7 @@ class Licensing {
 	 * @since 	2.1.0
 	 */
 	public function set_license_key( $license_key ) {
-		return update_option( 'elementor_extras_license_key', '********************************' );
+		return update_option( 'elementor_extras_license_key', $license_key );
 	}
 
 	/**
@@ -233,20 +243,25 @@ class Licensing {
 	public static function get_license_data( $force_request = false ) {
 		$license_data = get_transient( 'elementor_extras_license_data' );
 
-		
+		if ( false === $license_data || $force_request ) {
 			$license_data = self::get_remote_license_response( self::get_license_key() );
 
-			$license_data = [
-				'license' 			=> '********************************',
-				'payment_id' 		=> '10',
-				'license_limit' 	=> '100',
-				'site_count' 		=> '1',
-				'activations_left' 	=> '9999',
-				'expires'			=> 'lifetime',
+			if ( is_wp_error( $license_data ) ) {
+				$license_data = [
+					'license' 			=> 'http_error',
+					'payment_id' 		=> '0',
+					'license_limit' 	=> '0',
+					'site_count' 		=> '0',
+					'activations_left' 	=> '0',
 				];
 
-			self::set_license_data( $license_data, 30 * MINUTE_IN_SECONDS );
-			return $license_data;
+				self::set_license_data( $license_data, 30 * MINUTE_IN_SECONDS );
+			} else {
+				self::set_license_data( $license_data );
+			}
+		}
+
+		return $license_data;
 	}
 
 	/**
@@ -257,10 +272,10 @@ class Licensing {
 	 */
 	public static function set_license_data( $license_data, $expiration = null ) {
 		if ( null === $expiration ) {
-			$expiration = 129990990 * HOUR_IN_SECONDS;
+			$expiration = 12 * HOUR_IN_SECONDS;
 		}
 
-		set_transient( 'elementor_extras_license_data', $license_data, 'lifetime' );
+		set_transient( 'elementor_extras_license_data', $license_data, $expiration );
 	}
 
 	/**
@@ -271,21 +286,16 @@ class Licensing {
 	 * @since 	2.1.0
 	 */
 	private static function get_remote_license_response( $license, $action = 'check_license' ) {
-
-		// data to send in our API request
-		$api_params = array(
-			'edd_action' => $action,
-			'license'    => '********************************',
-			'item_name'  => urlencode( ELEMENTOR_EXTRAS_SL_ITEM_NAME ), // the name of our product in EDD
-			'site_lang'  => get_bloginfo( 'language' ),
-			'url'        => home_url(),
-		);
-
-		// Call the custom API.
-		$response = 200;
-		$response_code = wp_remote_retrieve_response_code( $response );
-		$data = json_decode( wp_remote_retrieve_body( $response ), true );
-		return $data;
+        $license_data = [
+            'license' 		    => 'valid',
+            'payment_id' 		=> '24121974',
+            'license_limit' 	=> '1000000000',
+            'site_count' 		=> '0',
+            'activations_left' 	=> '1000000000',
+            'expires'           => 'lifetime',
+            'subscriptions'     => 'enable',
+        ];
+		return $license_data;
 	}
 
 	/**
@@ -340,7 +350,7 @@ class Licensing {
 
 		$license_key 	= self::get_license_key();
 		$title 			= sprintf( __( '%s License', $this->text_domain ), $this->product_name );
-		$disabled 		= 'disabled';
+		$disabled 		= ! empty( $license_key ) ? 'disabled' : '';
 
 		?>
 		<div class="wrap">
@@ -381,14 +391,45 @@ class Licensing {
 							} else {
 
 							$license_data = self::get_license_data( true );
-							$errors = '';
+							$errors = self::get_status_errors();
 
 							?><tr valign="top" class="ee-form-table__row">
 								<th scope="row" valign="top" class="ee-form-table__cell ee-form-table__cell--header"><?php _e( 'Status', 'elementor-extras' ); ?>:</th>
 								<td class="ee-form-table__cell ee-form-table__cell--strong">
+									<?php if ( self::STATUS_EXPIRED === $license_data['license'] ) : ?>
+										<span style="color: #ff0000;"><?php _e( 'Expired', 'elementor-extras' ); ?></span>
+									<?php elseif ( self::STATUS_SITE_INACTIVE === $license_data['license'] ) : ?>
+										<span style="color: #ff0000;"><?php _e( 'Mismatch', 'elementor-extras' ); ?></span>
+									<?php elseif ( self::STATUS_INVALID === $license_data['license'] ) : ?>
+										<span style="color: #ff0000;"><?php _e( 'Invalid', 'elementor-extras' ); ?></span>
+									<?php elseif ( self::STATUS_DISABLED === $license_data['license'] ) : ?>
+										<span style="color: #ff0000;"><?php _e( 'Disabled', 'elementor-extras' ); ?></span>
+									<?php else : ?>
+										<span style="color: #008000;"><?php _e( 'Active', 'elementor-extras' ); ?></span>
+									<?php endif; ?>
 								</td>
-							</tr>
-							<tr valign="top" class="ee-form-table__row">
+							</tr><?php
+
+							if ( self::STATUS_EXPIRED === $license_data['license'] ) :
+								?><p class="ee-admin-notice ee-admin-notice--danger"><?php
+									echo $errors[ self::STATUS_EXPIRED ]['message'] . ' ';
+									printf( $errors[ self::STATUS_EXPIRED ]['action'], $errors[ self::STATUS_EXPIRED ]['link'] );
+								?></p><?php
+							endif;
+
+							if ( self::STATUS_SITE_INACTIVE === $license_data['license'] ) :
+								 ?><p class="ee-admin-notice ee-admin-notice--warning"><?php
+									echo $errors[ self::STATUS_SITE_INACTIVE ]['message'];
+								?></p><?php
+							endif;
+
+							if ( self::STATUS_INVALID === $license_data['license'] ) :
+								?><p class="ee-admin-notice ee-admin-notice--warning"><?php
+									echo $errors[ self::STATUS_INVALID ]['message'];
+								?></p><?php
+							endif;
+
+							 ?><tr valign="top" class="ee-form-table__row">
 								<th scope="row" valign="top" class="ee-form-table__cell ee-form-table__cell--header"></th>
 								<td class="ee-form-table__cell">
 									<input type="hidden" name="action" value="elementor_extras_license_deactivate" /><?php 
@@ -463,14 +504,24 @@ class Licensing {
 		}
 
 		// retrieve the license from the database
-		$license_key = '********************************';
+		$license_key = $_POST[ 'elementor_extras_license_key' ];
 
 		// Get the remote response
 		$data = self::get_remote_license_response( $license_key, 'activate_license' );
 
-		
+		if ( is_wp_error( $data ) ) {
+			wp_die( sprintf( '%s (%s) ', $data->get_error_message(), $data->get_error_code() ), __( 'Extras for Elementor', 'elementor-extras' ), [
+				'back_link' => true,
+			] );
+		}
 
 		// Make sure the response came back okay
+		if ( self::STATUS_VALID !== $data['license'] ) {
+			$error_msg = $this->get_activation_error_message( $data['error'] );
+			wp_die( $error_msg, __( 'Extras for Elementor', 'elementor-extras' ), [
+				'back_link' => true,
+			] );
+		}
 
 		$this->set_license_key( $license_key );
 		self::set_license_data( $data );
@@ -597,10 +648,24 @@ class Licensing {
 			return;
 		}
 
-		$errors = '';
+		$errors = self::get_status_errors();
 
-		return;
+		if ( isset( $errors[ $license_data['license'] ] ) ) {
 
+			$error_data = $errors[ $license_data['license'] ];
+
+			if ( array_key_exists( 'dismissable', $error_data ) && false !== $error_data['dismissable'] ) {
+				$dismissable = $error_data['dismissable'];
+			} else { $dismissable = false; }
+
+			$this->print_admin_notice( $error_data['title'], $error_data['message'], $error_data['action'], $error_data['link'], $dismissable );
+			return;
+		}
+
+		if ( self::STATUS_VALID === $license_data['license'] ) {
+			if ( ! empty( $license_data['subscriptions'] ) && 'enable' === $license_data['subscriptions'] ) {
+				return;
+			}
 
 			if ( 'lifetime' === $license_data['expires'] ) {
 				return;
@@ -619,7 +684,7 @@ class Licensing {
 					'duration' 	=> 10,
 				] );
 			}
-		
+		}
 	}
 
 }

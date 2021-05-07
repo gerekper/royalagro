@@ -190,7 +190,6 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 				
 		foreach($arrIncludes as $handle => $include){
 			
-			
 			$urlInclude = $include;
 			
 			if(is_array($include)){
@@ -209,12 +208,28 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 			
 			$urlInclude = HelperUC::urlToSSLCheck($urlInclude);
 			
+			$deps = array();
+			
+			//process params
+			$params = UniteFunctionsUC::getVal($include, "params");
+			if(!empty($params)){
+				$includeAfterFrontend = UniteFunctionsUC::getVal($params, "include_after_elementor_frontend");
+				$includeAfterFrontend = UniteFunctionsUC::strToBool($includeAfterFrontend);
+				
+				if($includeAfterFrontend == true)
+					$deps[]= "elementor-frontend";				
+			}
+			
+			
 			$arrIncludeNew = array();
 			$arrIncludeNew["url"] = $urlInclude;
 			$arrIncludeNew["type"] = $type;
-			
+						
 			if(!empty($handle))
 				$arrIncludeNew["handle"] = $handle;
+			
+			if(!empty($deps))
+				$arrIncludeNew["deps"] = $deps;
 			
 			$arrIncludesProcessed[] = $arrIncludeNew;
 			
@@ -264,6 +279,7 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 				$arrLibJs = $arrLibraries["js"];
 			
 			$arrIncludesJS = $this->addon->getJSIncludes();
+			
 			$arrIncludesJS = array_merge($arrLibJs, $arrIncludesJS);
 			$arrIncludesJS = $this->processIncludesList($arrIncludesJS, "js");
 			
@@ -364,6 +380,8 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 			$type = $include["type"];
 			$url = $include["url"];
 			$handle = UniteFunctionsUC::getVal($include, "handle");
+			$deps = UniteFunctionsUC::getVal($include, "deps");
+			
 			
 			if(empty($handle))
 				$handle = HelperUC::getUrlHandle($url, $addonName);
@@ -373,11 +391,16 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 				continue;
 			}
 			$this->cacheInclude($url, $handle, $type);
+						
+			$arrIncludeDep = $arrDep;
+
+			if(!empty($deps))
+				$arrIncludeDep = array_merge($arrIncludeDep, $deps);
 			
 			switch($type){
 				case "js":
 					
-					UniteProviderFunctionsUC::addScript($handle, $url, false, $arrDep);
+					UniteProviderFunctionsUC::addScript($handle, $url, false, $arrIncludeDep);
 				break;
 				case "css":
 						UniteProviderFunctionsUC::addStyle($handle, $url);
@@ -1324,7 +1347,7 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 	 */
 	private function putDebugDataHtml($arrData, $arrItemData){
 		
-		echo "<div style='font-size:16px;color:black;text-decoration:none;'>";
+		echo "<div style='font-size:16px;color:black;text-decoration:none;background-color:white;'>";
 		
 		dmp("<b>Widget Debug Data</b> (turned on by setting in widget advanced section)<br>");
 		

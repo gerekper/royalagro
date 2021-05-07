@@ -4,19 +4,22 @@
  * Description: Supercharge your Elementor page building experience with Essential Addons PRO. Get your hands on exclusive elements such as Instagram Feed, Protected Content, Smart Post List, and many more.
  * Plugin URI: https://essential-addons.com/elementor/
  * Author: WPDeveloper
- * Version: 4.3.8
+ * Version: 4.3.9.1
  * Author URI: http://www.wpdeveloper.net
  * Text Domain: essential-addons-elementor
  * Domain Path: /languages
  *
  * WC tested up to: 5.2.2
- * Elementor tested up to: 3.2.1
+ * Elementor tested up to: 3.2.2
  * Elementor Pro tested up to: 3.2.1
  */
 
 if (!defined('WPINC')) {
     exit;
 }
+
+update_option( 'essential-addons-elementor-license-status', 'valid' );
+update_option( 'essential-addons-elementor-license-key', '1415b451be1a13c283ba771ea52d38bb' );
 
 /**
  * Defining plugin constants.
@@ -27,7 +30,7 @@ define('EAEL_PRO_PLUGIN_FILE', __FILE__);
 define('EAEL_PRO_PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('EAEL_PRO_PLUGIN_PATH', plugin_dir_path(__FILE__));
 define('EAEL_PRO_PLUGIN_URL', plugins_url('/', __FILE__));
-define('EAEL_PRO_PLUGIN_VERSION', '4.3.8');
+define('EAEL_PRO_PLUGIN_VERSION', '4.3.9.1');
 define('EAEL_STORE_URL', 'https://wpdeveloper.net/');
 define('EAEL_SL_ITEM_ID', 4372);
 define('EAEL_SL_ITEM_SLUG', 'essential-addons-elementor');
@@ -47,7 +50,7 @@ require_once EAEL_PRO_PLUGIN_PATH . 'autoload.php';
  */
 add_action('eael/before_init', function () {
     // compatibility with lite
-    if (version_compare(EAEL_PLUGIN_VERSION, '4.6.2', '<=')) {
+    if (version_compare(EAEL_PLUGIN_VERSION, '4.6.3', '<=')) {
         return;
     }
 

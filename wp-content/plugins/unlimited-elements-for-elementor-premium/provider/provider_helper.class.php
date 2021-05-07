@@ -181,7 +181,7 @@ class HelperProviderUC{
 	 * modify memory limit setting
 	 */
 	public static function modifyGeneralSettings_memoryLimit($objSettings){
-		
+				
 		//modify memory limit
 		
 		$memoryLimit = ini_get('memory_limit');

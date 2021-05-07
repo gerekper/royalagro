@@ -192,6 +192,9 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 			//set hidden			
 			$isHidden = isset($setting["hidden"]);
 			
+			if($isHidden == true && $setting["hidden"] === "false")
+				$isHidden = false;
+			
 			//operate saps
 			if($this->showSaps == true && $this->sapsType == self::SAPS_TYPE_INLINE){
 				

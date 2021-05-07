@@ -48,7 +48,7 @@ class ConditionalFieldsV2 extends DCE_Extension_Prototype {
 		$conditions = [];
 		foreach ( $instance['form_fields'] as $field ) {
 			$field_ids[] = $field['custom_id'];
-			if ( $field['dce_field_conditions_mode'] !== 'visible' ) {
+			if ( $field['dce_field_conditions_mode'] === 'show' || $field['dce_field_conditions_mode'] == 'hide' ) {
 				$conditions[] = [
 					'id' => $field['custom_id'],
 					'condition' => self::and_join_lines( $field['dce_conditions_expression'] ),
@@ -79,8 +79,9 @@ class ConditionalFieldsV2 extends DCE_Extension_Prototype {
 					[ $this, 'update_controls' ] );
 		add_action( 'elementor-pro/forms/pre_render',
 					[ $this, 'add_assets_depends' ], 10, 2 );
+		// very low priority because it needs to fix validation of other validation hooks.
 		add_action( 'elementor_pro/forms/validation',
-					[ $this, 'fix_validation' ], 10, 2 );
+					[ $this, 'fix_validation' ], 1000, 2 );
 	}
 
 	public function update_controls( $widget ) {

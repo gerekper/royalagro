@@ -242,7 +242,6 @@ abstract class Base_App {
 	 */
 	public function is_connected() {
 		return true;
-		//return (bool) $this->get( 'access_token' );
 	}
 
 	/**
@@ -351,20 +350,26 @@ abstract class Base_App {
 			$headers['X-Elementor-Signature'] = hash_hmac( 'sha256', wp_json_encode( $request_body, JSON_NUMERIC_CHECK ), $this->get( 'access_token_secret' ) );
 		}
 
-		if ( $action === 'get_template_content' && file_exists( ELEMENTOR_PATH . 'templates/' . $request_body['id'] . '.json' ) ) {
-			$response = wp_remote_get( ELEMENTOR_URL . 'templates/' . $request_body['id'] . '.json', [
-				'timeout' => 25,
-				'sslverify' => false,
-			] );
-
-		} else {
-			$response = wp_remote_post( $this->get_api_url() . '/' . $action, [
-				'body' => $request_body,
-				'headers' => $headers,
-				'timeout' => 25,
-			] );
+	// NF ++
+	if ($action === 'get_template_content') {
+		$templateExists = false;
+		if (file_exists(ELEMENTOR_PATH . 'templates/' . $request_body['id'] . '.json')) {
+			$templateExists = true;
+			$url = ELEMENTOR_URL . 'templates/' . $request_body['id'] . '.json';
 		}
-			if ( is_wp_error( $response ) ) {
+	}
+	if ($templateExists) {
+		$response = wp_remote_get( $url, [
+		'timeout' => 40,
+		'sslverify' => false,
+	] );
+	} 
+	// NF end
+		
+		// NF ++
+		
+		// NF end
+		if ( is_wp_error( $response ) ) {
 			wp_die( $response, [
 				'back_link' => true,
 			] );
@@ -393,10 +398,8 @@ abstract class Base_App {
 			// In case $as_array = true.
 			$body = (object) $body;
 
-			$message = isset( $body->message ) ? $body->message : wp_remote_retrieve_response_message( $response );
-			$code = (int) ( isset( $body->code ) ? $body->code : $response_code );
-
-			
+			$message = 'Template file does not exist in custom directory...';
+			$code = isset( $body->code ) ? $body->code : $response_code;
 
 			return new \WP_Error( $code, $message );
 		}

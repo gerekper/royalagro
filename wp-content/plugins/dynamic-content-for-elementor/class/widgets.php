@@ -740,7 +740,7 @@ class Widgets {
 			foreach ( $widgets_info as $widget_class => $widget_info ) {
 				if ( ! isset( self::$registered_widgets[ $widget_class ] ) ) {
 					if ( ! $excluded_widgets || ! isset( $excluded_widgets[ $widget_class ] ) ) {
-						if ( Helper::check_plugin_dependencies( false, $widget_info['plugin_depends'] ) ) {
+						if ( Helper::check_plugin_dependencies( false, $widget_info['plugin_depends'] ) && ( ! isset( $widget_info['minimum_php'] ) || ( isset( $widget_info['minimum_php'] ) && version_compare( phpversion(), $widget_info['minimum_php'], '>=' ) ) ) ) {
 							$widget_object_name = self::$namespace . $widget_class;
 							$widget_object = new $widget_object_name();
 							\Elementor\Plugin::instance()->widgets_manager->register_widget_type( $widget_object );

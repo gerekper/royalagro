@@ -22,6 +22,7 @@ abstract class Features {
 	public static function show_feature( $feature_class, $feature_info, $excluded_features = [] ) {
 		$feature_activated = ! isset( $excluded_features[ $feature_class ] );
 		$plugin_dependencies_not_satisfied = Helper::check_plugin_dependencies( true, $feature_info['plugin_depends'] );
+		$php_version_not_satisfied = isset( $feature_info['minimum_php'] ) && version_compare( phpversion(), $feature_info['minimum_php'], '<' );
 		?>
 
 		<div class="dce-feature dce-feature-group-<?php echo strtolower( $feature_class ); ?> dce-feature-<?php echo urlencode( strtolower( $feature_info['title'] ) ); ?>
@@ -33,7 +34,13 @@ abstract class Features {
 				echo ' widget-activated';
 			} ?>
 			">
-		<?php if ( empty( $plugin_dependencies_not_satisfied ) ) { ?>
+
+		<?php if( $php_version_not_satisfied ) { ?>
+			<p class="php-version"><?php printf( __( 'This feature requires PHP v%1$s+', 'dynamic-content-for-elementor' ), $feature_info['minimum_php'] ); ?></p>
+		<?php } ?>
+
+		<?php 
+		if ( empty( $plugin_dependencies_not_satisfied ) && ! $php_version_not_satisfied ) { ?>
 			<div class="dce-check">
 				<input type="checkbox" name="dce-feature[<?php echo $feature_class; ?>]" value="true" id="dce-feature-<?php echo $feature_class; ?>" class="dce-checkbox" <?php
 				if ( $feature_activated ) {
@@ -60,6 +67,7 @@ abstract class Features {
 			<p style="margin-top: -10px"><a href="<?php echo $feature_info['doc_url']; ?>" target="_blank"><?php _e( 'Documentation', 'dynamic-content-for-elementor' ); ?></a></p>
 		<?php }
 		$elementor_controls_usage = get_option( 'elementor_controls_usage' );
+
 		$feature_used = static::calculate_usage( $feature_info['name'], $elementor_controls_usage );
 		if ( $feature_used ) {
 			if ( 1 === $feature_used ) {

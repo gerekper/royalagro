@@ -31,10 +31,12 @@
 
 	if(smsc) smsc.remove();
 
-	if( elementSettings[DCE_dynposts_skinPrefix+'grid_type'] == 'masonry' )
-    activeMasonry();
+	if( elementSettings[DCE_dynposts_skinPrefix+'grid_type'] == 'masonry' ) {
+		activeMasonry();
+	}
+    
 
-  // InfiniteScroll
+  	// InfiniteScroll
 	if (elementSettings.infiniteScroll_enable){
         var elementorElement = '.elementor-element-' + id_scope;
         var is_history = Boolean( elementSettings.infiniteScroll_enable_history ) ? 'replace' : false;

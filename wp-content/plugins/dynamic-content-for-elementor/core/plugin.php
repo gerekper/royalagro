@@ -230,8 +230,10 @@ class Plugin {
 			$allow_pagination = $this->dce_check_posts_pagination( $current_post_id, $dce_posts_widgets );
 		}
 
+		$dce_template = get_option( 'dce_template' );
+
 		// Check if single DCE template is active and check for DCE posts pagination in template
-		if ( ! get_option( 'dce_template_disable' ) && ! $allow_pagination ) {
+		if ( isset( $dce_template ) && 'active' == $dce_template && ! $allow_pagination ) {
 			$options = get_option( 'dyncontel_options' );
 			$post_type = get_post_type( $current_post_id );
 

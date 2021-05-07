@@ -298,6 +298,14 @@ class UniteCreatorWooIntegrate{
     		$arrProduct["woo_".$propertyName] = $value;    		
     	}
 		
+    	//make the rating stars array
+    	$arrWooStars = array();
+    	$rating = UniteFunctionsUC::getVal($arrData, "average_rating");
+    	$rating = floatval($rating);
+    	
+    	$arrWooStars = HelperHtmlUC::getRatingArray($rating);
+    	$arrProduct["woo_rating_stars"] = $arrWooStars;
+    	
     	//add prices of variations
     	
     	if($type == self::PRODUCT_TYPE_VARIABLE){
@@ -349,7 +357,8 @@ class UniteCreatorWooIntegrate{
 		
 		$arrKeys += $arrProperties;
 		
-    	$arrKeys[] = "woo_discount_percent";
+    	$arrKeys[] = "woo_rating_stars";
+		$arrKeys[] = "woo_discount_percent";
     	$arrKeys[] = "woo_currency";
     	$arrKeys[] = "woo_currency_symbol";
     	$arrKeys[] = "woo_link_addcart_cart";

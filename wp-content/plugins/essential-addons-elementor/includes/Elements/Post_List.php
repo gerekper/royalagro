@@ -8,7 +8,8 @@ use \Elementor\Group_Control_Border;
 use \Elementor\Group_Control_Box_Shadow;
 use \Elementor\Group_Control_Image_Size;
 use \Elementor\Group_Control_Typography;
-use Elementor\Plugin;
+use \Elementor\Plugin;
+use \Elementor\Icons_Manager;
 use \Elementor\Core\Schemes\Typography;
 use \Elementor\Widget_Base;
 use \Elementor\Utils;
@@ -286,37 +287,40 @@ class Post_List extends Widget_Base
                 'label' => __('Featured Post', 'essential-addons-elementor'),
                 'label_block' => true,
                 'type' => 'eael-select2',
-                'source_type' => 'post',
+                'source_name' => 'post_type',
+                'source_type' => 'any',
                 'condition' => [
                     'eael_post_list_featured_area' => 'yes',
                 ],
             ]
         );
 
-        $this->add_control(
-            'featured_page_divider',
-            [
-                'type' => Controls_Manager::RAW_HTML,
-                'label_block' => false,
-                'raw' => '<br>',
-                'condition' => [
-                    'post_type' => 'page',
-                ],
-            ]
-        );
-        $this->add_control(
-            'featured_page',
-            [
-                'label' => __('Featured Page', 'essential-addons-elementor'),
-                'type' => 'eael-select2',
-                'label_block' => true,
-                'source_type' => 'page',
-                'condition' => [
-                    'post_type' => 'page',
-                    'eael_post_list_featured_area' => 'yes',
-                ],
-            ]
-        );
+//        $this->add_control(
+//            'featured_page_divider',
+//            [
+//                'type' => Controls_Manager::RAW_HTML,
+//                'label_block' => false,
+//                'raw' => '<br>',
+//                'condition' => [
+//                    'post_type' => 'page',
+//                ],
+//            ]
+//        );
+
+//        $this->add_control(
+//            'featured_page',
+//            [
+//                'label' => __('Featured Page', 'essential-addons-elementor'),
+//                'type' => 'eael-select2',
+//                'label_block' => true,
+//                'source_name' => 'post_type',
+//                'source_type' => 'page',
+//                'condition' => [
+//                    'post_type' => 'page',
+//                    'eael_post_list_featured_area' => 'yes',
+//                ],
+//            ]
+//        );
 
         $this->add_group_control(
             Group_Control_Image_Size::get_type(),
@@ -580,7 +584,7 @@ class Post_List extends Widget_Base
         $this->add_control(
             'eael_post_list_excerpt_expanison_indicator',
             [
-                'label' => esc_html__('Expanison Indicator', 'essential-addons-elementor'),
+                'label' => esc_html__('Expansion Indicator', 'essential-addons-elementor'),
                 'type' => Controls_Manager::TEXT,
                 'dynamic' => [ 'active' => true ],
                 'label_block' => false,
@@ -947,6 +951,26 @@ class Post_List extends Widget_Base
                 ],
             ]
         );
+
+	    $this->add_control(
+		    'eael_section_post_list_nav_icon_size',
+		    [
+			    'label' => esc_html__('Icon Size', 'essential-addons-elementor'),
+			    'type' => Controls_Manager::SLIDER,
+			    'default' => [
+				    'size' => 14,
+			    ],
+			    'range' => [
+				    'px' => [
+					    'max' => 50,
+				    ],
+			    ],
+			    'selectors' => [
+				    '{{WRAPPER}} .post-list-pagination .btn-next-post i, {{WRAPPER}} .post-list-pagination .btn-prev-post i' => 'font-size: {{SIZE}}px;',
+				    '{{WRAPPER}} .post-list-pagination .btn-prev-post svg, {{WRAPPER}} .post-list-pagination .btn-next-post svg' => 'width: {{SIZE}}px;',
+			    ],
+		    ]
+	    );
 
         $this->add_control(
             'eael_section_post_list_nav_icon_color',
@@ -2070,7 +2094,7 @@ class Post_List extends Widget_Base
             $post = get_post(intval($settings['featured_posts']));
             setup_postdata($post);
 
-            $category = get_the_category();
+            $category = wp_get_object_terms( get_the_ID(), get_object_taxonomies( get_post_type( get_the_ID() ) ) );
             $featured_image_url = Group_Control_Image_Size::get_attachment_image_src(
                 get_post_thumbnail_id(),
                 'featured_image_size',
@@ -2085,7 +2109,7 @@ class Post_List extends Widget_Base
 							</div>
                             
                             <div class="featured-content">';
-                if ($settings['eael_post_list_post_cat'] != '') {
+                if ($settings['eael_post_list_post_cat'] != '' && !empty($category[0]->term_id)) {
                     echo '<div class="meta-categories">
 						                    <a href="' . esc_url(get_category_link($category[0]->term_id)) . '">' . esc_html($category[0]->name) . '</a>
 						                </div>';
@@ -2115,7 +2139,7 @@ class Post_List extends Widget_Base
                 echo '<div class="eael-post-list-featured-wrap">
                         <div class="eael-post-list-featured-inner" style="background-image: url(' . wp_get_attachment_image_url(get_post_thumbnail_id(), 'full') . ')">
                             <div class="featured-content">';
-                if ($settings['eael_post_list_layout_type'] == 'default' && $settings['eael_post_list_post_cat'] != '') {
+                if ($settings['eael_post_list_layout_type'] == 'default' && $settings['eael_post_list_post_cat'] != '' && !empty($category[0]->term_id)) {
                     echo '<div class="meta-categories">
 						                    <a href="' . esc_url(get_category_link($category[0]->term_id)) . '">' . esc_html($category[0]->name) . '</a>
 						                </div>';
@@ -2177,12 +2201,21 @@ class Post_List extends Widget_Base
             $eael_post_list_pagination_next_icon = (isset($settings['__fa4_migrated']['eael_post_list_pagination_next_icon_new']) || empty($settings['eael_post_list_pagination_next_icon']) ? $settings['eael_post_list_pagination_next_icon_new']['value'] : $settings['eael_post_list_pagination_next_icon']);
 
             echo '<div class="post-list-pagination"  data-nonce="'.wp_create_nonce( 'load_more' ).'" data-page-id="'.$this->page_id.'" data-widget-id="'.$this->get_id().'" data-template=' . json_encode(['dir'   => 'pro', 'file_name' => $settings['eael_post_list_layout_type'], 'name' => $this->process_directory_name()], 1) . ' data-widget="' . $this->get_id() . '" data-class="' . get_class($this) . '" data-args="' . http_build_query($args) . '" data-settings="' . http_build_query($data_settings) . '" data-page="1">
-                <button class="btn btn-prev-post" id="post-nav-prev-' . $this->get_id() . '" disabled="true">
-                    <span class="' . $eael_post_list_pagination_prev_icon . '"></span>
-                </button>
-                <button class="btn btn-next-post" id="post-nav-next-' . $this->get_id() . '">
-                    <span class="' . $eael_post_list_pagination_next_icon . '"></span>
-                </button>
+                <button class="btn btn-prev-post" id="post-nav-prev-' . $this->get_id() . '" disabled="true">';
+                    if (isset($settings['__fa4_migrated']['eael_post_list_pagination_prev_icon_new']) || empty($settings['eael_post_list_pagination_prev_icon'])) {
+                        Icons_Manager::render_icon( $settings['eael_post_list_pagination_prev_icon_new'], [ 'aria-hidden' => 'true' ] );
+                    } else {
+                        echo '<span class="' . $settings['eael_post_list_pagination_prev_icon'] . '"></span>';
+                    }               
+                echo '</button>';
+                echo '<button class="btn btn-next-post" id="post-nav-next-' . $this->get_id() . '">';
+                    if (isset($settings['__fa4_migrated']['eael_post_list_pagination_next_icon_new']) || empty
+                    ($settings['eael_post_list_pagination_next_icon'])) {
+                        Icons_Manager::render_icon( $settings['eael_post_list_pagination_next_icon_new'], [ 'aria-hidden' => 'true' ] );
+                    } else {
+                        echo '<span class="' . $settings['eael_post_list_pagination_next_icon'] . '"></span>';
+                    }
+                echo '</button>
 			</div>';
         }
     }

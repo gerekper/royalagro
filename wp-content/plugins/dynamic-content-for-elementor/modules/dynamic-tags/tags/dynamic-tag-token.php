@@ -36,10 +36,9 @@ class DCE_DynamicTag_Token extends Tag {
 	}
 
 	protected function _register_controls() {
-
 		if ( current_user_can( 'install_plugins' ) || ! is_admin() ) {
 			$this->register_controls_settings();
-		} elseif ( ! current_user_can( 'install_plugins' ) && is_admin() ) {
+		} else {
 			$this->register_controls_non_admin_notice();
 		}
 	}
@@ -321,34 +320,12 @@ class DCE_DynamicTag_Token extends Tag {
 	}
 
 	public function render() {
-
-		if (
-			! current_user_can( 'install_plugins' )
-			&& \Elementor\Plugin::$instance->editor->is_edit_mode()
-		) {
-
-			$this->render_non_admin_notice();
-
-		} elseif (
-			(
-				current_user_can( 'install_plugins' )
-				&& \Elementor\Plugin::$instance->editor->is_edit_mode()
-			)
-			||
-			( ! is_admin()
-			)
-		) {
-
-			$settings = $this->get_settings_for_display( null, true );
-			if ( empty( $settings ) ) {
-				return;
-			}
-
-			$value = $this->get_token_value( $settings );
-
-			echo $value;
-
+		$settings = $this->get_settings_for_display( null, true );
+		if ( empty( $settings ) ) {
+			return;
 		}
+		$value = $this->get_token_value( $settings );
+		echo $value;
 	}
 
 	public function get_token_value( $settings ) {
@@ -452,7 +429,6 @@ class DCE_DynamicTag_Token extends Tag {
 	}
 
 	public function get_content( array $options = [] ) {
-
 		$settings = $this->get_settings();
 
 		$value = false;

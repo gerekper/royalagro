@@ -4,7 +4,7 @@ Tags: elementor, elements, addons, elementor addon, elementor widget, elementor 
 Requires at least: 4.5
 Tested up to: 5.7.1
 Requires PHP: 5.4
-Stable tag: 2.3.8
+Stable tag: 2.3.9
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -89,6 +89,12 @@ Yes, it will work with any WordPress theme as long as you are using Elementor as
 Premium Addons for Elementor is light weight and we also gave you the control to enable only the elements you actually use on your website for faster performance.
 
 == Changelog ==
+
+= 2.3.9 =
+
+- Tweak: Added Hovered Image Width control option in Image Accordion widget.
+- Tweak: Javascript Code refactored for better performance and security.
+- Fixed: Lottie Animation icon size option not working on Chrome in Whatsapp Chat widget.
 
 = 2.3.8 =
 

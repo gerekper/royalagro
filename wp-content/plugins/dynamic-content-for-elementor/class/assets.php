@@ -170,11 +170,14 @@ class Assets {
 			'dce-inertia-scroll' => '/assets/lib/inertiaScroll/jquery-inertiaScroll.js',
 			'dce-lax-lib' => '/assets/lib/lax/lax.min.js',
 			'dce-scrolling' => '/assets/js/scrolling.js',
-			'dce-google-maps-api' => "https://maps.googleapis.com/maps/api/js?key=${google_maps_api}&language=${locale2}",
+
 			'dce-google-maps-markerclusterer' => 'https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js',
 			'dce-google-maps' => '/assets/js/dynamic-google-maps.js',
 			'dce-stripe-js' => 'https://js.stripe.com/v3',
 		];
+		if ( ! empty( $google_maps_api) ) {
+			self::$vendor_js['dce-google-maps-api'] = "https://maps.googleapis.com/maps/api/js?key=${google_maps_api}&language=${locale2}";
+		}
 		if ( ! empty( $paypal_client_id ) ) {
 			self::$vendor_js['dce-paypal-sdk'] = "https://www.paypal.com/sdk/js?client-id=${paypal_client_id}&currency=${paypal_currency}";
 		}
@@ -337,21 +340,6 @@ class Assets {
 	public static function dce_frontend_enqueue_style() {
 		wp_enqueue_style( 'dce-style' );
 		wp_enqueue_style( 'dashicons' );
-	}
-
-	public static function get_enabled_css() {
-		$widget_manager = new Widgets();
-		$widget_manager->on_widgets_registered();
-
-		$extension_manager = new Extensions();
-		$extension_manager->on_extensions_registered();
-
-		$document_manager = new Documents();
-		$document_manager->on_documents_registered();
-
-		self::$dce_styles[] = 'dce-style';
-
-		return self::$dce_styles;
 	}
 
 	public static function get_enabled_js() {

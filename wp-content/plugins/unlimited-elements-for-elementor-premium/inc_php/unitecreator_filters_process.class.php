@@ -10,16 +10,8 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 class UniteCreatorFiltersProcess{
 
 	private static $filters = null;
+	private static $isFilesAdded = false;
 	
-	/**
-	 * put current widget data
-	 */
-	public function putCurrentWidgetData(){
-		
-		//UniteFunctionsUC::showTrace();
-		//dmp("put widget data");
-		
-	}
 	
 	/**
 	 * get request array
@@ -312,6 +304,78 @@ jQuery(document).ready(function(){
 		if($isAjax == true)
 			$this->putScriptsAjax();
 		
+	}
+	
+	
+	/**
+	 * include the filters js files
+	 */
+	private function includeJSFiles(){
+		
+		if(self::$isFilesAdded == true)
+			return(false);
+		
+		$urlFiltersJS = GlobalsUC::$url_assets_libraries."filters/ue_filters.js";
+		HelperUC::addScriptAbsoluteUrl($urlFiltersJS, "ue_filters");		
+		
+		
+		self::$isFilesAdded = true;
+	}
+	
+	
+	/**
+	 * put checkbox filters test
+	 */
+	public function putCheckboxFiltersTest($data){
+		
+		$this->includeJSFiles();
+		
+		$taxonomy = UniteFunctionsUC::getVal($data, "taxonomy", "category");
+		
+		$terms = get_terms($taxonomy);
+		
+		if(empty($terms))
+			return(false);
+		
+		$html = "";
+		foreach($terms as $term){
+			
+			$arrTerm = (array)$term;
+			
+			$termID = UniteFunctionsUC::getVal($arrTerm, "term_id");
+			$name = UniteFunctionsUC::getVal($arrTerm, "name");
+			$slug = UniteFunctionsUC::getVal($arrTerm, "slug");
+			$count = UniteFunctionsUC::getVal($arrTerm, "count");
+			
+			$slug = htmlspecialchars($slug);
+			
+			$checkboxName = "ucfilter_term__{$taxonomy}--{$slug}";
+			
+			$html .= "<label class='ucfilters-label-checkbox'>$name ($count)<input type='checkbox' class='uc-listing-filter uc-filter-checkbox' name='{$checkboxName}' data-type='term' data-taxonomy='{$taxonomy}' data-term='{$slug}'></label>";
+		}
+		
+		echo $html;
+	}
+	
+	/**
+	 * add widget variables
+	 * uc_listing_addclass, uc_listing_attributes
+	 *
+	 */
+	public function addWidgetFilterableVariables($data){
+		
+		$urlBase = UniteFunctionsUC::getBaseUrl(GlobalsUC::$current_page_url);
+		
+		$arrData = array();
+		$arrData["urlbase"] = $urlBase;
+
+		
+		$strAttributes = UniteFunctionsUC::jsonEncodeForHtmlData($arrData,"ucfilters");
+		
+		$data["uc_listing_attributes"] = $strAttributes;
+		$data["uc_listing_addclass"] = " uc-filterable-listing";
+		
+		return($data);
 	}
 	
 	/**

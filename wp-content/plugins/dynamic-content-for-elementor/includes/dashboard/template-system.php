@@ -10,6 +10,10 @@ class TemplateSystem {
 
 	private $options = [];
 
+	public function __construct() {
+		$this->options = get_option( DCE_OPTIONS );
+	}
+
 	private function _dce_settings_select_template( $dce_key, $templates ) {
 		?>
 	<span class="dce-template-select-wrapper">
@@ -111,7 +115,7 @@ class TemplateSystem {
 		// SAVING DCE TEMPLATE SETTINGS
 		if ( isset( $_POST['action'] ) && $_POST['action'] == 'update' ) {
 			update_option( DCE_OPTIONS, Helper::recursive_sanitize_text_field( $_POST[ DCE_OPTIONS ] ) );
-			update_option( 'dce_template_disable', Helper::recursive_sanitize_text_field( $_POST['dce_template_disable'] ) );
+			update_option( 'dce_template', Helper::recursive_sanitize_text_field( $_POST['dce_template'] ) );
 			$this->options = Helper::recursive_sanitize_text_field( $_POST[ DCE_OPTIONS ] );
 			Notice::dce_admin_notice__success( __( 'Your preferences have been saved.', 'dynamic-content-for-elementor' ) );
 		}
@@ -186,7 +190,8 @@ class TemplateSystem {
 		$dceTemplate['other-pages']['options'][ $chiave ] = __( 'User', 'dynamic-content-for-elementor' );
 		$dceTemplate['other-pages']['templates'][ $chiave ]['archive'] = __( 'Archive', 'dynamic-content-for-elementor' );
 
-		$dce_template_disable = get_option( 'dce_template_disable' );
+		$dce_template_option = get_option( 'dce_template' );
+		$dce_template_active = ( 'active' == $dce_template_option ) ? true : false;
 		?>
 
 	<div class="dce-nav-menus-template nav-menus-php">
@@ -197,16 +202,16 @@ class TemplateSystem {
 					<div class="clear"></div>
 					<div id="side-sortables" class="accordion-container">
 						<div id="dce_template_disabler" class="text-center column-posts wp-tab-active">
-							<br><?php /*<h2 class="text-red red"><?php _e('DCE Template System', 'dynamic-content-for-elementor'); ?></h2> */ ?>
+							<br>
 							<label class="dce-radio-container dce-radio-container-template" onclick="jQuery(this).closest('.accordion-container').find('.accordion-section').addClass('open').removeClass('dce-disabled'); jQuery('#menu-management-liquid').removeClass('dce-disabled');">
-								<input value="0" type="radio"<?php if ( ! $dce_template_disable ) {
-									?> checked="checked"<?php } ?> name="dce_template_disable">
+								<input value="active" type="radio"<?php if ( $dce_template_active ) {
+									?> checked="checked"<?php } ?> name="dce_template">
 								<span class="dce-radio-checkmark"></span>
 								<span class="dce-radio-label"><b><span class="dashicons dashicons-controls-play"></span> <?php _e( 'Enable', 'dynamic-content-for-elementor' ); ?></b></span>
 							</label>
 							<label class="dce-radio-container dce-radio-container-template" onclick="jQuery(this).closest('.accordion-container').find('.accordion-section').removeClass('open').addClass('dce-disabled'); jQuery('#menu-management-liquid').addClass('dce-disabled');">
-								<input value="1" type="radio"<?php if ( $dce_template_disable ) {
-									?> checked="checked"<?php } ?> name="dce_template_disable">
+								<input value="inactive" type="radio"<?php if ( ! $dce_template_active ) {
+									?> checked="checked"<?php } ?> name="dce_template">
 								<span class="dce-radio-checkmark dce-radio-checkmark-disable"></span>
 								<span class="dce-radio-label"><b><span class="dashicons dashicons-controls-pause"></span> <?php _e( 'Disable', 'dynamic-content-for-elementor' ); ?></b></span>
 							</label>
@@ -704,7 +709,7 @@ class TemplateSystem {
 			}
 		});
 
-		<?php if ( $dce_template_disable ) { ?>
+		<?php if ( ! $dce_template_active ) { ?>
 			jQuery('#menu-management-liquid').addClass('dce-disabled');
 			jQuery('#menu-settings-column .accordion-section').removeClass('open').addClass('dce-disabled');
 		<?php } ?>

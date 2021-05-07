@@ -1347,6 +1347,23 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 			return($url);
 		}
 		
+		/**
+		 * get base url from any url
+		 */
+		public static function getBaseUrl($url){
+			
+			$arrUrl = parse_url($url);
+			
+			$scheme = UniteFunctionsUC::getVal($arrUrl, "scheme","http");
+			$host = UniteFunctionsUC::getVal($arrUrl, "host");
+			$path = UniteFunctionsUC::getVal($arrUrl, "path");
+			
+			$url = "{$scheme}://{$host}{$path}";
+			
+			return($url);
+		}
+		
+		
 		public static function z___________VALIDATIONS_________(){}
 		
 		/**
@@ -2134,9 +2151,10 @@ defined('UNLIMITED_ELEMENTS_INC') or die('Restricted access');
 		}
 		
 		
-		
 		public static function z___________OTHERS__________(){}
 
+		
+		
 		/**
 		 * encode svg to bg image url
 		 */

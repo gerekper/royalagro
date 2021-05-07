@@ -738,7 +738,7 @@ class Image_Comparison extends Widget_Base {
             'wrapper',
             [
                 'id'                => 'eael-image-comparison-' . esc_attr( $this->get_id() ),
-                'class'             => ['eael-img-comp-container'],
+                'class'             => ['eael-img-comp-container','twentytwenty-container'],
                 'data-offset'       => ( $settings['eael_image_comp_offset']['size'] / 100 ),
                 'data-orientation'  => $settings['eael_image_comp_orientation'],
                 'data-before_label' => $settings['before_image_label'],

@@ -678,6 +678,9 @@ endforeach;
                 '{{WRAPPER}} .eael-creative-button.eael-creative-button--antiman::after' => 'background-color: {{VALUE}};',
                 '{{WRAPPER}} .eael-creative-button.eael-creative-button--quidel::after' => 'background-color: {{VALUE}};',
             ],
+            'condition' => [
+                'use_gradient_background' => '',
+            ],
         ]);
 
         $obj->add_group_control(Group_Control_Border::get_type(), [

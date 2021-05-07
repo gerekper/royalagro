@@ -622,19 +622,11 @@ class Premium_Image_Accordion extends Widget_Base {
 		$this->add_responsive_control(
 			'active_img_size',
 			array(
-				'label'       => __( 'Hovered Image Size', 'premium-addons-pro' ),
-				'type'        => Controls_Manager::HIDDEN,
-				'size_units'  => array( 'px', '%' ),
+				'label'       => __( 'Hovered Image Size (%)', 'premium-addons-pro' ),
+				'type'        => Controls_Manager::SLIDER,
 				'render_type' => 'template',
-				'range'       => array(
-					'px' => array(
-						'min' => 0,
-						'max' => 1000,
-					),
-				),
 				'selectors'   => array(
-					'{{WRAPPER}} .premium-accordion-horizontal .premium-accordion-li-active' => 'width: {{SIZE}}{{UNIT}}',
-					'{{WRAPPER}} .premium-accordion-horizontal .premium-accordion-li-inactive' => 'width: calc(100% - {{SIZE}}{{UNIT}} )',
+					'{{WRAPPER}} .premium-accordion-horizontal .premium-accordion-li-active' => 'width: {{SIZE}}% !important',
 				),
 
 			)
@@ -1290,12 +1282,19 @@ class Premium_Image_Accordion extends Widget_Base {
 
 		$id = $this->get_id();
 
-		$active_height = ( 'vertical' === $settings['direction_type'] ) ? $settings['active_img_size'] : false;
-
 		$accordion_settings = array(
 			'hide_desc'     => $settings['hide_description_thresold'],
-			'initialHeight' => $settings['height']['size'],
-			'height'        => $active_height,
+			'dir'           => $settings['direction_type'],
+			'imgSize'       => array(
+				'desktop' => $settings['active_img_size']['size'],
+				'tablet'  => $settings['active_img_size_tablet']['size'],
+				'mobile'  => $settings['active_img_size_mobile']['size'],
+			),
+			'initialHeight' => array(
+				'desktop' => $settings['height']['size'],
+				'tablet'  => $settings['height_tablet']['size'],
+				'mobile'  => $settings['height_mobile']['size'],
+			),
 		);
 
 		$direction = 'premium-accordion-' . $settings['direction_type'];
@@ -1506,14 +1505,23 @@ class Premium_Image_Accordion extends Widget_Base {
 		?>
 		<#
 
-			var accordionSetting = {};
+			var accordionSetting = {},
+				imgSize = {
+					'desktop' : settings.active_img_size.size,
+					'tablet'  : settings.active_img_size_tablet.size,
+					'mobile'  : settings.active_img_size_mobile.size
+				};
+
+				initialHeight = {
+					'desktop' : settings.height.size,
+					'tablet'  : settings.height_tablet.size,
+					'mobile'  : settings.height_mobile.size
+				};
 
 				accordionSetting.hide_desc = settings.hide_description_thresold;
-
-			var activeHeight = ( 'vertical' === settings.direction_type ) ? settings.active_img_size : false;
-
-			accordionSetting.height = activeHeight;
-			accordionSetting.initialHeight = settings.height.size;
+				accordionSetting.dir = settings.direction_type;
+				accordionSetting.imgSize = imgSize;
+				accordionSetting.initialHeight = initialHeight;
 
 			var direction = 'premium-accordion-' + settings.direction_type;
 
@@ -1547,7 +1555,7 @@ class Premium_Image_Accordion extends Widget_Base {
 							<#
 							_.each( settings.image_content, function( item , index ) {
 
-								if ( 'template' === item.content_type ) {
+								if ( 'custom' === item.content_type) {
 									var title       = view.getRepeaterSettingKey( 'image_title', 'image_content', index );
 									var description = view.getRepeaterSettingKey( 'image_desc', 'image_content', index );
 
@@ -1658,6 +1666,7 @@ class Premium_Image_Accordion extends Widget_Base {
 													{{{item.link_title}}}
 												</a>
 											<# } #>
+
 										</div>
 									<# } #>
 								</div>

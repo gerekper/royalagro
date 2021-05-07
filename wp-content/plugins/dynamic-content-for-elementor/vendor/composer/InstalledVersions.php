@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '85fd557fb599883f044331a2631a7bd0903aae1b',
+    'reference' => '97c54df2d2dc66eff353cb86105012163708c6ab',
     'name' => '__root__',
   ),
   'versions' => 
@@ -42,7 +42,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '85fd557fb599883f044331a2631a7bd0903aae1b',
+      'reference' => '97c54df2d2dc66eff353cb86105012163708c6ab',
     ),
     'awps/font-awesome-php' => 
     array (
@@ -79,6 +79,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'e7d13b2c7e2f2268e1424aaed02085518afa02d9',
+    ),
+    'mcaskill/composer-exclude-files' => 
+    array (
+      'pretty_version' => 'v2.0.0',
+      'version' => '2.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2bf916ab1ec9959b3a58ba3652bad6ffedf0e10e',
     ),
     'paquettg/php-html-parser' => 
     array (
@@ -170,12 +179,12 @@ private static $installed = array (
     ),
     'psr/log' => 
     array (
-      'pretty_version' => '1.1.3',
-      'version' => '1.1.3.0',
+      'pretty_version' => '1.1.4',
+      'version' => '1.1.4.0',
       'aliases' => 
       array (
       ),
-      'reference' => '0f73288fd15629204f9d42b7055f72dacbe811fc',
+      'reference' => 'd49695b909c3b7628b6289db5479a1c204601f11',
     ),
     'psr/simple-cache-implementation' => 
     array (
@@ -213,21 +222,21 @@ private static $installed = array (
     ),
     'symfony/cache' => 
     array (
-      'pretty_version' => 'v4.4.21',
-      'version' => '4.4.21.0',
+      'pretty_version' => 'v4.4.22',
+      'version' => '4.4.22.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'b7ff54be3f3eb1ce09643692f0c309b1b27bc992',
+      'reference' => '0da1df9b1a31f328f1711b5cd922c38a15c5fc74',
     ),
     'symfony/cache-contracts' => 
     array (
-      'pretty_version' => 'v2.2.0',
-      'version' => '2.2.0.0',
+      'pretty_version' => 'v2.4.0',
+      'version' => '2.4.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8034ca0b61d4dd967f3698aaa1da2507b631d0cb',
+      'reference' => 'c0446463729b89dd4fa62e9aeecc80287323615d',
     ),
     'symfony/cache-implementation' => 
     array (
@@ -301,21 +310,21 @@ private static $installed = array (
     ),
     'symfony/service-contracts' => 
     array (
-      'pretty_version' => 'v2.2.0',
-      'version' => '2.2.0.0',
+      'pretty_version' => 'v2.4.0',
+      'version' => '2.4.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'd15da7ba4957ffb8f1747218be9e1a121fd298a1',
+      'reference' => 'f040a30e04b57fbcc9c6cbcf4dbaa96bd318b9bb',
     ),
     'symfony/var-exporter' => 
     array (
-      'pretty_version' => 'v5.2.4',
-      'version' => '5.2.4.0',
+      'pretty_version' => 'v5.2.7',
+      'version' => '5.2.7.0',
       'aliases' => 
       array (
       ),
-      'reference' => '5aed4875ab514c8cb9b6ff4772baa25fa4c10307',
+      'reference' => '01184a5ab95eb9500b9b0ef3e525979e003d9c81',
     ),
     'tecnickcom/tcpdf' => 
     array (

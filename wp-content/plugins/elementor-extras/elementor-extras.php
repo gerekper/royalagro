@@ -3,9 +3,9 @@
  * Plugin Name: 	Extras for Elementor
  * Plugin URI: 		https://shop.namogo.com/product/elementor-extras/
  * Description: 	Extras is a premium Wordpress plugin for Elementor, extending its capability with seriously useful and unique widgets and extensions
- * Version: 		2.2.50
- * Elementor tested up to: 3.2.2
- * Elementor Pro tested up to: 3.2.1
+ * Version: 		2.2.51
+ * Elementor tested up to: 3.2.3
+ * Elementor Pro tested up to: 3.3.0
  * Author: 			Namogo
  * Author URI: 		https://shop.namogo.com/
  * Text Domain: 	elementor-extras
@@ -54,7 +54,7 @@ define( 'ELEMENTOR_EXTRAS_PLUGIN_BASE', 					plugin_basename( ELEMENTOR_EXTRAS__
 define( 'ELEMENTOR_EXTRAS_URL', 							plugins_url( '/', ELEMENTOR_EXTRAS__FILE__ ) );
 define( 'ELEMENTOR_EXTRAS_PATH', 							plugin_dir_path( ELEMENTOR_EXTRAS__FILE__ ) );
 define( 'ELEMENTOR_EXTRAS_ASSETS_URL', 						ELEMENTOR_EXTRAS_URL . 'assets/' );
-define( 'ELEMENTOR_EXTRAS_VERSION', 						'2.2.50' );
+define( 'ELEMENTOR_EXTRAS_VERSION', 						'2.2.51' );
 define( 'ELEMENTOR_EXTRAS_PREVIOUS_STABLE_VERSION', 		'2.2.34' );
 define( 'ELEMENTOR_EXTRAS_ELEMENTOR_VERSION_REQUIRED', 		'3.0.0' );
 define( 'ELEMENTOR_EXTRAS_ELEMENTOR_PRO_VERSION_REQUIRED', 	'3.0.0' );

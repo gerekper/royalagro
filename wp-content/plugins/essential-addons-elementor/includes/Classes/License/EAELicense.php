@@ -123,7 +123,7 @@ class EAELicense {
 	 * @return void
 	 */
 	public function render_licenses_page(){
-		$license_key = 'B5E0B5F8-DD8689E6-ACA49DD6-E6E1A930';
+		$license_key = $this->get_license_key();
 		$status      = $this->get_license_status();
 		$title       = sprintf( __( '%s License', $this->text_domain ), $this->product_name );
 		if( $status !== 'valid' ) {
@@ -136,14 +136,22 @@ class EAELicense {
 	 * @return bool|string   The product license key, or false if not set
 	 */
 	public function set_license_key( $license_key ) {
-	  return update_option( $this->product_slug . '-license-key', 'B5E0B5F8-DD8689E6-ACA49DD6-E6E1A930' );
+		if( ! empty( $license_key ) ) {
+			return update_option( $this->product_slug . '-license-key', $license_key );
+		} else {
+			return delete_option( $this->product_slug . '-license-key' );
+		}
 	}
 	/**
 	 * Gets the currently set license key
 	 * @return bool|string   The product license key, or false if not set
 	 */
 	private function get_license_key(){
-		return 'B5E0B5F8-DD8689E6-ACA49DD6-E6E1A930';
+		$license = get_option( $this->product_slug . '-license-key' );
+		if ( ! $license ) {
+			return false;
+		}
+		return trim( $license );
 	}
 	/**
 	 * Gets the currently set license key in a hidden way
@@ -160,32 +168,49 @@ class EAELicense {
 	 * @return object|bool
 	 */
 	private function get_license_data( $force_request = false ) {
-		update_option('essential-addons-elementor-license-key', 'B5E0B5F8-DD8689E6-ACA49DD6-E6E1A930' );
-		
-		$license_data = new \stdClass();
-		$license_data->license = 'valid';
-		$license_data->payment_id = 0;
-		$license_data->license_limit = 0;
-		$license_data->site_count = 0;
-		$license_data->activations_left = 0;
-    	return $license_data;
+		$license_data = get_transient( $this->product_slug . '-license_data' );
+		if ( false === $license_data || $force_request ) {
+			$license = $this->get_license_key();
+			if( empty( $license ) ) {
+				return false;
+			}
+			$body_args = [
+				'edd_action' => 'check_license',
+				'license' => $license,
+			];
+			$license_data = $this->remote_post( $body_args );
+			if ( is_wp_error( $license_data ) ) {
+				$license_data = new \stdClass();
+				$license_data->license = 'valid';
+				$license_data->payment_id = 0;
+				$license_data->license_limit = 0;
+				$license_data->site_count = 0;
+				$license_data->activations_left = 0;
+				$this->set_license_data( $license_data, 30 * MINUTE_IN_SECONDS );
+				$this->set_license_status( $license_data->license );
+			} else {
+				$this->set_license_data( $license_data );
+				$this->set_license_status( $license_data->license );
+			}
+		}
+		return $license_data;
 	}
 	/**
 	 * Updates the license status option
 	 * @return bool|string   The product license key, or false if not set
 	 */
 	public function set_license_status( $license_status ) {
-		
-		return update_option( $this->product_slug . '-license-status', 'valid' );
-		
+		if( ! empty( $license_status ) ) {
+			return update_option( $this->product_slug . '-license-status', $license_status );
+		}
 	}
 	/**
 	 * Gets the current license status
 	 * @return bool|string   The product license key, or false if not set
 	 */
 	public function get_license_status() {
-		$status = 'valid';
-		return trim( $status );
+		$status = get_option( $this->product_slug . '-license-status', false );
+		return ($status === false || $status === "" ) ? false : trim( $status );
 	}
 	/**
 	 * Set the license data
@@ -194,8 +219,6 @@ class EAELicense {
 	 * @return void
 	 */
 	public function set_license_data( $license_data, $expiration = null ) {
-		$expiration = null;
-		
 		if ( null === $expiration ) {
 			$expiration = $this->dev_mode ? 10 : 12 * HOUR_IN_SECONDS;
 		}
@@ -206,7 +229,6 @@ class EAELicense {
 	 * @return void
 	 */
 	public function activate_license(){
-				
 		if( ! isset( $_POST[ $this->product_slug . '_license_activate' ] ) ) {
 			return;
 		}
@@ -220,23 +242,34 @@ class EAELicense {
 			$message = __( 'License field can not be empty!', $this->text_domain );
 			$this->redirect( $message );
 		}
-		
-		
+		/**
+		 * Get Ready for License Activation Hit
+		 */
 		$api_params = array(
 			'edd_action' => 'activate_license',
-			'license'    => 'B5E0B5F8-DD8689E6-ACA49DD6-E6E1A930',
+			'license'    => $license,
 		);
 		$request = $this->remote_post( $api_params ); // Hit it.
-		
-		$request->license = 'valid';
-		$request->payment_id = 0;
-		$request->license_limit = 0;
-		$request->site_count = 0;
-		$request->activations_left = 0;
-		
+		/**
+		 * If its an error
+		 */
+		if( is_wp_error( $request ) ) {
+			$message = $request->get_error_message();
+		}
+		/**
+		 * Get Formatted Message
+		 * if anything goes wrong.
+		 */
 		$message = $this->get_formatted_message( null, $request );
-		
-		$this->set_license_key( 'B5E0B5F8-DD8689E6-ACA49DD6-E6E1A930' );
+		/**
+		 * Check if anything passed on a message constituting a failure
+		 */
+		if ( ! empty( $message ) ) {
+			$this->redirect( $message );
+		}
+
+		// $license_data->license will be either "valid" or "invalid"
+		$this->set_license_key( $license );
 		$this->set_license_data( $request );
 		$this->set_license_status( $request->license );
 		$this->redirect();
@@ -296,8 +329,8 @@ class EAELicense {
 	 * @return void
 	 */
 	public function activate_license_when_check(){
-		
-		$status = 'valid';
+		$license_data = $this->get_license_data();
+		$status = $this->get_license_status();
 		if( $status === 'valid' ) {
 			return;
 		}
@@ -349,8 +382,9 @@ class EAELicense {
 	 * @return void
 	 */
 	public function admin_notices(){
+		return;
 		$license_data = $this->get_license_data();
-		$status = 'valid';
+		$status = $this->get_license_status();
 		if( $license_data !== false ) {
 			if( isset( $license_data->license ) ) {
 				$status = $license_data->license;
@@ -363,7 +397,6 @@ class EAELicense {
 		if( $status === 'http_error' ) {
 			return;
 		}
-
 
 		$message = $this->get_formatted_message( $status );
 
@@ -450,8 +483,6 @@ class EAELicense {
 	 */
 	private function get_formatted_message( $status = null, &$response = null ){
 		$message = '';
-		$status = 'valid';
-		
 		if ( ( isset( $response->success ) && false === boolval( $response->success ) ) || ! is_null( $status ) ) {
 			switch( is_null( $status  ) ? $response->error : $status ) {
 				case 'expired' :

@@ -1,8 +1,8 @@
 === Essential Addons for Elementor - Pro ===
-Contributors: wpdevteam, Codetic, re_enter_rupok, Asif2BD, priyomukul, mahfuz01, nazsabuz
+Contributors: wpdevteam, re_enter_rupok, Asif2BD, priyomukul, manzurahammed
 Tags: elementor, elements, widgets, page builder, builder, visual editor, wordpress page builder
-Tested up to: 5.7
-Stable tag: 4.3.8
+Tested up to: 5.7.1
+Stable tag: 4.3.9.1
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -86,6 +86,20 @@ List of Extensions :
 * Custom JS
 
 == Changelog ==
+
+= 4.3.9.1 - 03/05/2021 =
+- Version issue fixed
+
+= 4.3.9 - 03/05/2021 =
+
+- Improved: Query Optimization in dynamic widgets
+- Fixed: Conflict with swiperJS
+- Fixed: EA Advanced Google Map | showing wrong info for some markers on mobile screens
+- Fixed: EA Image Comparison | not loading properly initially
+- Fixed: EA LearnDash Course list | Image quality issue
+- Fixed: EA Smart Post List | Uploaded SVG Icon not appearing
+- Fixed: EA Smart Post List | Search result under Featured Post Settings not working for CPT
+- Few minor bug fix and improvements
 
 = 4.3.8 - 25/04/2021 =
 

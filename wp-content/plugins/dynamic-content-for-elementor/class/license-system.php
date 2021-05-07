@@ -14,7 +14,6 @@ class LicenseSystem {
 
 		// gestisco lo scaricamento dello zip aggiornato inviando i dati della licenza
 		add_filter( 'upgrader_pre_download', array( $this, 'filter_upgrader_pre_download' ), 10, 3 );
-		
 		update_option( 'dce_license_activated',1 );
 	}
 
@@ -115,6 +114,8 @@ class LicenseSystem {
 
 		$request_uri = DCE_LICENSE_URL . '/api.php?' . http_build_query( $args );
 		$data = wp_remote_get( $request_uri );
+
+		
 		$data_body = json_decode( $data['body'] );
 		if ( is_array( $data_body ) ) {
 			$data_body = reset( $data_body );
@@ -182,7 +183,7 @@ class LicenseSystem {
 				$roll_status = ob_get_clean();
 			}
 			if ( $rollback ) {
-				exit( wp_safe_redirect( 'admin.php?page=dce_info' ) );
+				exit( wp_safe_redirect( 'admin.php?page=dce-features' ) );
 			} else {
 				die( $roll_status );
 			}

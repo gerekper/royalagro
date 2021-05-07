@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
 } // Exit if accessed directly
 
 
-$category = get_the_category();
+$category = wp_get_object_terms( get_the_ID(), get_object_taxonomies( get_post_type( get_the_ID() ) ) );
 $cat_name = $cat_id = null;
 $show_cat = ($settings['eael_post_list_post_cat'] != '');
 if (!empty($category[0])) {

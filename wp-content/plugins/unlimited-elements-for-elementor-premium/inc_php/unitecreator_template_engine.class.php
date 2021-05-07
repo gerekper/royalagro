@@ -743,16 +743,19 @@ class UniteCreatorTemplateEngineWork{
 	/**
 	 * put test html
 	 */
-	public function putTestHTML($type = null){
+	public function putTestHTML($type = null, $data = null){
 		
 		$objFilters = new UniteCreatorFiltersProcess();
+		//$objFilters->putFiltersTabs();
 		
 		switch($type){
-			case "widget_data":
-				$objFilters->putCurrentWidgetData();
+			case "filter_checkbox":
+				
+				$objFilters->putCheckboxFiltersTest($data);
+				
 			break;
 			default:
-				$objFilters->putFiltersTabs();
+				dmp("putTestHTML - type not found: $type");
 			break;
 		}
 		

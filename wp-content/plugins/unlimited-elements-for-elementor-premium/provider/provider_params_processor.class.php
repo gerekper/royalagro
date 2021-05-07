@@ -1559,7 +1559,7 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 	private function getPostListData($value, $name, $processType, $param, $data){
 		
 		if($processType != self::PROCESS_TYPE_OUTPUT && $processType != self::PROCESS_TYPE_OUTPUT_BACK)
-			return(null);
+			return($data);
 		
 		HelperUC::addDebug("getPostList values", $value);
 		HelperUC::addDebug("getPostList param", $param);
@@ -1622,10 +1622,13 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 		
 		$useForListing = UniteFunctionsUC::getVal($param, "use_for_listing");
 		$useForListing = UniteFunctionsUC::strToBool($useForListing);
-				
+		
 		if($useForListing == true){
 			$arrData = $arrPosts;
-			return($arrData);
+			
+			$data[$name] = $arrData;
+			
+			return($data);
 		}
 				
 		$arrData = array();
@@ -1634,8 +1637,22 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 			$arrData[] = $this->getPostDataByObj($post, $arrPostAdditions, $arrImageSizes);
 		}
 		
+		$data[$name] = $arrData;
 		
-		return($arrData);
+		//add filterable params like uc_listing_addclass, uc_listing_attributes
+		
+		$isFilterable = UniteFunctionsUC::getVal($value, $name."_filterable");
+		$isFilterable = ($isFilterable == "using_widget");
+		
+		if($isFilterable == true){
+			
+			$objFilters = new UniteCreatorFiltersProcess();
+			$data = $objFilters->addWidgetFilterableVariables($data);
+		}
+				
+		
+		
+		return($data);
 	}
 
 	protected function z_______________FILTERS____________(){}
@@ -2274,7 +2291,7 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 		//special params
 		switch($type){
 			case UniteCreatorDialogParam::PARAM_POSTS_LIST:
-			    $data[$name] = $this->getPostListData($value, $name, $processType, $param, $data);
+			    $data = $this->getPostListData($value, $name, $processType, $param, $data);
 			break;
 			case UniteCreatorDialogParam::PARAM_POST_TERMS:
 				$data[$name] = $this->getWPTermsData($value, $name, $processType, $param);

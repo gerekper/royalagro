@@ -2983,7 +2983,10 @@
 					ee.GallerySlider.initSliders( $scope, swiperSlider, swiperCarousel );
 
 					ee.Carousel.onAfterInit( $swiperSlider, swiperSlider, sliderSettings );
-					ee.Carousel.onAfterInit( $swiperCarousel, swiperCarousel, carouselSettings );
+
+					if ( hasCarousel ) {
+						ee.Carousel.onAfterInit( $swiperCarousel, swiperCarousel, carouselSettings );
+					}
 				}
 			};
 
@@ -3250,6 +3253,10 @@
 			};
 
 			ee.Carousel.onAfterInit = function( $swiper, swiper, settings ) {
+				if ( 'undefined' == typeof settings || 'undefined' == typeof swiper ) {
+					return;
+				}
+
 				if ( settings.element.stopOnHover ) {
 					$swiper.on( 'mouseover', function() {
 						swiper.autoplay.stop();

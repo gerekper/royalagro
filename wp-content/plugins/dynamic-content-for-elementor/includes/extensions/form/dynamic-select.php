@@ -107,7 +107,8 @@ class DynamicSelect extends \ElementorPro\Modules\Forms\Fields\Field_Base {
 		);
 
 		if ( $item['required'] ) {
-			$form->add_required_attribute( 'select' . $i );
+			$form->add_render_attribute( 'select' . $i, 'required', 'required' );
+			$form->add_render_attribute( 'select' . $i, 'aria-required', 'true' );
 		}
 
 		if ( $item['allow_multiple'] ) {

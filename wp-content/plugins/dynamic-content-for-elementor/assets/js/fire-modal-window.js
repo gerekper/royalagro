@@ -32,7 +32,7 @@
 			return false;
 		});
 		$(document).keyup(function(event){
-			if(event.which=='27') closeModal();
+			if(event.which == '27') closeModal();
 		});
 
 		$(window).on('resize', function(){
@@ -97,7 +97,6 @@
 
 	// Make sure you run this code under Elementor..
 	$( window ).on( 'elementor/frontend/init', function() {
-
 		elementorFrontend.hooks.addAction( 'frontend/element_ready/dyncontel-modalwindow.default', WidgetElements_ModalWindowHandler );
 	} );
 } )( jQuery );

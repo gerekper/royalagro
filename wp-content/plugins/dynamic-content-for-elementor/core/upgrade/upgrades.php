@@ -9,6 +9,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Upgrades {
 	/**
+	 * Set a new option called 'dce_template'
+	 */
+	public static function _v_1_14_4_template_system_old_default() {
+		$template_disable = get_option( 'dce_template_disable' );
+		if ( ! $template_disable ) {
+			update_option( 'dce_template', 'active' );
+		} else {
+			// We used 0 before, change it to 'inactive'.
+			update_option( 'dce_template', 'inactive' );
+		}
+		
+		return false;
+	}
+	/**
 	 * split ACF Repeater widget in old and new version
 	 */
 	public static function _v_1_14_0_split_acf_repeater( $updater ) {
@@ -65,7 +79,7 @@ class Upgrades {
 		} );
 		$excluded_extensions += $all_extensions;
 		update_option( 'dce_excluded_extensions', wp_json_encode( $excluded_extensions ) );
-		delete_option( 'WP-DCE-1_excluded_extensions' );
+		
 	}
 
 	/**
@@ -116,17 +130,6 @@ class Upgrades {
 		
 		update_option( 'dce_license_expiration', '2030.06.01' );
 		
-		delete_option( 'WP-DCE-1_excluded_widgets' );
-		delete_option( 'WP-DCE-1_excluded_documents' );
-		delete_option( 'WP-DCE-1_excluded_globals' );
-		delete_option( 'WP-DCE-1_active_widgets' );
-		delete_option( 'WP-DCE-1_active_extensions' );
-		delete_option( 'WP-DCE-1_active_documents' );
-		delete_option( 'WP-DCE-1_active_globals' );
-		delete_option( 'WP-DCE-1_license_activated' );
-		delete_option( 'WP-DCE-1_license_domain' );
-		delete_option( 'WP-DCE-1_license_key' );
-		delete_option( 'WP-DCE-1_license_expiration' );
 	}
 
 	public static function _v_1_12_4_remove_option_api_array( $updater ) {

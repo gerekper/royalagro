@@ -11,7 +11,7 @@ use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Css_Filter;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Core\Schemes;
 use Elementor\Repeater;
 use Elementor\Utils;
@@ -1336,11 +1336,10 @@ class UniteCreatorElementorWidget extends Widget_Base {
     	$arrControl = array();
     	$arrControl["name"] = $controlName;
     	$arrControl["selector"] = $selector;
-    	$arrControl["scheme"] = Scheme_Typography::TYPOGRAPHY_3;
+    	$arrControl["scheme"] = Typography::TYPOGRAPHY_3;
     	
     	if(!empty($title))
     		$arrControl["label"] = $title;
-    	
     	
     	$this->objControls->add_group_control(Group_Control_Typography::get_type(), $arrControl);
     	
@@ -1632,10 +1631,10 @@ class UniteCreatorElementorWidget extends Widget_Base {
     /**
      * add pagination controls
      */
-    protected function addPaginationControls(){
-
+    protected function addPaginationControls($postListParam = null){
+		
     	$objPagination = new UniteCreatorElementorPagination();
-    	$objPagination->addElementorSectionControls($this);
+    	$objPagination->addElementorSectionControls($this, $postListParam);
     	
     }
     
@@ -1936,11 +1935,13 @@ class UniteCreatorElementorWidget extends Widget_Base {
           if($isFontsEnabled == true)
           		$this->addFontControlsUC();
    		  
+          
           //add pagination section if needed
-            
-          if($hasPostsList == true)
-          		$this->addPaginationControls();
-   		
+          if($hasPostsList == true){
+          		          	
+          		$this->addPaginationControls($postListParam);
+          }
+          
           //add debug controls
           $this->addAdvancedSectionControls($hasPostsList, $isItemsEnabled);
           

@@ -1778,8 +1778,15 @@ class DCE_Widget_Slider extends DCE_Widget_Prototype {
 			$lightbox_type = ' ' . $settings['lightbox_type'];
 			$data_elementor_open_lightbox_base = 'data-elementor-open-lightbox="no"';
 		} else {
+			global $acfslider_counter;
+			if( ! isset( $acfslider_counter) ) {
+				$acfslider_counter = 1;
+			} else {
+				$acfslider_counter++;
+			}
+				
 			$lightbox_type = ' gallery';
-			$data_elementor_slideshow = ' data-elementor-lightbox-slideshow="' . $this->get_id() . '"';
+			$data_elementor_slideshow = ' data-elementor-lightbox-slideshow="' . $this->get_id() . '_' . $acfslider_counter . '"';
 			$elementor_lightbox = ' gallery-lightbox';
 			$data_elementor_open_lightbox_base = 'data-elementor-open-lightbox="yes"';
 		}
@@ -1836,8 +1843,16 @@ class DCE_Widget_Slider extends DCE_Widget_Prototype {
 					}
 					echo '<div class="swiper-slide">';
 					echo '<figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"  class="acfslider-item grid-item' . $bg_image_class . '"' . $bg_image_style . '>';
-					echo '<div class="wrap-item-acfslider">';
-					if ( $enable_lightbox != '' ) {
+					if ( $enable_lightbox != '' && $settings['use_bg_image'] != '' ) {
+						echo '<a class="' . $enable_lightbox . $elementor_lightbox . '" href="' . $img_url . '" itemprop="contentUrl" data-size="' . $img_width . 'x' . $img_height . '"' . $data_elementor_open_lightbox . $data_elementor_slideshow . '>';
+					}
+					if ( $settings['use_bg_image'] != '' ) {
+						echo '<div class="wrap-item-acfslider" style="height: 100%; " >';
+					} else {
+						echo '<div class="wrap-item-acfslider">';
+					}
+
+					if ( $enable_lightbox != '' && $settings['use_bg_image'] == '' ) {
 						echo '<a class="' . $enable_lightbox . $elementor_lightbox . '" href="' . $img_url . '" itemprop="contentUrl" data-size="' . $img_width . 'x' . $img_height . '"' . $data_elementor_open_lightbox . $data_elementor_slideshow . '>';
 					}
 					if ( $settings['use_bg_image'] == '' ) {
@@ -1847,11 +1862,14 @@ class DCE_Widget_Slider extends DCE_Widget_Prototype {
 					if ( $img_desc ) {
 						echo '<figcaption itemprop="caption description">' . $img_desc . '</figcaption>';
 					}
-					if ( $enable_lightbox ) {
+					if ( $enable_lightbox && $settings['use_bg_image'] == '' ) {
 						echo '</a>';
 					}
 					echo '</div>';
 					echo '</figure>';
+					if ( $enable_lightbox != '' && $settings['use_bg_image'] != '' ) {
+						echo '</a>';
+					}
 					echo '</div>';
 
 					$counter++;

@@ -3,7 +3,7 @@ Contributors: namogo, tudormunteanuii
 Tags: elementor, addons, hotspots, image comparison, heading, parallax, sticky, widgets, button groups, text separator, circle progress, devices, timeline
 Requires at least: 5.0
 Tested up to: 5.7
-Stable tag: 2.2.50
+Stable tag: 2.2.51
 Requires PHP: 5.6.20
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -62,6 +62,10 @@ Extras for Elementor incorporates code from:
 3. Find and use the new widgets and extensions
 
 == Changelog ==
+
+= 2.2.51 =
+
+* Fixed: Gallery Slider — JS error
 
 = 2.2.50 =
 

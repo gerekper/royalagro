@@ -80,7 +80,7 @@ class Settings {
 			if ( ! isset( $excluded_widgets['DCE_Widget_GoogleMaps'] ) ) {
 				$dce_google_maps_api = get_option( 'dce_google_maps_api' );
 				if ( empty( $dce_google_maps_api ) ) {
-					Notice::dce_admin_notice__warning( __( 'Please provide API keys to use 3rd party services.', 'dynamic-content-for-elementor' ) . ' <a class="btn button" href="' . admin_url() . 'admin.php?page=dce-features&tab=apis">' . __( 'Set them now', 'dynamic-content-for-elementor' ) . '</a>' );
+					Notice::dce_admin_notice__warning( __( 'Please provide API keys to use 3rd party services.', 'dynamic-content-for-elementor' ) . ' <a href="' . admin_url() . 'admin.php?page=dce-apis">' . __( 'Set it now', 'dynamic-content-for-elementor' ) . '</a>.' );
 				}
 			}
 		}

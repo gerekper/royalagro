@@ -42,6 +42,10 @@ class UniteCreatorViewElementorSettings extends UniteCreatorSettingsView{
 		
 		$objSettings = $this->modifyConsolidateAddonsSetting($objSettings);
 		
+		//show the setting that was hidden in first place
+		if(GlobalsUC::$inDev == true)
+			$objSettings->updateSettingProperty("enable_dynamic_visibility", "hidden", "false");
+		
 		return($objSettings);
 	}
 	

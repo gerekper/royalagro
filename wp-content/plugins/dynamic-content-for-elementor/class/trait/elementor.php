@@ -526,7 +526,7 @@ trait Trait_Elementor {
 	}
 
 	public static function validate_html_tag( $tag ) {
-		$allowed_tags = array_merge( [ 'code' ], \Elementor\Utils::ALLOWED_HTML_WRAPPER_TAGS );
+		$allowed_tags = array_merge( [ 'code' ], self::ALLOWED_HTML_WRAPPER_TAGS );
 		return in_array( strtolower( $tag ), $allowed_tags ) ? $tag : 'div';
 	}
 }

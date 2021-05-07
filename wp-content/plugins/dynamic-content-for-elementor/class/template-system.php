@@ -60,12 +60,12 @@ class TemplateSystem {
 	}
 
 	public function init() {
-		add_action( 'elementor/init', array( $this, 'dce_elementor_init' ) );
+		add_action( 'elementor/init', [ $this, 'dce_elementor_init' ] );
 
 		self::$options = get_option( DCE_OPTIONS );
-		$dce_template_disable = get_option( 'dce_template_disable' );
+		$dce_template = get_option( 'dce_template' );
 
-		if ( ! $dce_template_disable ) {
+		if ( isset( $dce_template ) && 'active' == $dce_template ) {
 
 			// Setup
 			add_action( 'init', array( $this, 'dce_setup' ) );
@@ -88,8 +88,9 @@ class TemplateSystem {
 	}
 
 	public function add_content_filter() {
-		$dce_template_disable = get_option( 'dce_template_disable' );
-		if ( ! $dce_template_disable ) {
+		$dce_template = get_option( 'dce_template' );
+
+		if ( isset( $dce_template ) && 'active' == $dce_template ) {
 			if ( ! is_admin() ) {
 				add_filter( 'the_content', array( $this, 'dce_elementor_remove_content_filter' ), 1 );
 				add_filter( 'the_content', array( $this, 'dce_filter_the_content_in_the_main_loop' ), 999999 );

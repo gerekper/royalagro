@@ -603,6 +603,32 @@ class Flip_Carousel extends Widget_Base {
 			]
 		);
 
+        $this->add_responsive_control(
+			'eael__filp_carousel_content_alignment',
+			[
+				'label'       => esc_html__('Content Alignment', 'essential-addons-elementor'),
+				'type'        => Controls_Manager::CHOOSE,
+				'options'     => [
+					'left' => [
+						'title' => esc_html__('Left', 'essential-addons-elementor'),
+						'icon'  => 'fa fa-align-left',
+					],
+					'center' => [
+						'title' => esc_html__('Center', 'essential-addons-elementor'),
+						'icon'  => 'fa fa-align-center',
+					],
+					'right' => [
+						'title' => esc_html__('Right', 'essential-addons-elementor'),
+						'icon'  => 'fa fa-align-right',
+					],
+				],
+				'default'   => 'center',
+				'selectors' => [
+					'{{WRAPPER}} .flip-carousel-text' => 'text-align: {{VALUE}}',
+				],
+			]
+		);
+
 		$this->add_control(
 			'eael_flip_carousel_content_heading',
 			[
