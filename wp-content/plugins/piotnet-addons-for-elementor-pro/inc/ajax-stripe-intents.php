@@ -460,7 +460,6 @@
 						$fields_metadata_index = 0;
 						foreach ($fields as $field) {
 							$fields_metadata_index++;
-
 							if ($fields_metadata_index < 50) {
 								if (strlen($field['name']) < 40) {
 									if (!empty($field['type'])) {

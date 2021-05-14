@@ -768,6 +768,18 @@ class Slideshow extends Module_Base {
 			]
 		);
 
+		$this->add_control(
+            'hide_arrow_on_mobile',
+            [
+                'label'     => __('Hide Arrow on Mobile ?', 'bdthemes-element-pack'),
+                'type'      => Controls_Manager::SWITCHER,
+                'default'   => 'yes',
+                'condition' => [
+                    'navigation' => ['arrows', 'both'],
+                ],
+            ]
+        );
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -2918,7 +2930,7 @@ class Slideshow extends Module_Base {
 		$this->add_render_attribute(
 			[
 				'slideshow' => [
-					'bdt-slideshow' => [
+					'data-bdt-slideshow' => [
 						wp_json_encode([
 							"animation"         => $settings["slider_animations"],
 							"ratio"             => $ratio,
@@ -3004,11 +3016,15 @@ class Slideshow extends Module_Base {
 	protected function render_navigation() {
 		$settings = $this->get_settings_for_display();
 
+		$hide_arrow_on_mobile = $settings['hide_arrow_on_mobile'] ? ' bdt-visible@m' : '';
+
 		?>
-		<div class="bdt-position-z-index bdt-visible@m bdt-position-<?php echo esc_attr($settings['arrows_position']); ?>">
+		<div class="bdt-position-z-index bdt-position-<?php echo esc_attr( $settings['arrows_position'] . $hide_arrow_on_mobile ); ?>">
 			<div class="bdt-arrows-container bdt-slidenav-container">
-				<a href="" class="bdt-navigation-prev bdt-slidenav-previous bdt-icon bdt-slidenav" bdt-icon="icon: chevron-left; ratio: 1.9" bdt-slideshow-item="previous"></a>
-				<a href="" class="bdt-navigation-next bdt-slidenav-next bdt-icon bdt-slidenav" bdt-icon="icon: chevron-right; ratio: 1.9" bdt-slideshow-item="next"></a>
+				<a href="" class="bdt-navigation-prev bdt-slidenav-previous bdt-icon bdt-slidenav" data-bdt-icon="icon: chevron-left; ratio: 1.9" 
+				data-bdt-slideshow-item="previous"></a>
+				<a href="" class="bdt-navigation-next bdt-slidenav-next bdt-icon bdt-slidenav" data-bdt-icon="icon: chevron-right; ratio: 1.9" 
+				data-bdt-slideshow-item="next"></a>
 			</div>
 		</div>
 		<?php
@@ -3018,7 +3034,7 @@ class Slideshow extends Module_Base {
 		$settings = $this->get_settings_for_display();
 
 		?>
-		<div class="bdt-position-z-index bdt-visible@m bdt-position-<?php echo esc_attr($settings['dots_position']); ?>">
+		<div class="bdt-position-z-index bdt-position-<?php echo esc_attr($settings['dots_position']); ?>">
 			<div class="bdt-dotnav-wrapper bdt-dots-container">
 				<ul class="bdt-dotnav bdt-flex-center">
 
@@ -3073,14 +3089,16 @@ class Slideshow extends Module_Base {
 
 	protected function render_both_navigation() {
 		$settings = $this->get_settings_for_display();
+
+		$hide_arrow_on_mobile = $settings['hide_arrow_on_mobile'] ? ' bdt-visible@m' : '';
 		?>
 
 		<div class="bdt-position-z-index bdt-position-<?php echo esc_attr($settings['both_position']); ?>">
 			<div class="bdt-arrows-dots-container bdt-slidenav-container ">
 				
 				<div class="bdt-flex bdt-flex-middle">
-					<div>
-						<a href="" class="bdt-navigation-prev bdt-slidenav-previous bdt-icon bdt-slidenav" bdt-icon="icon: chevron-left; ratio: 1.9" bdt-slideshow-item="previous"></a>
+					<div class="<?php echo esc_attr( $hide_arrow_on_mobile ); ?>">
+						<a href="" class="bdt-navigation-prev bdt-slidenav-previous bdt-icon bdt-slidenav" data-bdt-icon="icon: chevron-left; ratio: 1.9" bdt-slideshow-item="previous"></a>
 						
 					</div>
 
@@ -3091,15 +3109,15 @@ class Slideshow extends Module_Base {
 								$bdt_counter = 0;
 								      
 								foreach ( $settings['slides'] as $slide ) :
-									echo '<li class="bdt-slideshow-dotnav bdt-active" bdt-slideshow-item="'.$bdt_counter.'"><a href="#"></a></li>';
+									echo '<li class="bdt-slideshow-dotnav bdt-active" data-bdt-slideshow-item="'.$bdt_counter.'"><a href="#"></a></li>';
 									$bdt_counter++;
 								endforeach; ?>
 							</ul>
 						</div>
 					<?php endif; ?>
 					
-					<div>
-						<a href="" class="bdt-navigation-next bdt-slidenav-next bdt-icon bdt-slidenav" bdt-icon="icon: chevron-right; ratio: 1.9" bdt-slideshow-item="next"></a>
+					<div class="<?php echo esc_attr( $hide_arrow_on_mobile ); ?>">
+						<a href="" class="bdt-navigation-next bdt-slidenav-next bdt-icon bdt-slidenav" data-bdt-icon="icon: chevron-right; ratio: 1.9" data-bdt-slideshow-item="next"></a>
 						
 					</div>
 					

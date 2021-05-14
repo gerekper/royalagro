@@ -41,6 +41,18 @@ class Skin_Carousel extends Skin_Base {
 		);
 
 		$this->add_control(
+			'remove_masking',
+			[
+				'label' => __( 'Remove Masking', 'dynamic-content-for-elementor' ),
+				'description' => __( 'Remove the mask on the carousel to allow the display of the elements outside', 'dynamic-content-for-elementor' ),
+				'type' => Controls_Manager::SWITCHER,
+				'prefix_class' => 'no-masking-',
+				'frontend_available' => true,
+				'default' => '',
+			]
+		);
+
+		$this->add_control(
 			'speed_slider', [
 				'label' => __( 'Speed (ms)', 'dynamic-content-for-elementor' ),
 				'description' => __( 'Duration of transition between slides (in ms)', 'dynamic-content-for-elementor' ),

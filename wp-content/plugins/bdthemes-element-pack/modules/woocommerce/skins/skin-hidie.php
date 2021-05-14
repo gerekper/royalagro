@@ -90,7 +90,7 @@ class Skin_Hidie extends Skin_Base {
 			<?php endwhile; wp_reset_postdata();
 
 		} else {
-			echo '<div class="bdt-alert-warning" bdt-alert>Oppps!! There is no product<div>';
+			echo '<div class="bdt-alert-warning" data-bdt-alert>Oppps!! There is no product<div>';
 		}
 	}
 

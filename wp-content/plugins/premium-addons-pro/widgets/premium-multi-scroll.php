@@ -98,7 +98,7 @@ class Premium_Multi_Scroll extends Widget_Base {
 	public function get_script_depends() {
 		return array(
 			'multi-scroll',
-			'premium-pro-js',
+			'premium-pro',
 		);
 	}
 

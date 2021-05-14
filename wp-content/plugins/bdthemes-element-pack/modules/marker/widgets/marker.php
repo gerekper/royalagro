@@ -1040,10 +1040,10 @@ class Marker extends Module_Base {
 
 		if ('yes' === $settings['marker_animation']) {
 			$this->add_render_attribute( 'wrapper', 'class', 'bdt-marker-animated' );
-			$this->add_render_attribute( 'wrapper', 'bdt-scrollspy', 'target: .bdt-marker-wrapper > a.bdt-marker-item; cls:bdt-animation-scale-up; delay: 300;' );
+			$this->add_render_attribute( 'wrapper', 'data-bdt-scrollspy', 'target: .bdt-marker-wrapper > a.bdt-marker-item; cls:bdt-animation-scale-up; delay: 300;' );
 		}
 
-		$this->add_render_attribute( 'wrapper', 'bdt-lightbox', 'toggle: .bdt-marker-lightbox-item; animation: slide;' );
+		$this->add_render_attribute( 'wrapper', 'data-bdt-lightbox', 'toggle: .bdt-marker-lightbox-item; animation: slide;' );
 
 		if ( $has_caption ) : ?>
 			<figure class="marker-caption">

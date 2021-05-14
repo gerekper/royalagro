@@ -3,24 +3,24 @@
  * Plugin Name: Piotnet Addons For Elementor Pro
  * Description: Piotnet Addons For Elementor Pro (PAFE Pro) adds many new features for Elementor
  * Plugin URI:  https://pafe.piotnet.com/
- * Version:     6.3.63
+ * Version:     6.3.65
  * Author:      Luong Huu Phuoc (Louis Hufer)
  * Author URI:  https://piotnet.com/
  * Text Domain: pafe
  * Domain Path: /languages
- * Elementor tested up to: 3.1.4
- * Elementor Pro tested up to: 3.2.1
+ * Elementor tested up to: 3.2.3
+ * Elementor Pro tested up to: 3.2.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'PAFE_PRO_VERSION', '6.3.63' );
-define( 'PAFE_PRO_PREVIOUS_STABLE_VERSION', '6.3.62' );
+define( 'PAFE_PRO_VERSION', '6.3.65' );
+define( 'PAFE_PRO_PREVIOUS_STABLE_VERSION', '6.3.64' );
 
 final class Piotnet_Addons_For_Elementor_Pro {
 
-	const VERSION = '6.3.63';
-	const MINIMUM_ELEMENTOR_VERSION = '2.0.0';
+	const VERSION = '6.3.65';
+	const MINIMUM_ELEMENTOR_VERSION = '2.8.0';
 	const MINIMUM_PHP_VERSION = '5.4';
 	const TAB_PAFE = 'tab_pafe';
 
@@ -46,16 +46,16 @@ final class Piotnet_Addons_For_Elementor_Pro {
 			add_action( 'init', [ $this, 'pafe_pdf_font_post_type' ] );
 		}
 		$license = array();
-		$license['license_key'] = 'nullmasterinbabiato';
-		$license['email'] = 'nullmaster@babiato.org'; 
-		$license['license_name'] = 'nullmaster';
+		$license['license_key'] = '****************';
+		$license['email'] = 'activated@example.com'; 
+		$license['license_name'] = 'activated';
 		$license['activated_site_total'] = '';
 		$license['unlimited_site'] = 'Unlimited'; 
 		$license['expired_at'] = date("Y-m-d\TH:i:s\Z",'2023-01-01T15:03:01.012345Z');
 		$license['status'] = 'A';
 		update_option( 'piotnet_addons_for_elementor_pro_license',$license );
-		update_option('piotnet-addons-for-elementor-pro-username','nullmaster');
-		update_option('piotnet-addons-for-elementor-pro-password','nullmaster');
+		update_option('piotnet-addons-for-elementor-pro-username','activated');
+		update_option('piotnet-addons-for-elementor-pro-password','activated');
 
 		require_once( __DIR__ . '/inc/features.php' );
 		require_once( __DIR__ . '/inc/license.php' );
@@ -156,6 +156,8 @@ final class Piotnet_Addons_For_Elementor_Pro {
 			require_once( __DIR__ . '/inc/ajax-mailerlite-get-groups.php');
 			require_once( __DIR__ . '/inc/ajax-mailerlite-get-fields.php');
 			require_once( __DIR__ . '/inc/ajax-export-database.php');
+			require_once( __DIR__ . '/inc/ajax-sendinblue-get-list.php');
+			require_once( __DIR__ . '/inc/ajax-sendinblue-get-attribute.php');
 		}
 		if( get_option( 'pafe-features-woocommerce-checkout', 2 ) == 2 || get_option( 'pafe-features-woocommerce-checkout', 2 ) == 1 ) {
 			require_once( __DIR__ . '/inc/ajax-form-builder-woocommerce-checkout.php' );
@@ -168,7 +170,6 @@ final class Piotnet_Addons_For_Elementor_Pro {
 			require_once( __DIR__ . '/inc/ajax-stripe-intents.php' );
 		}
 
-		
 		require_once( __DIR__ . '/inc/ajax-delete-post.php' );
 		require_once( __DIR__ . '/inc/form-database-meta-box.php' );
 		require_once( __DIR__ . '/inc/meta-box-acf-repeater.php' );
@@ -271,45 +272,6 @@ final class Piotnet_Addons_For_Elementor_Pro {
 		
 	}
 
-	// public function change_post_type($current_query_vars) {
-	// 	$current_query_vars['post_type'] = 'trip';
-	// 	return $current_query_vars;
-	// }
-
-	// public function pafe_elementor_form_database_new_record( $record, $handler ) {
-	// 	$form_id = $record->get_form_settings( 'form_name' );
-	// 	$raw_fields = $record->get( 'fields' );
-	// 	$fields = [];
-	// 	foreach ( $raw_fields as $id => $field ) {
-	// 		$fields[ $id ] = $field['value'];
-	// 	}
-		
-	// 	$my_post = array(
-	// 		'post_title'    => wp_strip_all_tags( 'PAFE Elementor Form Database ' . $form_id ),
-	// 		'post_status'   => 'publish',
-	// 		'post_type'		=> 'pafe-formabandonment',
-	// 	);
-
-	// 	$form_database_post_id = wp_insert_post( $my_post );
-
-	// 	if (!empty($form_database_post_id)) {
-
-	// 		$my_post_update = array(
-	// 			'ID'           => $form_database_post_id,
-	// 			'post_title'   => '#' . $form_database_post_id,
-	// 		);
-	// 		wp_update_post( $my_post_update );
-
-	// 		update_post_meta( $form_database_post_id, 'form_id', $form_id );
-	// 		update_post_meta( $form_database_post_id, 'status', 'success' );
-
-	// 		foreach ($fields as $key => $value) {
-	// 			update_post_meta( $form_database_post_id, $key, rtrim( str_replace('\n', '', $value) ));
-	// 		}
-
-	// 	}
-	// }
-
 	public function pafe_advanced_search_page($query) {
 		if ( !is_admin() && $query->is_main_query() ) {
 			if ($query->is_search) {
@@ -383,8 +345,6 @@ final class Piotnet_Addons_For_Elementor_Pro {
 	    }
 	}
 
-	
-	 
 	public function pafe_form_builder_filter_column($defaults) {
 	    $defaults['form_id'] = 'Form ID';
 	    $defaults['status'] = 'Status';
@@ -621,6 +581,14 @@ final class Piotnet_Addons_For_Elementor_Pro {
 	    );
 
 	    remove_post_type_support( 'pafe-formabandonment', 'editor' );
+
+	    add_filter( 'wpseo_sitemap_exclude_post_type', function( $retval, $post_type ) {
+			if ( 'pafe-formabandonment' === $post_type ) {
+				$retval = true;
+			}
+
+			return $retval;
+		}, 10, 2 );
 	}
 
 	public function pafe_form_database_post_type() {
@@ -642,6 +610,14 @@ final class Piotnet_Addons_For_Elementor_Pro {
 	    );
 
 	    remove_post_type_support( 'pafe-form-database', 'editor' );
+
+	    add_filter( 'wpseo_sitemap_exclude_post_type', function( $retval, $post_type ) {
+			if ( 'pafe-form-database' === $post_type ) {
+				$retval = true;
+			}
+
+			return $retval;
+		}, 10, 2 );
 	}
 	
 	public function pafe_pdf_font_post_type() {
@@ -663,6 +639,14 @@ final class Piotnet_Addons_For_Elementor_Pro {
 	    );
 
 	    remove_post_type_support( 'pafe-fonts', 'editor' );
+
+	    add_filter( 'wpseo_sitemap_exclude_post_type', function( $retval, $post_type ) {
+			if ( 'pafe-fonts' === $post_type ) {
+				$retval = true;
+			}
+
+			return $retval;
+		}, 10, 2 );
 	}
 
 	public function pafe_pdf_metabox(){
@@ -706,7 +690,15 @@ final class Piotnet_Addons_For_Elementor_Pro {
 					'custom-fields', 
 				), 
 			)
-	    );    
+	    );
+
+	    add_filter( 'wpseo_sitemap_exclude_post_type', function( $retval, $post_type ) {
+			if ( 'pafe-form-booking' === $post_type ) {
+				$retval = true;
+			}
+
+			return $retval;
+		}, 10, 2 );
 	}
 
 	public function set_custom_edit_columns($columns) {
@@ -806,54 +798,10 @@ final class Piotnet_Addons_For_Elementor_Pro {
 		}
 	}
 
-	// public function pafe_woocommerce_checkout_redirect_session(){
-	// 	if(!session_id()) {
-	//         session_start();
-	//     }
-	// }
-
-	// public function pafe_woocommerce_checkout_redirect_session_url(){
-	//     $elementor_data = get_post_meta( get_the_ID(), '_elementor_data', true);
-
-	// 	if (strpos($elementor_data, 'pafe_woocommerce_checkout_redirect') !== false) {
-	// 		$elementor_data = get_post_meta( get_the_ID(), '_elementor_data', true);
-	// 		$elementor_data = stripslashes($elementor_data);
-	// 		$elementor_data = explode('"pafe_woocommerce_checkout_redirect":"', $elementor_data);
-	// 		$string = $elementor_data[1];
-	// 		$pos = stripos($string, '"');
-	// 		$url = substr($string,0,$pos);
-
-	// 		$_SESSION['pafe_woocommerce_checkout_redirect_url'] = $url;
-	// 	}	    
-	// }
-
-	// public function pafe_woocommerce_checkout_redirect_session_destroy(){
-	//     $elementor_data = get_post_meta( get_the_ID(), '_elementor_data', true);
-
-	// 	if (strpos($elementor_data, 'pafe_woocommerce_checkout_redirect') === false) {
-	// 		$_SESSION['pafe_woocommerce_checkout_redirect_url'] = '';
-	// 	}    
-	// }
-
-	// public function pafe_woocommerce_checkout_redirect( $order_id ){
-
-	//     $order = wc_get_order( $order_id );
-	//     $url = '';
-
-	// 	if (!empty($_SESSION['pafe_woocommerce_checkout_redirect_url'])) {
-	// 		$url = $_SESSION['pafe_woocommerce_checkout_redirect_url'];
-	// 		if ( ! $order->has_status( 'failed' ) ) {
-	// 	        wp_safe_redirect( $url );
-	// 	        exit;
-	// 	    }
-	// 	}
-	    
-	// }
 
 	public function pafe_woocommerce_checkout_remove_checkout_fields( $fields ){
 
 	    $elementor_data = get_post_meta( get_the_ID(), '_elementor_data', true);
-
 		if (strpos($elementor_data, 'pafe_woocommerce_checkout_remove_fields') !== false) {
 			$elementor_data = get_post_meta( get_the_ID(), '_elementor_data', true);
 			$elementor_data = stripslashes($elementor_data);
@@ -879,7 +827,6 @@ final class Piotnet_Addons_For_Elementor_Pro {
 		}
 	    
 	    return $fields;
-	    
 	}
 
 	public function i18n() {
@@ -920,11 +867,6 @@ final class Piotnet_Addons_For_Elementor_Pro {
 		wp_enqueue_style( 'pafe-editor', plugin_dir_url( __FILE__ ) . 'assets/css/minify/pafe-editor.min.css', [], self::VERSION );
 		wp_enqueue_script( 'pafe-editor-scripts', plugin_dir_url( __FILE__ ) . 'assets/js/minify/pafe-editor.min.js', array('jquery'), self::VERSION );
 
-		// if (!empty(esc_attr( get_option('piotnet-addons-for-elementor-pro-google-maps-api-key') ))) {
-		// 	if( get_option( 'pafe-features-address-autocomplete-field', 2 ) == 2 || get_option( 'pafe-features-address-autocomplete-field', 2 ) == 1 ) {
-		// 		wp_enqueue_script( 'pafe-editor-scripts-google-maps', 'https://maps.googleapis.com/maps/api/js?key='. esc_attr( get_option('piotnet-addons-for-elementor-pro-google-maps-api-key') ) .'&libraries=places', array('jquery'), self::VERSION );
-		// 	}
-		// }
 	}
 
 	public function enqueue_footer() {
@@ -1183,6 +1125,8 @@ final class Piotnet_Addons_For_Elementor_Pro {
 		register_setting( 'piotnet-addons-for-elementor-pro-google-sheets-group', 'piotnet-addons-for-elementor-pro-google-sheets-client-id' );
 		register_setting( 'piotnet-addons-for-elementor-pro-google-sheets-group', 'piotnet-addons-for-elementor-pro-google-sheets-client-secret' );
 
+        register_setting( 'piotnet-addons-for-elementor-pro-hubspot-group', 'piotnet-addons-for-elementor-pro-hubspot-api-key' );
+
 		register_setting( 'piotnet-addons-for-elementor-pro-google-calendar-group', 'piotnet-addons-for-elementor-pro-google-calendar-client-id' );
 		register_setting( 'piotnet-addons-for-elementor-pro-google-calendar-group', 'piotnet-addons-for-elementor-pro-google-calendar-client-secret' );
         register_setting( 'piotnet-addons-for-elementor-pro-google-calendar-group', 'piotnet-addons-for-elementor-pro-google-calendar-client-api-key' );
@@ -1195,6 +1139,8 @@ final class Piotnet_Addons_For_Elementor_Pro {
 		register_setting( 'piotnet-addons-for-elementor-pro-mailchimp-group', 'piotnet-addons-for-elementor-pro-mailchimp-api-key' );
 
 		register_setting( 'piotnet-addons-for-elementor-pro-mailerlite-group', 'piotnet-addons-for-elementor-pro-mailerlite-api-key' );
+
+		register_setting( 'piotnet-addons-for-elementor-pro-sendinblue-group', 'piotnet-addons-for-elementor-pro-sendinblue-api-key' );
 
 		register_setting( 'piotnet-addons-for-elementor-pro-activecampaign-group', 'piotnet-addons-for-elementor-pro-activecampaign-api-key' );
 		register_setting( 'piotnet-addons-for-elementor-pro-activecampaign-group', 'piotnet-addons-for-elementor-pro-activecampaign-api-url' );

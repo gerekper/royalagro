@@ -29,7 +29,7 @@ class Skin_Elanza extends Elementor_Skin_Base {
 
 		?> 
 		<div id="bdt-post-grid-<?php echo esc_attr($id); ?>" class="bdt-post-grid bdt-post-grid-skin-elanza">
-	  		<div class="bdt-grid bdt-grid-<?php echo esc_attr($settings['column_gap']); ?>" bdt-grid>
+	  		<div class="bdt-grid bdt-grid-<?php echo esc_attr($settings['column_gap']); ?>" data-bdt-grid>
 
 				<?php 
 				$bdt_count = 0;
@@ -48,7 +48,7 @@ class Skin_Elanza extends Elementor_Skin_Base {
 
 						<div class="bdt-width-3-5@m bdt-secondary">
 						    <div>
-						        <div class="bdt-grid bdt-grid-<?php echo esc_attr($settings['column_gap']); ?>" bdt-grid>
+						        <div class="bdt-grid bdt-grid-<?php echo esc_attr($settings['column_gap']); ?>" data-bdt-grid>
 					<?php endif; ?>
 
 									<?php if (1 < $bdt_count) : 

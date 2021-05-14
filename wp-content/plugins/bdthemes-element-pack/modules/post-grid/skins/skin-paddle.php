@@ -31,7 +31,7 @@ class Skin_Paddle extends Elementor_Skin_Base {
 
 		?> 
 		<div id="bdt-post-grid-<?php echo esc_attr($id); ?>" class="bdt-post-grid bdt-post-grid-skin-default">
-	  		<div class="bdt-grid bdt-grid-<?php echo esc_attr($settings['column_gap']); ?>" bdt-grid>
+	  		<div class="bdt-grid bdt-grid-<?php echo esc_attr($settings['column_gap']); ?>" data-bdt-grid>
 
 				<?php $bdt_count = 0;
 

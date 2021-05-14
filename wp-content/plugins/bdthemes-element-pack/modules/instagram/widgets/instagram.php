@@ -1052,9 +1052,9 @@ class Instagram extends Module_Base {
         $this->add_render_attribute('instagram', 'class', 'bdt-child-width-1-' . esc_attr($settings["columns_tablet"]) . '@s');
         $this->add_render_attribute('instagram', 'class', 'bdt-child-width-1-' . esc_attr($settings["columns_mobile"]));
 
-        $this->add_render_attribute('instagram', 'bdt-grid', '');
+        $this->add_render_attribute('instagram', 'data-bdt-grid', '');
         if ( $settings['masonry'] ) {
-            $this->add_render_attribute('instagram', 'bdt-grid', 'masonry: true;');
+            $this->add_render_attribute('instagram', 'data-bdt-grid', 'masonry: true;');
         }
 
 
@@ -1062,12 +1062,12 @@ class Instagram extends Module_Base {
 
 
         if ( 'yes' == $settings['show_lightbox'] ) {
-            $this->add_render_attribute('instagram', 'bdt-lightbox', 'animation:' . $settings['lightbox_animation'] . ';');
+            $this->add_render_attribute('instagram', 'data-bdt-lightbox', 'animation:' . $settings['lightbox_animation'] . ';');
             if ( $settings['lightbox_autoplay'] ) {
-                $this->add_render_attribute('instagram', 'bdt-lightbox', 'autoplay: 500;');
+                $this->add_render_attribute('instagram', 'data-bdt-lightbox', 'autoplay: 500;');
 
                 if ( $settings['lightbox_pause'] ) {
-                    $this->add_render_attribute('instagram', 'bdt-lightbox', 'pause-on-hover: true;');
+                    $this->add_render_attribute('instagram', 'data-bdt-lightbox', 'pause-on-hover: true;');
                 }
             }
         }
@@ -1091,7 +1091,7 @@ class Instagram extends Module_Base {
                     <video src="<?php echo $item->media_url; ?>" title="Image by: <?php echo $item->username; ?>">
                         <?php else : ?>
                           <img src="<?php echo $item->media_url; ?>" alt="Image by: <?php echo $item->username; ?>"
-                               bdt-img>
+                               data-bdt-img>
                         <?php endif; ?>
                   </div>
 
@@ -1100,9 +1100,9 @@ class Instagram extends Module_Base {
                         <div
                             class="bdt-transition-fade bdt-inline-clip bdt-position-cover bdt-overlay bdt-overlay-default ">
                             <?php if ( 'VIDEO' == $item->media_type ) : ?>
-                              <span class='bdt-position-center' bdt-icon="play"></span>
+                              <span class='bdt-position-center' data-bdt-icon="play"></span>
                             <?php else : ?>
-                              <span class='bdt-position-center' bdt-icon="plus"></span>
+                              <span class='bdt-position-center' data-bdt-icon="plus"></span>
                             <?php endif; ?>
                         </div>
                       </a>

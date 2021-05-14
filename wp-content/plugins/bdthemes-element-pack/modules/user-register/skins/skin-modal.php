@@ -296,7 +296,7 @@ class Skin_Modal extends Elementor_Skin_Base {
 						$button_animation ? 'elementor-animation-' . esc_attr($button_animation) : ''
 					],
 					'href'       => 'javascript:void(0)',
-					'bdt-toggle' => 'target: #' . esc_attr($id)
+					'data-bdt-toggle' => 'target: #' . esc_attr($id)
 				]
 			]
 		);
@@ -307,14 +307,14 @@ class Skin_Modal extends Elementor_Skin_Base {
 			<a <?php echo $this->parent->get_render_attribute_string( 'modal-button-settings' ); ?>>
 				<?php $this->render_text(); ?>
 			</a>
-			<div id="<?php echo esc_attr($id); ?>" class="bdt-flex-top bdt-user-register-modal bdt-modal-<?php echo esc_attr($this->get_instance_value('modal_custom_width')); ?>" bdt-modal>
+			<div id="<?php echo esc_attr($id); ?>" class="bdt-flex-top bdt-user-register-modal bdt-modal-<?php echo esc_attr($this->get_instance_value('modal_custom_width')); ?>" data-bdt-modal>
 				<div class="bdt-modal-dialog bdt-margin-auto-vertical">
 					<?php if ($this->get_instance_value('modal_close_button')) : ?>
-						<button class="bdt-modal-close-default" type="button" bdt-close></button>
+						<button class="bdt-modal-close-default" type="button" data-bdt-close></button>
 					<?php endif; ?>
 					<?php if ($this->get_instance_value('modal_header')) : ?>
 					<div class="bdt-modal-header">
-			            <h2 class="bdt-modal-title"><span bdt-icon="user"></span> <?php esc_html_e('User Registration', 'bdthemes-element-pack'); ?></h2>
+			            <h2 class="bdt-modal-title"><span data-bdt-icon="user"></span> <?php esc_html_e('User Registration', 'bdthemes-element-pack'); ?></h2>
 			        </div>
 					<?php endif; ?>
 					<div class="elementor-form-fields-wrapper bdt-modal-body">

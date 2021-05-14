@@ -1966,7 +1966,7 @@ class Trailer_Box extends Module_Base {
 
 	public function render_button() {
 		$settings = $this->get_settings_for_display();
-		$target   = (isset($settings['button']['is_external'])) ? '_blank' : '_self';
+		$target   = (isset($settings['button']['is_external']) && $settings['button']['is_external'] == 'on' ) ? '_blank' : '_self';
 
 		if ( ! isset( $settings['icon'] ) && ! Icons_Manager::is_migration_allowed() ) {
 			// add old default
@@ -2031,7 +2031,7 @@ class Trailer_Box extends Module_Base {
 
 	public function render() {
 		$settings               = $this->get_settings_for_display();
-		$target   = (isset($settings['button']['is_external'])) ? '_blank' : '_self';
+		$target   = (isset($settings['button']['is_external'])  && $settings['button']['is_external'] == 'on' ) ? '_blank' : '_self';
 		
 		$origin                 = ' bdt-position-' . $settings['origin'];
 		$has_background_overlay = in_array( $settings['background_overlay_background'], [ 'classic', 'gradient' ] ) ||

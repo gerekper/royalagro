@@ -56,7 +56,7 @@ class Skin_Single extends Elementor_Skin_Base {
 
 		  		<div class="swiper-slide">
 	             
-	            	<div class="bdt-grid bdt-flex-middle" bdt-grid bdt-height-match="target: > div > div">
+	            	<div class="bdt-grid bdt-flex-middle" data-bdt-grid data-bdt-height-match="target: > div > div">
 
 	            		<?php if ('right' !== $settings['alignment']) : ?>
 		            	<div class="bdt-testimonial-image-part bdt-width-auto@m">

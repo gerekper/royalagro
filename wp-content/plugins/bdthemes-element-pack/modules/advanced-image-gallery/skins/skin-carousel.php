@@ -21,11 +21,11 @@ class Skin_Carousel extends Elementor_Skin_Base {
 
 		$this->parent->add_render_attribute('advanced-image-gallery', 'id', 'bdt-avdg-' . esc_attr($id) );
 		$this->parent->add_render_attribute('advanced-image-gallery', 'class', ['bdt-advanced-image-gallery', 'bdt-skin-carousel'] );
-		$this->parent->add_render_attribute('advanced-image-gallery', 'bdt-grid', '');
+		$this->parent->add_render_attribute('advanced-image-gallery', 'data-bdt-grid', '');
 		$this->parent->add_render_attribute('advanced-image-gallery', 'class', ['bdt-grid', 'bdt-grid-small'] );
 
 		if ( $settings['show_lightbox'] ) {
-			$this->parent->add_render_attribute('advanced-image-gallery', 'bdt-lightbox', 'animation: slide');
+			$this->parent->add_render_attribute('advanced-image-gallery', 'data-bdt-lightbox', 'animation: slide');
 		}
 
 		$this->parent->add_render_attribute('advanced-image-gallery', 'class', 'bdt-slider-items');
@@ -41,7 +41,7 @@ class Skin_Carousel extends Elementor_Skin_Base {
 						( 'arrows' == $settings['navigation'] or 'arrows-thumbnavs' == $settings['navigation'] ) ? 'bdt-arrows-align-' . $settings['arrows_position'] : '',
 						( 'dots' == $settings['navigation'] ) ? 'bdt-dots-align-'. $settings['dots_position'] : '',
 					],
-					'bdt-slider' => [
+					'data-bdt-slider' => [
 						wp_json_encode( [
 							"autoplay"          => ( $settings["autoplay"] ) ? true : false,
 							"autoplay-interval" => $settings["autoplay_interval"],
@@ -94,10 +94,10 @@ class Skin_Carousel extends Elementor_Skin_Base {
 		?>
 		<div class="bdt-position-z-index bdt-position-<?php echo esc_attr( $arrows_position . $hide_arrow_on_mobile ); ?>">
 			<div class="bdt-arrows-container bdt-slidenav-container">
-				<a href="" class="bdt-navigation-prev bdt-slidenav-previous bdt-slidenav" bdt-slider-item="previous">
+				<a href="" class="bdt-navigation-prev bdt-slidenav-previous bdt-slidenav" data-bdt-slider-item="previous">
 					<i class="ep-arrow-left-<?php echo esc_attr($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
 				</a>
-				<a href="" class="bdt-navigation-next bdt-slidenav-next bdt-slidenav" bdt-slider-item="next">
+				<a href="" class="bdt-navigation-next bdt-slidenav-next bdt-slidenav" data-bdt-slider-item="next">
 					<i class="ep-arrow-right-<?php echo esc_attr($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
 				</a>
 			</div>
@@ -125,7 +125,7 @@ class Skin_Carousel extends Elementor_Skin_Base {
 
 					foreach ( $settings['avd_gallery_images'] as $index => $item ) :
 					      
-						echo '<li class="bdt-slider-dotnav bdt-active" bdt-slider-item="' . esc_attr($bdt_counter) . '"><a href="#"></a></li>';
+						echo '<li class="bdt-slider-dotnav bdt-active" data-bdt-slider-item="' . esc_attr($bdt_counter) . '"><a href="#"></a></li>';
 						$bdt_counter++;
 
 					endforeach; ?>
@@ -144,7 +144,7 @@ class Skin_Carousel extends Elementor_Skin_Base {
 				
 				<div class="bdt-flex bdt-flex-middle">
 					<div class="<?php echo esc_attr( $hide_arrow_on_mobile ); ?>">
-						<a href="" class="bdt-navigation-prev bdt-slidenav-previous bdt-slidenav" bdt-slider-item="previous">
+						<a href="" class="bdt-navigation-prev bdt-slidenav-previous bdt-slidenav" data-bdt-slider-item="previous">
 							<i class="ep-arrow-left-<?php echo esc_attr($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
 						</a>						
 					</div>
@@ -156,7 +156,7 @@ class Skin_Carousel extends Elementor_Skin_Base {
 								$bdt_counter = 0;
 
 								foreach ( $settings['avd_gallery_images'] as $index => $item ) :								      
-									echo '<li class="bdt-slider-dotnav bdt-active" bdt-slider-item="' . esc_attr($bdt_counter) . '"><a href="#"></a></li>';
+									echo '<li class="bdt-slider-dotnav bdt-active" data-bdt-slider-item="' . esc_attr($bdt_counter) . '"><a href="#"></a></li>';
 									$bdt_counter++;
 								endforeach; ?>
 
@@ -165,7 +165,7 @@ class Skin_Carousel extends Elementor_Skin_Base {
 					<?php endif; ?>
 					
 					<div class="<?php echo esc_attr( $hide_arrow_on_mobile ); ?>">
-						<a href="" class="bdt-navigation-next bdt-slidenav-next bdt-slidenav" bdt-slider-item="next">
+						<a href="" class="bdt-navigation-next bdt-slidenav-next bdt-slidenav" data-bdt-slider-item="next">
 							<i class="ep-arrow-right-<?php echo esc_attr($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
 						</a>						
 					</div>

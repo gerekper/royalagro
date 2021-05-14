@@ -99,7 +99,7 @@ class Premium_Unfold extends Widget_Base {
 	public function get_script_depends() {
 		return array(
 			'jquery-ui',
-			'premium-pro-js',
+			'premium-pro',
 		);
 	}
 

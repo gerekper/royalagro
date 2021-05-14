@@ -102,9 +102,9 @@ class Premium_Whatsapp_Chat extends Widget_Base {
 	 */
 	public function get_script_depends() {
 		return array(
-			'tooltipster-bundle-js',
+			'tooltipster-bundle',
 			'lottie-js',
-			'premium-pro-js',
+			'premium-pro',
 		);
 	}
 

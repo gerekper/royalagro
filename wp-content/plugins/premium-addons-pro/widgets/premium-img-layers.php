@@ -113,13 +113,12 @@ class Premium_Img_Layers extends Widget_Base {
 	 */
 	public function get_script_depends() {
 		return array(
-			'parallaxmouse-js',
-			'tweenmax-js',
+			'pa-tweenmax',
 			'tilt-js',
 			'elementor-waypoints',
-			'anime-js',
+			'pa-anime',
 			'lottie-js',
-			'premium-pro-js',
+			'premium-pro',
 		);
 	}
 

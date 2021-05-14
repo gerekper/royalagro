@@ -361,6 +361,15 @@ class Video_Gallery extends Module_Base {
 				'type'  => Controls_Manager::SWITCHER,
 			]
 		);
+
+		$this->add_control(
+			'arrow_always_show',
+			[
+				'label' => esc_html__( 'Show Arrows Always?', 'bdthemes-element-pack' ) . BDTEP_NC,
+				'type'  => Controls_Manager::SWITCHER,
+				'prefix_class' => 'bdt-show-arrows-always-'
+			]
+		);
 		
 		$this->end_controls_section();
 

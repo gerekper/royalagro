@@ -4,6 +4,10 @@ namespace DynamicContentForElementor;
 
 use Elementor\Controls_Manager;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Extensions {
 
 	public static $extensions = [];
@@ -202,7 +206,7 @@ class Extensions {
 				'description' => __( 'Choose a minimum and maximum characters length for your text and textarea fields', 'dynamic-content-for-elementor' ),
 				'icon' => 'icon-dyn-field-length',
 				'plugin_depends' => [ 'elementor-pro' ],
-				'doc_url' => 'https://www.dynamic.ooo/widget/length-fields-for-elementor-pro-form/',
+				'doc_url' => 'https://www.dynamic.ooo/widget/field-length-for-elementor-pro-form/',
 			],
 			'DCE_Extension_Form_Message' => [
 				'name' => 'dce_extension_form_message',

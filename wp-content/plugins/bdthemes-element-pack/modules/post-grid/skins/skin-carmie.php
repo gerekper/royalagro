@@ -32,7 +32,7 @@ class Skin_Carmie extends Elementor_Skin_Base {
 
 		?> 
 		<div id="bdt-post-grid-<?php echo esc_attr($id); ?>" class="bdt-post-grid bdt-post-grid-skin-carmie">
-	  		<div class="bdt-grid bdt-grid-<?php echo esc_attr($settings['column_gap']); ?>" bdt-grid>
+	  		<div class="bdt-grid bdt-grid-<?php echo esc_attr($settings['column_gap']); ?>" data-bdt-grid>
 
 				<?php			
 				while ($wp_query->have_posts()) :

@@ -3,7 +3,6 @@ namespace ElementPack\Modules\NewsTicker\Widgets;
 
 use ElementPack\Base\Module_Base;
 use Elementor\Controls_Manager;
-use Elementor\Core\Schemes;
 use Elementor\Group_Control_Typography;
 use ElementPack\Modules\QueryControl\Controls\Group_Control_Posts;
 use ElementPack\Modules\QueryControl\Module;
@@ -503,42 +502,6 @@ class News_Ticker extends Module_Base {
 			]
 		);
 
-		// $this->add_group_control(
-		// 	Group_Control_Border::get_type(),
-		// 	[
-		// 		'name'        => 'arrow_border',
-		// 		'label'       => esc_html__( 'Border', 'bdthemes-element-pack' ),
-		// 		'placeholder' => '1px',
-		// 		'default'     => '1px',
-		// 		'selector'    => '{{WRAPPER}} .bdt-news-ticker .bdt-news-ticker-navigation button',
-		// 		'separator'   => 'before',
-		// 	]
-		// );
-
-		// $this->add_control(
-		// 	'arrow_border_radius',
-		// 	[
-		// 		'label'      => esc_html__( 'Border Radius', 'bdthemes-element-pack' ),
-		// 		'type'       => Controls_Manager::DIMENSIONS,
-		// 		'size_units' => [ 'px', '%' ],
-		// 		'selectors'  => [
-		// 			'{{WRAPPER}} .bdt-news-ticker .bdt-news-ticker-navigation button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-		// 		],
-		// 	]
-		// );
-
-		// $this->add_control(
-		// 	'arrow_padding',
-		// 	[
-		// 		'label'      => esc_html__( 'Padding', 'bdthemes-element-pack' ),
-		// 		'type'       => Controls_Manager::DIMENSIONS,
-		// 		'size_units' => [ 'px', 'em', '%' ],
-		// 		'selectors'  => [
-		// 			'{{WRAPPER}} .bdt-news-ticker .bdt-news-ticker-navigation button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-		// 		],
-		// 	]
-		// );
-
 		$this->end_controls_tab();
 
 		$this->start_controls_tab(
@@ -558,20 +521,6 @@ class News_Ticker extends Module_Base {
 				],
 			]
 		);
-
-		// $this->add_control(
-		// 	'arrow_hover_border_color',
-		// 	[
-		// 		'label'     => esc_html__( 'Border Color', 'bdthemes-element-pack' ),
-		// 		'type'      => Controls_Manager::COLOR,
-		// 		'condition' => [
-		// 			'arrow_border_border!' => '',
-		// 		],
-		// 		'selectors' => [
-		// 			'{{WRAPPER}} .bdt-news-ticker .bdt-news-ticker-navigation a:hover' => 'border-color: {{VALUE}};',
-		// 		],
-		// 	]
-		// );
 
 		$this->end_controls_tab();
 
@@ -707,7 +656,6 @@ class News_Ticker extends Module_Base {
 		}
 
 		$news_hour = get_the_time();
-		//$news_day = get_the_time('d');
 		
 		?>
 

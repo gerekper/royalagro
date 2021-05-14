@@ -105,7 +105,7 @@ class Premium_Iconbox extends Widget_Base {
 		return array(
 			'tilt-js',
 			'lottie-js',
-			'premium-pro-js',
+			'premium-pro',
 		);
 	}
 

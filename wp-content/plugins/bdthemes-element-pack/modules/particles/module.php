@@ -8,7 +8,9 @@ use ElementPack;
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Module extends Element_Pack_Module_Base {
-
+	
+	private $sections_data;
+	
 	public function __construct() {
 		parent::__construct();
 		$this->add_actions();
@@ -33,6 +35,7 @@ class Module extends Element_Pack_Module_Base {
 				'return_value' => 'yes',
 				'description'  => __( 'Switch on to enable Particles options! Note that currently particles are not visible in edit/preview mode for better elementor performance. It\'s only can viewed on the frontend. <b>Z-Index Problem: set column z-index 1 so particles will set behind the content.</b>', 'bdthemes-element-pack' ),
 				'prefix_class' => 'bdt-particles-',
+				'separator'    => ['before'],
 				//'render_type'  => 'template',
 			]
 		);

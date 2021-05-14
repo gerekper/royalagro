@@ -36,7 +36,7 @@ class Skin_Tiny_Countdown extends Elementor_Skin_Base {
 		$this->parent->add_render_attribute(
 			[
 				'countdown' => [
-					'bdt-countdown' => [
+					'data-bdt-countdown' => [
 						'date: ' . $final_time,
 					],
 				],

@@ -1278,7 +1278,7 @@ class Post_Block_Modern extends Module_Base {
 							'bdt-grid-match',
 							'bdt-grid-collapse'
 						],
-						'bdt-grid' => ''
+						'data-bdt-grid' => ''
 					]
 				]
 			);

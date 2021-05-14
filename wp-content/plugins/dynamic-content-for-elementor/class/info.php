@@ -2,6 +2,10 @@
 
 namespace DynamicContentForElementor;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Info {
 
 	public function __construct() {

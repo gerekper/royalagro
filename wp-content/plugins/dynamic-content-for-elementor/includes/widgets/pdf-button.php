@@ -52,6 +52,10 @@ class DCE_Widget_Pdf extends DCE_Widget_Prototype {
 						'title' => __( 'JS', 'dynamic-content-for-elementor' ),
 						'icon' => 'fa fa-fire',
 					],
+					'paged' => [
+						'title' => 'Paged ' . __( '(Experimental)', 'dynamic-content-for-elementor' ),
+						'icon' => 'fa fa-book',
+					],
 					'browser' => [
 						'title' => __( 'Browser', 'dynamic-content-for-elementor' ),
 						'icon' => 'fa fa-window-maximize',
@@ -72,28 +76,40 @@ class DCE_Widget_Pdf extends DCE_Widget_Prototype {
 				'default' => 'js',
 			]);
 
-			$this->add_control(
-				'dce_pdf_rtl_button_converter',
-				[
-					'label' => __( 'Converter', 'dynamic-content-for-elementor' ),
-					'type' => Controls_Manager::CHOOSE,
-					'options' => [
-						'browser' => [
-							'title' => __( 'Browser', 'dynamic-content-for-elementor' ),
-							'icon' => 'fa fa-window-maximize',
-						],
-						'tcpdf' => [
-							'title' => __( 'TCPDF', 'dynamic-content-for-elementor' ),
-							'icon' => 'fa fa-rocket',
-						],
+		$this->add_control(
+			'html_notice',
+			[
+				'type' => Controls_Manager::RAW_HTML,
+				'raw' => __( 'The Paged converter is an experiment still in development. You are welcome to try it and help us by sharing your feedback.', 'dynamic-content-for-elementor' ),
+				'content_classes' => 'elementor-panel-alert elementor-panel-alert-warning',
+				'condition' => [
+					'dce_pdf_button_converter' => [ 'paged' ],
+				],
+			]
+		);
+
+		$this->add_control(
+			'dce_pdf_rtl_button_converter',
+			[
+				'label' => __( 'Converter', 'dynamic-content-for-elementor' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'browser' => [
+						'title' => __( 'Browser', 'dynamic-content-for-elementor' ),
+						'icon' => 'fa fa-window-maximize',
 					],
-					'condition' => [
-						'dce_pdf_rtl!' => '',
+					'tcpdf' => [
+						'title' => __( 'TCPDF', 'dynamic-content-for-elementor' ),
+						'icon' => 'fa fa-rocket',
 					],
-					'toggle' => false,
-					'default' => 'tcpdf',
-				]
-			);
+				],
+				'condition' => [
+					'dce_pdf_rtl!' => '',
+				],
+				'toggle' => false,
+				'default' => 'tcpdf',
+			]
+		);
 
 		$this->add_control(
 			'dce_pdf_button_title',
@@ -103,6 +119,9 @@ class DCE_Widget_Pdf extends DCE_Widget_Prototype {
 				'default' => '[post:name]',
 				'description' => __( 'The PDF file name, the .pdf extension will automatically added', 'dynamic-content-for-elementor' ),
 				'label_block' => true,
+				'condition' => [
+					'dce_pdf_button_converter!' => 'paged',
+				],
 			]
 		);
 
@@ -159,7 +178,6 @@ class DCE_Widget_Pdf extends DCE_Widget_Prototype {
 				],
 			]
 		);
-
 		$paper_sizes = array_keys( \Dompdf\Adapter\CPDF::$PAPER_SIZES );
 		$tmp = array();
 		foreach ( $paper_sizes as $asize ) {
@@ -210,6 +228,21 @@ class DCE_Widget_Pdf extends DCE_Widget_Prototype {
 			]
 		);
 
+		$paged_formats = [ 'A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A10', 'B4', 'B5', 'letter', 'legal', 'ledger' ];
+		$paged_paper_sizes = [ 'browser-default' => 'Browser Default' ];
+		$this->add_control(
+			'dce_pdf_button_size_paged',
+			[
+				'label' => __( 'Page Size', 'dynamic-content-for-elementor' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'browser-default',
+				'options' => $paged_paper_sizes,
+				'condition' => [
+					'dce_pdf_button_converter' => 'paged',
+				],
+			]
+		);
+
 		$this->add_control(
 			'dce_pdf_button_orientation',
 			[
@@ -228,7 +261,7 @@ class DCE_Widget_Pdf extends DCE_Widget_Prototype {
 				'toggle' => false,
 				'default' => 'portrait',
 				'condition' => [
-					'dce_pdf_button_converter!' => 'browser',
+					'dce_pdf_button_converter!' => [ 'browser', 'paged' ],
 				],
 			]
 		);
@@ -272,6 +305,7 @@ class DCE_Widget_Pdf extends DCE_Widget_Prototype {
 				],
 			]
 		);
+
 
 		$this->add_control(
 			'dce_pdf_button_dpi',
@@ -770,7 +804,32 @@ function downloadPDF(){
 	$('body').html(restorepage);
 	return false;
 }
-</script><?php
+	</script><?php
+	}
+
+	/**
+	 * wp_footer action: Echoes the js converter scripts that will immediately
+	 * render the pdf and trigger the download.
+	 */
+	public function paged_enqueue_scripts() {
+		$settings = $this->get_settings_for_display();
+		$selector = $settings['dce_pdf_button_container'];
+		// If the source is a template we get its html code and add it to the
+		// page, so that it can be rendered directly here.
+		if ( $settings['dce_pdf_button_body'] === 'template' ) {
+			$tbody = \Elementor\Plugin::$instance->frontend->get_builder_content( $settings['dce_pdf_button_template'] );
+			if ( ! $tbody ) {
+				self::js_template_error_alert();
+				return;
+			}
+			$selector = '#dce-pdftemplate';
+			echo preg_replace( '/<div/', '<div id="dce-pdftemplate"', $tbody, 1 );
+		}
+		$loc = [
+			'selector' => $selector,
+		];
+		wp_enqueue_script( 'dce-pagedjs' );
+		wp_localize_script( 'dce-pdf-paged', 'pagedSettings', $loc );
 	}
 
 	/**
@@ -839,12 +898,17 @@ EOD;
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
-		if ( $settings['dce_pdf_button_converter'] == 'js' ) {
+		$converter = $settings['dce_pdf_button_converter'];
+		if ( $converter === 'js' || $converter === 'paged' ) {
 			$this->add_render_attribute( 'button', 'onclick', esc_attr( $this->jsconv_button_onclick() ) );
 			$this->add_render_attribute( 'button', 'href', '#' );
 			$download_id = isset( $_GET['downloadPDF'] ) ? sanitize_text_field( $_GET['downloadPDF'] ) : 0;
 			if ( $download_id === $this->get_id() ) {
-				add_action( 'elementor/frontend/after_enqueue_scripts', [ $this, 'jsconv_enqueue_scripts' ], 1000, 0 );
+				if ( $converter === 'js' ) {
+					add_action( 'elementor/frontend/after_enqueue_scripts', [ $this, 'jsconv_enqueue_scripts' ], 1000, 0 );
+				} else {
+					add_action( 'elementor/frontend/after_enqueue_scripts', [ $this, 'paged_enqueue_scripts' ], 1000, 0 );
+				}
 			}
 		} elseif ( $settings['dce_pdf_button_converter'] == 'browser' ) {
 			$this->add_render_attribute( 'button', 'onclick', 'downloadPDF()' );

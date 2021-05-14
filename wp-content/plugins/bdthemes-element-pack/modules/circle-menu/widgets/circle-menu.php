@@ -931,7 +931,7 @@ class Circle_Menu extends Module_Base {
 								'bdt-icon bdt-link-reset',
 								'bdt-position-center',
 							],
-							'bdt-icon' => [
+							'data-bdt-icon' => [
 								'icon: ' . esc_attr($toggle_icon) . '; ratio: 1.1',
 							],
 						],

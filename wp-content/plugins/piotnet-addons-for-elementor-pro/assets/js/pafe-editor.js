@@ -416,6 +416,37 @@ jQuery(document).ready(function( $ ) {
 			}
 		});
 	});
+	//Sendinblue
+	$(document).on('click', '[data-pafe-sendinblue-get-list]', function(){
+		$(this).addClass('loading');
+		const parent = $(this).closest('#elementor-controls');
+		let sendinblueTypeApi;
+		let sendinblueType = parent.find('[data-setting="sendinblue_api_key_source"]').val();
+		if(sendinblueType == 'default'){
+			sendinblueTypeApi = false;
+		}else{
+			sendinblueTypeApi = parent.find('[data-setting="sendinblue_api_key"]').val();
+		}
+		let sendinblueList = {
+			action: 'pafe_sendinblue_get_list',
+			apiKey: sendinblueTypeApi
+		}
+		$.post(ajaxurl, sendinblueList, function(response) {
+			if(response){
+				$('[data-pafe-sendinblue-api-get-list-results]').html(response);
+			}
+		});
+		let sendinblueAttributes = {
+			action: 'pafe_sendinblue_get_attributes',
+			apiKey: sendinblueTypeApi
+		}
+		$.post(ajaxurl, sendinblueAttributes, function(response) {
+			if(response){
+				$('[data-pafe-sendinblue-api-get-attributes-result]').html(response);
+				$('[data-pafe-sendinblue-get-list]').removeClass('loading');
+			}
+		});
+	});
 	// Distance Calculation Google Maps
 	// $(document).on('click', '[data-setting="pafe_calculated_fields_form_distance_calculation_from_specific_location"], [data-setting="pafe_calculated_fields_form_distance_calculation_to_specific_location"]', function(){
 	// 	var autocomplete = new google.maps.places.Autocomplete(this);

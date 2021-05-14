@@ -24,12 +24,12 @@ class Skin_Hidden extends Elementor_Skin_Base {
 		$this->parent->add_render_attribute('advanced-image-gallery', 'class', ['bdt-advanced-image-gallery', 'bdt-skin-' . $settings['_skin'] ] );
 
 		if ( $settings['show_lightbox'] ) {
-			$this->parent->add_render_attribute('advanced-image-gallery', 'bdt-lightbox', 'animation: ' . $settings['lightbox_animation'] . ';');
+			$this->parent->add_render_attribute('advanced-image-gallery', 'data-bdt-lightbox', 'animation: ' . $settings['lightbox_animation'] . ';');
 			if ($settings['lightbox_autoplay']) {
-				$this->parent->add_render_attribute('advanced-image-gallery', 'bdt-lightbox', 'autoplay: 500;');
+				$this->parent->add_render_attribute('advanced-image-gallery', 'data-bdt-lightbox', 'autoplay: 500;');
 
 				if ($settings['lightbox_pause']) {
-					$this->parent->add_render_attribute('advanced-image-gallery', 'bdt-lightbox', 'pause-on-hover: true;');
+					$this->parent->add_render_attribute('advanced-image-gallery', 'data-bdt-lightbox', 'pause-on-hover: true;');
 				}
 			}
 		}

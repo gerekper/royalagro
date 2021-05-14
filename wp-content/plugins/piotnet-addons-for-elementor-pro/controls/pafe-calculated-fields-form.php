@@ -39,7 +39,7 @@ class PAFE_Calculated_Fields_Form extends \Elementor\Widget_Base {
 			[
 				'name' => 'pafe_calculated_fields_form_typography',
 				'label' => __( 'Typography', 'pafe' ),
-				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .pafe-calculated-fields-form',
 			]
 		);

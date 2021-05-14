@@ -117,8 +117,8 @@ class PAFE_Form_Builder_Preview_Submission extends \Elementor\Widget_Base {
 				'label' => __( 'Text Color', 'elementor' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_3,
+					'type' => \Elementor\Core\Schemes\Color::get_type(),
+					'value' => \Elementor\Core\Schemes\Color::COLOR_3,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .pafe-form-builder-preview-submission__item-label' => 'color: {{VALUE}};',
@@ -130,7 +130,7 @@ class PAFE_Form_Builder_Preview_Submission extends \Elementor\Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'pafe_form_builder_preview_submission_style_label_typography',
-				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .pafe-form-builder-preview-submission__item-label',
 			]
 		);
@@ -151,8 +151,8 @@ class PAFE_Form_Builder_Preview_Submission extends \Elementor\Widget_Base {
 				'label' => __( 'Text Color', 'elementor' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_3,
+					'type' => \Elementor\Core\Schemes\Color::get_type(),
+					'value' => \Elementor\Core\Schemes\Color::COLOR_3,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .pafe-form-builder-preview-submission__item-value' => 'color: {{VALUE}};',
@@ -164,7 +164,7 @@ class PAFE_Form_Builder_Preview_Submission extends \Elementor\Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'pafe_form_builder_preview_submission_style_value_typography',
-				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .pafe-form-builder-preview-submission__item-value',
 			]
 		);

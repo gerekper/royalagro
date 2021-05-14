@@ -898,7 +898,7 @@ class Navbar extends Module_Base {
 						'bdt-navbar',
 						'bdt-navbar-transparent'
 					],
-					'bdt-navbar' => [
+					'data-bdt-navbar' => [
 						wp_json_encode(array_filter([
 							"align"      => $settings["dropdown_align"] ? $settings["dropdown_align"] : "left",
 							"delay-show" => $settings["dropdown_delay_show"]["size"] ? $settings["dropdown_delay_show"]["size"] : false,

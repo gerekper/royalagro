@@ -188,9 +188,9 @@ class Skin_Table extends Elementor_Skin_Base {
 
 						<?php if ( $settings['show_price']) : ?>
 							<td class="bdt-ep-align bdt-price" data-order="<?php echo $product->get_price(); ?>">
-								<span class="bdt-wc-product-price">
+								<div class="bdt-wc-product-price">
 									<?php woocommerce_template_single_price(); ?>
-								</span>
+								</div>
 							</td>
 					    <?php endif; ?>
 
@@ -232,7 +232,7 @@ class Skin_Table extends Elementor_Skin_Base {
 			<?php
 
 		} else {
-			echo '<div class="bdt-alert-warning" bdt-alert>'.esc_html__('Ops! There is no product', 'bdthemes-element-pack').'<div>';
+			echo '<div class="bdt-alert-warning" data-bdt-alert>'.esc_html__('Ops! There is no product', 'bdthemes-element-pack').'<div>';
 		}
 	}
 

@@ -253,7 +253,7 @@ class Skin_Dropdown extends Elementor_Skin_Base {
 				[
 					'dropdown-settings' => [
 						'class'         => 'bdt-dropdown',
-						'bdt-dropdown' => [
+						'data-bdt-dropdown' => [
 							wp_json_encode(array_filter([
 								"mode"   => "click",
 								"pos"    => $this->get_instance_value("dropdown_position"),
@@ -270,7 +270,7 @@ class Skin_Dropdown extends Elementor_Skin_Base {
 				[
 					'dropdown-settings' => [
 						'class'        => 'bdt-dropdown',
-						'bdt-dropdown' => [
+						'data-bdt-dropdown' => [
 							wp_json_encode(array_filter([
 								"mode"   => $this->get_instance_value("dropdown_mode"),
 								"pos"    => $this->get_instance_value("dropdown_position"),

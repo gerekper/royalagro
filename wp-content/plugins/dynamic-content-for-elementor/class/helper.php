@@ -2,11 +2,16 @@
 
 namespace DynamicContentForElementor;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Main Helper Class
  *
  * @since 0.1.0
  */
+
 class Helper {
 
 	use Trait_Plugin;

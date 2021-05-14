@@ -743,14 +743,14 @@ class Lightbox extends Module_Base {
 		}
 
 		//$this->add_render_attribute( 'lightbox', 'class', 'bdt-lightbox' );
-		$this->add_render_attribute( 'lightbox', 'bdt-lightbox', '' );
+		$this->add_render_attribute( 'lightbox', 'data-bdt-lightbox', '' );
 		
 		if ( $settings['lightbox_animation'] ) {
-			$this->add_render_attribute( 'lightbox', 'bdt-lightbox', 'animation: ' . $settings['lightbox_animation'] . ';' );
+			$this->add_render_attribute( 'lightbox', 'data-bdt-lightbox', 'animation: ' . $settings['lightbox_animation'] . ';' );
 		}
 
 		if ( $settings['video_autoplay'] ) {
-			$this->add_render_attribute( 'lightbox', 'bdt-lightbox', 'video-autoplay: true;' );
+			$this->add_render_attribute( 'lightbox', 'data-bdt-lightbox', 'video-autoplay: true;' );
 		}
 		
 		if ( 'poster' == $settings['lightbox_toggler'] ) {

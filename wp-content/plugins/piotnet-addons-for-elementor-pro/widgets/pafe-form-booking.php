@@ -352,8 +352,8 @@
 					'{{WRAPPER}} .elementor-field-group > label, {{WRAPPER}} .elementor-field-subgroup label' => 'color: {{VALUE}};',
 				],
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_3,
+					'type' => \Elementor\Core\Schemes\Color::get_type(),
+					'value' => \Elementor\Core\Schemes\Color::COLOR_3,
 				],
 			]
 		);
@@ -378,7 +378,7 @@
 			[
 				'name' => 'label_typography',
 				'selector' => '{{WRAPPER}} .elementor-field-group > label',
-				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_3,
 			]
 		);
 
@@ -489,7 +489,7 @@
 					'name' => 'title_typography',
 					'label' => __( 'Title Typography', 'pafe' ),
 					'selector' => '{{WRAPPER}} .pafe-form-booking__title',
-					'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_3,
+					'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_3,
 				]
 			);
 
@@ -499,7 +499,7 @@
 					'name' => 'slot_typography',
 					'label' => __( 'Slot Typography', 'pafe' ),
 					'selector' => '{{WRAPPER}} .pafe-form-booking__slot',
-					'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_3,
+					'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_3,
 				]
 			);
 
@@ -509,7 +509,7 @@
 					'name' => 'price_typography',
 					'label' => __( 'Price Typography', 'pafe' ),
 					'selector' => '{{WRAPPER}} .pafe-form-booking__price',
-					'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_3,
+					'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_3,
 				]
 			);
 
@@ -530,8 +530,8 @@
 					'label' => __( 'Background', 'pafe' ),
 					'type' => \Elementor\Controls_Manager::COLOR,
 					'scheme' => [
-						'type' => \Elementor\Scheme_Color::get_type(), 
-						'value' => \Elementor\Scheme_Color::COLOR_1,
+						'type' => \Elementor\Core\Schemes\Color::get_type(), 
+						'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 					],
 					'default' => '#D53440',  
 					'selectors' => [
@@ -546,8 +546,8 @@
 					'label' => __( 'Text Color', 'pafe' ),
 					'type' => \Elementor\Controls_Manager::COLOR,
 					'scheme' => [
-						'type' => \Elementor\Scheme_Color::get_type(), 
-						'value' => \Elementor\Scheme_Color::COLOR_1,
+						'type' => \Elementor\Core\Schemes\Color::get_type(), 
+						'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 					],
 					'default' => '#fff',  
 					'selectors' => [
@@ -580,8 +580,8 @@
 					'label' => __( 'Background', 'pafe' ),
 					'type' => \Elementor\Controls_Manager::COLOR,
 					'scheme' => [
-						'type' => \Elementor\Scheme_Color::get_type(), 
-						'value' => \Elementor\Scheme_Color::COLOR_1,
+						'type' => \Elementor\Core\Schemes\Color::get_type(), 
+						'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 					],
 					'default' => '#931b23',  
 					'selectors' => [
@@ -596,8 +596,8 @@
 					'label' => __( 'Text Color', 'pafe' ),
 					'type' => \Elementor\Controls_Manager::COLOR,
 					'scheme' => [
-						'type' => \Elementor\Scheme_Color::get_type(), 
-						'value' => \Elementor\Scheme_Color::COLOR_1,
+						'type' => \Elementor\Core\Schemes\Color::get_type(), 
+						'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 					],
 					'default' => '#fff',  
 					'selectors' => [
@@ -630,8 +630,8 @@
 					'label' => __( 'Background', 'pafe' ),
 					'type' => \Elementor\Controls_Manager::COLOR,
 					'scheme' => [
-						'type' => \Elementor\Scheme_Color::get_type(), 
-						'value' => \Elementor\Scheme_Color::COLOR_1,
+						'type' => \Elementor\Core\Schemes\Color::get_type(), 
+						'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 					],
 					'default' => '#ccc',  
 					'selectors' => [
@@ -646,8 +646,8 @@
 					'label' => __( 'Text Color', 'pafe' ),
 					'type' => \Elementor\Controls_Manager::COLOR,
 					'scheme' => [
-						'type' => \Elementor\Scheme_Color::get_type(), 
-						'value' => \Elementor\Scheme_Color::COLOR_1,
+						'type' => \Elementor\Core\Schemes\Color::get_type(), 
+						'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 					],
 					'default' => '#000',  
 					'selectors' => [

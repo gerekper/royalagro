@@ -1317,7 +1317,7 @@ class User_Register extends Module_Base {
               class="bdt-form-stacked bdt-width-1-1 bdt-user-register-widget" method="post">
 			<?php
 			if ( $settings['show_recaptcha_checker'] ) {
-				do_action( 'element_pack_google_rechatcha_render', $this, 'onLoadElementorPackReCaptcha', 'button' );
+				do_action( 'element_pack_google_rechatcha_render', $this, 'onLoadElementPackRegisterCaptcha', 'button' );
 			}
 			?>
             <input type="hidden" class="page_id" name="page_id" value="<?php echo get_the_ID() ?>"/>

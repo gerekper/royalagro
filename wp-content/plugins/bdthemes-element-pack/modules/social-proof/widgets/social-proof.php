@@ -1780,7 +1780,7 @@ class Social_Proof extends Module_Base {
 
 		?>
 		<div class="bdt-social-proof-rating">
-			<ul class="bdt-rating bdt-grid bdt-grid-collapse bdt-rating-<?php echo esc_attr($rating); ?>" bdt-grid>
+			<ul class="bdt-rating bdt-grid bdt-grid-collapse bdt-rating-<?php echo esc_attr($rating); ?>" data-bdt-grid>
                 <?php
                 if ( $intpart <= 5 ) {
                     for ( $i=0; $i<$intpart; $i++ )
@@ -1814,7 +1814,7 @@ class Social_Proof extends Module_Base {
 
     ?>
     <div id="bdt-social-proof-<?php echo esc_attr($id); ?>" class="bdt-social-proof">
-        <div class="bdt-grid bdt-grid-<?php echo esc_attr($settings['column_gap']); ?> bdt-child-width-1-<?php echo esc_attr($mobile_cols); ?> bdt-child-width-1-<?php echo esc_attr($tablet_cols); ?>@s bdt-child-width-1-<?php echo esc_attr($desktop_cols); ?>@l" bdt-grid>
+        <div class="bdt-grid bdt-grid-<?php echo esc_attr($settings['column_gap']); ?> bdt-child-width-1-<?php echo esc_attr($mobile_cols); ?> bdt-child-width-1-<?php echo esc_attr($tablet_cols); ?>@s bdt-child-width-1-<?php echo esc_attr($desktop_cols); ?>@l" data-bdt-grid>
 
         <?php
 

@@ -75,24 +75,6 @@ class Breadcrumbs extends Module_Base {
 			]
 		);
 
-
-
-		// $this->add_control(
-		// 	'html_tag',
-		// 	[
-		// 		'label' => __( 'HTML Tag', 'bdthemes-element-pack' ),
-		// 		'type' => Controls_Manager::SELECT,
-		// 		'options' => [
-		// 			'' => __( 'Default', 'bdthemes-element-pack' ),
-		// 			'div' => __( 'div', 'bdthemes-element-pack' ),
-		// 			'p' => __( 'p', 'bdthemes-element-pack' ),
-		// 			'nav' => __( 'nav', 'bdthemes-element-pack' ),
-		// 			'span' => __( 'span', 'bdthemes-element-pack' ),
-		// 		],
-		// 		'default' => '',
-		// 	]
-		// );
-
 		$this->add_control(
 			'breadcrumbs_separator',
 			[
@@ -454,21 +436,9 @@ class Breadcrumbs extends Module_Base {
 
 	}
 
-	// private function get_html_tag() {
-	// 	$settings = $this->get_settings_for_display();
-	// 	$html_tag = $settings['html_tag'];
 
-	// 	if ( empty( $html_tag ) ) {
-	// 		$html_tag = 'p';
-	// 	}
-
-	// 	return $html_tag;
-	// }
-
-
-	private function rooten_breadcrumbs($align, $home_icon) {
+	private function _breadcrumbs($align, $home_icon) {
  		$home_icon = (!empty($home_icon)) ? $home_icon : '';
-		// $align = 'center';
 	    $showOnHome  = 1; // 1 - show breadcrumbs on the homepage, 0 - don't show
 	    $delimiter   = '/'; // delimiter between crumbs
 	    $home        = get_bloginfo('name'); // text for the 'Home' link
@@ -479,16 +449,16 @@ class Breadcrumbs extends Module_Base {
 	    $before      = '<li><span href="#">'; // tag before the current crumb
 	    $after       = '</span></li>'; // tag after the current crumb
 	    $output      = array();
-	    $class     = ['bdt-breadcrumb'];
+	    $class       = ['bdt-breadcrumb'];
 	    $class[]     = ($align == 'left') ? 'breadcrumb-align-left' : null;
 	    $class[]     = ($align == 'center') ? 'breadcrumb-align-center' : null;
 	    $class[]     = ($align == 'right') ? 'breadcrumb-align-right' : null;
 	    $class       = implode(' ', $class);
-	 
-	    global $post;
-	    $homeLink = home_url('/');
-
+		$homeLink    = home_url('/');
+		
+		global $post;
 	    global $woocommerce;
+	    
 	    if($woocommerce) {
 	        $shopLink = get_permalink( wc_get_page_id('shop') );
 	    }
@@ -535,8 +505,6 @@ class Breadcrumbs extends Module_Base {
 
 	        } elseif ( is_single() && !is_attachment() ) {
 	            if ( get_post_type() != 'post' ) {
-	                $post_type = get_post_type_object(get_post_type());
-	                $slug = $post_type->rewrite;
 	                if ($showCurrent == 1) {
 	                    $output[] = ' ' . $before . get_the_title() . $after;
 	                }
@@ -603,7 +571,7 @@ class Breadcrumbs extends Module_Base {
 
 		echo "<div class='bdt-breadcrumbs-wrapper'>";
 
-		$this->rooten_breadcrumbs($align, $home_icon);
+		$this->_breadcrumbs($align, $home_icon);
 		echo "</div>";
 
 

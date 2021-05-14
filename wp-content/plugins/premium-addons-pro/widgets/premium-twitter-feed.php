@@ -99,13 +99,13 @@ class Premium_Twitter_Feed extends Widget_Base {
 	 */
 	public function get_script_depends() {
 		return array(
-			'codebird-js',
-			'social-dot-js',
-			'jquery-socialfeed-js',
+			'codebird',
+			'social-dot',
+			'jquery-socialfeed',
 			'isotope-js',
 			'imagesloaded',
 			'pa-slick',
-			'premium-pro-js',
+			'premium-pro',
 		);
 	}
 
@@ -287,53 +287,6 @@ class Premium_Twitter_Feed extends Widget_Base {
 				),
 				'selectors'       => array(
 					'{{WRAPPER}} .premium-social-feed-element-wrap' => 'width: {{VALUE}}',
-				),
-			)
-		);
-
-		$this->add_responsive_control(
-			'image_height',
-			array(
-				'label'      => __( 'Post Media Height', 'premium-addons-pro' ),
-				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px', 'em' ),
-				'range'      => array(
-					'px' => array(
-						'min' => 50,
-						'max' => 500,
-					),
-					'em' => array(
-						'min' => 1,
-						'max' => 100,
-					),
-				),
-				'condition'  => array(
-					'equal_height_switcher' => 'yes',
-					'tweets_media'          => 'yes',
-				),
-				'selectors'  => array(
-					'{{WRAPPER}} .premium-social-feed-element img.attachment' => 'height: {{SIZE}}{{UNIT}}',
-				),
-			)
-		);
-
-		$this->add_responsive_control(
-			'image_fit',
-			array(
-				'label'     => __( 'Image Fit', 'premium-addons-for-elementor' ),
-				'type'      => Controls_Manager::SELECT,
-				'options'   => array(
-					'cover'   => __( 'Cover', 'premium-addons-for-elementor' ),
-					'fill'    => __( 'Fill', 'premium-addons-for-elementor' ),
-					'contain' => __( 'Contain', 'premium-addons-for-elementor' ),
-				),
-				'default'   => 'fill',
-				'selectors' => array(
-					'{{WRAPPER}} .premium-social-feed-element img.attachment' => 'object-fit: {{VALUE}}',
-				),
-				'condition' => array(
-					'equal_height_switcher' => 'yes',
-					'tweets_media'          => 'yes',
 				),
 			)
 		);
@@ -610,6 +563,52 @@ class Premium_Twitter_Feed extends Widget_Base {
 				'type'      => Controls_Manager::SWITCHER,
 				'label_on'  => 'Show',
 				'label_off' => 'Hide',
+			)
+		);
+
+		$this->add_responsive_control(
+			'image_height',
+			array(
+				'label'      => __( 'Tweet Media Height', 'premium-addons-pro' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', 'em' ),
+				'range'      => array(
+					'px' => array(
+						'min' => 50,
+						'max' => 500,
+					),
+					'em' => array(
+						'min' => 1,
+						'max' => 100,
+					),
+				),
+				'condition'  => array(
+					'tweets_media' => 'yes',
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .premium-social-feed-element img.attachment' => 'height: {{SIZE}}{{UNIT}}',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'image_fit',
+			array(
+				'label'     => __( 'Image Fit', 'premium-addons-for-elementor' ),
+				'type'      => Controls_Manager::SELECT,
+				'options'   => array(
+					'cover'   => __( 'Cover', 'premium-addons-for-elementor' ),
+					'fill'    => __( 'Fill', 'premium-addons-for-elementor' ),
+					'contain' => __( 'Contain', 'premium-addons-for-elementor' ),
+				),
+				'default'   => 'fill',
+				'separator' => 'after',
+				'selectors' => array(
+					'{{WRAPPER}} .premium-social-feed-element img.attachment' => 'object-fit: {{VALUE}}',
+				),
+				'condition' => array(
+					'tweets_media' => 'yes',
+				),
 			)
 		);
 

@@ -3547,7 +3547,7 @@ class Products extends Module_Base {
             <div class="bdt-quick-view <?php echo esc_attr($settings['quick_view_hide_mobile'] ? 'bdt-visible@s' : '') ?>">
 				<?php wp_nonce_field( 'ajax-ep-wc-product-nonce', 'bdt-wc-product-modal-sc' ); ?>
                 <input type="hidden" class="bdt_modal_spinner_message" value="<?php echo __( 'Please wait...', 'bdthemes-element-pack' ); ?>"/>
-				<a href="javascript:void(0)" data-id="<?php echo absint( $product_id ); ?>" bdt-tooltip="title: <?php echo __( 'Quick View', 'bdthemes-element-pack' ); ?>; pos: left;">
+				<a href="javascript:void(0)" data-id="<?php echo absint( $product_id ); ?>" data-bdt-tooltip="title: <?php echo __( 'Quick View', 'bdthemes-element-pack' ); ?>; pos: left;">
 					<i class="ep-eye"></i>
 				</a>
             </div>
@@ -3559,13 +3559,13 @@ class Products extends Module_Base {
 		$settings = $this->get_settings_for_display();
 
 		if ( 'yes' == $settings['match_height'] ) {
-			$this->add_render_attribute( 'wc-products', 'bdt-height-match', 'target: > div > div > .bdt-wc-product-inner' );
+			$this->add_render_attribute( 'wc-products', 'data-bdt-height-match', 'target: > div > div > .bdt-wc-product-inner' );
 		}
 
 		$this->add_render_attribute('wc-products', 'class', ['bdt-wc-products', 'bdt-wc-products-skin-default']);
 
 		if ( $settings['show_filter_bar'] ) {
-			$this->add_render_attribute( 'wc-products', 'bdt-filter', 'target: #bdt-wc-product-' . $this->get_id() );
+			$this->add_render_attribute( 'wc-products', 'data-bdt-filter', 'target: #bdt-wc-product-' . $this->get_id() );
 		}
 
 		?>
@@ -3714,14 +3714,14 @@ class Products extends Module_Base {
 		<div class="bdt-ep-grid-filters-wrapper"  id="<?php echo 'bdt-products-' . $this->get_id(); ?>"   <?php echo $this->get_render_attribute_string( 'portfolio-gallery-hash-data' ); ?>>
 			
 			<button class="bdt-button bdt-button-default bdt-hidden@m" type="button"><?php esc_html_e( 'Filter', 'bdthemes-element-pack' ); ?></button>
-			<div bdt-dropdown="mode: click;" class="bdt-dropdown bdt-margin-remove-top bdt-margin-remove-bottom">
+			<div data-bdt-dropdown="mode: click;" class="bdt-dropdown bdt-margin-remove-top bdt-margin-remove-bottom">
 			    <ul class="bdt-nav bdt-dropdown-nav">
 
-					<li class="bdt-ep-grid-filter bdt-active" bdt-filter-control><?php esc_html_e( 'All Products', 'bdthemes-element-pack' ); ?></li>
+					<li class="bdt-ep-grid-filter bdt-active" data-bdt-filter-control><?php esc_html_e( 'All Products', 'bdthemes-element-pack' ); ?></li>
 					
 					<?php foreach($product_categories as $product_category => $value) : ?>
 						<?php $filter_name = get_term_by('slug', $value, 'product_cat'); ?>
-						<li class="bdt-ep-grid-filter" bdt-filter-control="[data-filter*='bdtf-<?php echo esc_attr(trim($value)); ?>']">
+						<li class="bdt-ep-grid-filter" data-bdt-filter-control="[data-filter*='bdtf-<?php echo esc_attr(trim($value)); ?>']">
 							<?php echo esc_html($filter_name->name); ?>
 						</li>				
 					<?php endforeach; ?>
@@ -3730,12 +3730,12 @@ class Products extends Module_Base {
 			</div>
 
 
-			<ul class="bdt-ep-grid-filters bdt-visible@m" bdt-margin>
-				<li class="bdt-ep-grid-filter bdt-active" bdt-filter-control><?php esc_html_e( 'All Products', 'bdthemes-element-pack' ); ?></li>
+			<ul class="bdt-ep-grid-filters bdt-visible@m" data-bdt-margin>
+				<li class="bdt-ep-grid-filter bdt-active" data-bdt-filter-control><?php esc_html_e( 'All Products', 'bdthemes-element-pack' ); ?></li>
 		
 				<?php foreach($product_categories as $product_category => $value) : ?>
 					<?php $filter_name = get_term_by('slug', $value, 'product_cat'); ?>
-					<li class="bdt-ep-grid-filter" bdt-filter-control="[data-filter*='bdtf-<?php echo esc_attr(trim($value)); ?>']">
+					<li class="bdt-ep-grid-filter" data-bdt-filter-control="[data-filter*='bdtf-<?php echo esc_attr(trim($value)); ?>']">
 						<?php echo esc_html($filter_name->name); ?>
 					</li>				
 				<?php endforeach; ?>
@@ -3752,10 +3752,10 @@ class Products extends Module_Base {
 
 		if($wp_query->have_posts()) {
 
-			$this->add_render_attribute('wc-products-wrapper', 'bdt-grid', '');
+			$this->add_render_attribute('wc-products-wrapper', 'data-bdt-grid', '');
 
 			if ( $settings['masonry'] ) {
-				$this->add_render_attribute('wc-products-wrapper', 'bdt-grid', 'masonry: true');
+				$this->add_render_attribute('wc-products-wrapper', 'data-bdt-grid', 'masonry: true');
 			}
 
 			$this->add_render_attribute(
@@ -3775,9 +3775,9 @@ class Products extends Module_Base {
 			);
 
 			if($settings['grid_animation_type'] !== ''){ 
-				$this->add_render_attribute( 'wc-products-wrapper', 'bdt-scrollspy', 'cls: bdt-animation-' . esc_attr($settings['grid_animation_type']) . ';' );
-				$this->add_render_attribute( 'wc-products-wrapper', 'bdt-scrollspy', 'delay: ' . esc_attr($settings['grid_anim_delay']['size']) . ';' );
-				$this->add_render_attribute( 'wc-products-wrapper', 'bdt-scrollspy', 'target: > div > .bdt-wc-product-inner' . ';' );
+				$this->add_render_attribute( 'wc-products-wrapper', 'data-bdt-scrollspy', 'cls: bdt-animation-' . esc_attr($settings['grid_animation_type']) . ';' );
+				$this->add_render_attribute( 'wc-products-wrapper', 'data-bdt-scrollspy', 'delay: ' . esc_attr($settings['grid_anim_delay']['size']) . ';' );
+				$this->add_render_attribute( 'wc-products-wrapper', 'data-bdt-scrollspy', 'target: > div > .bdt-wc-product-inner' . ';' );
 			} 
 
 			?>
@@ -3829,9 +3829,9 @@ class Products extends Module_Base {
 
 		           			<?php if (('yes' == $settings['show_price']) or ('yes' == $settings['show_rating'])) : ?>
 			               		<?php if ( 'yes' == $settings['show_price']) : ?>
-				           			<span class="bdt-wc-product-price">
+				           			<div class="bdt-wc-product-price">
 										<?php woocommerce_template_single_price(); ?>
-									</span>
+									</div>
 					            <?php endif; ?>
 						               
 				               <?php if ('yes' == $settings['show_rating']) : ?>
@@ -3858,7 +3858,7 @@ class Products extends Module_Base {
 			wp_reset_postdata();
 			
 		} else {
-			echo '<div class="bdt-alert-warning" bdt-alert>' . esc_html__( 'Ops! There no product to display.', 'bdthemes-element-pack' ) .'<div>';
+			echo '<div class="bdt-alert-warning" data-bdt-alert>' . esc_html__( 'Ops! There no product to display.', 'bdthemes-element-pack' ) .'<div>';
 		}
 	}
 

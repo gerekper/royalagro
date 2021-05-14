@@ -57,8 +57,8 @@ class PAFE_Form_Builder_Lost_Password extends \Elementor\Widget_Base {
 				'label' => __( 'Text Color', 'elementor' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_3,
+					'type' => \Elementor\Core\Schemes\Color::get_type(),
+					'value' => \Elementor\Core\Schemes\Color::COLOR_3,
 				],
 				'selectors' => [
 					// Stronger selector to avoid section style from overwriting
@@ -71,7 +71,7 @@ class PAFE_Form_Builder_Lost_Password extends \Elementor\Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'pafe_form_builder_lost_password_style_typography',
-				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .pafe-form-builder-lost-password__url',
 			]
 		);

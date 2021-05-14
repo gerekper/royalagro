@@ -327,7 +327,7 @@ class Accordion extends Module_Base {
                     'active_scrollspy' => 'yes',
                 ],
             ]
-        );
+        ); 
 
         $this->add_control(
             'hash_scrollspy_time',
@@ -1029,7 +1029,7 @@ class Accordion extends Module_Base {
                 'accordion' => [
                     'id'            => $id,
                     'class'         => 'bdt-accordion',
-                    'bdt-accordion' => [
+                    'data-bdt-accordion' => [
                         wp_json_encode([
                             "collapsible" => $settings["collapsible"] ? true : false,
                             "multiple"    => $settings["multiple"] ? true : false,
@@ -1095,7 +1095,7 @@ class Accordion extends Module_Base {
                 <?php echo $this->get_render_attribute_string($tab_title_setting_key); ?>
                 id="<?php echo strtolower(preg_replace('#[ -]+#', '-', trim(preg_replace("![^a-z0-9]+!i", " ", esc_attr($acc_id))))) ?>" 
                 data-accordion-index="<?php echo esc_attr($index); ?>" 
-                data-title="<?php echo strtolower(preg_replace('#[ -]+#', '-', trim(preg_replace("![^a-z0-9]+!i", " ", esc_html($item['tab_title']))))) ?>" >
+                data-title="<?php echo strtolower(preg_replace('#[ -]+#', '-', trim(preg_replace("![^a-z0-9]+!i", " ", esc_html($item['tab_title']))))) ?>" role="heading">
 
                 <?php if ( $settings['accordion_icon']['value'] ) : ?>
                     <span class="bdt-accordion-icon bdt-flex-align-<?php echo esc_attr($settings['icon_align']); ?>"

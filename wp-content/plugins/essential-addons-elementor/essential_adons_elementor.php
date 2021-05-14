@@ -4,14 +4,14 @@
  * Description: Supercharge your Elementor page building experience with Essential Addons PRO. Get your hands on exclusive elements such as Instagram Feed, Protected Content, Smart Post List, and many more.
  * Plugin URI: https://essential-addons.com/elementor/
  * Author: WPDeveloper
- * Version: 4.3.9.1
+ * Version: 4.4.0
  * Author URI: http://www.wpdeveloper.net
  * Text Domain: essential-addons-elementor
  * Domain Path: /languages
  *
  * WC tested up to: 5.2.2
- * Elementor tested up to: 3.2.2
- * Elementor Pro tested up to: 3.2.1
+ * Elementor tested up to: 3.2.3
+ * Elementor Pro tested up to: 3.2.2
  */
 
 if (!defined('WPINC')) {
@@ -19,7 +19,8 @@ if (!defined('WPINC')) {
 }
 
 update_option( 'essential-addons-elementor-license-status', 'valid' );
-update_option( 'essential-addons-elementor-license-key', '1415b451be1a13c283ba771ea52d38bb' );
+update_option( 'essential-addons-elementor-license-key', 'B5E0B5F8-DD8689E6-ACA49DD6-E6E1A930' );
+set_transient( 'essential-addons-elementor-license_data', [ 'license' => 'valid' ] );
 
 /**
  * Defining plugin constants.
@@ -30,7 +31,7 @@ define('EAEL_PRO_PLUGIN_FILE', __FILE__);
 define('EAEL_PRO_PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('EAEL_PRO_PLUGIN_PATH', plugin_dir_path(__FILE__));
 define('EAEL_PRO_PLUGIN_URL', plugins_url('/', __FILE__));
-define('EAEL_PRO_PLUGIN_VERSION', '4.3.9.1');
+define('EAEL_PRO_PLUGIN_VERSION', '4.4.0');
 define('EAEL_STORE_URL', 'https://wpdeveloper.net/');
 define('EAEL_SL_ITEM_ID', 4372);
 define('EAEL_SL_ITEM_SLUG', 'essential-addons-elementor');

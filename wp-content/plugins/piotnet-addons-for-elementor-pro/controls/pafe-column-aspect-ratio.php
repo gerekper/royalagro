@@ -41,7 +41,7 @@ class PAFE_Column_Aspect_Ratio extends \Elementor\Widget_Base {
 				'description' => 'Aspect Ratio = Height / Width * 100. E.g Width = 100, Height = 100 => Ratio = 1; Width = 100, Height = 50 => Ratio = 50',
 				'default' => 100,
 				'selectors' => [
-					'{{WRAPPER}} .elementor-column-wrap::before' => 'content: ""; display: block; padding-top: {{VALUE}}%',
+                    '{{WRAPPER}} .elementor-column-wrap::before,{{WRAPPER}} .elementor-widget-wrap::before' => 'content: ""; display: block; padding-top: {{VALUE}}%',
 				],
 				'condition' => [
 					'pafe_column_aspect_ratio_enable' => 'yes',

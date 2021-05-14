@@ -2685,7 +2685,7 @@ class Custom_Carousel extends Module_Base {
 
 		$this->add_render_attribute( 'custom-carousel', 'id', $id );
 		$this->add_render_attribute( 'custom-carousel', 'class', [ 'bdt-custom-carousel', 'elementor-swiper', 'bdt-custom-carousel-skin-' . $skin_class ] );
-		$this->add_render_attribute( 'custom-carousel', 'bdt-lightbox', 'toggle: .bdt-custom-carousel-lightbox-item; animation: slide;');
+		$this->add_render_attribute( 'custom-carousel', 'data-bdt-lightbox', 'toggle: .bdt-custom-carousel-lightbox-item; animation: slide;');
 
 		if ('arrows' == $settings['navigation']) {
 			$this->add_render_attribute( 'custom-carousel', 'class', 'bdt-arrows-align-'. $settings['arrows_position'] );

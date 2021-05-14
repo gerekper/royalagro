@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '97c54df2d2dc66eff353cb86105012163708c6ab',
+    'reference' => 'ed69cbe0b0364aefa390dd44867c730fbce8855e',
     'name' => '__root__',
   ),
   'versions' => 
@@ -42,7 +42,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '97c54df2d2dc66eff353cb86105012163708c6ab',
+      'reference' => 'ed69cbe0b0364aefa390dd44867c730fbce8855e',
     ),
     'awps/font-awesome-php' => 
     array (

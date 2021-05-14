@@ -207,7 +207,7 @@ class PAFE_Ajax_Live_Search extends \Elementor\Widget_Base {
 			[
 				'name' => 'pafe_ajax_live_search_item_typography',
 				'label' => __( 'Typography', 'pafe' ),
-				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .pafe-ajax-live-search-results-item',
 			]
 		);
@@ -269,7 +269,7 @@ class PAFE_Ajax_Live_Search extends \Elementor\Widget_Base {
 			[
 				'name' => 'pafe_ajax_live_search_item_typography_hover',
 				'label' => __( 'Typography', 'pafe' ),
-				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .pafe-ajax-live-search-results-item:hover',
 			]
 		);

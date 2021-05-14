@@ -2052,7 +2052,7 @@ class Advanced_Image_Gallery extends Module_Base {
                 $this->add_render_attribute('advanced-image-gallery', 'data-jgallery-itemgap', esc_attr($settings['row_column_gap']['size']) );
             }
         } else {
-            $this->add_render_attribute('advanced-image-gallery', 'bdt-grid', '');
+            $this->add_render_attribute('advanced-image-gallery', 'data-bdt-grid', '');
             $this->add_render_attribute('advanced-image-gallery', 'class', ['bdt-grid', 'bdt-grid-small'] );
             $this->add_render_attribute('advanced-image-gallery', 'class', 'bdt-child-width-1-' . esc_attr($settings['columns_mobile']));
             $this->add_render_attribute('advanced-image-gallery', 'class', 'bdt-child-width-1-' . esc_attr($settings['columns_tablet']) .'@s');
@@ -2060,7 +2060,7 @@ class Advanced_Image_Gallery extends Module_Base {
         }
 
         if ('masonry' == $settings['grid_type'] ) {
-            $this->add_render_attribute('advanced-image-gallery', 'bdt-grid', 'masonry: true');
+            $this->add_render_attribute('advanced-image-gallery', 'data-bdt-grid', 'masonry: true');
         }
 		
 		if ( $settings['caption_all_time'] ) {
@@ -2069,12 +2069,12 @@ class Advanced_Image_Gallery extends Module_Base {
 		
 
 		if ($settings['show_lightbox'] or 'bdt-hidden' === $settings['_skin'] ) {
-			$this->add_render_attribute('advanced-image-gallery', 'bdt-lightbox', 'animation: ' . $settings['lightbox_animation'] . ';');
+			$this->add_render_attribute('advanced-image-gallery', 'data-bdt-lightbox', 'animation: ' . $settings['lightbox_animation'] . ';');
 			if ($settings['lightbox_autoplay']) {
-				$this->add_render_attribute('advanced-image-gallery', 'bdt-lightbox', 'autoplay: 500;');
+				$this->add_render_attribute('advanced-image-gallery', 'data-bdt-lightbox', 'autoplay: 500;');
 				
 				if ($settings['lightbox_pause']) {
-					$this->add_render_attribute('advanced-image-gallery', 'bdt-lightbox', 'pause-on-hover: true;');
+					$this->add_render_attribute('advanced-image-gallery', 'data-bdt-lightbox', 'pause-on-hover: true;');
 				}
 			}
 		}

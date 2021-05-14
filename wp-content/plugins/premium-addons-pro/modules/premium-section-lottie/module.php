@@ -73,15 +73,15 @@ class Module extends Module_Base {
                 jQuery( window ).on( "elementor/frontend/init", function() {
 
                     elementorFrontend.hooks.addAction( "frontend/element_ready/section", function( $scope, $ ){
-                        if ( "undefined" == typeof $scope ) {
+                        if ( "undefined" == typeof $scope || ! $scope.hasClass( "premium-lottie-yes" ) ) {
                                 return;
                         }
-                        if ( $scope.hasClass( "premium-lottie-yes" ) ) {
-                            var id = $scope.data("id");
-                            window.scopes_array[ id ] = $scope;
-                        }
-                        if(elementorFrontend.isEditMode()){
 
+                        var id = $scope.data("id");
+                        window.scopes_array[ id ] = $scope;
+
+                        if(elementorFrontend.isEditMode()){
+                            window.current_scope = $scope;
                             var url = papro_addons.lottie_url;
                             jQuery.cachedAssets = function( url, options ) {
                                 // Allow user to set any option except for dataType, cache, and url.
@@ -99,9 +99,11 @@ class Module extends Module_Base {
                     });
                 });
                 jQuery(document).ready(function(){
+
                     if ( jQuery.find( ".premium-lottie-yes" ).length < 1 ) {
                         return;
                     }
+
                     var url = papro_addons.lottie_url;
 
                     jQuery.cachedAssets = function( url, options ) {

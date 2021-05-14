@@ -45,7 +45,7 @@ class Skin_Alter extends Elementor_Skin_Base {
 		}
 
 		$this->parent->add_render_attribute('grid-item', 'class', 'bdt-post-grid-item bdt-transition-toggle bdt-position-relative bdt-grid bdt-grid-collapse', true);
-		$this->parent->add_render_attribute('grid-item', 'bdt-grid', '', true);
+		$this->parent->add_render_attribute('grid-item', 'data-bdt-grid', '', true);
 
 		?>
 			<div <?php echo $this->parent->get_render_attribute_string( 'grid-item' ); ?>>
@@ -88,7 +88,7 @@ class Skin_Alter extends Elementor_Skin_Base {
 		}
 
 		$this->parent->add_render_attribute( 'grid-height', 'class', ['bdt-grid', 'bdt-grid-collapse'] );
-		$this->parent->add_render_attribute( 'grid-height', 'bdt-grid', '' );
+		$this->parent->add_render_attribute( 'grid-height', 'data-bdt-grid', '' );
 
 		?> 
 		<div id="bdt-post-grid-<?php echo esc_attr($id); ?>" class="bdt-post-grid bdt-post-grid-skin-alter">

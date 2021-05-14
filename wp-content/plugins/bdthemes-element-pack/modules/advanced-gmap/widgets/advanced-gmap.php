@@ -500,8 +500,8 @@ class Advanced_Gmap extends Module_Base {
 		?>
 
 		<?php if(empty($ep_api_settings['google_map_key'])) : ?>
-			<div class="bdt-alert-warning" bdt-alert>
-			    <a class="bdt-alert-close" bdt-close></a>
+			<div class="bdt-alert-warning" data-bdt-alert>
+			    <a class="bdt-alert-close" data-bdt-close></a>
 			    <?php $ep_setting_url = esc_url( admin_url('admin.php?page=element_pack_options#element_pack_api_settings')); ?>
 			    <p><?php printf(__( 'Please set your google map api key in <a href="%s">element pack settings</a> to show your map correctly.', 'bdthemes-element-pack' ), $ep_setting_url); ?></p>
 			</div>
@@ -511,7 +511,7 @@ class Advanced_Gmap extends Module_Base {
 
 			<div class="bdt-gmap-search-wrapper bdt-margin">
 			    <form method="post" id="<?php echo esc_attr($id); ?>form" class="bdt-search bdt-search-default">
-			        <span bdt-search-icon></span>
+			        <span data-bdt-search-icon></span>
 			        <input id="<?php echo esc_attr($id); ?>address" name="address" class="bdt-search-input" type="search" placeholder="Search...">
 			    </form>
 			</div>

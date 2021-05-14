@@ -39,7 +39,7 @@ class Skin_Trinity extends Elementor_Skin_Base {
 			?>
 			<div <?php echo $this->parent->get_render_attribute_string( 'post-block' ); ?>>
 
-		  		<div class="bdt-post-block-items bdt-child-width-1-<?php echo esc_attr($settings['featured_item']); ?>@m bdt-grid-<?php echo esc_attr($settings['trinity_column_gap']); ?>" bdt-grid>
+		  		<div class="bdt-post-block-items bdt-child-width-1-<?php echo esc_attr($settings['featured_item']); ?>@m bdt-grid-<?php echo esc_attr($settings['trinity_column_gap']); ?>" data-bdt-grid>
 					<?php
 					while ( $wp_query->have_posts() ) : $wp_query->the_post();
 

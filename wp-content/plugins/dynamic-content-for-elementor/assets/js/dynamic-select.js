@@ -37,7 +37,7 @@ const initializeDynamicSelectField = (field, form) => {
 					}
 					let el = document.createElement('option');
 					el.text = safe_tags_replace(text);
-					el.value = escape(value);
+					el.value = value;
 					selectTag.add(el);
 				}
 			}

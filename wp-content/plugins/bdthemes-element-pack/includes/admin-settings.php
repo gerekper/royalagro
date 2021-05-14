@@ -79,7 +79,7 @@ class ElementPack_Admin_Settings {
         //initialize settings
         $this->settings_api->admin_init();
     }
-
+ 
     function admin_menu() {
         add_menu_page(
             BDTEP_TITLE . ' ' . esc_html__('Dashboard', 'bdthemes-element-pack'),
@@ -88,7 +88,7 @@ class ElementPack_Admin_Settings {
             self::PAGE_ID,
             [$this, 'plugin_page'],
             $this->element_pack_icon(),
-            58.5
+            58
         );
 
         add_submenu_page(
@@ -1339,7 +1339,7 @@ class ElementPack_Admin_Settings {
             'element_pack_elementor_extend' => [
                 [
                     'name'      => 'widget_parallax_show',
-                    'label'     => esc_html__('Widget Parallax Effects', 'bdthemes-element-pack'),
+                    'label'     => esc_html__('Parallax/Scrolling Effects', 'bdthemes-element-pack'),
                     'type'      => 'checkbox',
                     'default'   => "on",
                     'demo_url'  => 'https://elementpack.pro/demo/element/element-parallax',
@@ -1347,7 +1347,7 @@ class ElementPack_Admin_Settings {
                 ],
                 [
                     'name'      => 'section_parallax_show',
-                    'label'     => esc_html__('Background Parallax', 'bdthemes-element-pack'),
+                    'label'     => esc_html__('Background Parallax/Scrolling Effects', 'bdthemes-element-pack'),
                     'type'      => 'checkbox',
                     'default'   => "on",
                     'demo_url'  => 'https://elementpack.pro/demo/element/parallax-background/',
@@ -1355,7 +1355,7 @@ class ElementPack_Admin_Settings {
                 ],
                 [
                     'name'      => 'section_parallax_content_show',
-                    'label'     => esc_html__('Section Parallax Images', 'bdthemes-element-pack'),
+                    'label'     => esc_html__('Section Image Parallax', 'bdthemes-element-pack'),
                     'type'      => 'checkbox',
                     'default'   => "on",
                     'demo_url'  => 'https://elementpack.pro/demo/element/parallax-section/',

@@ -2,11 +2,17 @@
 
     if ($('.premium-gradient-yes').length) {
 
-        Object.values(window.scopes_array).forEach(
-            function ($scope) {
-                premiumGradientHandler($scope);
-            }
-        );
+        var isEdit = "undefined" !== typeof elementorFrontend ? elementorFrontend.isEditMode() : false;
+
+        if (isEdit) {
+            premiumGradientHandler(window.current_scope);
+        } else if (window.scopes_array) {
+            Object.values(window.scopes_array).forEach(
+                function ($scope) {
+                    premiumGradientHandler($scope);
+                }
+            );
+        }
 
     }
 

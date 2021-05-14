@@ -2711,7 +2711,7 @@ class Portfolio_Carousel extends Module_Base
                             <?php if (('lightbox' == $settings['show_link']) || ('both' == $settings['show_link'])) : ?>
                                 <a <?php echo $this->get_render_attribute_string('lightbox-settings'); ?>>
                                     <?php if ('icon' == $settings['link_type']) : ?>
-                                        <span bdt-icon="icon: search"></span>
+                                        <span data-bdt-icon="icon: search"></span>
                                     <?php elseif ('text' == $settings['link_type']) : ?>
                                         <span><?php esc_html_e('ZOOM', 'bdthemes-element-pack'); ?></span>
                                     <?php endif; ?>
@@ -2727,7 +2727,7 @@ class Portfolio_Carousel extends Module_Base
                                 <a class="bdt-gallery-item-link<?php echo esc_attr($link_type_class); ?>"
                                    href="<?php echo esc_attr(get_permalink()); ?>" <?php echo $target; ?>>
                                     <?php if ('icon' == $settings['link_type']) : ?>
-                                        <span bdt-icon="icon: link"></span>
+                                        <span data-bdt-icon="icon: link"></span>
                                     <?php elseif ('text' == $settings['link_type']) : ?>
                                         <span><?php esc_html_e('VIEW', 'bdthemes-element-pack'); ?></span>
                                     <?php endif; ?>
@@ -2754,7 +2754,7 @@ class Portfolio_Carousel extends Module_Base
         $this->add_render_attribute('portfolio-carousel', 'class', ['bdt-portfolio-carousel', 'bdt-portfolio-carousel-skin-' . $skin]);
 
         if ('yes' == $settings['match_height']) {
-            $this->add_render_attribute('portfolio-carousel', 'bdt-height-match', 'target: > div > div > .bdt-gallery-item');
+            $this->add_render_attribute('portfolio-carousel', 'data-bdt-height-match', 'target: > div > div > .bdt-gallery-item');
         }
 
         if ('arrows' == $settings['navigation']) {
@@ -2834,12 +2834,12 @@ class Portfolio_Carousel extends Module_Base
         );
 
         if ('lightbox' === $settings['show_link'] or 'both' === $settings['show_link']) {
-            $this->add_render_attribute('portfolio-carousel', 'bdt-lightbox', 'toggle: .bdt-gallery-lightbox-item; animation:' . $settings['lightbox_animation'] . ';');
+            $this->add_render_attribute('portfolio-carousel', 'data-bdt-lightbox', 'toggle: .bdt-gallery-lightbox-item; animation:' . $settings['lightbox_animation'] . ';');
             if ($settings['lightbox_autoplay']) {
-                $this->add_render_attribute('portfolio-carousel', 'bdt-lightbox', 'autoplay: 500;');
+                $this->add_render_attribute('portfolio-carousel', 'data-bdt-lightbox', 'autoplay: 500;');
 
                 if ($settings['lightbox_pause']) {
-                    $this->add_render_attribute('portfolio-carousel', 'bdt-lightbox', 'pause-on-hover: true;');
+                    $this->add_render_attribute('portfolio-carousel', 'data-bdt-lightbox', 'pause-on-hover: true;');
                 }
             }
         }

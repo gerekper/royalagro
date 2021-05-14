@@ -649,7 +649,7 @@ class Changelog extends Module_Base {
 		$settings = $this->get_settings_for_display();
 		$id       = $this->get_id();
 
-        echo '<div class="bdt-changelog" uk-scrollspy="target: > ul > li; cls:uk-animation-slide-right-small; delay: 100">';
+        echo '<div class="bdt-changelog" data-bdt-scrollspy="target: > ul > li; cls:uk-animation-slide-right-small; delay: 100">';
 
 
 			if ( $settings['cache_content'] ) {

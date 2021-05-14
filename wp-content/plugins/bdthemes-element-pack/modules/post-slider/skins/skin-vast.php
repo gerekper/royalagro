@@ -39,7 +39,7 @@ class Skin_Vast extends Elementor_Skin_Base {
 	            <?php if ($settings['show_tag']) : ?>
 	        		<?php $tags_list = get_the_tag_list('<span class="bdt-background-primary">','</span> <span class="bdt-background-primary">','</span>'); ?>
 	        		<?php if ($tags_list) : ?> 
-	            		<div class="bdt-post-slider-tag-wrap" bdt-slider-parallax="y: -200,200">
+	            		<div class="bdt-post-slider-tag-wrap" data-bdt-slider-parallax="y: -200,200">
 	            			<?php  echo  wp_kses_post($tags_list); ?>
             			</div>
 	            	<?php endif; ?>
@@ -48,7 +48,7 @@ class Skin_Vast extends Elementor_Skin_Base {
 				<?php $this->render_title(); ?>
 
 				<?php if ($settings['show_meta']) : ?>
-					<div class="bdt-post-slider-meta bdt-flex-inline bdt-flex-middle" bdt-slider-parallax="x: 250,-250">
+					<div class="bdt-post-slider-meta bdt-flex-inline bdt-flex-middle" data-bdt-slider-parallax="x: 250,-250">
 						<a class="bdt-flex bdt-flex-middle" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
 						<div class="bdt-post-slider-author bdt-border-circle bdt-overflow-hidden bdt-visible@m"><?php echo get_avatar( get_the_author_meta( 'ID' ) , 28 ); ?></div>
 						</a>
@@ -90,7 +90,7 @@ class Skin_Vast extends Elementor_Skin_Base {
 						'bdt-post-slider-skin-vast',
 						'bdt-position-relative'
 					],
-					'bdt-slider' => [
+					'data-bdt-slider' => [
 						wp_json_encode(array_filter([
 							"animation"         => $settings["slider_animations"],
 							"autoplay"          => $settings["autoplay"],
@@ -118,7 +118,7 @@ class Skin_Vast extends Elementor_Skin_Base {
 		?>
 		<div class="bdt-post-slider-title-wrap">
 			<a href="<?php echo get_permalink(); ?>">
-				<<?php echo Utils::get_valid_html_tag($tag); ?> class="bdt-post-slider-title bdt-margin-remove-bottom" bdt-slider-parallax="x: 200,-200">
+				<<?php echo Utils::get_valid_html_tag($tag); ?> class="bdt-post-slider-title bdt-margin-remove-bottom" data-bdt-slider-parallax="x: 200,-200">
 					<?php the_title() ?>
 				</<?php echo Utils::get_valid_html_tag($tag); ?>>
 			</a>
@@ -140,9 +140,9 @@ class Skin_Vast extends Elementor_Skin_Base {
 		$id       = $this->parent->get_id();
 
 		?>
-		<div id="<?php echo esc_attr($id); ?>_nav"  class="bdt-post-slider-navigation">
-			<a class="bdt-position-center-left bdt-position-small bdt-hidden-hover" href="#" bdt-slidenav-previous bdt-slider-item="previous"></a>
-			<a class="bdt-position-center-right bdt-position-small bdt-hidden-hover" href="#" bdt-slidenav-next bdt-slider-item="next"></a>
+		<div  class="bdt-post-slider-navigation">
+			<a class="bdt-position-center-left bdt-position-small bdt-hidden-hover" href="#" data-bdt-slidenav-previous data-bdt-slider-item="previous"></a>
+			<a class="bdt-position-center-right bdt-position-small bdt-hidden-hover" href="#" data-bdt-slidenav-next data-bdt-slider-item="next"></a>
 		</div>
 		<?php
 	}

@@ -7,6 +7,10 @@ use \DynamicContentForElementor\Dashboard;
 use \DynamicContentForElementor\GlobalSettings;
 use \DynamicContentForElementor\Widgets;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Settings Class
  *

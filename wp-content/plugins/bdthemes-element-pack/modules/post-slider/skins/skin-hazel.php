@@ -32,7 +32,7 @@ class Skin_Hazel extends Elementor_Skin_Base {
 
 		?>
 		<div class="bdt-post-slider-item">
-			<div class="bdt-grid bdt-grid-collapse" bdt-grid>
+			<div class="bdt-grid bdt-grid-collapse" data-bdt-grid>
 				<div class="bdt-position-relative bdt-width-1-2 bdt-width-2-3@m bdt-post-slider-thumbnail">
 					<div>
 						<img src="<?php echo esc_url($slider_thumbnail); ?>" alt="<?php echo get_the_title(); ?>">						
@@ -85,7 +85,7 @@ class Skin_Hazel extends Elementor_Skin_Base {
 						'bdt-post-slider-skin-hazel',
 						'bdt-position-relative'
 					],
-					'bdt-slideshow' => [
+					'data-bdt-slideshow' => [
 						wp_json_encode(array_filter([
 							"animation"         => $settings["slider_animations"],
 							"min-height"        => $settings["slider_min_height"]["size"],
@@ -96,7 +96,7 @@ class Skin_Hazel extends Elementor_Skin_Base {
 							"pause-on-hover"    => $settings["pause_on_hover"]
 						]))
 					],
-					'bdt-height-match' => '.bdt-post-slider-match-height'
+					'data-bdt-height-match' => '.bdt-post-slider-match-height'
 				]
 			]
 		);
@@ -146,13 +146,13 @@ class Skin_Hazel extends Elementor_Skin_Base {
 		?>
 		<div id="<?php echo esc_attr($id); ?>_nav"  class="bdt-post-slider-navigation bdt-position-bottom-right bdt-width-1-2 bdt-width-1-3@m">
 			<div class="bdt-post-slider-navigation-inner bdt-grid bdt-grid-collapse" <?php echo esc_attr($is_rtl); ?>>
-				<a class="bdt-hidden-hover bdt-width-1-2" href="#" bdt-slideshow-item="previous">
+				<a class="bdt-hidden-hover bdt-width-1-2" href="#" data-bdt-slideshow-item="previous">
 					<svg width="14" height="24" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg">
 						<polyline fill="none" stroke="#000" stroke-width="1.4" points="12.775,1 1.225,12 12.775,23 "></polyline>
 					</svg>
 					<span class="bdt-slider-nav-text"><?php esc_html_e( $prev_text, 'bdthemes-element-pack' ) ?></span>
 				</a>
-				<a class="bdt-hidden-hover bdt-width-1-2" href="#" bdt-slideshow-item="next">
+				<a class="bdt-hidden-hover bdt-width-1-2" href="#" data-bdt-slideshow-item="next">
 					<span class="bdt-slider-nav-text"><?php esc_html_e( $next_text, 'bdthemes-element-pack' ) ?></span>
 					<svg width="14" height="24" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg">
 						<polyline fill="none" stroke="#000" stroke-width="1.4" points="1.225,23 12.775,12 1.225,1 "></polyline>

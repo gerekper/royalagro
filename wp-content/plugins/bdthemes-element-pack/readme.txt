@@ -2,16 +2,16 @@
 Contributors: bdthemes, selimmw
 Donate link: http://bdthemes.com/
 Tags: elementor, element, pack, elementor addon, pagebuilder addon, addons, template library, live copy, live paste, bdthemes
-Stable tag: 5.7.7
+Stable tag: 5.8.0
 Requires PHP: 5.6.42
 Requires at least: 4.7.0
-Tested up to: 5.7
+Tested up to: 5.7.1
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.0.0
-Elementor tested up to: 3.1.4
+Elementor tested up to: 3.2.3
 
-Best Addon for Elementor WordPress Plugin with 160+ Most Popular Elements that need your everyday website page building.
+Best Addon for Elementor WordPress Plugin with 190+ Most Popular Elements that need your everyday website page building.
 
 
 == Description ==
@@ -35,6 +35,30 @@ e.g.
 
  
 == Changelog ==
+
+= 5.8.0 [12th May 2021] =
+
+= Added =
+
+* Features Hide On option added in Price Table Widget
+* Badge Option added in Advanced Button Widget
+* Arrows Hide on Mobile option added in Slideshow Widget (Thanks Gabriel Sirbu)
+* Scroll Button Hide issue fixed (Thanks Sam Kary)
+* Show Arrows always control added in Video Gallery Widget
+* Parallax/Scrolling effects added in Section and Column
+* Background Parallax/Scrolling effect added border and background color option
+* Hover border color added in tabs widget
+
+
+= Fixed =
+
+* 189 Widgets minor markup validation fixed and properly checked by W3C validator.
+* Admin email overriding fixed in Simple Contact Form Widget (Thanks Ruben Romero)
+* Hide On Before Scrolling simple bug fixed
+* Link Attribute issue fixed in Trailer Box Widget (Thanks Jason)
+* JS error fixed in Open Street Map Widget (Thanks Sailer)
+* Marketing Tab Disappears issue fixed (Thanks Josh Eastman)
+* User Login and Register widget Recaptcha JS issue fixed
 
 = 5.7.7 [15th April 2021] =
 

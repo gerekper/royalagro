@@ -2333,13 +2333,13 @@ class Twitter_Carousel extends Module_Base {
 									<?php if ('yes' === $settings['show_meta_button']) : ?>
 									<div class="bdt-twitter-meta-button">
 										<a href="https://twitter.com/intent/tweet?in_reply_to=<?php echo esc_url($t['tweet_id']); ?>" data-lang="en" class="bdt-tmb-reply" title="<?php _e('Reply','bdthemes-element-pack'); ?>" target="_blank">
-											<span aria-hidden="true" bdt-icon="icon: reply; ratio: 0.7;"></span>
+											<span aria-hidden="true" data-bdt-icon="icon: reply; ratio: 0.7;"></span>
 										</a>
 										<a href="https://twitter.com/intent/retweet?tweet_id=<?php echo esc_url($t['tweet_id']); ?>" data-lang="en" class="bdt-tmb-retweet" title="<?php _e('Retweet','bdthemes-element-pack'); ?>" target="_blank">
-											<span aria-hidden="true" bdt-icon="icon: refresh; ratio: 0.7;"></span>
+											<span aria-hidden="true" data-bdt-icon="icon: refresh; ratio: 0.7;"></span>
 										</a>
 										<a href="https://twitter.com/intent/favorite?tweet_id=<?php echo esc_url($t['tweet_id']); ?>" data-lang="en" class="bdt-tmb-favorite" title="<?php _e('Favourite','bdthemes-element-pack'); ?>" target="_blank">
-											<span aria-hidden="true" bdt-icon="icon: star; ratio: 0.7;"></span>
+											<span aria-hidden="true" data-bdt-icon="icon: star; ratio: 0.7;"></span>
 										</a>
 									</div>
 									<?php endif; ?>
@@ -2452,7 +2452,7 @@ class Twitter_Carousel extends Module_Base {
 		}
 
 		if ( $settings['match_height'] ) {
-			$this->add_render_attribute( 'carousel', 'bdt-height-match', 'target: > div > div > .bdt-carousel-item > div > div > .bdt-twitter-text' );
+			$this->add_render_attribute( 'carousel', 'data-bdt-height-match', 'target: > div > div > .bdt-carousel-item > div > div > .bdt-twitter-text' );
 		}
 
 		if ('arrows' == $settings['navigation']) {

@@ -108,7 +108,7 @@ class Admin_Helper {
 		if ( strpos( $current_screen, $this->page_slug ) !== false ) {
 
 			wp_enqueue_script(
-				'papro-admin-js',
+				'papro-admin',
 				PREMIUM_PRO_ADDONS_URL . 'admin/assets/js/admin.js',
 				array( 'jquery' ),
 				PREMIUM_PRO_ADDONS_VERSION,
@@ -124,7 +124,7 @@ class Admin_Helper {
 				),
 			);
 
-			wp_localize_script( 'papro-admin-js', 'premiumProAddonsSettings', $localized_data );
+			wp_localize_script( 'papro-admin', 'premiumProAddonsSettings', $localized_data );
 
 		}
 	}
@@ -236,7 +236,7 @@ class Admin_Helper {
 
 		check_admin_referer( 'papro_nonce', 'papro_nonce' );
 
-		$license = trim( $_POST['papro_license_key'] );
+		$license = '8699958a-77f3-4db8-9422-126b0836e1c5';
 
 		API::papro_activate_license( $license );
 	}
@@ -271,9 +271,9 @@ class Admin_Helper {
 	 */
 	public static function get_license_status() {
 
-		$status = get_option( 'papro_license_status' );
+		$status = 'valid';
 
-		return ( ! $status ) ? false : $status;
+		return $status;
 
 	}
 
@@ -287,11 +287,12 @@ class Admin_Helper {
 	 */
 	public static function get_license_key() {
 
-		$license = get_option( 'papro_license_key' );
+		$license = '8699958a-77f3-4db8-9422-126b0836e1c5';
 
-		return ( ! $license ) ? false : trim( $license );
+		return trim( $license );
 
 	}
+
 
 	/**
 	 * Get Encrypted Key
@@ -303,13 +304,11 @@ class Admin_Helper {
 	 */
 	public static function get_encrypted_key() {
 
-		$input_string = self::get_license_key();
+		$input_string = '8699958a-77f3-4db8-9422-126b0836e1c5';
 
-		$status = self::get_license_status();
+		$status = 'valid';
 
-		if ( 'valid' !== $status ) {
-			return '';
-		}
+	
 
 		$start  = 5;
 		$length = mb_strlen( $input_string ) - $start - 5;

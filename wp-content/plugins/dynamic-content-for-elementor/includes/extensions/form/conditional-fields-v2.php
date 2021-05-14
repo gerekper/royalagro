@@ -42,13 +42,18 @@ class ConditionalFieldsV2 extends DCE_Extension_Prototype {
 		return '(' . implode( ')&&(', $lines ) . ')';
 	}
 
+	private static function are_conditions_enabled( $field ) {
+		$enabled = $field['dce_field_conditions_mode'] === 'show' || $field['dce_field_conditions_mode'] == 'hide';
+		return $enabled && ! preg_match( '/^\s*$/', $field['dce_conditions_expression'] );
+	}
+
 	public function add_assets_depends( $instance, $form ) {
 		// fetch all the settings data we need to pass to the JavaScript code:
 		$field_ids = [];
 		$conditions = [];
 		foreach ( $instance['form_fields'] as $field ) {
 			$field_ids[] = $field['custom_id'];
-			if ( $field['dce_field_conditions_mode'] === 'show' || $field['dce_field_conditions_mode'] == 'hide' ) {
+			if ( self::are_conditions_enabled( $field ) ) {
 				$conditions[] = [
 					'id' => $field['custom_id'],
 					'condition' => self::and_join_lines( $field['dce_conditions_expression'] ),
@@ -196,22 +201,26 @@ class ConditionalFieldsV2 extends DCE_Extension_Prototype {
 		}
 		$conditions = [];
 		foreach ( $record->get_form_settings( 'form_fields' ) as $field ) {
-			if ( $field['dce_field_conditions_mode'] !== 'visible' ) {
+			if ( self::are_conditions_enabled( $field ) ) {
 				$conditions[ $field['custom_id'] ] = [
 					'condition' => self::and_join_lines( $field['dce_conditions_expression'] ),
 					'mode' => $field['dce_field_conditions_mode'],
 				];
 			}
 		}
+
 		$visibilities = $this->determine_visibilities( $conditions, $values );
 		foreach ( $visibilities as $id => $visible ) {
 			if ( ! $visible ) {
-				// It's not visible so it should have no value:
-				$record->update_field( $id, 'value', '' );
-				// Remove potential validation error related to the field:
-				unset( $ajax_handler->errors[ $id ] );
+				if ( ! empty( $values[ $id ] ) ) {
+					$ajax_handler->add_error( $id, __( "Conditional Fields V2 was expecting this field to be invisibile, instead it found a value. Notice that if you have a checkbox field, you cannot compare it to a string value like this 'Yes' == checkboxField, instead use: 'Yes' in checkboxField.", 'dynamic-content-for-elementor' ) );
+				} else {
+					// Remove potential validation error related to the field:
+					unset( $ajax_handler->errors[ $id ] );
+				}
 			}
 		}
+
 		// if there are no errors then the form is actually good.
 		if ( empty( $ajax_handler->errors ) ) {
 			$ajax_handler->set_success( true );

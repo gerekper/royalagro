@@ -62,10 +62,10 @@ class Skin_Envelope extends Elementor_Skin_Base {
 		$settings = $this->parent->get_settings_for_display();
 		$id       = $this->parent->get_id();
 
-		$this->parent->add_render_attribute( 'box-settings', 'bdt-hover-box-items', 'connect: #bdt-box-content-' .  esc_attr($id) . ';' );
+		$this->parent->add_render_attribute( 'box-settings', 'data-bdt-hover-box-items', 'connect: #bdt-box-content-' .  esc_attr($id) . ';' );
         $this->parent->add_render_attribute( 'box-settings', 'class', 'bdt-box-item-wrapper' );
 
-		$this->parent->add_render_attribute('box-settings', 'bdt-grid', '');
+		$this->parent->add_render_attribute('box-settings', 'data-bdt-grid', '');
 		$this->parent->add_render_attribute('box-settings', 'class', ['bdt-grid', 'bdt-grid-small', 'bdt-grid-collapse'] );
 		
 		$this->parent->add_render_attribute('box-settings', 'class', 'bdt-slider-items');
@@ -76,7 +76,7 @@ class Skin_Envelope extends Elementor_Skin_Base {
 		$this->parent->add_render_attribute(
 			[
 				'slider-settings' => [
-					'bdt-slider' => [
+					'data-bdt-slider' => [
 						wp_json_encode(array_filter([
 							"autoplay"          => false,
 							"autoplay-interval" => 7000,

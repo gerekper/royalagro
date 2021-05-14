@@ -499,8 +499,6 @@ class Thumb_Gallery extends Module_Base {
 
 		$this->end_controls_section();
 
-		$this->end_controls_section();
-
 		$this->start_controls_section(
 			'section_query',
 			[
@@ -1648,7 +1646,7 @@ class Thumb_Gallery extends Module_Base {
 						'bdt-position-relative',
 						'bdt-visible-toggle'
 					],
-					'bdt-slideshow' => [
+					'data-bdt-slideshow' => [
 						wp_json_encode(array_filter([
 							"animation"         => $settings["slider_animations"],
 							"ratio"             => $ratio,
@@ -1715,7 +1713,7 @@ class Thumb_Gallery extends Module_Base {
 					<div class="bdt-position-cover bdt-animation-kenburns<?php echo esc_attr( $kenburns_reverse ); ?> bdt-transform-origin-center-left">
 				<?php endif; ?>
 
-					<img src="<?php echo esc_url($gallery_thumbnail); ?>" alt="<?php echo get_the_title(); ?>" bdt-cover>
+					<img src="<?php echo esc_url($gallery_thumbnail); ?>" alt="<?php echo get_the_title(); ?>" data-bdt-cover>
 
 				<?php if( $settings['kenburns_animation'] ) : ?>
 		            </div>
@@ -1752,8 +1750,10 @@ class Thumb_Gallery extends Module_Base {
 		?>
 		<div class="bdt-thumb-gallery-navigation-wrapper bdt-position-z-index bdt-visible@m bdt-position-<?php echo esc_attr($settings['arrows_position']); ?>">
 			<div class="bdt-arrows-container bdt-slidenav-container">
-				<a href="" class="bdt-navigation-prev bdt-slidenav-previous bdt-icon bdt-slidenav" bdt-icon="icon: chevron-left; ratio: 1.9" bdt-slideshow-item="previous"></a>
-				<a href="" class="bdt-navigation-next bdt-slidenav-next bdt-icon bdt-slidenav" bdt-icon="icon: chevron-right; ratio: 1.9" bdt-slideshow-item="next"></a>
+				<a href="" class="bdt-navigation-prev bdt-slidenav-previous bdt-icon bdt-slidenav" bdt-icon="icon: chevron-left; ratio: 1.9" 
+				data-bdt-slideshow-item="previous"></a>
+				<a href="" class="bdt-navigation-next bdt-slidenav-next bdt-icon bdt-slidenav" bdt-icon="icon: chevron-right; ratio: 1.9" 
+				data-bdt-slideshow-item="next"></a>
 			</div>
 		</div>
     	<?php
@@ -1801,7 +1801,7 @@ class Thumb_Gallery extends Module_Base {
 				$gallery_thumbnail = $gallery_thumbnail[0];
 			}
 
-			echo '<li class="bdt-thumb-gallery-thumbnav" bdt-slideshow-item="' . $bdt_counter . '"><a class="bdt-overflow-hidden bdt-background-cover" href="#" style="background-image: url(' . esc_url($gallery_thumbnail) . ')"></a></li>';
+			echo '<li class="bdt-thumb-gallery-thumbnav" data-bdt-slideshow-item="' . $bdt_counter . '"><a class="bdt-overflow-hidden bdt-background-cover" href="#" style="background-image: url(' . esc_url($gallery_thumbnail) . ')"></a></li>';
 			$bdt_counter++;
 		}
 

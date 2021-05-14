@@ -97,7 +97,7 @@ class Premium_Tabs extends Widget_Base {
 	public function get_script_depends() {
 		return array(
 			'tabs-slick',
-			'premium-pro-js',
+			'premium-pro',
 			'lottie-js',
 		);
 	}

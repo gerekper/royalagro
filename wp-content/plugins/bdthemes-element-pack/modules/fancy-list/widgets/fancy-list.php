@@ -10,6 +10,7 @@ use Elementor\Repeater;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
 use ElementPack\Utils;
+
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 class Fancy_List extends Module_Base
@@ -669,7 +670,6 @@ class Fancy_List extends Module_Base
                     $repeater_setting_key = $this->get_repeater_setting_key('text', 'icon_list', $index);
                     $this->add_render_attribute($repeater_setting_key, 'class', 'elementor-icon-list-text');
                     $this->add_inline_editing_attributes($repeater_setting_key);
-                    $migration_allowed = Icons_Manager::is_migration_allowed();
 
                     $this->add_render_attribute('list_title_tags', 'class', 'bdt-list-title', true);
                 ?>
@@ -703,12 +703,12 @@ class Fancy_List extends Module_Base
                             ?>
                             <?php
                                 if (!empty($item['img']['url'])) {
-                                    echo '<div class=" image-area"> <img src=" ' . $item['img']['url'] . '"> </div>';
+                                    echo '<div class=" image-area"> <img src=" ' . $item['img']['url'] . '" alt="'.esc_html($item['text']).'"> </div>';
                                 }
                             ?>
                             <div class="list-text ">
                                 <<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?> <?php echo $this->get_render_attribute_string('list_title_tags'); ?>> 
-                                    <?php echo $item['text']; ?>
+                                    <?php echo wp_kses_post($item['text']); ?>
                                 </<?php echo Utils::get_valid_html_tag($settings['title_tags']); ?>>
                                 <p class="list-text-des"> <?php echo $item['text_details']; ?></p>
                             </div>

@@ -65,7 +65,7 @@ class Skin_Fedara extends Elementor_Skin_Base {
 							<?php if (( 'lightbox' == $settings['show_link'] ) || ( 'both' == $settings['show_link'] )) : ?>
 								<a <?php echo $this->parent->get_render_attribute_string( 'lightbox-settings' ); ?>>
 									<?php if ( 'icon' == $settings['link_type'] ) : ?>
-										<span bdt-icon="icon: plus"></span>
+										<span data-bdt-icon="icon: plus"></span>
 									<?php elseif ( 'text' == $settings['link_type'] ) : ?>
 										<span><?php esc_html_e( 'ZOOM', 'bdthemes-element-pack' ); ?></span>
 									<?php endif; ?>
@@ -80,7 +80,7 @@ class Skin_Fedara extends Elementor_Skin_Base {
 									?>
 								<a class="bdt-gallery-item-link<?php echo esc_attr($link_type_class); ?>" href="<?php echo esc_attr(get_permalink()); ?>" <?php echo $target; ?>>
 									<?php if ( 'icon' == $settings['link_type'] ) : ?>
-										<span bdt-icon="icon: sign-in"></span>
+										<span data-bdt-icon="icon: sign-in"></span>
 									<?php elseif ( 'text' == $settings['link_type'] ) : ?>
 										<span><?php esc_html_e( 'VIEW', 'bdthemes-element-pack' ); ?></span>
 									<?php endif; ?>

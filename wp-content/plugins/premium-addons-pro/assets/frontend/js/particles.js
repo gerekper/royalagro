@@ -884,19 +884,19 @@
 /******/ 				if (__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
                             /******/
-}
+                        }
                         /******/
-}
+                    }
                     /******/
-};
+                };
                 /******/
-})();
+            })();
 /******/
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
                 /******/
-})();
+            })();
 /******/
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
@@ -905,12 +905,12 @@
 /******/ 			if (typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
                         /******/
-}
+                    }
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
                     /******/
-};
+                };
                 /******/
-})();
+            })();
             /******/
             /************************************************************************/
             var __webpack_exports__ = {};
@@ -12729,38 +12729,48 @@
 
 /******/ 	return __webpack_exports__;
             /******/
-})()
+        })()
             ;
     });
 
+    if (e(".premium-particles-yes").length) {
 
-    e(".premium-particles-yes").length && Object.values(window.scopes_array).forEach(function (t) {
+        var isEdit = "undefined" !== typeof elementorFrontend ? elementorFrontend.isEditMode() : false;
 
-        $scope = t,
-            function (t) {
-                var a = t,
-                    i = a.data("id"),
-                    s = {};
-                s = elementorFrontend.isEditMode() ? function (t) {
-                    var sectionData = a.find('#premium-particles-' + i),
-                        pStyle = sectionData.data('particles-style'),
-                        zIndex = sectionData.data('particles-zindex'),
-                        device = sectionData.data('particles-devices');
+        if (isEdit) {
+            premiumParticlesHandler(window.current_scope);
+        } else if (window.scopes_array) {
+            Object.values(window.scopes_array).forEach(function ($scope) {
+                premiumParticlesHandler($scope);
+            });
+        }
 
-                    if (!pStyle) return !1;
-                    if (s.zindex = zIndex, s.style = pStyle, s.devices = device.split(" "), 0 !== Object.keys(s).length) return s
+    }
 
-                }(i) : function () {
-                    var e = a.data();
-                    if (!e.particlesStyle) return !1;
-                    if (s.zindex = e.particlesZindex, s.style = e.particlesStyle, s.devices = e.particlesDevices.split(" "), 0 !== Object.keys(s).length) return s
-                }();
-                if (!s) return !1;
-                var n = elementorFrontend.getCurrentDeviceMode();
-                if (-1 === s.devices.indexOf(n)) return;
-                a.attr("id", "premium-section-particles-" + i), tsParticles.load("premium-section-particles-" + i, s.style), a.children("canvas.tsparticles-canvas-el").css({
-                    zIndex: s.zindex
-                })
-            }($scope)
-    })
+    function premiumParticlesHandler(t) {
+        var a = t,
+            i = a.data("id"),
+            s = {};
+        s = elementorFrontend.isEditMode() ? function (t) {
+            var sectionData = a.find('#premium-particles-' + i),
+                pStyle = sectionData.data('particles-style'),
+                zIndex = sectionData.data('particles-zindex'),
+                device = sectionData.data('particles-devices');
+
+            if (!pStyle) return !1;
+            if (s.zindex = zIndex, s.style = pStyle, s.devices = device.split(" "), 0 !== Object.keys(s).length) return s
+
+        }(i) : function () {
+            var e = a.data();
+            if (!e.particlesStyle) return !1;
+            if (s.zindex = e.particlesZindex, s.style = e.particlesStyle, s.devices = e.particlesDevices.split(" "), 0 !== Object.keys(s).length) return s
+        }();
+        if (!s) return !1;
+        var n = elementorFrontend.getCurrentDeviceMode();
+        if (-1 === s.devices.indexOf(n)) return;
+        a.attr("id", "premium-section-particles-" + i), tsParticles.load("premium-section-particles-" + i, s.style), a.children("canvas.tsparticles-canvas-el").css({
+            zIndex: s.zindex
+        })
+    }
+
 }(jQuery);

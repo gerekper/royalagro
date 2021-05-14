@@ -623,7 +623,7 @@ class Chart extends Module_Base {
 			[
 				'label' => esc_html__( 'Separator Symbol', 'bdthemes-element-pack' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __( ',', 'bdthemes-element-pack' ),
+				'default' => ',',
 				'placeholder' => __( 'Type your symbol here', 'bdthemes-element-pack' ),
 				'condition' => [
 					'value_separator' => 'yes'

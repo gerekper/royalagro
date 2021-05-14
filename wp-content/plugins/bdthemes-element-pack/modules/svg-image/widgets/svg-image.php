@@ -634,7 +634,7 @@ class Svg_Image extends Module_Base {
 
 		if ($settings['on_hover_animation']) {
 			$this->add_render_attribute( 'svg-image', 'class', 'bdt-animation-stroke' );
-			$this->add_render_attribute( 'svg-image', 'bdt-svg', 'stroke-animation: true' );
+			$this->add_render_attribute( 'svg-image', 'data-bdt-svg', 'stroke-animation: true' );
 		}
 
 		if ($settings['on_hover_reverse_animation']) {
@@ -645,7 +645,7 @@ class Svg_Image extends Module_Base {
 			$this->add_render_attribute( 'svg-image', 'class', 'bdt-preserve' );
 		}
 
-		$this->add_render_attribute( 'svg-image', 'bdt-svg', '' );
+		$this->add_render_attribute( 'svg-image', 'data-bdt-svg', '' );
 
 		if ($settings['image']['id']) {
 		    $settings['image_size'] = 'full';

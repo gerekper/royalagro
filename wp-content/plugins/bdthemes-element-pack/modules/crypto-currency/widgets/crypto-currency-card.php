@@ -626,7 +626,7 @@ class CryptoCurrencyCard extends Module_Base {
 	   	
 		?>
 		<div class="bdt-crypto-currency-card">
-			<div bdt-grid>
+			<div data-bdt-grid>
 
 				<?php foreach($coins as $coin) : ?>
 
@@ -635,7 +635,7 @@ class CryptoCurrencyCard extends Module_Base {
 
 						<?php if ($settings['show_currency_image']) : ?>
     					<div class="bdt-currency-image">
-    						<img src="<?php echo esc_url($coin['image']); ?>"/>
+    						<img alt="bdt-currency-image" src="<?php echo esc_url($coin['image']); ?>"/>
     					</div>
     					<?php endif; ?>
 

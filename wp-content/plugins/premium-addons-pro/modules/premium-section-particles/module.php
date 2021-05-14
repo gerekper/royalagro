@@ -70,15 +70,17 @@ class Module extends Module_Base {
 				'window.scopes_array = {};
                 window.backend = 0;
                 jQuery( window ).on( "elementor/frontend/init", function() {
+
                     elementorFrontend.hooks.addAction( "frontend/element_ready/global", function( $scope, $ ){
-                        if ( "undefined" == typeof $scope ) {
-                                return;
+
+                        if ( "undefined" == typeof $scope || ! $scope.hasClass( "premium-particles-yes" ) ) {
+                            return;
                         }
-                        if ( $scope.hasClass( "premium-particles-yes" ) ) {
-                            var id = $scope.data("id");
-                            window.scopes_array[ id ] = $scope;
-                        }
+
                         if(elementorFrontend.isEditMode()){
+
+                            window.current_scope = $scope;
+
                             var url = papro_addons.particles_url;
                             jQuery.cachedAssets = function( url, options ) {
                                 // Allow user to set any option except for dataType, cache, and url.
@@ -92,14 +94,19 @@ class Module extends Module_Base {
                             };
                             jQuery.cachedAssets( url );
                             window.backend = 1;
+                        } else {
+                            var id = $scope.data("id");
+                            window.scopes_array[ id ] = $scope;
                         }
                     });
                 });
-                jQuery(document).ready(function(){
-                    if ( jQuery.find( ".premium-particles-yes" ).length < 1 ) {
 
+                jQuery(document).ready(function(){
+
+                    if ( jQuery.find( ".premium-particles-yes" ).length < 1 ) {
                         return;
                     }
+
                     var url = papro_addons.particles_url;
 
                     jQuery.cachedAssets = function( url, options ) {

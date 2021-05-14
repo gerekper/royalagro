@@ -618,7 +618,7 @@ class Advanced_Progress_Bar extends Module_Base
                         <?php }?>
                         <div class="bdt-progress-level">
                             <div class="bdt-progress-fill " 
-                            max-value= "<?php echo ($progress['max_level']['size'] > 0 ? $progress['max_level']['size'] : '100') ?>" data-width="<?php echo esc_attr($progress['level']['size']) ?>%">
+                            data-max-value= "<?php echo ($progress['max_level']['size'] > 0 ? $progress['max_level']['size'] : '100') ?>" data-width="<?php echo esc_attr($progress['level']['size']) ?>%">
                                 <span class="bdt-progress-parcentage"><?php echo esc_html($progress['level']['size']); ?>
                                 <?php echo esc_html($settings['show_max_value'] == 'yes' ? ' / '.$progress['max_level']['size'] : ''); ?>
                                <?php ($settings['show_perc'] == 'yes' ? '%' : '') ?> 
@@ -635,7 +635,7 @@ class Advanced_Progress_Bar extends Module_Base
                 <div class="bdt-progress-item elementor-repeater-item-<?php echo esc_attr($progress['_id']); ?>">
                     <div class="bdt-progress-level">
                         <div class="bdt-progress-fill "  
-                        max-value= "<?php echo ($progress['max_level']['size'] > 0 ? $progress['max_level']['size'] : '100') ?>" data-width="<?php echo esc_attr($progress['level']['size']) ?>%">
+                        data-max-value= "<?php echo ($progress['max_level']['size'] > 0 ? $progress['max_level']['size'] : '100') ?>" data-width="<?php echo esc_attr($progress['level']['size']) ?>%">
                             <div class="bdt-progress-content">
                                 <span class="bdt-progress-name">  <?php echo esc_html($progress['name']); ?> </span>
                                 <span class="bdt-progress-parcentage"><?php echo esc_html($progress['level']['size']); ?>
@@ -650,7 +650,7 @@ class Advanced_Progress_Bar extends Module_Base
             <div class="bdt-progress-item elementor-repeater-item-<?php echo esc_attr($progress['_id']); ?>">
               <div class="bdt-progress-level">
                   <div class="bdt-progress-fill " 
-                  max-value= "<?php echo ($progress['max_level']['size'] > 0 ? $progress['max_level']['size'] : '100') ?>"  data-width="<?php echo esc_attr($progress['level']['size']) ?>%">
+                  data-max-value= "<?php echo ($progress['max_level']['size'] > 0 ? $progress['max_level']['size'] : '100') ?>"  data-width="<?php echo esc_attr($progress['level']['size']) ?>%">
                     <div class="bdt-progress-content">
                         <span class="bdt-progress-name">  <?php echo esc_html($progress['name']); ?> </span>
                         <span class="bdt-progress-parcentage"><?php echo esc_html($progress['level']['size']); ?>
@@ -677,7 +677,7 @@ class Advanced_Progress_Bar extends Module_Base
     <?php }?>
     <div class="bdt-progress-level">
         <div class="bdt-progress-fill " 
-            max-value= "<?php echo ($progress['max_level']['size'] > 0 ? $progress['max_level']['size'] : '100') ?>"  
+            data-max-value= "<?php echo ($progress['max_level']['size'] > 0 ? $progress['max_level']['size'] : '100') ?>"  
             data-width="<?php echo esc_attr($progress['level']['size']) ?>%">
         </div>
     </div>

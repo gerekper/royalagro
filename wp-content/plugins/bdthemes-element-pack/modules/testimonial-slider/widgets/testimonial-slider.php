@@ -5,7 +5,6 @@ namespace ElementPack\Modules\TestimonialSlider\Widgets;
 use ElementPack\Base\Module_Base;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
-use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Border;
 
 use ElementPack\Modules\TestimonialSlider\Skins;
@@ -13,8 +12,10 @@ use ElementPack\Modules\TestimonialSlider\Skins;
 if ( !defined('ABSPATH') ) exit; // Exit if accessed directly
 
 class Testimonial_Slider extends Module_Base {
-
-    public function get_name() {
+	
+	private $_query = null;
+	
+	public function get_name() {
         return 'bdt-testimonial-slider';
     }
 
@@ -592,15 +593,6 @@ class Testimonial_Slider extends Module_Base {
                 ],
             ]
         );
-
-        // $this->add_group_control(
-        //     Group_Control_Box_Shadow::get_type(),
-        //     [
-        //         'name'     => 'testimonial_shadow',
-        //         'label'    => esc_html__('Shadow', 'bdthemes-element-pack'),
-        //         'selector' => '{{WRAPPER}} .bdt-testimonial-slider .bdt-slider-item-inner',
-        //     ]
-        // );
 
         $this->add_group_control(
             Group_Control_Border::get_type(),
@@ -2250,7 +2242,6 @@ class Testimonial_Slider extends Module_Base {
 	}
 
 	public function render_footer() {
-		$id       = 'bdt-testimonial-slider-' . $this->get_id();
 		$settings = $this->get_settings_for_display();
 		
 		?>
@@ -2411,6 +2402,6 @@ class Testimonial_Slider extends Module_Base {
         endwhile;
         wp_reset_postdata();
 
-        $this->render_footer($settings);
+        $this->render_footer();
     }
 }

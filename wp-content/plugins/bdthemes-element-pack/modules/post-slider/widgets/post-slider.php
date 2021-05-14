@@ -1375,7 +1375,7 @@ class Post_Slider extends Module_Base {
 		$strip_shortcode = $this->get_settings_for_display('strip_shortcode');
 
 		?>
-		<div class="bdt-post-slider-text bdt-visible@m" bdt-slideshow-parallax="x: 500,-500">
+		<div class="bdt-post-slider-text bdt-visible@m" data-bdt-slideshow-parallax="x: 500,-500">
 			<?php 
 				if ( has_excerpt() ) {
 					the_excerpt();
@@ -1398,7 +1398,7 @@ class Post_Slider extends Module_Base {
 		?>
 		<div class="bdt-post-slider-title-wrap">
 			<a href="<?php echo esc_url(get_permalink()); ?>">
-				<<?php echo Utils::get_valid_html_tag($tag) ?> class="bdt-post-slider-title bdt-margin-remove-bottom" bdt-slideshow-parallax="x: 200,-200">
+				<<?php echo Utils::get_valid_html_tag($tag) ?> class="bdt-post-slider-title bdt-margin-remove-bottom" data-bdt-slideshow-parallax="x: 200,-200">
 					<?php the_title() ?>
 				</<?php echo Utils::get_valid_html_tag($tag) ?>>
 			</a>
@@ -1438,7 +1438,7 @@ class Post_Slider extends Module_Base {
 		$is_new    = empty( $settings['icon'] ) && Icons_Manager::is_migration_allowed();
 
 		?>
-		<div class="bdt-post-slider-button-wrap" bdt-slideshow-parallax="y: 200,-200">
+		<div class="bdt-post-slider-button-wrap" data-bdt-slideshow-parallax="y: 200,-200">
 			<a href="<?php echo esc_url(get_permalink()); ?>" class="bdt-post-slider-button bdt-display-inline-block<?php echo esc_attr($animation); ?>">
 				<?php echo esc_attr($this->get_settings( 'button_text' )); ?>
 
@@ -1472,7 +1472,7 @@ class Post_Slider extends Module_Base {
 						'bdt-post-slider',
 						'bdt-post-slider-skin-default'
 					],
-					'bdt-slideshow' => [
+					'data-bdt-slideshow' => [
 						wp_json_encode(array_filter([
 							"animation"         => $settings["slider_animations"],
 							"min-height"        => $settings["slider_min_height"]["size"],
@@ -1534,7 +1534,7 @@ class Post_Slider extends Module_Base {
 			<?php if( $settings['kenburns_animation'] ) : ?>
 				<div class="bdt-position-cover bdt-animation-kenburns<?php echo esc_attr( $kenburns_reverse ); ?> bdt-transform-origin-center">
 			<?php endif; ?>
-				<img src="<?php echo esc_url($slider_thumbnail); ?>" alt="<?php echo get_the_title(); ?>" bdt-cover>
+				<img src="<?php echo esc_url($slider_thumbnail); ?>" alt="<?php echo get_the_title(); ?>" data-bdt-cover>
 			<?php if( $settings['kenburns_animation'] ) : ?>
 	            </div>
 	        <?php endif; ?>
@@ -1542,7 +1542,7 @@ class Post_Slider extends Module_Base {
 				<div class="bdt-post-slider-content">
 
 	                <?php if ($settings['show_tag']) : ?>
-	                	<div class="bdt-post-slider-tag-wrap" bdt-slideshow-parallax="y: -200,200">
+	                	<div class="bdt-post-slider-tag-wrap" data-bdt-slideshow-parallax="y: -200,200">
 	                		<?php
 							$tags_list = get_the_tag_list( '<span class="bdt-background-primary">', '</span> <span class="bdt-background-primary">', '</span>');
 		                		if ($tags_list) :
@@ -1555,7 +1555,7 @@ class Post_Slider extends Module_Base {
 					$this->render_excerpt();
 
 					if ($settings['show_meta']) : ?>
-						<div class="bdt-post-slider-meta bdt-flex-inline bdt-flex-middle" bdt-slideshow-parallax="x: 250,-250">
+						<div class="bdt-post-slider-meta bdt-flex-inline bdt-flex-middle" data-bdt-slideshow-parallax="x: 250,-250">
 							<a class="bdt-flex bdt-flex-middle" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
 								<div class="bdt-post-slider-author bdt-margin-small-right bdt-border-circle bdt-overflow-hidden bdt-visible@m">
 									<?php echo get_avatar( get_the_author_meta( 'ID' ) , 28 ); ?>
@@ -1595,14 +1595,14 @@ class Post_Slider extends Module_Base {
 
 		?>
 		<div id="<?php echo esc_attr($id); ?>_nav"  class="bdt-post-slider-pagination bdt-position-bottom-center">
-		     <ul class="bdt-thumbnav bdt-grid bdt-grid-small bdt-child-width-auto bdt-child-width-1-4@m bdt-flex-center" bdt-grid> 
+		     <ul class="bdt-thumbnav bdt-grid bdt-grid-small bdt-child-width-auto bdt-child-width-1-4@m bdt-flex-center" data-bdt-grid> 
 
 		<?php		      
 		while ( $wp_query->have_posts() ) {
 			$wp_query->the_post();
 
 			?>
-			<li bdt-slideshow-item="<?php echo esc_attr($ps_count); ?>">
+			<li data-bdt-slideshow-item="<?php echo esc_attr($ps_count); ?>">
 				<div class="bdt-post-slider-pagination-item">
 					<a href="#">
 						<div class="bdt-flex bdt-flex-middle bdt-text-left">
@@ -1619,7 +1619,7 @@ class Post_Slider extends Module_Base {
 
 								?>
 								<div class="bdt-width-auto bdt-post-slider-thumb-wrap">
-									<img src="<?php echo esc_url($slider_thumbnail); ?>">
+									<img src="<?php echo esc_url($slider_thumbnail); ?>" alt="<?php echo get_the_title(); ?>">
 								</div>
 		        			<?php endif; ?>
 							<div class="bdt-margin-small-left bdt-visible@m">

@@ -1456,15 +1456,15 @@ if(isset($exStats['2']) && isset($exStats['3'])){
     <?php
     if($officeStatusLogic == 'open'):
         ?>
-        <div class="bdt-alert-success" bdt-alert >
-            <a class="bdt-alert-close" bdt-close></a>
+        <div class="bdt-alert-success" data-bdt-alert >
+            <a class="bdt-alert-close" data-bdt-close></a>
 
             <?php echo $officeStatus; ?>
 
         </div>
         <?php else: ?>
-            <div class="bdt-alert-danger" bdt-alert >
-                <a class="bdt-alert-close" bdt-close></a>
+            <div class="bdt-alert-danger" data-bdt-alert >
+                <a class="bdt-alert-close" data-bdt-close></a>
 
                 <?php echo $officeStatus; ?>
 

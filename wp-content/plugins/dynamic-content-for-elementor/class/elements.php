@@ -1,6 +1,10 @@
 <?php
 namespace DynamicContentForElementor;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Elements {
 
 	public static $elements = [];

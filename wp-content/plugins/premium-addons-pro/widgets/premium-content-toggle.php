@@ -109,7 +109,7 @@ class Premium_Content_Toggle extends Widget_Base {
 	 * @return array JS script handles.
 	 */
 	public function get_script_depends() {
-		return array( 'premium-pro-js' );
+		return array( 'premium-pro' );
 	}
 
 	/**

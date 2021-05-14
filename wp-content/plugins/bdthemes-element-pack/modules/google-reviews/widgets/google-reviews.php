@@ -43,6 +43,10 @@ class Google_Reviews extends Module_Base {
         }
     }
 
+    public function get_script_depends() {
+          return [ 'bdt-uikit-icons' ];
+    }
+
 	public function get_custom_help_url() {
 		return 'https://youtu.be/pp0mQpyKqfs';
 	}
@@ -1336,7 +1340,7 @@ class Google_Reviews extends Module_Base {
 
 		?>
 		<div class="bdt-google-reviews-rating">
-			<ul class="bdt-rating bdt-grid bdt-grid-collapse bdt-rating-<?php echo esc_attr($rating); ?>" bdt-grid>
+			<ul class="bdt-rating bdt-grid bdt-grid-collapse bdt-rating-<?php echo esc_attr($rating); ?>" data-bdt-grid>
 				<li class="bdt-rating-item"><i class="ep-star-full" aria-hidden="true"></i></li>
 				<li class="bdt-rating-item"><i class="ep-star-full" aria-hidden="true"></i></li>
 				<li class="bdt-rating-item"><i class="ep-star-full" aria-hidden="true"></i></li>
@@ -1392,8 +1396,10 @@ class Google_Reviews extends Module_Base {
 		?>
 		<div class="bdt-position-z-index bdt-visible@m bdt-position-<?php echo esc_attr($arrows_position); ?>">
 			<div class="bdt-arrows-container bdt-slidenav-container">
-				<a href="" class="bdt-navigation-prev bdt-slidenav-previous bdt-icon bdt-slidenav" bdt-icon="icon: chevron-left; ratio: 1.9" bdt-slider-item="previous"></a>
-				<a href="" class="bdt-navigation-next bdt-slidenav-next bdt-icon bdt-slidenav" bdt-icon="icon: chevron-right; ratio: 1.9" bdt-slider-item="next"></a>
+				<a href="" class="bdt-navigation-prev bdt-slidenav-previous bdt-icon bdt-slidenav" data-bdt-icon="icon: chevron-left; ratio: 1.9"  
+				data-bdt-slider-item="previous"></a>
+				<a href="" class="bdt-navigation-next bdt-slidenav-next bdt-icon bdt-slidenav" data-bdt-icon="icon: chevron-right; ratio: 1.9"  
+				data-bdt-slider-item="next"></a>
 			</div>
 		</div>
 		<?php
@@ -1429,7 +1435,8 @@ class Google_Reviews extends Module_Base {
 				
 				<div class="bdt-flex bdt-flex-middle">
 					<div>
-						<a href="" class="bdt-navigation-prev bdt-slidenav-previous bdt-icon bdt-slidenav" bdt-icon="icon: chevron-left; ratio: 1.9" bdt-slider-item="previous"></a>						
+						<a href="" class="bdt-navigation-prev bdt-slidenav-previous bdt-icon bdt-slidenav" data-bdt-icon="icon: chevron-left; ratio: 1.9"
+						 data-bdt-slider-item="previous"></a>						
 					</div>
 
 					<?php if ('center' !== $settings['both_position']) : ?>
@@ -1440,7 +1447,8 @@ class Google_Reviews extends Module_Base {
 					<?php endif; ?>
 					
 					<div>
-						<a href="" class="bdt-navigation-next bdt-slidenav-next bdt-icon bdt-slidenav" bdt-icon="icon: chevron-right; ratio: 1.9" bdt-slider-item="next"></a>						
+						<a href="" class="bdt-navigation-next bdt-slidenav-next bdt-icon bdt-slidenav" data-bdt-icon="icon: chevron-right; ratio: 1.9" 
+						data-bdt-slider-item="next"></a>						
 					</div>
 					
 				</div>
@@ -1477,7 +1485,7 @@ class Google_Reviews extends Module_Base {
 						( 'arrows' == $settings['navigation'] or 'arrows-thumbnavs' == $settings['navigation'] ) ? 'bdt-arrows-align-' . $settings['arrows_position'] : '',
 						( 'dots' == $settings['navigation'] ) ? 'bdt-dots-align-'. $settings['dots_position'] : '',
 					],
-					'bdt-slider' => [
+					'data-bdt-slider' => [
 						wp_json_encode(array_filter([
 							"autoplay"          => $settings["autoplay"],
 							"autoplay-interval" => $settings["autoplay_interval"],
@@ -1491,7 +1499,7 @@ class Google_Reviews extends Module_Base {
 
 		?>
 		<div <?php echo ( $this->get_render_attribute_string( 'slider-settings' ) ); ?>>
-			<ul class="bdt-slider-items bdt-child-width-1-1 bdt-grid bdt-grid-match" bdt-grid>
+			<ul class="bdt-slider-items bdt-child-width-1-1 bdt-grid bdt-grid-match" data-bdt-grid>
 
 				<?php
 				foreach($clientReview as $review){

@@ -4,9 +4,7 @@ namespace ElementPack\Modules\Buddypress\Widgets;
 use ElementPack\Base\Module_Base;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
-use Elementor\Core\Schemes;
 use Elementor\Group_Control_Border;
-use Elementor\Group_Control_Box_Shadow;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -313,7 +311,6 @@ class Buddypress_Friends extends Module_Base {
 			[
 				'name'     => 'title_typography',
 				'selector' => '{{WRAPPER}} .bdt-bp-friend-title a',
-				//'scheme'   => Schemes\Typography::TYPOGRAPHY_4,
 			]
 		);
 
@@ -340,7 +337,7 @@ class Buddypress_Friends extends Module_Base {
 		if ( bp_has_members( $friends_args ) ) : ?>
 
 			<div class="bdt-buddypress-friends">			
-				<div class="bdt-grid bdt-grid-small bdt-text-<?php echo esc_attr($settings['align']); ?> bdt-flex-<?php echo esc_attr($settings['align']); ?>" bdt-grid>
+				<div class="bdt-grid bdt-grid-small bdt-text-<?php echo esc_attr($settings['align']); ?> bdt-flex-<?php echo esc_attr($settings['align']); ?>" data-bdt-grid>
 
 			<?php while ( bp_members() ) : bp_the_member(); ?>
 				<?php
@@ -356,30 +353,30 @@ class Buddypress_Friends extends Module_Base {
 
 				<?php if ($settings['show_meta_as_tooltip']) : ?>
 					<?php if ( 'active' === $type ) : ?>
-						<?php $this->add_render_attribute('bp-friend', 'bdt-tooltip', 'title: ' . bp_get_member_last_active(), true); ?>
+						<?php $this->add_render_attribute('bp-friend', 'data-bdt-tooltip', 'title: ' . bp_get_member_last_active(), true); ?>
 					<?php elseif ( 'newest' === $type ) : ?>
-						<?php $this->add_render_attribute('bp-friend', 'bdt-tooltip', 'title: ' . bp_get_member_registered(), true); ?>
+						<?php $this->add_render_attribute('bp-friend', 'data-bdt-tooltip', 'title: ' . bp_get_member_registered(), true); ?>
 					<?php elseif ( bp_is_active( 'friends' ) ) : ?>
-						<?php $this->add_render_attribute('bp-friend', 'bdt-tooltip', 'title: ' . bp_get_member_total_friend_count(), true); ?>
+						<?php $this->add_render_attribute('bp-friend', 'data-bdt-tooltip', 'title: ' . bp_get_member_total_friend_count(), true); ?>
 					<?php endif; ?>
 				<?php endif; ?>
 
 				<div <?php echo $this->get_render_attribute_string('bp-friend'); ?>>
 					<?php if ($settings['show_avatar']) : ?>
 						<div class="bdt-bp-friend-avatar">
-							<a href="<?php bp_member_permalink(); ?>"><?php bp_member_avatar($avatar); ?></a>
+							<a href="<?php bp_member_permalink(); ?>" title=""><?php bp_member_avatar($avatar); ?></a>
 						</div>
 					<?php endif; ?>
 
 					<?php if ($settings['show_title']) : ?>
-						<div class="bdt-bp-friend-title"><a href="<?php bp_member_permalink(); ?>"><?php bp_member_name(); ?></a></div>
+						<div class="bdt-bp-friend-title"><a href="<?php bp_member_permalink(); ?>" title=""><?php bp_member_name(); ?></a></div>
 					<?php endif; ?>								
 				</div>
 			<?php endwhile; ?></div>
 		</div>
 
 		<?php else: ?>
-			<div class="bdt-alert-warning" bdt-alert>There were no members found, please try another filter.</div>
+			<div class="bdt-alert-warning" data-bdt-alert>There were no members found, please try another filter.</div>
 		<?php endif;
 
 

@@ -1524,11 +1524,11 @@ class Fancy_Tabs extends Module_Base {
 		$tablet_cols = $settings['columns_tablet'];
 		$mobile_cols = $settings['columns_mobile'];
 
-        $this->add_render_attribute( 'tab-settings', 'bdt-fancy-tabs-items', 'connect: #bdt-tab-content-' .  esc_attr($id) . ';' );
+        $this->add_render_attribute( 'tab-settings', 'data-bdt-fancy-tabs-items', 'connect: #bdt-tab-content-' .  esc_attr($id) . ';' );
 
 		?>
 			<div <?php echo ( $this->get_render_attribute_string( 'tab-settings' ) ); ?>>
-				<div class="bdt-grid bdt-grid-<?php echo esc_attr($settings['column_gap']); ?> bdt-child-width-1-<?php echo esc_attr($mobile_cols); ?> bdt-child-width-1-<?php echo esc_attr($tablet_cols); ?>@s bdt-child-width-1-<?php echo esc_attr($desktop_cols); ?>@l" bdt-grid>
+				<div class="bdt-grid bdt-grid-<?php echo esc_attr($settings['column_gap']); ?> bdt-child-width-1-<?php echo esc_attr($mobile_cols); ?> bdt-child-width-1-<?php echo esc_attr($tablet_cols); ?>@s bdt-child-width-1-<?php echo esc_attr($desktop_cols); ?>@l" data-bdt-grid>
 
 					<?php foreach ( $settings['tabs'] as $index => $item ) :
 						

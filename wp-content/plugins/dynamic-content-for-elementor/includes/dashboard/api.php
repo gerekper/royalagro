@@ -11,7 +11,7 @@ class Api {
 	<div class="wrap">
 	  <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 
-		<form action="" method="post">
+		<form action="" method="post" autocomplete="off">
 			<?php
 			wp_nonce_field( 'dce-settings-page', 'dce-settings-page' );
 			if ( isset( $_POST['save-dce-apis'] ) ) {

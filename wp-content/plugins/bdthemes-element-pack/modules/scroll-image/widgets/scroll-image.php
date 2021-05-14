@@ -969,7 +969,7 @@ class Scroll_Image extends Module_Base {
 		}
 
 		if ( 'lightbox' === $settings['link_to'] or 'modal' === $settings['link_to'] ) {
-			$this->add_render_attribute('container', 'bdt-lightbox', 'toggle: .bdt-scroll-image-lightbox-item; animation: slide;');
+			$this->add_render_attribute('container', 'data-bdt-lightbox', 'toggle: .bdt-scroll-image-lightbox-item; animation: slide;');
 			$this->add_render_attribute( 'link', 'data-elementor-open-lightbox', 'no');
 			$this->add_render_attribute( 'link', 'class', 'bdt-scroll-image-lightbox-item');
 		}

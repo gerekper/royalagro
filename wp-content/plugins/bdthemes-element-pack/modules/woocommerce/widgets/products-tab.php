@@ -1165,7 +1165,7 @@ class Products_Tab extends Module_Base {
 
 		if($wp_query->have_posts()) {
 
-			$this->add_render_attribute('wc-products-wrapper', 'bdt-grid', '');
+			$this->add_render_attribute('wc-products-wrapper', 'data-bdt-grid', '');
 
 			$this->add_render_attribute(
 				[
@@ -1215,9 +1215,9 @@ class Products_Tab extends Module_Base {
 								<?php if ('yes' == $settings['show_add_to_link']) : ?>
 								<div class="bdt-products-skin-add-to-links">
 		                            <ul>
-		                                <li class="wishlist"><a href="#" bdt-tooltip="Add to Wishlist" bdt-icon="icon: heart"></a></li>
-		                                <li class="quick"><a href="#" bdt-tooltip="Add to Quick" bdt-icon="icon: search"></a></li>
-		                                <li class="compare"><a href="#" bdt-tooltip="Add to Compare" bdt-icon="icon: shrink"></a></li>
+		                                <li class="wishlist"><a href="#" data-bdt-tooltip="Add to Wishlist" data-bdt-icon="icon: heart"></a></li>
+		                                <li class="quick"><a href="#" data-bdt-tooltip="Add to Quick" data-bdt-icon="icon: search"></a></li>
+		                                <li class="compare"><a href="#" data-bdt-tooltip="Add to Compare" data-bdt-icon="icon: shrink"></a></li>
 		                            </ul>
 		                        </div>
 		                    	<?php endif; ?>
@@ -1260,7 +1260,7 @@ class Products_Tab extends Module_Base {
 			wp_reset_postdata();
 			
 		} else {
-			echo '<div class="bdt-alert-warning" bdt-alert>' . esc_html__( 'Ops! There is no product.', 'bdthemes-element-pack' ) .'<div>';
+			echo '<div class="bdt-alert-warning" data-bdt-alert>' . esc_html__( 'Ops! There is no product.', 'bdthemes-element-pack' ) .'<div>';
 		}
 	}
 

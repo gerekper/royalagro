@@ -58,7 +58,7 @@
 }
 
 /* getresponse api */
-.pafe-getresponse-list__inner, .pafe-getresponse-custom-fields__inner, .pafe-ajax-active-campaign-list{
+.pafe-getresponse-list__inner, .pafe-getresponse-custom-fields__inner, .pafe-ajax-active-campaign-list, .pafe-sendinblue-item{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -120,4 +120,14 @@ button.elementor-button.elementor-button-default.piotnet-button-mailpoet-get-fie
 .mailerlite-title{
   font-weight: 600 !important;
   margin-bottom: 5px;
+}
+.pafe-sendinblue-group-result{
+  margin-top: 10px;
+}
+.pafe-sendinblue-title{
+  font-weight: bold !important;
+  font-size: 14px !important;
+}
+.pafe-sendinblue-item{
+  margin-left: 10px;
 }

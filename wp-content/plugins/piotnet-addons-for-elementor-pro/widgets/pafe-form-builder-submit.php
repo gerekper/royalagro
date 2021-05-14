@@ -350,6 +350,10 @@ class PAFE_Form_Builder_Submit extends \Elementor\Widget_Base {
                 'label' => 'Sendy'
             ],
             [
+                'name' => 'hubspot',
+                'label' => 'Hubspot'
+            ],
+            [
                 'name' => 'twilio_whatsapp',
                 'label' => 'Twilio Whatsapp'
             ],
@@ -360,6 +364,10 @@ class PAFE_Form_Builder_Submit extends \Elementor\Widget_Base {
             [
                 'name'  => 'sendfox',
                 'label' => 'SendFox',
+            ],
+			[
+                'name'  => 'sendinblue',
+                'label' => 'Sendinblue',
             ],
 		];
 
@@ -3958,7 +3966,127 @@ class PAFE_Form_Builder_Submit extends \Elementor\Widget_Base {
 			);
 		}
 		$this->end_controls_section();
+		//Sendinblue
+		$this->start_controls_section(
+			'section_sendinblue',
+			[
+				'label' => __( 'Sendinblue', 'pafe' ),
+				'condition' => [
+					'submit_actions' => 'sendinblue',
+				],
+			]
+		);
+		$this->add_control(
+			'sendinblue_note',
+			[
+				'type' => \Elementor\Controls_Manager::RAW_HTML,
+				'classes' => 'elementor-descriptor',
+				'raw' => __( 'You are using Sendinblue API Key set in WP Dashboard > Piotnet Addons > Sendinblue Integration. You can also set a different Sendinblue API Key by choosing "Custom".', 'pafe' ),
+				'condition' => [
+					'sendinblue_api_key_source' => 'default',
+				],
+			]
+		);
+		$this->add_control(
+			'sendinblue_api_key_source',
+			[
+				'label' => __( 'API Key', 'pafe' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'options' => [
+					'default' => __( 'Default', 'pafe' ),
+					'custom' => __( 'Custom', 'pafe' ),
+				],
+				'default' => 'default',
+			]
+		);
+		$this->add_control(
+			'sendinblue_api_key',
+			[
+				'label' => __( 'Custom API Key', 'pafe' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'condition' => [
+					'sendinblue_api_key_source' => 'custom',
+				],
+				'description' => __( 'Use this field to set a custom API Key for the current form', 'pafe' ),
+			]
+		);
+		$this->add_control(
+			'sendinblue_api_acceptance_field',
+			[
+				'label' => __( 'Acceptance Field?', 'pafe' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'pafe' ),
+				'label_off' => __( 'No', 'pafe' ),
+				'return_value' => 'yes',
+				'default' => '',
+			]
+		);
+		$this->add_control(
+			'sendinblue_api_acceptance_field_shortcode',
+			[
+				'label' => __( 'Acceptance Field Shortcode', 'pafe' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'placeholder' => __( 'E.g [field id="acceptance"]', 'pafe' ),
+				'condition' => [
+					'sendinblue_api_acceptance_field' => 'yes'
+				]
+			]
+		);
+		$this->add_control(
+			'sendinblue_list_ids',
+			[
+				'label' => __( 'List ID', 'pafe' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+			]
+		);
+		$this->add_control(
+			'sendinblue_api_get_list',
+			[
+				'type' => \Elementor\Controls_Manager::RAW_HTML,
+				'raw' => __( '<button data-pafe-sendinblue-get-list class="pafe-admin-button-ajax elementor-button elementor-button-default" type="button">Get Lists <i class="fas fa-spinner fa-spin"></i></button><br><div class="pafe-sendinblue-group-result" data-pafe-sendinblue-api-get-list-results></div>', 'pafe' ),
+			]
+		);
+		$this->add_control(
+			'sendinblue_api_get_attr',
+			[
+				'type' => \Elementor\Controls_Manager::RAW_HTML,
+				'raw' => __( '<div class="pafe-sendinblue-attribute-result" data-pafe-sendinblue-api-get-attributes-result></div>', 'pafe' ),
+			]
+		);
+		$repeater = new \Elementor\Repeater();
 
+			$repeater->add_control(
+				'sendinblue_tagname', [
+					'label' => __( 'Tag Name', 'pafe' ),
+					'type' => \Elementor\Controls_Manager::TEXT,
+					'label_block' => true,
+				]
+			);
+
+			$repeater->add_control(
+				'sendinblue_shortcode', [
+					'label' => __( 'Field Shortcode', 'pafe' ),
+					'type' => \Elementor\Controls_Manager::TEXT,
+					'label_block' => true,
+				]
+			);
+
+			$this->add_control(
+				'sendinblue_fields_map',
+				[
+					'label' => __( 'Fields Mapping', 'pafe' ),
+					'type' => \Elementor\Controls_Manager::REPEATER,
+					'fields' => $repeater->get_controls(),
+					'default' => [
+						[
+							'sendinblue_tagname' => __( 'email', 'pafe' ),
+						],
+					],
+					'title_field' => '{{{ sendinblue_tagname }}} --- {{{ sendinblue_shortcode }}}',
+				]
+			);
+		$this->end_controls_section();
+		//PDF Generator
 		$this->start_controls_section(
 			'section_pdfgenerator',
 			[
@@ -4151,8 +4279,8 @@ class PAFE_Form_Builder_Submit extends \Elementor\Widget_Base {
 				'label' => __( 'Title Color', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
+					'type' => \Elementor\Core\Schemes\Color::get_type(),
+					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 				],
 				'default' => '#000',
 				'selectors' => [
@@ -4255,8 +4383,8 @@ class PAFE_Form_Builder_Submit extends \Elementor\Widget_Base {
 				'label' => __( 'Text Color', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
+					'type' => \Elementor\Core\Schemes\Color::get_type(),
+					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 				],
 				'default' => '#000',
 				'selectors' => [
@@ -4419,8 +4547,8 @@ class PAFE_Form_Builder_Submit extends \Elementor\Widget_Base {
 				'label' => __( 'Text Color', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
+					'type' => \Elementor\Core\Schemes\Color::get_type(),
+					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 				],
 				'default' => '#000',
 				'selectors' => [
@@ -4898,6 +5026,111 @@ class PAFE_Form_Builder_Submit extends \Elementor\Widget_Base {
 
 		$this->end_controls_section();
 
+		//Hubspot
+
+        $this->start_controls_section(
+            'pafe_hubspot_section',
+            [
+                'label' => __( 'Hubspot', 'pafe' ),
+                'condition' => [
+                    'submit_actions' => 'hubspot',
+                ],
+            ]
+        );
+        $this->add_control(
+            'pafe_hubspot_first_name',
+            [
+                'label' => __( 'First Name*', 'pafe' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'placeholder' => __( 'This field is required.', 'pafe' ),
+                'label_block' => true,
+            ]
+        );
+        $this->add_control(
+            'pafe_hubspot_last_name',
+            [
+                'label' => __( 'Last Name*', 'pafe' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'placeholder' => __( 'This field is required.', 'pafe' ),
+                'label_block' => true,
+            ]
+        );
+        $this->add_control(
+            'pafe_hubspot_phone',
+            [
+                'label' => __( 'Phone*', 'pafe' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'placeholder' => __( 'This field is required.', 'pafe' ),
+                'label_block' => true,
+            ]
+        );
+        $this->add_control(
+            'pafe_hubspot_email',
+            [
+                'label' => __( 'Email*', 'pafe' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'placeholder' => __( 'This field is required.', 'pafe' ),
+                'label_block' => true,
+            ]
+        );
+        $this->add_control(
+            'pafe_hubspot_website',
+            [
+                'label' => __( 'Website', 'pafe' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'placeholder' => '',
+                'label_block' => true,
+            ]
+        );
+        $this->add_control(
+            'pafe_hubspot_company',
+            [
+                'label' => __( 'Company', 'pafe' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'placeholder' => '',
+                'label_block' => true,
+            ]
+        );
+        $this->add_control(
+            'pafe_hubspot_address',
+            [
+                'label' => __( 'Address', 'pafe' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'placeholder' => '',
+                'label_block' => true,
+            ]
+        );
+        $this->add_control(
+            'pafe_hubspot_city',
+            [
+                'label' => __( 'City', 'pafe' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'placeholder' => '',
+                'label_block' => true,
+            ]
+        );
+        $this->add_control(
+            'pafe_hubspot_state',
+            [
+                'label' => __( 'State', 'pafe' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'placeholder' => '',
+                'label_block' => true,
+            ]
+        );
+        $this->add_control(
+            'pafe_hubspot_zip',
+            [
+                'label' => __( 'Zip', 'pafe' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'placeholder' => '',
+                'label_block' => true,
+            ]
+        );
+
+
+        $this->end_controls_section();
+
         // Add Sendy Integration
 		$this->start_controls_section(
 			'section_sendy',
@@ -5161,7 +5394,7 @@ class PAFE_Form_Builder_Submit extends \Elementor\Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'typography',
-				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_4,
+				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_4,
 				'selector' => '{{WRAPPER}} a.elementor-button, {{WRAPPER}} .elementor-button',
 			]
 		);
@@ -5193,8 +5426,8 @@ class PAFE_Form_Builder_Submit extends \Elementor\Widget_Base {
 				'label' => __( 'Background Color', 'elementor' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_4,
+					'type' => \Elementor\Core\Schemes\Color::get_type(),
+					'value' => \Elementor\Core\Schemes\Color::COLOR_4,
 				],
 				'selectors' => [
 					'{{WRAPPER}} a.elementor-button, {{WRAPPER}} .elementor-button' => 'background-color: {{VALUE}};',
@@ -5315,7 +5548,7 @@ class PAFE_Form_Builder_Submit extends \Elementor\Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'message_typography',
-				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .elementor-message',
 			]
 		);
@@ -5675,8 +5908,9 @@ class PAFE_Form_Builder_Submit extends \Elementor\Widget_Base {
 
 		<?php if(in_array('submit_post', $settings['submit_actions'])) : ?>
 			<?php if(\Elementor\Plugin::$instance->editor->is_edit_mode()) :
-				echo '<div style="margin-top: 20px;">' . __('Edit Post URL Shortcode','pafe') . '</div><input class="elementor-form-field-shortcode" style="min-width: 300px; padding: 10px;" value="[edit_post edit_text='. "'Edit Post'" . ' sm=' . "'" . $this->get_id() . "'" . ' smpid=' . "'" . get_the_ID() . "'" .']' . get_the_permalink() . '[/edit_post]" readonly /><div class="elementor-control-field-description">' . __( 'Add this shortcode to your single template.', 'pafe' ) . ' The shortcode will be changed if you edit this form so you have to refresh Elementor Editor Page and then copy the shortcode. ' . __( 'Replace', 'pafe' ) . ' "' . get_the_permalink() . '" ' . __( 'by your Page URL contains your Submit Post Form.', 'pafe' ) . '</div>';
-			?>
+                echo '<div style="margin-top: 20px;">' . __('Edit Post URL Shortcode','pafe') . '</div><input class="elementor-form-field-shortcode" style="min-width: 300px; padding: 10px;" value="[edit_post edit_text='. "'Edit Post'" . ' sm=' . "'" . $this->get_id() . "'" . ' smpid=' . "'" . get_the_ID() . "'" .']' . get_the_permalink() . '[/edit_post]" readonly /><div class="elementor-control-field-description">' . __( 'Add this shortcode to your single template.', 'pafe' ) . ' The shortcode will be changed if you edit this form so you have to refresh Elementor Editor Page and then copy the shortcode. ' . __( 'Replace', 'pafe' ) . ' "' . get_the_permalink() . '" ' . __( 'by your Page URL contains your Submit Post Form.', 'pafe' ) . '</div>';
+                echo '<div style="margin-top: 20px;">' . __('Delete Post URL Shortcode','pafe') . '</div><input class="elementor-form-field-shortcode" style="min-width: 300px; padding: 10px;" value="[delete_post force_delete='. "'0'". ' delete_text='. "'Delete Post'" . ' sm=' . "'" . $this->get_id() . "'" . ' smpid=' . "'" . get_the_ID() . "'" . ' redirect='."'http://YOUR-DOMAIN'".']'.'[/delete_post]" readonly /><div class="elementor-control-field-description">' . __( 'Add this shortcode to your single template.', 'pafe' ) . ' The shortcode will be changed if you edit this form so you have to refresh Elementor Editor Page and then copy the shortcode. ' . __( 'Replace', 'pafe' ) . ' "http://YOUR-DOMAIN" ' . __( 'by your Page URL', 'pafe' ) . '</div>';
+            ?>
 			<?php endif; ?>
 		<?php endif; ?>
 

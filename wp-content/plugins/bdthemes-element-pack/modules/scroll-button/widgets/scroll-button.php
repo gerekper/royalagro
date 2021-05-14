@@ -492,7 +492,7 @@ class Scroll_Button extends Module_Base {
 						wp_json_encode(array_filter([
 							'duration'              => ( '' != $settings['duration']['size'] ) ? $settings['duration']['size'] : '',
 							'offset'                => ( '' != $settings['offset']['size'] ) ? $settings['offset']['size'] : '',
-							'HideOnBeforeScrolling' => ( '' != $settings['hide_on_before_scrolling'] ) ? "true" : "false",
+							'HideOnBeforeScrolling' => ( '' != $settings['hide_on_before_scrolling'] ) ? true : false,
 				        ]))
 					]
 				]

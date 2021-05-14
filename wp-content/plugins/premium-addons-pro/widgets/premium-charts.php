@@ -88,9 +88,9 @@ class Premium_Charts extends Widget_Base {
 	 */
 	public function get_script_depends() {
 		return array(
-			'chart-js',
+			'pa-charts',
 			'elementor-waypoints',
-			'premium-pro-js',
+			'premium-pro',
 		);
 	}
 

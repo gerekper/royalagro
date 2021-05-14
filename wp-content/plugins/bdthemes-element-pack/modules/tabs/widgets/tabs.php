@@ -619,6 +619,20 @@ class Tabs extends Module_Base {
             ]
         );
 
+        $this->add_control(
+			'title_hover_border',
+			[
+				'label'     => esc_html__( 'Border Color', 'bdthemes-element-pack' ) . BDTEP_NC,
+				'type'      => Controls_Manager::COLOR,
+				'condition' => [
+					'title_border_border!' => ''
+				],
+				'selectors' => [
+					'{{WRAPPER}} .bdt-tab .bdt-tabs-item:hover .bdt-tabs-item-title' => 'border-color: {{VALUE}};',
+				],
+			]
+		);
+
         $this->end_controls_tab();
 
         $this->start_controls_tab(
@@ -1090,7 +1104,7 @@ class Tabs extends Module_Base {
                     echo "</div>";
                 }
                 ?>
-                <a href="#" id="bottom-anchor-<?php echo esc_attr($id); ?>" bdt-hidden></a>
+                <a href="#" id="bottom-anchor-<?php echo esc_attr($id); ?>" data-bdt-hidden></a>
             </div>
         </div>
         <?php
@@ -1126,7 +1140,7 @@ class Tabs extends Module_Base {
 
                      ?>
                   <div class="<?php echo $tab_count_active; ?>" 
-                  content-id="<?php echo strtolower(preg_replace('#[ -]+#', '-', trim(preg_replace("![^a-z0-9]+!i", " ", esc_html($item['tab_title']))))); ?>">
+                  data-content-id="<?php echo strtolower(preg_replace('#[ -]+#', '-', trim(preg_replace("![^a-z0-9]+!i", " ", esc_html($item['tab_title']))))); ?>">
                   <div>
                     <?php
                     if ( 'custom' == $item['source'] and !empty($item['tab_content']) ) {
@@ -1180,33 +1194,33 @@ public function desktop_tab_items() {
             ]
         ]
     );
-    $this->add_render_attribute('tab-settings', 'bdt-tab', 'connect: #bdt-tab-content-' . esc_attr($id) . ';');
+    $this->add_render_attribute('tab-settings', 'data-bdt-tab', 'connect: #bdt-tab-content-' . esc_attr($id) . ';');
 
     if ( isset($settings['tab_transition']) ) {
-        $this->add_render_attribute('tab-settings', 'bdt-tab', 'animation: bdt-animation-' . $settings['tab_transition'] . ';');
+        $this->add_render_attribute('tab-settings', 'data-bdt-tab', 'animation: bdt-animation-' . $settings['tab_transition'] . ';');
     }
     if ( isset($settings['duration']['size']) ) {
-        $this->add_render_attribute('tab-settings', 'bdt-tab', 'duration: ' . $settings['duration']['size'] . ';');
+        $this->add_render_attribute('tab-settings', 'data-bdt-tab', 'duration: ' . $settings['duration']['size'] . ';');
     }
     if ( isset($settings['media']) ) {
-        $this->add_render_attribute('tab-settings', 'bdt-tab', 'media: ' . intval($settings['media']) . ';');
+        $this->add_render_attribute('tab-settings', 'data-bdt-tab', 'media: ' . intval($settings['media']) . ';');
     }
     if ( 'yes' != $settings['swiping_on_mobile'] ) {
-        $this->add_render_attribute('tab-settings', 'bdt-tab', 'swiping: false;');
+        $this->add_render_attribute('tab-settings', 'data-bdt-tab', 'swiping: false;');
     }
 
     if ( $settings['tabs_match_height'] ) {
-        $this->add_render_attribute('tab-settings', 'bdt-height-match', 'target: > .bdt-tabs-item > .bdt-tabs-item-title; row: false;');
+        $this->add_render_attribute('tab-settings', 'data-bdt-height-match', 'target: > .bdt-tabs-item > .bdt-tabs-item-title; row: false;');
     }
 
     if (isset($settings['nav_sticky_mode']) && 'yes' == $settings['nav_sticky_mode'] ) {
-        $this->add_render_attribute('tabs-sticky', 'bdt-sticky', 'bottom: #bottom-anchor-' . $id . ';');
+        $this->add_render_attribute('tabs-sticky', 'data-bdt-sticky', 'bottom: #bottom-anchor-' . $id . ';');
 
         if ( $settings['nav_sticky_offset']['size'] ) {
-            $this->add_render_attribute('tabs-sticky', 'bdt-sticky', 'offset: ' . $settings['nav_sticky_offset']['size'] . ';');
+            $this->add_render_attribute('tabs-sticky', 'data-bdt-sticky', 'offset: ' . $settings['nav_sticky_offset']['size'] . ';');
         }
         if ( $settings['nav_sticky_on_scroll_up'] ) {
-            $this->add_render_attribute('tabs-sticky', 'bdt-sticky', 'show-on-up: true; animation: bdt-animation-slide-top');
+            $this->add_render_attribute('tabs-sticky', 'data-bdt-sticky', 'show-on-up: true; animation: bdt-animation-slide-top');
         }
     }
 

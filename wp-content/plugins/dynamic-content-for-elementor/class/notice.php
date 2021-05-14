@@ -1,6 +1,10 @@
 <?php
 namespace DynamicContentForElementor;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Notice {
 
 	public function __construct() {
@@ -40,7 +44,7 @@ class Notice {
 	<?php }
 
 	public static function dce_admin_notice__warning( $msg = '' ) { ?>
-		<div class="warning notice-warning notice dce-generic-notice is-dismissible update-nag">
+		<div class="warning notice-warning notice dce-generic-notice update-nag">
 			<div class="img-responsive pull-left" style="float: left; margin-right: 20px;"><img src="<?php echo DCE_URL; ?>/assets/media/dce.png" title="Dynamic Content for Elementor" height="36" width="36"></div>
 			<p><strong>Dynamic Content for Elementor</strong><br />
 			<?php if ( $msg ) {
@@ -51,7 +55,7 @@ class Notice {
 	<?php }
 
 	public static function dce_admin_notice__danger( $msg = '' ) { ?>
-		<div class="warning notice-danger notice dce-generic-notice is-dismissible error">
+		<div class="warning notice-danger notice dce-generic-notice error">
 			<div class="img-responsive pull-left" style="float: left; margin-right: 20px;"><img src="<?php echo DCE_URL; ?>/assets/media/dce.png" title="Dynamic Content for Elementor" height="36" width="36"></div>
 			<p><strong>Dynamic Content for Elementor</strong><br />
 			<?php if ( $msg ) {

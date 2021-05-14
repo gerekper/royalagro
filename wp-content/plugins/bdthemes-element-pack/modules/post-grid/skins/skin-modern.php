@@ -29,7 +29,7 @@ class Skin_Modern extends Elementor_Skin_Base {
 
 		?> 
 		<div id="bdt-post-grid-<?php echo esc_attr($id); ?>" class="bdt-post-grid bdt-post-grid-skin-modern">
-	  		<div class="bdt-grid bdt-grid-<?php echo esc_attr($settings['column_gap']); ?>" bdt-grid>
+	  		<div class="bdt-grid bdt-grid-<?php echo esc_attr($settings['column_gap']); ?>" data-bdt-grid>
 
 				<?php 
 				$bdt_count = 0;
@@ -46,7 +46,7 @@ class Skin_Modern extends Elementor_Skin_Base {
 					    </div>
 
 					    <div class="bdt-width-2-5@m bdt-secondary">
-					        <div class="bdt-grid bdt-grid-<?php echo esc_attr($settings['column_gap']); ?>" bdt-grid>
+					        <div class="bdt-grid bdt-grid-<?php echo esc_attr($settings['column_gap']); ?>" data-bdt-grid>
 
 					<?php endif; ?>
 					            <?php if ( 2 == $bdt_count ) : ?>

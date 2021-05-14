@@ -1036,7 +1036,7 @@ class Contact_Form extends Module_Base {
 				'user_name_input' => [
 					'type'        => 'text',
 					'name'        => 'name',
-					'id'          => 'name' . $id,
+					'id'          => 'user_name' . $id,
 					'placeholder' => ($settings['user_name_placeholder']) ? $settings['user_name_placeholder'] : esc_html__( 'Your Name', 'bdthemes-element-pack' ),
 					'class'       => [
 						'bdt-input',
@@ -1074,7 +1074,7 @@ class Contact_Form extends Module_Base {
 					],
 				],
 				'message_area' => [
-					'type'        => 'textarea',
+					//'type'        => 'textarea',
 					'name'        => 'message',
 					'id'          => 'message' . $id,
 					'rows'		  => $settings['message_rows'],
@@ -1123,7 +1123,7 @@ class Contact_Form extends Module_Base {
 		$ep_api_settings = get_option( 'element_pack_api_settings' );
 
 		$this->add_render_attribute( 'contact-form', 'class', ['bdt-contact-form-form', 'bdt-form-stacked', 'bdt-grid', 'bdt-grid-small'] );
-		$this->add_render_attribute( 'contact-form', 'bdt-grid', '' );
+		$this->add_render_attribute( 'contact-form', 'data-bdt-grid', '' );
 		$this->add_render_attribute( 'contact-form', 'action', site_url() . '/wp-admin/admin-ajax.php' );
 		$this->add_render_attribute( 'contact-form', 'method', 'post' );
 

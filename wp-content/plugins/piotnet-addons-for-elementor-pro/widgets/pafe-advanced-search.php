@@ -370,7 +370,7 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 					'label' => __( 'Keywords Typography', 'pafe' ),
 					'name' => 'pafe_advanced_search_input_style_normal_keywords_typography',
 					'selector' => '{{WRAPPER}} .pafe-advanced-search__input-typo',
-					'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_4,
+					'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_4,
 				]
 			);
 
@@ -380,8 +380,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 					'label' => __( 'Background Color', 'pafe' ),
 					'type' => \Elementor\Controls_Manager::COLOR,
 					'scheme' => [
-						'type' => \Elementor\Scheme_Color::get_type(),
-						'value' => \Elementor\Scheme_Color::COLOR_1,
+						'type' => \Elementor\Core\Schemes\Color::get_type(),
+						'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 					],
 
 					'default' => '#fff',
@@ -399,8 +399,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 					'label' => __( 'Text Color', 'pafe' ),
 					'type' => \Elementor\Controls_Manager::COLOR,
 					'scheme' => [
-						'type' => \Elementor\Scheme_Color::get_type(),
-						'value' => \Elementor\Scheme_Color::COLOR_1,
+						'type' => \Elementor\Core\Schemes\Color::get_type(),
+						'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 					],
 					'default' => '#77818c',
 					'selectors' => [
@@ -421,8 +421,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 					'label' => __( 'Border Color', 'pafe' ),
 					'type' => \Elementor\Controls_Manager::COLOR,
 					'scheme' => [
-						'type' => \Elementor\Scheme_Color::get_type(),
-						'value' => \Elementor\Scheme_Color::COLOR_1,
+						'type' => \Elementor\Core\Schemes\Color::get_type(),
+						'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 					],
 					'default' => '#e1e5eb',
 					'selectors' => [
@@ -504,8 +504,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 					'label' => __( 'Border Color', 'pafe' ),
 					'type' => \Elementor\Controls_Manager::COLOR,
 					'scheme' => [
-						'type' => \Elementor\Scheme_Color::get_type(),
-						'value' => \Elementor\Scheme_Color::COLOR_1,
+						'type' => \Elementor\Core\Schemes\Color::get_type(),
+						'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 					],
 					'selectors' => [
 						'{{WRAPPER}} .pafe-advanced-search_form-input-wrapper' => 'border-color: {{VALUE}}',
@@ -599,8 +599,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 							'label' => __( 'Border Color', 'pafe' ),
 							'type' => \Elementor\Controls_Manager::COLOR,
 							'scheme' => [
-								'type' => \Elementor\Scheme_Color::get_type(),
-								'value' => \Elementor\Scheme_Color::COLOR_1,
+								'type' => \Elementor\Core\Schemes\Color::get_type(),
+								'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 							],
 							'selectors' => [
 								'{{WRAPPER}} .pafe-advanced-search-cat__wrapper' => 'border-color: {{VALUE}}',
@@ -680,8 +680,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 							'label' => __( 'Hover Color', 'pafe' ),
 							'type' => \Elementor\Controls_Manager::COLOR,
 							'scheme' => [
-								'type' => \Elementor\Scheme_Color::get_type(),
-								'value' => \Elementor\Scheme_Color::COLOR_1,
+								'type' => \Elementor\Core\Schemes\Color::get_type(),
+								'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 							],
 							'selectors' => [
 								'{{WRAPPER}} .pafe_advanced_search__select-option:hover' => 'background-color: {{VALUE}}',
@@ -696,8 +696,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 							'label' => __( 'Border Color', 'pafe' ),
 							'type' => \Elementor\Controls_Manager::COLOR,
 							'scheme' => [
-								'type' => \Elementor\Scheme_Color::get_type(),
-								'value' => \Elementor\Scheme_Color::COLOR_1,
+								'type' => \Elementor\Core\Schemes\Color::get_type(),
+								'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 							],
 							'selectors' => [
 								'{{WRAPPER}} .pafe_advanced_search__select-items' => 'border-color: {{VALUE}}',
@@ -826,7 +826,7 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 					'label' => __( 'Button Typography', 'pafe' ),
 					'name' => 'pafe_advanced_search_input_style_button_typography',
 					'selector' => '{{WRAPPER}} .pafe-advanced-search__submit',
-					'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_4,
+					'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_4,
 					'condition' => [
 						'pafe_advanced_search_button_type' => 'text',
 					]
@@ -839,8 +839,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 					'label' => __( 'Background Color', 'pafe' ),
 					'type' => \Elementor\Controls_Manager::COLOR,
 					'scheme' => [
-						'type' => \Elementor\Scheme_Color::get_type(),
-						'value' => \Elementor\Scheme_Color::COLOR_1,
+						'type' => \Elementor\Core\Schemes\Color::get_type(),
+						'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 					],
 					'selectors' => [
 						'{{WRAPPER}} .pafe-advanced-search__submit' => 'background-color: {{VALUE}}',
@@ -854,8 +854,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 					'label' => __( 'Text Color', 'pafe' ),
 					'type' => \Elementor\Controls_Manager::COLOR,
 					'scheme' => [
-						'type' => \Elementor\Scheme_Color::get_type(),
-						'value' => \Elementor\Scheme_Color::COLOR_1,
+						'type' => \Elementor\Core\Schemes\Color::get_type(),
+						'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 					],
 
 					'default' => '#ffffff',
@@ -875,8 +875,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 					'label' => __( 'Icon Color', 'pafe' ),
 					'type' => \Elementor\Controls_Manager::COLOR,
 					'scheme' => [
-						'type' => \Elementor\Scheme_Color::get_type(),
-						'value' => \Elementor\Scheme_Color::COLOR_1,
+						'type' => \Elementor\Core\Schemes\Color::get_type(),
+						'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 					],
 
 					'default' => '#ffffff',
@@ -896,8 +896,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 					'label' => __( 'Hover Background Color', 'pafe' ),
 					'type' => \Elementor\Controls_Manager::COLOR,
 					'scheme' => [
-						'type' => \Elementor\Scheme_Color::get_type(),
-						'value' => \Elementor\Scheme_Color::COLOR_1,
+						'type' => \Elementor\Core\Schemes\Color::get_type(),
+						'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 					],
 					'default' => '#0D96D1',
 					'selectors' => [
@@ -912,8 +912,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 					'label' => __( 'Hover Text Color', 'pafe' ),
 					'type' => \Elementor\Controls_Manager::COLOR,
 					'scheme' => [
-						'type' => \Elementor\Scheme_Color::get_type(),
-						'value' => \Elementor\Scheme_Color::COLOR_1,
+						'type' => \Elementor\Core\Schemes\Color::get_type(),
+						'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 					],
 
 					'default' => '#CECECE',
@@ -933,8 +933,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 					'label' => __( 'Border Color', 'pafe' ),
 					'type' => \Elementor\Controls_Manager::COLOR,
 					'scheme' => [
-						'type' => \Elementor\Scheme_Color::get_type(),
-						'value' => \Elementor\Scheme_Color::COLOR_1,
+						'type' => \Elementor\Core\Schemes\Color::get_type(),
+						'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 					],
 					'selectors' => [
 						'{{WRAPPER}} .pafe-advanced-search__submit' => 'border-color: {{VALUE}}',
@@ -1040,8 +1040,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 						'type' => \Elementor\Controls_Manager::COLOR,
 						'default' => '#ffffff',
 						'scheme' => [
-							'type' => \Elementor\Scheme_Color::get_type(),
-							'value' => \Elementor\Scheme_Color::COLOR_1,
+							'type' => \Elementor\Core\Schemes\Color::get_type(),
+							'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 						],
 						'selectors' => [
 							'{{WRAPPER}} .pafe-advanced-search .show' => 'background-color: {{VALUE}}',
@@ -1056,8 +1056,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 						'type' => \Elementor\Controls_Manager::COLOR,
 						'default' => '#e1e5eb',
 						'scheme' => [
-							'type' => \Elementor\Scheme_Color::get_type(),
-							'value' => \Elementor\Scheme_Color::COLOR_1,
+							'type' => \Elementor\Core\Schemes\Color::get_type(),
+							'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 						],
 						'selectors' => [
 							'{{WRAPPER}} .pafe-advanced-search .show' => 'border-color: {{VALUE}}',
@@ -1166,8 +1166,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 						'label' => __( 'Background Color', 'pafe' ),
 						'type' => \Elementor\Controls_Manager::COLOR,
 						'scheme' => [
-							'type' => \Elementor\Scheme_Color::get_type(),
-							'value' => \Elementor\Scheme_Color::COLOR_1,
+							'type' => \Elementor\Core\Schemes\Color::get_type(),
+							'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 						],
 						'default' => '#ddd',
 						'selectors' => [
@@ -1182,8 +1182,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 						'label' => __( 'Number Color', 'pafe' ),
 						'type' => \Elementor\Controls_Manager::COLOR,
 						'scheme' => [
-							'type' => \Elementor\Scheme_Color::get_type(),
-							'value' => \Elementor\Scheme_Color::COLOR_1,
+							'type' => \Elementor\Core\Schemes\Color::get_type(),
+							'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 						],
 						'default' => '#77818c',
 						'selectors' => [
@@ -1198,8 +1198,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 						'label' => __( 'Active Background Color', 'pafe' ),
 						'type' => \Elementor\Controls_Manager::COLOR,
 						'scheme' => [
-							'type' => \Elementor\Scheme_Color::get_type(),
-							'value' => \Elementor\Scheme_Color::COLOR_1,
+							'type' => \Elementor\Core\Schemes\Color::get_type(),
+							'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 						],
 						'default' => '#6ec1e4',
 						'selectors' => [
@@ -1214,8 +1214,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 						'label' => __( 'Active Number Color', 'pafe' ),
 						'type' => \Elementor\Controls_Manager::COLOR,
 						'scheme' => [
-							'type' => \Elementor\Scheme_Color::get_type(),
-							'value' => \Elementor\Scheme_Color::COLOR_1,
+							'type' => \Elementor\Core\Schemes\Color::get_type(),
+							'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 						],
 						'default' => '#fff',
 						'selectors' => [
@@ -1229,7 +1229,7 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 					[
 						'label' => __( 'Number Typography', 'pafe' ),
 						'name' => 'pafe_advanced_search_result_pagination_style_text_typography',
-						'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_4,
+						'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_4,
 						'selector' => '{{WRAPPER}} .pafe-advanced-search .page-link',
 					]
 				);
@@ -1335,8 +1335,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 							'label' => __( 'Background Color', 'pafe' ),
 							'type' => \Elementor\Controls_Manager::COLOR,
 							'scheme' => [
-								'type' => \Elementor\Scheme_Color::get_type(),
-								'value' => \Elementor\Scheme_Color::COLOR_1,
+								'type' => \Elementor\Core\Schemes\Color::get_type(),
+								'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 							],
 							'default' => '#ffffff',
 							'selectors' => [
@@ -1352,8 +1352,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 							'type' => \Elementor\Controls_Manager::COLOR,
 							'default' => '#e1e5eb',
 							'scheme' => [
-								'type' => \Elementor\Scheme_Color::get_type(),
-								'value' => \Elementor\Scheme_Color::COLOR_1,
+								'type' => \Elementor\Core\Schemes\Color::get_type(),
+								'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 							],
 							'selectors' => [
 								'{{WRAPPER}} .pafe-advanced-search__results-item' => 'border-color: {{VALUE}}',
@@ -1432,8 +1432,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 							'label' => __( 'Background Color', 'pafe' ),
 							'type' => \Elementor\Controls_Manager::COLOR,
 							'scheme' => [
-								'type' => \Elementor\Scheme_Color::get_type(),
-								'value' => \Elementor\Scheme_Color::COLOR_1,
+								'type' => \Elementor\Core\Schemes\Color::get_type(),
+								'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 							],
 							'selectors' => [
 								'{{WRAPPER}} .pafe-advanced-search__results-item:hover' => 'background-color: {{VALUE}}',
@@ -1447,8 +1447,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 							'label' => __( 'Border Color', 'pafe' ),
 							'type' => \Elementor\Controls_Manager::COLOR,
 							'scheme' => [
-								'type' => \Elementor\Scheme_Color::get_type(),
-								'value' => \Elementor\Scheme_Color::COLOR_1,
+								'type' => \Elementor\Core\Schemes\Color::get_type(),
+								'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 							],
 							'selectors' => [
 								'{{WRAPPER}} .pafe-advanced-search__results-item:hover' => 'border-color: {{VALUE}}',
@@ -1521,7 +1521,7 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 						[
 							'label' => __( 'No Result Typography', 'pafe' ),
 							'name' => 'pafe_advanced_search_result_item_no_result_typography',
-							'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_4,
+							'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_4,
 							'selector' => '{{WRAPPER}} .pafe-advanced-search__results-no-result-message',
 						]
 					);
@@ -1620,7 +1620,7 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 					[
 						'label' => __( 'Typography', 'pafe' ),
 						'name' => 'pafe_advanced_search_result_title_style_normal_typography',
-						'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_4,
+						'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_4,
 						'selector' => '{{WRAPPER}} .pafe-advanced-search__results-item-title',
 					]
 				);
@@ -1631,8 +1631,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 						'label' => __( 'Color', 'pafe' ),
 						'type' => \Elementor\Controls_Manager::COLOR,
 						'scheme' => [
-							'type' => \Elementor\Scheme_Color::get_type(),
-							'value' => \Elementor\Scheme_Color::COLOR_1,
+							'type' => \Elementor\Core\Schemes\Color::get_type(),
+							'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 						],
 						'default' => '#162b40',
 						'selectors' => [
@@ -1666,7 +1666,7 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 					[
 						'label' => __( 'Typography', 'pafe' ),
 						'name' => 'pafe_advanced_search_result_title_style_hover_typography',
-						'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_4,
+						'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_4,
 						'selector' => '{{WRAPPER}} .pafe-advanced-search__results-item-title:hover',
 					]
 				);
@@ -1677,8 +1677,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 						'label' => __( 'Color', 'pafe' ),
 						'type' => \Elementor\Controls_Manager::COLOR,
 						'scheme' => [
-							'type' => \Elementor\Scheme_Color::get_type(),
-							'value' => \Elementor\Scheme_Color::COLOR_1,
+							'type' => \Elementor\Core\Schemes\Color::get_type(),
+							'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 						],
 						'default' => '#6ec1e4',
 						'selectors' => [
@@ -1727,7 +1727,7 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 					[
 						'label' => __( 'Typography', 'pafe' ),
 						'name' => 'pafe_advanced_search_result_content_style_normal_typography',
-						'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_4,
+						'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_4,
 						'selector' => '{{WRAPPER}} .pafe-advanced-search__results-item-content',
 					]
 				);
@@ -1738,8 +1738,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 						'label' => __( 'Color', 'pafe' ),
 						'type' => \Elementor\Controls_Manager::COLOR,
 						'scheme' => [
-							'type' => \Elementor\Scheme_Color::get_type(),
-							'value' => \Elementor\Scheme_Color::COLOR_1,
+							'type' => \Elementor\Core\Schemes\Color::get_type(),
+							'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 						],
 						'default' => '#6b7e92',
 						'selectors' => [
@@ -1773,7 +1773,7 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 					[
 						'label' => __( 'Typography', 'pafe' ),
 						'name' => 'pafe_advanced_search_result_content_style_hover_typography',
-						'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_4,
+						'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_4,
 						'selector' => '{{WRAPPER}} .pafe-advanced-search__results-item-content:hover',
 					]
 				);
@@ -1784,8 +1784,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 						'label' => __( 'Color', 'pafe' ),
 						'type' => \Elementor\Controls_Manager::COLOR,
 						'scheme' => [
-							'type' => \Elementor\Scheme_Color::get_type(),
-							'value' => \Elementor\Scheme_Color::COLOR_1,
+							'type' => \Elementor\Core\Schemes\Color::get_type(),
+							'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 						],
 						'selectors' => [
 							'{{WRAPPER}} .pafe-advanced-search__results-item-content:hover' => 'color: {{VALUE}}',
@@ -1854,7 +1854,7 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 					[
 						'label' => __( 'Typography', 'pafe' ),
 						'name' => 'pafe_advanced_search_result_footer_typography',
-						'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_4,
+						'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_4,
 						'selector' => '{{WRAPPER}} .pafe-advanced-search__results-full',
 					]
 			);
@@ -1865,8 +1865,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 						'label' => __( 'Color', 'pafe' ),
 						'type' => \Elementor\Controls_Manager::COLOR,
 						'scheme' => [
-							'type' => \Elementor\Scheme_Color::get_type(),
-							'value' => \Elementor\Scheme_Color::COLOR_1,
+							'type' => \Elementor\Core\Schemes\Color::get_type(),
+							'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 						],
 						'default' => '#6ec1e4',
 						'selectors' => [
@@ -1881,8 +1881,8 @@ class PAFE_Advanced_Search extends \Elementor\Widget_Base {
 						'label' => __( 'Hover Color', 'pafe' ),
 						'type' => \Elementor\Controls_Manager::COLOR,
 						'scheme' => [
-							'type' => \Elementor\Scheme_Color::get_type(),
-							'value' => \Elementor\Scheme_Color::COLOR_1,
+							'type' => \Elementor\Core\Schemes\Color::get_type(),
+							'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 						],
 						'default' => '#0D96D1',
 						'selectors' => [

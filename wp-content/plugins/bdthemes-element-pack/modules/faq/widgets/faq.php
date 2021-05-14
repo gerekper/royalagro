@@ -1419,7 +1419,7 @@ class FAQ extends Module_Base {
 		$this->add_render_attribute( 'faq_title', 'itemprop', 'name', true );
 
 		?>
-		<div <?php echo $this->get_render_attribute_string( 'faq_title' ); ?>>
+		<div role="main" <?php echo $this->get_render_attribute_string( 'faq_title' ); ?>>
 			<?php if ( $settings['icon'] ) : ?>
 				<span class="bdt-accordion-icon" aria-hidden="true">
 
@@ -1544,14 +1544,14 @@ class FAQ extends Module_Base {
 		<div class="bdt-ep-grid-filters-wrapper"  id="<?php echo 'bdt-faq-' . $this->get_id(); ?>" <?php echo $this->get_render_attribute_string( 'bdt-faq-hash-data' ); ?>>
 			
 			<button class="bdt-button bdt-button-default bdt-hidden@m" type="button"><?php esc_html_e( 'Filter', 'bdthemes-element-pack' ); ?></button>
-			<div bdt-dropdown="mode: click;" class="bdt-dropdown bdt-margin-remove-top bdt-margin-remove-bottom">
+			<div data-bdt-dropdown="mode: click;" class="bdt-dropdown bdt-margin-remove-top bdt-margin-remove-bottom">
 			    <ul class="bdt-nav bdt-dropdown-nav">
 
-					<li class="bdt-ep-grid-filter bdt-active" bdt-filter-control><?php esc_html_e( 'All', 'bdthemes-element-pack' ); ?></li>
+					<li class="bdt-ep-grid-filter bdt-active" data-bdt-filter-control><?php esc_html_e( 'All', 'bdthemes-element-pack' ); ?></li>
 					
 					<?php foreach($faq_categories as $faq_category => $value) : ?>
 						<?php $filter_name = get_term_by('slug', $value, 'faq_filter'); ?>
-						<li class="bdt-ep-grid-filter" bdt-filter-control="[data-filter*='bdtf-<?php echo esc_attr(trim($value)); ?>']">
+						<li class="bdt-ep-grid-filter" data-bdt-filter-control="[data-filter*='bdtf-<?php echo esc_attr(trim($value)); ?>']">
 							<?php echo $filter_name->name; ?>
 						</li>				
 					<?php endforeach; ?>
@@ -1560,12 +1560,12 @@ class FAQ extends Module_Base {
 			</div>
 
 
-			<ul class="bdt-ep-grid-filters bdt-visible@m" bdt-margin>
-				<li class="bdt-ep-grid-filter bdt-active" bdt-filter-control><?php esc_html_e( 'All', 'bdthemes-element-pack' ); ?></li>
+			<ul class="bdt-ep-grid-filters bdt-visible@m" data-bdt-margin>
+				<li class="bdt-ep-grid-filter bdt-active" data-bdt-filter-control><?php esc_html_e( 'All', 'bdthemes-element-pack' ); ?></li>
 		
 				<?php foreach($faq_categories as $product_category => $value) : ?>
 					<?php $filter_name = get_term_by('slug', $value, 'faq_filter'); ?>
-					<li class="bdt-ep-grid-filter" bdt-filter-control="[data-filter*='bdtf-<?php echo esc_attr(trim($value)); ?>']">
+					<li class="bdt-ep-grid-filter" data-bdt-filter-control="[data-filter*='bdtf-<?php echo esc_attr(trim($value)); ?>']">
 						<?php echo $filter_name->name; ?>
 					</li>				
 				<?php endforeach; ?>
@@ -1581,7 +1581,7 @@ class FAQ extends Module_Base {
 				'accordion-settings' => [
 					'id'            => $id,
 					'class'         => 'bdt-accordion',
-					'bdt-accordion' => [
+					'data-bdt-accordion' => [
 						wp_json_encode([
 							"collapsible" => $settings["collapsible"] ? true : false,
 							"multiple"    => $settings["multiple"] ? true : false,
@@ -1596,7 +1596,7 @@ class FAQ extends Module_Base {
 		$this->add_render_attribute('faq-wrapper', 'class', 'bdt-faq-wrapper');
 		
 		if ( $settings['show_filter_bar'] ) {
-			$this->add_render_attribute('faq-wrapper', 'bdt-filter', 'target: #bdt-accordion-' . $this->get_id());
+			$this->add_render_attribute('faq-wrapper', 'data-bdt-filter', 'target: #bdt-accordion-' . $this->get_id());
 		}
 
 		?>

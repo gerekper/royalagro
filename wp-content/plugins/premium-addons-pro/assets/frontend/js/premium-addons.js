@@ -708,7 +708,6 @@
                         }
                     }
 
-                    console.log(element);
                     data.datasets.push(element);
                     chartInstance.update();
                 });

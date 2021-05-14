@@ -1304,7 +1304,7 @@ class WC_Mini_Cart extends Module_Base {
 			$this->add_render_attribute( 'button', 'class', 'elementor-size-' . $settings['size'] );
 		}
 
-		$this->add_render_attribute( 'button', 'bdt-toggle', 'target: #' . esc_attr($id) );
+		$this->add_render_attribute( 'button', 'data-bdt-toggle', 'target: #' . esc_attr($id) );
 		$this->add_render_attribute( 'button', 'href', '#' );
 
 		$product_count = WC()->cart->get_cart_contents_count();
@@ -1363,22 +1363,22 @@ class WC_Mini_Cart extends Module_Base {
         	]
         );
 
-		$this->add_render_attribute( 'offcanvas', 'bdt-offcanvas', 'mode: ' . $settings['offcanvas_animations'] . ';' );
+		$this->add_render_attribute( 'offcanvas', 'data-bdt-offcanvas', 'mode: ' . $settings['offcanvas_animations'] . ';' );
 
 		if ( $settings['offcanvas_overlay'] ) {
-			$this->add_render_attribute( 'offcanvas', 'bdt-offcanvas', 'overlay: true;' );
+			$this->add_render_attribute( 'offcanvas', 'data-bdt-offcanvas', 'overlay: true;' );
 		}
 
 		if ( 'right' == $settings['offcanvas_flip'] ) {
-			$this->add_render_attribute( 'offcanvas', 'bdt-offcanvas', 'flip: true;' );
+			$this->add_render_attribute( 'offcanvas', 'data-bdt-offcanvas', 'flip: true;' );
 		}
 
 		if ( 'yes' !== $settings['offcanvas_bg_close'] ) {
-			$this->add_render_attribute( 'offcanvas', 'bdt-offcanvas', 'bg-close: false;' );
+			$this->add_render_attribute( 'offcanvas', 'data-bdt-offcanvas', 'bg-close: false;' );
 		}
 
 		if ( 'yes' !== $settings['offcanvas_esc_close'] ) {
-			$this->add_render_attribute( 'offcanvas', 'bdt-offcanvas', 'esc-close: false;' );
+			$this->add_render_attribute( 'offcanvas', 'data-bdt-offcanvas', 'esc-close: false;' );
 		}
 
 		?>
@@ -1389,7 +1389,7 @@ class WC_Mini_Cart extends Module_Base {
 	        <div class="bdt-offcanvas-bar bdt-text-left">
 				
 				<?php if ($settings['offcanvas_close_button']) : ?>
-	        		<button class="bdt-offcanvas-close" type="button" bdt-close></button>
+	        		<button class="bdt-offcanvas-close" type="button" data-bdt-close></button>
 				<?php endif; ?>
 				
 					<div class="bdt-widget-title">

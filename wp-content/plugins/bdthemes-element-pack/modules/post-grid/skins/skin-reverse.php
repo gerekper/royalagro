@@ -84,7 +84,7 @@ class Skin_Reverse extends Elementor_Skin_Base {
 		}
 
 		$this->parent->add_render_attribute( 'grid-height', 'class', ['bdt-grid', 'bdt-grid-collapse'] );
-		$this->parent->add_render_attribute( 'grid-height', 'bdt-grid', '' );
+		$this->parent->add_render_attribute( 'grid-height', 'data-bdt-grid', '' );
 
 		?> 
 		<div id="bdt-post-grid-<?php echo esc_attr($id); ?>" class="bdt-post-grid bdt-post-grid-skin-reverse">

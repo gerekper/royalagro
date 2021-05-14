@@ -23,7 +23,7 @@
     cicloInfinito = Boolean( elementSettings[DCE_dynposts_skinPrefix+'loop'] );
 
     var elementorBreakpoints = elementorFrontend.config.breakpoints;
-    //
+
     var dceSwiperOptions = {
         // Optional parameters
         direction: String(elementSettings[DCE_dynposts_skinPrefix+'direction_slider']) || 'horizontal', //vertical

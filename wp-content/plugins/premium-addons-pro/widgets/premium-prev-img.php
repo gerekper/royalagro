@@ -115,10 +115,10 @@ class Premium_Prev_Img extends Widget_Base {
 	 */
 	public function get_script_depends() {
 		return array(
-			'tooltipster-bundle-js',
-			'anime-js',
+			'tooltipster-bundle',
+			'pa-anime',
 			'lottie-js',
-			'premium-pro-js',
+			'premium-pro',
 		);
 	}
 

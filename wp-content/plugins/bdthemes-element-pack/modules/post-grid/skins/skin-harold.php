@@ -92,7 +92,7 @@ class Skin_Harold extends Elementor_Skin_Base {
 		}
 
 		$this->parent->add_render_attribute( 'grid-height', 'class', ['bdt-grid', 'bdt-grid-medium', 'bdt-grid-' . esc_attr($settings['column_gap'])] );
-		$this->parent->add_render_attribute( 'grid-height', 'bdt-grid', '' );
+		$this->parent->add_render_attribute( 'grid-height', 'data-bdt-grid', '' );
 
 		if ( 'match-height' == $settings['secondary_grid_height'] ) {
 			$this->parent->add_render_attribute( 'grid-height', 'bdt-height-match', 'target: > div ~ div .bdt-post-grid-desc' );

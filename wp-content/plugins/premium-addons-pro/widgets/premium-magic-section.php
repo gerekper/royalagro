@@ -107,7 +107,7 @@ class Premium_Magic_Section extends Widget_Base {
 	 * @return array JS script handles.
 	 */
 	public function get_script_depends() {
-		return array( 'premium-pro-js', 'jquery-ui' );
+		return array( 'premium-pro', 'jquery-ui' );
 	}
 
 	/**

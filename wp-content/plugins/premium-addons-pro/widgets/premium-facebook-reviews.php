@@ -101,7 +101,7 @@ class Premium_Facebook_Reviews extends Widget_Base {
 		return array(
 			'pa-slick',
 			'isotope-js',
-			'premium-pro-js',
+			'premium-pro',
 		);
 	}
 
@@ -188,6 +188,18 @@ class Premium_Facebook_Reviews extends Widget_Base {
 				'type'    => Controls_Manager::TEXTAREA,
 			)
 		);
+
+		// $this->add_control(
+		// 'clear_cache',
+		// array(
+		// 'type'        => Controls_Manager::RAW_HTML,
+		// 'raw'         => '<form onsubmit="clearReviewsCache(this);" action="javascript:void(0);" data-type="facebook"><input type="submit" value="Clear Cached Data" class="elementor-button" style="background-color: #3b5998; color: #fff;"></form>',
+		// 'label_block' => true,
+		// 'condition'   => array(
+		// 'page_access!' => '',
+		// ),
+		// )
+		// );
 
 		$this->end_controls_section();
 

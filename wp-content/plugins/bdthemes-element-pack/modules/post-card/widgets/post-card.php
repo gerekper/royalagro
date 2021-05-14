@@ -942,7 +942,7 @@ class Post_Card extends Module_Base {
 						'bdt-grid',
 						'bdt-grid-match'
 					],
-					'bdt-grid' => ''
+					'data-bdt-grid' => ''
 				]
 			]
 		);

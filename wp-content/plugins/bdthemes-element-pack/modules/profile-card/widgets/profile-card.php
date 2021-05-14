@@ -42,6 +42,10 @@ class Profile_Card extends Module_Base {
         } else {
             return ['ep-profile-card'];
         }
+    } 
+
+    public function get_script_depends() {
+      	return [ 'bdt-uikit-icons' ];
     }
 
 	public function _register_skins() {
@@ -1676,7 +1680,7 @@ class Profile_Card extends Module_Base {
 		$this->add_render_attribute(
 			[
 				'dropdown-settings' => [
-					'bdt-dropdown' => [
+					'data-bdt-dropdown' => [
 						wp_json_encode(array_filter([
 							"mode"   => $settings["dropdown_mode"],
 							"pos"    => $settings["dropdown_position"],
@@ -1687,7 +1691,7 @@ class Profile_Card extends Module_Base {
 			]
 		);
 
-		$this->add_render_attribute( 'dropdown-settings', 'class', 'bdt-dropdown bdt-text-left bdt-overflow-hidden' );
+		$this->add_render_attribute( 'data-dropdown-settings', 'class', 'bdt-dropdown bdt-text-left bdt-overflow-hidden' );
 
 		?>
 
@@ -1721,7 +1725,7 @@ class Profile_Card extends Module_Base {
 
 					<?php if ($settings['show_user_menu']) : ?>
                         <div class="bdt-profile-card-settings">
-                            <a href="#" bdt-icon="more"></a>
+                            <a href="#" data-bdt-icon="more"></a>
                         </div>
 
 						<?php $this->user_dropdown_menu(); ?>
@@ -1824,7 +1828,7 @@ class Profile_Card extends Module_Base {
 
 					<?php if ($settings['show_user_menu']) : ?>
                         <div class="bdt-profile-card-settings">
-                            <a href="#" bdt-icon="more"></a>
+                            <a href="#" data-bdt-icon="more"></a>
                         </div>
 
 						<?php $this->user_dropdown_menu(); ?>
@@ -1922,7 +1926,7 @@ class Profile_Card extends Module_Base {
 					
 					<?php if ($settings['show_user_menu']) : ?>
                     <div class="bdt-profile-card-settings">
-                        <a href="#" bdt-icon="more"></a>
+                        <a href="#" data-bdt-icon="more"></a>
                     </div>
 					
 					<?php $this->user_dropdown_menu(); ?>
@@ -2016,7 +2020,7 @@ class Profile_Card extends Module_Base {
 			<div class="bdt-profile-card-share-link">
 				<?php 
 				foreach ( $settings['social_link_list'] as $link ) :
-					$tooltip = ( 'yes' == $settings['social_icon_tooltip'] ) ? ' title="'.esc_attr( $link['social_link_title'] ).'" bdt-tooltip' : ''; ?>
+					$tooltip = ( 'yes' == $settings['social_icon_tooltip'] ) ? ' title="'.esc_attr( $link['social_link_title'] ).'" data-bdt-tooltip' : ''; ?>
 					
 					<a href="<?php echo esc_url( $link['social_link'] ); ?>" target="_blank"<?php echo $tooltip; ?> class="elementor-repeater-item-<?php echo esc_attr($link['_id']); ?>">
 						<?php Icons_Manager::render_icon( $link['social_icon'], [ 'aria-hidden' => 'true', 'class' => 'fa-fw' ] ); ?>

@@ -2,6 +2,10 @@
 
 use Elementor\Core\Files\CSS;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Assets {
 
 	public static $dce_styles = [];
@@ -89,6 +93,10 @@ class Assets {
 		}
 		$paypal_currency = get_option( 'dce_paypal_api_currency', 'USD' );
 		self::$vendor_js = [
+			'dce-pagedjs' => [
+				'path' => 'https://unpkg.com/pagedjs/dist/paged.polyfill.js',
+				'deps' => [ 'dce-pdf-paged' ],
+			],
 			'dce-expressionlanguage' => '/assets/lib/expressionlanguage/expressionlanguage.min.js',
 			'dce-html2canvas' => '/assets/lib/html2canvas/html2canvas.min.js',
 			'dce-jspdf' => 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.1.1/jspdf.umd.min.js',
@@ -198,6 +206,10 @@ class Assets {
 		],
 		'dce-pdf-jsconv' => [
 			'path' => '/assets/js/pdf-button-js-converter.js',
+			'deps' => [ 'dce-jspdf', 'dce-html2canvas' ],
+		],
+		'dce-pdf-paged' => [
+			'path' => '/assets/js/pdf-button-paged-converter.js',
 			'deps' => [ 'dce-jspdf', 'dce-html2canvas' ],
 		],
 		'dce-dynamic-select' => '/assets/js/dynamic-select.js',
@@ -432,6 +444,7 @@ class Assets {
 			} else {
 				$deps = [];
 			}
+
 			if ( substr( $path, 0, 4 ) != 'http' ) {
 				$path = plugins_url( $path, DCE__FILE__ );
 				wp_register_script( $name, $path, $deps, DCE_VERSION );

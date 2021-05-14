@@ -402,8 +402,11 @@ class DCE_Widget_TaxonomyTermsMenu extends DCE_Widget_Prototype {
 						],
 					],
 					'selectors' => [
-						'{{WRAPPER}} .dce-menu li' => 'padding-left: {{SIZE}}{{UNIT}}; padding-right: {{SIZE}}{{UNIT}};',
-						'{{WRAPPER}} .dce-menu li .dce-term-separator' => 'margin-left: -{{SIZE}}{{UNIT}}; padding-right: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .dce-menu.vertical li' => 'padding-left: {{SIZE}}{{UNIT}}; padding-right: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .dce-menu.vertical li .dce-term-separator' => 'margin-left: -{{SIZE}}{{UNIT}}; padding-right: {{SIZE}}{{UNIT}};',
+					],
+					'condition' => [
+						'menu_style' => 'vertical',
 					],
 				]
 		);
@@ -1072,6 +1075,9 @@ class DCE_Widget_TaxonomyTermsMenu extends DCE_Widget_Prototype {
 				$terms_by_id[ $term->term_id ] = $term;
 			}
 			$terms = $terms_by_id;
+			$terms_count = count( $terms );
+
+			$counter = 0;
 
 			foreach ( $terms as $tkey => $term ) {
 
@@ -1080,6 +1086,8 @@ class DCE_Widget_TaxonomyTermsMenu extends DCE_Widget_Prototype {
 						continue;
 					}
 				}
+
+				$counter++;
 
 				$term_link = get_term_link( $term );
 				$linkActive = '';
@@ -1124,9 +1132,9 @@ class DCE_Widget_TaxonomyTermsMenu extends DCE_Widget_Prototype {
 					$a_start = '<a href="' . $term_link . '"' . $linkActive . '>';
 					$a_end = '</a>';
 				}
-				if ( $tkey ) {
-					if ( $settings['show_separators_custom'] ) {
-						$a_start = '<span class="dce-term-separator">' . $settings['show_separators_custom'] . '</span>' . $a_start;
+				if ( $tkey && $terms_count > 1) {
+					if ( $settings['show_separators_custom'] && $counter < $terms_count ) {
+						$a_end = '<span class="dce-term-separator">' . $settings['show_separators_custom'] . '</span>' . $a_end;
 					}
 				}
 				$tcount = '';

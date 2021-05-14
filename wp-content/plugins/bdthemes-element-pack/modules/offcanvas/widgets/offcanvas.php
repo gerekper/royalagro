@@ -885,22 +885,22 @@ class Offcanvas extends Module_Base {
         	]
         );
 
-		$this->add_render_attribute( 'offcanvas', 'bdt-offcanvas', 'mode: ' . $settings['offcanvas_animations'] . ';' );
+		$this->add_render_attribute( 'offcanvas', 'data-bdt-offcanvas', 'mode: ' . $settings['offcanvas_animations'] . ';' );
 
 		if ( $settings['offcanvas_overlay'] ) {
-			$this->add_render_attribute( 'offcanvas', 'bdt-offcanvas', 'overlay: true;' );
+			$this->add_render_attribute( 'offcanvas', 'data-bdt-offcanvas', 'overlay: true;' );
 		}
 
 		if ( 'right' == $settings['offcanvas_flip'] ) {
-			$this->add_render_attribute( 'offcanvas', 'bdt-offcanvas', 'flip: true;' );
+			$this->add_render_attribute( 'offcanvas', 'data-bdt-offcanvas', 'flip: true;' );
 		}
 
 		if ( 'yes' !== $settings['offcanvas_bg_close'] ) {
-			$this->add_render_attribute( 'offcanvas', 'bdt-offcanvas', 'bg-close: false;' );
+			$this->add_render_attribute( 'offcanvas', 'data-bdt-offcanvas', 'bg-close: false;' );
 		}
 
 		if ( 'yes' !== $settings['offcanvas_esc_close'] ) {
-			$this->add_render_attribute( 'offcanvas', 'bdt-offcanvas', 'esc-close: false;' );
+			$this->add_render_attribute( 'offcanvas', 'data-bdt-offcanvas', 'esc-close: false;' );
 		}
 
 		
@@ -915,7 +915,7 @@ class Offcanvas extends Module_Base {
 	        <div class="bdt-offcanvas-bar">
 				
 				<?php if ($settings['offcanvas_close_button']) : ?>
-	        		<button class="bdt-offcanvas-close" type="button" bdt-close></button>
+	        		<button class="bdt-offcanvas-close" type="button" data-bdt-close></button>
 	        	<?php endif; ?>
 
 	        	
@@ -972,7 +972,7 @@ class Offcanvas extends Module_Base {
 			$this->add_render_attribute( 'button', 'class', 'elementor-animation-' . $settings['hover_animation'] );
 		}
 
-		$this->add_render_attribute( 'button', 'bdt-toggle', 'target: #' . esc_attr($id) );
+		$this->add_render_attribute( 'button', 'data-bdt-toggle', 'target: #' . esc_attr($id) );
 		$this->add_render_attribute( 'button', 'href', '#' );
 
 		$this->add_render_attribute( 'content-wrapper', 'class', 'elementor-button-content-wrapper' );

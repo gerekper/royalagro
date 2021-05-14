@@ -407,7 +407,23 @@ class Price_Table extends Module_Base {
 				'title_field' => '{{{ item_text }}}',
 			]
 		);
-
+		
+		$this->add_control(
+			'features_hide_on',
+			[
+				'label'       => __( 'Features Hide On', 'bdthemes-element-pack' ) . BDTEP_NC,
+				'type'        => Controls_Manager::SELECT2,
+				'multiple'    => true,
+				'label_block' => true,
+				'options'     => [
+					'desktop' => __( 'Desktop', 'bdthemes-element-pack' ),
+					'tablet'  => __( 'Tablet', 'bdthemes-element-pack' ),
+					'mobile'  => __( 'Mobile', 'bdthemes-element-pack' ),
+				],
+				'frontend_available' => true,
+			]
+		);
+		
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -1771,7 +1787,7 @@ class Price_Table extends Module_Base {
 		$this->end_controls_tab();
 
 		$this->start_controls_tab( 'tab_features_tooltip_text',
-			[ 
+			[
 				'label' => __( 'Tooltip Text', 'bdthemes-element-pack' )
 			]
 		);
@@ -2384,7 +2400,7 @@ class Price_Table extends Module_Base {
 		$settings = $this->get_settings_for_display();
 
 		if ( $settings['heading'] || $settings['sub_heading'] ) : ?>
-			<div class="bdt-price-table-header">					
+			<div class="bdt-price-table-header">
 				<?php if ( ! empty( $settings['heading'] ) ) : ?>
 					<<?php echo Utils::get_valid_html_tag($settings['heading_tag']); ?> class="bdt-price-table-heading">
 						<?php echo esc_html($settings['heading']); ?>
@@ -2485,9 +2501,25 @@ class Price_Table extends Module_Base {
 	public function render_features_list() {
 
 		$settings = $this->get_settings_for_display();
+		$features_hide_on_setup = '';
+		
+		if (!empty($settings['features_hide_on'])) {
+			foreach ( $settings['features_hide_on'] as $element ) {
+				
+				if ( $element == 'desktop' ) {
+					$features_hide_on_setup .= ' bdt-desktop';
+				}
+				if ( $element == 'tablet' ) {
+					$features_hide_on_setup .= ' bdt-tablet';
+				}
+				if ( $element == 'mobile' ) {
+					$features_hide_on_setup .= ' bdt-mobile';
+				}
+			}
+		}
 
 		if ( ! empty( $settings['features_list'] ) ) : ?>
-			<ul class="bdt-price-table-features-list">
+			<ul class="bdt-price-table-features-list <?php echo $features_hide_on_setup; ?>">
 				<?php foreach ( $settings['features_list'] as $item ) :
 
 					$this->add_render_attribute( 'features', 'class', 'bdt-price-table-feature-text bdt-display-inline-block', true );
@@ -2539,10 +2571,26 @@ class Price_Table extends Module_Base {
 	public function render_features_list_column() {
 
 		$settings = $this->get_settings_for_display();
+		$features_hide_on_setup = '';
+		
+		if (!empty($settings['features_hide_on'])) {
+			foreach ( $settings['features_hide_on'] as $element ) {
+				
+				if ( $element == 'desktop' ) {
+					$features_hide_on_setup .= ' bdt-desktop';
+				}
+				if ( $element == 'tablet' ) {
+					$features_hide_on_setup .= ' bdt-tablet';
+				}
+				if ( $element == 'mobile' ) {
+					$features_hide_on_setup .= ' bdt-mobile';
+				}
+			}
+		}
 
 		if ( ! empty( $settings['features_list'] ) ) : ?>
 			<div>
-				<ul class="bdt-price-table-features-list bdt-grid-collapse bdt-child-width-expand@m bdt-flex bdt-flex-middle" bdt-grid>
+				<ul class="bdt-price-table-features-list bdt-grid-collapse bdt-child-width-expand@m bdt-flex bdt-flex-middle  <?php echo $features_hide_on_setup; ?>" data-bdt-grid>
 					<?php foreach ( $settings['features_list'] as $item ) :
 
 						$this->add_render_attribute( 'features', 'class', 'bdt-price-table-feature-text bdt-display-inline-block', true );
@@ -2656,10 +2704,10 @@ class Price_Table extends Module_Base {
 
 		if ($settings['edd_as_button'] == 'yes') {
 			echo edd_get_purchase_link( [
-				'download_id' => $settings['edd_id'], 
-				'price' => false, 
+				'download_id' => $settings['edd_id'],
+				'price' => false,
 				'text' => esc_html($settings['button_text']),
-				'class' => 'bdt-price-table-button elementor-button ' . $button_size . $button_animation, 
+				'class' => 'bdt-price-table-button elementor-button ' . $button_size . $button_animation,
 			] );
 		} else {
 			if ( ! empty( $settings['button_text'] ) ) : ?>
@@ -2668,7 +2716,7 @@ class Price_Table extends Module_Base {
 						<?php echo esc_html($settings['button_text']); ?>
 					</a>
 				</div>
-			<?php endif; 
+			<?php endif;
 		}
 	}
 
@@ -2701,7 +2749,7 @@ class Price_Table extends Module_Base {
 				$this->render_header();
 				$this->render_price();
 				$this->render_features_list();
-				$this->render_footer();			
+				$this->render_footer();
 			endif;
 
 			if ('2' == $settings['layout']) :
@@ -2709,14 +2757,14 @@ class Price_Table extends Module_Base {
 				$this->render_header();
 				$this->render_features_list();
 				$this->render_price();
-				$this->render_footer();			
+				$this->render_footer();
 			endif;
 
 			if ('3' == $settings['layout']) :
 				$this->render_image();
 				$this->render_header();
 				$this->render_price();
-				$this->render_footer();			
+				$this->render_footer();
 				$this->render_features_list();
 			endif;
 
@@ -2725,14 +2773,14 @@ class Price_Table extends Module_Base {
 				$this->render_features_list();
 				$this->render_header();
 				$this->render_price();
-				$this->render_footer();			
+				$this->render_footer();
 			endif;
 
 			if ('5' == $settings['layout']) :
 				$this->render_image();
 				$this->render_header();
 				$this->render_price();
-				$this->render_footer();			
+				$this->render_footer();
 			endif;
 
 			if ('6' == $settings['layout']) :
@@ -2740,7 +2788,7 @@ class Price_Table extends Module_Base {
 				$this->render_image();
 				$this->render_price();
 				$this->render_features_list();
-				$this->render_footer();			
+				$this->render_footer();
 			endif;
 
 			if ('7' == $settings['layout']) :
@@ -2748,7 +2796,7 @@ class Price_Table extends Module_Base {
 				$this->render_price();
 				$this->render_features_list();
 				$this->render_image();
-				$this->render_footer();			
+				$this->render_footer();
 			endif;
 
 			if ('8' == $settings['layout']) :
@@ -2756,7 +2804,7 @@ class Price_Table extends Module_Base {
 				$this->render_price();
 				$this->render_header();
 				$this->render_features_list();
-				$this->render_footer();			
+				$this->render_footer();
 			endif;
 
 		?>
@@ -2887,8 +2935,25 @@ class Price_Table extends Module_Base {
 		<# } #>
 
 		<# function render_features_list() { #>
+
+			<# 
+			var features_hide_on_setup;
+			_.each( settings.features_hide_on, function( element ) { 
+				
+				if(element == 'desktop'){
+					features_hide_on_setup += ' bdt-desktop';
+				}
+				if(element == 'tablet'){
+					features_hide_on_setup += ' bdt-tablet';
+				}
+				if(element == 'mobile'){
+					features_hide_on_setup += ' bdt-mobile';
+				}
+			 } ) ;
+			 #>
+
 			<# if ( settings.features_list ) { #>
-				<ul class="bdt-price-table-features-list">
+				<ul class="bdt-price-table-features-list {{{features_hide_on_setup}}}">
 					<# _.each( settings.features_list, function( item, index ) {
 
 						view.addRenderAttribute( 'features', 'class', 'bdt-price-table-feature-text bdt-display-inline-block', true );
@@ -2961,7 +3026,7 @@ class Price_Table extends Module_Base {
 					render_header();
 					render_price();
 					render_features_list();
-					render_footer();			
+					render_footer();
 				}
 				
 				if ('2' == settings.layout) {
@@ -2969,14 +3034,14 @@ class Price_Table extends Module_Base {
 					render_header();
 					render_features_list();
 					render_price();
-					render_footer();			
+					render_footer();
 				}
 
 				if ('3' == settings.layout) {
 					render_image();
 					render_header();
 					render_price();
-					render_footer();			
+					render_footer();
 					render_features_list();
 				}
 
@@ -2985,14 +3050,14 @@ class Price_Table extends Module_Base {
 					render_features_list();
 					render_header();
 					render_price();
-					render_footer();			
+					render_footer();
 				}
 
 				if ('5' == settings.layout) {
 					render_image();
 					render_header();
 					render_price();
-					render_footer();			
+					render_footer();
 				}
 
 				if ('6' == settings.layout) {
@@ -3000,7 +3065,7 @@ class Price_Table extends Module_Base {
 					render_image();
 					render_price();
 					render_features_list();
-					render_footer();			
+					render_footer();
 				}
 
 				if ('7' == settings.layout) {
@@ -3008,15 +3073,15 @@ class Price_Table extends Module_Base {
 					render_price();
 					render_features_list();
 					render_image();
-					render_footer();			
-				} 
+					render_footer();
+				}
 
 				if ('8' == settings.layout) {
 					render_image();
 					render_price();
 					render_header();
 					render_features_list();
-					render_footer();			
+					render_footer();
 				}
 
 				#>
@@ -3026,7 +3091,7 @@ class Price_Table extends Module_Base {
 		<# if ('bdt-partait' == settings._skin) { #>
 			<div class="bdt-price-table bdt-price-table-skin-partait">
 
-				<div class="bdt-grid bdt-grid-collapse bdt-child-width-1-2@m" bdt-grid bdt-height-match="target: > div > .bdt-pricing-column">
+				<div class="bdt-grid bdt-grid-collapse bdt-child-width-1-2@m" data-bdt-grid data-bdt-height-match="target: > div > .bdt-pricing-column">
 					<div>
 						<div class="bdt-pricing-column">
 							<#
@@ -3053,10 +3118,26 @@ class Price_Table extends Module_Base {
 
 		<# if ('bdt-erect' == settings._skin) { #>
 
+			<# 
+			var features_hide_on_setup;
+			_.each( settings.features_hide_on, function( element ) { 
+				
+				if(element == 'desktop'){
+					features_hide_on_setup += ' bdt-desktop';
+				}
+				if(element == 'tablet'){
+					features_hide_on_setup += ' bdt-tablet';
+				}
+				if(element == 'mobile'){
+					features_hide_on_setup += ' bdt-mobile';
+				}
+			 } ) ;
+			 #>
+
 			<# function render_features_list_column() { #>
 			<# if ( settings.features_list ) { #>
 				<div>
-					<ul class="bdt-price-table-features-list bdt-grid-collapse bdt-child-width-expand@m bdt-flex bdt-flex-middle" bdt-grid>
+					<ul class="bdt-price-table-features-list bdt-grid-collapse bdt-child-width-expand@m bdt-flex bdt-flex-middle {{{features_hide_on_setup}}}" data-bdt-grid>
 					<# _.each( settings.features_list, function( item, index ) {
 
 						view.addRenderAttribute( 'features', 'class', 'bdt-price-table-feature-text bdt-display-inline-block', true );
@@ -3099,7 +3180,7 @@ class Price_Table extends Module_Base {
 
 			<div class="bdt-price-table bdt-price-table-skin-erect">
 
-				<div class="bdt-grid-collapse" bdt-grid bdt-height-match="target: > div > div > *">
+				<div class="bdt-grid-collapse" data-bdt-grid data-bdt-height-match="target: > div > div > *">
 
 					<div class="bdt-width-1-6@m">
 						<div class="bdt-pricing-column">

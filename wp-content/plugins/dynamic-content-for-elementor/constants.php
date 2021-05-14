@@ -1,6 +1,6 @@
 <?php
 
-define( 'DCE_VERSION', '1.14.4' );
+define( 'DCE_VERSION', '1.14.5' );
 define( 'DCE__FILE__', __FILE__ );
 define( 'DCE_URL', plugins_url( '/', __FILE__ ) );
 define( 'DCE_PATH', plugin_dir_path( __FILE__ ) );

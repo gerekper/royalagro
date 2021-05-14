@@ -72,7 +72,8 @@ class Skin_Flip extends Elementor_Skin_Base {
                         <div class="bdt-member-icons bdt-position-bottom-center">
                             <?php 
                             foreach ( $settings['social_link_list'] as $link ) :
-                                $tooltip = ( 'yes' == $settings['social_icon_tooltip'] ) ? ' title="'.esc_attr( $link['social_link_title'] ).'" bdt-tooltip' : ''; ?>
+                                $tooltip = ( 'yes' == $settings['social_icon_tooltip'] ) ? ' title="'.esc_attr( $link['social_link_title'] ).'" 
+                                 data-bdt-tooltip' : ''; ?>
 
                                 <?php 
                                 $migrated  = isset( $link['__fa4_migrated']['social_share_icon'] );

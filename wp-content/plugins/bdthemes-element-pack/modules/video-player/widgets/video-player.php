@@ -1016,7 +1016,7 @@ class Video_Player extends Module_Base {
 					</div>
 
 					<div class="jp-interface">
-						<div class="jp-controls bdt-grid bdt-grid-small bdt-flex-middle bdt-position-relative" bdt-grid>
+						<div class="jp-controls bdt-grid bdt-grid-small bdt-flex-middle bdt-position-relative" data-bdt-grid>
 							<div class="bdt-width-auto">
 								<a href="javascript:;" class="jp-play" tabindex="1" title="<?php esc_html_e('Play', 'bdthemes-element-pack'); ?>">
 									<svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 41.999 41.999" xml:space="preserve">
@@ -1043,7 +1043,7 @@ class Video_Player extends Module_Base {
 							
 							<?php if ('yes' === $settings['seek_bar']) : ?>
 								<div class="bdt-width-expand bdt-jp-seek-bar">
-									<div class="jp-progress" title="<?php echo esc_html($settings['title']); ?>" bdt-tooltip>
+									<div class="jp-progress" role="button" title="<?php echo esc_html($settings['title']); ?>" data-bdt-tooltip>
 										<div class="jp-seek-bar">
 											<div class="jp-play-bar"></div>
 										</div>
@@ -1127,7 +1127,7 @@ class Video_Player extends Module_Base {
 						<?php if ('yes' != $settings['title_hide']) : ?>
 							<div class="jp-player-title">
 								<div class="bdt-position-center">
-									<div class="bdt-grid" bdt-grid>
+									<div class="bdt-grid" data-bdt-grid>
 										<div class="bdt-width-1-2">
 											<div class="jp-title" aria-label="title">&nbsp;</div>
 										</div>

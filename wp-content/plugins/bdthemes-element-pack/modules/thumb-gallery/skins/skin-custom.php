@@ -238,7 +238,7 @@ class Skin_Custom extends Elementor_Skin_Base {
                   class="bdt-position-cover bdt-animation-kenburns<?php echo esc_attr($kenburns_reverse); ?> bdt-transform-origin-center-left">
                   <?php endif; ?>
 
-                <img src="<?php echo esc_url($gallery_image); ?>" alt="<?php echo get_the_title(); ?>" bdt-cover>
+                <img src="<?php echo esc_url($gallery_image); ?>" alt="<?php echo get_the_title(); ?>" data-bdt-cover>
 
                   <?php if ($settings['kenburns_animation']) : ?>
               </div>
@@ -301,7 +301,7 @@ class Skin_Custom extends Elementor_Skin_Base {
             foreach ( $gallery_thumb as $item ) :
 
                 $gallery_thumbnail = $this->render_image($item, 'thumbnail');
-                echo '<li class="bdt-thumb-gallery-thumbnav" bdt-slideshow-item="' . $bdt_counter . '"><a class="bdt-overflow-hidden bdt-background-cover" href="#" style="background-image: url(' . esc_url($gallery_thumbnail) . ')"></a></li>';
+                echo '<li class="bdt-thumb-gallery-thumbnav" data-bdt-slideshow-item="' . $bdt_counter . '"><a class="bdt-overflow-hidden bdt-background-cover" href="#" style="background-image: url(' . esc_url($gallery_thumbnail) . ')"></a></li>';
                 $bdt_counter++;
 
             endforeach; ?>

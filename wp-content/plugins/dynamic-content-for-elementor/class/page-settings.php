@@ -2,6 +2,10 @@
 
 namespace DynamicContentForElementor;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class PageSettings {
 
 	public $page_settings = [];

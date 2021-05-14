@@ -815,13 +815,13 @@ class Twitter_Grid extends Module_Base {
 									<?php if ('yes' === $settings['show_meta_button']) : ?>
 									<div class="bdt-twitter-meta-button">
 										<a href="https://twitter.com/intent/tweet?in_reply_to=<?php echo esc_url($t['tweet_id']); ?>" data-lang="en" class="bdt-tmb-reply" title="<?php _e('Reply','bdthemes-element-pack'); ?>" target="_blank">
-											<span aria-hidden="true" bdt-icon="icon: reply; ratio: 0.7;"></span>
+											<span aria-hidden="true" data-bdt-icon="icon: reply; ratio: 0.7;"></span>
 										</a>
 										<a href="https://twitter.com/intent/retweet?tweet_id=<?php echo esc_url($t['tweet_id']); ?>" data-lang="en" class="bdt-tmb-retweet" title="<?php _e('Retweet','bdthemes-element-pack'); ?>" target="_blank">
-											<span aria-hidden="true" bdt-icon="icon: refresh; ratio: 0.7;"></span>
+											<span aria-hidden="true" data-bdt-icon="icon: refresh; ratio: 0.7;"></span>
 										</a>
 										<a href="https://twitter.com/intent/favorite?tweet_id=<?php echo esc_url($t['tweet_id']); ?>" data-lang="en" class="bdt-tmb-favorite" title="<?php _e('Favourite','bdthemes-element-pack'); ?>" target="_blank">
-											<span aria-hidden="true" bdt-icon="icon: star; ratio: 0.7;"></span>
+											<span aria-hidden="true" data-bdt-icon="icon: star; ratio: 0.7;"></span>
 										</a>
 									</div>
 									<?php endif; ?>
@@ -921,14 +921,14 @@ class Twitter_Grid extends Module_Base {
 		$mobile_cols = $settings['columns_mobile'];
 
 		if ( $settings['match_height'] ) {
-			$this->add_render_attribute( 'twitter_grid', 'bdt-height-match', 'target: > div > div > .bdt-grid-item > div > div > .bdt-twitter-text' );
+			$this->add_render_attribute( 'twitter_grid', 'data-bdt-height-match', 'target: > div > div > .bdt-grid-item > div > div > .bdt-twitter-text' );
 		}
 
 		$this->add_render_attribute('twitter_grid', 'class', 'bdt-twitter-grid');
 
 		?>
 		<div id="bdt-twitter-grid-<?php echo esc_attr($id); ?>" <?php echo $this->get_render_attribute_string( 'twitter_grid' ); ?>>
-	  		<div class="bdt-grid bdt-grid-<?php echo esc_attr($settings['column_gap']); ?> bdt-child-width-1-<?php echo esc_attr($mobile_cols); ?> bdt-child-width-1-<?php echo esc_attr($tablet_cols); ?>@s bdt-child-width-1-<?php echo esc_attr($desktop_cols); ?>@l" bdt-grid>
+	  		<div class="bdt-grid bdt-grid-<?php echo esc_attr($settings['column_gap']); ?> bdt-child-width-1-<?php echo esc_attr($mobile_cols); ?> bdt-child-width-1-<?php echo esc_attr($tablet_cols); ?>@s bdt-child-width-1-<?php echo esc_attr($desktop_cols); ?>@l" data-bdt-grid>
 
 		<?php
 	}

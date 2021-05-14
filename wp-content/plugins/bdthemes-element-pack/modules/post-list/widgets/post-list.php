@@ -262,8 +262,6 @@ class Post_List extends Module_Base {
 
 		$this->end_controls_section();
 
-		$this->end_controls_section();
-
 		$this->start_controls_section(
 			'section_style_image',
 			[
@@ -673,7 +671,7 @@ class Post_List extends Module_Base {
 		
 
 		if ( $settings['show_horizontal'] ) {
-			$this->add_render_attribute('list-wrapper', 'bdt-grid', '' );
+			$this->add_render_attribute('list-wrapper', 'data-bdt-grid', '' );
 			$this->add_render_attribute('list-wrapper', 'class', ['bdt-grid', 'bdt-child-width-1-' . $settings['column'] . '@m'] );
 		} else {
 			$this->add_render_attribute('list-wrapper', 'class', ['bdt-list', 'bdt-list-large'] );
@@ -712,7 +710,7 @@ class Post_List extends Module_Base {
 
 			?> 
 			<div id="bdt-post-list-<?php echo esc_attr($id); ?>" class="bdt-post-list bdt-post-list-skin-base">
-		  		<div bdt-scrollspy="cls: bdt-animation-fade; target: > ul > .bdt-post-list-item; delay: 350;">
+		  		<div data-bdt-scrollspy="cls: bdt-animation-fade; target: > ul > .bdt-post-list-item; delay: 350;">
 		  			<ul <?php echo $this->get_render_attribute_string('list-wrapper'); ?>>
 						<?php while ( $wp_query->have_posts() ) : $wp_query->the_post();
 							
@@ -728,7 +726,7 @@ class Post_List extends Module_Base {
 							?>
 				  			<li <?php echo $this->get_render_attribute_string('list'); ?>>
 					  			<div class="bdt-post-list-item-inner">
-						  			<div class="bdt-grid bdt-grid-small" bdt-grid>
+						  			<div class="bdt-grid bdt-grid-small" data-bdt-grid>
 						  				<div class="bdt-post-list-thumbnail bdt-width-auto">
 						  					<a href="<?php echo esc_url(get_permalink()); ?>" title="<?php echo esc_attr(get_the_title()); ?>">
 							  					<img src="<?php echo esc_url($image_src); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">

@@ -1307,7 +1307,7 @@ class Switcher extends Module_Base {
 						'bdt-tab',
 						( '' !== $settings['tab_layout'] ) ? 'bdt-tab-' . $settings['tab_layout'] : '',
 					],
-					'bdt-tab' => [
+					'data-bdt-tab' => [
 						wp_json_encode(array_filter([
 							"connect"   => "#bdt-switcher-" .  esc_attr($id),
 							"animation" => $settings["tab_transition"] ? "bdt-animation-". $settings["tab_transition"] : "",
@@ -1329,8 +1329,8 @@ class Switcher extends Module_Base {
 						'data-activator' => [
 							wp_json_encode([
 								'id' 	  => esc_attr($id),
-								'switchA' => $settings['switch_a_trigger_selector'] ??  '.not-select',
-								'switchB' => $settings['switch_b_trigger_selector'] ??  '.not-select',
+								'switchA' => $settings['switch_a_trigger_selector'] ?  '.not-select' : '',
+								'switchB' => $settings['switch_b_trigger_selector'] ?  '.not-select' : '',
 							])
 						],
 					]

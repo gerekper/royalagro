@@ -1432,13 +1432,13 @@ class Hover_Box extends Module_Base {
 			$this->add_render_attribute( 'box-settings', 'bdt-height-match', 'target: > div > div > .bdt-hover-box-item; row: false;' );
 		}
 
-        $this->add_render_attribute( 'box-settings', 'bdt-hover-box-items', 'connect: #bdt-box-content-' .  esc_attr($id) . ';' );
+        $this->add_render_attribute( 'box-settings', 'data-bdt-hover-box-items', 'connect: #bdt-box-content-' .  esc_attr($id) . ';' );
         $this->add_render_attribute( 'box-settings', 'class', ['bdt-box-item-wrapper', 'bdt-position-' . $settings['content_gap'], 'bdt-position-' . $settings['default_content_position']] );
-
+ 
 
 		?>
 			<div <?php echo ( $this->get_render_attribute_string( 'box-settings' ) ); ?>>
-				<div class="bdt-grid bdt-grid-<?php echo esc_attr($settings['column_gap']); ?> bdt-child-width-1-<?php echo esc_attr($mobile_cols); ?> bdt-child-width-1-<?php echo esc_attr($tablet_cols); ?>@s bdt-child-width-1-<?php echo esc_attr($desktop_cols); ?>@l" bdt-grid>
+				<div class="bdt-grid bdt-grid-<?php echo esc_attr($settings['column_gap']); ?> bdt-child-width-1-<?php echo esc_attr($mobile_cols); ?> bdt-child-width-1-<?php echo esc_attr($tablet_cols); ?>@s bdt-child-width-1-<?php echo esc_attr($desktop_cols); ?>@l" data-bdt-grid>
  
 					<?php  foreach ( $settings['hover_box'] as $index => $item ) :
 						

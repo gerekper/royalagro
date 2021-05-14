@@ -345,7 +345,7 @@
 
                 // if (barPos <= windowBtm) {
                     $(this).css("width", function() {
-                         var thisMaxVal = $(this).attr("max-value");
+                         var thisMaxVal = $(this).attr("data-max-value");
                          var thisFillVal = $(this).attr("data-width").slice(0, -1); 
                          var formula = (thisFillVal*100) / thisMaxVal;
                          // console.log(formula);
@@ -1152,10 +1152,8 @@ function circleJs(id, circleMoving, movingTime , mouseEvent ) {
         }
 
 
-        for (var i in markers) {
-
-            if( markers[i]['iconUrl'].length ){
-
+        for (var i in markers) { 
+            if( (markers[i]['iconUrl']) != '' && typeof (markers[i]['iconUrl']) !== 'undefined'){ 
                 var LeafIcon = L.Icon.extend({
                     options: {
                         iconSize   : [25, 41],
@@ -1166,7 +1164,9 @@ function circleJs(id, circleMoving, movingTime , mouseEvent ) {
                 var greenIcon = new LeafIcon({iconUrl: markers[i]['iconUrl'] });
                 L.marker( [markers[i]['lat'], markers[i]['lng']], {icon: greenIcon} ).bindPopup(markers[i]['infoWindow']).addTo(avdOSMap);
             } else {
-                L.marker( [markers[i]['lat'], markers[i]['lng']] ).bindPopup(markers[i]['infoWindow']).addTo(avdOSMap);
+                if( (markers[i]['lat']) != '' && typeof (markers[i]['lat']) !== 'undefined'){ 
+                    L.marker( [markers[i]['lat'], markers[i]['lng']] ).bindPopup(markers[i]['infoWindow']).addTo(avdOSMap);
+                }
             }
         }
 
@@ -4289,7 +4289,7 @@ function circleJs(id, circleMoving, movingTime , mouseEvent ) {
 
 	    //$($scrollButton).find('.bdt-scroll-button').unbind();
 	    
-	    if ($settings.HideOnBeforeScrolling) {
+	    if ($settings.HideOnBeforeScrolling == true) {
 
 			$(window).scroll(function() {
 			  if ($(window).scrollTop() > 300) {
@@ -5338,7 +5338,7 @@ jQuery(window).on('elementor/frontend/init', function() {
 
         };
 
-        window.onLoadElementorPackReCaptcha = widgetUserLoginForm.load_recaptcha;
+        window.onLoadElementPackLoginCaptcha = widgetUserLoginForm.load_recaptcha;
 
         var widgetUserLoginFormHandler = function ($scope, $) {
             var widget_wrapper  = $scope.find('.bdt-user-login');
@@ -5356,7 +5356,7 @@ jQuery(window).on('elementor/frontend/init', function() {
             }
 
             if (elementorFrontend.isEditMode() && undefined === recaptcha_field.attr('data-widgetid')) {
-                onLoadElementorPackReCaptcha();
+                onLoadElementPackLoginCaptcha();
             }
 
             if (recaptcha_field.length > 0) {
@@ -5569,7 +5569,7 @@ jQuery(window).on('elementor/frontend/init', function() {
     }
 
 
-    window.onLoadElementorPackReCaptcha = widgetUserRegistrationForm.load_recaptcha;
+    window.onLoadElementPackRegisterCaptcha = widgetUserRegistrationForm.load_recaptcha;
 
     var widgetUserRegisterForm = function ($scope, $) {
         var register_form = $scope.find('.bdt-user-register-widget');
@@ -5582,7 +5582,7 @@ jQuery(window).on('elementor/frontend/init', function() {
         });
 
         if (elementorFrontend.isEditMode() && undefined === recaptcha_field.attr('data-widgetid')) {
-            onLoadElementorPackReCaptcha();
+            onLoadElementPackRegisterCaptcha();
         }
 
         if (recaptcha_field.length > 0) {

@@ -33,7 +33,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * A Twitter library in JavaScript
      *
      * @package codebird
-     * @subpackage codebird-js
+     * @subpackage codebird
      */
     var Codebird = function () {
         function Codebird() {

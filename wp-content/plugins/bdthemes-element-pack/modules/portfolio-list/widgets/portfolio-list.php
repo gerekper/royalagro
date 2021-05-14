@@ -1037,7 +1037,7 @@ class Portfolio_List extends Module_Base {
 
 		$this->add_render_attribute('portfolio', 'class', ['bdt-portfolio-list', 'bdt-ep-grid-filter-container', 'bdt-portfolio-list-skin-' . $skin]);
 
-		$this->add_render_attribute('portfolio', 'bdt-grid', '');
+		$this->add_render_attribute('portfolio', 'data-bdt-grid', '');
 		$this->add_render_attribute('portfolio', 'class', ['bdt-grid', 'bdt-grid-medium']);
 
 		if ( $settings['show_horizontal_layout'] ) {

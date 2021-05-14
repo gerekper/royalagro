@@ -74,7 +74,7 @@ class Premium_Instagram_Feed extends Widget_Base {
 		return array(
 			'font-awesome-5-all',
 			'premium-addons',
-			'pa-prettyphoto',
+			'prettyPhoto-js',
 		);
 	}
 
@@ -91,9 +91,9 @@ class Premium_Instagram_Feed extends Widget_Base {
 			'imagesloaded',
 			'prettyPhoto-js',
 			'isotope-js',
-			'instafeed-js',
+			'pa-instafeed',
 			'pa-slick',
-			'premium-pro-js',
+			'premium-pro',
 		);
 	}
 

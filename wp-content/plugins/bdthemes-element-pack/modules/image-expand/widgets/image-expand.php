@@ -1014,14 +1014,9 @@ class Image_Expand extends Module_Base {
 							</div>
 						<?php endif; ?>
 					</div>
-
 				</div>
-
 			<?php endforeach; ?>
-
-
 		</div>
-
 		<?php 
 	}
  

@@ -34,7 +34,7 @@ class DCE_Extension_Form_Visibility extends DCE_Extension_Prototype {
 
 	protected function add_actions() {
 		add_action( 'elementor/widget/render_content', array( $this, '_render_form' ), 10, 2 );
-		add_action( 'elementor_pro/forms/validation', array( $this, '_validate_form' ), 10, 2 );
+		add_action( 'elementor_pro/forms/validation', array( $this, '_validate_form' ), 15, 2 );
 	}
 
 	public function _validate_form( $record, $ajax_handler ) {

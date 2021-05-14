@@ -160,8 +160,8 @@ class PAFE_Woocommerce_Sales_Funnels_Add_To_Cart extends \Elementor\Widget_Base 
 				'label' => __( 'Success Message Color', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
+					'type' => \Elementor\Core\Schemes\Color::get_type(),
+					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .pafe-woocommerce-sales-funnels-add-to-cart-message--success' => 'color: {{VALUE}};',
@@ -191,8 +191,8 @@ class PAFE_Woocommerce_Sales_Funnels_Add_To_Cart extends \Elementor\Widget_Base 
 				'label' => __( 'Out of stock Message Color', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
+					'type' => \Elementor\Core\Schemes\Color::get_type(),
+					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .pafe-woocommerce-sales-funnels-add-to-cart-message--out-of-stock' => 'color: {{VALUE}};',
@@ -208,7 +208,7 @@ class PAFE_Woocommerce_Sales_Funnels_Add_To_Cart extends \Elementor\Widget_Base 
 			[
 				'name' => 'pafe_woocommerce_sales_funnels_add_to_cart_message_typography',
 				'label' => __( 'Message Typography', 'pafe' ),
-				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_4,
+				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_4,
 				'selector' => '{{WRAPPER}} .pafe-woocommerce-sales-funnels-add-to-cart-message',
 			]
 		);

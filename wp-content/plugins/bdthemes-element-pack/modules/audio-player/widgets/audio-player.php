@@ -1397,7 +1397,7 @@ class Audio_Player extends Module_Base {
 		<div id="jp_container_<?php echo esc_attr($id); ?>" class="jp-audio" role="application" aria-label="media player">
 			<div class="jp-type-playlist">
 				<div class="jp-gui jp-interface">
-					<div class="jp-controls bdt-grid bdt-grid-small bdt-flex-middle" bdt-grid>
+					<div class="jp-controls bdt-grid bdt-grid-small bdt-flex-middle" data-bdt-grid>
 						
 						<?php $this->render_play_button(); ?>
 						
@@ -1444,7 +1444,7 @@ class Audio_Player extends Module_Base {
 		$this->add_render_attribute( 'progress', 'title', $settings['title'] );
 		
 		if ( 'tooltip'  == $settings['audio_title'] and 'bdt-poster' !== $settings['_skin'] ) {
-			$this->add_render_attribute( 'progress', 'bdt-tooltip' );
+			$this->add_render_attribute( 'progress', 'data-bdt-tooltip' );
 		}
 
 		?>

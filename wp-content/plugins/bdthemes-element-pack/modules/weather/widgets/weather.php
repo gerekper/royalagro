@@ -1126,8 +1126,8 @@ class Weather extends Module_Base {
 	public function weather_error_notice($message) {
 		?>
 
-		<div class="bdt-alert-warning" bdt-alert>
-		    <a class="bdt-alert-close" bdt-close></a>
+		<div class="bdt-alert-warning" data-bdt-alert>
+		    <a class="bdt-alert-close" data-bdt-close></a>
 		    <p><?php echo esc_html($message); ?></p>
 		</div>
 		<?php

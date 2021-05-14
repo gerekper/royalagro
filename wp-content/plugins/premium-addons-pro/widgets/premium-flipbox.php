@@ -100,7 +100,7 @@ class Premium_Flipbox extends Widget_Base {
 	public function get_script_depends() {
 		return array(
 			'lottie-js',
-			'premium-pro-js',
+			'premium-pro',
 		);
 	}
 

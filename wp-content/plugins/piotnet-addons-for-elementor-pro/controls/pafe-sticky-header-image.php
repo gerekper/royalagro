@@ -74,7 +74,7 @@ class PAFE_Sticky_Header_Image extends \Elementor\Widget_Base {
 				'label_off' => 'No',
 				'return_value' => 'yes',
 				'selectors' => [
-					'{{WRAPPER}} .elementor-image img' => '-webkit-filter: brightness(0) invert(0); filter: brightness(0) invert(0);',
+					'{{WRAPPER}} .elementor-image img,{{WRAPPER}} .elementor-widget-container img' => '-webkit-filter: brightness(0) invert(0); filter: brightness(0) invert(0);',
 				],
 				'condition' => [
 					'pafe_sticky_header_image_enable!' => '',
@@ -92,7 +92,7 @@ class PAFE_Sticky_Header_Image extends \Elementor\Widget_Base {
 				'label_off' => 'No',
 				'return_value' => 'yes',
 				'selectors' => [
-					'{{WRAPPER}} .elementor-image img' => '-webkit-filter: brightness(0) invert(1); filter: brightness(0) invert(1);',
+					'{{WRAPPER}} .elementor-image img,{{WRAPPER}} .elementor-widget-container img' => '-webkit-filter: brightness(0) invert(1); filter: brightness(0) invert(1);',
 				],
 				'condition' => [
 					'pafe_sticky_header_image_enable!' => '',
@@ -136,7 +136,7 @@ class PAFE_Sticky_Header_Image extends \Elementor\Widget_Base {
 				'label_off' => 'No',
 				'return_value' => 'yes',
 				'selectors' => [
-					'{{WRAPPER}}.pafe-sticky-header-active-element .elementor-image img' => '-webkit-filter: none; filter: none;',
+					'{{WRAPPER}}.pafe-sticky-header-active-element .elementor-image img,{{WRAPPER}}.pafe-sticky-header-active-element .elementor-widget-container img' => '-webkit-filter: none; filter: none;',
 				],
 				'condition' => [
 					'pafe_sticky_header_image_enable!' => '',
@@ -154,7 +154,7 @@ class PAFE_Sticky_Header_Image extends \Elementor\Widget_Base {
 				'label_off' => 'No',
 				'return_value' => 'yes',
 				'selectors' => [
-					'{{WRAPPER}}.pafe-sticky-header-active-element .elementor-image img' => '-webkit-filter: brightness(0) invert(0); filter: brightness(0) invert(0);',
+					'{{WRAPPER}}.pafe-sticky-header-active-element .elementor-image img,{{WRAPPER}}.pafe-sticky-header-active-element .elementor-widget-container img' => '-webkit-filter: brightness(0) invert(0); filter: brightness(0) invert(0);',
 				],
 				'condition' => [
 					'pafe_sticky_header_image_enable!' => '',
@@ -172,7 +172,7 @@ class PAFE_Sticky_Header_Image extends \Elementor\Widget_Base {
 				'label_off' => 'No',
 				'return_value' => 'yes',
 				'selectors' => [
-					'{{WRAPPER}}.pafe-sticky-header-active-element .elementor-image img' => '-webkit-filter: brightness(0) invert(1); filter: brightness(0) invert(1);',
+					'{{WRAPPER}}.pafe-sticky-header-active-element .elementor-image img,{{WRAPPER}}.pafe-sticky-header-active-element .elementor-widget-container img' => '-webkit-filter: brightness(0) invert(1); filter: brightness(0) invert(1);',
 				],
 				'condition' => [
 					'pafe_sticky_header_image_enable!' => '',
@@ -194,7 +194,7 @@ class PAFE_Sticky_Header_Image extends \Elementor\Widget_Base {
 				],
 				'selectors' => [
 					'{{WRAPPER}} .elementor-image img' => 'transition: all 0.4s ease-in-out 0s;',
-					'{{WRAPPER}}.pafe-sticky-header-active-element .elementor-image img' => 'transition: all 0.4s ease-in-out; width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}.pafe-sticky-header-active-element .elementor-image img,{{WRAPPER}}.pafe-sticky-header-active-element .elementor-widget-container img' => 'transition: all 0.4s ease-in-out; width: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'pafe_sticky_header_image_enable!' => '',

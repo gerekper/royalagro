@@ -510,9 +510,9 @@
               <?php if( $settings['notification_type'] == 'fixed' &&
                   $settings['notification_pos_fixed'] == 'relative' ) : ?>
                 <div id="bdt-notify-<?php echo $this->get_id(); ?>" class="bdt-notify-wrapper
-				    bdt-notify-inline bdt-hidden bdt-alert-success" bdt-alert>
+				    bdt-notify-inline bdt-hidden bdt-alert-success" data-bdt-alert>
                   <div class="bdt-notify-wrapper-container">
-                    <a class="bdt-alert-close" bdt-close></a>
+                    <a class="bdt-alert-close" data-bdt-close></a>
                       <?php
                           echo $content;
                       ?>
@@ -527,9 +527,9 @@
                   ?>
                 <div id="bdt-notify-<?php echo $this->get_id(); ?>" class="bdt-notify-wrapper bdt-hidden bdt-alert-success bdt-alert <?php echo $fixed; ?>
 		 			bdt-position-<?php echo $settings['notification_pos_fixed']; ?>
-		            bdt-margin-remove-bottom bdt-margin-remove-top bdt-animation-fade"  bdt-alert="">
+		            bdt-margin-remove-bottom bdt-margin-remove-top bdt-animation-fade"  data-bdt-alert="">
                   <div class="bdt-notify-wrapper-container">
-                    <a class="bdt-alert-close" bdt-close></a>
+                    <a class="bdt-alert-close" data-bdt-close></a>
                       <?php  echo $content; ?>
                   </div>
                 </div>

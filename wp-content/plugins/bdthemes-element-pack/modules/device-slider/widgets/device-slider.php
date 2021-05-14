@@ -727,7 +727,7 @@
 			}
 			
 			
-			$slider_settings['bdt-slideshow'] = wp_json_encode( array_filter( [
+			$slider_settings['data-bdt-slideshow'] = wp_json_encode( array_filter( [
 				"animation"         => $settings["slider_animations"],
 				"ratio"             => $ratio,
 				"autoplay"          => ( "yes" === $settings["autoplay"] ) ? true : false,
@@ -752,10 +752,12 @@
 			?>
             </ul>
 			<?php if ( 'arrows' == $settings['navigation'] or 'arrows_dots' == $settings['navigation'] ) : ?>
-                <a class="bdt-position-center-left bdt-position-small bdt-hidden-hover" href="#" bdt-slidenav-previous
-                   bdt-slideshow-item="previous"></a>
-                <a class="bdt-position-center-right bdt-position-small bdt-hidden-hover" href="#" bdt-slidenav-next
-                   bdt-slideshow-item="next"></a>
+                <a class="bdt-position-center-left bdt-position-small bdt-hidden-hover" href="#" 
+                data-bdt-slidenav-previous
+                data-bdt-slideshow-item="previous"></a>
+                <a class="bdt-position-center-right bdt-position-small bdt-hidden-hover" href="#" 
+                data-bdt-slidenav-next
+               data-bdt-slideshow-item="next"></a>
 			<?php endif; ?>
 			
 			
@@ -825,7 +827,7 @@
 			<?php if ( $content['title'] && ( 'yes' == $settings['show_title'] ) ) : ?>
                 <div>
                 <<?php echo Utils::get_valid_html_tag( $settings['title_tags'] ); ?> class="bdt-device-slider-title
-                bdt-display-inline-block" bdt-slideshow-parallax="x:300, -300">
+                bdt-display-inline-block" data-bdt-slideshow-parallax="x:300, -300">
 				<?php if ( '' !== $content['title_link']['url'] ) : ?>
                 <a href="<?php echo esc_url( $content['title_link']['url'] ); ?>">
 			<?php endif; ?>

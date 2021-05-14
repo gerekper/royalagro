@@ -166,8 +166,8 @@ class PAFE_Form_Builder_Field extends \Elementor\Widget_Base {
 			[
 				'label' => __( 'Field Password ID', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'placeholder' => __( 'Type your password shortcode here', 'pafe' ),
-				'description' => __( 'Enter the shortcode password to compare.', 'pafe' ),
+				'placeholder' => __( 'Type your password id here', 'pafe' ),
+				'description' => __( 'Enter the password ID to compare.', 'pafe' ),
 				'conditions' => [
 					'relation' => 'and',
 					'terms' => [
@@ -2080,7 +2080,7 @@ class PAFE_Form_Builder_Field extends \Elementor\Widget_Base {
 		// 	[
 		// 		'name' => 'pafe_calculated_fields_form_typography',
 		// 		'label' => __( 'Typography', 'pafe' ),
-		// 		'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+		// 		'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
 		// 		'selector' => '{{WRAPPER}} .pafe-calculated-fields-form',
 		// 	]
 		// );
@@ -2866,7 +2866,7 @@ class PAFE_Form_Builder_Field extends \Elementor\Widget_Base {
 			[
 				'name' => 'pafe_style_spiner_typography',
 				'label' => __( 'Typography', 'pafe' ),
-				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} [data-pafe-form-builder-spiner] button',
 			]
 		);
@@ -3048,7 +3048,7 @@ class PAFE_Form_Builder_Field extends \Elementor\Widget_Base {
 			[
 				'name' => 'pafe_image_select_field_typography',
 				'label' => __( 'Typography', 'pafe' ),
-				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .image_picker_selector .thumbnail p',
 			]
 		);
@@ -3538,8 +3538,8 @@ class PAFE_Form_Builder_Field extends \Elementor\Widget_Base {
 					'{{WRAPPER}} .pafe-calculated-fields-form' => 'color: {{VALUE}};',
 				],
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_3,
+					'type' => \Elementor\Core\Schemes\Color::get_type(),
+					'value' => \Elementor\Core\Schemes\Color::COLOR_3,
 				],
 				'condition' => [
 					'field_type' => 'calculated_fields',
@@ -3552,7 +3552,7 @@ class PAFE_Form_Builder_Field extends \Elementor\Widget_Base {
 			[
 				'name' => 'calculated_fields_typography',
 				'selector' => '{{WRAPPER}} .pafe-calculated-fields-form',
-				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_3,
 				'condition' => [
 					'field_type' => 'calculated_fields',
 				]
@@ -3612,8 +3612,8 @@ class PAFE_Form_Builder_Field extends \Elementor\Widget_Base {
 					'{{WRAPPER}} .elementor-field-group > label, {{WRAPPER}} .elementor-field-subgroup label' => 'color: {{VALUE}};',
 				],
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_3,
+					'type' => \Elementor\Core\Schemes\Color::get_type(),
+					'value' => \Elementor\Core\Schemes\Color::COLOR_3,
 				],
 			]
 		);
@@ -3638,7 +3638,7 @@ class PAFE_Form_Builder_Field extends \Elementor\Widget_Base {
 			[
 				'name' => 'label_typography',
 				'selector' => '{{WRAPPER}} .elementor-field-group > label',
-				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_3,
 			]
 		);
 
@@ -3661,8 +3661,8 @@ class PAFE_Form_Builder_Field extends \Elementor\Widget_Base {
 					'{{WRAPPER}} .elementor-field-group .elementor-field' => 'color: {{VALUE}};',
 				],
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_3,
+					'type' => \Elementor\Core\Schemes\Color::get_type(),
+					'value' => \Elementor\Core\Schemes\Color::COLOR_3,
 				],
 			]
 		);
@@ -3672,7 +3672,7 @@ class PAFE_Form_Builder_Field extends \Elementor\Widget_Base {
 			[
 				'name' => 'field_typography',
 				'selector' => '{{WRAPPER}} .elementor-field-group .elementor-field, {{WRAPPER}} .elementor-field-subgroup label',
-				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_3,
 			]
 		);
 

@@ -68,7 +68,7 @@ class Helper {
 
 		$license_status = get_option( 'papro_license_status' );
 
-		return ( 'valid' === $license_status ) ? true : false;
+		return ( 'valid' === $license_status ) ? true : true;
 
 	}
 

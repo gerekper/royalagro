@@ -1520,7 +1520,7 @@ class Post_Grid_Tab extends Module_Base {
 		$settings = $this->get_settings_for_display();
 		global $post;
 
-		$this->add_render_attribute( 'post-grid-tab-item', 'bdt-grid' );
+		$this->add_render_attribute( 'post-grid-tab-item', 'data-bdt-grid' );
 
 
 		if ( $settings['content_image'] and ( $settings['show_title'] or $settings['show_author'] or $settings['show_date'] or $settings['show_comments'] or $settings['show_category'] or $settings['show_excerpt'] or $settings['show_readmore'] ) )  {

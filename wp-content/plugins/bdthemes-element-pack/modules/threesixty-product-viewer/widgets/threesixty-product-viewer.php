@@ -643,7 +643,7 @@ class Threesixty_Product_Viewer extends Module_Base {
 				$this->add_render_attribute( 'tspv-fb', [
 					'href'     => '#',
 					'class'    => 'bdt-tspv-fb bdt-icon bdt-position-small bdt-position-' . $settings['tspv_fb_icon_position'],
-					'bdt-icon' =>'icon: ' . $settings['tspv_fb_icon'] . '; ratio: 1.6;',
+					'data-bdt-icon' =>'icon: ' . $settings['tspv_fb_icon'] . '; ratio: 1.6;',
 				]);
 			}
 

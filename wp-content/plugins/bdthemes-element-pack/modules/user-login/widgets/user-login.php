@@ -1920,7 +1920,7 @@
 			$this->add_render_attribute(
 				[
 					'dropdown-settings' => [
-						'bdt-dropdown' => [
+						'data-bdt-dropdown' => [
 							wp_json_encode( array_filter( [
 								"mode"   => $settings["dropdown_mode"],
 								"pos"    => $settings["dropdown_position"],
@@ -1938,7 +1938,7 @@
             <div <?php
 				echo $this->get_render_attribute_string( 'dropdown-settings' ); ?>>
                 <div class="bdt-user-card-small">
-                    <div class="bdt-grid-small bdt-flex-middle" bdt-grid>
+                    <div class="bdt-grid-small bdt-flex-middle" data-bdt-grid>
                         <div class="bdt-width-auto">
 							<?php
 								echo get_avatar( $current_user->user_email, 48 ); ?>
@@ -2164,8 +2164,8 @@
 									
 									?>
 
-                                    <div class="bdt-alert-warning" bdt-alert>
-                                <a class="bdt-alert-close" bdt-close></a>
+                                    <div class="bdt-alert-warning" data-bdt-alert>
+                                <a class="bdt-alert-close" data-bdt-close></a>
                                 <p><?php
 		                                echo sprintf( esc_html__( 'Ops! %1s %2s Missing. Please add them from: Element Pack Settings > API Settings > Social Login Access. ', 'bdthemes-element-pack' ), $fb_message, $google_app_message ); ?></p>
                             </div>
@@ -2210,7 +2210,7 @@
                 <input type="hidden" name="action" value="element_pack_ajax_login">
 				<?php
 					if ( $settings['show_recaptcha_checker'] ) {
-						do_action( 'element_pack_google_rechatcha_render', $this, 'onLoadElementorPackReCaptcha', 'button' );
+						do_action( 'element_pack_google_rechatcha_render', $this, 'onLoadElementPackLoginCaptcha', 'button' );
 					}
 				?>
                 <input type="hidden" class="widget_id" name="widget_id" value="<?php

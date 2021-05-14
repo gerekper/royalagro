@@ -1774,6 +1774,7 @@ class Countdown extends Module_Base {
 		
 		$with_gmt_time = date( 'Y-m-d H:i', strtotime( $due_date ) - ( get_option( 'gmt_offset' ) * HOUR_IN_SECONDS ) );		
 		$datetime      = new DateTime($with_gmt_time);
+
 		$final_time    = $datetime->format('c');
 
 		$this->add_render_attribute(
@@ -1787,10 +1788,10 @@ class Countdown extends Module_Base {
 						'bdt-child-width-1-' . esc_attr($settings['count_column_tablet']) . '@s',
 						'bdt-child-width-1-' . esc_attr($settings['count_column']) . '@m'
 					],
-					'bdt-countdown' => [
+					'data-bdt-countdown' => [
 						'date: ' . $final_time,
 					],
-					'bdt-grid' => '',
+					'data-bdt-grid' => '',
 				],
 			]
 		);

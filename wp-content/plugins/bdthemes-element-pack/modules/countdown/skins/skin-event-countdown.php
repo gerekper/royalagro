@@ -344,8 +344,6 @@ class Skin_Event_Countdown extends Elementor_Skin_Base {
 		$this->end_controls_tabs();
 
 		$this->end_controls_section();
-
-		$this->end_controls_section();
 	}
 
 	public function register_title_style_controls(Module_Base $widget ) {
@@ -519,7 +517,8 @@ class Skin_Event_Countdown extends Elementor_Skin_Base {
 				]
 			);
 
-			$event_date    = tribe_get_start_date ( $event_id, false,  'Y-m-d H:i' );
+			// $event_date    = tribe_get_start_date ( $event_id, false,  'Y-m-d H:i' );
+			$event_date    = tribe_get_end_date ( $event_id, false,  'Y-m-d H:i' );
 			$event_title   = get_the_title($event_id);
 			
 			$due_date      = $event_date;
@@ -537,14 +536,14 @@ class Skin_Event_Countdown extends Elementor_Skin_Base {
 							'bdt-flex-middle bdt-flex-' . esc_attr($settings['alignment']),
 							$this->get_instance_value('column_gap') ? 'bdt-grid-'.$this->get_instance_value('column_gap') : '',
 						],
-						'bdt-countdown' => [
+						'data-bdt-countdown' => [
 							'date: ' . $final_time
 						],
-						'bdt-grid' => ''
+						'data-bdt-grid' => ''
 					],
 				]
 			);
-
+ 
 			?>
 			<div class="bdt-countdown-wrapper bdt-countdown-skin-event bdt-text-<?php echo esc_attr($settings['alignment']); ?>">
 				<?php if( '' != $event_id  and 'yes' == $this->get_instance_value('show_event_title') ) : ?>
@@ -567,7 +566,7 @@ class Skin_Event_Countdown extends Elementor_Skin_Base {
 				</div>
 			</div>
 			<?php 
-		} else echo '<div class="bdt-alert-warning" bdt-alert><p>You couldn\'t select any event, please select a event from event list.</p></div>';
+		} else echo '<div class="bdt-alert-warning" data-bdt-alert><p>You couldn\'t select any event, please select a event from event list.</p></div>';
 	}
 }
 

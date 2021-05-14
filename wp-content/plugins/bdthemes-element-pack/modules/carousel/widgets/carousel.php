@@ -3357,7 +3357,7 @@
                 return;
             }
             ?>
-            <div class="bdt-carousel-meta bdt-subnav bdt-flex-middle bdt-margin-small-top" bdt-margin>
+            <div class="bdt-carousel-meta bdt-subnav bdt-flex-middle bdt-margin-small-top" data-bdt-margin>
                 <?php
                     if ( in_array( 'author', $settings ) ) {
                         $this->render_author();

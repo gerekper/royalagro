@@ -123,7 +123,7 @@ class Premium_Tables extends Widget_Base {
 		return array(
 			'table-sorter',
 			'lottie-js',
-			'premium-pro-js',
+			'premium-pro',
 		);
 	}
 

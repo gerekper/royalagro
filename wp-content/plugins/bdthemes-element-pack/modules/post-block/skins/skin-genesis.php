@@ -39,7 +39,7 @@ class Skin_Genesis extends Elementor_Skin_Base {
 							'bdt-grid-match',
 							'bdt-post-block-skin-genesis',
 						],
-						'bdt-grid' => ''
+						'data-bdt-grid' => ''
 					]
 				]
 			);
@@ -132,7 +132,7 @@ class Skin_Genesis extends Elementor_Skin_Base {
 					<?php if ($bdt_count == $settings['featured_item']) : ?>
 
 			  		<div class="bdt-post-block-item list-part bdt-width-1-1@m bdt-margin-medium-top">
-			  			<ul class="bdt-child-width-1-<?php echo esc_attr($settings['featured_item']); ?>@m<?php echo esc_attr($bdt_list_divider); ?>" bdt-grid bdt-scrollspy="cls: bdt-animation-fade; target: > .bdt-post-block-item; delay: 300;">
+			  			<ul class="bdt-child-width-1-<?php echo esc_attr($settings['featured_item']); ?>@m<?php echo esc_attr($bdt_list_divider); ?>" data-bdt-grid data-bdt-scrollspy="cls: bdt-animation-fade; target: > .bdt-post-block-item; delay: 300;">
 			  		<?php endif; ?>
 
 					<?php else : ?>

@@ -2255,7 +2255,7 @@
             ?>
 
           <div class="bdt-direction-svg">
-            <img class="bdt-animation-stroke" bdt-svg="stroke-animation: true" src="<?php echo $svg_image; ?>"
+            <img class="bdt-animation-stroke" data-bdt-svg="stroke-animation: true" src="<?php echo $svg_image; ?>"
                  alt="Direction Arrows">
           </div>
             

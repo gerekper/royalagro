@@ -813,14 +813,14 @@ class CryptoCurrencyTable extends Module_Base {
 						<tr class="bdt-cryptocurrency-list">
 
 							<?php if ($settings['show_currency_marketing_rank']) : ?>
-							<td class="bdt-table-shrink" title="<?php esc_html_e( 'Marketplace Rank', 'bdthemes-element-pack' ); ?>"><?php echo esc_html($coin['market_cap_rank']); ?></td>
+							<td role="main" class="bdt-table-shrink" title="<?php esc_html_e( 'Marketplace Rank', 'bdthemes-element-pack' ); ?>"><?php echo esc_html($coin['market_cap_rank']); ?></td>
 							<?php endif; ?>
 
-							<td>
+							<td role="main">
 								
 								<?php if ($settings['show_currency_image']) : ?>
 								<span class="bdt-crypto-currency-image">
-									<img src="<?php echo esc_attr($coin['image']); ?>"/>
+									<img alt="bdt-crypto-currency-image" src="<?php echo esc_attr($coin['image']); ?>"/>
 								</span>
 								<?php endif; ?>
 								<span class="bdt-cryptocurrency-fullname">
@@ -840,27 +840,27 @@ class CryptoCurrencyTable extends Module_Base {
 							</td>
 							
 							<?php if ($settings['show_currency_current_price']) : ?>
-							<td><?php echo esc_html( $currency ); ?> <?php echo element_pack_money_format($coin['current_price']); ?></td>
+							<td role="main"><?php echo esc_html( $currency ); ?> <?php echo element_pack_money_format($coin['current_price']); ?></td>
 							<?php endif; ?>
 
 							<?php if ($settings['show_currency_change_price']) : ?>
-							<td><?php echo esc_html($coin['price_change_24h']); ?></td>
+							<td role="main"><?php echo esc_html($coin['price_change_24h']); ?></td>
 							<?php endif; ?>
 
 							<?php if ($settings['show_currency_total_supply']) : ?>
-							<td title="<?php echo esc_html($coin['total_supply']); ?>" bdt-tooltip="pos: top-left;"><?php echo element_pack_currency_format($coin['total_supply']); ?></td>
+							<td role="main" title="<?php echo esc_html($coin['total_supply']); ?>" data-bdt-tooltip="pos: top-left;"><?php echo element_pack_currency_format($coin['total_supply']); ?></td>
 							<?php endif; ?>
 
 							<?php if ($settings['show_currency_market_cap']) : ?>
-							<td title="<?php echo esc_html($coin['market_cap']); ?>" bdt-tooltip="pos: top-left;"><?php echo element_pack_currency_format($coin['market_cap']); ?></td>
+							<td role="main" title="<?php echo esc_html($coin['market_cap']); ?>" data-bdt-tooltip="pos: top-left;"><?php echo element_pack_currency_format($coin['market_cap']); ?></td>
 							<?php endif; ?>
 
 							<?php if ($settings['show_currency_total_volume']) : ?>
-							<td title="<?php echo esc_html($coin['total_volume']); ?>" bdt-tooltip="pos: top-left;"><?php echo element_pack_currency_format($coin['total_volume']); ?></td>
+							<td role="main" title="<?php echo esc_html($coin['total_volume']); ?>" data-bdt-tooltip="pos: top-left;"><?php echo element_pack_currency_format($coin['total_volume']); ?></td>
 							<?php endif; ?>
 
 							<?php if ($settings['show_currency_circulating_supply']) : ?>
-							<td title="<?php echo esc_html($coin['circulating_supply']); ?>" bdt-tooltip="pos: top-left;"><?php echo element_pack_currency_format($coin['circulating_supply']); ?></td>
+							<td role="main" title="<?php echo esc_html($coin['circulating_supply']); ?>" data-bdt-tooltip="pos: top-left;"><?php echo element_pack_currency_format($coin['circulating_supply']); ?></td>
 							<?php endif; ?>
 
 						</tr>

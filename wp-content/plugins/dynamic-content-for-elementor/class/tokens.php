@@ -5,6 +5,10 @@
 
 namespace DynamicContentForElementor;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class FiltersParser {
 	private $str;
 	private $current = 0;

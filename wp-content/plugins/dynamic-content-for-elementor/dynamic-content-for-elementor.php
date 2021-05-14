@@ -8,7 +8,7 @@
  * Plugin Name: Dynamic Content for Elementor
  * Plugin URI: https://www.dynamic.ooo/?utm_source=wp-plugins&utm_campaign=plugin-uri&utm_medium=wp-dash
  * Description: The most unique toolkit for Elementor for creating powerful websites and professional content.
- * Version: 1.14.4
+ * Version: 1.14.5
  * Requires at least: 5.2
  * Requires PHP: 5.6
  * Author: Dynamic.ooo
@@ -162,7 +162,11 @@ function dce_old_php_version() {
 }
 
 function dce_suggest_new_php_version() {
-	\DynamicContentForElementor\Notice::dce_admin_notice__warning( sprintf( __( 'You are using PHP version %1$s. It\'s suggested to use PHP version %2$s+.', 'dynamic-content-for-elementor' ), phpversion(), DCE_PHP_VERSION_SUGGESTED ) );
+	if ( isset( $_GET['page'] ) ) {
+		if( 'dce-features' === $_GET['page'] ) {
+			\DynamicContentForElementor\Notice::dce_admin_notice__warning( sprintf( __( 'You are using PHP version %1$s. It\'s suggested to use PHP version %2$s+.', 'dynamic-content-for-elementor' ), phpversion(), DCE_PHP_VERSION_SUGGESTED ) );
+		}
+	}
 }
 
 /**

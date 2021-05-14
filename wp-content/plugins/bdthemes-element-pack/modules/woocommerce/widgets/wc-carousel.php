@@ -2729,7 +2729,7 @@ class WC_Carousel extends Module_Base {
             <div class="bdt-quick-view">
 				<?php wp_nonce_field( 'ajax-ep-wc-product-nonce', 'bdt-wc-product-modal-sc' ); ?>
                 <input type="hidden" class="bdt_modal_spinner_message" value="<?php echo __( 'Please wait...', 'bdthemes-element-pack' ); ?>"/>
-				<a href="javascript:void(0)" data-id="<?php echo absint( $product_id ); ?>" bdt-tooltip="title: <?php echo __( 'Quick View', 'bdthemes-element-pack' ); ?>; pos: left;">
+				<a href="javascript:void(0)" data-id="<?php echo absint( $product_id ); ?>" data-bdt-tooltip="title: <?php echo __( 'Quick View', 'bdthemes-element-pack' ); ?>; pos: left;">
 					<i class="ep-eye"></i>
 				</a>
             </div>
@@ -2754,7 +2754,7 @@ class WC_Carousel extends Module_Base {
 		$this->add_render_attribute( 'carousel', 'class', 'bdt-wc-carousel-skin-' . $skin );
 
 		if ( 'yes' == $settings['match_height'] ) {
-			$this->add_render_attribute( 'carousel', 'bdt-height-match', 'target: > div > div > div > .bdt-wc-carousel-item-inner' );
+			$this->add_render_attribute( 'carousel', 'data-bdt-height-match', 'target: > div > div > div > .bdt-wc-carousel-item-inner' );
 		}
 
 		if ('arrows' == $settings['navigation']) {
@@ -3098,9 +3098,9 @@ class WC_Carousel extends Module_Base {
 				            <?php endif; ?>
 
 		           			<?php if ($settings['show_price'] or $settings['show_rating']) : ?>
-			           			<div class="bdt-wc-carousel-price-wrapper bdt-flex-middle bdt-flex-<?php echo esc_attr($text_align); ?> bdt-grid bdt-grid-small" bdt-grid>
+			           			<div class="bdt-wc-carousel-price-wrapper bdt-flex-middle bdt-flex-<?php echo esc_attr($text_align); ?> bdt-grid bdt-grid-small" data-bdt-grid>
 				               		<?php if ($settings['show_price']) : ?>
-											<span class="bdt-products-skin-price"><?php woocommerce_template_single_price(); ?></span>
+											<div class="bdt-products-skin-price"><?php woocommerce_template_single_price(); ?></div>
 						            <?php endif; ?>
 							               
 					               	<?php if ($settings['show_rating']) : ?>
@@ -3118,7 +3118,7 @@ class WC_Carousel extends Module_Base {
 			<?php endwhile; wp_reset_postdata();
 
 		} else {
-			echo '<div class="bdt-alert-warning" bdt-alert>Oppps!! There is no product<div>';
+			echo '<div class="bdt-alert-warning" data-bdt-alert>Oppps!! There is no product<div>';
 		}
 	}
 

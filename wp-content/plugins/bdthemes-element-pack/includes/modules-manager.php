@@ -483,7 +483,6 @@
             }
 
             // 3rd party widgets
-
             if ( ep_is_calendly_enabled() ) {
                 $calendly = element_pack_option( 'calendly', 'element_pack_third_party_widget', 'on' );
                 if ( 'on' === $calendly ) {

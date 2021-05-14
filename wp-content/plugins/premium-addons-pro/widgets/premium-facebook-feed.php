@@ -96,12 +96,12 @@ class Premium_Facebook_Feed extends Widget_Base {
 	 */
 	public function get_script_depends() {
 		return array(
-			'social-dot-js',
-			'jquery-socialfeed-js',
+			'social-dot',
+			'jquery-socialfeed',
 			'isotope-js',
 			'pa-slick',
 			'imagesloaded',
-			'premium-pro-js',
+			'premium-pro',
 		);
 	}
 
@@ -260,53 +260,6 @@ class Premium_Facebook_Feed extends Widget_Base {
 			)
 		);
 
-		$this->add_responsive_control(
-			'image_height',
-			array(
-				'label'      => __( 'Post Media Height', 'premium-addons-pro' ),
-				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px', 'em' ),
-				'range'      => array(
-					'px' => array(
-						'min' => 50,
-						'max' => 500,
-					),
-					'em' => array(
-						'min' => 1,
-						'max' => 100,
-					),
-				),
-				'condition'  => array(
-					'equal_height_switcher' => 'yes',
-					'posts_media'           => 'yes',
-				),
-				'selectors'  => array(
-					'{{WRAPPER}} .premium-social-feed-element img.attachment' => 'height: {{SIZE}}{{UNIT}}',
-				),
-			)
-		);
-
-		$this->add_responsive_control(
-			'image_fit',
-			array(
-				'label'     => __( 'Image Fit', 'premium-addons-for-elementor' ),
-				'type'      => Controls_Manager::SELECT,
-				'options'   => array(
-					'cover'   => __( 'Cover', 'premium-addons-for-elementor' ),
-					'fill'    => __( 'Fill', 'premium-addons-for-elementor' ),
-					'contain' => __( 'Contain', 'premium-addons-for-elementor' ),
-				),
-				'default'   => 'fill',
-				'selectors' => array(
-					'{{WRAPPER}} .premium-social-feed-element img.attachment' => 'object-fit: {{VALUE}}',
-				),
-				'condition' => array(
-					'equal_height_switcher' => 'yes',
-					'posts_media'           => 'yes',
-				),
-			)
-		);
-
 		$this->add_control(
 			'direction',
 			array(
@@ -393,6 +346,52 @@ class Premium_Facebook_Feed extends Widget_Base {
 				'label_on'  => 'Show',
 				'label_off' => 'Hide',
 				'default'   => 'yes',
+			)
+		);
+
+		$this->add_responsive_control(
+			'image_height',
+			array(
+				'label'      => __( 'Post Media Height', 'premium-addons-pro' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', 'em' ),
+				'range'      => array(
+					'px' => array(
+						'min' => 50,
+						'max' => 500,
+					),
+					'em' => array(
+						'min' => 1,
+						'max' => 100,
+					),
+				),
+				'condition'  => array(
+					'posts_media' => 'yes',
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .premium-social-feed-element img.attachment' => 'height: {{SIZE}}{{UNIT}}',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'image_fit',
+			array(
+				'label'     => __( 'Image Fit', 'premium-addons-for-elementor' ),
+				'type'      => Controls_Manager::SELECT,
+				'options'   => array(
+					'cover'   => __( 'Cover', 'premium-addons-for-elementor' ),
+					'fill'    => __( 'Fill', 'premium-addons-for-elementor' ),
+					'contain' => __( 'Contain', 'premium-addons-for-elementor' ),
+				),
+				'default'   => 'fill',
+				'selectors' => array(
+					'{{WRAPPER}} .premium-social-feed-element img.attachment' => 'object-fit: {{VALUE}}',
+				),
+				'separator' => 'after',
+				'condition' => array(
+					'posts_media' => 'yes',
+				),
 			)
 		);
 

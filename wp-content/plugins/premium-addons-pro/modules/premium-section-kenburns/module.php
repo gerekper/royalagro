@@ -69,16 +69,18 @@ class Module extends Module_Base {
                 window.backend = 0;
                 jQuery( window ).on( "elementor/frontend/init", function() {
                     elementorFrontend.hooks.addAction( "frontend/element_ready/global", function( $scope, $ ){
-                        if ( "undefined" == typeof $scope ) {
-                                return;
+                        if ( "undefined" == typeof $scope || ! $scope.hasClass( "premium-kenburns-yes" ) ) {
+                            return;
                         }
-                        if ( $scope.hasClass( "premium-kenburns-yes" ) ) {
-                            var id = $scope.data("id");
-                            window.scopes_array[ id ] = $scope;
-                        }
+
+                        var id = $scope.data("id");
+                        window.scopes_array[ id ] = $scope;
+
                     });
                 });
+
                 jQuery(document).ready(function(){
+
                     if ( jQuery.find( ".premium-kenburns-yes" ).length < 1 ) {
                         return;
                     }

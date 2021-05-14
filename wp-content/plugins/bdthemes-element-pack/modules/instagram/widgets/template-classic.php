@@ -12,7 +12,7 @@
 	<div class="bdt-instagram-item-wrapper feed-type-<?php echo esc_attr( $insta_feeds[ $i ]['post_type'] ); ?>">
 		<div class="bdt-instagram-item bdt-position-relative bdt-scrollspy-inview bdt-animation-fade">
 			<div class="bdt-instagram-thumbnail">
-				<img src="<?php echo esc_attr( $insta_feeds[$i]['image']['medium'] ); ?>" alt="<?php esc_html_e( 'Image by:', 'bdthemes-element-pack' ); ?> <?php echo esc_attr( $insta_feeds[ $i ]['user']['full_name'] ); ?> " bdt-img>
+				<img src="<?php echo esc_attr( $insta_feeds[$i]['image']['medium'] ); ?>" alt="<?php esc_html_e( 'Image by:', 'bdthemes-element-pack' ); ?> <?php echo esc_attr( $insta_feeds[ $i ]['user']['full_name'] ); ?> " data-bdt-img>
 				
 			</div>
 

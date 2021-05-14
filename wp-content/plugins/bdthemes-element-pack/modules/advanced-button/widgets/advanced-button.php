@@ -221,18 +221,88 @@ class AdvancedButton extends Module_Base {
 		);
 
 		$this->add_control(
+			'show_button_badge',
+			[
+				'label'   => esc_html__( 'Show Badge', 'bdthemes-element-pack' ) . BDTEP_NC,
+				'type'    => Controls_Manager::SWITCHER,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'badge_text',
+			[
+				'label' => __( 'Badge Text', 'bdthemes-element-pack' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __( 'Badge', 'bdthemes-element-pack' ),
+				'dynamic' => [
+					'active' => true,
+				],
+				'condition' => [
+					'show_button_badge' => 'yes',
+				],
+			]
+		);
+
+		$this->add_control(
+			'badge_align',
+			[
+				'label'        => esc_html__( 'Badge Position', 'bdthemes-element-pack' ),
+				'type'         => Controls_Manager::CHOOSE,
+				'default'      => 'right',
+				'options' => [
+					'left'    => [
+						'title' => __( 'Left', 'bdthemes-element-pack' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'right' => [
+						'title' => __( 'Right', 'bdthemes-element-pack' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'condition' => [
+					'badge_text[value]!' => '',
+					'show_button_badge' => 'yes',
+				],
+			]
+		);
+
+		$this->add_control(
+			'badge_indent',
+			[
+				'label' => esc_html__( 'Badge Spacing', 'bdthemes-element-pack' ),
+				'type'  => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'size' => 8,
+				],
+				'condition' => [
+					'badge_text[value]!' => '',
+					'show_button_badge' => 'yes',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .bdt-ep-button-badge.bdt-flex-align-right'  => is_rtl() ? 'margin-right: {{SIZE}}{{UNIT}};' : 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .bdt-ep-button-badge.bdt-flex-align-left'   => is_rtl() ? 'margin-left: {{SIZE}}{{UNIT}};' : 'margin-right: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
 			'button_css_id',
 			[
-				'label' => __( 'Button ID', 'elementor' ),
+				'label' => __( 'Button ID', 'bdthemes-element-pack' ),
 				'type' => Controls_Manager::TEXT,
 				'dynamic' => [
 					'active' => true,
 				],
 				'default' => '',
 				'title' => __( 'Add your custom id WITHOUT the Pound key. e.g: my-id', 'bdthemes-element-pack' ),
-				'description' => __( 'Please make sure the ID is unique and not used elsewhere on the page this form is displayed. This field allows <code>A-z 0-9</code> & underscore chars without spaces.', 'elementor' ),
+				'description' => __( 'Please make sure the ID is unique and not used elsewhere on the page this form is displayed. This field allows <code>A-z 0-9</code> & underscore chars without spaces.', 'bdthemes-element-pack' ),
 				'separator' => 'before',
-
 			]
 		);
 
@@ -669,6 +739,136 @@ class AdvancedButton extends Module_Base {
 		$this->end_controls_tabs();
 
 		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'section_style_badge',
+			[
+				'label'     => esc_html__( 'Badge', 'bdthemes-element-pack' ) . BDTEP_NC,
+				'tab'       => Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'badge_text[value]!' => '',
+					'show_button_badge' => 'yes'
+				],
+			]
+		);
+
+		$this->start_controls_tabs( 'tabs_badge_style' );
+
+		$this->start_controls_tab(
+			'tab_badge_normal',
+			[
+				'label' => esc_html__( 'Normal', 'bdthemes-element-pack' ),
+			]
+		);
+
+		$this->add_control(
+			'badge_color',
+			[
+				'label'     => esc_html__( 'Color', 'bdthemes-element-pack' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .bdt-ep-button .bdt-ep-button-badge-inner' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name'      => 'badge_background',
+				'selector'  => '{{WRAPPER}} .bdt-ep-button .bdt-ep-button-badge-inner',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name'        => 'badge_border',
+				'placeholder' => '1px',
+				'default'     => '1px',
+				'selector'    => '{{WRAPPER}} .bdt-ep-button .bdt-ep-button-badge-inner',
+			]
+		);
+
+		$this->add_responsive_control(
+			'badge_radius',
+			[
+				'label'      => esc_html__( 'Border Radius', 'bdthemes-element-pack' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors'  => [
+					'{{WRAPPER}} .bdt-ep-button .bdt-ep-button-badge-inner' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'badge_padding',
+			[
+				'label'      => esc_html__( 'Padding', 'bdthemes-element-pack' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%' ],
+				'selectors'  => [
+					'{{WRAPPER}} .bdt-ep-button .bdt-ep-button-badge-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name'     => 'badge_shadow',
+				'selector' => '{{WRAPPER}} .bdt-ep-button .bdt-ep-button-badge-inner',
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'tab_badge_hover',
+			[
+				'label' => esc_html__( 'Hover', 'bdthemes-element-pack' ),
+			]
+		);
+
+		$this->add_control(
+			'badge_hover_icon_color',
+			[
+				'label'     => esc_html__( 'Color', 'bdthemes-element-pack' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .bdt-ep-button:hover .bdt-ep-button-badge-inner' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name'      => 'badge_hover_background',
+				'selector'  => '{{WRAPPER}} .bdt-ep-button:hover .bdt-ep-button-badge-inner',
+			]
+		);
+
+		$this->add_control(
+			'badge_hover_border_color',
+			[
+				'label'     => esc_html__( 'Border Color', 'bdthemes-element-pack' ),
+				'type'      => Controls_Manager::COLOR,
+				'condition' => [
+					'badge_border_border!' => ''
+				],
+				'selectors' => [
+					'{{WRAPPER}} .bdt-ep-button:hover .bdt-ep-button-badge-inner' => 'border-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
+
+		$this->end_controls_section();
 	}
 
 	public function render_text() {
@@ -707,6 +907,7 @@ class AdvancedButton extends Module_Base {
 					</div>
 				</div>
 			<?php endif; ?>
+
 			<div <?php echo $this->get_render_attribute_string( 'text' ); ?>>
 
                 <span class="avdbtn-text"><?php echo esc_html($settings['text']); ?></span>
@@ -715,6 +916,14 @@ class AdvancedButton extends Module_Base {
                     <span class="avdbtn-alt-text"><?php echo esc_html($settings['text']); ?></span>
 				<?php endif; ?>
             </div>
+
+			<?php if ( $settings['show_button_badge'] == 'yes' ) : ?>
+				<div class="bdt-ep-button-badge bdt-flex-center bdt-flex-align-<?php echo esc_attr($settings['badge_align']); ?>">
+					<div class="bdt-ep-button-badge-inner">
+						<?php echo esc_html($settings['badge_text']); ?>
+					</div>
+				</div>
+			<?php endif; ?>
 
 		</div>
 		<?php
@@ -841,7 +1050,17 @@ class AdvancedButton extends Module_Base {
 
 					</div>
 					<# } #>
+
 					<div {{{ view.getRenderAttributeString( 'text' ) }}}>{{{ settings.text }}}</div>
+
+					<# if ( settings.show_button_badge ) { #>
+					<div class="bdt-ep-button-badge bdt-flex-center bdt-flex-align-{{ settings.badge_align }}">
+						<div class="bdt-ep-button-badge-inner">
+							{{{ settings.badge_text }}}
+						</div>
+					</div>
+					<# } #>
+
 				</div>
 			</a>
 		</div>

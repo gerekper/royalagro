@@ -48,8 +48,8 @@ class Module extends Element_Pack_Module_Base {
 		$ep_api_settings   = get_option( 'element_pack_api_settings' );
 		$ep_other_settings = get_option( 'element_pack_other_settings' );
 
-		if (!empty($ep_other_settings['contact_form_email'])) {
-			$email = $ep_other_settings['contact_form_email'];
+		if (!empty($ep_api_settings['contact_form_email'])) {
+			$email = $ep_api_settings['contact_form_email'];
 		}
 
 	    if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {

@@ -36,9 +36,9 @@
 	 */
 	function element_pack_alert( $message, $type = 'warning', $close = true ) {
 		?>
-        <div class="bdt-alert-<?php echo $type; ?>" bdt-alert>
+        <div class="bdt-alert-<?php echo $type; ?>" data-bdt-alert>
 			<?php if ( $close ) : ?>
-                <a class="bdt-alert-close" bdt-close></a>
+                <a class="bdt-alert-close" data-bdt-close></a>
 			<?php endif; ?>
 			<?php echo wp_kses_post( $message ); ?>
         </div>
@@ -84,29 +84,7 @@
 		}
 		
 		return $post_types;
-	}
-	
-	/**
-	 * Add REST API support to an already registered post type.
-	 */
-
-// function bdt_custom_post_type_rest_support() {
-//     global $wp_post_types;
-
-//     $post_types = element_pack_get_post_types();
-//     foreach( $post_types as $post_type ) {
-//         $post_type_name = $post_type;
-//         if( isset( $wp_post_types[ $post_type_name ] ) ) {
-//             $wp_post_types[$post_type_name]->show_in_rest = true;
-//             $wp_post_types[$post_type_name]->rest_base = $post_type_name;
-//             $wp_post_types[$post_type_name]->rest_controller_class = 'WP_REST_Posts_Controller';
-//         }
-//     }
-
-// }
-
-// add_action( 'init', 'bdt_custom_post_type_rest_support', 25 );
-	
+	}	
 	
 	function element_pack_allow_tags( $tag = null ) {
 		$tag_allowed = wp_kses_allowed_html( 'post' );
@@ -232,12 +210,17 @@
 	function element_pack_post_pagination( $wp_query ) {
 		
 		/** Stop execution if there's only 1 page */
-//    if( $wp_query->max_num_pages <= 1 ) {
-//        return;
-//    }
+        if( $wp_query->max_num_pages <= 1 ) {
+            return;
+        }
 		
-		$paged = get_query_var( 'paged' ) ? absint( get_query_var( 'paged' ) ) : 1;
-		$max   = intval( $wp_query->max_num_pages );
+		if(is_front_page()) {
+			$paged = (get_query_var('page')) ? get_query_var('page') : 1;
+		} else {
+			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+		}
+		
+		$max = intval( $wp_query->max_num_pages );
 		
 		/** Add current page to the array */
 		if ( $paged >= 1 ) {
@@ -259,7 +242,7 @@
 		
 		/** Previous Post Link */
 		if ( get_previous_posts_link() ) {
-			printf( '<li>%s</li>' . "\n", get_previous_posts_link( '<span bdt-pagination-previous></span>' ) );
+			printf( '<li>%s</li>' . "\n", get_previous_posts_link( '<span data-bdt-pagination-previous></span>' ) );
 		}
 		
 		/** Link to first page, plus ellipses if necessary */
@@ -292,7 +275,7 @@
 		
 		/** Next Post Link */
 		if ( get_next_posts_link() ) {
-			printf( '<li>%s</li>' . "\n", get_next_posts_link( '<span bdt-pagination-next></span>' ) );
+			printf( '<li>%s</li>' . "\n", get_next_posts_link( '<span data-bdt-pagination-next></span>' ) );
 		}
 		
 		echo '</ul>' . "\n";

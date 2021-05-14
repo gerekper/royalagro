@@ -101,7 +101,7 @@ class Premium_Divider extends Widget_Base {
 	public function get_script_depends() {
 		return array(
 			'lottie-js',
-			'premium-pro-js',
+			'premium-pro',
 		);
 	}
 
@@ -890,8 +890,6 @@ class Premium_Divider extends Widget_Base {
 		$this->end_controls_tab();
 
 		$this->end_controls_tabs();
-
-		$this->end_controls_section();
 
 		$this->end_controls_section();
 

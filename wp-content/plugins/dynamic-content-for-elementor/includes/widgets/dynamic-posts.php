@@ -1295,7 +1295,7 @@ class DCE_Widget_DynamicPosts extends DCE_Widget_Prototype {
 			'masking_enable',
 			[
 				'label' => __( 'Remove Masking', 'dynamic-content-for-elementor' ),
-				'description' => 'Remove the mask on the carousel to allow the display of the elements outside.',
+				'description' => __( 'Remove the mask on the carousel to allow the display of the elements outside', 'dynamic-content-for-elementor' ),
 				'type' => Controls_Manager::SWITCHER,
 				'separator' => 'before',
 				'prefix_class' => 'no-masking-',

@@ -191,7 +191,7 @@ class Module extends Element_Pack_Module_Base {
 				$sticky_option['media'] = 'media: ' . $settings[ 'section_sticky_off_media' ];
 			}
 			
-			$section->add_render_attribute( '_wrapper', 'bdt-sticky', implode(";",$sticky_option) );
+			$section->add_render_attribute( '_wrapper', 'data-bdt-sticky', implode(";",$sticky_option) );
 			$section->add_render_attribute( '_wrapper', 'class', 'bdt-sticky' );
 		}
 	}

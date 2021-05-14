@@ -101,7 +101,7 @@ class Premium_Google_Reviews extends Widget_Base {
 		return array(
 			'pa-slick',
 			'isotope-js',
-			'premium-pro-js',
+			'premium-pro',
 		);
 	}
 

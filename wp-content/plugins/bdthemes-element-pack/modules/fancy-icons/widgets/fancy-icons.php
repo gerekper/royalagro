@@ -570,7 +570,7 @@ class Fancy_Icons extends Module_Base {
 
         <div
             class="bdt-grid bdt-grid-collapse bdt-child-width-1-<?php echo esc_attr($mobile_cols); ?> bdt-child-width-1-<?php echo esc_attr($tablet_cols); ?>@s bdt-child-width-1-<?php echo esc_attr($desktop_cols); ?>@l"
-            bdt-grid>
+            data-bdt-grid>
 
             <?php
             foreach ( $settings['share_items'] as $item ) :

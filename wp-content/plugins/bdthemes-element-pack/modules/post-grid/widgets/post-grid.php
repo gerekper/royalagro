@@ -2362,7 +2362,7 @@ class Post_Grid extends Module_Base {
 
 		?> 
 		<div id="bdt-post-grid-<?php echo esc_attr($id); ?>" class="bdt-post-grid bdt-post-grid-skin-default">
-	  		<div class="bdt-grid bdt-grid-<?php echo esc_attr($settings['column_gap']); ?>" bdt-grid>
+	  		<div class="bdt-grid bdt-grid-<?php echo esc_attr($settings['column_gap']); ?>" data-bdt-grid>
 
 				<?php $bdt_count = 0;
 			
@@ -2382,7 +2382,7 @@ class Post_Grid extends Module_Base {
 		  			}
 
 		  			// $bdt_grid_raw = ( $bdt_count <= 2) ? 2 : 3;
-		  			//$bdt_post_class = ( $bdt_count <= 2) ? ' bdt-primary' : ' bdt-secondary';
+		  			// $bdt_post_class = ( $bdt_count <= 2) ? ' bdt-primary' : ' bdt-secondary';
 		  			?>
 
 		  			<div class="<?php echo esc_attr($bdt_grid_raw . $bdt_post_class); ?>">

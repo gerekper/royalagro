@@ -1024,7 +1024,7 @@ class Vertical_Menu extends Module_Base {
 		$this->add_render_attribute( 'vertical_menu', 'class', 'bdt-vertical-menu' );
 
 		if ( 'yes' == $settings['show_sticky'] ) {
-			$this->add_render_attribute( 'vertical_menu', 'bdt-sticky', "bottom: #offset;" );
+			$this->add_render_attribute( 'vertical_menu', 'data-bdt-sticky', "bottom: #offset;" );
 		}
 		
 		$this->add_render_attribute(

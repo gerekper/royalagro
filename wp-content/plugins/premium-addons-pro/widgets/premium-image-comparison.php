@@ -86,7 +86,7 @@ class Premium_Image_Comparison extends Widget_Base {
 			'event-move',
 			'pa-imgcompare',
 			'imagesloaded',
-			'premium-pro-js',
+			'premium-pro',
 		);
 	}
 

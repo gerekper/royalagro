@@ -127,4 +127,66 @@ class PAFE_Helper{
 		curl_close($request);
 		return unserialize($response);
 	}
+	public function sendinblue_get_list($api_key){
+		$curl = curl_init();
+		curl_setopt_array($curl, array(
+		CURLOPT_URL => 'https://api.sendinblue.com/v3/contacts/lists?limit=50&offset=0&sort=desc',
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING => '',
+		CURLOPT_MAXREDIRS => 10,
+		CURLOPT_TIMEOUT => 0,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => 'GET',
+		CURLOPT_HTTPHEADER => array(
+			'Accept: application/json',
+			'api-key: '.$api_key.'',
+		),
+		));
+		$response = curl_exec($curl);
+		curl_close($curl);
+		return $response;
+	}
+	public function sendinblue_get_attribute($api_key){
+		$curl = curl_init();
+		curl_setopt_array($curl, array(
+		CURLOPT_URL => 'https://api.sendinblue.com/v3/contacts/attributes',
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING => '',
+		CURLOPT_MAXREDIRS => 10,
+		CURLOPT_TIMEOUT => 0,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => 'GET',
+		CURLOPT_HTTPHEADER => array(
+			'Accept: application/json',
+			'api-key: '.$api_key.'',
+		),
+		));
+		$response = curl_exec($curl);
+		curl_close($curl);
+		return $response;
+	}
+	public function sendinblue_create_contact($api_key, $data){
+		$curl = curl_init();
+		curl_setopt_array($curl, array(
+		CURLOPT_URL => 'https://api.sendinblue.com/v3/contacts',
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING => '',
+		CURLOPT_MAXREDIRS => 10,
+		CURLOPT_TIMEOUT => 0,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => 'POST',
+		CURLOPT_POSTFIELDS =>$data,
+		CURLOPT_HTTPHEADER => array(
+			'Accept: application/json',
+			'Content-Type: application/json',
+			'api-key: '.$api_key.'',
+		),
+		));
+		$response = curl_exec($curl);
+		curl_close($curl);
+		return $response;
+	}
 }

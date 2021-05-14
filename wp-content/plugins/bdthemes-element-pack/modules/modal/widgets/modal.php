@@ -882,7 +882,7 @@ class Modal extends Module_Base {
 
         $this->add_render_attribute( 'modal', 'id', $id );
         $this->add_render_attribute( 'modal', 'class', 'bdt-modal-' . $this->get_id() );
-        $this->add_render_attribute( 'modal', 'bdt-modal', '' );
+        $this->add_render_attribute( 'modal', 'data-bdt-modal', '' );
 
         if ( $settings['modal_size'] !== 'full' ) {
         	$this->add_render_attribute( 'modal', 'class', 'bdt-modal' );
@@ -910,7 +910,7 @@ class Modal extends Module_Base {
         }
 
 
-        $this->add_render_attribute( 'button', 'bdt-toggle', 'target: #'.$id );
+        $this->add_render_attribute( 'button', 'data-bdt-toggle', 'target: #'.$id );
         $this->add_render_attribute( 'button', 'href', 'javascript:void(0)' );
 
         $this->add_render_attribute( 'modal-body', 'class', 'bdt-modal-body' );
@@ -945,7 +945,7 @@ class Modal extends Module_Base {
 	            <div <?php echo $this->get_render_attribute_string( 'modal-dialog' ); ?>>
 	                            
 	                <?php if ( $settings['close_button'] != 'none' ) : ?>
-	                	<button class="bdt-modal-close-<?php echo esc_attr($settings['close_button']); ?>" type="button" bdt-close></button>
+	                	<button class="bdt-modal-close-<?php echo esc_attr($settings['close_button']); ?>" type="button" data-bdt-close></button>
 	                <?php endif; ?>
 	                
 	                <?php if ( $settings['header'] ) : ?>

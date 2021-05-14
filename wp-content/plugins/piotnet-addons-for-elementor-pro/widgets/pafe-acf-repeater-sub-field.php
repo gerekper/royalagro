@@ -81,7 +81,7 @@ class PAFE_ACF_Repeater_Sub_Field extends \Elementor\Widget_Base {
 			[
 				'name' => 'pafe_acf_repeater_sub_field_typography',
 				'label' => __( 'Typography', 'pafe' ),
-				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}}',
 				'condition' => [
 					'pafe_acf_repeater_sub_field_type' => 'text',

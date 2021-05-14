@@ -1056,7 +1056,6 @@
 								update_post_meta( $form_database_post_id, $field['name'], $field['value'] );
 							}
 						}
-
 					}
 
 					// End add to Form Database
@@ -1981,7 +1980,41 @@
 							curl_close($curl);
 						}
 					}
-
+					//Sendinblue
+					if (in_array("sendinblue", $form['settings']['submit_actions'])) {
+						$sendinblue_acceptance = true;
+						if (!empty($form['settings']['sendinblue_api_acceptance_field_shortcode'])) {
+							$sendinblue_acceptance_value = pafe_get_field_value($form['settings']['sendinblue_api_acceptance_field_shortcode'],$fields);
+							if (empty($sendinblue_acceptance_value)) {
+								$sendinblue_acceptance = false;
+							}
+						}
+						if($sendinblue_acceptance == true) {
+							$sendinblue_api = $form['settings']['sendinblue_api_key_source'];
+							if ($sendinblue_api == 'default') {
+								$sendinblue_api_key = get_option('piotnet-addons-for-elementor-pro-sendinblue-api-key');
+							}else{
+								$sendinblue_api_key = $form['settings']['sendinblue_api_key'];
+							}
+							$sendinblue_lists = explode(',', $form['settings']['sendinblue_list_ids']);
+							$sendinblue_field_mapping_list = $form['settings']['sendinblue_fields_map'];
+							if(!empty($sendinblue_field_mapping_list)){
+								$data_sendinblue = [];
+								$helper = new PAFE_Helper();
+								foreach($sendinblue_field_mapping_list as $key => $val){
+									if($val['sendinblue_tagname'] == 'email'){
+										$data_sendinblue['email'] = pafe_get_field_value($val['sendinblue_shortcode'],$fields,$payment_status, $payment_id);
+									}else{
+										$data_sendinblue['attributes'][$val['sendinblue_tagname']] = pafe_get_field_value($val['sendinblue_shortcode'],$fields,$payment_status, $payment_id);
+									}
+								}
+								$data_sendinblue['updateEnabled'] = false;
+								$data_sendinblue['listIds'] = $sendinblue_lists;
+								$data_sendinblue = json_encode($data_sendinblue);
+								$sendinblue_result = $helper->sendinblue_create_contact($sendinblue_api_key, $data_sendinblue);
+							}
+						}
+					}
 					//PDF Genrenator
 					if (in_array("pdfgenerator", $form['settings']['submit_actions'])) {
 						$pdf_generator_list = $form['settings']['pdfgenerator_field_mapping_list'];
@@ -2001,7 +2034,7 @@
 							$tplIdx = $pdf->importPage(1);
 							$pdf->useTemplate($tplIdx);
 						}
-						
+
 						$pdf_color = pafe_hexToRgb($form['settings']['pdfgenerator_color']);
 						
 						$pdf->AddFont('dejavu','','DejaVuSans.ttf',true);
@@ -2355,7 +2388,6 @@
 								$helper->zoho_refresh_token();
 								$zoho_access_token = get_option('zoho_access_token');
 								$zoho_result = $helper->zohocrm_post_record($zoho_data, $zoho_request_url, $zoho_access_token);
-								echo $zoho_result;
 							}
 						}
 					}
@@ -2794,10 +2826,130 @@
 
 					}
 
+					//Hubspot integration
+
+					if (in_array('hubspot', $form['settings']['submit_actions'])) {
+
+						$hubspot_api = get_option('piotnet-addons-for-elementor-pro-hubspot-api-key');
+						$hubspot_url ='https://api.hubapi.com/contacts/v1/contact?hapikey='.$hubspot_api;
+
+						if ( !empty($form['settings']['pafe_hubspot_first_name']) ) {
+						$pafe_hubspot_first_name = replace_email($form['settings']['pafe_hubspot_first_name'], $fields);
+							if ( !empty($pafe_hubspot_first_name) ) {
+								$hubspot_data['properties'][] = [
+									'property' => 'firstname',
+									'value' => $pafe_hubspot_first_name,
+								];
+							}
+						}
+
+						if ( !empty($form['settings']['pafe_hubspot_last_name']) ) {
+							$pafe_hubspot_last_name = replace_email($form['settings']['pafe_hubspot_last_name'], $fields);
+							if ( !empty($pafe_hubspot_last_name) ) {
+								$hubspot_data['properties'][] = [
+									'property' => 'lastname',
+									'value' => $pafe_hubspot_last_name,
+								];
+							}
+						}
+
+						if ( !empty($form['settings']['pafe_hubspot_email']) ) {
+							$pafe_hubspot_email = replace_email($form['settings']['pafe_hubspot_email'], $fields);
+							if ( !empty($pafe_hubspot_email) ) {
+								$hubspot_data['properties'][] = [
+									'property' => 'email',
+									'value' => $pafe_hubspot_email,
+								];
+							}
+						}
+						if ( !empty($form['settings']['pafe_hubspot_phone']) ) {
+							$pafe_hubspot_phone = replace_email($form['settings']['pafe_hubspot_phone'], $fields);
+							if ( !empty($pafe_hubspot_phone) ) {
+								$hubspot_data['properties'][] = [
+									'property' => 'phone',
+									'value' => $pafe_hubspot_phone,
+								];
+							}
+						}
+						if ( !empty($form['settings']['pafe_hubspot_website']) ) {
+							$pafe_hubspot_website = replace_email($form['settings']['pafe_hubspot_website'], $fields);
+							if ( !empty($pafe_hubspot_website) ) {
+								$hubspot_data['properties'][] = [
+									'property' => 'website',
+									'value' => $pafe_hubspot_website,
+								];
+							}
+						}
+						if ( !empty($form['settings']['pafe_hubspot_city']) ) {
+							$pafe_hubspot_city = replace_email($form['settings']['pafe_hubspot_city'], $fields);
+							if ( !empty($pafe_hubspot_city) ) {
+								$hubspot_data['properties'][] = [
+									'property' => 'city',
+									'value' => $pafe_hubspot_city,
+								];
+							}
+						}
+						if ( !empty($form['settings']['pafe_hubspot_company']) ) {
+							$pafe_hubspot_company = replace_email($form['settings']['pafe_hubspot_company'], $fields);
+							if ( !empty($pafe_hubspot_company) ) {
+								$hubspot_data['properties'][] = [
+									'property' => 'company',
+									'value' => $pafe_hubspot_company,
+								];
+							}
+						}
+						if ( !empty($form['settings']['pafe_hubspot_zip']) ) {
+							$pafe_hubspot_zip = replace_email($form['settings']['pafe_hubspot_zip'], $fields);
+							if ( !empty($pafe_hubspot_zip) ) {
+								$hubspot_data['properties'][] = [
+									'property' => 'zip',
+									'value' => $pafe_hubspot_zip,
+								];
+							}
+						}
+						if ( !empty($form['settings']['pafe_hubspot_state']) ) {
+							$pafe_hubspot_state = replace_email($form['settings']['pafe_hubspot_state'], $fields);
+							if ( !empty($pafe_hubspot_state) ) {
+								$hubspot_data['properties'][] = [
+									'property' => 'state',
+									'value' => $pafe_hubspot_state,
+								];
+							}
+						}
+						if ( !empty($form['settings']['pafe_hubspot_address']) ) {
+							$pafe_hubspot_address = replace_email($form['settings']['pafe_hubspot_address'], $fields);
+							if ( !empty($pafe_hubspot_address) ) {
+								$hubspot_data['properties'][] = [
+									'property' => 'address',
+									'value' => $pafe_hubspot_address,
+								];
+							}
+						}
+						$curl = curl_init();
+
+						curl_setopt_array($curl, array(
+							CURLOPT_URL => $hubspot_url,
+							CURLOPT_RETURNTRANSFER => true,
+							CURLOPT_ENCODING => '',
+							CURLOPT_MAXREDIRS => 10,
+							CURLOPT_TIMEOUT => 0,
+							CURLOPT_FOLLOWLOCATION => true,
+							CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+							CURLOPT_CUSTOMREQUEST => 'POST',
+							CURLOPT_POSTFIELDS => json_encode($hubspot_data),
+							CURLOPT_HTTPHEADER => array(
+								'Content-Type: application/json',
+							),
+						));
+
+						$response = curl_exec($curl);
+						curl_close($curl);
+						//echo $response;
+					}
+
 					// Sendy
 
 					if (in_array('sendy', $form['settings']['submit_actions'])) {
-						
 						if (!empty($form['settings']['sendy_url']) && !empty($form['settings']['sendy_api_key']) && !empty($form['settings']['sendy_name_field_shortcode']) && !empty($form['settings']['sendy_email_field_shortcode']) && !empty($form['settings']['sendy_list_id'])) {
 							
 							$sendy_url = $form['settings']['sendy_url'];
@@ -3353,12 +3505,16 @@
 					if ($failed == false && empty($status)) {
 						$status = 1;
 					}
-
-					$register_message = str_replace(',', '###', $register_message);
-
-					echo $payment_status . ',' . $status . ',' . $payment_id . ',' . $post_url . ',' . $redirect . ',' . $register_message . ',' . $failed_status;
-					// echo '<br>';
-					// echo $message;
+					$pafe_response = array(
+						'payment_status' => $payment_status,
+						'status' => $status,
+						'payment_id' => $payment_id,
+						'post_url' => $post_url,
+						'redirect' => $redirect,
+						'register_message' => str_replace(',', '###', $register_message),//$register_message,
+						'failed_status' => $failed_status
+					);
+					echo json_encode($pafe_response);
 
 				} // End $recaptcha_check = 1;
 			}
@@ -3493,7 +3649,6 @@
 			CURLOPT_TIMEOUT => 0,
 			CURLOPT_FOLLOWLOCATION => true,
 			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-			CURLOPT_SSL_VERIFYPEER => false,
 			CURLOPT_CUSTOMREQUEST => "POST",
 			CURLOPT_POSTFIELDS => json_encode($data_gg_calendar),
 			CURLOPT_HTTPHEADER => array(

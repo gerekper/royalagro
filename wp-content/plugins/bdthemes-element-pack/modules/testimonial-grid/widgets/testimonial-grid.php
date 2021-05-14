@@ -1289,7 +1289,7 @@ class Testimonial_Grid extends Module_Base {
 
         ?>
         <div class="bdt-testimonial-grid-rating">
-            <ul class="bdt-rating bdt-rating-<?php echo get_post_meta($post_id, 'bdthemes_tm_rating', true); ?> bdt-grid bdt-grid-collapse" bdt-grid>
+            <ul class="bdt-rating bdt-rating-<?php echo get_post_meta($post_id, 'bdthemes_tm_rating', true); ?> bdt-grid bdt-grid-collapse" data-bdt-grid>
                 <li class="bdt-rating-item"><i class="ep-star-full" aria-hidden="true"></i></li>
                 <li class="bdt-rating-item"><i class="ep-star-full" aria-hidden="true"></i></li>
                 <li class="bdt-rating-item"><i class="ep-star-full" aria-hidden="true"></i></li>
@@ -1328,16 +1328,16 @@ class Testimonial_Grid extends Module_Base {
 
             <button class="bdt-button bdt-button-default bdt-hidden@m"
                     type="button"><?php esc_html_e('Filter', 'bdthemes-element-pack'); ?></button>
-            <div bdt-dropdown="mode: click;" class="bdt-dropdown bdt-margin-remove-top bdt-margin-remove-bottom">
+            <div data-bdt-dropdown="mode: click;" class="bdt-dropdown bdt-margin-remove-top bdt-margin-remove-bottom">
                 <ul class="bdt-nav bdt-dropdown-nav">
 
                     <li class="bdt-ep-grid-filter bdt-active"
-                        bdt-filter-control><?php esc_html_e('All', 'bdthemes-element-pack'); ?></li>
+                        data-bdt-filter-control><?php esc_html_e('All', 'bdthemes-element-pack'); ?></li>
 
                     <?php foreach ( $testi_categories as $testi_category => $value ) : ?>
                         <?php $filter_name = get_term_by('slug', $value, 'testimonial_categories'); ?>
                         <li class="bdt-ep-grid-filter"
-                            bdt-filter-control="[data-filter*='bdtf-<?php echo esc_attr(trim($value)); ?>']">
+                            data-bdt-filter-control="[data-filter*='bdtf-<?php echo esc_attr(trim($value)); ?>']">
                             <?php echo esc_html($filter_name->name); ?>
                         </li>
                     <?php endforeach; ?>
@@ -1346,14 +1346,14 @@ class Testimonial_Grid extends Module_Base {
             </div>
 
 
-            <ul class="bdt-ep-grid-filters bdt-visible@m" bdt-margin>
+            <ul class="bdt-ep-grid-filters bdt-visible@m" data-bdt-margin>
                 <li class="bdt-ep-grid-filter bdt-active"
-                    bdt-filter-control><?php esc_html_e('All', 'bdthemes-element-pack'); ?></li>
+                    data-bdt-filter-control><?php esc_html_e('All', 'bdthemes-element-pack'); ?></li>
 
                 <?php foreach ( $testi_categories as $product_category => $value ) : ?>
                     <?php $filter_name = get_term_by('slug', $value, 'testimonial_categories'); ?>
                     <li class="bdt-ep-grid-filter"
-                        bdt-filter-control="[data-filter*='bdtf-<?php echo esc_attr(trim($value)); ?>']">
+                        data-bdt-filter-control="[data-filter*='bdtf-<?php echo esc_attr(trim($value)); ?>']">
                         <?php echo esc_html($filter_name->name); ?>
                     </li>
                 <?php endforeach; ?>
@@ -1370,7 +1370,7 @@ class Testimonial_Grid extends Module_Base {
         
 
         if ( $settings['show_filter_bar'] ) {
-            $this->add_render_attribute('testimonial-grid-wrapper', 'bdt-filter', 'target: #bdt-testimonial-grid-' . $this->get_id());
+            $this->add_render_attribute('testimonial-grid-wrapper', 'data-bdt-filter', 'target: #bdt-testimonial-grid-' . $this->get_id());
         }
 
         ?>
@@ -1424,15 +1424,15 @@ class Testimonial_Grid extends Module_Base {
         $settings = $this->get_settings_for_display();
         $wp_query = $this->render_query();
 
-        $this->add_render_attribute('testimonial-grid', 'bdt-grid', '');
+        $this->add_render_attribute('testimonial-grid', 'data-bdt-grid', '');
         $this->add_render_attribute('testimonial-grid', 'class', 'bdt-grid');
 
         if ( $settings['item_match_height'] ) {
-            $this->add_render_attribute('testimonial-grid', 'bdt-height-match', 'div > .bdt-testimonial-grid-item-inner');
+            $this->add_render_attribute('testimonial-grid', 'data-bdt-height-match', 'div > .bdt-testimonial-grid-item-inner');
         }
 
         if ( $settings['item_masonry'] ) {
-            $this->add_render_attribute('testimonial-grid', 'bdt-grid', 'masonry: true;');
+            $this->add_render_attribute('testimonial-grid', 'data-bdt-grid', 'masonry: true;');
         }
 
         if ( $wp_query->have_posts() ) {
@@ -1461,7 +1461,7 @@ class Testimonial_Grid extends Module_Base {
                 <div <?php echo $this->get_render_attribute_string('testimonial-grid-item'); ?>>
                     <?php if ( '1' == $settings['layout'] ) : ?>
                         <div class="bdt-testimonial-grid-item-inner">
-                            <div class="bdt-grid bdt-position-relative bdt-grid-small bdt-flex-middle" bdt-grid>
+                            <div class="bdt-grid bdt-position-relative bdt-grid-small bdt-flex-middle" data-bdt-grid>
                                 <?php $this->render_image(get_the_ID()); ?>
                                 <?php if ( $settings['show_title'] || $settings['show_address'] ) : ?>
                                     <div class="bdt-testimonial-grid-title-address <?php echo ($settings['meta_multi_line']) ? 'bdt-meta-multi-line' : ''; ?>">
@@ -1507,7 +1507,7 @@ class Testimonial_Grid extends Module_Base {
                     <?php if ( '3' == $settings['layout'] ) : ?>
                         <div class="bdt-testimonial-grid-item-inner">
                             <?php $this->render_excerpt(); ?>
-                            <div class="bdt-grid bdt-position-relative bdt-grid-small bdt-flex-middle" bdt-grid>
+                            <div class="bdt-grid bdt-position-relative bdt-grid-small bdt-flex-middle" data-bdt-grid>
                                 <?php $this->render_image(get_the_ID()); ?>
                                 <?php if ( $settings['show_title'] || $settings['show_address'] ) : ?>
                                     <div class="bdt-testimonial-grid-title-address <?php echo ($settings['meta_multi_line']) ? 'bdt-meta-multi-line' : ''; ?>">

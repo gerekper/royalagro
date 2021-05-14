@@ -2,7 +2,7 @@
 Contributors: wpdevteam, re_enter_rupok, Asif2BD, priyomukul, manzurahammed
 Tags: elementor, elements, widgets, page builder, builder, visual editor, wordpress page builder
 Tested up to: 5.7.1
-Stable tag: 4.3.9.1
+Stable tag: 4.4.0
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -10,7 +10,7 @@ Supercharge your Elementor page building experience with Essential Addons PRO. G
 
 == Description ==
 
-Ultimate elements  library for Elementor WordPress Page Builder. 50+ useful and premium elements to complete your website quickly. Stunning design and neat and clean code. Option to enable/disable certain elements to improve page loading. No extra resources to slow down your website.
+Ultimate elements  library for Elementor WordPress Page Builder. 70+ useful and premium elements to complete your website quickly. Stunning design and neat and clean code. Option to enable/disable certain elements to improve page loading. No extra resources to slow down your website.
 
 
 List of Elements :
@@ -75,6 +75,7 @@ List of Elements :
 * LearnDash Course List
 * Formstack
 * Typeform
+* Woo Product Slider
 
 List of Extensions :
 
@@ -86,6 +87,10 @@ List of Extensions :
 * Custom JS
 
 == Changelog ==
+
+= 4.4.0 - 09/05/2021 =
+- Added: EA Woo Product Carousel
+- Few minor bug fix and improvements
 
 = 4.3.9.1 - 03/05/2021 =
 - Version issue fixed

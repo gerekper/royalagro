@@ -107,9 +107,9 @@ class Premium_Image_Hotspots extends Widget_Base {
 	public function get_script_depends() {
 		return array(
 			'lottie-js',
-			'anime-js',
-			'tooltipster-bundle-js',
-			'premium-pro-js',
+			'pa-anime',
+			'tooltipster-bundle',
+			'premium-pro',
 		);
 	}
 

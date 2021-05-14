@@ -31,8 +31,8 @@ class PAFE_Convert_Image_To_Black_Or_White extends \Elementor\Widget_Base {
 				'label_off' => 'No',
 				'return_value' => 'yes',
 				'selectors' => [
-					'{{WRAPPER}} .elementor-image img' => '-webkit-filter: brightness(0) invert(0); filter: brightness(0) invert(0);',
-				],
+					'{{WRAPPER}} .elementor-image img,{{WRAPPER}} .elementor-widget-container img' => '-webkit-filter: brightness(0) invert(0); filter: brightness(0) invert(0);',
+                ],
 			]
 		);
 
@@ -46,7 +46,7 @@ class PAFE_Convert_Image_To_Black_Or_White extends \Elementor\Widget_Base {
 				'label_off' => 'No',
 				'return_value' => 'yes',
 				'selectors' => [
-					'{{WRAPPER}} .elementor-image img' => '-webkit-filter: brightness(0) invert(1); filter: brightness(0) invert(1);',
+					'{{WRAPPER}} .elementor-image img,{{WRAPPER}} .elementor-widget-container img' => '-webkit-filter: brightness(0) invert(1); filter: brightness(0) invert(1);',
 				],
 			]
 		);

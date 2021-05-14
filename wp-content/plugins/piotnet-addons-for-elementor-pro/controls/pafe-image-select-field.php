@@ -67,7 +67,7 @@ class PAFE_Image_Select_Field extends \Elementor\Widget_Base {
 			[
 				'name' => 'pafe_image_select_field_typography',
 				'label' => __( 'Typography', 'pafe' ),
-				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .image_picker_selector .thumbnail p',
 			]
 		);

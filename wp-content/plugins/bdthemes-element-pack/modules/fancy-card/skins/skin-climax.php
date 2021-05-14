@@ -34,8 +34,8 @@ class Skin_Climax extends Elementor_Skin_Base {
 
 		$this->parent->add_render_attribute( 'description_text', 'class', 'bdt-fancy-card-description' );
 
-		$this->parent->add_render_attribute( 'title_text', 'none' );
-		$this->parent->add_render_attribute( 'description_text' );
+		// $this->parent->add_render_attribute( 'title_text', 'none' );
+		// $this->parent->add_render_attribute( 'description_text' );
 
 
 		$this->parent->add_render_attribute( 'readmore', 'class', ['bdt-fancy-card-readmore', 'bdt-display-inline-block'] );
@@ -118,7 +118,7 @@ class Skin_Climax extends Elementor_Skin_Base {
 			<div class="bdt-fancy-card-content">
 				<?php if ( $settings['title_text'] ) : ?>
 					<<?php echo Utils::get_valid_html_tag($settings['title_size']); ?> <?php echo $this->parent->get_render_attribute_string( 'fancy-card-title' ); ?>>
-						<span <?php echo $this->parent->get_render_attribute_string( 'title_text' ); ?>>
+						<span <?php //echo $this->parent->get_render_attribute_string( 'title_text' ); ?>>
 							<?php echo wp_kses( $settings['title_text'], element_pack_allow_tags('title') ); ?>
 						</span>
 					</<?php echo Utils::get_valid_html_tag($settings['title_size']); ?>>

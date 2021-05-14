@@ -1061,7 +1061,7 @@ class Iconnav extends Module_Base {
 				<ul class="bdt-icon-nav bdt-icon-nav-vertical">
 					<?php if ( $settings['navbar'] ) : ?>
 						<li>
-							<a class="bdt-icon-nav-icon-wrapper" href="#" bdt-toggle="target: #bdt-offcanvas<?php echo esc_attr($id); ?>">
+							<a class="bdt-icon-nav-icon-wrapper" href="#" data-bdt-toggle="target: #bdt-offcanvas<?php echo esc_attr($id); ?>">
 								<span class="bdt-icon-nav-icon">
 									<i class="ep-menu"></i>
 								</span>
@@ -1099,14 +1099,14 @@ class Iconnav extends Module_Base {
 			]
 		);
 
-		$this->add_render_attribute( 'offcanvas-settings', 'bdt-offcanvas', 'mode: ' . $settings['offcanvas_animations'] . ';' );
+		$this->add_render_attribute( 'offcanvas-settings', 'data-bdt-offcanvas', 'mode: ' . $settings['offcanvas_animations'] . ';' );
 
 		if ($settings['offcanvas_overlay']) {
-			$this->add_render_attribute( 'offcanvas-settings', 'bdt-offcanvas', 'overlay: true;' );
+			$this->add_render_attribute( 'offcanvas-settings', 'data-bdt-offcanvas', 'overlay: true;' );
 		}
 
 		if ($settings['offcanvas_flip']) {
-			$this->add_render_attribute( 'offcanvas-settings', 'bdt-offcanvas', 'flip: true;' );
+			$this->add_render_attribute( 'offcanvas-settings', 'data-bdt-offcanvas', 'flip: true;' );
 		}
 
 		$nav_menu    = ! empty( $settings['navbar'] ) ? wp_get_nav_menu_object( $settings['navbar'] ) : false;
@@ -1124,7 +1124,7 @@ class Iconnav extends Module_Base {
 	    $nav_menu_args = array(
 	    	'fallback_cb'    => false,
 	    	'container'      => false,
-	    	'items_wrap'     => '<ul id="%1$s" class="%2$s" bdt-nav>%3$s</ul>',
+	    	'items_wrap'     => '<ul id="%1$s" class="%2$s" data-bdt-nav>%3$s</ul>',
 	    	'menu_id'        => 'bdt-navmenu',
 	    	'menu_class'     => $nav_class,
 	    	'theme_location' => 'default_navmenu', // creating a fake location for better functional control
@@ -1139,7 +1139,7 @@ class Iconnav extends Module_Base {
 	        <div class="bdt-offcanvas-bar">
 				
 				<?php if ($settings['offcanvas_close_button']) : ?>
-	        		<button class="bdt-offcanvas-close" type="button" bdt-close></button>
+	        		<button class="bdt-offcanvas-close" type="button" data-bdt-close></button>
 	        	<?php endif; ?>
 				
 				<div id="bdt-navbar-<?php echo esc_attr($id); ?>" class="bdt-navbar-wrapper">
@@ -1181,7 +1181,7 @@ class Iconnav extends Module_Base {
 				<ul class="bdt-icon-nav bdt-icon-nav-vertical">
 					<# if ( 0 != settings.navbar ) { #>
 						<li>
-							<a class="bdt-icon-nav-icon-wrapper" href="#" bdt-toggle="target: #bdt-offcanvas<?php echo esc_attr($id); ?>">
+							<a class="bdt-icon-nav-icon-wrapper" href="#" data-bdt-toggle="target: #bdt-offcanvas<?php echo esc_attr($id); ?>">
 								<span class="bdt-icon-nav-icon">
 									<i class="ep-menu"></i>
 								</span>

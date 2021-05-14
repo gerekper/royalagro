@@ -1364,7 +1364,7 @@ class Custom_Gallery extends Module_Base {
 						<div class="bdt-flex-inline bdt-gallery-item-link-wrapper">
 							<a <?php echo $this->get_render_attribute_string( $element_key ); ?>>
 								<?php if ( 'icon' == $settings['link_type'] ) : ?>
-									<span bdt-icon="icon: <?php echo esc_attr( $icon); ?>; ratio: 1.6"></span>
+									<span data-bdt-icon="icon: <?php echo esc_attr( $icon); ?>; ratio: 1.6"></span>
 								<?php elseif ( 'text' == $settings['link_type'] ) : ?>
 									<span class="bdt-text"><?php esc_html_e( 'ZOOM', 'bdthemes-element-pack' ); ?></span>
 								<?php endif;?>
@@ -1392,25 +1392,25 @@ class Custom_Gallery extends Module_Base {
 		$this->add_render_attribute('custom-gallery', 'class', ['bdt-grid', 'bdt-grid-small'] );
 		
 		if ( 'yes' === $settings['masonry'] ) {
-			$this->add_render_attribute('custom-gallery', 'bdt-grid', 'masonry: true');
+			$this->add_render_attribute('custom-gallery', 'data-bdt-grid', 'masonry: true');
 		}
 
 		if ( $settings['show_lightbox'] ) {
-			$this->add_render_attribute('custom-gallery', 'bdt-lightbox', 'toggle: .bdt-gallery-lightbox-item; animation:' . $settings['lightbox_animation'] . ';');
+			$this->add_render_attribute('custom-gallery', 'data-bdt-lightbox', 'toggle: .bdt-gallery-lightbox-item; animation:' . $settings['lightbox_animation'] . ';');
 			if ( $settings['lightbox_autoplay'] ) {
-				$this->add_render_attribute('custom-gallery', 'bdt-lightbox', 'autoplay: 500;');
+				$this->add_render_attribute('custom-gallery', 'data-bdt-lightbox', 'autoplay: 500;');
 				
 				if ( $settings['lightbox_pause'] ) {
-					$this->add_render_attribute('custom-gallery', 'bdt-lightbox', 'pause-on-hover: true;');
+					$this->add_render_attribute('custom-gallery', 'data-bdt-lightbox', 'pause-on-hover: true;');
 				}
 			}
 		}
 
 
 		 if($settings['grid_animation_type'] !== ''){ 
-            $this->add_render_attribute( 'custom-gallery', 'bdt-scrollspy', 'cls: bdt-animation-' . esc_attr($settings['grid_animation_type']) . ';' );
-            $this->add_render_attribute( 'custom-gallery', 'bdt-scrollspy', 'delay: ' . esc_attr($settings['grid_anim_delay']['size']) . ';' );
-            $this->add_render_attribute( 'custom-gallery', 'bdt-scrollspy', 'target: > div > .bdt-custom-gallery-inner' . ';' );
+            $this->add_render_attribute( 'custom-gallery', 'data-bdt-scrollspy', 'cls: bdt-animation-' . esc_attr($settings['grid_animation_type']) . ';' );
+            $this->add_render_attribute( 'custom-gallery', 'data-bdt-scrollspy', 'delay: ' . esc_attr($settings['grid_anim_delay']['size']) . ';' );
+            $this->add_render_attribute( 'custom-gallery', 'data-bdt-scrollspy', 'target: > div > .bdt-custom-gallery-inner' . ';' );
         } 
 
 		?>

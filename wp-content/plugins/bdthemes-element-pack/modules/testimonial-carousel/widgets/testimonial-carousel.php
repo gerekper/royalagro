@@ -4,7 +4,6 @@ namespace ElementPack\Modules\TestimonialCarousel\Widgets;
 
 use ElementPack\Base\Module_Base;
 use Elementor\Controls_Manager;
-use Elementor\Core\Schemes;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
@@ -2343,16 +2342,16 @@ class Testimonial_Carousel extends Module_Base {
         ?>
         <meta itemprop="datePublished" content="<?php echo get_the_date(); ?>">
         <ul class="bdt-rating bdt-rating-<?php echo get_post_meta($post_id, 'bdthemes_tm_rating', true); ?> bdt-grid bdt-grid-collapse"
-            bdt-grid itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+            data-bdt-grid itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
             <li class="bdt-rating-item"><i class="ep-star-full" aria-hidden="true"></i></li>
             <li class="bdt-rating-item"><i class="ep-star-full" aria-hidden="true"></i></li>
             <li class="bdt-rating-item"><i class="ep-star-full" aria-hidden="true"></i></li>
             <li class="bdt-rating-item"><i class="ep-star-full" aria-hidden="true"></i></li>
             <li class="bdt-rating-item"><i class="ep-star-full" aria-hidden="true"></i></li>
-            <meta itemprop="worstRating" content="1">
-            <meta itemprop="ratingValue" content="<?php echo get_post_meta($post_id, 'bdthemes_tm_rating', true); ?>">
-            <meta itemprop="bestRating" content="5">
         </ul>
+        <meta itemprop="worstRating" content="1">
+        <meta itemprop="ratingValue" content="<?php echo get_post_meta($post_id, 'bdthemes_tm_rating', true); ?>">
+        <meta itemprop="bestRating" content="5">
         <?php
     }
 
@@ -2380,7 +2379,7 @@ class Testimonial_Carousel extends Module_Base {
         }
 
         if ( 'yes' == $settings['item_match_height'] ) {
-            $this->add_render_attribute('testimonial-carousel', 'bdt-height-match', 'target: > div > div > div > div > .bdt-testimonial-carousel-text');
+            $this->add_render_attribute('testimonial-carousel', 'data-bdt-height-match', 'target: > div > div > div > div > .bdt-testimonial-carousel-text');
         }
 
         if ( 'arrows' == $settings['navigation'] ) {
@@ -2632,7 +2631,7 @@ class Testimonial_Carousel extends Module_Base {
                      itemtype="http://schema.org/Review">
                     <div class="bdt-testimonial-carousel-item-wrapper">
                         <div class="testimonial-item-header">
-                            <div class="bdt-grid bdt-grid-small bdt-flex-middle" bdt-grid>
+                            <div class="bdt-grid bdt-grid-small bdt-flex-middle" data-bdt-grid>
 
                                 <?php
                                 $this->render_image(get_the_ID());

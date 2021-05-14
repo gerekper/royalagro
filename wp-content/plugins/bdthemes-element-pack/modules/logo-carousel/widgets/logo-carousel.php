@@ -40,7 +40,7 @@ class Logo_Carousel extends Module_Base {
         if ($this->ep_is_edit_mode()) {
             return ['ep-all-styles'];
         } else {
-            return [ 'ep-logo-carousel' ];
+            return [ 'element-pack-font', 'ep-logo-carousel' ];
         }
     }
     
@@ -1534,7 +1534,7 @@ class Logo_Carousel extends Module_Base {
 
 		$this->add_render_attribute('logo-carousel', 'id', 'bdt-logo-carousel-' . esc_attr($id) );
 		$this->add_render_attribute('logo-carousel', 'class', ['bdt-logo-carousel-wrapper'] );
-		$this->add_render_attribute('logo-carousel', 'bdt-grid', '');
+		$this->add_render_attribute('logo-carousel', 'data-bdt-grid', '');
 		$this->add_render_attribute('logo-carousel', 'class', ['bdt-grid', 'bdt-grid-small'] );
 		
 		$this->add_render_attribute('logo-carousel', 'class', 'bdt-slider-items');
@@ -1550,7 +1550,7 @@ class Logo_Carousel extends Module_Base {
 						( 'arrows' == $settings['navigation'] or 'arrows-thumbnavs' == $settings['navigation'] ) ? 'bdt-arrows-align-' . $settings['arrows_position'] : '',
 						( 'dots' == $settings['navigation'] ) ? 'bdt-dots-align-'. $settings['dots_position'] : '',
 					],
-					'bdt-slider' => [
+					'data-bdt-slider' => [
 						wp_json_encode(array_filter([
 							"autoplay"          => ( $settings["autoplay"] ) ? true : false,
 							"autoplay-interval" => $settings["autoplay_interval"],
@@ -1603,10 +1603,10 @@ class Logo_Carousel extends Module_Base {
 		?>
 		<div class="bdt-position-z-index bdt-position-<?php echo esc_attr($arrows_position); ?> <?php echo esc_attr($hide_arrow_on_mobile); ?>">
 			<div class="bdt-arrows-container bdt-slidenav-container">
-				<a href="" class="bdt-navigation-prev bdt-slidenav-previous bdt-icon bdt-slidenav" bdt-slider-item="previous">
+				<a href="" class="bdt-navigation-prev bdt-slidenav-previous bdt-icon bdt-slidenav" data-bdt-slider-item="previous">
 					<i class="ep-arrow-left-<?php echo esc_attr($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
 				</a>
-				<a href="" class="bdt-navigation-next bdt-slidenav-next bdt-icon bdt-slidenav" bdt-slider-item="next">
+				<a href="" class="bdt-navigation-next bdt-slidenav-next bdt-icon bdt-slidenav" data-bdt-slider-item="next">
 					<i class="ep-arrow-right-<?php echo esc_attr($settings['nav_arrows_icon']); ?>" aria-hidden="true"></i>
 				</a>
 			</div>
@@ -1632,7 +1632,7 @@ class Logo_Carousel extends Module_Base {
 
 					foreach ( $settings['logo_list'] as $index => $item ) :
 					      
-						echo '<li class="bdt-slider-dotnav bdt-active" bdt-slider-item="' . esc_attr($bdt_counter) . '"><a href="#"></a></li>';
+						echo '<li class="bdt-slider-dotnav bdt-active" data-bdt-slider-item="' . esc_attr($bdt_counter) . '"><a href="#"></a></li>';
 						$bdt_counter++;
 
 					endforeach; ?>
@@ -1697,7 +1697,7 @@ class Logo_Carousel extends Module_Base {
         foreach ( $settings['logo_list'] as $index => $item ) :
             $image = wp_get_attachment_image_url( $item['image']['id'], $settings['thumbnail_size'] );
             $repeater_key = 'carousel_item' . $index;
-            $tag = 'li';
+            $tag = 'div';
             $image_alt = esc_html($item['name']) . ' : ' . esc_html($item['description']); 
             $this->add_render_attribute( $repeater_key, 'class', 'bdt-logo-carousel-item' );
 

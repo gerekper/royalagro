@@ -1877,14 +1877,14 @@ class Portfolio_Gallery extends Module_Base
 
 			<button class="bdt-button bdt-button-default bdt-hidden@m" type="button"><?php esc_html_e('Filter', 'bdthemes-element-pack'); ?></button>
 
-			<div bdt-dropdown="mode: click;" class="bdt-dropdown bdt-margin-remove-top bdt-margin-remove-bottom">
+			<div data-bdt-dropdown="mode: click;" class="bdt-dropdown bdt-margin-remove-top bdt-margin-remove-bottom">
 				<ul class="bdt-nav bdt-dropdown-nav">
 
-					<li class="bdt-active" bdt-filter-control><?php esc_html_e('All', 'bdthemes-element-pack'); ?></li>
+					<li class="bdt-active" data-bdt-filter-control><?php esc_html_e('All', 'bdthemes-element-pack'); ?></li>
 
 					<?php foreach ($portfolio_categories as $portfolio_category => $value) : ?>
 						<?php $filter_name = get_term_by('slug', $value, 'portfolio_filter'); ?>
-						<li class="bdt-ep-grid-filter" bdt-filter-control="[data-filter*='bdtp-<?php echo esc_attr(trim($value)); ?>']">
+						<li class="bdt-ep-grid-filter" data-bdt-filter-control="[data-filter*='bdtp-<?php echo esc_attr(trim($value)); ?>']">
 							<?php echo $filter_name->name; ?>
 						</li>
 					<?php endforeach; ?>
@@ -1892,14 +1892,14 @@ class Portfolio_Gallery extends Module_Base
 				</ul>
 			</div>
 
-			<ul id="bdt-ep-grid-filters<?php echo $this->get_id(); ?>" class="bdt-ep-grid-filters bdt-visible@m" bdt-margin>
-				<li class="bdt-ep-grid-filter bdt-active" bdt-filter-control>
+			<ul id="bdt-ep-grid-filters<?php echo $this->get_id(); ?>" class="bdt-ep-grid-filters bdt-visible@m" data-bdt-margin>
+				<li class="bdt-ep-grid-filter bdt-active" data-bdt-filter-control>
 					<?php esc_html_e('All', 'bdthemes-element-pack'); ?>
 				</li>
 
 				<?php foreach ($portfolio_categories as $portfolio_category => $value) : ?>
 					<?php $filter_name = get_term_by('slug', $value, 'portfolio_filter'); ?>
-					<li class="bdt-ep-grid-filter" bdt-filter-control="[data-filter*='bdtp-<?php echo esc_attr(trim($value)); ?>']">
+					<li class="bdt-ep-grid-filter" data-bdt-filter-control="[data-filter*='bdtp-<?php echo esc_attr(trim($value)); ?>']">
 						<?php echo $filter_name->name; ?>
 					</li>
 				<?php endforeach; ?>
@@ -2033,7 +2033,7 @@ class Portfolio_Gallery extends Module_Base
 							<?php if (('lightbox' == $settings['show_link']) || ('both' == $settings['show_link'])) : ?>
 								<a <?php echo $this->get_render_attribute_string('lightbox-settings'); ?>>
 									<?php if ('icon' == $settings['link_type']) : ?>
-										<span bdt-icon="icon: search"></span>
+										<span data-bdt-icon="icon: search"></span>
 									<?php elseif ('text' == $settings['link_type']) : ?>
 										<span><?php esc_html_e('ZOOM', 'bdthemes-element-pack'); ?></span>
 									<?php endif; ?>
@@ -2048,7 +2048,7 @@ class Portfolio_Gallery extends Module_Base
 								?>
 								<a class="bdt-gallery-item-link<?php echo esc_attr($link_type_class); ?>" href="<?php echo esc_attr(get_permalink()); ?>" <?php echo $target; ?>>
 									<?php if ('icon' == $settings['link_type']) : ?>
-										<span bdt-icon="icon: link"></span>
+										<span data-bdt-icon="icon: link"></span>
 									<?php elseif ('text' == $settings['link_type']) : ?>
 										<span><?php esc_html_e('VIEW', 'bdthemes-element-pack'); ?></span>
 									<?php endif; ?>
@@ -2073,7 +2073,7 @@ class Portfolio_Gallery extends Module_Base
 
 		$this->add_render_attribute('portfolio', 'class', ['bdt-portfolio-gallery', 'bdt-ep-grid-filter-container', 'bdt-portfolio-gallery-skin-' . $skin]);
 
-		$this->add_render_attribute('portfolio', 'bdt-grid', '');
+		$this->add_render_attribute('portfolio', 'data-bdt-grid', '');
 		$this->add_render_attribute('portfolio', 'class', ['bdt-grid', 'bdt-grid-medium']);
 
 		$this->add_render_attribute('portfolio', 'class', 'bdt-child-width-1-' . $settings['columns_mobile']);
@@ -2081,20 +2081,20 @@ class Portfolio_Gallery extends Module_Base
 		$this->add_render_attribute('portfolio', 'class', 'bdt-child-width-1-' . $settings['columns'] . '@m');
 
 		if ($settings['masonry']) {
-			$this->add_render_attribute('portfolio', 'bdt-grid', 'masonry: true');
+			$this->add_render_attribute('portfolio', 'data-bdt-grid', 'masonry: true');
 		}
 
 		if ($settings['show_filter_bar']) {
-			$this->add_render_attribute('portfolio-wrapper', 'bdt-filter', 'target: #' . $id);
+			$this->add_render_attribute('portfolio-wrapper', 'data-bdt-filter', 'target: #' . $id);
 		}
 
 		if ('lightbox' === $settings['show_link'] or 'both' === $settings['show_link']) {
-			$this->add_render_attribute('portfolio', 'bdt-lightbox', 'toggle: .bdt-gallery-lightbox-item; animation:' . $settings['lightbox_animation'] . ';');
+			$this->add_render_attribute('portfolio', 'data-bdt-lightbox', 'toggle: .bdt-gallery-lightbox-item; animation:' . $settings['lightbox_animation'] . ';');
 			if ($settings['lightbox_autoplay']) {
-				$this->add_render_attribute('portfolio', 'bdt-lightbox', 'autoplay: 500;');
+				$this->add_render_attribute('portfolio', 'data-bdt-lightbox', 'autoplay: 500;');
 
 				if ($settings['lightbox_pause']) {
-					$this->add_render_attribute('portfolio', 'bdt-lightbox', 'pause-on-hover: true;');
+					$this->add_render_attribute('portfolio', 'data-bdt-lightbox', 'pause-on-hover: true;');
 				}
 			}
 		}

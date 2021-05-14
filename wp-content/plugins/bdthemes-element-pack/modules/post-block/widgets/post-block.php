@@ -1384,7 +1384,7 @@ class Post_Block extends Module_Base {
 							'bdt-grid-match',
 							'bdt-post-block-skin-base',
 						],
-						'bdt-grid' => ''
+						'data-bdt-grid' => ''
 					]
 				]
 			);
@@ -1478,7 +1478,7 @@ class Post_Block extends Module_Base {
 
 						</div>
 
-				  		<div class="bdt-width-1-2@m" bdt-scrollspy="cls: bdt-animation-fade; target: > ul > .bdt-post-block-item; delay: 350;">
+				  		<div class="bdt-width-1-2@m" data-bdt-scrollspy="cls: bdt-animation-fade; target: > ul > .bdt-post-block-item; delay: 350;">
 				  			<ul class="bdt-list bdt-list-large<?php echo esc_attr($bdt_list_divider); ?>">
 
 			  			<?php endif; ?>
@@ -1497,7 +1497,7 @@ class Post_Block extends Module_Base {
 			  			
 			  			?>
 			  			<li class="bdt-post-block-item list-part">
-				  			<div class="bdt-grid bdt-grid-small" bdt-grid>
+				  			<div class="bdt-grid bdt-grid-small" data-bdt-grid>
 				  				<div class="bdt-post-block-thumbnail bdt-width-auto">
 				  					<a href="<?php echo esc_url(get_permalink()); ?>" title="<?php echo esc_attr(get_the_title()); ?>">
 					  					<img src="<?php echo esc_url($image_src); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">

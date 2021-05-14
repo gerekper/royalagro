@@ -697,7 +697,7 @@ class Dropbar extends Module_Base {
 				'drop-settings' => [
 					'id'       => $id,
 					'class'    => 'bdt-drop',
-					'bdt-drop' => [
+					'data-bdt-drop' => [
 						wp_json_encode([
 							"pos"        => $settings["drop_position"],
 							"mode"       => $settings["drop_mode"],

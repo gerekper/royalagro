@@ -1,3 +1,28 @@
+## 5.8.0 [12th May 2021]
+
+### Added
+
+- Features Hide On option added in Price Table Widget
+- Badge Option added in Advanced Button Widget
+- Arrows Hide on Mobile option added in Slideshow Widget (Thanks Gabriel Sirbu)
+- Scroll Button Hide issue fixed (Thanks Sam Kary)
+- Show Arrows always control added in Video Gallery Widget
+- Parallax/Scrolling effects added in Section and Column
+- Background Parallax/Scrolling effect added border and background color option
+- Hover border color added in tabs widget
+
+
+### Fixed
+
+- 189 Widgets minor markup validation fixed and properly checked by W3C validator.
+- Admin email overriding fixed in Simple Contact Form Widget (Thanks Ruben Romero)
+- Hide On Before Scrolling simple bug fixed
+- Link Attribute issue fixed in Trailer Box Widget (Thanks Jason)
+- JS error fixed in Open Street Map Widget (Thanks Sailer)
+- Marketing Tab Disappears issue fixed (Thanks Josh Eastman)
+- User Login and Register widget Recaptcha JS issue fixed
+
+
 ## 5.7.7 [15th April 2021]
 
 ### Added

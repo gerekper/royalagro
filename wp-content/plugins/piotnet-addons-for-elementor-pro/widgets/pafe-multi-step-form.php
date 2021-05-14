@@ -44,6 +44,34 @@ class PAFE_Multi_Step_Form extends \Elementor\Widget_Base {
 		];
 	}
 
+    public function acf_get_field_key( $field_name, $post_id ) {
+        global $wpdb;
+        $acf_fields = $wpdb->get_results( $wpdb->prepare( "SELECT ID,post_parent,post_name FROM $wpdb->posts WHERE post_excerpt=%s AND post_type=%s" , $field_name , 'acf-field' ) );
+        // get all fields with that name.
+        switch ( count( $acf_fields ) ) {
+            case 0: // no such field
+                return false;
+            case 1: // just one result.
+                return $acf_fields[0]->post_name;
+        }
+        // result is ambiguous
+        // get IDs of all field groups for this post
+        $field_groups_ids = array();
+        $field_groups = acf_get_field_groups( array(
+            'post_id' => $post_id,
+        ) );
+        foreach ( $field_groups as $field_group )
+            $field_groups_ids[] = $field_group['ID'];
+
+        // Check if field is part of one of the field groups
+        // Return the first one.
+        foreach ( $acf_fields as $acf_field ) {
+            if ( in_array($acf_field->post_parent,$field_groups_ids) )
+                return $acf_field->post_name;
+        }
+        return false;
+    }
+
 	protected function _register_controls() {
 		$this->start_controls_section(
 			'pafe_multi_step_form_section_content',
@@ -362,6 +390,10 @@ class PAFE_Multi_Step_Form extends \Elementor\Widget_Base {
 			[
 				'name' => 'zohocrm',
 				'label' => 'Zoho CRM'
+			],
+			[
+				'name' => 'sendinblue',
+				'label' => 'Sendinblue'
 			],
 		];
 
@@ -3409,6 +3441,125 @@ class PAFE_Multi_Step_Form extends \Elementor\Widget_Base {
 			);
 		}
 		$this->end_controls_section();
+		//Sendinblue
+		$this->start_controls_section(
+			'section_sendinblue',
+			[
+				'label' => __( 'Sendinblue', 'pafe' ),
+				'condition' => [
+					'submit_actions' => 'sendinblue',
+				],
+			]
+		);
+		$this->add_control(
+			'sendinblue_note',
+			[
+				'type' => \Elementor\Controls_Manager::RAW_HTML,
+				'classes' => 'elementor-descriptor',
+				'raw' => __( 'You are using Sendinblue API Key set in WP Dashboard > Piotnet Addons > Sendinblue Integration. You can also set a different Sendinblue API Key by choosing "Custom".', 'pafe' ),
+				'condition' => [
+					'sendinblue_api_key_source' => 'default',
+				],
+			]
+		);
+		$this->add_control(
+			'sendinblue_api_key_source',
+			[
+				'label' => __( 'API Key', 'pafe' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'options' => [
+					'default' => __( 'Default', 'pafe' ),
+					'custom' => __( 'Custom', 'pafe' ),
+				],
+				'default' => 'default',
+			]
+		);
+		$this->add_control(
+			'sendinblue_api_key',
+			[
+				'label' => __( 'Custom API Key', 'pafe' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'condition' => [
+					'sendinblue_api_key_source' => 'custom',
+				],
+				'description' => __( 'Use this field to set a custom API Key for the current form', 'pafe' ),
+			]
+		);
+		$this->add_control(
+			'sendinblue_api_acceptance_field',
+			[
+				'label' => __( 'Acceptance Field?', 'pafe' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'pafe' ),
+				'label_off' => __( 'No', 'pafe' ),
+				'return_value' => 'yes',
+				'default' => '',
+			]
+		);
+		$this->add_control(
+			'sendinblue_api_acceptance_field_shortcode',
+			[
+				'label' => __( 'Acceptance Field Shortcode', 'pafe' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'placeholder' => __( 'E.g [field id="acceptance"]', 'pafe' ),
+				'condition' => [
+					'sendinblue_api_acceptance_field' => 'yes'
+				]
+			]
+		);
+		$this->add_control(
+			'sendinblue_list_ids',
+			[
+				'label' => __( 'List ID', 'pafe' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+			]
+		);
+		$this->add_control(
+			'sendinblue_api_get_list',
+			[
+				'type' => \Elementor\Controls_Manager::RAW_HTML,
+				'raw' => __( '<button data-pafe-sendinblue-get-list class="pafe-admin-button-ajax elementor-button elementor-button-default" type="button">Get Lists <i class="fas fa-spinner fa-spin"></i></button><br><div class="pafe-sendinblue-group-result" data-pafe-sendinblue-api-get-list-results></div>', 'pafe' ),
+			]
+		);
+		$this->add_control(
+			'sendinblue_api_get_attr',
+			[
+				'type' => \Elementor\Controls_Manager::RAW_HTML,
+				'raw' => __( '<div class="pafe-sendinblue-attribute-result" data-pafe-sendinblue-api-get-attributes-result></div>', 'pafe' ),
+			]
+		);
+		$repeater = new \Elementor\Repeater();
+		$repeater->add_control(
+			'sendinblue_tagname', [
+				'label' => __( 'Tag Name', 'pafe' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'label_block' => true,
+			]
+		);
+
+		$repeater->add_control(
+			'sendinblue_shortcode', [
+				'label' => __( 'Field Shortcode', 'pafe' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'label_block' => true,
+			]
+		);
+
+		$this->add_control(
+			'sendinblue_fields_map',
+			[
+				'label' => __( 'Fields Mapping', 'pafe' ),
+				'type' => \Elementor\Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),
+				'default' => [
+					[
+						'sendinblue_tagname' => __( 'email', 'pafe' ),
+					],
+				],
+				'title_field' => '{{{ sendinblue_tagname }}} --- {{{ sendinblue_shortcode }}}',
+			]
+		);
+		$this->end_controls_section();
 		//Activecampaign
 
 		$this->start_controls_section(
@@ -3470,6 +3621,17 @@ class PAFE_Multi_Step_Form extends \Elementor\Widget_Base {
 			]
 		);
 		
+		$this->add_control(
+			'activecampaign_edit_contact',
+			[
+				'label' => __( 'Edit Contact?', 'pafe' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => __( 'Yes', 'pafe' ),
+				'label_off' => __( 'No', 'pafe' ),
+				'return_value' => 'yes',
+				'default' => '',
+			]
+		);
 		$this->add_control(
 			'activecampaign_get_data_list',
 			[
@@ -3761,8 +3923,8 @@ class PAFE_Multi_Step_Form extends \Elementor\Widget_Base {
 				'label' => __( 'Title Color', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
+					'type' => \Elementor\Core\Schemes\Color::get_type(),
+					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 				],
 				'default' => '#000',
 				'selectors' => [
@@ -3855,8 +4017,8 @@ class PAFE_Multi_Step_Form extends \Elementor\Widget_Base {
 				'label' => __( 'Text Color', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
+					'type' => \Elementor\Core\Schemes\Color::get_type(),
+					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 				],
 				'default' => '#000',
 				'selectors' => [
@@ -4019,8 +4181,8 @@ class PAFE_Multi_Step_Form extends \Elementor\Widget_Base {
 				'label' => __( 'Text Color', 'pafe' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
+					'type' => \Elementor\Core\Schemes\Color::get_type(),
+					'value' => \Elementor\Core\Schemes\Color::COLOR_1,
 				],
 				'default' => '#000',
 				'selectors' => [
@@ -4389,7 +4551,7 @@ class PAFE_Multi_Step_Form extends \Elementor\Widget_Base {
 			[
 				'name' => 'typography_step_number',
 				'label' => 'Step Number',
-				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_4,
+				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_4,
 				'selector' => '{{WRAPPER}} .pafe-multi-step-form__progressbar-item-step',
 			]
 		);
@@ -4399,7 +4561,7 @@ class PAFE_Multi_Step_Form extends \Elementor\Widget_Base {
 			[
 				'name' => 'typography_step_title',
 				'label' => 'Step Title',
-				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_4,
+				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_4,
 				'selector' => '{{WRAPPER}} .pafe-multi-step-form__progressbar-item-title',
 			]
 		);
@@ -4560,7 +4722,7 @@ class PAFE_Multi_Step_Form extends \Elementor\Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'typography',
-				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_4,
+				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_4,
 				'selector' => '{{WRAPPER}} a.elementor-button, {{WRAPPER}} .elementor-button',
 			]
 		);
@@ -4592,8 +4754,8 @@ class PAFE_Multi_Step_Form extends \Elementor\Widget_Base {
 				'label' => __( 'Background Color', 'elementor' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_4,
+					'type' => \Elementor\Core\Schemes\Color::get_type(),
+					'value' => \Elementor\Core\Schemes\Color::COLOR_4,
 				],
 				'selectors' => [
 					'{{WRAPPER}} a.elementor-button, {{WRAPPER}} .elementor-button' => 'background-color: {{VALUE}};',
@@ -4714,7 +4876,7 @@ class PAFE_Multi_Step_Form extends \Elementor\Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'message_typography',
-				'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => \Elementor\Core\Schemes\Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .elementor-message',
 			]
 		);
@@ -4905,6 +5067,78 @@ class PAFE_Multi_Step_Form extends \Elementor\Widget_Base {
 								$this->add_render_attribute( 'button', [
 									'data-pafe-form-builder-submit-post-edit' => intval($post_id),
 								] );
+                                $submit_post_id = $post_id;
+
+                                if (isset($form['settings']['submit_post_custom_fields_list'])) {
+
+                                    $sp_custom_fields = $form['settings']['submit_post_custom_fields_list'];
+
+                                    if (is_array($sp_custom_fields)) {
+                                        foreach ($sp_custom_fields as $sp_custom_field) {
+                                            if ( !empty( $sp_custom_field['submit_post_custom_field'] ) ) {
+                                                $custom_field_value = '';
+                                                $meta_type = $sp_custom_field['submit_post_custom_field_type'];
+
+                                                if ($meta_type == 'repeater' && function_exists('update_field') && $form['settings']['submit_post_custom_field_source'] == 'acf_field') {
+                                                    $custom_field_value = get_field($sp_custom_field['submit_post_custom_field'], $submit_post_id);
+                                                    if (!empty($custom_field_value)) {
+                                                        array_walk($custom_field_value, function (& $item) {
+                                                            foreach ($item as $key => $value) {
+                                                                $field_object = get_field_object($this->acf_get_field_key( $key, $_GET['edit'] ));
+                                                                if (!empty($field_object)) {
+                                                                    $field_type = $field_object['type'];
+
+                                                                    $item_value = $value;
+
+                                                                    if ($field_type == 'image') {
+                                                                        if (!empty($item_value['url'])) {
+                                                                            $item_value = $item_value['url'];
+                                                                        }
+                                                                    }
+
+                                                                    if ($field_type == 'gallery') {
+                                                                        if (is_array($item_value)) {
+                                                                            $images = '';
+                                                                            foreach ($item_value as $itemx) {
+                                                                                if (is_array($itemx)) {
+                                                                                    $images .= $itemx['url'] . ',';
+                                                                                }
+                                                                            }
+                                                                            $item_value = rtrim($images, ',');
+                                                                        }
+                                                                    }
+
+                                                                    if ($field_type == 'select' || $field_type == 'checkbox') {
+                                                                        if (is_array($item_value)) {
+                                                                            $value_string = '';
+                                                                            foreach ($item_value as $itemx) {
+                                                                                $value_string .= $itemx . ',';
+                                                                            }
+                                                                            $item_value = rtrim($value_string, ',');
+                                                                        }
+                                                                    }
+
+                                                                    if ($field_type == 'date') {
+                                                                        $time = strtotime( $item_value );
+                                                                        $item_value = date(get_option( 'date_format' ),$time);
+                                                                    }
+
+                                                                    $item[$key] = $item_value;
+                                                                }
+                                                            }
+                                                        });
+
+                                                        ?>
+                                                        <div data-pafe-form-builder-repeater-value data-pafe-form-builder-repeater-value-id="<?php echo $sp_custom_field['submit_post_custom_field']; ?>" data-pafe-form-builder-repeater-value-form-id="<?php echo $settings['form_id']; ?>" style="display: none;">
+                                                            <?php echo json_encode($custom_field_value); ?>
+                                                        </div>
+                                                        <?php
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
 							}
 						}
 					}
@@ -5154,7 +5388,8 @@ class PAFE_Multi_Step_Form extends \Elementor\Widget_Base {
 							<?php if(in_array('submit_post', $settings['submit_actions'])) : ?>
 								<?php if(\Elementor\Plugin::$instance->editor->is_edit_mode()) :
 									echo '<div style="margin-top: 20px;">' . __('Edit Post URL Shortcode','pafe') . '</div><input class="elementor-form-field-shortcode" style="min-width: 300px; padding: 10px;" value="[edit_post edit_text='. "'Edit Post'" . ' sm=' . "'" . $this->get_id() . "'" . ' smpid=' . "'" . get_the_ID() . "'" .']' . get_the_permalink() . '[/edit_post]" readonly /><div class="elementor-control-field-description">' . __( 'Add this shortcode to your single template.', 'pafe' ) . ' The shortcode will be changed if you edit this form so you have to refresh Elementor Editor Page and then copy the shortcode. ' . __( 'Replace', 'pafe' ) . ' "' . get_the_permalink() . '" ' . __( 'by your Page URL contains your Submit Post Form.', 'pafe' ) . '</div>';
-								?>
+                                    echo '<div style="margin-top: 20px;">' . __('Delete Post URL Shortcode','pafe') . '</div><input class="elementor-form-field-shortcode" style="min-width: 300px; padding: 10px;" value="[delete_post force_delete='. "'0'". ' delete_text='. "'Delete Post'" . ' sm=' . "'" . $this->get_id() . "'" . ' smpid=' . "'" . get_the_ID() . "'" . ' redirect='."'http://YOUR-DOMAIN'".']'.'[/delete_post]" readonly /><div class="elementor-control-field-description">' . __( 'Add this shortcode to your single template.', 'pafe' ) . ' The shortcode will be changed if you edit this form so you have to refresh Elementor Editor Page and then copy the shortcode. ' . __( 'Replace', 'pafe' ) . ' "http://YOUR-DOMAIN" ' . __( 'by your Page URL', 'pafe' ) . '</div>';
+                                ?>
 								<?php endif; ?>
 							<?php endif; ?>
 

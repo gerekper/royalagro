@@ -1,5 +1,6 @@
 <?php
 namespace ElementPack\Base;
+
 use Elementor\Core\Base\Module;
 use Elementor\Plugin;
 use ElementPack\Element_Pack_Loader;

@@ -1,16 +1,16 @@
 <?php
 
-$mylicense = array();
-$mylicense['license_key'] = 'nullmasterinbabiato';
-$mylicense['email'] = 'nullmaster@babiato.org'; 
-$mylicense['license_name'] = 'nullmaster';
-$mylicense['activated_site_total'] = '1';
-$mylicense['unlimited_site'] = 'Unlimited'; 
-$mylicense['expired_at'] = date("Y-m-d\TH:i:s\Z",'2023-01-01T15:03:01.012345Z');
-$mylicense['status'] = 'A';
-update_option( 'piotnet_addons_for_elementor_pro_license',$mylicense );
-update_option('piotnet-addons-for-elementor-pro-username','nullmaster@babiato.org');
-update_option('piotnet-addons-for-elementor-pro-password','nullmaster');
+$license = array();
+		$license['license_key'] = '****************';
+		$license['email'] = 'activated@example.com'; 
+		$license['license_name'] = 'activated';
+		$license['activated_site_total'] = '';
+		$license['unlimited_site'] = 'Unlimited'; 
+		$license['expired_at'] = date("Y-m-d\TH:i:s\Z",'2023-01-01T15:03:01.012345Z');
+		$license['status'] = 'A';
+		update_option( 'piotnet_addons_for_elementor_pro_license',$license );
+		update_option('piotnet-addons-for-elementor-pro-username','activated');
+		update_option('piotnet-addons-for-elementor-pro-password','activated');
 $message = '';
 $has_license = true;
 
@@ -76,13 +76,13 @@ $has_license = true;
                         <?php
                     } else {
                         $status = 'F';
-                        $license_key = 'nullmasterinbabiato';
+                        $license_key = 'activated';
                         $mask_license_key = '**********' . substr( $license_key, -10 );
                         $lifetime = 'unlimited';
                         $expired_at = '2023-01-01T15:03:01.012345Z';
                         $expired_at_str = gmdate("Y-m-d\TH:i:s\Z", $expired_at);
 
-                       
+
 
                         if ($status === 'A') {
                             ?>
@@ -230,93 +230,93 @@ $has_license = true;
 		    </div>
 		</form>
 
-		<?php if( get_option( 'pafe-features-form-google-sheets-connector', 2 ) == 2 || get_option( 'pafe-features-form-google-sheets-connector', 2 ) == 1 ) : ?>
+        <?php if( get_option( 'pafe-features-form-google-sheets-connector', 2 ) == 2 || get_option( 'pafe-features-form-google-sheets-connector', 2 ) == 1 ) : ?>
 
-		<hr>
-		<div class="pafe-bottom">
-			<div class="pafe-bottom__left">
-				<h3><?php _e('Google Sheets Integration','pafe'); ?></h3>
-				<iframe width="100%" height="250" src="https://www.youtube.com/embed/NidLGA0k8mI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-			</div>
-			<div class="pafe-bottom__right">
-				<div class="pafe-license">
-					<form method="post" action="options.php">
-					    <?php settings_fields( 'piotnet-addons-for-elementor-pro-google-sheets-group' ); ?>
-					    <?php do_settings_sections( 'piotnet-addons-for-elementor-pro-google-sheets-group' ); ?>
-					    <?php
-                        
-                        $client_id     = esc_attr( get_option( 'piotnet-addons-for-elementor-pro-google-sheets-client-id' ) );
-                        $client_secret = esc_attr( get_option( 'piotnet-addons-for-elementor-pro-google-sheets-client-secret' ) );
-                        $redirect =  get_admin_url(null,'admin.php?page=piotnet-addons-for-elementor'); //For PAFE
+            <hr>
+            <div class="pafe-bottom">
+                <div class="pafe-bottom__left">
+                    <h3><?php _e('Google Sheets Integration','pafe'); ?></h3>
+                    <iframe width="100%" height="250" src="https://www.youtube.com/embed/NidLGA0k8mI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="pafe-bottom__right">
+                    <div class="pafe-license">
+                        <form method="post" action="options.php">
+                            <?php settings_fields( 'piotnet-addons-for-elementor-pro-google-sheets-group' ); ?>
+                            <?php do_settings_sections( 'piotnet-addons-for-elementor-pro-google-sheets-group' ); ?>
+                            <?php
 
-                         if ( empty( $_GET['connect_type']) && ! empty( $_GET['code'] ) ) {  //For PAFE
-                            // Authorization
-                            $code = $_GET['code'];
-                            // Token
-                            $url  = 'https://accounts.google.com/o/oauth2/token';
-                            $curl = curl_init();
-                            $data = "code=$code&client_id=$client_id&client_secret=$client_secret&redirect_uri=" . urlencode($redirect) . "&grant_type=authorization_code";
+                            $client_id     = esc_attr( get_option( 'piotnet-addons-for-elementor-pro-google-sheets-client-id' ) );
+                            $client_secret = esc_attr( get_option( 'piotnet-addons-for-elementor-pro-google-sheets-client-secret' ) );
+                            $redirect =  get_admin_url(null,'admin.php?page=piotnet-addons-for-elementor'); //For PAFE
 
-                            curl_setopt_array($curl, array(
-                                CURLOPT_URL => "https://accounts.google.com/o/oauth2/token",
-                                CURLOPT_RETURNTRANSFER => true,
-                                CURLOPT_TIMEOUT => 30,
-                                CURLOPT_CUSTOMREQUEST => "POST",
-                                CURLOPT_POSTFIELDS => $data,
-                                CURLOPT_SSL_VERIFYPEER => false,
-                                CURLOPT_HTTPHEADER => array(
-                                    "Content-Type: application/x-www-form-urlencoded"
-                                ),
-                            ));
+                            if ( empty( $_GET['connect_type']) && ! empty( $_GET['code'] ) ) {  //For PAFE
+                                // Authorization
+                                $code = $_GET['code'];
+                                // Token
+                                $url  = 'https://accounts.google.com/o/oauth2/token';
+                                $curl = curl_init();
+                                $data = "code=$code&client_id=$client_id&client_secret=$client_secret&redirect_uri=" . urlencode($redirect) . "&grant_type=authorization_code";
 
-                            $response = curl_exec($curl);
-                            curl_close($curl);
-                            //echo $response;
-                            $array = json_decode( $response );
+                                curl_setopt_array($curl, array(
+                                    CURLOPT_URL => "https://accounts.google.com/o/oauth2/token",
+                                    CURLOPT_RETURNTRANSFER => true,
+                                    CURLOPT_TIMEOUT => 30,
+                                    CURLOPT_CUSTOMREQUEST => "POST",
+                                    CURLOPT_POSTFIELDS => $data,
+                                    CURLOPT_SSL_VERIFYPEER => false,
+                                    CURLOPT_HTTPHEADER => array(
+                                        "Content-Type: application/x-www-form-urlencoded"
+                                    ),
+                                ));
 
-                            if ( ! empty( $array->access_token ) && ! empty( $array->refresh_token ) && ! empty( $array->expires_in ) ) {
-                                $pafe_ggsheets_expired_at = time() + $array->expires_in;
-                                update_option( 'piotnet-addons-for-elementor-pro-google-sheet-expires', $array->expires_in );
-                                update_option( 'piotnet-addons-for-elementor-pro-google-sheets-expired-token', $pafe_ggsheets_expired_at );
-                                update_option( 'piotnet-addons-for-elementor-pro-google-sheets-access-token', $array->access_token );
-                                update_option( 'piotnet-addons-for-elementor-pro-google-sheets-refresh-token', $array->refresh_token );
+                                $response = curl_exec($curl);
+                                curl_close($curl);
+                                //echo $response;
+                                $array = json_decode( $response );
+
+                                if ( ! empty( $array->access_token ) && ! empty( $array->refresh_token ) && ! empty( $array->expires_in ) ) {
+                                    $pafe_ggsheets_expired_at = time() + $array->expires_in;
+                                    update_option( 'piotnet-addons-for-elementor-pro-google-sheet-expires', $array->expires_in );
+                                    update_option( 'piotnet-addons-for-elementor-pro-google-sheets-expired-token', $pafe_ggsheets_expired_at );
+                                    update_option( 'piotnet-addons-for-elementor-pro-google-sheets-access-token', $array->access_token );
+                                    update_option( 'piotnet-addons-for-elementor-pro-google-sheets-refresh-token', $array->refresh_token );
+                                }
                             }
-                        }
-                        ?>
-					    <div style="padding-top: 30px;">
-					    	<b><a href="https://console.developers.google.com/flows/enableapi?apiid=sheets.googleapis.com" target="_blank"><?php _e('Click here to Sign into your Gmail account and access Google Sheets’s application registration','pafe'); ?></a></b>
-					    </div>
-					    <table class="form-table">
-					        <tr valign="top">
-					        <th scope="row"><?php _e('Client ID','pafe'); ?></th>
-					        <td><input type="text" name="piotnet-addons-for-elementor-pro-google-sheets-client-id" value="<?php echo $client_id; ?>" class="regular-text"/></td>
-					        </tr>
-					        <tr valign="top">
-					        <th scope="row"><?php _e('Client Secret','pafe'); ?></th>
-					        <td><input type="text" name="piotnet-addons-for-elementor-pro-google-sheets-client-secret" value="<?php echo $client_secret; ?>" class="regular-text"/></td>
-					        </tr>
-					        <tr valign="top">
-					        <th scope="row"><?php _e('Authorized redirect URI','pafe'); ?></th>
-					        <td><input type="text" readonly="readonly" value="<?php echo $redirect; ?>" class="regular-text"/></td>
-					        </tr>
-					        <tr valign="top">
-					        <th scope="row"><?php _e('Authorization','pafe'); ?></th>
-					        <td>
-					        	<?php if ( !empty($client_id) && !empty($client_secret) ) : ?>
-					        		<a class="pafe-toggle-features__button" href="https://accounts.google.com/o/oauth2/auth?redirect_uri=<?php echo $redirect; ?>&client_id=<?php echo $client_id; ?>&response_type=code&scope=https://www.googleapis.com/auth/spreadsheets&approval_prompt=force&access_type=offline">Authorization</a>
-					        	<?php else : ?>
-					        		<?php _e('To setup Gmail integration properly you should save Client ID and Client Secret.','pafe'); ?>
-				        		<?php endif; ?>
-					        </td>
-					        </tr>
-					    </table>
-					    <?php submit_button(__('Save Settings','pafe')); ?>
-					</form>
-				</div>
-			</div>
-		</div>
+                            ?>
+                            <div style="padding-top: 30px;">
+                                <b><a href="https://console.developers.google.com/flows/enableapi?apiid=sheets.googleapis.com" target="_blank"><?php _e('Click here to Sign into your Gmail account and access Google Sheets’s application registration','pafe'); ?></a></b>
+                            </div>
+                            <table class="form-table">
+                                <tr valign="top">
+                                    <th scope="row"><?php _e('Client ID','pafe'); ?></th>
+                                    <td><input type="text" name="piotnet-addons-for-elementor-pro-google-sheets-client-id" value="<?php echo $client_id; ?>" class="regular-text"/></td>
+                                </tr>
+                                <tr valign="top">
+                                    <th scope="row"><?php _e('Client Secret','pafe'); ?></th>
+                                    <td><input type="text" name="piotnet-addons-for-elementor-pro-google-sheets-client-secret" value="<?php echo $client_secret; ?>" class="regular-text"/></td>
+                                </tr>
+                                <tr valign="top">
+                                    <th scope="row"><?php _e('Authorized redirect URI','pafe'); ?></th>
+                                    <td><input type="text" readonly="readonly" value="<?php echo $redirect; ?>" class="regular-text"/></td>
+                                </tr>
+                                <tr valign="top">
+                                    <th scope="row"><?php _e('Authorizaion','pafe'); ?></th>
+                                    <td>
+                                        <?php if ( !empty($client_id) && !empty($client_secret) ) : ?>
+                                            <a class="pafe-toggle-features__button" href="https://accounts.google.com/o/oauth2/auth?redirect_uri=<?php echo $redirect; ?>&client_id=<?php echo $client_id; ?>&response_type=code&scope=https://www.googleapis.com/auth/spreadsheets&approval_prompt=force&access_type=offline">Authorize</a>
+                                        <?php else : ?>
+                                            <?php _e('To setup Gmail integration properly you should save Client ID and Client Secret.','pafe'); ?>
+                                        <?php endif; ?>
+                                    </td>
+                                </tr>
+                            </table>
+                            <?php submit_button(__('Save Settings','pafe')); ?>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
-		<?php endif; ?>
+        <?php endif; ?>
 
         <?php if( get_option( 'pafe-features-form-google-calendar-connector', 2 ) == 2 || get_option( 'pafe-features-form-google-calendar-connector', 2 ) == 1 ) : ?>
             <hr>
@@ -424,10 +424,10 @@ $has_license = true;
                                     <td><input type="text" readonly="readonly" value="<?php echo $redirect; ?>" class="regular-text"/></td>
                                 </tr>
                                 <tr valign="top">
-                                    <th scope="row"><?php esc_html_e( 'Authorization', 'pafe' ); ?></th>
+                                    <th scope="row"><?php esc_html_e( 'Authorize', 'pafe' ); ?></th>
                                     <td>
                                         <?php if ( ! empty( $gg_cld_client_id ) && ! empty( $gg_cld_client_secret ) ) : ?>
-                                            <a class="piotnetforms-toggle-features__button" href="https://accounts.google.com/o/oauth2/auth?redirect_uri=<?php echo urlencode($redirect); ?>&client_id=<?php echo $gg_cld_client_id; ?>&response_type=code&scope=https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/calendar.events&approval_prompt=force&access_type=offline">Authorization</a>
+                                            <a class="piotnetforms-toggle-features__button" href="https://accounts.google.com/o/oauth2/auth?redirect_uri=<?php echo urlencode($redirect); ?>&client_id=<?php echo $gg_cld_client_id; ?>&response_type=code&scope=https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/calendar.events&approval_prompt=force&access_type=offline">Authorize</a>
                                         <?php else : ?>
                                             <?php esc_html_e( 'To setup Gmail integration properly you should save Client ID and Client Secret.', 'pafe' ); ?>
                                         <?php endif; ?>
@@ -541,6 +541,35 @@ $has_license = true;
 		</div>
 
 		<?php endif; ?>
+        <?php if( get_option( 'pafe-features-hubspot', 2 ) == 2 || get_option( 'pafe-features-hubspot', 2 ) == 1 ) : ?>
+            <hr>
+            <div class="pafe-bottom">
+                <div class="pafe-bottom__left">
+                    <h3><?php _e('Hubspot Integration','pafe'); ?></h3>
+                </div>
+                <div class="pafe-bottom__right">
+                    <div class="pafe-license">
+                        <form method="post" action="options.php">
+                            <?php settings_fields( 'piotnet-addons-for-elementor-pro-hubspot-group' ); ?>
+                            <?php do_settings_sections( 'piotnet-addons-for-elementor-pro-hubspot-group' ); ?>
+                            <?php $hubspot_api = esc_attr( get_option( 'piotnet-addons-for-elementor-pro-hubspot-api-key' ) ); ?>
+
+                            <div style="padding-top: 30px;">
+                                <b><a href="https://app.hubspot.com/api-key/14540594/call-log" target="_blank"><?php _e('Click here to get the API key','pafe'); ?></a></b>
+                            </div>
+                            <table class="form-table">
+                                <tr valign="top">
+                                    <th scope="row"><?php _e('API Key','pafe'); ?></th>
+                                    <td><input type="text" name="piotnet-addons-for-elementor-pro-hubspot-api-key" value="<?php echo $hubspot_api; ?>" class="regular-text"/></td>
+                                </tr>
+                            </table>
+                            <?php submit_button(__('Save Settings','pafe')); ?>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        <?php endif; ?>
 
 		<hr>
 		<div class="pafe-bottom">
@@ -584,6 +613,31 @@ $has_license = true;
 					        <tr valign="top">
 					        <th scope="row"><?php _e('API Key','pafe'); ?></th>
 					        <td><input type="text" name="piotnet-addons-for-elementor-pro-mailerlite-api-key" value="<?php echo $api_key; ?>" class="regular-text"/></td>
+					        </tr>
+					    </table>
+					    <?php submit_button(__('Save Settings','pafe')); ?>
+					</form>
+				</div>
+			</div>
+		</div>
+		
+		<hr>
+		<div class="pafe-bottom">
+			<div class="pafe-bottom__left">
+				<h3><?php _e('Sendinblue Integration','pafe'); ?></h3>
+			</div>
+			<div class="pafe-bottom__right">
+				<div class="pafe-license">
+					<form method="post" action="options.php">
+					    <?php settings_fields( 'piotnet-addons-for-elementor-pro-sendinblue-group' ); ?>
+					    <?php do_settings_sections( 'piotnet-addons-for-elementor-pro-sendinblue-group' ); ?>
+					    <?php
+					    	$sendinblue_api_key = esc_attr( get_option('piotnet-addons-for-elementor-pro-sendinblue-api-key') );
+					    ?>
+					    <table class="form-table">
+					        <tr valign="top">
+					        <th scope="row"><?php _e('API Key','pafe'); ?></th>
+					        <td><input type="text" name="piotnet-addons-for-elementor-pro-sendinblue-api-key" value="<?php echo $sendinblue_api_key; ?>" class="regular-text"/></td>
 					        </tr>
 					    </table>
 					    <?php submit_button(__('Save Settings','pafe')); ?>

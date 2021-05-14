@@ -1226,9 +1226,9 @@ class Panel_Slider extends Module_Base {
 
 				<?php if ( 'dots' !== $settings['navigation'] ) : ?>
 
-					<a class="bdt-navigation-next bdt-icon bdt-position-z-index bdt-position-center-right<?php echo esc_attr( $hide_on_mobile ); ?>" bdt-icon="icon: chevron-right; ratio: 1.9"></a>	
+					<a class="bdt-navigation-next bdt-icon bdt-position-z-index bdt-position-center-right<?php echo esc_attr( $hide_on_mobile ); ?>" data-bdt-icon="icon: chevron-right; ratio: 1.9"></a>	
 
-					<a class="bdt-navigation-prev bdt-icon bdt-position-z-index bdt-position-center-left<?php echo esc_attr( $hide_on_mobile ); ?>" bdt-icon="icon: chevron-left; ratio: 1.9"></a>	
+					<a class="bdt-navigation-prev bdt-icon bdt-position-z-index bdt-position-center-left<?php echo esc_attr( $hide_on_mobile ); ?>" data-bdt-icon="icon: chevron-left; ratio: 1.9"></a>	
 
 				<?php endif; ?>
 			<?php endif; ?>

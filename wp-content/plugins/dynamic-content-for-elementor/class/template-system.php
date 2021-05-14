@@ -4,6 +4,10 @@ namespace DynamicContentForElementor;
 
 use DynamicContentForElementor\Helper;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class TemplateSystem {
 
 	public static $instance;

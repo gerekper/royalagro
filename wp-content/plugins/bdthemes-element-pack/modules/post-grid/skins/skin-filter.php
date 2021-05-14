@@ -112,7 +112,7 @@ class Skin_Filter extends Elementor_Skin_Base {
 		?>
 		<div bdt-filter="target: #<?php echo esc_attr( $id ); ?>">
 			<?php $this->render_filter_menu(); ?>
-			<div class="bdt-grid bdt-child-width-1-3" id="<?php echo esc_attr( $id ); ?>" bdt-grid>
+			<div class="bdt-grid bdt-child-width-1-3" id="<?php echo esc_attr( $id ); ?>" data-bdt-grid>
 		<?php
 
 		$categories = $this->render_query();

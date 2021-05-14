@@ -67,7 +67,7 @@ class Premium_Color_Transition extends Widget_Base {
 	public function get_script_depends() {
 		return array(
 			'elementor-waypoints',
-			'premium-pro-js',
+			'premium-pro',
 		);
 	}
 

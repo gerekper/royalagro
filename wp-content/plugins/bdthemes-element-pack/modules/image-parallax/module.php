@@ -6,7 +6,8 @@
     use Elementor\Repeater;
     use ElementPack;
     use ElementPack\Base\Element_Pack_Module_Base;
-    
+    use ElementPack\Element_Pack_Loader;
+
     if (!defined('ABSPATH')) exit; // Exit if accessed directly
     
     class Module extends Element_Pack_Module_Base {
@@ -18,14 +19,6 @@
         
         public function get_name() {
             return 'bdt-image-parallax';
-        }
-
-        public function get_style_depends() {
-            if ($this->ep_is_edit_mode()) {
-                return ['ep-all-styles'];
-            } else {
-                return [ 'ep-image-parallax' ];
-            }
         }
         
         public function register_section($element) {
@@ -244,7 +237,7 @@
                 $color1 = ( $settings['element_pack_sbgc_parallax_sc'] ) ? $settings['element_pack_sbgc_parallax_sc'] : '#fff';
                 $color2 = ( $settings['element_pack_sbgc_parallax_ec'] ) ? $settings['element_pack_sbgc_parallax_ec'] : '#fff';
                 
-                $section->add_render_attribute('_wrapper', 'bdt-parallax', 'background-color: ' . $color1 . ',' . $color2 . ';');
+                $section->add_render_attribute('_wrapper', 'data-bdt-parallax', 'background-color: ' . $color1 . ',' . $color2 . ';');
             }
             
             
@@ -253,7 +246,7 @@
                 $color1 = ( $settings['element_pack_sbc_parallax_sc'] ) ? $settings['element_pack_sbc_parallax_sc'] : '#fff';
                 $color2 = ( $settings['element_pack_sbc_parallax_ec'] ) ? $settings['element_pack_sbc_parallax_ec'] : '#fff';
                 
-                $section->add_render_attribute('_wrapper', 'bdt-parallax', 'border-color: ' . $color1 . ',' . $color2 . ';');
+                $section->add_render_attribute('_wrapper', 'data-bdt-parallax', 'border-color: ' . $color1 . ',' . $color2 . ';');
             }
             
             

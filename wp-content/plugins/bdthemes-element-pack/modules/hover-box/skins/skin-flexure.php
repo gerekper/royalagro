@@ -62,7 +62,7 @@ class Skin_Flexure extends Elementor_Skin_Base {
 		$settings = $this->parent->get_settings_for_display();
 		$id       = $this->parent->get_id();
 
-        $this->parent->add_render_attribute( 'box-settings', 'bdt-hover-box-items', 'connect: #bdt-box-content-' .  esc_attr($id) . ';' );
+        $this->parent->add_render_attribute( 'box-settings', 'data-bdt-hover-box-items', 'connect: #bdt-box-content-' .  esc_attr($id) . ';' );
 		$this->parent->add_render_attribute( 'box-settings', 'class', ['bdt-box-item-wrapper', 'bdt-position-' . $settings['content_gap'], 'bdt-position-' . $settings['default_content_position']] );
 
 

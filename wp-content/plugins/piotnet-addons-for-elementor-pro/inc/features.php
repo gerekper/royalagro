@@ -429,6 +429,13 @@
 				'extension' => true,
 			),
             array(
+				'name' => __('Hubspot Integration','pafe'),
+				'option' => 'pafe-features-hubspot',
+				'url' => 'https://pafe.piotnet.com/docs/form-builder/?wpam_id=1',
+				'pro' => 1,
+				'extension' => true,
+			),
+            array(
                 'name' => __('Connect Form to Google Calendar','pafe'),
                 'option' => 'pafe-features-form-google-calendar-connector',
                 'url' => 'https://pafe.piotnet.com/docs/form-builder/?wpam_id=1',

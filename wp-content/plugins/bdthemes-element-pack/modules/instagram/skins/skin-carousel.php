@@ -40,7 +40,7 @@ class Skin_Carousel extends Skin_Base {
 
 		
 		$this->parent->add_render_attribute('instagram-wrapper', 'class', 'bdt-instagram bdt-instagram-carousel' );
-		$this->parent->add_render_attribute('instagram-wrapper', 'bdt-slider', '' );
+		$this->parent->add_render_attribute('instagram-wrapper', 'data-bdt-slider', '' );
 
 		$this->parent->add_render_attribute('instagram-carousel', 'class', 'bdt-grid bdt-slider-items' );
 
@@ -51,12 +51,12 @@ class Skin_Carousel extends Skin_Base {
 		$this->parent->add_render_attribute('instagram-carousel', 'class', 'bdt-child-width-1-' . esc_attr($settings["columns_mobile"]) );	 
 
 		if ( 'yes' == $settings['show_lightbox'] ) {
-			$this->parent->add_render_attribute('instagram-carousel', 'bdt-lightbox', 'animation:' . $settings['lightbox_animation'] . ';');
+			$this->parent->add_render_attribute('instagram-carousel', 'data-bdt-lightbox', 'animation:' . $settings['lightbox_animation'] . ';');
 			if ($settings['lightbox_autoplay']) {
-				$this->parent->add_render_attribute('instagram-carousel', 'bdt-lightbox', 'autoplay: 500;');
+				$this->parent->add_render_attribute('instagram-carousel', 'data-bdt-lightbox', 'autoplay: 500;');
 				
 				if ($settings['lightbox_pause']) {
-					$this->parent->add_render_attribute('instagram-carousel', 'bdt-lightbox', 'pause-on-hover: true;');
+					$this->parent->add_render_attribute('instagram-carousel', 'data-bdt-lightbox', 'pause-on-hover: true;');
 				}
 			}
 		}
@@ -107,7 +107,7 @@ class Skin_Carousel extends Skin_Base {
                                 <?php if ( 'VIDEO' == $item->media_type) : ?>
                                     <video src="<?php echo $item->media_url; ?>" title="Image by: <?php echo $item->username; ?>">
                                 <?php else : ?>
-                                    <img src="<?php echo $item->media_url; ?>" alt="Image by: <?php echo $item->username; ?>" bdt-img>
+                                    <img src="<?php echo $item->media_url; ?>" alt="Image by: <?php echo $item->username; ?>" data-bdt-img>
                                 <?php endif; ?>
                             </div>
 
@@ -115,9 +115,9 @@ class Skin_Carousel extends Skin_Base {
                             <a href="<?php echo $item->media_url; ?>" data-elementor-open-lightbox="no">
                                 <div class="bdt-transition-fade bdt-inline-clip bdt-position-cover bdt-overlay bdt-overlay-default ">
 									<?php if ('VIDEO' == $item->media_type) : ?>
-										<span class='bdt-position-center' bdt-icon="play"></span>
+										<span class='bdt-position-center' data-bdt-icon="play"></span>
 									<?php else : ?>
-										<span class='bdt-position-center' bdt-icon="plus"></span>
+										<span class='bdt-position-center' data-bdt-icon="plus"></span>
 									<?php endif; ?>
                                 </div>
                             </a>
@@ -136,8 +136,8 @@ class Skin_Carousel extends Skin_Base {
 				
 			</div>
 			
-			<a class='bdt-position-center-left bdt-position-small bdt-hidden-hover bdt-visible@m' href='#' bdt-slidenav-previous bdt-slider-item='previous'></a>
-			<a class='bdt-position-center-right bdt-position-small bdt-hidden-hover bdt-visible@m' href='#' bdt-slidenav-next bdt-slider-item='next'></a>
+			<a class='bdt-position-center-left bdt-position-small bdt-hidden-hover bdt-visible@m' href='#' data-bdt-slidenav-previous data-bdt-slider-item='previous'></a>
+			<a class='bdt-position-center-right bdt-position-small bdt-hidden-hover bdt-visible@m' href='#' data-bdt-slidenav-next data-bdt-slider-item='next'></a>
 
 		
 		</div>

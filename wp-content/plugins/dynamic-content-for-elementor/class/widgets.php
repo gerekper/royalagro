@@ -2,6 +2,10 @@
 
 namespace DynamicContentForElementor;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Widgets Class
  *
@@ -397,7 +401,7 @@ class Widgets {
 			'description' => __( 'The Ultimate WordPress filter plugin that uses Ajax with Elementor', 'dynamic-content-for-elementor' ),
 			'icon' => 'icon-dyn-search-filter',
 			'plugin_depends' => [ 'search-filter-pro' ],
-			'doc_url' => 'https://www.dynamic.ooo/widget/search-filter-elementor',
+			'doc_url' => 'https://www.dynamic.ooo/widget/search-filter-pro-elementor',
 			'keywords' => [ 'Search and Filter Pro' ],
 		];
 		$widgets_info['DCE_Widget_SinglePostsMenu'] = [
@@ -669,7 +673,7 @@ class Widgets {
 			'keywords' => [ 'fields' ],
 		];
 
-		$widget['DCE_Widget_BgCanvas'] = [
+		$widgets_info['DCE_Widget_BgCanvas'] = [
 			'category' => 'WEBGL',
 			'name' => 'dyncontel-bgcanvas',
 			'title' => __( 'Background Canvas', 'dynamic-content-for-elementor' ),

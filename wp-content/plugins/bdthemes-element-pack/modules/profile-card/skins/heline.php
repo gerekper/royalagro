@@ -29,7 +29,7 @@ class Heline extends Elementor_Skin_Base {
             <div class="bdt-profile-card-share-link bdt-margin-medium-top">
                 <?php 
                 foreach ( $settings['social_link_list'] as $link ) :
-                    $tooltip = ( 'yes' == $settings['social_icon_tooltip'] ) ? ' title="'.esc_attr( $link['social_link_title'] ).'" bdt-tooltip' : ''; ?>
+                    $tooltip = ( 'yes' == $settings['social_icon_tooltip'] ) ? ' title="'.esc_attr( $link['social_link_title'] ).'" data-bdt-tooltip' : ''; ?>
                     
                     <a href="<?php echo esc_url( $link['social_link'] ); ?>" class="elementor-repeater-item-<?php echo esc_attr($link['_id']); ?>" target="_blank"<?php echo $tooltip; ?>>
                         <?php Icons_Manager::render_icon( $link['social_icon'], [ 'aria-hidden' => 'true', 'class' => 'fa-fw' ] ); ?>
@@ -56,7 +56,7 @@ class Heline extends Elementor_Skin_Base {
                     
                     <?php if ($settings['show_user_menu']) : ?>
                     <div class="bdt-profile-card-settings">
-                        <a href="#" bdt-icon="more"></a>
+                        <a href="#" data-bdt-icon="more"></a>
                     </div>
                     
                     <?php $this->parent->user_dropdown_menu(); ?>
@@ -160,7 +160,7 @@ class Heline extends Elementor_Skin_Base {
                     
                     <?php if ($settings['show_user_menu']) : ?>
                     <div class="bdt-profile-card-settings">
-                        <a href="#" bdt-icon="more"></a>
+                        <a href="#" data-bdt-icon="more"></a>
                     </div>
                     
                     <?php $this->parent->user_dropdown_menu(); ?>
@@ -257,7 +257,7 @@ class Heline extends Elementor_Skin_Base {
                     
                     <?php if ($settings['show_user_menu']) : ?>
                     <div class="bdt-profile-card-settings">
-                        <a href="#" bdt-icon="more"></a>
+                        <a href="#" data-bdt-icon="more"></a>
                     </div>
                     
                     <?php $this->parent->user_dropdown_menu(); ?>

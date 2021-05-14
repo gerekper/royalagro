@@ -768,7 +768,7 @@ function parseFloatWithRemoveSepChar(text, separator_char) {
 						                    var fieldValueMultiple = [];
 
 						                    if (fieldType == 'checkbox') {
-						                        $(document).find('[name="'+ fieldName + '"]:checked').each(function () {
+						                        $(this).closest('.elementor-element').find('[name="'+ fieldName + '"]:checked').each(function () {
 						                            fieldValueMultiple.push($(this).val());
 						                        });
 						                    } else {
@@ -1129,10 +1129,10 @@ function parseFloatWithRemoveSepChar(text, separator_char) {
 					var response = response.trim();
 
 					if (response.indexOf(',') !== -1) {
-						var responseArray = response.split(',');
+						var responseArray = JSON.parse(response);
 						$parent.find('.elementor-message').each(function(){
-							if (responseArray[3] != '') {
-				        		var html = $(this).html().replace('[post_url]','<a href="' + responseArray[3] + '">' + responseArray[3] + '</a>');
+							if (responseArray.post_url != '') {
+				        		var html = $(this).html().replace('[post_url]','<a href="' + responseArray.post_url + '">' + responseArray.post_url + '</a>');
 				        		$(this).html(html);
 				        	}
 						});
@@ -1147,15 +1147,15 @@ function parseFloatWithRemoveSepChar(text, separator_char) {
 							$parent.find('[data-pafe-form-builder-trigger-failed]').trigger('click');
 			        	}
 
-			        	if (responseArray[1] != '') {
+			        	if (responseArray.status != '') {
 			        		$parent.find('.pafe-form-builder-alert--mail .elementor-message-success').addClass('visible');
 			        	} else {
 			        		$parent.find('.pafe-form-builder-alert--mail .elementor-message-danger').addClass('visible');
 			        		$(document).find('[data-pafe-form-builder-form-id="' + formID + '"]').closest('.elementor-element').css({'opacity' : 1});
 							$(document).find('[data-pafe-form-builder-submit-form-id="' + formID + '"]').closest('.elementor-element').css({'opacity' : 1});
 
-							if (responseArray[5] != '') {
-				        		$parent.find('.pafe-form-builder-alert--mail .elementor-message-danger').html(responseArray[5].replace(/###/g, ','));
+							if (responseArray.register_message != '') {
+				        		$parent.find('.pafe-form-builder-alert--mail .elementor-message-danger').html(responseArray.register_message.replace(/###/g, ','));
 				        	}
 			        	}
 	 
@@ -1163,15 +1163,15 @@ function parseFloatWithRemoveSepChar(text, separator_char) {
 		        			var href = $parent.find('input[name="redirect"]').val().trim();
 		        			var open_tab = $parent.find('input[name="redirect"]').attr('data-pafe-form-builder-open-new-tab');
 		        			if (response.indexOf(',') !== -1) {
-								if (responseArray[6] != '1') {
-									if (responseArray[3] != '' && href=='[post_url]') {
-										window.location.href = responseArray[3];
+								if (responseArray.failed_status != '1') {
+									if (responseArray.post_url != '' && href=='[post_url]') {
+										window.location.href = responseArray.post_url;
 									} else {
-										if (responseArray[4] != '') {
+										if (responseArray.redirect != '') {
 											if (open_tab =='yes') {
-										        window.open(responseArray[4], "_blank");
+										        window.open(responseArray.redirect, "_blank");
 										    } else {
-											    window.location.href = responseArray[4];
+											    window.location.href = responseArray.redirect;
 											} 
 										}
 									}
@@ -1692,11 +1692,11 @@ jQuery(document).ready(function( $ ) {
 					        		}
 
 					        		if (response.indexOf(',') !== -1) {
-										var responseArray = response.split(',');
+										var responseArray = JSON.parse(response);
 
 										$parent.find('.elementor-message').each(function(){
-											if (responseArray[3] != '') {
-								        		var html = $(this).html().replace('[post_url]','<a href="' + responseArray[3] + '">' + responseArray[3] + '</a>');
+											if (responseArray.post_url != '') {
+								        		var html = $(this).html().replace('[post_url]','<a href="' + responseArray.post_url + '">' + responseArray.post_url + '</a>');
 								        		$(this).html(html);
 								        	}
 										});
@@ -1710,15 +1710,15 @@ jQuery(document).ready(function( $ ) {
 					        			var href = $parent.find('input[name="redirect"]').val().trim();
 					        			var open_tab = $parent.find('input[name="redirect"]').attr('data-pafe-form-builder-open-new-tab');
 					        			if (response.indexOf(',') !== -1) {
-											if (responseArray[6] != '1') {
-												if (responseArray[3] != '' && href=='[post_url]') {
-													window.location.href = responseArray[3];
+											if (responseArray.failed_status != '1') {
+												if (responseArray.post_url != '' && href=='[post_url]') {
+													window.location.href = responseArray.post_url;
 												} else {
-													if (responseArray[4] != '') {
+													if (responseArray.redirect != '') {
 														if (open_tab =='yes') {
-													        window.open(responseArray[4], "_blank");
+													        window.open(responseArray.redirect, "_blank");
 													    } else {
-														    window.location.href = responseArray[4];
+														    window.location.href = responseArray.redirect;
 														}
 													}
 												}
@@ -1758,30 +1758,31 @@ jQuery(document).ready(function( $ ) {
 							$(document).find('[data-pafe-form-builder-form-id="' + formID + '"]').closest('.elementor-element').css({'opacity' : 1});
 
 			        		if (response.indexOf(',') !== -1) {
-								var responseArray = response.split(',');
-
+								
+								var responseArray = JSON.parse(response);
+								
 								$parent.find('.elementor-message').each(function(){
-									if (responseArray[3] != '') {
-						        		var html = $(this).html().replace('[post_url]','<a href="' + responseArray[3] + '">' + responseArray[3] + '</a>');
+									if (responseArray.post_url != '') {
+						        		var html = $(this).html().replace('[post_url]','<a href="' + responseArray.post_url + '">' + responseArray.post_url + '</a>');
 						        		$(this).html(html);
 						        	}
 								});
 
-								if (responseArray[0] == 'succeeded' || responseArray[0] == 'active') {
+								if (responseArray.payment_status == 'succeeded' || responseArray.payment_status == 'active') {
 					        		$parent.find('.pafe-form-builder-alert--stripe .elementor-message-success').addClass('visible');
 					        	}
 
-					        	if (responseArray[0] == 'pending') {
+					        	if (responseArray.payment_status == 'pending') {
 					        		$parent.find('.pafe-form-builder-alert--stripe .elementor-help-inline').addClass('visible');
 					        	}
 
-					        	if (responseArray[0] == 'failed' || responseArray[0] == 'incomplete') {
+					        	if (responseArray.payment_status == 'failed' || responseArray.payment_status == 'incomplete') {
 					        		$parent.find('.pafe-form-builder-alert--stripe .elementor-message-danger').addClass('visible');
 					        		$(document).find('[data-pafe-form-builder-form-id="' + formID + '"]').closest('.elementor-element').css({'opacity' : 1});
 									$(this).closest('.elementor-element').css({'opacity' : 1});
 					        	}
 
-					        	if (responseArray[1] != '') {
+					        	if (responseArray.status != '') {
 					        		$parent.find('.pafe-form-builder-alert--mail .elementor-message-success').addClass('visible');
 					        		$parent.find('[data-pafe-form-builder-trigger-success]').trigger('click');
 					        	} else {
@@ -1790,8 +1791,8 @@ jQuery(document).ready(function( $ ) {
 									$(this).closest('.elementor-element').css({'opacity' : 1});
 									$parent.find('[data-pafe-form-builder-trigger-failed]').trigger('click');
 
-									if (responseArray[5] != '') {
-						        		$parent.find('.pafe-form-builder-alert--mail .elementor-message-danger').html(responseArray[5].replace(/###/g, ','));
+									if (responseArray.register_message != '') {
+						        		$parent.find('.pafe-form-builder-alert--mail .elementor-message-danger').html(responseArray.register_message.replace(/###/g, ','));
 						        	}
 					        	}
 							}
@@ -1806,15 +1807,15 @@ jQuery(document).ready(function( $ ) {
 			        			var href = $parent.find('input[name="redirect"]').val().trim();
 			        			var open_tab = $parent.find('input[name="redirect"]').attr('data-pafe-form-builder-open-new-tab');
 			        			if (response.indexOf(',') !== -1) {
-									if (responseArray[6] != '1') {
-										if (responseArray[3] != '' && href=='[post_url]') {
-											window.location.href = responseArray[3];
+									if (responseArray.failed_status != '1') {
+										if (responseArray.post_url != '' && href=='[post_url]') {
+											window.location.href = responseArray.post_url;
 										} else {
-											if (responseArray[4] != '') {
+											if (responseArray.redirect != '') {
 												if (open_tab =='yes') {
-												    window.open(responseArray[4], "_blank");
+												    window.open(responseArray.redirect, "_blank");
 												} else {
-													window.location.href = responseArray[4];
+													window.location.href = responseArray.redirect;
 													} 	
 				
 											}

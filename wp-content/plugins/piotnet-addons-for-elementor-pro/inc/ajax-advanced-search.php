@@ -18,6 +18,7 @@
 	          $product_check = true;
 	       	}
 
+
 			if (strpos($term, '|')) {
 				$term = explode('|', $term);
 				$term = $term[0];

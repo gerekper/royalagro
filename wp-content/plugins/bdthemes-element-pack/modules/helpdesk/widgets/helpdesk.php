@@ -1114,7 +1114,7 @@ class Helpdesk extends Module_Base {
 		
 		<div class="bdt-helpdesk">
 			<nav class="bdt-helpdesk-icons">
-				<input type="checkbox" href="#" class="bdt-helpdesk-icons-open" name="bdt-helpdesk-icons-open" id="<?php echo esc_attr($id); ?>"/>
+				<input type="checkbox" class="bdt-helpdesk-icons-open" name="bdt-helpdesk-icons-open" id="<?php echo esc_attr($id); ?>"/>
 				<label class="bdt-helpdesk-icons-open-button" for="<?php echo esc_attr($id); ?>" title="<?php echo esc_html($settings['helpdesk_title']); ?>">
 
 					<?php if ( $is_new || $migrated ) :

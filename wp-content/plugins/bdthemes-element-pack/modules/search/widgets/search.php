@@ -1249,7 +1249,7 @@ class Search extends Module_Base {
 		$icon_class = ( $settings['search_icon_flip'] ) ? 'bdt-search-icon-flip' : '';
 
 		if ( $settings['search_icon'] ) :
-			echo '<span class="' . esc_attr($icon_class) . '" bdt-search-icon></span>';
+			echo '<span class="' . esc_attr($icon_class) . '" data-bdt-search-icon></span>';
 		endif;
 	}
 

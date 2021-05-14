@@ -306,6 +306,15 @@ class Addons_Integration {
 
 		}
 
+		// wp_enqueue_script(
+		// 'papro-reviews-cache',
+		// PREMIUM_PRO_ADDONS_URL . 'assets/editor/js/fb-cache.js',
+		// array(),
+		// PREMIUM_PRO_ADDONS_VERSION,
+		// true
+		// );
+
+		// wp_localize_script( 'papro-fb-connect', 'settings', $data );
 	}
 
 	/**
@@ -412,7 +421,7 @@ class Addons_Integration {
 		$magic_section = self::$modules['premium-magic-section'];
 
 		wp_register_script(
-			'premium-pro-js',
+			'premium-pro',
 			PREMIUM_PRO_ADDONS_URL . 'assets/frontend/' . $dir . '/premium-addons' . $suffix . '.js',
 			array(
 				'jquery',
@@ -430,10 +439,10 @@ class Addons_Integration {
 			'magicSection' => $magic_section ? true : false,
 		);
 
-		wp_localize_script( 'premium-pro-js', 'PremiumProSettings', $data );
+		wp_localize_script( 'premium-pro', 'PremiumProSettings', $data );
 
 		wp_register_script(
-			'codebird-js',
+			'codebird',
 			PREMIUM_PRO_ADDONS_URL . 'assets/frontend/' . $dir . '/codebird' . $suffix . '.js',
 			array( 'jquery' ),
 			PREMIUM_PRO_ADDONS_VERSION,
@@ -449,7 +458,7 @@ class Addons_Integration {
 		);
 
 		wp_register_script(
-			'social-dot-js',
+			'social-dot',
 			PREMIUM_PRO_ADDONS_URL . 'assets/frontend/' . $dir . '/doT' . $suffix . '.js',
 			array( 'jquery' ),
 			PREMIUM_PRO_ADDONS_VERSION,
@@ -457,7 +466,7 @@ class Addons_Integration {
 		);
 
 		wp_register_script(
-			'jquery-socialfeed-js',
+			'jquery-socialfeed',
 			PREMIUM_PRO_ADDONS_URL . 'assets/frontend/' . $dir . '/socialfeed' . $suffix . '.js',
 			array( 'jquery' ),
 			PREMIUM_PRO_ADDONS_VERSION,
@@ -465,7 +474,7 @@ class Addons_Integration {
 		);
 
 		wp_register_script(
-			'instafeed-js',
+			'pa-instafeed',
 			PREMIUM_PRO_ADDONS_URL . 'assets/frontend/' . $dir . '/instafeed' . $suffix . '.js',
 			array(),
 			PREMIUM_PRO_ADDONS_VERSION,
@@ -473,7 +482,7 @@ class Addons_Integration {
 		);
 
 		wp_register_script(
-			'chart-js',
+			'pa-charts',
 			PREMIUM_PRO_ADDONS_URL . 'assets/frontend/' . $dir . '/charts' . $suffix . '.js',
 			array(),
 			PREMIUM_PRO_ADDONS_VERSION,
@@ -497,7 +506,7 @@ class Addons_Integration {
 		);
 
 		wp_register_script(
-			'premium-behance-js',
+			'premium-behance',
 			PREMIUM_PRO_ADDONS_URL . 'assets/frontend/' . $dir . '/embed-behance' . $suffix . '.js',
 			array( 'jquery' ),
 			PREMIUM_PRO_ADDONS_VERSION,
@@ -505,7 +514,7 @@ class Addons_Integration {
 		);
 
 		wp_register_script(
-			'anime-js',
+			'pa-anime',
 			PREMIUM_PRO_ADDONS_URL . 'assets/frontend/' . $dir . '/anime' . $suffix . '.js',
 			array( 'jquery' ),
 			PREMIUM_PRO_ADDONS_VERSION,
@@ -513,7 +522,7 @@ class Addons_Integration {
 		);
 
 		wp_register_script(
-			'tweenmax-js',
+			'pa-tweenmax',
 			PREMIUM_PRO_ADDONS_URL . 'assets/frontend/' . $dir . '/TweenMax' . $suffix . '.js',
 			array( 'jquery' ),
 			PREMIUM_PRO_ADDONS_VERSION,
@@ -529,7 +538,7 @@ class Addons_Integration {
 		);
 
 		wp_register_script(
-			'tooltipster-bundle-js',
+			'tooltipster-bundle',
 			PREMIUM_PRO_ADDONS_URL . 'assets/frontend/' . $dir . '/tooltipster' . $suffix . '.js',
 			array( 'jquery' ),
 			PREMIUM_PRO_ADDONS_VERSION,

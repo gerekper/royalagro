@@ -121,20 +121,6 @@ trait Trait_Form {
 			'ip_address' => self::get_client_ip(),
 			'referrer' => $referrer,
 			'form_name' => $form_name,
-				/*
-				  // Elementor DB
-				  'sb_elem_cfd' => array(
-				  'data'     => $data,
-				  'extra'    => $extra,
-				  'post'     => array_map( 'sanitize_text_field', $_POST ),
-				  'server'   => $_SERVER,
-				  'fields_original' => $fields, //array( 'form_fields' => $record->get_form_settings( 'form_fields' ) ),
-				  'record_original' => $record,
-				  ),
-				  'sb_elem_cfd_read' => 0,
-				  'sb_elem_cfd_email' => $email,
-				  'sb_elem_cfd_form_id' => $fields['form_name'],
-				 */
 		];
 	}
 

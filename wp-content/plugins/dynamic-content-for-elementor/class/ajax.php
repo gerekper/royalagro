@@ -7,6 +7,10 @@ use Elementor\Widget_Base;
 use Elementor\Core\Base\Module;
 use Elementor\TemplateLibrary\Source_Local;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Ajax {
 
 	public $query_control;

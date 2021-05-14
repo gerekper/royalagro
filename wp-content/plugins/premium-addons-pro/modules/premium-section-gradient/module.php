@@ -70,17 +70,20 @@ class Module extends Module_Base {
 				'elementor-frontend',
 				'window.scopes_array = {};
                 window.backend = 0;
+
                 jQuery( window ).on( "elementor/frontend/init", function() {
                     elementorFrontend.hooks.addAction( "frontend/element_ready/global", function( $scope, $ ){
-                        if ( "undefined" == typeof $scope ) {
-                                return;
+
+                        if ( "undefined" == typeof $scope || ! $scope.hasClass( "premium-gradient-yes" ) ) {
+                            return;
                         }
-                        if ( $scope.hasClass( "premium-gradient-yes" ) ) {
-                            var id = $scope.data("id");
-                            window.scopes_array[ id ] = $scope;
-                        }
+
                         if(elementorFrontend.isEditMode()){
+
+                            window.current_scope = $scope;
+
                             var url = papro_addons.gradient_url;
+
                             jQuery.cachedAssets = function( url, options ) {
                                 // Allow user to set any option except for dataType, cache, and url.
                                 options = jQuery.extend( options || {}, {
@@ -92,11 +95,17 @@ class Module extends Module_Base {
                                 return jQuery.ajax( options );
                             };
                             jQuery.cachedAssets( url );
+
                             window.backend = 1;
+                        } else {
+                            var id = $scope.data("id");
+                            window.scopes_array[ id ] = $scope;
                         }
                     });
                 });
+
                 jQuery(document).ready(function(){
+
                     if ( jQuery.find( ".premium-gradient-yes" ).length < 1 ) {
                         return;
                     }

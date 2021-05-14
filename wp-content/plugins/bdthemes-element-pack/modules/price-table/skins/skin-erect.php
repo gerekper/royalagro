@@ -23,7 +23,7 @@ class Skin_Erect extends Elementor_Skin_Base {
 		?>
 		<div class="bdt-price-table bdt-price-table-skin-erect">
 
-            <div class="bdt-grid-collapse" bdt-grid bdt-height-match="target: > div > div > *">
+            <div class="bdt-grid-collapse" data-bdt-grid data-bdt-height-match="target: > div > div > *">
 
                 <div class="bdt-width-1-6@m">
                     <div class="bdt-pricing-column">

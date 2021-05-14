@@ -34,7 +34,7 @@ class Skin_Partait extends Elementor_Skin_Base {
 		?>
 		<div class="bdt-price-table bdt-price-table-skin-partait">
 
-			<div class="bdt-grid bdt-grid-collapse bdt-child-width-1-2@m" bdt-grid bdt-height-match="target: > div > .bdt-pricing-column">
+			<div class="bdt-grid bdt-grid-collapse bdt-child-width-1-2@m" data-bdt-grid data-bdt-height-match="target: > div > .bdt-pricing-column">
 				<div>
 					<div class="bdt-pricing-column">
 						<?php

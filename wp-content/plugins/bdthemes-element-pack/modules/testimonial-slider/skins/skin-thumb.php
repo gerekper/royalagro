@@ -26,7 +26,7 @@ class Skin_Thumb extends Elementor_Skin_Base {
 		}
 
 		?>
-		<li class="bdt-slider-thumbnav" bdt-slider-item="<?php echo esc_attr($bdt_counter); ?>">
+		<li class="bdt-slider-thumbnav" data-bdt-slider-item="<?php echo esc_attr($bdt_counter); ?>">
 			<div class="bdt-slider-thumbnav-inner bdt-position-relative">
 				<a href="#">
 					<img src="<?php echo esc_url( $testimonial_thumb ); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" />
@@ -79,13 +79,13 @@ class Skin_Thumb extends Elementor_Skin_Base {
         $this->parent->add_render_attribute(
             [
                 'slider-settings' => [
-                    'bdt-slider' => [
+                    'data-bdt-slider' => [
                         wp_json_encode(array_filter([
                             "autoplay"          => $settings["autoplay"],
                             "autoplay-interval" => $settings["autoplay_interval"],
                             "finite"            => $settings["loop"] ? false : true,
                             "pause-on-hover"    => $settings["pause_on_hover"] ? true : false,
-                            "velocity"          => ($settings["velocity"]["size"]) ? $settings["velocity"]["size"] : 1,
+                            "velocity"          => ($settings["velocity"]) ? $settings["velocity"] : 1,
                         ]))
                     ]
                 ]
@@ -94,7 +94,7 @@ class Skin_Thumb extends Elementor_Skin_Base {
 
         ?>
         <div <?php echo($this->parent->get_render_attribute_string('slider-settings')); ?>>
-        <ul class="bdt-slider-items bdt-child-width-1-1 bdt-grid bdt-grid-match" bdt-grid>
+        <ul class="bdt-slider-items bdt-child-width-1-1 bdt-grid bdt-grid-match" data-bdt-grid>
         <?php
     }
 

@@ -1148,7 +1148,7 @@ class Scrollnav extends Module_Base {
 			);
 		endif;
 
-		$this->add_render_attribute( 'nav-style', 'bdt-scrollspy-nav', 'closest: li; scroll: true; offset: ' . $settings["content_offset"]["size"] . ';' );
+		$this->add_render_attribute( 'nav-style', 'data-bdt-scrollspy-nav', 'closest: li; scroll: true; offset: ' . $settings["content_offset"]["size"] . ';' );
 
 		$this->add_render_attribute(
 			[
@@ -1160,7 +1160,7 @@ class Scrollnav extends Module_Base {
 						'bdt-navbar',
 						$settings['fixed_nav'] ? 'bdt-position-' . esc_attr($settings['nav_position']) . ' bdt-position-z-index' : '',
 					],
-					'bdt-navbar' => ''
+					'data-bdt-navbar' => ''
 				]
 			]
 		);

@@ -219,7 +219,7 @@ class Skin_Dropdown extends Elementor_Skin_Base {
 			$this->parent->add_render_attribute(
 				[
 					'dropdown-settings' => [
-						'bdt-dropdown' => [
+						'data-bdt-dropdown' => [
 							wp_json_encode(array_filter([
 								"mode"   => $settings["dropdown_mode"],
 								"pos"    => $settings["dropdown_position"],

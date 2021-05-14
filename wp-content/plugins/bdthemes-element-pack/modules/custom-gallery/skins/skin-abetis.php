@@ -148,7 +148,7 @@ class Skin_Abetis extends Elementor_Skin_Base {
 						<div class="bdt-flex-inline bdt-gallery-item-link-wrapper">
 							<a <?php echo $this->parent->get_render_attribute_string( $element_key ); ?>>
 								<?php if ( 'icon' == $settings['link_type'] ) : ?>
-									<span bdt-icon="icon: <?php echo esc_attr($icon); ?>; ratio: 1.6"></span>
+									<span data-bdt-icon="icon: <?php echo esc_attr($icon); ?>; ratio: 1.6"></span>
 								<?php elseif ( 'text' == $settings['link_type'] ) : ?>
 									<span class="bdt-text"><?php esc_html_e( 'ZOOM', 'bdthemes-element-pack' ); ?></span>
 								<?php endif;?>

@@ -2159,8 +2159,8 @@ class WC_Slider extends Module_Base {
 		?>
 		<div class="bdt-position-z-index bdt-position-<?php echo esc_attr( $settings['arrows_position'] . ' ' . $hide_arrow_on_mobile ); ?>">
 			<div class="bdt-arrows-container bdt-slidenav-container">
-				<a href="" class="bdt-navigation-prev bdt-slidenav-previous bdt-icon bdt-slidenav" bdt-icon="icon: chevron-left; ratio: 1.9" bdt-slideshow-item="previous"></a>
-				<a href="" class="bdt-navigation-next bdt-slidenav-next bdt-icon bdt-slidenav" bdt-icon="icon: chevron-right; ratio: 1.9" bdt-slideshow-item="next"></a>
+				<a href="" class="bdt-navigation-prev bdt-slidenav-previous bdt-icon bdt-slidenav" data-bdt-icon="icon: chevron-left; ratio: 1.9" data-bdt-slideshow-item="previous"></a>
+				<a href="" class="bdt-navigation-next bdt-slidenav-next bdt-icon bdt-slidenav" data-bdt-icon="icon: chevron-right; ratio: 1.9" data-bdt-slideshow-item="next"></a>
 			</div>
 		</div>
 		<?php
@@ -2182,7 +2182,7 @@ class WC_Slider extends Module_Base {
 					      
 					while ( $wp_query->have_posts() ) : $wp_query->the_post();
 						$active = (0 == $bdt_counter) ? ' bdt-active' : '';
-						echo '<li class="bdt-slideshow-dotnav'.$active.'" bdt-slideshow-item=" ' . $bdt_counter . ' "><a href="#"></a></li>';
+						echo '<li class="bdt-slideshow-dotnav'.$active.'" data-bdt-slideshow-item=" ' . $bdt_counter . ' "><a href="#"></a></li>';
 						$bdt_counter++;
 					endwhile; wp_reset_postdata(); ?>
 
@@ -2202,7 +2202,7 @@ class WC_Slider extends Module_Base {
 				
 				<div class="bdt-flex bdt-flex-middle">
 					<div class="<?php echo esc_attr( $hide_arrow_on_mobile ); ?>">
-						<a href="" class="bdt-navigation-prev bdt-slidenav-previous bdt-icon bdt-slidenav" bdt-icon="icon: chevron-left; ratio: 1.9" bdt-slideshow-item="previous"></a>
+						<a href="" class="bdt-navigation-prev bdt-slidenav-previous bdt-icon bdt-slidenav" data-bdt-icon="icon: chevron-left; ratio: 1.9" data-bdt-slideshow-item="previous"></a>
 						
 					</div>
 
@@ -2215,7 +2215,7 @@ class WC_Slider extends Module_Base {
 								$wp_query = $this->render_query();
 
 								while ( $wp_query->have_posts() ) : $wp_query->the_post();
-									echo '<li class="bdt-slideshow-dotnav" bdt-slideshow-item="'.$bdt_counter.'"><a href="#"></a></li>';
+									echo '<li class="bdt-slideshow-dotnav" data-bdt-slideshow-item="'.$bdt_counter.'"><a href="#"></a></li>';
 									$bdt_counter++;
 								endwhile; wp_reset_postdata(); ?>
 							</ul>
@@ -2223,7 +2223,7 @@ class WC_Slider extends Module_Base {
 					<?php endif; ?>
 					
 					<div class="<?php echo esc_attr( $hide_arrow_on_mobile ); ?>">
-						<a href="" class="bdt-navigation-next bdt-slidenav-next bdt-icon bdt-slidenav" bdt-icon="icon: chevron-right; ratio: 1.9" bdt-slideshow-item="next"></a>
+						<a href="" class="bdt-navigation-next bdt-slidenav-next bdt-icon bdt-slidenav" data-bdt-icon="icon: chevron-right; ratio: 1.9" data-bdt-slideshow-item="next"></a>
 						
 					</div>
 					
@@ -2251,7 +2251,7 @@ class WC_Slider extends Module_Base {
 
 		$ratio = ($settings['slider_size_ratio']['width'] && $settings['slider_size_ratio']['height']) ? $settings['slider_size_ratio']['width'].":".$settings['slider_size_ratio']['height'] : '1920:768';
 
-		$slider_settings['bdt-slideshow'] = wp_json_encode(array_filter([
+		$slider_settings['data-bdt-slideshow'] = wp_json_encode(array_filter([
 			"animation"         => $settings["slider_animations"],
 			"ratio"             => $ratio,
 			"min-height"        => $settings["slider_min_height"]["size"],
@@ -2271,7 +2271,7 @@ class WC_Slider extends Module_Base {
 	    	$slider_settings['class'][] = 'bdt-dots-align-'. $settings['dots_position'];
 		}
 
-	    $slider_fullscreen = ( $settings['slider_fullscreen'] ) ? ' bdt-height-viewport="offset-top: true"' : '';
+	    $slider_fullscreen = ( $settings['slider_fullscreen'] ) ? ' data-bdt-height-viewport="offset-top: true"' : '';
 
 		?>
 		<div <?php echo \element_pack_helper::attrs($slider_settings); ?>>
@@ -2346,7 +2346,7 @@ class WC_Slider extends Module_Base {
 
         	<?php if ($settings['show_price']) : ?>
        			<div class="bdt-wc-slider-price">
-					<span class="wae-product-price"><?php woocommerce_template_single_price(); ?></span>
+					<div class="wae-product-price"><?php woocommerce_template_single_price(); ?></div>
 				</div>
             <?php endif; ?>
 
@@ -2395,7 +2395,7 @@ class WC_Slider extends Module_Base {
 		while ( $wp_query->have_posts() ) : $wp_query->the_post(); global $post, $product; ?>
 				    
 	        <li class="bdt-slideshow-item">
-		        <div class="bdt-slideshow-item-inner bdt-grid bdt-grid-collapse bdt-height-1-1" bdt-grid>
+		        <div class="bdt-slideshow-item-inner bdt-grid bdt-grid-collapse bdt-height-1-1" data-bdt-grid>
 			        <div class="bdt-width-1-2@m bdt-flex bdt-flex-<?php echo esc_attr( $settings['vertical_align'] ); ?> bdt-slider-item-content">
 			            <?php $this->render_item_content(); ?>
 			        </div>

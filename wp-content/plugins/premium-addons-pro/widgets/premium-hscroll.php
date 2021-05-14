@@ -109,7 +109,7 @@ class Premium_Hscroll extends Widget_Base {
 	 */
 	public function get_script_depends() {
 		return array(
-			'tweenmax-js',
+			'pa-tweenmax',
 			'pa-gsap',
 			'elementor-waypoints',
 			'papro-hscroll',

@@ -85,8 +85,8 @@ class Premium_Behance extends Widget_Base {
 	 */
 	public function get_script_depends() {
 		return array(
-			'premium-behance-js',
-			'premium-pro-js',
+			'premium-behance',
+			'premium-pro',
 		);
 	}
 

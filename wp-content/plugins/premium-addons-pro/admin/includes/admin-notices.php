@@ -107,25 +107,7 @@ class Admin_Notices {
 	 */
 	public function check_papro_license_messages() {
 
-		if ( ( isset( $_GET['sl_activation'] ) || isset( $_GET['sl_deactivation'] ) ) && ! empty( $_GET['message'] ) ) {
-
-			$target = isset( $_GET['sl_activation'] ) ? $_GET['sl_activation'] : null;
-
-			switch ( $target ) {
-				case 'false':
-					$message = urldecode( $_GET['message'] );
-					?>
-					<div class="error">
-						<p><?php echo $message; ?></p>
-					</div>
-					<?php
-					break;
-				case 'true':
-				default:
-					// Developers can put a custom success message here for when activation is successful if they way.
-					break;
-			}
-		}
+		
 
 	}
 
