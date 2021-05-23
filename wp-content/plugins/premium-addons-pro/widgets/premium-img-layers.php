@@ -90,6 +90,18 @@ class Premium_Img_Layers extends Widget_Base {
 	}
 
 	/**
+	 * Retrieve Widget Keywords.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return string Widget keywords.
+	 */
+	public function get_keywords() {
+		return array( 'float', 'parallax', 'mouse', 'interactive', 'advanced' );
+	}
+
+	/**
 	 * Retrieve Widget Dependent CSS.
 	 *
 	 * @since 1.0.0

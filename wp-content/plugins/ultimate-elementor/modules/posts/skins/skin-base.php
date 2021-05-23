@@ -560,7 +560,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 					'type'      => Controls_Manager::NUMBER,
 					'default'   => 5000,
 					'condition' => array(
-						'autoplay' => 'yes',
+						$this->get_control_id( 'autoplay' ) => 'yes',
 					),
 					'selectors' => array(
 						'{{WRAPPER}} .slick-slide-bg' => 'animation-duration: calc({{VALUE}}ms*1.2); transition-duration: calc({{VALUE}}ms)',
@@ -583,7 +583,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				array(
 					'label'       => __( 'Transition Speed (ms)', 'uael' ),
 					'type'        => Controls_Manager::NUMBER,
-					'label_block' => true,
+					'label_block' => false,
 					'default'     => 500,
 				)
 			);

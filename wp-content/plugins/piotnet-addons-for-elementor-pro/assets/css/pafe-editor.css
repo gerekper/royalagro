@@ -131,3 +131,8 @@ button.elementor-button.elementor-button-default.piotnet-button-mailpoet-get-fie
 .pafe-sendinblue-item{
   margin-left: 10px;
 }
+.pafe-metadata-shortcode-item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

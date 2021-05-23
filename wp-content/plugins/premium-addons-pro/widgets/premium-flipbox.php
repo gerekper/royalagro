@@ -113,7 +113,7 @@ class Premium_Flipbox extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'flip', '3d', 'rotate', 'fade', 'info' );
+		return array( 'flip', '3d', 'rotate', 'fade', 'info', 'animation' );
 	}
 
 	/**

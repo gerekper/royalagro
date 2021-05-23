@@ -5,11 +5,11 @@ defined( 'ABSPATH' ) || die();
 
 class Assets_Manager {
 
-    /**
-     * Bind hook and run internal methods here
-     */
-    public static function init() {
-       
+	/**
+	 * Bind hook and run internal methods here
+	 */
+	public static function init() {
+	
 
 		// Frontend scripts
 		// Do not delete the "0" priority

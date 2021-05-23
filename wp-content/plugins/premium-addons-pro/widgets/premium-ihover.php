@@ -92,6 +92,18 @@ class Premium_Ihover extends Widget_Base {
 	}
 
 	/**
+	 * Retrieve Widget Keywords.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return string Widget keywords.
+	 */
+	public function get_keywords() {
+		return array( 'cta', 'action', 'link', 'image', 'animation' );
+	}
+
+	/**
 	 * Retrieve Widget Dependent JS.
 	 *
 	 * @since 1.0.0

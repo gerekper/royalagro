@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the Ultimate Addons for Elementor package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate Addons for Elementor 1.30.2\n"
+"Project-Id-Version: Ultimate Addons for Elementor 1.31.0\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-elementor\n"
-"POT-Creation-Date: 2021-04-23 10:17:48+00:00\n"
+"POT-Creation-Date: 2021-05-17 04:28:14+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -165,33 +165,37 @@ msgid "Thanks for logging in, "
 msgstr ""
 
 #: classes/class-uael-core-plugin.php:364
+msgid "Invalid or data missing in the required(*) fields."
+msgstr ""
+
+#: classes/class-uael-core-plugin.php:372
 msgid "No matching records found"
 msgstr ""
 
-#: classes/class-uael-core-plugin.php:365
+#: classes/class-uael-core-plugin.php:373
 msgid "Show _MENU_ Entries"
 msgstr ""
 
-#: classes/class-uael-core-plugin.php:532
+#: classes/class-uael-core-plugin.php:540
 msgid "The widget type you are trying to paste is not available on this site."
 msgstr ""
 
-#: classes/class-uael-core-plugin.php:534
+#: classes/class-uael-core-plugin.php:542
 #. translators: %s: html tags
 msgid "%1s Copy"
 msgstr ""
 
-#: classes/class-uael-core-plugin.php:536
+#: classes/class-uael-core-plugin.php:544
 #. translators: %s: html tags
 msgid "%1s Paste"
 msgstr ""
 
-#: classes/class-uael-core-plugin.php:538
+#: classes/class-uael-core-plugin.php:546
 #. translators: %s: html tags
 msgid "%1s Copy All"
 msgstr ""
 
-#: classes/class-uael-core-plugin.php:540
+#: classes/class-uael-core-plugin.php:548
 #. translators: %s: html tags
 msgid "%1s Paste All"
 msgstr ""
@@ -204,29 +208,29 @@ msgstr ""
 msgid "Looks like content is empty. Cannot be processed."
 msgstr ""
 
-#: classes/class-uael-loader.php:184
+#: classes/class-uael-loader.php:190
 #. translators: %s: html tags
 msgid ""
 "The %1$sUltimate Addons for Elementor%2$s plugin requires %1$sElementor%2$s "
 "plugin installed & activated."
 msgstr ""
 
-#: classes/class-uael-loader.php:194
+#: classes/class-uael-loader.php:200
 msgid "Activate Elementor"
 msgstr ""
 
-#: classes/class-uael-loader.php:202 classes/class-uael-loader.php:240
+#: classes/class-uael-loader.php:208 classes/class-uael-loader.php:246
 msgid "Install Elementor"
 msgstr ""
 
-#: classes/class-uael-loader.php:221
+#: classes/class-uael-loader.php:227
 #. translators: %s: html tags
 msgid ""
 "The %1$sUltimate Addons for Elementor%2$s plugin has stopped working "
 "because you are using an older version of %1$sElementor%2$s plugin."
 msgstr ""
 
-#: classes/class-uael-loader.php:232
+#: classes/class-uael-loader.php:238
 msgid "Update Elementor"
 msgstr ""
 
@@ -417,19 +421,23 @@ msgstr ""
 msgid "Social Share"
 msgstr ""
 
-#: classes/uael-config.php:479
+#: classes/uael-config.php:462
+msgid "Woo - Checkout"
+msgstr ""
+
+#: classes/uael-config.php:488
 msgid "Card Skin"
 msgstr ""
 
-#: classes/uael-config.php:485
+#: classes/uael-config.php:494
 msgid "Creative Feed Skin"
 msgstr ""
 
-#: classes/uael-config.php:491
+#: classes/uael-config.php:500
 msgid "News Skin"
 msgstr ""
 
-#: classes/uael-config.php:497
+#: classes/uael-config.php:506
 msgid "Business Skin"
 msgstr ""
 
@@ -651,7 +659,7 @@ msgstr ""
 
 #: classes/uael-helper.php:1208 modules/ff-styler/widgets/ff-styler.php:111
 #: modules/table/widgets/table.php:263 modules/table/widgets/table.php:580
-#: modules/video/widgets/video.php:1629
+#: modules/video/widgets/video.php:1631
 msgid "Select"
 msgstr ""
 
@@ -673,7 +681,7 @@ msgstr ""
 #: modules/image-gallery/widgets/image-gallery.php:362
 #: modules/login-form/widgets/login-form.php:172
 #: modules/nav-menu/widgets/nav-menu.php:191
-#: modules/nav-menu/widgets/nav-menu.php:353 modules/particles/module.php:229
+#: modules/nav-menu/widgets/nav-menu.php:352 modules/particles/module.php:229
 #: modules/posts/skins/skin-base.php:808 modules/posts/skins/skin-feed.php:210
 #: modules/price-table/widgets/price-table.php:351
 #: modules/registration-form/widgets/registration-form.php:1094
@@ -1147,6 +1155,66 @@ msgstr ""
 msgid "Mini Cart : Text"
 msgstr ""
 
+#: compatibility/class-uael-wpml.php:882
+msgid "Woo - Checkout: Enter Billing Text"
+msgstr ""
+
+#: compatibility/class-uael-wpml.php:887
+msgid "Woo - Checkout: Enter Shipping Text"
+msgstr ""
+
+#: compatibility/class-uael-wpml.php:892
+msgid "Woo - Checkout: Enter Order Text"
+msgstr ""
+
+#: compatibility/class-uael-wpml.php:897
+msgid "Woo - Checkout: Enter Payment Text"
+msgstr ""
+
+#: compatibility/class-uael-wpml.php:902
+msgid "Woo - Checkout: Enter Cart Button Text"
+msgstr ""
+
+#: compatibility/class-uael-wpml.php:907
+msgid "Woo - Checkout: Enter Previous Button Text"
+msgstr ""
+
+#: compatibility/class-uael-wpml.php:912
+msgid "Woo - Checkout: Enter Next Button Text"
+msgstr ""
+
+#: compatibility/class-uael-wpml.php:917
+msgid "Woo - Checkout: Enter Login Title"
+msgstr ""
+
+#: compatibility/class-uael-wpml.php:922
+msgid "Woo - Checkout: Enter Login Link Text"
+msgstr ""
+
+#: compatibility/class-uael-wpml.php:927
+msgid "Woo - Checkout: Enter Login Form Text"
+msgstr ""
+
+#: compatibility/class-uael-wpml.php:932
+msgid "Woo - Checkout: Enter Coupon Title"
+msgstr ""
+
+#: compatibility/class-uael-wpml.php:937
+msgid "Woo - Checkout: Enter Coupon Link Text"
+msgstr ""
+
+#: compatibility/class-uael-wpml.php:942
+msgid "Woo - Checkout: Enter Coupon Form Text"
+msgstr ""
+
+#: compatibility/class-uael-wpml.php:947
+msgid "Woo - Checkout: Enter Coupon Form Placeholder"
+msgstr ""
+
+#: compatibility/class-uael-wpml.php:952
+msgid "Woo - Checkout: Enter Coupon Button Text"
+msgstr ""
+
 #: compatibility/modules/business-hours.php:59
 msgid "BusinessHours: Enter Day"
 msgstr ""
@@ -1330,7 +1398,7 @@ msgid ""
 msgstr ""
 
 #: includes/admin/uael-branding.php:99
-#: modules/ba-slider/widgets/ba-slider.php:674
+#: modules/ba-slider/widgets/ba-slider.php:680
 #: modules/business-hours/widgets/business-hours.php:560
 #: modules/business-reviews/widgets/business-reviews.php:724
 #: modules/buttons/widgets/buttons.php:514
@@ -1338,7 +1406,7 @@ msgstr ""
 #: modules/cf-styler/widgets/cf-styler.php:1307
 #: modules/content-toggle/widgets/content-toggle.php:956
 #: modules/countdown/widgets/countdown.php:1172
-#: modules/faq/widgets/faq.php:1264
+#: modules/faq/widgets/faq.php:1265
 #: modules/ff-styler/widgets/ff-styler.php:1876
 #: modules/gf-styler/widgets/gf-styler.php:1825
 #: modules/google-map/widgets/google-map.php:701
@@ -1352,7 +1420,7 @@ msgstr ""
 #: modules/login-form/widgets/login-form.php:1150
 #: modules/marketing-button/widgets/marketing-button.php:337
 #: modules/modal-popup/widgets/modal-popup.php:2183
-#: modules/nav-menu/widgets/nav-menu.php:1865
+#: modules/nav-menu/widgets/nav-menu.php:1885
 #: modules/offcanvas/widgets/offcanvas.php:1849
 #: modules/posts/widgets/posts-base.php:445
 #: modules/price-list/widgets/price-list.php:1002
@@ -1364,10 +1432,11 @@ msgstr ""
 #: modules/table-of-contents/widgets/table-of-contents.php:535
 #: modules/team-member/widgets/team-member.php:621
 #: modules/timeline/widgets/timeline.php:712
-#: modules/video/widgets/video.php:1860
+#: modules/video/widgets/video.php:1862
 #: modules/video-gallery/widgets/video-gallery.php:827
 #: modules/woocommerce/widgets/woo-add-to-cart.php:969
 #: modules/woocommerce/widgets/woo-categories.php:1091
+#: modules/woocommerce/widgets/woo-checkout.php:1855
 #: modules/woocommerce/widgets/woo-mini-cart.php:2555
 #: modules/woocommerce/widgets/woo-products.php:1318
 #: modules/wpf-styler/widgets/wpf-styler.php:1549
@@ -1578,8 +1647,8 @@ msgstr ""
 #: modules/hotspot/widgets/hotspot.php:924
 #: modules/image-gallery/widgets/image-gallery.php:624
 #: modules/login-form/widgets/login-form.php:171
-#: modules/nav-menu/widgets/nav-menu.php:352
-#: modules/nav-menu/widgets/nav-menu.php:644
+#: modules/nav-menu/widgets/nav-menu.php:351
+#: modules/nav-menu/widgets/nav-menu.php:664
 #: modules/price-table/widgets/price-table.php:742
 #: modules/registration-form/widgets/registration-form.php:156
 #: modules/registration-form/widgets/registration-form.php:285
@@ -1588,7 +1657,7 @@ msgstr ""
 #: modules/registration-form/widgets/registration-form.php:2028
 #: modules/registration-form/widgets/registration-form.php:2118
 #: modules/table/widgets/table.php:960 modules/table/widgets/table.php:1255
-#: modules/video/widgets/video.php:827
+#: modules/video/widgets/video.php:829
 #: modules/video-gallery/widgets/video-gallery.php:544
 #: modules/woocommerce/skins/skin-grid-default.php:772
 #: modules/woocommerce/skins/skin-grid-franko.php:696
@@ -1847,22 +1916,22 @@ msgid "Before After Slider Orientation"
 msgstr ""
 
 #: modules/ba-slider/widgets/ba-slider.php:297
-#: modules/nav-menu/widgets/nav-menu.php:458
+#: modules/nav-menu/widgets/nav-menu.php:478
 msgid "Vertical"
 msgstr ""
 
 #: modules/ba-slider/widgets/ba-slider.php:301
-#: modules/nav-menu/widgets/nav-menu.php:457
+#: modules/nav-menu/widgets/nav-menu.php:477
 msgid "Horizontal"
 msgstr ""
 
 #: modules/ba-slider/widgets/ba-slider.php:313
-#: modules/ba-slider/widgets/ba-slider.php:597
-#: modules/ba-slider/widgets/ba-slider.php:628
+#: modules/ba-slider/widgets/ba-slider.php:603
+#: modules/ba-slider/widgets/ba-slider.php:634
 #: modules/buttons/widgets/buttons.php:737
 #: modules/content-toggle/widgets/content-toggle.php:560
-#: modules/countdown/widgets/countdown.php:1082 modules/faq/widgets/faq.php:340
-#: modules/faq/widgets/faq.php:505 modules/ff-styler/widgets/ff-styler.php:1208
+#: modules/countdown/widgets/countdown.php:1082 modules/faq/widgets/faq.php:341
+#: modules/faq/widgets/faq.php:506 modules/ff-styler/widgets/ff-styler.php:1208
 #: modules/headings/widgets/dual-heading.php:224
 #: modules/headings/widgets/fancy-heading.php:555
 #: modules/how-to/widgets/how-to.php:1149
@@ -1877,8 +1946,8 @@ msgstr ""
 #: modules/modal-popup/widgets/modal-popup.php:1165
 #: modules/modal-popup/widgets/modal-popup.php:1319
 #: modules/modal-popup/widgets/modal-popup.php:1371
-#: modules/nav-menu/widgets/nav-menu.php:468
-#: modules/nav-menu/widgets/nav-menu.php:707
+#: modules/nav-menu/widgets/nav-menu.php:488
+#: modules/nav-menu/widgets/nav-menu.php:727
 #: modules/offcanvas/widgets/offcanvas.php:472
 #: modules/offcanvas/widgets/offcanvas.php:505
 #: modules/offcanvas/widgets/offcanvas.php:759
@@ -1903,6 +1972,8 @@ msgstr ""
 #: modules/woocommerce/widgets/woo-add-to-cart.php:255
 #: modules/woocommerce/widgets/woo-categories.php:760
 #: modules/woocommerce/widgets/woo-categories.php:923
+#: modules/woocommerce/widgets/woo-checkout.php:1040
+#: modules/woocommerce/widgets/woo-checkout.php:1080
 #: modules/woocommerce/widgets/woo-mini-cart.php:292
 #: modules/woocommerce/widgets/woo-mini-cart.php:610
 #: modules/woocommerce/widgets/woo-mini-cart.php:1007
@@ -1913,7 +1984,7 @@ msgid "Alignment"
 msgstr ""
 
 #: modules/ba-slider/widgets/ba-slider.php:317
-#: modules/ba-slider/widgets/ba-slider.php:601
+#: modules/ba-slider/widgets/ba-slider.php:607
 #: modules/business-hours/widgets/business-hours.php:397
 #: modules/business-hours/widgets/business-hours.php:423
 #: modules/business-reviews/skins/skin-base.php:131
@@ -1924,7 +1995,7 @@ msgstr ""
 #: modules/cf-styler/widgets/cf-styler.php:459
 #: modules/cf-styler/widgets/cf-styler.php:686
 #: modules/content-toggle/widgets/content-toggle.php:565
-#: modules/countdown/widgets/countdown.php:1086 modules/faq/widgets/faq.php:509
+#: modules/countdown/widgets/countdown.php:1086 modules/faq/widgets/faq.php:510
 #: modules/ff-styler/widgets/ff-styler.php:230
 #: modules/ff-styler/widgets/ff-styler.php:758
 #: modules/ff-styler/widgets/ff-styler.php:1212
@@ -1952,12 +2023,12 @@ msgstr ""
 #: modules/modal-popup/widgets/modal-popup.php:1169
 #: modules/modal-popup/widgets/modal-popup.php:1323
 #: modules/modal-popup/widgets/modal-popup.php:1375
-#: modules/nav-menu/widgets/nav-menu.php:397
-#: modules/nav-menu/widgets/nav-menu.php:472
-#: modules/nav-menu/widgets/nav-menu.php:504
-#: modules/nav-menu/widgets/nav-menu.php:539
-#: modules/nav-menu/widgets/nav-menu.php:574
-#: modules/nav-menu/widgets/nav-menu.php:711
+#: modules/nav-menu/widgets/nav-menu.php:396
+#: modules/nav-menu/widgets/nav-menu.php:492
+#: modules/nav-menu/widgets/nav-menu.php:524
+#: modules/nav-menu/widgets/nav-menu.php:559
+#: modules/nav-menu/widgets/nav-menu.php:594
+#: modules/nav-menu/widgets/nav-menu.php:731
 #: modules/offcanvas/widgets/offcanvas.php:476
 #: modules/offcanvas/widgets/offcanvas.php:510
 #: modules/offcanvas/widgets/offcanvas.php:763
@@ -1998,6 +2069,9 @@ msgstr ""
 #: modules/woocommerce/widgets/woo-add-to-cart.php:259
 #: modules/woocommerce/widgets/woo-categories.php:765
 #: modules/woocommerce/widgets/woo-categories.php:928
+#: modules/woocommerce/widgets/woo-checkout.php:1045
+#: modules/woocommerce/widgets/woo-checkout.php:1084
+#: modules/woocommerce/widgets/woo-checkout.php:1292
 #: modules/woocommerce/widgets/woo-mini-cart.php:296
 #: modules/woocommerce/widgets/woo-mini-cart.php:379
 #: modules/woocommerce/widgets/woo-mini-cart.php:614
@@ -2011,8 +2085,8 @@ msgid "Left"
 msgstr ""
 
 #: modules/ba-slider/widgets/ba-slider.php:321
-#: modules/ba-slider/widgets/ba-slider.php:605
-#: modules/ba-slider/widgets/ba-slider.php:636
+#: modules/ba-slider/widgets/ba-slider.php:611
+#: modules/ba-slider/widgets/ba-slider.php:642
 #: modules/business-hours/widgets/business-hours.php:401
 #: modules/business-hours/widgets/business-hours.php:427
 #: modules/business-reviews/skins/skin-base.php:135
@@ -2023,7 +2097,7 @@ msgstr ""
 #: modules/cf-styler/widgets/cf-styler.php:463
 #: modules/cf-styler/widgets/cf-styler.php:690
 #: modules/content-toggle/widgets/content-toggle.php:569
-#: modules/countdown/widgets/countdown.php:1090 modules/faq/widgets/faq.php:513
+#: modules/countdown/widgets/countdown.php:1090 modules/faq/widgets/faq.php:514
 #: modules/ff-styler/widgets/ff-styler.php:234
 #: modules/ff-styler/widgets/ff-styler.php:762
 #: modules/ff-styler/widgets/ff-styler.php:1216
@@ -2050,11 +2124,11 @@ msgstr ""
 #: modules/modal-popup/widgets/modal-popup.php:1173
 #: modules/modal-popup/widgets/modal-popup.php:1327
 #: modules/modal-popup/widgets/modal-popup.php:1379
-#: modules/nav-menu/widgets/nav-menu.php:398
-#: modules/nav-menu/widgets/nav-menu.php:476
-#: modules/nav-menu/widgets/nav-menu.php:543
-#: modules/nav-menu/widgets/nav-menu.php:578
-#: modules/nav-menu/widgets/nav-menu.php:715
+#: modules/nav-menu/widgets/nav-menu.php:397
+#: modules/nav-menu/widgets/nav-menu.php:496
+#: modules/nav-menu/widgets/nav-menu.php:563
+#: modules/nav-menu/widgets/nav-menu.php:598
+#: modules/nav-menu/widgets/nav-menu.php:735
 #: modules/offcanvas/widgets/offcanvas.php:480
 #: modules/offcanvas/widgets/offcanvas.php:767
 #: modules/posts/skins/skin-base.php:863 modules/posts/skins/skin-base.php:1910
@@ -2079,13 +2153,16 @@ msgstr ""
 #: modules/team-member/widgets/team-member.php:721
 #: modules/timeline/widgets/timeline.php:1129
 #: modules/timeline/widgets/timeline.php:1191
-#: modules/video/widgets/video.php:1247
+#: modules/video/widgets/video.php:1249
 #: modules/video-gallery/widgets/video-gallery.php:1126
 #: modules/woocommerce/skins/skin-grid-default.php:203
 #: modules/woocommerce/skins/skin-grid-franko.php:229
 #: modules/woocommerce/widgets/woo-add-to-cart.php:263
 #: modules/woocommerce/widgets/woo-categories.php:769
 #: modules/woocommerce/widgets/woo-categories.php:932
+#: modules/woocommerce/widgets/woo-checkout.php:1049
+#: modules/woocommerce/widgets/woo-checkout.php:1088
+#: modules/woocommerce/widgets/woo-checkout.php:1296
 #: modules/woocommerce/widgets/woo-mini-cart.php:300
 #: modules/woocommerce/widgets/woo-mini-cart.php:618
 #: modules/woocommerce/widgets/woo-mini-cart.php:1015
@@ -2097,7 +2174,7 @@ msgid "Center"
 msgstr ""
 
 #: modules/ba-slider/widgets/ba-slider.php:325
-#: modules/ba-slider/widgets/ba-slider.php:609
+#: modules/ba-slider/widgets/ba-slider.php:615
 #: modules/business-hours/widgets/business-hours.php:405
 #: modules/business-hours/widgets/business-hours.php:431
 #: modules/business-reviews/skins/skin-base.php:139
@@ -2108,7 +2185,7 @@ msgstr ""
 #: modules/cf-styler/widgets/cf-styler.php:467
 #: modules/cf-styler/widgets/cf-styler.php:694
 #: modules/content-toggle/widgets/content-toggle.php:573
-#: modules/countdown/widgets/countdown.php:1094 modules/faq/widgets/faq.php:517
+#: modules/countdown/widgets/countdown.php:1094 modules/faq/widgets/faq.php:518
 #: modules/ff-styler/widgets/ff-styler.php:238
 #: modules/ff-styler/widgets/ff-styler.php:766
 #: modules/ff-styler/widgets/ff-styler.php:1220
@@ -2136,12 +2213,12 @@ msgstr ""
 #: modules/modal-popup/widgets/modal-popup.php:1177
 #: modules/modal-popup/widgets/modal-popup.php:1331
 #: modules/modal-popup/widgets/modal-popup.php:1383
-#: modules/nav-menu/widgets/nav-menu.php:399
-#: modules/nav-menu/widgets/nav-menu.php:480
-#: modules/nav-menu/widgets/nav-menu.php:505
-#: modules/nav-menu/widgets/nav-menu.php:547
-#: modules/nav-menu/widgets/nav-menu.php:582
-#: modules/nav-menu/widgets/nav-menu.php:719
+#: modules/nav-menu/widgets/nav-menu.php:398
+#: modules/nav-menu/widgets/nav-menu.php:500
+#: modules/nav-menu/widgets/nav-menu.php:525
+#: modules/nav-menu/widgets/nav-menu.php:567
+#: modules/nav-menu/widgets/nav-menu.php:602
+#: modules/nav-menu/widgets/nav-menu.php:739
 #: modules/offcanvas/widgets/offcanvas.php:484
 #: modules/offcanvas/widgets/offcanvas.php:514
 #: modules/offcanvas/widgets/offcanvas.php:771
@@ -2181,6 +2258,9 @@ msgstr ""
 #: modules/woocommerce/widgets/woo-add-to-cart.php:267
 #: modules/woocommerce/widgets/woo-categories.php:773
 #: modules/woocommerce/widgets/woo-categories.php:936
+#: modules/woocommerce/widgets/woo-checkout.php:1053
+#: modules/woocommerce/widgets/woo-checkout.php:1092
+#: modules/woocommerce/widgets/woo-checkout.php:1300
 #: modules/woocommerce/widgets/woo-mini-cart.php:304
 #: modules/woocommerce/widgets/woo-mini-cart.php:378
 #: modules/woocommerce/widgets/woo-mini-cart.php:622
@@ -2206,8 +2286,8 @@ msgstr ""
 #: modules/cf-styler/widgets/cf-styler.php:501
 #: modules/cf-styler/widgets/cf-styler.php:942
 #: modules/countdown/widgets/countdown.php:379
-#: modules/countdown/widgets/countdown.php:489 modules/faq/widgets/faq.php:281
-#: modules/faq/widgets/faq.php:409 modules/faq/widgets/faq.php:540
+#: modules/countdown/widgets/countdown.php:489 modules/faq/widgets/faq.php:282
+#: modules/faq/widgets/faq.php:410 modules/faq/widgets/faq.php:541
 #: modules/ff-styler/widgets/ff-styler.php:582
 #: modules/ff-styler/widgets/ff-styler.php:1157
 #: modules/ff-styler/widgets/ff-styler.php:1353
@@ -2259,7 +2339,8 @@ msgstr ""
 #: modules/modal-popup/widgets/modal-popup.php:1064
 #: modules/modal-popup/widgets/modal-popup.php:1082
 #: modules/modal-popup/widgets/modal-popup.php:1118
-#: modules/nav-menu/widgets/nav-menu.php:741
+#: modules/nav-menu/widgets/nav-menu.php:449
+#: modules/nav-menu/widgets/nav-menu.php:761
 #: modules/offcanvas/widgets/offcanvas.php:171
 #: modules/offcanvas/widgets/offcanvas.php:303
 #: modules/offcanvas/widgets/offcanvas.php:889
@@ -2303,17 +2384,21 @@ msgstr ""
 #: modules/timeline/widgets/timeline.php:561
 #: modules/timeline/widgets/timeline.php:589
 #: modules/timeline/widgets/timeline.php:604
-#: modules/video/widgets/video.php:679 modules/video/widgets/video.php:740
-#: modules/video/widgets/video.php:1292 modules/video/widgets/video.php:1447
-#: modules/video/widgets/video.php:1503 modules/video/widgets/video.php:1616
-#: modules/video/widgets/video.php:1726
+#: modules/video/widgets/video.php:681 modules/video/widgets/video.php:742
+#: modules/video/widgets/video.php:1294 modules/video/widgets/video.php:1449
+#: modules/video/widgets/video.php:1505 modules/video/widgets/video.php:1618
+#: modules/video/widgets/video.php:1728
 #: modules/video-gallery/widgets/video-gallery.php:354
 #: modules/video-gallery/widgets/video-gallery.php:580
 #: modules/video-gallery/widgets/video-gallery.php:674
 #: modules/video-gallery/widgets/video-gallery.php:706
 #: modules/video-gallery/widgets/video-gallery.php:1697
-#: modules/video-gallery/widgets/video-gallery.php:1765
+#: modules/video-gallery/widgets/video-gallery.php:1766
 #: modules/woocommerce/widgets/woo-add-to-cart.php:157
+#: modules/woocommerce/widgets/woo-checkout.php:170
+#: modules/woocommerce/widgets/woo-checkout.php:182
+#: modules/woocommerce/widgets/woo-checkout.php:714
+#: modules/woocommerce/widgets/woo-checkout.php:1554
 #: modules/woocommerce/widgets/woo-mini-cart.php:206
 #: modules/woocommerce/widgets/woo-mini-cart.php:222
 #: modules/woocommerce/widgets/woo-mini-cart.php:238
@@ -2333,8 +2418,8 @@ msgstr ""
 #: modules/cf-styler/widgets/cf-styler.php:502
 #: modules/cf-styler/widgets/cf-styler.php:943
 #: modules/countdown/widgets/countdown.php:380
-#: modules/countdown/widgets/countdown.php:490 modules/faq/widgets/faq.php:282
-#: modules/faq/widgets/faq.php:541 modules/ff-styler/widgets/ff-styler.php:583
+#: modules/countdown/widgets/countdown.php:490 modules/faq/widgets/faq.php:283
+#: modules/faq/widgets/faq.php:542 modules/ff-styler/widgets/ff-styler.php:583
 #: modules/ff-styler/widgets/ff-styler.php:1158
 #: modules/ff-styler/widgets/ff-styler.php:1354
 #: modules/gf-styler/widgets/gf-styler.php:204
@@ -2388,7 +2473,8 @@ msgstr ""
 #: modules/modal-popup/widgets/modal-popup.php:1063
 #: modules/modal-popup/widgets/modal-popup.php:1081
 #: modules/modal-popup/widgets/modal-popup.php:1117
-#: modules/nav-menu/widgets/nav-menu.php:742
+#: modules/nav-menu/widgets/nav-menu.php:450
+#: modules/nav-menu/widgets/nav-menu.php:762
 #: modules/offcanvas/widgets/offcanvas.php:170
 #: modules/offcanvas/widgets/offcanvas.php:302
 #: modules/offcanvas/widgets/offcanvas.php:888
@@ -2434,17 +2520,21 @@ msgstr ""
 #: modules/timeline/widgets/timeline.php:562
 #: modules/timeline/widgets/timeline.php:590
 #: modules/timeline/widgets/timeline.php:605
-#: modules/video/widgets/video.php:678 modules/video/widgets/video.php:739
-#: modules/video/widgets/video.php:1291 modules/video/widgets/video.php:1446
-#: modules/video/widgets/video.php:1502 modules/video/widgets/video.php:1615
-#: modules/video/widgets/video.php:1725
+#: modules/video/widgets/video.php:680 modules/video/widgets/video.php:741
+#: modules/video/widgets/video.php:1293 modules/video/widgets/video.php:1448
+#: modules/video/widgets/video.php:1504 modules/video/widgets/video.php:1617
+#: modules/video/widgets/video.php:1727
 #: modules/video-gallery/widgets/video-gallery.php:355
 #: modules/video-gallery/widgets/video-gallery.php:579
 #: modules/video-gallery/widgets/video-gallery.php:673
 #: modules/video-gallery/widgets/video-gallery.php:707
 #: modules/video-gallery/widgets/video-gallery.php:1696
-#: modules/video-gallery/widgets/video-gallery.php:1764
+#: modules/video-gallery/widgets/video-gallery.php:1765
 #: modules/woocommerce/widgets/woo-add-to-cart.php:158
+#: modules/woocommerce/widgets/woo-checkout.php:171
+#: modules/woocommerce/widgets/woo-checkout.php:183
+#: modules/woocommerce/widgets/woo-checkout.php:715
+#: modules/woocommerce/widgets/woo-checkout.php:1555
 #: modules/woocommerce/widgets/woo-mini-cart.php:207
 #: modules/woocommerce/widgets/woo-mini-cart.php:223
 #: modules/woocommerce/widgets/woo-mini-cart.php:239
@@ -2461,7 +2551,7 @@ msgstr ""
 #: modules/image-gallery/widgets/image-gallery.php:1091
 #: modules/modal-popup/widgets/modal-popup.php:213
 #: modules/offcanvas/widgets/offcanvas.php:1825
-#: modules/posts/skins/skin-base.php:392 modules/video/widgets/video.php:778
+#: modules/posts/skins/skin-base.php:392 modules/video/widgets/video.php:780
 #: modules/video-gallery/widgets/video-gallery.php:1661
 #: modules/woocommerce/skins/skin-grid-base.php:148
 msgid "Overlay Color"
@@ -2519,44 +2609,44 @@ msgstr ""
 msgid "Handle Color"
 msgstr ""
 
-#: modules/ba-slider/widgets/ba-slider.php:422
+#: modules/ba-slider/widgets/ba-slider.php:424
 msgid "Handle Thickness"
 msgstr ""
 
-#: modules/ba-slider/widgets/ba-slider.php:446
+#: modules/ba-slider/widgets/ba-slider.php:448
 msgid "Circle Width"
 msgstr ""
 
-#: modules/ba-slider/widgets/ba-slider.php:470
+#: modules/ba-slider/widgets/ba-slider.php:472
 msgid "Circle Radius"
 msgstr ""
 
-#: modules/ba-slider/widgets/ba-slider.php:491
+#: modules/ba-slider/widgets/ba-slider.php:493
 msgid "Triangle Size"
 msgstr ""
 
-#: modules/ba-slider/widgets/ba-slider.php:517
-#: modules/ba-slider/widgets/ba-slider.php:525
+#: modules/ba-slider/widgets/ba-slider.php:523
+#: modules/ba-slider/widgets/ba-slider.php:531
 msgid "Before/After Label"
 msgstr ""
 
-#: modules/ba-slider/widgets/ba-slider.php:533
+#: modules/ba-slider/widgets/ba-slider.php:539
 msgid "Show Label On"
 msgstr ""
 
-#: modules/ba-slider/widgets/ba-slider.php:538
+#: modules/ba-slider/widgets/ba-slider.php:544
 msgid "Hover Only"
 msgstr ""
 
-#: modules/ba-slider/widgets/ba-slider.php:539
+#: modules/ba-slider/widgets/ba-slider.php:545
 msgid "Normal Only"
 msgstr ""
 
-#: modules/ba-slider/widgets/ba-slider.php:540
+#: modules/ba-slider/widgets/ba-slider.php:546
 msgid "Hover & Normal"
 msgstr ""
 
-#: modules/ba-slider/widgets/ba-slider.php:560
+#: modules/ba-slider/widgets/ba-slider.php:566
 #: modules/business-hours/widgets/business-hours.php:341
 #: modules/business-reviews/skins/skin-base.php:214
 #: modules/business-reviews/skins/skin-base.php:297
@@ -2566,8 +2656,8 @@ msgstr ""
 #: modules/content-toggle/widgets/content-toggle.php:760
 #: modules/countdown/widgets/countdown.php:995
 #: modules/countdown/widgets/countdown.php:1044
-#: modules/countdown/widgets/countdown.php:1125 modules/faq/widgets/faq.php:622
-#: modules/faq/widgets/faq.php:687 modules/faq/widgets/faq.php:813
+#: modules/countdown/widgets/countdown.php:1125 modules/faq/widgets/faq.php:623
+#: modules/faq/widgets/faq.php:688 modules/faq/widgets/faq.php:814
 #: modules/ff-styler/widgets/ff-styler.php:1453
 #: modules/ff-styler/widgets/ff-styler.php:1489
 #: modules/ff-styler/widgets/ff-styler.php:1742
@@ -2604,8 +2694,8 @@ msgstr ""
 #: modules/modal-popup/widgets/modal-popup.php:773
 #: modules/modal-popup/widgets/modal-popup.php:1417
 #: modules/modal-popup/widgets/modal-popup.php:1497
-#: modules/nav-menu/widgets/nav-menu.php:1712
-#: modules/nav-menu/widgets/nav-menu.php:1744
+#: modules/nav-menu/widgets/nav-menu.php:1732
+#: modules/nav-menu/widgets/nav-menu.php:1764
 #: modules/offcanvas/widgets/offcanvas.php:1679
 #: modules/posts/skins/skin-base.php:2780
 #: modules/posts/skins/skin-base.php:2874
@@ -2641,8 +2731,8 @@ msgstr ""
 #: modules/timeline/widgets/timeline.php:2139
 #: modules/timeline/widgets/timeline.php:2157
 #: modules/timeline/widgets/timeline.php:2175
-#: modules/video/widgets/video.php:961 modules/video/widgets/video.php:1035
-#: modules/video/widgets/video.php:1531
+#: modules/video/widgets/video.php:963 modules/video/widgets/video.php:1037
+#: modules/video/widgets/video.php:1533
 #: modules/video-gallery/widgets/video-gallery.php:1471
 #: modules/video-gallery/widgets/video-gallery.php:1548
 #: modules/woocommerce/skins/skin-grid-base.php:110
@@ -2668,6 +2758,17 @@ msgstr ""
 #: modules/woocommerce/widgets/woo-categories.php:795
 #: modules/woocommerce/widgets/woo-categories.php:978
 #: modules/woocommerce/widgets/woo-categories.php:1018
+#: modules/woocommerce/widgets/woo-checkout.php:645
+#: modules/woocommerce/widgets/woo-checkout.php:725
+#: modules/woocommerce/widgets/woo-checkout.php:828
+#: modules/woocommerce/widgets/woo-checkout.php:1119
+#: modules/woocommerce/widgets/woo-checkout.php:1162
+#: modules/woocommerce/widgets/woo-checkout.php:1324
+#: modules/woocommerce/widgets/woo-checkout.php:1369
+#: modules/woocommerce/widgets/woo-checkout.php:1509
+#: modules/woocommerce/widgets/woo-checkout.php:1565
+#: modules/woocommerce/widgets/woo-checkout.php:1658
+#: modules/woocommerce/widgets/woo-checkout.php:1693
 #: modules/woocommerce/widgets/woo-mini-cart.php:670
 #: modules/woocommerce/widgets/woo-mini-cart.php:808
 #: modules/woocommerce/widgets/woo-mini-cart.php:1105
@@ -2688,7 +2789,7 @@ msgstr ""
 msgid "Color"
 msgstr ""
 
-#: modules/ba-slider/widgets/ba-slider.php:572
+#: modules/ba-slider/widgets/ba-slider.php:578
 #: modules/business-hours/widgets/business-hours.php:214
 #: modules/business-reviews/skins/skin-base.php:687
 #: modules/buttons/widgets/buttons.php:316
@@ -2704,9 +2805,9 @@ msgstr ""
 #: modules/cf-styler/widgets/cf-styler.php:841
 #: modules/content-toggle/widgets/content-toggle.php:631
 #: modules/content-toggle/widgets/content-toggle.php:806
-#: modules/countdown/widgets/countdown.php:855 modules/faq/widgets/faq.php:889
-#: modules/faq/widgets/faq.php:957 modules/faq/widgets/faq.php:1079
-#: modules/faq/widgets/faq.php:1114 modules/ff-styler/widgets/ff-styler.php:322
+#: modules/countdown/widgets/countdown.php:855 modules/faq/widgets/faq.php:890
+#: modules/faq/widgets/faq.php:958 modules/faq/widgets/faq.php:1080
+#: modules/faq/widgets/faq.php:1115 modules/ff-styler/widgets/ff-styler.php:322
 #: modules/ff-styler/widgets/ff-styler.php:619
 #: modules/ff-styler/widgets/ff-styler.php:838
 #: modules/ff-styler/widgets/ff-styler.php:923
@@ -2740,15 +2841,15 @@ msgstr ""
 #: modules/modal-popup/widgets/modal-popup.php:1515
 #: modules/modal-popup/widgets/modal-popup.php:1952
 #: modules/modal-popup/widgets/modal-popup.php:1998
-#: modules/nav-menu/widgets/nav-menu.php:1001
-#: modules/nav-menu/widgets/nav-menu.php:1144
-#: modules/nav-menu/widgets/nav-menu.php:1186
-#: modules/nav-menu/widgets/nav-menu.php:1250
-#: modules/nav-menu/widgets/nav-menu.php:1354
-#: modules/nav-menu/widgets/nav-menu.php:1397
-#: modules/nav-menu/widgets/nav-menu.php:1440
-#: modules/nav-menu/widgets/nav-menu.php:1724
-#: modules/nav-menu/widgets/nav-menu.php:1756
+#: modules/nav-menu/widgets/nav-menu.php:1021
+#: modules/nav-menu/widgets/nav-menu.php:1164
+#: modules/nav-menu/widgets/nav-menu.php:1206
+#: modules/nav-menu/widgets/nav-menu.php:1270
+#: modules/nav-menu/widgets/nav-menu.php:1374
+#: modules/nav-menu/widgets/nav-menu.php:1417
+#: modules/nav-menu/widgets/nav-menu.php:1460
+#: modules/nav-menu/widgets/nav-menu.php:1744
+#: modules/nav-menu/widgets/nav-menu.php:1776
 #: modules/offcanvas/widgets/offcanvas.php:997
 #: modules/offcanvas/widgets/offcanvas.php:1081
 #: modules/offcanvas/widgets/offcanvas.php:1183
@@ -2795,9 +2896,9 @@ msgstr ""
 #: modules/timeline/widgets/timeline.php:1491
 #: modules/timeline/widgets/timeline.php:1674
 #: modules/timeline/widgets/timeline.php:1766
-#: modules/video/widgets/video.php:1120 modules/video/widgets/video.php:1190
-#: modules/video/widgets/video.php:1397 modules/video/widgets/video.php:1472
-#: modules/video/widgets/video.php:1546 modules/video/widgets/video.php:1754
+#: modules/video/widgets/video.php:1122 modules/video/widgets/video.php:1192
+#: modules/video/widgets/video.php:1399 modules/video/widgets/video.php:1474
+#: modules/video/widgets/video.php:1548 modules/video/widgets/video.php:1756
 #: modules/video-gallery/widgets/video-gallery.php:1230
 #: modules/woocommerce/skins/skin-grid-base.php:124
 #: modules/woocommerce/skins/skin-grid-base.php:160
@@ -2816,6 +2917,16 @@ msgstr ""
 #: modules/woocommerce/widgets/woo-categories.php:805
 #: modules/woocommerce/widgets/woo-categories.php:994
 #: modules/woocommerce/widgets/woo-categories.php:1034
+#: modules/woocommerce/widgets/woo-checkout.php:509
+#: modules/woocommerce/widgets/woo-checkout.php:613
+#: modules/woocommerce/widgets/woo-checkout.php:659
+#: modules/woocommerce/widgets/woo-checkout.php:906
+#: modules/woocommerce/widgets/woo-checkout.php:1134
+#: modules/woocommerce/widgets/woo-checkout.php:1180
+#: modules/woocommerce/widgets/woo-checkout.php:1341
+#: modules/woocommerce/widgets/woo-checkout.php:1386
+#: modules/woocommerce/widgets/woo-checkout.php:1707
+#: modules/woocommerce/widgets/woo-checkout.php:1812
 #: modules/woocommerce/widgets/woo-mini-cart.php:582
 #: modules/woocommerce/widgets/woo-mini-cart.php:824
 #: modules/woocommerce/widgets/woo-mini-cart.php:888
@@ -2839,15 +2950,15 @@ msgstr ""
 msgid "Background Color"
 msgstr ""
 
-#: modules/ba-slider/widgets/ba-slider.php:584
+#: modules/ba-slider/widgets/ba-slider.php:590
 #: modules/business-reviews/skins/skin-base.php:699
 #: modules/buttons/widgets/buttons.php:714
 #: modules/caf-styler/widgets/caf-styler.php:770
 #: modules/cf-styler/widgets/cf-styler.php:728
 #: modules/content-toggle/widgets/content-toggle.php:674
 #: modules/content-toggle/widgets/content-toggle.php:849
-#: modules/countdown/widgets/countdown.php:939 modules/faq/widgets/faq.php:1021
-#: modules/faq/widgets/faq.php:1143 modules/ff-styler/widgets/ff-styler.php:305
+#: modules/countdown/widgets/countdown.php:939 modules/faq/widgets/faq.php:1022
+#: modules/faq/widgets/faq.php:1144 modules/ff-styler/widgets/ff-styler.php:305
 #: modules/ff-styler/widgets/ff-styler.php:802
 #: modules/ff-styler/widgets/ff-styler.php:961
 #: modules/ff-styler/widgets/ff-styler.php:1143
@@ -2902,7 +3013,7 @@ msgstr ""
 #: modules/table-of-contents/widgets/table-of-contents.php:582
 #: modules/team-member/widgets/team-member.php:1064
 #: modules/timeline/widgets/timeline.php:1615
-#: modules/video/widgets/video.php:1576 modules/video/widgets/video.php:1785
+#: modules/video/widgets/video.php:1578 modules/video/widgets/video.php:1787
 #: modules/video-gallery/widgets/video-gallery.php:1161
 #: modules/woocommerce/skins/skin-grid-base.php:172
 #: modules/woocommerce/skins/skin-grid-default.php:583
@@ -2915,6 +3026,11 @@ msgstr ""
 #: modules/woocommerce/widgets/woo-add-to-cart.php:690
 #: modules/woocommerce/widgets/woo-categories.php:851
 #: modules/woocommerce/widgets/woo-categories.php:1052
+#: modules/woocommerce/widgets/woo-checkout.php:568
+#: modules/woocommerce/widgets/woo-checkout.php:681
+#: modules/woocommerce/widgets/woo-checkout.php:975
+#: modules/woocommerce/widgets/woo-checkout.php:1242
+#: modules/woocommerce/widgets/woo-checkout.php:1405
 #: modules/woocommerce/widgets/woo-mini-cart.php:490
 #: modules/woocommerce/widgets/woo-mini-cart.php:641
 #: modules/woocommerce/widgets/woo-mini-cart.php:861
@@ -2925,7 +3041,7 @@ msgstr ""
 msgid "Padding"
 msgstr ""
 
-#: modules/ba-slider/widgets/ba-slider.php:632
+#: modules/ba-slider/widgets/ba-slider.php:638
 #: modules/headings/widgets/advanced-heading.php:259
 #: modules/hotspot/widgets/hotspot.php:845
 #: modules/image-gallery/widgets/image-gallery.php:921
@@ -2947,12 +3063,12 @@ msgstr ""
 #: modules/team-member/widgets/team-member.php:661
 #: modules/team-member/widgets/team-member.php:695
 #: modules/timeline/widgets/timeline.php:1214
-#: modules/video/widgets/video.php:1248
+#: modules/video/widgets/video.php:1250
 #: modules/woocommerce/widgets/woo-mini-cart.php:279
 msgid "Top"
 msgstr ""
 
-#: modules/ba-slider/widgets/ba-slider.php:640
+#: modules/ba-slider/widgets/ba-slider.php:646
 #: modules/headings/widgets/advanced-heading.php:260
 #: modules/hotspot/widgets/hotspot.php:846
 #: modules/how-to/widgets/how-to.php:1658
@@ -2971,7 +3087,7 @@ msgstr ""
 msgid "Bottom"
 msgstr ""
 
-#: modules/ba-slider/widgets/ba-slider.php:683
+#: modules/ba-slider/widgets/ba-slider.php:689
 #: modules/business-hours/widgets/business-hours.php:569
 #: modules/buttons/widgets/buttons.php:533
 #: modules/cf-styler/widgets/cf-styler.php:1316
@@ -2988,21 +3104,21 @@ msgstr ""
 #: modules/price-table/widgets/price-table.php:3130
 #: modules/table/widgets/table.php:1861
 #: modules/timeline/widgets/timeline.php:731
-#: modules/video/widgets/video.php:1879
+#: modules/video/widgets/video.php:1881
 #: modules/video-gallery/widgets/video-gallery.php:846
 #: modules/woocommerce/widgets/woo-products.php:1337
 #. translators: %1$s doc link
 msgid "%1$s Getting started video » %2$s"
 msgstr ""
 
-#: modules/ba-slider/widgets/ba-slider.php:693
+#: modules/ba-slider/widgets/ba-slider.php:699
 #: modules/business-hours/widgets/business-hours.php:579
 #: modules/business-reviews/widgets/business-reviews.php:733
 #: modules/buttons/widgets/buttons.php:523
 #: modules/caf-styler/widgets/caf-styler.php:1123
 #: modules/content-toggle/widgets/content-toggle.php:975
 #: modules/countdown/widgets/countdown.php:1181
-#: modules/faq/widgets/faq.php:1273
+#: modules/faq/widgets/faq.php:1274
 #: modules/ff-styler/widgets/ff-styler.php:1885
 #: modules/headings/widgets/advanced-heading.php:1439
 #: modules/headings/widgets/dual-heading.php:766
@@ -3013,7 +3129,7 @@ msgstr ""
 #: modules/infobox/widgets/infobox.php:2110
 #: modules/login-form/widgets/login-form.php:1159
 #: modules/marketing-button/widgets/marketing-button.php:346
-#: modules/nav-menu/widgets/nav-menu.php:1874
+#: modules/nav-menu/widgets/nav-menu.php:1894
 #: modules/offcanvas/widgets/offcanvas.php:1858
 #: modules/posts/widgets/posts-base.php:454
 #: modules/price-list/widgets/price-list.php:1011
@@ -3025,10 +3141,11 @@ msgstr ""
 #: modules/table-of-contents/widgets/table-of-contents.php:544
 #: modules/team-member/widgets/team-member.php:630
 #: modules/timeline/widgets/timeline.php:721
-#: modules/video/widgets/video.php:1869
+#: modules/video/widgets/video.php:1871
 #: modules/video-gallery/widgets/video-gallery.php:836
 #: modules/woocommerce/widgets/woo-add-to-cart.php:978
 #: modules/woocommerce/widgets/woo-categories.php:1100
+#: modules/woocommerce/widgets/woo-checkout.php:1864
 #: modules/woocommerce/widgets/woo-mini-cart.php:2564
 #: modules/woocommerce/widgets/woo-products.php:1327
 #: modules/wpf-styler/widgets/wpf-styler.php:1558
@@ -3164,14 +3281,14 @@ msgid "Sunday"
 msgstr ""
 
 #: modules/business-hours/widgets/business-hours.php:283
-#: modules/nav-menu/widgets/nav-menu.php:959
+#: modules/nav-menu/widgets/nav-menu.php:979
 msgid "Row Spacing"
 msgstr ""
 
 #: modules/business-hours/widgets/business-hours.php:298
 #: modules/business-hours/widgets/business-hours.php:307
 #: modules/login-form/widgets/login-form.php:1043
-#: modules/nav-menu/widgets/nav-menu.php:1621
+#: modules/nav-menu/widgets/nav-menu.php:1641
 #: modules/price-table/widgets/price-table.php:2233
 #: modules/registration-form/widgets/registration-form.php:739
 #: modules/woocommerce/widgets/woo-mini-cart.php:2441
@@ -3179,7 +3296,7 @@ msgid "Divider"
 msgstr ""
 
 #: modules/business-hours/widgets/business-hours.php:320
-#: modules/faq/widgets/faq.php:764 modules/ff-styler/widgets/ff-styler.php:274
+#: modules/faq/widgets/faq.php:765 modules/ff-styler/widgets/ff-styler.php:274
 #: modules/headings/widgets/advanced-heading.php:237
 #: modules/headings/widgets/advanced-heading.php:837
 #: modules/headings/widgets/advanced-heading.php:1102
@@ -3207,8 +3324,8 @@ msgstr ""
 #: modules/business-reviews/skins/skin-bubble.php:198
 #: modules/caf-styler/widgets/caf-styler.php:322
 #: modules/cf-styler/widgets/cf-styler.php:321
-#: modules/countdown/widgets/countdown.php:879 modules/faq/widgets/faq.php:574
-#: modules/faq/widgets/faq.php:647 modules/faq/widgets/faq.php:770
+#: modules/countdown/widgets/countdown.php:879 modules/faq/widgets/faq.php:575
+#: modules/faq/widgets/faq.php:648 modules/faq/widgets/faq.php:771
 #: modules/ff-styler/widgets/ff-styler.php:395
 #: modules/gf-styler/widgets/gf-styler.php:536
 #: modules/headings/widgets/advanced-heading.php:842
@@ -3217,7 +3334,7 @@ msgstr ""
 #: modules/infobox/widgets/infobox.php:672
 #: modules/infobox/widgets/infobox.php:1085
 #: modules/infobox/widgets/infobox.php:1419
-#: modules/nav-menu/widgets/nav-menu.php:1636
+#: modules/nav-menu/widgets/nav-menu.php:1656
 #: modules/price-list/widgets/price-list.php:304
 #: modules/price-table/widgets/price-table.php:1972
 #: modules/price-table/widgets/price-table.php:2260
@@ -3235,8 +3352,8 @@ msgstr ""
 #: modules/business-hours/widgets/business-hours.php:324
 #: modules/caf-styler/widgets/caf-styler.php:324
 #: modules/cf-styler/widgets/cf-styler.php:323
-#: modules/countdown/widgets/countdown.php:881 modules/faq/widgets/faq.php:576
-#: modules/faq/widgets/faq.php:649 modules/faq/widgets/faq.php:772
+#: modules/countdown/widgets/countdown.php:881 modules/faq/widgets/faq.php:577
+#: modules/faq/widgets/faq.php:650 modules/faq/widgets/faq.php:773
 #: modules/ff-styler/widgets/ff-styler.php:397
 #: modules/gf-styler/widgets/gf-styler.php:538
 #: modules/headings/widgets/advanced-heading.php:844
@@ -3245,7 +3362,7 @@ msgstr ""
 #: modules/infobox/widgets/infobox.php:674
 #: modules/infobox/widgets/infobox.php:1087
 #: modules/infobox/widgets/infobox.php:1421
-#: modules/nav-menu/widgets/nav-menu.php:1638
+#: modules/nav-menu/widgets/nav-menu.php:1658
 #: modules/price-list/widgets/price-list.php:305
 #: modules/price-table/widgets/price-table.php:1974
 #: modules/price-table/widgets/price-table.php:2262
@@ -3263,8 +3380,8 @@ msgstr ""
 #: modules/business-hours/widgets/business-hours.php:325
 #: modules/caf-styler/widgets/caf-styler.php:325
 #: modules/cf-styler/widgets/cf-styler.php:324
-#: modules/countdown/widgets/countdown.php:882 modules/faq/widgets/faq.php:575
-#: modules/faq/widgets/faq.php:648 modules/faq/widgets/faq.php:771
+#: modules/countdown/widgets/countdown.php:882 modules/faq/widgets/faq.php:576
+#: modules/faq/widgets/faq.php:649 modules/faq/widgets/faq.php:772
 #: modules/ff-styler/widgets/ff-styler.php:398
 #: modules/gf-styler/widgets/gf-styler.php:539
 #: modules/headings/widgets/advanced-heading.php:843
@@ -3273,7 +3390,7 @@ msgstr ""
 #: modules/infobox/widgets/infobox.php:675
 #: modules/infobox/widgets/infobox.php:1086
 #: modules/infobox/widgets/infobox.php:1422
-#: modules/nav-menu/widgets/nav-menu.php:1639
+#: modules/nav-menu/widgets/nav-menu.php:1659
 #: modules/price-list/widgets/price-list.php:306
 #: modules/price-table/widgets/price-table.php:1973
 #: modules/price-table/widgets/price-table.php:2263
@@ -3371,9 +3488,9 @@ msgstr ""
 #: modules/table-of-contents/widgets/table-of-contents.php:379
 #: modules/team-member/widgets/team-member.php:239
 #: modules/team-member/widgets/team-member.php:359
-#: modules/video/widgets/video.php:427 modules/video/widgets/video.php:511
-#: modules/video/widgets/video.php:525 modules/video/widgets/video.php:539
-#: modules/video/widgets/video.php:642
+#: modules/video/widgets/video.php:429 modules/video/widgets/video.php:513
+#: modules/video/widgets/video.php:527 modules/video/widgets/video.php:541
+#: modules/video/widgets/video.php:644
 #: modules/woocommerce/skins/skin-grid-default.php:95
 #: modules/woocommerce/skins/skin-grid-default.php:107
 #: modules/woocommerce/skins/skin-grid-default.php:119
@@ -3392,6 +3509,7 @@ msgstr ""
 #: modules/woocommerce/skins/skin-grid-franko.php:189
 #: modules/woocommerce/skins/skin-grid-franko.php:683
 #: modules/woocommerce/skins/skin-grid-franko.php:925
+#: modules/woocommerce/widgets/woo-checkout.php:382
 msgid "Show"
 msgstr ""
 
@@ -3430,9 +3548,9 @@ msgstr ""
 #: modules/table-of-contents/widgets/table-of-contents.php:380
 #: modules/team-member/widgets/team-member.php:240
 #: modules/team-member/widgets/team-member.php:360
-#: modules/video/widgets/video.php:426 modules/video/widgets/video.php:510
-#: modules/video/widgets/video.php:524 modules/video/widgets/video.php:538
-#: modules/video/widgets/video.php:641
+#: modules/video/widgets/video.php:428 modules/video/widgets/video.php:512
+#: modules/video/widgets/video.php:526 modules/video/widgets/video.php:540
+#: modules/video/widgets/video.php:643
 #: modules/woocommerce/skins/skin-grid-default.php:96
 #: modules/woocommerce/skins/skin-grid-default.php:108
 #: modules/woocommerce/skins/skin-grid-default.php:120
@@ -3451,6 +3569,7 @@ msgstr ""
 #: modules/woocommerce/skins/skin-grid-franko.php:190
 #: modules/woocommerce/skins/skin-grid-franko.php:684
 #: modules/woocommerce/skins/skin-grid-franko.php:926
+#: modules/woocommerce/widgets/woo-checkout.php:381
 msgid "Hide"
 msgstr ""
 
@@ -3545,13 +3664,13 @@ msgid "Star Icon Style"
 msgstr ""
 
 #: modules/business-reviews/skins/skin-base.php:365
-#: modules/faq/widgets/faq.php:1181
+#: modules/faq/widgets/faq.php:1182
 #: modules/headings/widgets/advanced-heading.php:995
 #: modules/hotspot/widgets/hotspot.php:397
 #: modules/marketing-button/widgets/marketing-button.php:257
 #: modules/modal-popup/widgets/modal-popup.php:1627
 #: modules/modal-popup/widgets/modal-popup.php:1771
-#: modules/nav-menu/widgets/nav-menu.php:1771
+#: modules/nav-menu/widgets/nav-menu.php:1791
 #: modules/social-share/widgets/social-share.php:710
 #: modules/table-of-contents/widgets/table-of-contents.php:320
 #: modules/team-member/widgets/team-member.php:1046
@@ -3560,7 +3679,7 @@ msgid "Icon Size"
 msgstr ""
 
 #: modules/business-reviews/skins/skin-base.php:386
-#: modules/faq/widgets/faq.php:1198
+#: modules/faq/widgets/faq.php:1199
 #: modules/headings/widgets/advanced-heading.php:1130
 #: modules/headings/widgets/advanced-heading.php:1191
 #: modules/infobox/widgets/infobox.php:584
@@ -3581,7 +3700,7 @@ msgstr ""
 #: modules/timeline/widgets/timeline.php:1991
 #: modules/timeline/widgets/timeline.php:2039
 #: modules/timeline/widgets/timeline.php:2074
-#: modules/video/widgets/video.php:1458
+#: modules/video/widgets/video.php:1460
 msgid "Icon Color"
 msgstr ""
 
@@ -3603,9 +3722,9 @@ msgstr ""
 #: modules/caf-styler/widgets/caf-styler.php:794
 #: modules/caf-styler/widgets/caf-styler.php:876
 #: modules/cf-styler/widgets/cf-styler.php:749
-#: modules/cf-styler/widgets/cf-styler.php:818 modules/faq/widgets/faq.php:914
-#: modules/faq/widgets/faq.php:982 modules/faq/widgets/faq.php:1091
-#: modules/faq/widgets/faq.php:1125 modules/ff-styler/widgets/ff-styler.php:824
+#: modules/cf-styler/widgets/cf-styler.php:818 modules/faq/widgets/faq.php:915
+#: modules/faq/widgets/faq.php:983 modules/faq/widgets/faq.php:1092
+#: modules/faq/widgets/faq.php:1126 modules/ff-styler/widgets/ff-styler.php:824
 #: modules/ff-styler/widgets/ff-styler.php:898
 #: modules/ff-styler/widgets/ff-styler.php:982
 #: modules/ff-styler/widgets/ff-styler.php:1046
@@ -3628,12 +3747,12 @@ msgstr ""
 #: modules/modal-popup/widgets/modal-popup.php:1936
 #: modules/modal-popup/widgets/modal-popup.php:1984
 #: modules/modal-popup/widgets/modal-popup.php:2121
-#: modules/nav-menu/widgets/nav-menu.php:1129
-#: modules/nav-menu/widgets/nav-menu.php:1168
-#: modules/nav-menu/widgets/nav-menu.php:1236
-#: modules/nav-menu/widgets/nav-menu.php:1337
-#: modules/nav-menu/widgets/nav-menu.php:1380
-#: modules/nav-menu/widgets/nav-menu.php:1423
+#: modules/nav-menu/widgets/nav-menu.php:1149
+#: modules/nav-menu/widgets/nav-menu.php:1188
+#: modules/nav-menu/widgets/nav-menu.php:1256
+#: modules/nav-menu/widgets/nav-menu.php:1357
+#: modules/nav-menu/widgets/nav-menu.php:1400
+#: modules/nav-menu/widgets/nav-menu.php:1443
 #: modules/offcanvas/widgets/offcanvas.php:982
 #: modules/offcanvas/widgets/offcanvas.php:1067
 #: modules/offcanvas/widgets/offcanvas.php:1466
@@ -3663,13 +3782,17 @@ msgstr ""
 #: modules/retina-image/widgets/retina-image.php:549
 #: modules/table-of-contents/widgets/table-of-contents.php:864
 #: modules/table-of-contents/widgets/table-of-contents.php:909
-#: modules/video/widgets/video.php:1738
+#: modules/video/widgets/video.php:1740
 #: modules/video-gallery/widgets/video-gallery.php:1216
 #: modules/woocommerce/skins/skin-grid-default.php:607
 #: modules/woocommerce/skins/skin-grid-franko.php:600
 #: modules/woocommerce/widgets/woo-add-to-cart.php:443
 #: modules/woocommerce/widgets/woo-add-to-cart.php:711
 #: modules/woocommerce/widgets/woo-add-to-cart.php:764
+#: modules/woocommerce/widgets/woo-checkout.php:490
+#: modules/woocommerce/widgets/woo-checkout.php:598
+#: modules/woocommerce/widgets/woo-checkout.php:883
+#: modules/woocommerce/widgets/woo-checkout.php:1438
 #: modules/woocommerce/widgets/woo-mini-cart.php:566
 #: modules/woocommerce/widgets/woo-mini-cart.php:875
 #: modules/woocommerce/widgets/woo-mini-cart.php:1056
@@ -3713,7 +3836,7 @@ msgstr ""
 #: modules/caf-styler/widgets/caf-styler.php:1153
 #: modules/cf-styler/widgets/cf-styler.php:1132
 #: modules/content-toggle/widgets/content-toggle.php:868
-#: modules/faq/widgets/faq.php:1229
+#: modules/faq/widgets/faq.php:1230
 #: modules/ff-styler/widgets/ff-styler.php:1515
 #: modules/gf-styler/widgets/gf-styler.php:1473
 #: modules/how-to/widgets/how-to.php:774
@@ -3722,7 +3845,7 @@ msgstr ""
 #: modules/team-member/widgets/team-member.php:1089
 #: modules/team-member/widgets/team-member.php:1307
 #: modules/timeline/widgets/timeline.php:1249
-#: modules/video/widgets/video.php:1823
+#: modules/video/widgets/video.php:1825
 #: modules/video-gallery/widgets/video-gallery.php:939
 #: modules/woocommerce/skins/skin-grid-default.php:286
 #: modules/woocommerce/skins/skin-grid-default.php:365
@@ -3745,7 +3868,7 @@ msgid "Spacing"
 msgstr ""
 
 #: modules/business-reviews/skins/skin-base.php:546
-#: modules/faq/widgets/faq.php:464
+#: modules/faq/widgets/faq.php:465
 #: modules/image-gallery/widgets/image-gallery.php:846
 #: modules/posts/skins/skin-base.php:1854
 #: modules/registration-form/widgets/registration-form.php:1378
@@ -3757,7 +3880,7 @@ msgid "Columns Gap"
 msgstr ""
 
 #: modules/business-reviews/skins/skin-base.php:566
-#: modules/faq/widgets/faq.php:422 modules/faq/widgets/faq.php:485
+#: modules/faq/widgets/faq.php:423 modules/faq/widgets/faq.php:486
 #: modules/image-gallery/widgets/image-gallery.php:870
 #: modules/login-form/widgets/login-form.php:1216
 #: modules/posts/skins/skin-base.php:1878
@@ -3792,7 +3915,7 @@ msgstr ""
 
 #: modules/business-reviews/skins/skin-base.php:679
 #: modules/caf-styler/widgets/caf-styler.php:193
-#: modules/cf-styler/widgets/cf-styler.php:213 modules/faq/widgets/faq.php:560
+#: modules/cf-styler/widgets/cf-styler.php:213 modules/faq/widgets/faq.php:561
 #: modules/ff-styler/widgets/ff-styler.php:278
 #: modules/gf-styler/widgets/gf-styler.php:351
 #: modules/how-to/widgets/how-to.php:730
@@ -3823,8 +3946,8 @@ msgstr ""
 #: modules/login-form/widgets/login-form.php:1953
 #: modules/marketing-button/widgets/marketing-button.php:558
 #: modules/modal-popup/widgets/modal-popup.php:2062
-#: modules/nav-menu/widgets/nav-menu.php:1491
-#: modules/nav-menu/widgets/nav-menu.php:1805
+#: modules/nav-menu/widgets/nav-menu.php:1511
+#: modules/nav-menu/widgets/nav-menu.php:1825
 #: modules/offcanvas/widgets/offcanvas.php:1029
 #: modules/offcanvas/widgets/offcanvas.php:1726
 #: modules/posts/skins/skin-base.php:1007
@@ -3848,11 +3971,13 @@ msgstr ""
 #: modules/table/widgets/table.php:1664
 #: modules/team-member/widgets/team-member.php:582
 #: modules/team-member/widgets/team-member.php:755
-#: modules/video/widgets/video.php:789
-#: modules/video-gallery/widgets/video-gallery.php:1895
+#: modules/video/widgets/video.php:791
+#: modules/video-gallery/widgets/video-gallery.php:1896
 #: modules/woocommerce/widgets/woo-add-to-cart.php:481
 #: modules/woocommerce/widgets/woo-add-to-cart.php:679
 #: modules/woocommerce/widgets/woo-add-to-cart.php:945
+#: modules/woocommerce/widgets/woo-checkout.php:963
+#: modules/woocommerce/widgets/woo-checkout.php:1229
 #: modules/woocommerce/widgets/woo-mini-cart.php:531
 #: modules/woocommerce/widgets/woo-mini-cart.php:912
 #: modules/woocommerce/widgets/woo-mini-cart.php:1442
@@ -3870,7 +3995,7 @@ msgstr ""
 #: modules/image-gallery/widgets/image-gallery.php:1421
 #: modules/posts/skins/skin-base.php:524 modules/posts/skins/skin-base.php:3453
 #: modules/video-gallery/widgets/video-gallery.php:741
-#: modules/video-gallery/widgets/video-gallery.php:1812
+#: modules/video-gallery/widgets/video-gallery.php:1813
 #: modules/woocommerce/widgets/woo-categories.php:230
 #: modules/woocommerce/widgets/woo-categories.php:365
 #: modules/woocommerce/widgets/woo-products.php:633
@@ -3882,10 +4007,10 @@ msgstr ""
 #: modules/business-reviews/widgets/business-reviews.php:548
 #: modules/image-gallery/widgets/image-gallery.php:538
 #: modules/image-gallery/widgets/image-gallery.php:1433
-#: modules/nav-menu/widgets/nav-menu.php:626
+#: modules/nav-menu/widgets/nav-menu.php:646
 #: modules/posts/skins/skin-base.php:529 modules/posts/skins/skin-base.php:3465
 #: modules/video-gallery/widgets/video-gallery.php:746
-#: modules/video-gallery/widgets/video-gallery.php:1824
+#: modules/video-gallery/widgets/video-gallery.php:1825
 #: modules/woocommerce/widgets/woo-categories.php:235
 #: modules/woocommerce/widgets/woo-categories.php:377
 #: modules/woocommerce/widgets/woo-products.php:638
@@ -3917,14 +4042,14 @@ msgstr ""
 #: modules/business-reviews/skins/skin-base.php:793
 #: modules/image-gallery/widgets/image-gallery.php:1464
 #: modules/posts/skins/skin-base.php:3494
-#: modules/video-gallery/widgets/video-gallery.php:1836
+#: modules/video-gallery/widgets/video-gallery.php:1837
 msgid "Arrows Size"
 msgstr ""
 
 #: modules/business-reviews/skins/skin-base.php:814
 #: modules/image-gallery/widgets/image-gallery.php:1485
 #: modules/posts/skins/skin-base.php:3524
-#: modules/video-gallery/widgets/video-gallery.php:1856
+#: modules/video-gallery/widgets/video-gallery.php:1857
 msgid "Arrows Color"
 msgstr ""
 
@@ -3934,7 +4059,7 @@ msgstr ""
 #: modules/image-gallery/widgets/image-gallery.php:1500
 #: modules/posts/skins/skin-base.php:530 modules/posts/skins/skin-base.php:3640
 #: modules/video-gallery/widgets/video-gallery.php:747
-#: modules/video-gallery/widgets/video-gallery.php:1917
+#: modules/video-gallery/widgets/video-gallery.php:1918
 #: modules/woocommerce/widgets/woo-categories.php:236
 #: modules/woocommerce/widgets/woo-categories.php:532
 #: modules/woocommerce/widgets/woo-products.php:639
@@ -3945,14 +4070,14 @@ msgstr ""
 #: modules/business-reviews/skins/skin-base.php:842
 #: modules/image-gallery/widgets/image-gallery.php:1513
 #: modules/posts/skins/skin-base.php:3652
-#: modules/video-gallery/widgets/video-gallery.php:1929
+#: modules/video-gallery/widgets/video-gallery.php:1930
 msgid "Dots Size"
 msgstr ""
 
 #: modules/business-reviews/skins/skin-base.php:863
 #: modules/image-gallery/widgets/image-gallery.php:1534
 #: modules/posts/skins/skin-base.php:3672
-#: modules/video-gallery/widgets/video-gallery.php:1949
+#: modules/video-gallery/widgets/video-gallery.php:1950
 msgid "Dots Color"
 msgstr ""
 
@@ -3976,6 +4101,10 @@ msgstr ""
 #: modules/table/widgets/table.php:900 modules/table/widgets/table.php:1168
 #: modules/table/widgets/table.php:1758
 #: modules/woocommerce/widgets/woo-categories.php:871
+#: modules/woocommerce/widgets/woo-checkout.php:1212
+#: modules/woocommerce/widgets/woo-checkout.php:1453
+#: modules/woocommerce/widgets/woo-checkout.php:1673
+#: modules/woocommerce/widgets/woo-checkout.php:1723
 #: modules/woocommerce/widgets/woo-mini-cart.php:599
 #: modules/woocommerce/widgets/woo-mini-cart.php:853
 #: modules/woocommerce/widgets/woo-mini-cart.php:947
@@ -4009,14 +4138,14 @@ msgstr ""
 #: modules/business-reviews/skins/skin-bubble.php:192
 #: modules/caf-styler/widgets/caf-styler.php:316
 #: modules/cf-styler/widgets/cf-styler.php:315
-#: modules/countdown/widgets/countdown.php:874 modules/faq/widgets/faq.php:568
-#: modules/faq/widgets/faq.php:641 modules/ff-styler/widgets/ff-styler.php:389
+#: modules/countdown/widgets/countdown.php:874 modules/faq/widgets/faq.php:569
+#: modules/faq/widgets/faq.php:642 modules/ff-styler/widgets/ff-styler.php:389
 #: modules/gf-styler/widgets/gf-styler.php:530
 #: modules/headings/widgets/advanced-heading.php:1251
 #: modules/hotspot/widgets/hotspot.php:1163
 #: modules/infobox/widgets/infobox.php:666
 #: modules/infobox/widgets/infobox.php:1413
-#: modules/nav-menu/widgets/nav-menu.php:1630
+#: modules/nav-menu/widgets/nav-menu.php:1650
 #: modules/price-table/widgets/price-table.php:2784
 #: modules/retina-image/widgets/retina-image.php:347
 #: modules/team-member/widgets/team-member.php:780
@@ -4034,8 +4163,8 @@ msgstr ""
 #: modules/content-toggle/widgets/content-toggle.php:604
 #: modules/countdown/widgets/countdown.php:442
 #: modules/countdown/widgets/countdown.php:526
-#: modules/countdown/widgets/countdown.php:878 modules/faq/widgets/faq.php:573
-#: modules/faq/widgets/faq.php:646 modules/faq/widgets/faq.php:769
+#: modules/countdown/widgets/countdown.php:878 modules/faq/widgets/faq.php:574
+#: modules/faq/widgets/faq.php:647 modules/faq/widgets/faq.php:770
 #: modules/ff-styler/widgets/ff-styler.php:189
 #: modules/ff-styler/widgets/ff-styler.php:394
 #: modules/gf-styler/widgets/gf-styler.php:260
@@ -4053,9 +4182,9 @@ msgstr ""
 #: modules/infobox/widgets/infobox.php:1197
 #: modules/infobox/widgets/infobox.php:1418
 #: modules/login-form/widgets/login-form.php:173
-#: modules/nav-menu/widgets/nav-menu.php:694
-#: modules/nav-menu/widgets/nav-menu.php:1021
-#: modules/nav-menu/widgets/nav-menu.php:1635
+#: modules/nav-menu/widgets/nav-menu.php:714
+#: modules/nav-menu/widgets/nav-menu.php:1041
+#: modules/nav-menu/widgets/nav-menu.php:1655
 #: modules/posts/skins/skin-base.php:184 modules/posts/skins/skin-base.php:307
 #: modules/posts/skins/skin-base.php:531 modules/posts/skins/skin-base.php:631
 #: modules/posts/skins/skin-business.php:133
@@ -4078,8 +4207,8 @@ msgstr ""
 #: modules/team-member/widgets/team-member.php:785
 #: modules/team-member/widgets/team-member.php:1215
 #: modules/timeline/widgets/timeline.php:635
-#: modules/video/widgets/video.php:922 modules/video/widgets/video.php:1089
-#: modules/video/widgets/video.php:1154 modules/video/widgets/video.php:1806
+#: modules/video/widgets/video.php:924 modules/video/widgets/video.php:1091
+#: modules/video/widgets/video.php:1156 modules/video/widgets/video.php:1808
 #: modules/video-gallery/widgets/video-gallery.php:748
 #: modules/video-gallery/widgets/video-gallery.php:1080
 #: modules/video-gallery/widgets/video-gallery.php:1426
@@ -4113,8 +4242,8 @@ msgstr ""
 #: modules/infobox/widgets/infobox.php:708
 #: modules/infobox/widgets/infobox.php:1450
 #: modules/login-form/widgets/login-form.php:1686
-#: modules/nav-menu/widgets/nav-menu.php:1668
-#: modules/nav-menu/widgets/nav-menu.php:1789
+#: modules/nav-menu/widgets/nav-menu.php:1688
+#: modules/nav-menu/widgets/nav-menu.php:1809
 #: modules/price-table/widgets/price-table.php:2807
 #: modules/registration-form/widgets/registration-form.php:1629
 #: modules/registration-form/widgets/registration-form.php:1644
@@ -4153,7 +4282,7 @@ msgstr ""
 #: modules/infobox/widgets/infobox.php:1564
 #: modules/login-form/widgets/login-form.php:1698
 #: modules/modal-popup/widgets/modal-popup.php:2015
-#: modules/nav-menu/widgets/nav-menu.php:1651
+#: modules/nav-menu/widgets/nav-menu.php:1671
 #: modules/offcanvas/widgets/offcanvas.php:1099
 #: modules/price-list/widgets/price-list.php:951
 #: modules/price-table/widgets/price-table.php:2830
@@ -4166,6 +4295,7 @@ msgstr ""
 #: modules/woocommerce/widgets/woo-add-to-cart.php:733
 #: modules/woocommerce/widgets/woo-add-to-cart.php:786
 #: modules/woocommerce/widgets/woo-add-to-cart.php:926
+#: modules/woocommerce/widgets/woo-checkout.php:1825
 #: modules/woocommerce/widgets/woo-mini-cart.php:1500
 #: modules/woocommerce/widgets/woo-mini-cart.php:2024
 #: modules/woocommerce/widgets/woo-mini-cart.php:2149
@@ -4218,6 +4348,9 @@ msgstr ""
 #: modules/table/widgets/table.php:1359
 #: modules/video-gallery/widgets/video-gallery.php:1242
 #: modules/woocommerce/skins/skin-grid-base.php:185
+#: modules/woocommerce/widgets/woo-checkout.php:540
+#: modules/woocommerce/widgets/woo-checkout.php:945
+#: modules/woocommerce/widgets/woo-checkout.php:1221
 #: modules/woocommerce/widgets/woo-mini-cart.php:902
 #: modules/woocommerce/widgets/woo-mini-cart.php:1432
 #: modules/woocommerce/widgets/woo-mini-cart.php:1963
@@ -4428,16 +4561,16 @@ msgstr ""
 
 #: modules/business-reviews/widgets/business-reviews.php:384
 #: modules/content-toggle/widgets/content-toggle.php:587
-#: modules/countdown/widgets/countdown.php:609 modules/faq/widgets/faq.php:373
-#: modules/faq/widgets/faq.php:379
+#: modules/countdown/widgets/countdown.php:609 modules/faq/widgets/faq.php:374
+#: modules/faq/widgets/faq.php:380
 #: modules/google-map/widgets/google-map.php:324
 #: modules/headings/widgets/dual-heading.php:249
 #: modules/headings/widgets/fancy-heading.php:581
 #: modules/image-gallery/widgets/image-gallery.php:193
 #: modules/image-gallery/widgets/image-gallery.php:838
 #: modules/login-form/widgets/login-form.php:445
-#: modules/nav-menu/widgets/nav-menu.php:446
-#: modules/nav-menu/widgets/nav-menu.php:453
+#: modules/nav-menu/widgets/nav-menu.php:466
+#: modules/nav-menu/widgets/nav-menu.php:473
 #: modules/posts/skins/skin-base.php:148 modules/posts/skins/skin-base.php:1846
 #: modules/price-list/widgets/price-list.php:264
 #: modules/price-table/widgets/price-table.php:2084
@@ -4445,6 +4578,8 @@ msgstr ""
 #: modules/video-gallery/widgets/video-gallery.php:480
 #: modules/woocommerce/widgets/woo-categories.php:140
 #: modules/woocommerce/widgets/woo-categories.php:691
+#: modules/woocommerce/widgets/woo-checkout.php:133
+#: modules/woocommerce/widgets/woo-checkout.php:141
 #: modules/woocommerce/widgets/woo-products.php:177
 #: modules/woocommerce/widgets/woo-products.php:781
 msgid "Layout"
@@ -4455,7 +4590,7 @@ msgid "Select Layout"
 msgstr ""
 
 #: modules/business-reviews/widgets/business-reviews.php:396
-#: modules/faq/widgets/faq.php:383
+#: modules/faq/widgets/faq.php:384
 #: modules/image-gallery/widgets/image-gallery.php:197
 #: modules/posts/skins/skin-base.php:152
 #: modules/video-gallery/widgets/video-gallery.php:483
@@ -4504,7 +4639,7 @@ msgid ""
 msgstr ""
 
 #: modules/business-reviews/widgets/business-reviews.php:490
-#: modules/faq/widgets/faq.php:441
+#: modules/faq/widgets/faq.php:442
 #: modules/image-gallery/widgets/image-gallery.php:253
 #: modules/posts/skins/skin-base.php:135
 #: modules/social-share/widgets/social-share.php:371
@@ -4549,9 +4684,9 @@ msgstr ""
 #: modules/hotspot/widgets/hotspot.php:530
 #: modules/image-gallery/widgets/image-gallery.php:468
 #: modules/modal-popup/widgets/modal-popup.php:497
-#: modules/posts/skins/skin-base.php:549 modules/video/widgets/video.php:397
-#: modules/video/widgets/video.php:475 modules/video/widgets/video.php:571
-#: modules/video/widgets/video.php:617
+#: modules/posts/skins/skin-base.php:549 modules/video/widgets/video.php:399
+#: modules/video/widgets/video.php:477 modules/video/widgets/video.php:573
+#: modules/video/widgets/video.php:619
 #: modules/video-gallery/widgets/video-gallery.php:756
 #: modules/woocommerce/widgets/woo-categories.php:288
 #: modules/woocommerce/widgets/woo-products.php:697
@@ -4679,9 +4814,9 @@ msgstr ""
 #: modules/login-form/widgets/login-form.php:996
 #: modules/modal-popup/widgets/modal-popup.php:867
 #: modules/modal-popup/widgets/modal-popup.php:1020
-#: modules/nav-menu/widgets/nav-menu.php:262
-#: modules/nav-menu/widgets/nav-menu.php:1026
-#: modules/nav-menu/widgets/nav-menu.php:1913
+#: modules/nav-menu/widgets/nav-menu.php:261
+#: modules/nav-menu/widgets/nav-menu.php:1046
+#: modules/nav-menu/widgets/nav-menu.php:1933
 #: modules/posts/skins/skin-base.php:1753
 #: modules/price-table/widgets/price-table.php:483
 #: modules/price-table/widgets/price-table.php:899
@@ -4695,7 +4830,7 @@ msgstr ""
 #: modules/social-share/widgets/social-share.php:1322
 #: modules/table/widgets/table.php:235 modules/table/widgets/table.php:532
 #: modules/timeline/widgets/timeline.php:634
-#: modules/video/widgets/video.php:1514
+#: modules/video/widgets/video.php:1516
 #: modules/woocommerce/widgets/woo-add-to-cart.php:241
 #: modules/woocommerce/widgets/woo-mini-cart.php:153
 #: modules/woocommerce/widgets/woo-mini-cart.php:176
@@ -4718,7 +4853,7 @@ msgstr ""
 #: modules/how-to/widgets/how-to.php:657
 #: modules/infobox/widgets/infobox.php:1238
 #: modules/marketing-button/widgets/marketing-button.php:164
-#: modules/nav-menu/widgets/nav-menu.php:290
+#: modules/nav-menu/widgets/nav-menu.php:289
 #: modules/price-list/widgets/price-list.php:212
 #: modules/price-table/widgets/price-table.php:966
 #: modules/price-table/widgets/price-table.php:2636
@@ -4733,8 +4868,8 @@ msgid "Link"
 msgstr ""
 
 #: modules/buttons/widgets/buttons.php:185
-#: modules/buttons/widgets/buttons.php:196 modules/faq/widgets/faq.php:301
-#: modules/faq/widgets/faq.php:311 modules/faq/widgets/faq.php:1172
+#: modules/buttons/widgets/buttons.php:196 modules/faq/widgets/faq.php:302
+#: modules/faq/widgets/faq.php:312 modules/faq/widgets/faq.php:1173
 #: modules/hotspot/widgets/hotspot.php:213
 #: modules/infobox/widgets/infobox.php:1277
 #: modules/marketing-button/widgets/marketing-button.php:181
@@ -4745,7 +4880,7 @@ msgstr ""
 #: modules/modal-popup/widgets/modal-popup.php:910
 #: modules/modal-popup/widgets/modal-popup.php:1232
 #: modules/modal-popup/widgets/modal-popup.php:1246
-#: modules/nav-menu/widgets/nav-menu.php:773
+#: modules/nav-menu/widgets/nav-menu.php:793
 #: modules/offcanvas/widgets/offcanvas.php:374
 #: modules/offcanvas/widgets/offcanvas.php:401
 #: modules/offcanvas/widgets/offcanvas.php:417
@@ -4766,7 +4901,7 @@ msgstr ""
 #: modules/table/widgets/table.php:1503
 #: modules/team-member/widgets/team-member.php:372
 #: modules/team-member/widgets/team-member.php:450
-#: modules/video/widgets/video.php:835
+#: modules/video/widgets/video.php:837
 #: modules/video-gallery/widgets/video-gallery.php:1333
 #: modules/woocommerce/widgets/woo-add-to-cart.php:317
 #: modules/woocommerce/widgets/woo-add-to-cart.php:333
@@ -4836,8 +4971,8 @@ msgstr ""
 #: modules/buttons/widgets/buttons.php:296
 #: modules/buttons/widgets/buttons.php:563
 #: modules/caf-styler/widgets/caf-styler.php:787
-#: modules/cf-styler/widgets/cf-styler.php:742 modules/faq/widgets/faq.php:882
-#: modules/faq/widgets/faq.php:1072 modules/ff-styler/widgets/ff-styler.php:817
+#: modules/cf-styler/widgets/cf-styler.php:742 modules/faq/widgets/faq.php:883
+#: modules/faq/widgets/faq.php:1073 modules/ff-styler/widgets/ff-styler.php:817
 #: modules/ff-styler/widgets/ff-styler.php:975
 #: modules/gf-styler/widgets/gf-styler.php:1080
 #: modules/headings/widgets/advanced-heading.php:532
@@ -4855,9 +4990,9 @@ msgstr ""
 #: modules/login-form/widgets/login-form.php:1911
 #: modules/marketing-button/widgets/marketing-button.php:513
 #: modules/modal-popup/widgets/modal-popup.php:1926
-#: modules/nav-menu/widgets/nav-menu.php:1122
-#: modules/nav-menu/widgets/nav-menu.php:1330
-#: modules/nav-menu/widgets/nav-menu.php:1705
+#: modules/nav-menu/widgets/nav-menu.php:1142
+#: modules/nav-menu/widgets/nav-menu.php:1350
+#: modules/nav-menu/widgets/nav-menu.php:1725
 #: modules/offcanvas/widgets/offcanvas.php:972
 #: modules/offcanvas/widgets/offcanvas.php:1155
 #: modules/offcanvas/widgets/offcanvas.php:1456
@@ -4877,7 +5012,7 @@ msgstr ""
 #: modules/social-share/widgets/social-share.php:817
 #: modules/table-of-contents/widgets/table-of-contents.php:857
 #: modules/team-member/widgets/team-member.php:1124
-#: modules/video/widgets/video.php:939
+#: modules/video/widgets/video.php:941
 #: modules/video-gallery/widgets/video-gallery.php:1209
 #: modules/video-gallery/widgets/video-gallery.php:1449
 #: modules/woocommerce/skins/skin-grid-default.php:597
@@ -4887,6 +5022,7 @@ msgstr ""
 #: modules/woocommerce/widgets/woo-categories.php:449
 #: modules/woocommerce/widgets/woo-categories.php:788
 #: modules/woocommerce/widgets/woo-categories.php:969
+#: modules/woocommerce/widgets/woo-checkout.php:1112
 #: modules/woocommerce/widgets/woo-mini-cart.php:1396
 #: modules/woocommerce/widgets/woo-mini-cart.php:1656
 #: modules/woocommerce/widgets/woo-mini-cart.php:1779
@@ -4901,8 +5037,8 @@ msgstr ""
 #: modules/buttons/widgets/buttons.php:352
 #: modules/buttons/widgets/buttons.php:627
 #: modules/caf-styler/widgets/caf-styler.php:868
-#: modules/cf-styler/widgets/cf-styler.php:811 modules/faq/widgets/faq.php:950
-#: modules/faq/widgets/faq.php:1107 modules/ff-styler/widgets/ff-styler.php:891
+#: modules/cf-styler/widgets/cf-styler.php:811 modules/faq/widgets/faq.php:951
+#: modules/faq/widgets/faq.php:1108 modules/ff-styler/widgets/ff-styler.php:891
 #: modules/ff-styler/widgets/ff-styler.php:1039
 #: modules/gf-styler/widgets/gf-styler.php:1149
 #: modules/headings/widgets/advanced-heading.php:1343
@@ -4915,10 +5051,10 @@ msgstr ""
 #: modules/login-form/widgets/login-form.php:1975
 #: modules/marketing-button/widgets/marketing-button.php:589
 #: modules/modal-popup/widgets/modal-popup.php:1974
-#: modules/nav-menu/widgets/nav-menu.php:608
-#: modules/nav-menu/widgets/nav-menu.php:1161
-#: modules/nav-menu/widgets/nav-menu.php:1373
-#: modules/nav-menu/widgets/nav-menu.php:1737
+#: modules/nav-menu/widgets/nav-menu.php:628
+#: modules/nav-menu/widgets/nav-menu.php:1181
+#: modules/nav-menu/widgets/nav-menu.php:1393
+#: modules/nav-menu/widgets/nav-menu.php:1757
 #: modules/offcanvas/widgets/offcanvas.php:1057
 #: modules/offcanvas/widgets/offcanvas.php:1200
 #: modules/offcanvas/widgets/offcanvas.php:1486
@@ -4939,7 +5075,7 @@ msgstr ""
 #: modules/table/widgets/table.php:1079 modules/table/widgets/table.php:1418
 #: modules/table-of-contents/widgets/table-of-contents.php:880
 #: modules/team-member/widgets/team-member.php:1166
-#: modules/video/widgets/video.php:1013
+#: modules/video/widgets/video.php:1015
 #: modules/video-gallery/widgets/video-gallery.php:1252
 #: modules/video-gallery/widgets/video-gallery.php:1526
 #: modules/video-gallery/widgets/video-gallery.php:1707
@@ -4949,6 +5085,7 @@ msgstr ""
 #: modules/woocommerce/widgets/woo-categories.php:490
 #: modules/woocommerce/widgets/woo-categories.php:818
 #: modules/woocommerce/widgets/woo-categories.php:1009
+#: modules/woocommerce/widgets/woo-checkout.php:1155
 #: modules/woocommerce/widgets/woo-mini-cart.php:395
 #: modules/woocommerce/widgets/woo-mini-cart.php:1465
 #: modules/woocommerce/widgets/woo-mini-cart.php:1827
@@ -4988,6 +5125,7 @@ msgid "Border Hover Color"
 msgstr ""
 
 #: modules/buttons/widgets/buttons.php:414
+#: modules/woocommerce/widgets/woo-checkout.php:1032
 msgid "Buttons"
 msgstr ""
 
@@ -5006,7 +5144,7 @@ msgstr ""
 #: modules/buttons/widgets/buttons.php:483
 #: modules/content-toggle/widgets/content-toggle.php:599
 #: modules/price-list/widgets/price-list.php:431
-#: modules/video/widgets/video.php:1801
+#: modules/video/widgets/video.php:1803
 msgid "Stack on"
 msgstr ""
 
@@ -5014,19 +5152,19 @@ msgstr ""
 msgid "Choose on what breakpoint where the buttons will stack."
 msgstr ""
 
-#: modules/buttons/widgets/buttons.php:489 modules/video/widgets/video.php:1417
-#: modules/video/widgets/video.php:1807
+#: modules/buttons/widgets/buttons.php:489 modules/video/widgets/video.php:1419
+#: modules/video/widgets/video.php:1809
 msgid "Desktop"
 msgstr ""
 
-#: modules/buttons/widgets/buttons.php:490 modules/video/widgets/video.php:1418
-#: modules/video/widgets/video.php:1808
+#: modules/buttons/widgets/buttons.php:490 modules/video/widgets/video.php:1420
+#: modules/video/widgets/video.php:1810
 msgid "Tablet"
 msgstr ""
 
 #: modules/buttons/widgets/buttons.php:491
 #: modules/price-table/widgets/price-table.php:764
-#: modules/video/widgets/video.php:1419 modules/video/widgets/video.php:1809
+#: modules/video/widgets/video.php:1421 modules/video/widgets/video.php:1811
 msgid "Mobile"
 msgstr ""
 
@@ -5058,7 +5196,7 @@ msgstr ""
 #: modules/registration-form/widgets/registration-form.php:938
 #: modules/social-share/widgets/social-share.php:1342
 #: modules/table-of-contents/widgets/table-of-contents.php:407
-#: modules/video/widgets/video.php:892
+#: modules/video/widgets/video.php:894
 #: modules/video-gallery/widgets/video-gallery.php:1390
 #: modules/woocommerce/skins/skin-grid-base.php:204
 #: modules/woocommerce/skins/skin-grid-default.php:839
@@ -5084,8 +5222,8 @@ msgstr ""
 #: modules/buttons/widgets/buttons.php:753
 #: modules/image-gallery/widgets/image-gallery.php:301
 #: modules/marketing-button/widgets/marketing-button.php:476
-#: modules/nav-menu/widgets/nav-menu.php:484
-#: modules/nav-menu/widgets/nav-menu.php:586
+#: modules/nav-menu/widgets/nav-menu.php:504
+#: modules/nav-menu/widgets/nav-menu.php:606
 msgid "Justify"
 msgstr ""
 
@@ -5103,8 +5241,8 @@ msgstr ""
 #: modules/social-share/widgets/social-share.php:1022
 #: modules/team-member/widgets/team-member.php:858
 #: modules/team-member/widgets/team-member.php:1288
-#: modules/video/widgets/video.php:918 modules/video/widgets/video.php:1085
-#: modules/video/widgets/video.php:1150
+#: modules/video/widgets/video.php:920 modules/video/widgets/video.php:1087
+#: modules/video/widgets/video.php:1152
 #: modules/video-gallery/widgets/video-gallery.php:1422
 #: modules/video-gallery/widgets/video-gallery.php:1601
 #: modules/woocommerce/widgets/woo-add-to-cart.php:586
@@ -5144,7 +5282,7 @@ msgstr ""
 #: modules/cf-styler/widgets/cf-styler.php:214
 #: modules/ff-styler/widgets/ff-styler.php:279
 #: modules/gf-styler/widgets/gf-styler.php:352
-#: modules/nav-menu/widgets/nav-menu.php:1022
+#: modules/nav-menu/widgets/nav-menu.php:1042
 #: modules/registration-form/widgets/registration-form.php:1547
 #: modules/wpf-styler/widgets/wpf-styler.php:281
 msgid "Underline"
@@ -5297,6 +5435,7 @@ msgstr ""
 #: modules/gf-styler/widgets/gf-styler.php:909
 #: modules/registration-form/widgets/registration-form.php:1750
 #: modules/table/widgets/table.php:1698
+#: modules/woocommerce/widgets/woo-checkout.php:1758
 #: modules/wpf-styler/widgets/wpf-styler.php:347
 #: modules/wpf-styler/widgets/wpf-styler.php:709
 msgid "Label Color"
@@ -5323,8 +5462,8 @@ msgstr ""
 
 #: modules/caf-styler/widgets/caf-styler.php:323
 #: modules/cf-styler/widgets/cf-styler.php:322
-#: modules/countdown/widgets/countdown.php:880 modules/faq/widgets/faq.php:577
-#: modules/faq/widgets/faq.php:650 modules/faq/widgets/faq.php:773
+#: modules/countdown/widgets/countdown.php:880 modules/faq/widgets/faq.php:578
+#: modules/faq/widgets/faq.php:651 modules/faq/widgets/faq.php:774
 #: modules/ff-styler/widgets/ff-styler.php:396
 #: modules/gf-styler/widgets/gf-styler.php:537
 #: modules/headings/widgets/advanced-heading.php:845
@@ -5333,7 +5472,7 @@ msgstr ""
 #: modules/infobox/widgets/infobox.php:673
 #: modules/infobox/widgets/infobox.php:1088
 #: modules/infobox/widgets/infobox.php:1420
-#: modules/nav-menu/widgets/nav-menu.php:1637
+#: modules/nav-menu/widgets/nav-menu.php:1657
 #: modules/price-list/widgets/price-list.php:307
 #: modules/price-table/widgets/price-table.php:1975
 #: modules/price-table/widgets/price-table.php:2261
@@ -5393,6 +5532,8 @@ msgstr ""
 #: modules/woocommerce/skins/skin-grid-default.php:1084
 #: modules/woocommerce/skins/skin-grid-franko.php:791
 #: modules/woocommerce/skins/skin-grid-franko.php:1016
+#: modules/woocommerce/widgets/woo-checkout.php:548
+#: modules/woocommerce/widgets/woo-checkout.php:1473
 #: modules/wpf-styler/widgets/wpf-styler.php:580
 msgid "Rounded Corners"
 msgstr ""
@@ -5455,7 +5596,7 @@ msgid "Button Alignment"
 msgstr ""
 
 #: modules/caf-styler/widgets/caf-styler.php:738
-#: modules/cf-styler/widgets/cf-styler.php:698 modules/faq/widgets/faq.php:521
+#: modules/cf-styler/widgets/cf-styler.php:698 modules/faq/widgets/faq.php:522
 #: modules/gf-styler/widgets/gf-styler.php:1036
 #: modules/image-gallery/widgets/image-gallery.php:199
 #: modules/login-form/widgets/login-form.php:824
@@ -5589,6 +5730,7 @@ msgstr ""
 #: modules/cf-styler/widgets/cf-styler.php:872
 #: modules/ff-styler/widgets/ff-styler.php:1112
 #: modules/gf-styler/widgets/gf-styler.php:1222
+#: modules/woocommerce/widgets/woo-checkout.php:1749
 #: modules/wpf-styler/widgets/wpf-styler.php:997
 msgid "Field Validation"
 msgstr ""
@@ -5612,6 +5754,7 @@ msgstr ""
 #: modules/cf-styler/widgets/cf-styler.php:1027
 #: modules/gf-styler/widgets/gf-styler.php:1326
 #: modules/registration-form/widgets/registration-form.php:2142
+#: modules/woocommerce/widgets/woo-checkout.php:1798
 msgid "Error Message Color"
 msgstr ""
 
@@ -5713,6 +5856,7 @@ msgstr ""
 #: modules/team-member/widgets/team-member.php:989
 #: modules/timeline/widgets/timeline.php:856
 #: modules/woocommerce/widgets/woo-categories.php:656
+#: modules/woocommerce/widgets/woo-checkout.php:1684
 msgid "Description"
 msgstr ""
 
@@ -5728,7 +5872,7 @@ msgstr ""
 #: modules/content-toggle/widgets/content-toggle.php:307
 #: modules/faq/widgets/faq.php:196
 #: modules/modal-popup/widgets/modal-popup.php:330
-#: modules/nav-menu/widgets/nav-menu.php:334
+#: modules/nav-menu/widgets/nav-menu.php:333
 #: modules/offcanvas/widgets/offcanvas.php:238
 msgid "Select Section"
 msgstr ""
@@ -5789,11 +5933,12 @@ msgid "Switch Size"
 msgstr ""
 
 #: modules/content-toggle/widgets/content-toggle.php:457
+#: modules/woocommerce/widgets/woo-checkout.php:637
 msgid "Headings"
 msgstr ""
 
 #: modules/content-toggle/widgets/content-toggle.php:541
-#: modules/faq/widgets/faq.php:848 modules/ff-styler/widgets/ff-styler.php:1707
+#: modules/faq/widgets/faq.php:849 modules/ff-styler/widgets/ff-styler.php:1707
 #: modules/gf-styler/widgets/gf-styler.php:1626
 #: modules/headings/widgets/advanced-heading.php:431
 #: modules/headings/widgets/advanced-heading.php:943
@@ -5870,7 +6015,7 @@ msgstr ""
 #: modules/content-toggle/widgets/content-toggle.php:693
 #: modules/content-toggle/widgets/content-toggle.php:1014
 #: modules/faq/widgets/faq.php:143 modules/faq/widgets/faq.php:165
-#: modules/faq/widgets/faq.php:235 modules/faq/widgets/faq.php:1051
+#: modules/faq/widgets/faq.php:235 modules/faq/widgets/faq.php:1052
 #: modules/hotspot/widgets/hotspot.php:323
 #: modules/how-to/widgets/how-to.php:1486
 #: modules/marketing-button/widgets/marketing-button.php:366
@@ -5918,7 +6063,7 @@ msgstr ""
 #: modules/content-toggle/widgets/content-toggle.php:1015
 #: modules/faq/widgets/faq.php:144
 #: modules/modal-popup/widgets/modal-popup.php:2253
-#: modules/nav-menu/widgets/nav-menu.php:1914
+#: modules/nav-menu/widgets/nav-menu.php:1934
 #: modules/offcanvas/widgets/offcanvas.php:1908
 msgid "Saved Section"
 msgstr ""
@@ -6108,6 +6253,8 @@ msgstr ""
 
 #: modules/countdown/widgets/countdown.php:513
 #: modules/countdown/widgets/countdown.php:1022
+#: modules/woocommerce/widgets/woo-checkout.php:820
+#: modules/woocommerce/widgets/woo-checkout.php:1650
 msgid "Labels"
 msgstr ""
 
@@ -6140,7 +6287,7 @@ msgstr ""
 msgid "Select Style"
 msgstr ""
 
-#: modules/countdown/widgets/countdown.php:655 modules/faq/widgets/faq.php:752
+#: modules/countdown/widgets/countdown.php:655 modules/faq/widgets/faq.php:753
 #: modules/headings/widgets/advanced-heading.php:231
 #: modules/infobox/widgets/infobox.php:1043
 #: modules/infobox/widgets/infobox.php:1050
@@ -6154,18 +6301,21 @@ msgstr ""
 #: modules/table-of-contents/widgets/table-of-contents.php:702
 #: modules/team-member/widgets/team-member.php:229
 #: modules/team-member/widgets/team-member.php:237
+#: modules/woocommerce/widgets/woo-checkout.php:703
+#: modules/woocommerce/widgets/woo-checkout.php:1543
 msgid "Separator"
 msgstr ""
 
 #: modules/countdown/widgets/countdown.php:657
-#: modules/countdown/widgets/countdown.php:686 modules/faq/widgets/faq.php:394
+#: modules/countdown/widgets/countdown.php:686 modules/faq/widgets/faq.php:395
 #: modules/registration-form/widgets/registration-form.php:811
-#: modules/video/widgets/video.php:1444 modules/video/widgets/video.php:1499
+#: modules/video/widgets/video.php:1446 modules/video/widgets/video.php:1501
+#: modules/woocommerce/widgets/woo-checkout.php:379
 msgid "Enable"
 msgstr ""
 
 #: modules/countdown/widgets/countdown.php:658
-#: modules/countdown/widgets/countdown.php:687 modules/faq/widgets/faq.php:395
+#: modules/countdown/widgets/countdown.php:687 modules/faq/widgets/faq.php:396
 msgid "Disable"
 msgstr ""
 
@@ -6286,12 +6436,12 @@ msgstr ""
 
 #: modules/faq/widgets/faq.php:149
 #: modules/modal-popup/widgets/modal-popup.php:2261
-#: modules/nav-menu/widgets/nav-menu.php:1918
+#: modules/nav-menu/widgets/nav-menu.php:1938
 #: modules/offcanvas/widgets/offcanvas.php:1913
 msgid "Saved Widget"
 msgstr ""
 
-#: modules/faq/widgets/faq.php:173 modules/faq/widgets/faq.php:840
+#: modules/faq/widgets/faq.php:173 modules/faq/widgets/faq.php:841
 #: modules/ff-styler/widgets/ff-styler.php:1434
 #: modules/hotspot/widgets/hotspot.php:224
 #: modules/how-to/widgets/how-to.php:437 modules/how-to/widgets/how-to.php:540
@@ -6320,6 +6470,8 @@ msgstr ""
 #: modules/woocommerce/skins/skin-grid-franko.php:131
 #: modules/woocommerce/skins/skin-grid-franko.php:331
 #: modules/woocommerce/widgets/woo-categories.php:881
+#: modules/woocommerce/widgets/woo-checkout.php:321
+#: modules/woocommerce/widgets/woo-checkout.php:390
 #: modules/woocommerce/widgets/woo-mini-cart.php:407
 #: modules/woocommerce/widgets/woo-mini-cart.php:2229
 #: modules/woocommerce/widgets/woo-products.php:407
@@ -6334,14 +6486,14 @@ msgstr ""
 
 #: modules/faq/widgets/faq.php:186
 #: modules/modal-popup/widgets/modal-popup.php:268
-#: modules/nav-menu/widgets/nav-menu.php:249
+#: modules/nav-menu/widgets/nav-menu.php:248
 #: modules/offcanvas/widgets/offcanvas.php:178
 msgid "Content Type"
 msgstr ""
 
 #: modules/faq/widgets/faq.php:209
 #: modules/modal-popup/widgets/modal-popup.php:343
-#: modules/nav-menu/widgets/nav-menu.php:320
+#: modules/nav-menu/widgets/nav-menu.php:319
 #: modules/offcanvas/widgets/offcanvas.php:264
 msgid "Select Widget"
 msgstr ""
@@ -6361,41 +6513,45 @@ msgstr ""
 msgid "Enable Schema Support"
 msgstr ""
 
-#: modules/faq/widgets/faq.php:325
+#: modules/faq/widgets/faq.php:280
+msgid "Note: Schema will not work if the dynamic content is used in FAQ's"
+msgstr ""
+
+#: modules/faq/widgets/faq.php:326
 msgid "Active Icon"
 msgstr ""
 
-#: modules/faq/widgets/faq.php:344
+#: modules/faq/widgets/faq.php:345
 msgid "Start"
 msgstr ""
 
-#: modules/faq/widgets/faq.php:348
+#: modules/faq/widgets/faq.php:349
 msgid "End"
 msgstr ""
 
-#: modules/faq/widgets/faq.php:382
+#: modules/faq/widgets/faq.php:383
 msgid "Accordion"
 msgstr ""
 
-#: modules/faq/widgets/faq.php:392
+#: modules/faq/widgets/faq.php:393
 msgid "Toggle"
 msgstr ""
 
-#: modules/faq/widgets/faq.php:407
+#: modules/faq/widgets/faq.php:408
 msgid "Enable Box Style"
 msgstr ""
 
-#: modules/faq/widgets/faq.php:410
+#: modules/faq/widgets/faq.php:411
 msgid "no"
 msgstr ""
 
-#: modules/faq/widgets/faq.php:538
+#: modules/faq/widgets/faq.php:539
 #: modules/login-form/widgets/login-form.php:622
 msgid "Enable Separator"
 msgstr ""
 
-#: modules/faq/widgets/faq.php:596 modules/faq/widgets/faq.php:664
-#: modules/faq/widgets/faq.php:787
+#: modules/faq/widgets/faq.php:597 modules/faq/widgets/faq.php:665
+#: modules/faq/widgets/faq.php:788
 #: modules/headings/widgets/advanced-heading.php:899
 #: modules/how-to/widgets/how-to.php:1261
 #: modules/how-to/widgets/how-to.php:1675
@@ -6414,11 +6570,11 @@ msgstr ""
 msgid "Width"
 msgstr ""
 
-#: modules/faq/widgets/faq.php:704
+#: modules/faq/widgets/faq.php:705
 msgid "Border radius"
 msgstr ""
 
-#: modules/faq/widgets/faq.php:727 modules/faq/widgets/faq.php:740
+#: modules/faq/widgets/faq.php:728 modules/faq/widgets/faq.php:741
 #: modules/infobox/widgets/infobox.php:1580
 #: modules/login-form/widgets/login-form.php:2007
 #: modules/timeline/widgets/timeline.php:1543
@@ -6429,7 +6585,7 @@ msgstr ""
 msgid "Box Shadow"
 msgstr ""
 
-#: modules/faq/widgets/faq.php:851 modules/ff-styler/widgets/ff-styler.php:1710
+#: modules/faq/widgets/faq.php:852 modules/ff-styler/widgets/ff-styler.php:1710
 #: modules/gf-styler/widgets/gf-styler.php:1629
 #: modules/headings/widgets/advanced-heading.php:434
 #: modules/headings/widgets/advanced-heading.php:946
@@ -6451,7 +6607,7 @@ msgstr ""
 msgid "H1"
 msgstr ""
 
-#: modules/faq/widgets/faq.php:852 modules/ff-styler/widgets/ff-styler.php:1711
+#: modules/faq/widgets/faq.php:853 modules/ff-styler/widgets/ff-styler.php:1711
 #: modules/gf-styler/widgets/gf-styler.php:1630
 #: modules/headings/widgets/advanced-heading.php:435
 #: modules/headings/widgets/advanced-heading.php:947
@@ -6473,7 +6629,7 @@ msgstr ""
 msgid "H2"
 msgstr ""
 
-#: modules/faq/widgets/faq.php:853 modules/ff-styler/widgets/ff-styler.php:1712
+#: modules/faq/widgets/faq.php:854 modules/ff-styler/widgets/ff-styler.php:1712
 #: modules/gf-styler/widgets/gf-styler.php:1631
 #: modules/headings/widgets/advanced-heading.php:436
 #: modules/headings/widgets/advanced-heading.php:948
@@ -6495,7 +6651,7 @@ msgstr ""
 msgid "H3"
 msgstr ""
 
-#: modules/faq/widgets/faq.php:854 modules/ff-styler/widgets/ff-styler.php:1713
+#: modules/faq/widgets/faq.php:855 modules/ff-styler/widgets/ff-styler.php:1713
 #: modules/gf-styler/widgets/gf-styler.php:1632
 #: modules/headings/widgets/advanced-heading.php:437
 #: modules/headings/widgets/advanced-heading.php:949
@@ -6517,7 +6673,7 @@ msgstr ""
 msgid "H4"
 msgstr ""
 
-#: modules/faq/widgets/faq.php:855 modules/ff-styler/widgets/ff-styler.php:1714
+#: modules/faq/widgets/faq.php:856 modules/ff-styler/widgets/ff-styler.php:1714
 #: modules/gf-styler/widgets/gf-styler.php:1633
 #: modules/headings/widgets/advanced-heading.php:438
 #: modules/headings/widgets/advanced-heading.php:950
@@ -6539,7 +6695,7 @@ msgstr ""
 msgid "H5"
 msgstr ""
 
-#: modules/faq/widgets/faq.php:856 modules/ff-styler/widgets/ff-styler.php:1715
+#: modules/faq/widgets/faq.php:857 modules/ff-styler/widgets/ff-styler.php:1715
 #: modules/gf-styler/widgets/gf-styler.php:1634
 #: modules/headings/widgets/advanced-heading.php:439
 #: modules/headings/widgets/advanced-heading.php:951
@@ -6561,7 +6717,7 @@ msgstr ""
 msgid "H6"
 msgstr ""
 
-#: modules/faq/widgets/faq.php:857 modules/ff-styler/widgets/ff-styler.php:1716
+#: modules/faq/widgets/faq.php:858 modules/ff-styler/widgets/ff-styler.php:1716
 #: modules/gf-styler/widgets/gf-styler.php:1635
 #: modules/headings/widgets/dual-heading.php:213
 #: modules/headings/widgets/fancy-heading.php:546
@@ -6578,7 +6734,7 @@ msgstr ""
 msgid "div"
 msgstr ""
 
-#: modules/faq/widgets/faq.php:858 modules/ff-styler/widgets/ff-styler.php:1717
+#: modules/faq/widgets/faq.php:859 modules/ff-styler/widgets/ff-styler.php:1717
 #: modules/gf-styler/widgets/gf-styler.php:1636
 #: modules/headings/widgets/dual-heading.php:215
 #: modules/headings/widgets/fancy-heading.php:547
@@ -6595,34 +6751,34 @@ msgstr ""
 msgid "p"
 msgstr ""
 
-#: modules/faq/widgets/faq.php:859
+#: modules/faq/widgets/faq.php:860
 #: modules/headings/widgets/dual-heading.php:214
 #: modules/how-to/widgets/how-to.php:1114
 #: modules/modal-popup/widgets/modal-popup.php:1457
 msgid "span"
 msgstr ""
 
-#: modules/faq/widgets/faq.php:900 modules/faq/widgets/faq.php:968
+#: modules/faq/widgets/faq.php:901 modules/faq/widgets/faq.php:969
 msgid "Active Background Color"
 msgstr ""
 
-#: modules/faq/widgets/faq.php:931
+#: modules/faq/widgets/faq.php:932
 msgid "Active Text Color"
 msgstr ""
 
-#: modules/faq/widgets/faq.php:999
+#: modules/faq/widgets/faq.php:1000
 msgid "Active Color"
 msgstr ""
 
-#: modules/faq/widgets/faq.php:1215
+#: modules/faq/widgets/faq.php:1216
 msgid "Active Icon Color"
 msgstr ""
 
-#: modules/faq/widgets/faq.php:1338
+#: modules/faq/widgets/faq.php:1339
 msgid "The FAQ Schema is not supported in the case of Saved Section / Saved Page."
 msgstr ""
 
-#: modules/faq/widgets/faq.php:1368
+#: modules/faq/widgets/faq.php:1369
 msgid "Please fill out the empty fields in content"
 msgstr ""
 
@@ -7125,7 +7281,7 @@ msgstr ""
 #: modules/offcanvas/widgets/offcanvas.php:638
 #: modules/price-table/widgets/price-table.php:924
 #: modules/price-table/widgets/price-table.php:937
-#: modules/video/widgets/video.php:862 modules/video/widgets/video.php:879
+#: modules/video/widgets/video.php:864 modules/video/widgets/video.php:881
 #: modules/video-gallery/widgets/video-gallery.php:1360
 #: modules/video-gallery/widgets/video-gallery.php:1377
 msgid "Select Icon"
@@ -7227,6 +7383,8 @@ msgstr ""
 #: modules/price-table/widgets/price-table.php:2006
 #: modules/table-of-contents/widgets/table-of-contents.php:760
 #: modules/team-member/widgets/team-member.php:295
+#: modules/woocommerce/widgets/woo-checkout.php:743
+#: modules/woocommerce/widgets/woo-checkout.php:1580
 msgid "Thickness"
 msgstr ""
 
@@ -7280,7 +7438,7 @@ msgstr ""
 #: modules/hotspot/widgets/hotspot.php:1088
 #: modules/infobox/widgets/infobox.php:546
 #: modules/price-table/widgets/price-table.php:1534
-#: modules/video/widgets/video.php:1382
+#: modules/video/widgets/video.php:1384
 msgid "Background Size"
 msgstr ""
 
@@ -7400,7 +7558,7 @@ msgid "Select Effect"
 msgstr ""
 
 #: modules/headings/widgets/fancy-heading.php:195
-#: modules/nav-menu/widgets/nav-menu.php:645
+#: modules/nav-menu/widgets/nav-menu.php:665
 msgid "Slide Up"
 msgstr ""
 
@@ -7418,7 +7576,7 @@ msgid "Clip"
 msgstr ""
 
 #: modules/headings/widgets/fancy-heading.php:199
-#: modules/nav-menu/widgets/nav-menu.php:522
+#: modules/nav-menu/widgets/nav-menu.php:542
 #: modules/offcanvas/widgets/offcanvas.php:1816
 #: modules/video-gallery/widgets/video-gallery.php:1432
 #: modules/video-gallery/widgets/video-gallery.php:1611
@@ -7522,7 +7680,7 @@ msgstr ""
 #: modules/table/widgets/table.php:1591
 #: modules/team-member/widgets/team-member.php:137
 #: modules/team-member/widgets/team-member.php:649
-#: modules/video/widgets/video.php:831
+#: modules/video/widgets/video.php:833
 #: modules/video-gallery/widgets/video-gallery.php:1329
 #: modules/woocommerce/skins/skin-grid-default.php:93
 #: modules/woocommerce/skins/skin-grid-franko.php:119
@@ -7633,6 +7791,7 @@ msgstr ""
 #: modules/hotspot/widgets/hotspot.php:637
 #: modules/modal-popup/widgets/modal-popup.php:1149
 #: modules/offcanvas/widgets/offcanvas.php:384
+#: modules/woocommerce/widgets/woo-checkout.php:455
 msgid "Button Text"
 msgstr ""
 
@@ -7683,7 +7842,7 @@ msgid "Display on"
 msgstr ""
 
 #: modules/hotspot/widgets/hotspot.php:866
-#: modules/nav-menu/widgets/nav-menu.php:609
+#: modules/nav-menu/widgets/nav-menu.php:629
 #: modules/price-table/widgets/price-table.php:688
 #: modules/woocommerce/widgets/woo-mini-cart.php:396
 msgid "Click"
@@ -7713,8 +7872,8 @@ msgstr ""
 
 #: modules/hotspot/widgets/hotspot.php:925
 #: modules/price-table/widgets/price-table.php:743
-#: modules/video/widgets/video.php:923 modules/video/widgets/video.php:1090
-#: modules/video/widgets/video.php:1155
+#: modules/video/widgets/video.php:925 modules/video/widgets/video.php:1092
+#: modules/video/widgets/video.php:1157
 #: modules/video-gallery/widgets/video-gallery.php:1427
 #: modules/video-gallery/widgets/video-gallery.php:1606
 msgid "Grow"
@@ -7726,7 +7885,7 @@ msgid "Swing"
 msgstr ""
 
 #: modules/hotspot/widgets/hotspot.php:927
-#: modules/nav-menu/widgets/nav-menu.php:521
+#: modules/nav-menu/widgets/nav-menu.php:541
 #: modules/offcanvas/widgets/offcanvas.php:1815
 #: modules/price-table/widgets/price-table.php:745
 msgid "Slide"
@@ -7811,11 +7970,13 @@ msgstr ""
 
 #: modules/hotspot/widgets/hotspot.php:1944
 #: modules/hotspot/widgets/hotspot.php:2162
+#: modules/woocommerce/widgets/woo-checkout.php:290
 msgid "Next"
 msgstr ""
 
 #: modules/hotspot/widgets/hotspot.php:1945
 #: modules/hotspot/widgets/hotspot.php:2162
+#: modules/woocommerce/widgets/woo-checkout.php:275
 msgid "Previous"
 msgstr ""
 
@@ -8247,7 +8408,7 @@ msgstr ""
 
 #: modules/image-gallery/widgets/image-gallery.php:581
 #: modules/image-gallery/widgets/image-gallery.php:691
-#: modules/video/widgets/video.php:388 modules/video/widgets/video.php:1180
+#: modules/video/widgets/video.php:390 modules/video/widgets/video.php:1182
 #: modules/woocommerce/skins/skin-grid-base.php:139
 msgid "Lightbox"
 msgstr ""
@@ -8365,8 +8526,8 @@ msgstr ""
 
 #: modules/image-gallery/widgets/image-gallery.php:810
 #: modules/modal-popup/widgets/modal-popup.php:614
-#: modules/video/widgets/video.php:486 modules/video/widgets/video.php:582
-#: modules/video/widgets/video.php:628
+#: modules/video/widgets/video.php:488 modules/video/widgets/video.php:584
+#: modules/video/widgets/video.php:630
 msgid "Loop"
 msgstr ""
 
@@ -8463,6 +8624,7 @@ msgstr ""
 
 #: modules/image-gallery/widgets/image-gallery.php:1571
 #: modules/video-gallery/widgets/video-gallery.php:1118
+#: modules/woocommerce/widgets/woo-checkout.php:1287
 msgid "Tab Alignment"
 msgstr ""
 
@@ -8537,7 +8699,7 @@ msgid ""
 "dapibus leo.​"
 msgstr ""
 
-#: modules/infobox/widgets/infobox.php:175 modules/video/widgets/video.php:823
+#: modules/infobox/widgets/infobox.php:175 modules/video/widgets/video.php:825
 #: modules/video-gallery/widgets/video-gallery.php:1325
 msgid "Image/Icon"
 msgstr ""
@@ -8679,6 +8841,7 @@ msgstr ""
 #: modules/woocommerce/skins/skin-grid-default.php:334
 #: modules/woocommerce/skins/skin-grid-franko.php:360
 #: modules/woocommerce/widgets/woo-categories.php:500
+#: modules/woocommerce/widgets/woo-checkout.php:1526
 #: modules/woocommerce/widgets/woo-products.php:1220
 msgid "Hover Color"
 msgstr ""
@@ -8763,6 +8926,7 @@ msgstr ""
 #: modules/registration-form/widgets/registration-form.php:107
 #: modules/registration-form/widgets/registration-form.php:361
 #: modules/registration-form/widgets/registration-form.php:362
+#: modules/woocommerce/templates/woo-checkout-template.php:83
 msgid "Password"
 msgstr ""
 
@@ -8919,6 +9083,7 @@ msgstr ""
 
 #: modules/login-form/widgets/login-form.php:985
 #: modules/login-form/widgets/login-form.php:1001
+#: modules/woocommerce/templates/woo-checkout-template.php:99
 msgid "Lost your password?"
 msgstr ""
 
@@ -9212,17 +9377,17 @@ msgid "Aspect Ratio"
 msgstr ""
 
 #: modules/modal-popup/widgets/modal-popup.php:512
-#: modules/video/widgets/video.php:408
+#: modules/video/widgets/video.php:410
 msgid "Related Videos From"
 msgstr ""
 
 #: modules/modal-popup/widgets/modal-popup.php:516
-#: modules/video/widgets/video.php:412
+#: modules/video/widgets/video.php:414
 msgid "Current Video Channel"
 msgstr ""
 
 #: modules/modal-popup/widgets/modal-popup.php:517
-#: modules/video/widgets/video.php:413
+#: modules/video/widgets/video.php:415
 msgid "Any Random Video"
 msgstr ""
 
@@ -9251,24 +9416,24 @@ msgid "Specify an end time (in seconds)"
 msgstr ""
 
 #: modules/modal-popup/widgets/modal-popup.php:584
-#: modules/video/widgets/video.php:438 modules/video/widgets/video.php:497
-#: modules/video/widgets/video.php:593 modules/video/widgets/video.php:653
+#: modules/video/widgets/video.php:440 modules/video/widgets/video.php:499
+#: modules/video/widgets/video.php:595 modules/video/widgets/video.php:655
 msgid "Mute"
 msgstr ""
 
 #: modules/modal-popup/widgets/modal-popup.php:596
-#: modules/video/widgets/video.php:449
+#: modules/video/widgets/video.php:451
 msgid "Modest Branding"
 msgstr ""
 
 #: modules/modal-popup/widgets/modal-popup.php:597
-#: modules/video/widgets/video.php:450
+#: modules/video/widgets/video.php:452
 msgid "This option lets you use a YouTube player that does not show a YouTube logo."
 msgstr ""
 
 #: modules/modal-popup/widgets/modal-popup.php:637
 #: modules/offcanvas/widgets/offcanvas.php:800
-#: modules/video/widgets/video.php:1432
+#: modules/video/widgets/video.php:1434
 msgid "Close Button"
 msgstr ""
 
@@ -9282,8 +9447,8 @@ msgstr ""
 
 #: modules/modal-popup/widgets/modal-popup.php:686
 #: modules/modal-popup/widgets/modal-popup.php:703
-#: modules/nav-menu/widgets/nav-menu.php:788
-#: modules/nav-menu/widgets/nav-menu.php:804
+#: modules/nav-menu/widgets/nav-menu.php:808
+#: modules/nav-menu/widgets/nav-menu.php:824
 #: modules/offcanvas/widgets/offcanvas.php:1259
 #: modules/woocommerce/skins/skin-grid-base.php:195
 #: modules/woocommerce/widgets/woo-mini-cart.php:1141
@@ -9479,7 +9644,7 @@ msgstr ""
 
 #: modules/nav-menu/widgets/nav-menu.php:179
 #: modules/nav-menu/widgets/nav-menu.php:202
-#: modules/nav-menu/widgets/nav-menu.php:240
+#: modules/nav-menu/widgets/nav-menu.php:239
 #: modules/offcanvas/widgets/offcanvas.php:191
 #: modules/offcanvas/widgets/offcanvas.php:288
 #: modules/offcanvas/widgets/offcanvas.php:1396
@@ -9491,7 +9656,7 @@ msgstr ""
 msgid "WordPress Menu"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:209
+#: modules/nav-menu/widgets/nav-menu.php:208
 #: modules/offcanvas/widgets/offcanvas.php:197
 #. translators: %s Nav menu URL
 #. translators: %s admin link
@@ -9500,7 +9665,7 @@ msgid ""
 "menus."
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:221
+#: modules/nav-menu/widgets/nav-menu.php:220
 #: modules/offcanvas/widgets/offcanvas.php:209
 #. translators: %s Nav menu URL
 #. translators: %s admin link
@@ -9509,275 +9674,281 @@ msgid ""
 "href=\"%s\" target=\"_blank\">Menus screen</a> to create one."
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:236
+#: modules/nav-menu/widgets/nav-menu.php:235
 msgid "Item Type"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:241
-#: modules/nav-menu/widgets/nav-menu.php:422
-#: modules/nav-menu/widgets/nav-menu.php:430
+#: modules/nav-menu/widgets/nav-menu.php:240
+#: modules/nav-menu/widgets/nav-menu.php:421
+#: modules/nav-menu/widgets/nav-menu.php:429
 msgid "Sub Menu"
 msgstr ""
 
+#: modules/nav-menu/widgets/nav-menu.php:263
 #: modules/nav-menu/widgets/nav-menu.php:264
-#: modules/nav-menu/widgets/nav-menu.php:265
 msgid "Item"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:348
+#: modules/nav-menu/widgets/nav-menu.php:347
 msgid "Dropdown Width"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:354
+#: modules/nav-menu/widgets/nav-menu.php:353
 msgid "Equal to \tSection"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:355
+#: modules/nav-menu/widgets/nav-menu.php:354
 msgid "Equal to Container"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:356
+#: modules/nav-menu/widgets/nav-menu.php:355
 msgid "Equal to \tColumn"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:357
+#: modules/nav-menu/widgets/nav-menu.php:356
 msgid "Equal to \tWidget"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:368
+#: modules/nav-menu/widgets/nav-menu.php:367
 #: modules/offcanvas/widgets/offcanvas.php:1758
 msgid "Width (px)"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:393
+#: modules/nav-menu/widgets/nav-menu.php:392
 msgid "Dropdown Position"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:411
+#: modules/nav-menu/widgets/nav-menu.php:410
 msgid "Menu Items"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:418
+#: modules/nav-menu/widgets/nav-menu.php:417
 msgid "Menu Item 1"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:426
+#: modules/nav-menu/widgets/nav-menu.php:425
 msgid "Menu Item 2"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:459
+#: modules/nav-menu/widgets/nav-menu.php:446
+msgid "Hide + & - Sign"
+msgstr ""
+
+#: modules/nav-menu/widgets/nav-menu.php:479
 msgid "Expanded"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:460
+#: modules/nav-menu/widgets/nav-menu.php:480
 msgid "Flyout"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:500
+#: modules/nav-menu/widgets/nav-menu.php:520
 msgid "Flyout Orientation"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:516
+#: modules/nav-menu/widgets/nav-menu.php:536
 #: modules/offcanvas/widgets/offcanvas.php:1810
 msgid "Appear Effect"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:534
+#: modules/nav-menu/widgets/nav-menu.php:554
 msgid "Hamburger Align"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:570
+#: modules/nav-menu/widgets/nav-menu.php:590
 msgid "Menu Items Align"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:604
+#: modules/nav-menu/widgets/nav-menu.php:624
 msgid "Show Submenu On"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:622
+#: modules/nav-menu/widgets/nav-menu.php:642
 msgid "Submenu Icon"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:627
+#: modules/nav-menu/widgets/nav-menu.php:647
 #: modules/offcanvas/widgets/offcanvas.php:320
 msgid "Plus Sign"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:628
+#: modules/nav-menu/widgets/nav-menu.php:648
 #: modules/offcanvas/widgets/offcanvas.php:321
 #: modules/posts/skins/skin-classic.php:46
 #: modules/woocommerce/skins/skin-grid-default.php:47
 msgid "Classic"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:640
+#: modules/nav-menu/widgets/nav-menu.php:660
 msgid "Submenu Animation"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:661
+#: modules/nav-menu/widgets/nav-menu.php:681
 #: modules/offcanvas/widgets/offcanvas.php:334
 msgid "Action On Menu Click"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:664
+#: modules/nav-menu/widgets/nav-menu.php:684
 msgid "For Horizontal layout, this will affect on the selected breakpoint."
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:666
+#: modules/nav-menu/widgets/nav-menu.php:686
 #: modules/offcanvas/widgets/offcanvas.php:338
 msgid "Open Submenu"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:667
+#: modules/nav-menu/widgets/nav-menu.php:687
 #: modules/offcanvas/widgets/offcanvas.php:339
 msgid "Redirect To Self Link"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:677
+#: modules/nav-menu/widgets/nav-menu.php:697
 msgid "Responsive"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:688
+#: modules/nav-menu/widgets/nav-menu.php:708
 msgid "Breakpoint"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:692
+#: modules/nav-menu/widgets/nav-menu.php:712
 msgid "Mobile (768px >)"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:693
+#: modules/nav-menu/widgets/nav-menu.php:713
 msgid "Tablet (1025px >)"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:724
+#: modules/nav-menu/widgets/nav-menu.php:744
 msgid "This is the alignement of menu icon on selected responsive breakpoints."
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:738
+#: modules/nav-menu/widgets/nav-menu.php:758
 #: modules/posts/skins/skin-base.php:3415
+#: modules/woocommerce/widgets/woo-checkout.php:1057
 msgid "Full Width"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:739
+#: modules/nav-menu/widgets/nav-menu.php:759
 msgid "Enable this option to stretch the Sub Menu to Full Width."
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:757
+#: modules/nav-menu/widgets/nav-menu.php:777
 msgid "Menu Icon"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:829
+#: modules/nav-menu/widgets/nav-menu.php:849
 msgid "Main Menu"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:840
+#: modules/nav-menu/widgets/nav-menu.php:860
 msgid "Flyout Box Width"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:867
+#: modules/nav-menu/widgets/nav-menu.php:887
 msgid "Flyout Box Padding"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:890
-#: modules/nav-menu/widgets/nav-menu.php:1550
+#: modules/nav-menu/widgets/nav-menu.php:910
+#: modules/nav-menu/widgets/nav-menu.php:1570
 msgid "Horizontal Padding"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:912
-#: modules/nav-menu/widgets/nav-menu.php:1571
+#: modules/nav-menu/widgets/nav-menu.php:932
+#: modules/nav-menu/widgets/nav-menu.php:1591
 msgid "Vertical Padding"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:934
+#: modules/nav-menu/widgets/nav-menu.php:954
 #: modules/woocommerce/widgets/woo-mini-cart.php:1905
 msgid "Space Between"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:980
+#: modules/nav-menu/widgets/nav-menu.php:1000
 msgid "Menu Item Top Spacing"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:1017
+#: modules/nav-menu/widgets/nav-menu.php:1037
 msgid "Link Hover Effect"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:1023
+#: modules/nav-menu/widgets/nav-menu.php:1043
 msgid "Overline"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:1024
+#: modules/nav-menu/widgets/nav-menu.php:1044
 msgid "Double Line"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:1025
+#: modules/nav-menu/widgets/nav-menu.php:1045
 #: modules/social-share/widgets/social-share.php:330
 msgid "Framed"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:1037
-#: modules/nav-menu/widgets/nav-menu.php:1079
+#: modules/nav-menu/widgets/nav-menu.php:1057
+#: modules/nav-menu/widgets/nav-menu.php:1099
 #: modules/price-table/widgets/price-table.php:2939
 #: modules/registration-form/widgets/registration-form.php:1986
 msgid "Animation"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:1058
+#: modules/nav-menu/widgets/nav-menu.php:1078
 msgid "Frame Animation"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:1204
-#: modules/nav-menu/widgets/nav-menu.php:1267
+#: modules/nav-menu/widgets/nav-menu.php:1224
+#: modules/nav-menu/widgets/nav-menu.php:1287
 msgid "Link Hover Effect Color"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:1229
-#: modules/nav-menu/widgets/nav-menu.php:1416
+#: modules/nav-menu/widgets/nav-menu.php:1249
+#: modules/nav-menu/widgets/nav-menu.php:1436
 #: modules/posts/skins/skin-base.php:945 modules/posts/skins/skin-base.php:2223
 #: modules/posts/skins/skin-feed.php:339 modules/posts/skins/skin-feed.php:781
 #: modules/posts/skins/skin-news.php:542
 #: modules/table-of-contents/widgets/table-of-contents.php:902
+#: modules/woocommerce/widgets/woo-checkout.php:1317
 msgid "Active"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:1305
+#: modules/nav-menu/widgets/nav-menu.php:1325
 #: modules/woocommerce/widgets/woo-mini-cart.php:364
 msgid "Dropdown"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:1313
+#: modules/nav-menu/widgets/nav-menu.php:1333
 msgid ""
 "<b>Note:</b> On desktop, below style options will apply to the submenu. On "
 "mobile, this will apply to the entire menu."
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:1525
+#: modules/nav-menu/widgets/nav-menu.php:1545
 msgid "Dropdown Width (px)"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:1597
+#: modules/nav-menu/widgets/nav-menu.php:1617
 #: modules/price-table/widgets/price-table.php:1111
 msgid "Top Distance"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:1695
+#: modules/nav-menu/widgets/nav-menu.php:1715
 msgid "Menu Trigger & Close Icon"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:1817
-#: modules/video/widgets/video.php:1201
+#: modules/nav-menu/widgets/nav-menu.php:1837
+#: modules/video/widgets/video.php:1203
 msgid "Close Icon Color"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:1834
+#: modules/nav-menu/widgets/nav-menu.php:1854
 msgid "Close Icon Size"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:1884
+#: modules/nav-menu/widgets/nav-menu.php:1904
 #. translators: %1$s doc link
 msgid "%1$s How to design a custom menu? » %2$s"
 msgstr ""
 
-#: modules/nav-menu/widgets/nav-menu.php:1894
+#: modules/nav-menu/widgets/nav-menu.php:1914
 #. translators: %1$s doc link
 msgid "%1$s Types of dropdown width and position options » %2$s"
 msgstr ""
@@ -9943,23 +10114,23 @@ msgstr ""
 msgid "Flow Direction"
 msgstr ""
 
-#: modules/particles/module.php:339 modules/video/widgets/video.php:1339
+#: modules/particles/module.php:339 modules/video/widgets/video.php:1341
 msgid "Top Left"
 msgstr ""
 
-#: modules/particles/module.php:340 modules/video/widgets/video.php:1340
+#: modules/particles/module.php:340 modules/video/widgets/video.php:1342
 msgid "Top Right"
 msgstr ""
 
 #: modules/particles/module.php:341
 #: modules/registration-form/widgets/registration-form.php:312
-#: modules/video/widgets/video.php:1341
+#: modules/video/widgets/video.php:1343
 msgid "Bottom Left"
 msgstr ""
 
 #: modules/particles/module.php:342
 #: modules/registration-form/widgets/registration-form.php:311
-#: modules/video/widgets/video.php:1342
+#: modules/video/widgets/video.php:1344
 msgid "Bottom Right"
 msgstr ""
 
@@ -9993,7 +10164,7 @@ msgstr ""
 msgid "Learn more about this %1$s here. %2$s"
 msgstr ""
 
-#: modules/posts/module.php:98 modules/woocommerce/module.php:395
+#: modules/posts/module.php:98 modules/woocommerce/module.php:414
 msgid "Saved"
 msgstr ""
 
@@ -10135,7 +10306,7 @@ msgstr ""
 #: modules/posts/skins/skin-base.php:643 modules/posts/skins/skin-base.php:1185
 #: modules/posts/skins/skin-feed.php:1247 modules/posts/skins/skin-news.php:938
 #: modules/posts/skins/skin-news.php:1055
-#: modules/video-gallery/widgets/video-gallery.php:1751
+#: modules/video-gallery/widgets/video-gallery.php:1752
 #: modules/woocommerce/skins/skin-grid-default.php:105
 #: modules/woocommerce/skins/skin-grid-default.php:243
 #: modules/woocommerce/skins/skin-grid-franko.php:187
@@ -10430,6 +10601,8 @@ msgstr ""
 #: modules/posts/skins/skin-business.php:527
 #: modules/posts/skins/skin-card.php:232 modules/posts/skins/skin-feed.php:1426
 #: modules/posts/skins/skin-feed.php:1660 modules/posts/skins/skin-news.php:277
+#: modules/woocommerce/widgets/woo-checkout.php:853
+#: modules/woocommerce/widgets/woo-checkout.php:995
 msgid "Bottom Spacing"
 msgstr ""
 
@@ -10442,7 +10615,7 @@ msgid "Inter Meta Spacing"
 msgstr ""
 
 #: modules/posts/skins/skin-base.php:3597
-#: modules/video-gallery/widgets/video-gallery.php:1875
+#: modules/video-gallery/widgets/video-gallery.php:1876
 msgid "Arrows Border Size"
 msgstr ""
 
@@ -10917,24 +11090,24 @@ msgid "Pricing Above Call To Action"
 msgstr ""
 
 #: modules/price-table/widgets/price-table.php:176
-#: modules/video/widgets/video.php:924 modules/video/widgets/video.php:1091
-#: modules/video/widgets/video.php:1156
+#: modules/video/widgets/video.php:926 modules/video/widgets/video.php:1093
+#: modules/video/widgets/video.php:1158
 #: modules/video-gallery/widgets/video-gallery.php:1434
 #: modules/video-gallery/widgets/video-gallery.php:1613
 msgid "Float"
 msgstr ""
 
 #: modules/price-table/widgets/price-table.php:177
-#: modules/video/widgets/video.php:925 modules/video/widgets/video.php:1092
-#: modules/video/widgets/video.php:1157
+#: modules/video/widgets/video.php:927 modules/video/widgets/video.php:1094
+#: modules/video/widgets/video.php:1159
 #: modules/video-gallery/widgets/video-gallery.php:1435
 #: modules/video-gallery/widgets/video-gallery.php:1614
 msgid "Sink"
 msgstr ""
 
 #: modules/price-table/widgets/price-table.php:178
-#: modules/video/widgets/video.php:926 modules/video/widgets/video.php:1093
-#: modules/video/widgets/video.php:1158
+#: modules/video/widgets/video.php:928 modules/video/widgets/video.php:1095
+#: modules/video/widgets/video.php:1160
 #: modules/video-gallery/widgets/video-gallery.php:1436
 #: modules/video-gallery/widgets/video-gallery.php:1615
 msgid "Wobble Vertical"
@@ -11313,6 +11486,7 @@ msgstr ""
 #: modules/registration-form/widgets/registration-form.php:520
 #: modules/registration-form/widgets/registration-form.php:536
 #: modules/registration-form/widgets/registration-form.php:537
+#: modules/woocommerce/templates/woo-checkout-template.php:96
 msgid "Login"
 msgstr ""
 
@@ -11515,6 +11689,7 @@ msgid "Required Mark Color"
 msgstr ""
 
 #: modules/registration-form/widgets/registration-form.php:1534
+#: modules/woocommerce/widgets/woo-checkout.php:812
 msgid "Input Fields"
 msgstr ""
 
@@ -11543,7 +11718,7 @@ msgid "Selector Color"
 msgstr ""
 
 #: modules/registration-form/widgets/registration-form.php:1956
-#: modules/video/widgets/video.php:1135
+#: modules/video/widgets/video.php:1137
 msgid "Hover Background Color"
 msgstr ""
 
@@ -12383,6 +12558,8 @@ msgid "Link Type"
 msgstr ""
 
 #: modules/timeline/widgets/timeline.php:643
+#: modules/woocommerce/widgets/woo-checkout.php:334
+#: modules/woocommerce/widgets/woo-checkout.php:406
 msgid "Link Text"
 msgstr ""
 
@@ -12670,247 +12847,247 @@ msgid ""
 "here."
 msgstr ""
 
-#: modules/video/widgets/video.php:378
+#: modules/video/widgets/video.php:380
 msgid "Video Options"
 msgstr ""
 
-#: modules/video/widgets/video.php:424 modules/video/widgets/video.php:639
+#: modules/video/widgets/video.php:426 modules/video/widgets/video.php:641
 msgid "Player Control"
 msgstr ""
 
-#: modules/video/widgets/video.php:462
+#: modules/video/widgets/video.php:464
 msgid "Privacy Mode"
 msgstr ""
 
-#: modules/video/widgets/video.php:464
+#: modules/video/widgets/video.php:466
 msgid ""
 "When you turn on privacy mode, YouTube won't store information about "
 "visitors on your website unless they play the video."
 msgstr ""
 
-#: modules/video/widgets/video.php:508
+#: modules/video/widgets/video.php:510
 msgid "Intro Title"
 msgstr ""
 
-#: modules/video/widgets/video.php:522
+#: modules/video/widgets/video.php:524
 msgid "Intro Portrait"
 msgstr ""
 
-#: modules/video/widgets/video.php:536
+#: modules/video/widgets/video.php:538
 msgid "Intro Byline"
 msgstr ""
 
-#: modules/video/widgets/video.php:550
+#: modules/video/widgets/video.php:552
 msgid "Controls Color"
 msgstr ""
 
-#: modules/video/widgets/video.php:604
+#: modules/video/widgets/video.php:606
 msgid "Show Playbar"
 msgstr ""
 
-#: modules/video/widgets/video.php:664
+#: modules/video/widgets/video.php:666
 msgid "Note: Mute functionality will not work inside the lightbox."
 msgstr ""
 
-#: modules/video/widgets/video.php:676
+#: modules/video/widgets/video.php:678
 msgid "Enable Double Click on Mobile"
 msgstr ""
 
-#: modules/video/widgets/video.php:692
+#: modules/video/widgets/video.php:694
 #. translators: %s admin link
 msgid ""
 "Enable this option if you are not able to see custom thumbnail or overlay "
 "color on Mobile. Please read %1$s this article %2$s for more information."
 msgstr ""
 
-#: modules/video/widgets/video.php:712
+#: modules/video/widgets/video.php:714
 msgid "Thumbnail & Overlay"
 msgstr ""
 
-#: modules/video/widgets/video.php:719
+#: modules/video/widgets/video.php:721
 #: modules/video-gallery/widgets/video-gallery.php:333
 msgid "Thumbnail Size"
 msgstr ""
 
-#: modules/video/widgets/video.php:722
+#: modules/video/widgets/video.php:724
 #: modules/video-gallery/widgets/video-gallery.php:336
 msgid "Maximum Resolution"
 msgstr ""
 
-#: modules/video/widgets/video.php:723
+#: modules/video/widgets/video.php:725
 #: modules/video-gallery/widgets/video-gallery.php:337
 msgid "High Quality"
 msgstr ""
 
-#: modules/video/widgets/video.php:724
+#: modules/video/widgets/video.php:726
 #: modules/video-gallery/widgets/video-gallery.php:338
 msgid "Medium Quality"
 msgstr ""
 
-#: modules/video/widgets/video.php:725
+#: modules/video/widgets/video.php:727
 #: modules/video-gallery/widgets/video-gallery.php:339
 msgid "Standard Quality"
 msgstr ""
 
-#: modules/video/widgets/video.php:737
+#: modules/video/widgets/video.php:739
 #: modules/video-gallery/widgets/video-gallery.php:351
 msgid "Custom Thumbnail"
 msgstr ""
 
-#: modules/video/widgets/video.php:749 modules/video/widgets/video.php:846
+#: modules/video/widgets/video.php:751 modules/video/widgets/video.php:848
 #: modules/video-gallery/widgets/video-gallery.php:366
 #: modules/video-gallery/widgets/video-gallery.php:1344
 msgid "Select Image"
 msgstr ""
 
-#: modules/video/widgets/video.php:816
+#: modules/video/widgets/video.php:818
 #: modules/video-gallery/widgets/video-gallery.php:1317
 msgid "Play Button"
 msgstr ""
 
-#: modules/video/widgets/video.php:1212
+#: modules/video/widgets/video.php:1214
 msgid "Close Icon Hover Color"
 msgstr ""
 
-#: modules/video/widgets/video.php:1224
+#: modules/video/widgets/video.php:1226
 msgid "Content Width"
 msgstr ""
 
-#: modules/video/widgets/video.php:1243
+#: modules/video/widgets/video.php:1245
 msgid "Content Position"
 msgstr ""
 
-#: modules/video/widgets/video.php:1262
+#: modules/video/widgets/video.php:1264
 msgid "Entrance Animation"
 msgstr ""
 
-#: modules/video/widgets/video.php:1263
+#: modules/video/widgets/video.php:1265
 msgid "Note: Entrance animation will work only at the frontend."
 msgstr ""
 
-#: modules/video/widgets/video.php:1282
+#: modules/video/widgets/video.php:1284
 msgid "Sticky Video"
 msgstr ""
 
-#: modules/video/widgets/video.php:1289
+#: modules/video/widgets/video.php:1291
 msgid "Enable Sticky Video"
 msgstr ""
 
-#: modules/video/widgets/video.php:1300
+#: modules/video/widgets/video.php:1302
 msgid "Video Width (px)"
 msgstr ""
 
-#: modules/video/widgets/video.php:1335
+#: modules/video/widgets/video.php:1337
 msgid "Sticky Alignment"
 msgstr ""
 
-#: modules/video/widgets/video.php:1343
+#: modules/video/widgets/video.php:1345
 msgid "Center Left"
 msgstr ""
 
-#: modules/video/widgets/video.php:1344
+#: modules/video/widgets/video.php:1346
 msgid "Center Right"
 msgstr ""
 
-#: modules/video/widgets/video.php:1357
+#: modules/video/widgets/video.php:1359
 msgid "Spacing from Edges"
 msgstr ""
 
-#: modules/video/widgets/video.php:1358
+#: modules/video/widgets/video.php:1360
 msgid ""
 "Note: This is spacing around the sticky video with respect to the Alignment "
 "chosen."
 msgstr ""
 
-#: modules/video/widgets/video.php:1412
+#: modules/video/widgets/video.php:1414
 msgid "Hide Sticky Video on"
 msgstr ""
 
-#: modules/video/widgets/video.php:1487
+#: modules/video/widgets/video.php:1489
 msgid "Info Bar"
 msgstr ""
 
-#: modules/video/widgets/video.php:1500
+#: modules/video/widgets/video.php:1502
 msgid "Enable this option to display the informative text under Sticky video."
 msgstr ""
 
-#: modules/video/widgets/video.php:1603
+#: modules/video/widgets/video.php:1605
 msgid "YouTube Subscribe Bar"
 msgstr ""
 
-#: modules/video/widgets/video.php:1613
+#: modules/video/widgets/video.php:1615
 msgid "Enable Subscribe Bar"
 msgstr ""
 
-#: modules/video/widgets/video.php:1632
+#: modules/video/widgets/video.php:1634
 msgid "Use Channel Name"
 msgstr ""
 
-#: modules/video/widgets/video.php:1633
+#: modules/video/widgets/video.php:1635
 msgid "Use Channel ID"
 msgstr ""
 
-#: modules/video/widgets/video.php:1646
+#: modules/video/widgets/video.php:1648
 msgid "YouTube Channel Name"
 msgstr ""
 
-#: modules/video/widgets/video.php:1661
+#: modules/video/widgets/video.php:1663
 msgid "YouTube Channel ID"
 msgstr ""
 
-#: modules/video/widgets/video.php:1680
+#: modules/video/widgets/video.php:1682
 #. translators: %s admin link
 msgid "Click %1$s here %2$s to find your YouTube Channel Name."
 msgstr ""
 
-#: modules/video/widgets/video.php:1695
+#: modules/video/widgets/video.php:1697
 #. translators: %s admin link
 msgid "Click %1$s here %2$s to find your YouTube Channel ID."
 msgstr ""
 
-#: modules/video/widgets/video.php:1709
+#: modules/video/widgets/video.php:1711
 msgid "Subscribe to Channel Text"
 msgstr ""
 
-#: modules/video/widgets/video.php:1723
+#: modules/video/widgets/video.php:1725
 msgid "Show Subscribers Count"
 msgstr ""
 
-#: modules/video/widgets/video.php:1802
+#: modules/video/widgets/video.php:1804
 msgid "Choose a breakpoint where the subscribe bar content will stack."
 msgstr ""
 
-#: modules/video/widgets/video.php:1889
+#: modules/video/widgets/video.php:1891
 #. translators: %1$s doc link
 msgid "%1$s Unable to edit Video widget » %2$s"
 msgstr ""
 
-#: modules/video/widgets/video.php:1899
+#: modules/video/widgets/video.php:1901
 #. translators: %1$s doc link
 msgid "%1$s Display YouTube Subscribe Bar for Video. » %2$s"
 msgstr ""
 
-#: modules/video/widgets/video.php:1909
+#: modules/video/widgets/video.php:1911
 #. translators: %1$s doc link
 msgid "%1$s Find YouTube Channel Name and Channel ID. » %2$s"
 msgstr ""
 
-#: modules/video/widgets/video.php:1919
+#: modules/video/widgets/video.php:1921
 #. translators: %1$s doc link
 msgid "%1$s Enable Sticky Video » %2$s"
 msgstr ""
 
-#: modules/video/widgets/video.php:1929
+#: modules/video/widgets/video.php:1931
 #: modules/video-gallery/widgets/video-gallery.php:916
 #. translators: %1$s doc link
 msgid "%1$s Get Wistia Link and Thumbnail text » %2$s"
 msgstr ""
 
-#: modules/video/widgets/video.php:2124
+#: modules/video/widgets/video.php:2126
 msgid "from "
 msgstr ""
 
-#: modules/video/widgets/video.php:2383
+#: modules/video/widgets/video.php:2385
 msgid "Please choose a file."
 msgstr ""
 
@@ -13065,24 +13242,28 @@ msgstr ""
 msgid "Always"
 msgstr ""
 
-#: modules/video-gallery/widgets/video-gallery.php:1722
+#: modules/video-gallery/widgets/video-gallery.php:1709
+msgid "Below Video"
+msgstr ""
+
+#: modules/video-gallery/widgets/video-gallery.php:1723
 msgid "Caption Color"
 msgstr ""
 
-#: modules/video-gallery/widgets/video-gallery.php:1760
+#: modules/video-gallery/widgets/video-gallery.php:1761
 msgid "Show Category on Hover"
 msgstr ""
 
-#: modules/video-gallery/widgets/video-gallery.php:1772
+#: modules/video-gallery/widgets/video-gallery.php:1773
 msgid "Category Color"
 msgstr ""
 
-#: modules/woocommerce/module.php:119
+#: modules/woocommerce/module.php:120
 msgid "View cart"
 msgstr ""
 
-#: modules/woocommerce/module.php:322 modules/woocommerce/module.php:326
-#: modules/woocommerce/module.php:330
+#: modules/woocommerce/module.php:331 modules/woocommerce/module.php:335
+#: modules/woocommerce/module.php:339
 #: modules/woocommerce/widgets/woo-mini-cart.php:2613
 #: modules/woocommerce/widgets/woo-mini-cart.php:2730
 msgid "Subtotal: "
@@ -13214,8 +13395,99 @@ msgstr ""
 msgid "Sale!"
 msgstr ""
 
+#: modules/woocommerce/templates/woo-checkout-template.php:79
+msgid "Username or email"
+msgstr ""
+
+#: modules/woocommerce/templates/woo-checkout-template.php:92
+msgid "Remember me"
+msgstr ""
+
+#: modules/woocommerce/templates/woo-checkout-template.php:168
+msgid "Billing &amp; Shipping"
+msgstr ""
+
+#: modules/woocommerce/templates/woo-checkout-template.php:203
+msgid "Create an account?"
+msgstr ""
+
+#: modules/woocommerce/templates/woo-checkout-template.php:285
+#: modules/woocommerce/templates/woo-checkout-template.php:311
+msgid "Additional information"
+msgstr ""
+
+#: modules/woocommerce/templates/woo-checkout-template.php:397
+msgid "Sub-total"
+msgstr ""
+
+#: modules/woocommerce/templates/woo-checkout-template.php:445
+msgid "Order Total"
+msgstr ""
+
+#: modules/woocommerce/templates/woo-checkout-template.php:517
+#: modules/woocommerce/templates/woo-checkout-template.php:631
+msgid "Sorry, this order is invalid and cannot be paid for."
+msgstr ""
+
+#: modules/woocommerce/templates/woo-checkout-template.php:521
+msgid "Please log in to your account below to continue to the payment form."
+msgstr ""
+
+#: modules/woocommerce/templates/woo-checkout-template.php:532
+msgid ""
+"You are paying for a guest order. Please continue with payment only if you "
+"recognize this order."
+msgstr ""
+
+#: modules/woocommerce/templates/woo-checkout-template.php:537
+msgid "This order cannot be paid for. Please contact us if you need assistance."
+msgstr ""
+
+#: modules/woocommerce/templates/woo-checkout-template.php:542
+#: modules/woocommerce/templates/woo-checkout-template.php:628
+#. translators: %s: order status
+msgid ""
+"This order&rsquo;s status is &ldquo;%s&rdquo;&mdash;it cannot be paid for. "
+"Please contact us if you need assistance."
+msgstr ""
+
+#: modules/woocommerce/templates/woo-checkout-template.php:570
+#. translators: %s: product name
+msgid ""
+"Sorry, \"%s\" is no longer in stock so this order cannot be paid for. We "
+"apologize for any inconvenience caused."
+msgstr ""
+
+#: modules/woocommerce/templates/woo-checkout-template.php:582
+#. translators: 1: product name 2: quantity in stock
+msgid ""
+"Sorry, we do not have enough \"%1$s\" in stock to fulfill your order (%2$s "
+"available). We apologize for any inconvenience caused."
+msgstr ""
+
+#: modules/woocommerce/templates/woo-checkout-template.php:608
+msgid "Pay for order"
+msgstr ""
+
+#: modules/woocommerce/templates/woo-checkout-template.php:634
+msgid "Invalid order."
+msgstr ""
+
+#: modules/woocommerce/templates/woo-checkout-template.php:704
+msgid ""
+"The order totals have been updated. Please confirm your order by pressing "
+"the \"Place order\" button at the bottom of the page."
+msgstr ""
+
+#: modules/woocommerce/templates/woo-checkout-template.php:741
+#: modules/woocommerce/templates/woo-checkout-template.php:800
+#: modules/woocommerce/templates/woo-checkout-template.php:861
+msgid "You must be logged in to checkout."
+msgstr ""
+
 #: modules/woocommerce/widgets/woo-add-to-cart.php:133
 #: modules/woocommerce/widgets/woo-categories.php:1405
+#: modules/woocommerce/widgets/woo-checkout.php:1464
 msgid "Product"
 msgstr ""
 
@@ -13371,6 +13643,227 @@ msgstr ""
 #: modules/woocommerce/widgets/woo-categories.php:1406
 #: modules/woocommerce/widgets/woo-mini-cart.php:2182
 msgid "Products"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:145
+msgid "One Column"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:146
+msgid "Two Columns"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:147
+msgid "Multistep"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:157
+#. translators: %s admin link
+msgid "Note: On responsive devices it will be stacked."
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:168
+msgid "Enable Cart Button"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:180
+msgid "Show Additional Information Box"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:202
+msgid "Checkout Labels"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:210
+msgid "Billing Text"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:212
+msgid "Billing Details"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:222
+msgid "Shipping Text"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:224
+msgid "Ship to a different address?"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:234
+msgid "Order Text"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:236
+#: modules/woocommerce/widgets/woo-checkout.php:1430
+msgid "Order Review"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:246
+msgid "Payment Text"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:248
+#: modules/woocommerce/widgets/woo-checkout.php:1642
+msgid "Payment Method"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:258
+msgid "Cart Button Text"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:260
+msgid "Back To Cart"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:273
+msgid "Previous Button Text"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:288
+msgid "Next Button Text"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:313
+msgid "Login Section"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:323
+msgid "Returning customer?"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:324
+#: modules/woocommerce/widgets/woo-checkout.php:393
+msgid "Type your title here"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:336
+msgid "Click here to login"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:337
+#: modules/woocommerce/widgets/woo-checkout.php:351
+#: modules/woocommerce/widgets/woo-checkout.php:409
+#: modules/woocommerce/widgets/woo-checkout.php:426
+#: modules/woocommerce/widgets/woo-checkout.php:442
+#: modules/woocommerce/widgets/woo-checkout.php:458
+msgid "Type your text here"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:347
+#: modules/woocommerce/widgets/woo-checkout.php:422
+msgid "Form Text"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:350
+msgid ""
+"If you have shopped with us before, please enter your details below. If you "
+"are a new customer, please proceed to the Billing section."
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:371
+msgid "Coupon Section"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:392
+msgid "Have a coupon?"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:408
+msgid "Click here to enter your code"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:425
+msgid "If you have a coupon code, please apply it below."
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:439
+msgid "Field Placeholder"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:441
+msgid "Coupon code"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:457
+msgid "Apply Coupon"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:482
+msgid "Sections"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:589
+msgid "Login and Coupon Toggle"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:712
+#: modules/woocommerce/widgets/woo-checkout.php:1552
+msgid "Hide Separator"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:772
+#: modules/woocommerce/widgets/woo-checkout.php:1606
+msgid "Top & Bottom Spacing"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:874
+msgid "Fields"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:1069
+msgid "Next/Previous Button"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:1276
+msgid "Tabs"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:1362
+msgid "Inactive"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:1497
+msgid "Cart Link"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:1741
+msgid "Field Validation & Error Messages"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:1770
+msgid "Field Border Color"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:1789
+msgid "Error Messages"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:1874
+#. translators: %1$s doc link
+msgid "%1$s General FAQs » %2$s"
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:1927
+msgid "Woo - Checkout - ID "
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:1928
+msgid ""
+"Before editing checkout widget, please set this page as your Checkout page "
+"in WooCommerce settings."
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:1929
+msgid ""
+"Navigate to WooCommerce -> Settings -> Advanced Tab -> Page setup -> "
+"Checkout page."
+msgstr ""
+
+#: modules/woocommerce/widgets/woo-checkout.php:1941
+msgid ""
+"There are no products in the cart. To display Checkout form at frontend add "
+"some product in the cart"
 msgstr ""
 
 #: modules/woocommerce/widgets/woo-mini-cart.php:139

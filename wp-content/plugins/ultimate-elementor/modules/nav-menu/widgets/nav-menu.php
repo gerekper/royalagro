@@ -204,7 +204,6 @@ class Nav_Menu extends Common_Widget {
 					'options'      => $menus,
 					'default'      => array_keys( $menus )[0],
 					'save_default' => true,
-					'separator'    => 'after',
 					/* translators: %s Nav menu URL */
 					'description'  => sprintf( __( 'Go to the <a href="%s" target="_blank">Menus screen</a> to manage your menus.', 'uael' ), admin_url( 'nav-menus.php' ) ),
 					'condition'    => array(
@@ -437,6 +436,27 @@ class Nav_Menu extends Common_Widget {
 				),
 			)
 		);
+
+		$current_theme = wp_get_theme();
+
+		if ( 'Twenty Twenty-One' === $current_theme->get( 'Name' ) ) {
+			$this->add_control(
+				'hide_twenty_twenty_one_theme_icons',
+				array(
+					'label'        => __( 'Hide + & - Sign', 'uael' ),
+					'type'         => Controls_Manager::SWITCHER,
+					'separator'    => 'before',
+					'label_on'     => __( 'Yes', 'uael' ),
+					'label_off'    => __( 'No', 'uael' ),
+					'return_value' => 'yes',
+					'default'      => 'no',
+					'prefix_class' => 'uael-nav-menu__theme-icon-',
+					'condition'    => array(
+						'menu_type' => 'wordpress_menu',
+					),
+				)
+			);
+		}
 
 		$this->end_controls_section();
 

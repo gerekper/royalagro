@@ -1366,6 +1366,7 @@ class UAEL_Helper {
 				case 'Woo_Categories':
 				case 'Woo_Products':
 				case 'Woo_Mini_Cart':
+				case 'Woo_Checkout':
 					if ( ! $is_already_wc ) {
 						$combined['uael-woocommerce'] = array(
 							'path'     => 'assets/' . $folder . '/modules/uael-woocommerce' . $suffix . '.css',

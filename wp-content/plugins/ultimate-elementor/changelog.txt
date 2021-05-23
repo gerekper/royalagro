@@ -1,3 +1,23 @@
+Version 1.31.0 - Monday, 17th May 2021
+- New: Introduced WooCommerce Checkout Form widget.
+- Improvement: Navigation Menu - Added an option to hide + & - sign added by Twenty Twenty-One Theme.
+- Improvement: Posts - Added autoplay speed option for carousel layout.
+- Improvement: Table - Added WPML support to repeater fields with wpml-config.xml file for WPML 4.4+ versions.
+- Improvement: Video - Added 1:1 and 21:9 aspect ratio.
+- Improvement: Video Gallery - Added option to display the video caption below the video.
+- Fix: Before After Slider - Fixed slider issue in RTL view.
+- Fix: Countdown Timer - Separator not hiding when specific display conditions are on/off.
+- Fix: Marketing Button - Flare animation not visible at the corner of the button if border-radius set as 0.
+- Fix: Mini Cart - Additional bottom line in the product list on non WooCommerce pages.
+- Fix: Modal Popup - Elements below the popup were not working on iPhone devices.
+- Fix: FAQ Schema - Active colors not applied except the first item.
+- Fix: FAQ Schema - Error in structured data if assigned dynamic field is empty.
+- Fix: FAQ Schema - Repetitive Schema added to Elementor's single post template.
+- Fix: Particle Backgrounds - Not working for columns after Elementor DOM optimization.
+- Fix: User Registration Form - Register user functionality not working on Multisite.
+- Fix: Woo Products - Bottom box shadow not displayed on products in a carousel layout.
+- Fix: Install Elementor notice displays on the update installation page.
+
 Version 1.30.2 - Friday, 23rd April 2021
 - Fix: Woo - Products - Undefined Global Typography class error with Modern skin.
 
@@ -6,7 +26,7 @@ Version 1.30.1 - Friday, 23rd April 2021
 Elementor has deprecated few functions and namespaces with its v3.0.0. Following Elementor, our plugin too deprecates similar functions and namespaces. You will now require the Elementor v3.0.0 or higher.
 - Improvement: Compatibility with Elementor v3.2 - Added Elementor Global Color and Typography scheme support.
 - Improvement: Compatibility with Elementor v3.2 - Soft deprecated is_built_with_elementor() updated.
-- Improvement: Business Reviews - Added an option to pass the language parameter to the Google Places API.
+- Improvement: Business Reviews - Added an option to pass the language parameter to the Google Places API. 
 - Improvement: Social Share - Added fake random count for posts/pages.
 - Fix: Modal Popup - Scrolling inside the popup not working.
 - Fix: Modal Popup - Elements below the popup was not working due to JS conflicts.

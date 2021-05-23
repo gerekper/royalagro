@@ -75,6 +75,18 @@ class Premium_Facebook_Reviews extends Widget_Base {
 	}
 
 	/**
+	 * Retrieve Widget Keywords.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return string Widget keywords.
+	 */
+	public function get_keywords() {
+		return array( 'rating', 'testimonials', 'page', 'rate', 'recommendation', 'social' );
+	}
+
+	/**
 	 * Retrieve Widget Dependent CSS.
 	 *
 	 * @since 1.0.0

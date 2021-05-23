@@ -53,6 +53,11 @@ class Team_Carousel extends Base {
      * Register content related controls
      */
 	protected function register_content_controls() {
+		$this->__information_content_controls();
+		$this->__settings_content_controls();
+	}
+
+	protected function __information_content_controls() {
 		$this->start_controls_section(
 			'_section_info',
 			[
@@ -313,35 +318,19 @@ class Team_Carousel extends Base {
             'title_tag',
             [
                 'label' => __( 'Title HTML Tag', 'happy-addons-pro' ),
-                'type' => Controls_Manager::CHOOSE,
-                'options' => [
-                    'h1'  => [
-                        'title' => __( 'H1', 'happy-addons-pro' ),
-                        'icon' => 'eicon-editor-h1'
-                    ],
-                    'h2'  => [
-                        'title' => __( 'H2', 'happy-addons-pro' ),
-                        'icon' => 'eicon-editor-h2'
-                    ],
-                    'h3'  => [
-                        'title' => __( 'H3', 'happy-addons-pro' ),
-                        'icon' => 'eicon-editor-h3'
-                    ],
-                    'h4'  => [
-                        'title' => __( 'H4', 'happy-addons-pro' ),
-                        'icon' => 'eicon-editor-h4'
-                    ],
-                    'h5'  => [
-                        'title' => __( 'H5', 'happy-addons-pro' ),
-                        'icon' => 'eicon-editor-h5'
-                    ],
-                    'h6'  => [
-                        'title' => __( 'H6', 'happy-addons-pro' ),
-                        'icon' => 'eicon-editor-h6'
-                    ]
-                ],
-                'default' => 'h2',
-                'toggle' => false,
+                'type' => Controls_Manager::SELECT,
+				'options' => [
+					'h1' => 'H1',
+					'h2' => 'H2',
+					'h3' => 'H3',
+					'h4' => 'H4',
+					'h5' => 'H5',
+					'h6' => 'H6',
+					'div' => 'div',
+					'span' => 'span',
+					'p' => 'p',
+				],
+				'default' => 'h2',
             ]
         );
 
@@ -376,6 +365,9 @@ class Team_Carousel extends Base {
         );
 
         $this->end_controls_section();
+    }
+
+	protected function __settings_content_controls() {
 
         $this->start_controls_section(
             '_section_settings',
@@ -508,12 +500,21 @@ class Team_Carousel extends Base {
         );
 
         $this->end_controls_section();
-    }
+	}
 
     /**
      * Register styles related controls
      */
     protected function register_style_controls() {
+		$this->__item_style_controls();
+		$this->__photo_style_controls();
+		$this->__name_title_bio_style_controls();
+		$this->__social_style_controls();
+		$this->__nav_arrow_style_controls();
+		$this->__nav_dot_style_controls();
+    }
+
+	protected function __item_style_controls() {
         $this->start_controls_section(
             '_section_style_item',
             [
@@ -630,6 +631,9 @@ class Team_Carousel extends Base {
 		);
 
         $this->end_controls_section();
+	}
+
+	protected function __photo_style_controls() {
 
         $this->start_controls_section(
             '_section_style_image',
@@ -738,6 +742,10 @@ class Team_Carousel extends Base {
         );
 
         $this->end_controls_section();
+
+	}
+
+	protected function __name_title_bio_style_controls() {
 
         $this->start_controls_section(
             '_section_style_content',
@@ -908,6 +916,10 @@ class Team_Carousel extends Base {
 
         $this->end_controls_section();
 
+	}
+
+	protected function __social_style_controls() {
+
         $this->start_controls_section(
             '_section_style_social',
             [
@@ -1050,6 +1062,10 @@ class Team_Carousel extends Base {
         $this->end_controls_tabs();
 
         $this->end_controls_section();
+
+	}
+
+	protected function __nav_arrow_style_controls() {
 
         $this->start_controls_section(
             '_section_style_arrow',
@@ -1342,6 +1358,10 @@ class Team_Carousel extends Base {
 
         $this->end_controls_section();
 
+	}
+
+	protected function __nav_dot_style_controls() {
+
         $this->start_controls_section(
             '_section_style_dots',
             [
@@ -1494,7 +1514,7 @@ class Team_Carousel extends Base {
         $this->end_controls_tabs();
 
         $this->end_controls_section();
-    }
+	}
 
 	protected function render() {
         $settings = $this->get_settings_for_display();

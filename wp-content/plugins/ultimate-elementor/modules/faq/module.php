@@ -91,8 +91,9 @@ class Module extends Module_Base {
 					}
 
 					if ( isset( $current_widget['widgetType'] ) && 'uael-faq' === $current_widget['widgetType'] ) {
-
-						array_push( self::$all_faq_widgets, $current_widget['id'] );
+						if ( ! in_array( $current_widget['id'], self::$all_faq_widgets, true ) ) {
+							array_push( self::$all_faq_widgets, $current_widget['id'] );
+						}
 					}
 				}
 			);
@@ -132,16 +133,18 @@ class Module extends Module_Base {
 
 				if ( 'yes' === $enable_schema && ( 0 === $content_schema_warning ) ) {
 					foreach ( $settings['tabs'] as $faqs ) {
-						$new_data = array(
-							'@type'          => 'Question',
-							'name'           => $faqs['question'],
-							'acceptedAnswer' =>
-							array(
-								'@type' => 'Answer',
-								'text'  => $faqs['answer'],
-							),
-						);
-						array_push( $object_data, $new_data );
+						if ( '' !== $faqs['question'] && '' !== $faqs['answer'] ) {
+							$new_data = array(
+								'@type'          => 'Question',
+								'name'           => $faqs['question'],
+								'acceptedAnswer' =>
+								array(
+									'@type' => 'Answer',
+									'text'  => $faqs['answer'],
+								),
+							);
+							array_push( $object_data, $new_data );
+						}
 					}
 				}
 			}

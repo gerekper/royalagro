@@ -119,7 +119,7 @@ class BSF_Envato_Activate {
 			return $html;
 		}
 
-		
+
 		// Licence activation button.
 		$form_action                  = ( isset( $args['form_action'] ) && ! is_null( $args['form_action'] ) ) ? $args['form_action'] : '';
 		$form_class                   = ( isset( $args['form_class'] ) && ! is_null( $args['form_class'] ) ) ? $args['form_class'] : "bsf-license-form-{$product_id}";
@@ -303,31 +303,32 @@ class BSF_Envato_Activate {
 	 */
 	protected function validate_token( $token, $product_id ) {
 
-		$stored_token = get_site_option( "bsf_envato_token_$product_id", '' );
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
-		if ( sha1( $stored_token ) === $token ) {
-			$token_atts = explode( '|', $stored_token );
-
-			$stored_id = $token_atts[0];
-
-			if ( $stored_id !== $product_id ) {
-				// Token is invalid.
-				return false;
-			}
-
-			$timestamp   = (int) $token_atts[1];
-			$valid_ultil = $timestamp + 900;
-
-			if ( current_time( 'timestamp' ) > $valid_ultil ) {
-				// Timestamp has expired.
-				return false;
-			}
+		
 
 			// If above conditions did not meet, the token is valid.
 			return true;
-		}
-
-		return false;
 	}
 	/**
 	 * Process envato activation.

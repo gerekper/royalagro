@@ -1704,8 +1704,9 @@ class Video_Gallery extends Common_Widget {
 					'label'        => __( 'Action', 'uael' ),
 					'type'         => Controls_Manager::SELECT,
 					'options'      => array(
-						'hover'  => __( 'Hover', 'uael' ),
-						'always' => __( 'Always', 'uael' ),
+						'hover'       => __( 'Hover', 'uael' ),
+						'always'      => __( 'Always', 'uael' ),
+						'below_video' => __( 'Below Video', 'uael' ),
 					),
 					'default'      => 'hover',
 					'prefix_class' => 'uael-video-gallery-title-',
@@ -2371,9 +2372,11 @@ class Video_Gallery extends Common_Widget {
 						<a <?php echo wp_kses_post( $this->get_render_attribute_string( 'video-container-link' . $index ) ); ?>>
 							<div class="uael-video__content-wrap">
 								<div class="uael-video__content">
-
-									<?php $this->get_caption( $item ); ?>
-
+									<?php
+									if ( 'below_video' !== $settings['video_caption'] ) {
+											$this->get_caption( $item );
+									}
+									?>
 									<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'video-grid-item' . $index ) ); ?>>
 										<?php $this->get_play_button(); ?>
 									</div>
@@ -2384,6 +2387,11 @@ class Video_Gallery extends Common_Widget {
 							</div>
 						</a>
 					</div>
+					<?php
+					if ( 'below_video' === $settings['video_caption'] ) {
+						$this->get_caption( $item );
+					}
+					?>
 					<div class="uael-vg__overlay"></div>
 					<?php do_action( 'uael_video_gallery_after_video', $item, $settings ); ?>
 				</div>

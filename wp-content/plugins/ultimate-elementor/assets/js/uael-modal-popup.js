@@ -328,7 +328,7 @@
 
 					if( true == device ) {
 
-						div[0].trigger( 'click' );
+						$( div[0] ).trigger( 'click' );
 					}
 
 				} );

@@ -365,17 +365,17 @@
 						}	
 		  			
 						$this.removeClass( 'sub-menu-active' );
-						$this.next().removeClass( 'sub-menu-open' );
-						$this.next().css( { 'visibility': 'hidden', 'opacity': '0', 'height': '0' } );
-						$this.next().css( { 'transition': 'none'} );										
+						$this.nextAll('.sub-menu').removeClass( 'sub-menu-open' );
+						$this.nextAll('.sub-menu').css( { 'visibility': 'hidden', 'opacity': '0', 'height': '0' } );
+						$this.nextAll('.sub-menu').css( { 'transition': 'none'} );
 			  		} else {
 
 			  			$this.find( 'a' ).attr( 'aria-expanded', 'false' );
 			  			
 			  			$this.removeClass( 'sub-menu-active' );
-						$this.next().removeClass( 'sub-menu-open' );
-						$this.next().css( { 'visibility': 'hidden', 'opacity': '0', 'height': '0' } );
-						$this.next().css( { 'transition': 'none'} );	
+						$this.nextAll('.sub-menu').removeClass( 'sub-menu-open' );
+						$this.nextAll('.sub-menu').css( { 'visibility': 'hidden', 'opacity': '0', 'height': '0' } );
+						$this.nextAll('.sub-menu').css( { 'transition': 'none'} );
 							  			  			
 						if ( 'horizontal' !== layout ){
 
@@ -434,9 +434,9 @@
 		  				}	
 		  					
 					$this.addClass( 'sub-menu-active' );
-					$this.next().addClass( 'sub-menu-open' );	
-					$this.next().css( { 'visibility': 'visible', 'opacity': '1', 'height': 'auto' } );
-					$this.next().css( { 'transition': '0.3s ease'} );								
+					$this.nextAll('.sub-menu').addClass( 'sub-menu-open' );
+					$this.nextAll('.sub-menu').css( { 'visibility': 'visible', 'opacity': '1', 'height': 'auto' } );
+					$this.nextAll('.sub-menu').css( { 'transition': '0.3s ease'} );
 				}
 			}
 

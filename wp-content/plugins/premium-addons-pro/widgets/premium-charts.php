@@ -67,6 +67,18 @@ class Premium_Charts extends Widget_Base {
 	}
 
 	/**
+	 * Retrieve Widget Keywords.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return string Widget keywords.
+	 */
+	public function get_keywords() {
+		return array( 'data', 'graph', 'bar', 'circle', 'dynamic', 'statistic' );
+	}
+
+	/**
 	 * Retrieve Widget Categories.
 	 *
 	 * @since 1.5.1

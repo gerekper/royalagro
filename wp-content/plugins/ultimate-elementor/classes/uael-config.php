@@ -457,6 +457,15 @@ class UAEL_Config {
 					'setting_url'  => admin_url( 'options-general.php?page=' . UAEL_SLUG . '&action=integration' ),
 					'doc_url'      => UAEL_DOMAIN . 'docs-category/widgets/social-share/?utm_source=uael-pro-dashboard&utm_medium=uael-menu-page&utm_campaign=uael-pro-plugin',
 				),
+				'Woo_Checkout'      => array(
+					'slug'      => 'uael-woo-checkout',
+					'title'     => __( 'Woo - Checkout', 'uael' ),
+					'keywords'  => array( 'uael', 'woo', 'checkout', 'page', 'check' ),
+					'icon'      => 'uael-icon-woo-checkout-1',
+					'title_url' => '#',
+					'default'   => true,
+					'doc_url'   => UAEL_DOMAIN . 'docs-category/widgets/woo-checkout/?utm_source=uael-pro-dashboard&utm_medium=uael-menu-page&utm_campaign=uael-pro-plugin',
+				),
 			);
 		}
 

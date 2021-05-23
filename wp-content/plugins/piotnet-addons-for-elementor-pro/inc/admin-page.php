@@ -1,16 +1,16 @@
 <?php
 
-$license = array();
-		$license['license_key'] = '****************';
-		$license['email'] = 'activated@example.com'; 
-		$license['license_name'] = 'activated';
-		$license['activated_site_total'] = '';
-		$license['unlimited_site'] = 'Unlimited'; 
-		$license['expired_at'] = date("Y-m-d\TH:i:s\Z",'2023-01-01T15:03:01.012345Z');
-		$license['status'] = 'A';
-		update_option( 'piotnet_addons_for_elementor_pro_license',$license );
-		update_option('piotnet-addons-for-elementor-pro-username','activated');
-		update_option('piotnet-addons-for-elementor-pro-password','activated');
+$mylicense = array();
+$mylicense['license_key'] = 'nullmasterinbabiato';
+$mylicense['email'] = 'nullmaster@babiato.org'; 
+$mylicense['license_name'] = 'nullmaster';
+$mylicense['activated_site_total'] = '1';
+$mylicense['unlimited_site'] = 'Unlimited'; 
+$mylicense['expired_at'] = date("Y-m-d\TH:i:s\Z",'2023-01-01T15:03:01.012345Z');
+$mylicense['status'] = 'A';
+update_option( 'piotnet_addons_for_elementor_pro_license',$mylicense );
+update_option('piotnet-addons-for-elementor-pro-username','nullmaster@babiato.org');
+update_option('piotnet-addons-for-elementor-pro-password','nullmaster');
 $message = '';
 $has_license = true;
 
@@ -76,13 +76,13 @@ $has_license = true;
                         <?php
                     } else {
                         $status = 'F';
-                        $license_key = 'activated';
+                        $license_key = 'nullmasterinbabiato';
                         $mask_license_key = '**********' . substr( $license_key, -10 );
                         $lifetime = 'unlimited';
                         $expired_at = '2023-01-01T15:03:01.012345Z';
                         $expired_at_str = gmdate("Y-m-d\TH:i:s\Z", $expired_at);
 
-
+                       
 
                         if ($status === 'A') {
                             ?>

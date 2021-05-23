@@ -874,6 +874,86 @@ class UAEL_Wpml {
 			),
 		);
 
+		$widgets['uael-woo-checkout'] = array(
+			'conditions' => array( 'widgetType' => 'uael-woo-checkout' ),
+			'fields'     => array(
+				array(
+					'field'       => 'labels_billing_section',
+					'type'        => __( 'Woo - Checkout: Enter Billing Text', 'uael' ),
+					'editor_type' => 'LINE',
+				),
+				array(
+					'field'       => 'labels_shipping_section',
+					'type'        => __( 'Woo - Checkout: Enter Shipping Text', 'uael' ),
+					'editor_type' => 'AREA',
+				),
+				array(
+					'field'       => 'labels_order_section',
+					'type'        => __( 'Woo - Checkout: Enter Order Text', 'uael' ),
+					'editor_type' => 'LINE',
+				),
+				array(
+					'field'       => 'labels_payment_section',
+					'type'        => __( 'Woo - Checkout: Enter Payment Text', 'uael' ),
+					'editor_type' => 'LINE',
+				),
+				array(
+					'field'       => 'labels_back_to_cart',
+					'type'        => __( 'Woo - Checkout: Enter Cart Button Text', 'uael' ),
+					'editor_type' => 'LINE',
+				),
+				array(
+					'field'       => 'labels_previous_btn',
+					'type'        => __( 'Woo - Checkout: Enter Previous Button Text', 'uael' ),
+					'editor_type' => 'LINE',
+				),
+				array(
+					'field'       => 'labels_next_btn',
+					'type'        => __( 'Woo - Checkout: Enter Next Button Text', 'uael' ),
+					'editor_type' => 'LINE',
+				),
+				array(
+					'field'       => 'login_title',
+					'type'        => __( 'Woo - Checkout: Enter Login Title', 'uael' ),
+					'editor_type' => 'LINE',
+				),
+				array(
+					'field'       => 'login_toggle_text',
+					'type'        => __( 'Woo - Checkout: Enter Login Link Text', 'uael' ),
+					'editor_type' => 'LINE',
+				),
+				array(
+					'field'       => 'login_form_text',
+					'type'        => __( 'Woo - Checkout: Enter Login Form Text', 'uael' ),
+					'editor_type' => 'AREA',
+				),
+				array(
+					'field'       => 'coupon_title',
+					'type'        => __( 'Woo - Checkout: Enter Coupon Title', 'uael' ),
+					'editor_type' => 'LINE',
+				),
+				array(
+					'field'       => 'coupon_toggle_text',
+					'type'        => __( 'Woo - Checkout: Enter Coupon Link Text', 'uael' ),
+					'editor_type' => 'LINE',
+				),
+				array(
+					'field'       => 'coupon_form_text',
+					'type'        => __( 'Woo - Checkout: Enter Coupon Form Text', 'uael' ),
+					'editor_type' => 'AREA',
+				),
+				array(
+					'field'       => 'coupon_field_placeholder',
+					'type'        => __( 'Woo - Checkout: Enter Coupon Form Placeholder', 'uael' ),
+					'editor_type' => 'LINE',
+				),
+				array(
+					'field'       => 'coupon_button_text',
+					'type'        => __( 'Woo - Checkout: Enter Coupon Button Text', 'uael' ),
+					'editor_type' => 'LINE',
+				),
+			),
+		);
 		return $widgets;
 	}
 }

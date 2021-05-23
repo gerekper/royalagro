@@ -56,6 +56,7 @@ class Module extends Module_Base {
 			'Woo_Categories',
 			'Woo_Products',
 			'Woo_Mini_Cart',
+			'Woo_Checkout',
 		);
 	}
 
@@ -287,6 +288,9 @@ class Module extends Module_Base {
 		// In Editor Woocommerce frontend hooks before the Editor init.
 		add_action( 'admin_action_elementor', array( $this, 'register_wc_hooks' ), 9 );
 
+		add_filter( 'woocommerce_checkout_redirect_empty_cart', '__return_false' );
+		add_filter( 'woocommerce_checkout_update_order_review_expired', '__return_false' );
+
 		/**
 		 * Pagination Break.
 		 *
@@ -306,6 +310,11 @@ class Module extends Module_Base {
 
 		add_action( 'wp_ajax_uael_get_products', array( $this, 'uael_get_products' ) );
 		add_action( 'wp_ajax_nopriv_uael_get_products', array( $this, 'uael_get_products' ) );
+
+		if ( empty( $_REQUEST['action'] ) && ! isset( $_REQUEST['elementor-preview'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			remove_filter( 'woocommerce_checkout_redirect_empty_cart', '__return_false' );
+			remove_filter( 'woocommerce_checkout_update_order_review_expired', '__return_false' );
+		}
 
 		add_filter(
 			'woocommerce_add_to_cart_fragments',
@@ -368,6 +377,16 @@ class Module extends Module_Base {
 				$fragments['div.uael-mc-offcanvas__items'] = ob_get_clean();
 				return $fragments;
 
+			}
+		);
+
+		add_filter(
+			'body_class',
+			function ( $classes ) {
+				if ( is_checkout() ) {
+					$classes[] = 'uael-woocommerce-checkout';
+				}
+				return $classes;
 			}
 		);
 	}

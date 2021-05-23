@@ -200,3 +200,4 @@ if ( ! function_exists( 'bsf_check_product_update' ) ) {
 		}
 	}
 }
+

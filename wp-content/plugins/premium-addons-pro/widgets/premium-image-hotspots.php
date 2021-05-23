@@ -126,6 +126,18 @@ class Premium_Image_Hotspots extends Widget_Base {
 	}
 
 	/**
+	 * Retrieve Widget Keywords.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return string Widget keywords.
+	 */
+	public function get_keywords() {
+		return array( 'tooltip', 'marker', 'map', 'info', 'box' );
+	}
+
+	/**
 	 * Widget preview refresh button.
 	 *
 	 * @since 1.0.0

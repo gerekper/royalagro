@@ -130,6 +130,18 @@ class Premium_Unfold extends Widget_Base {
 	}
 
 	/**
+	 * Retrieve Widget Keywords.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return string Widget keywords.
+	 */
+	public function get_keywords() {
+		return array( 'read', 'section', 'more', 'cta', 'content' );
+	}
+
+	/**
 	 * Retrieve Widget Support URL.
 	 *
 	 * @access public

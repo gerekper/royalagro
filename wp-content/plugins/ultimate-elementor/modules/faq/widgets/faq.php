@@ -276,11 +276,12 @@ class FAQ extends Common_Widget {
 				$this->add_control(
 					'schema_support',
 					array(
-						'label'     => __( 'Enable Schema Support', 'uael' ),
-						'type'      => Controls_Manager::SWITCHER,
-						'label_on'  => __( 'Yes', 'uael' ),
-						'label_off' => __( 'No', 'uael' ),
-						'default'   => 'no',
+						'label'       => __( 'Enable Schema Support', 'uael' ),
+						'description' => __( 'Note: Schema will not work if the dynamic content is used in FAQ\'s', 'uael' ),
+						'type'        => Controls_Manager::SWITCHER,
+						'label_on'    => __( 'Yes', 'uael' ),
+						'label_off'   => __( 'No', 'uael' ),
+						'default'     => 'no',
 					)
 				);
 

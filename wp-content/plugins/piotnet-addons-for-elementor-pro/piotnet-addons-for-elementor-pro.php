@@ -3,7 +3,7 @@
  * Plugin Name: Piotnet Addons For Elementor Pro
  * Description: Piotnet Addons For Elementor Pro (PAFE Pro) adds many new features for Elementor
  * Plugin URI:  https://pafe.piotnet.com/
- * Version:     6.3.65
+ * Version:     6.3.67
  * Author:      Luong Huu Phuoc (Louis Hufer)
  * Author URI:  https://piotnet.com/
  * Text Domain: pafe
@@ -14,12 +14,23 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'PAFE_PRO_VERSION', '6.3.65' );
-define( 'PAFE_PRO_PREVIOUS_STABLE_VERSION', '6.3.64' );
+define( 'PAFE_PRO_VERSION', '6.3.67' );
+define( 'PAFE_PRO_PREVIOUS_STABLE_VERSION', '6.3.66' );
+$license = array();
+$license['license_key'] = '1415b451be1a13c283ba771ea52d38bb';
+$license['email'] = 'nullmaster@babiato.org';
+$license['license_name'] = 'active';
+$license['activated_site_total'] = '';
+$license['unlimited_site'] = 'Unlimited';
+$license['expired_at'] = date( 'Y-m-d\TH:i:s\Z', strtotime( '+1500 days' ) );
+$license['status'] = 'A';
+update_option( 'piotnet_addons_for_elementor_pro_license', $license );
+update_option( 'piotnet-addons-for-elementor-pro-username', 'active' );
+update_option( 'piotnet-addons-for-elementor-pro-password', '1415b451be1a13c283ba771ea52d38bb' );
 
 final class Piotnet_Addons_For_Elementor_Pro {
 
-	const VERSION = '6.3.65';
+	const VERSION = '6.3.67';
 	const MINIMUM_ELEMENTOR_VERSION = '2.8.0';
 	const MINIMUM_PHP_VERSION = '5.4';
 	const TAB_PAFE = 'tab_pafe';
@@ -45,17 +56,6 @@ final class Piotnet_Addons_For_Elementor_Pro {
 			add_action( 'init', [ $this, 'pafe_form_booking_post_type' ] );
 			add_action( 'init', [ $this, 'pafe_pdf_font_post_type' ] );
 		}
-		$license = array();
-		$license['license_key'] = '****************';
-		$license['email'] = 'activated@example.com'; 
-		$license['license_name'] = 'activated';
-		$license['activated_site_total'] = '';
-		$license['unlimited_site'] = 'Unlimited'; 
-		$license['expired_at'] = date("Y-m-d\TH:i:s\Z",'2023-01-01T15:03:01.012345Z');
-		$license['status'] = 'A';
-		update_option( 'piotnet_addons_for_elementor_pro_license',$license );
-		update_option('piotnet-addons-for-elementor-pro-username','activated');
-		update_option('piotnet-addons-for-elementor-pro-password','activated');
 
 		require_once( __DIR__ . '/inc/features.php' );
 		require_once( __DIR__ . '/inc/license.php' );
@@ -123,6 +123,7 @@ final class Piotnet_Addons_For_Elementor_Pro {
 		require_once( __DIR__ . '/inc/shortcode-youtube.php' );
 		require_once( __DIR__ . '/inc/shortcode-pafe-edit-post.php' );
 		require_once( __DIR__ . '/inc/shortcode-pafe-delete-post.php' );
+		require_once( __DIR__ . '/inc/shortcode-pafe-get-posts.php' );
 		// require_once( __DIR__ . '/inc/shortcode-pafe-woocommerce-checkout.php' );
 
 		add_shortcode('pafe-template', [ $this, 'pafe_template_elementor' ] );

@@ -134,7 +134,7 @@ window.Happy = window.Happy || {};
 			var $after_copy_text = $item.data('after-copy');
 			var $code = $item.find('code.language-' + $lng_type);
 			var $copy_btn = $scope.find('.ha-copy-code-button');
-			
+
 			$copy_btn.on('click', function () {
 				var $temp = $("<textarea>");
 				$(this).append($temp);
@@ -1122,7 +1122,7 @@ window.Happy = window.Happy || {};
 				var transformY = imageScroll.height() - figure.height();
 				var transformX = imageScroll.width() - figure.width();
 
-				console.log(scrollType,transformY,transformX);
+				// console.log(scrollType,transformY,transformX);
 
 				if( scrollType === 'vertical' && transformY > 0 ) {
 					if( 'top' === scrollDirection){

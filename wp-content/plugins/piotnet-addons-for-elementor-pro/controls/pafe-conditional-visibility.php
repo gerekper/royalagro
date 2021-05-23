@@ -60,7 +60,7 @@ class PAFE_Conditional_Visibility extends \Elementor\Widget_Base {
         );
 
         $element->add_control(
-            'pafe_conditional_visibility_set_roles',
+            'pafe_conditional_visibility_roles',
             [
                 'label' => __( 'Set Roles', 'pafe' ),
                 'type' => \Elementor\Controls_Manager::SELECT2,
@@ -903,7 +903,7 @@ class PAFE_Conditional_Visibility extends \Elementor\Widget_Base {
         $settings = $section->get_settings();
 
         if ( 'yes' == $section->get_settings( 'pafe_conditional_visibility_enable' ) ) {
-            $visibility_roles = $section->get_settings( 'pafe_conditional_visibility_set_roles' );
+            $visibility_roles = $section->get_settings( 'pafe_conditional_visibility_roles' );
             $condition2 = true;
             $show = $settings['pafe_conditional_visibility_action'];
             $user = wp_get_current_user();

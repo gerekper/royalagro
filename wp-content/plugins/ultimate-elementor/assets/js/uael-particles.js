@@ -11314,12 +11314,16 @@ function particles_background_script( $scope ) {
 		$content = $( '<div class="uael-particle-wrapper" id="uael-particle-' + id + '"></div>' );
 
 		if( element_type == 'column' ) {
-			if( $scope.find( '.elementor-background-overlay' ).length == 0 ) {
-				$column = $scope.find( '.elementor-column-wrap' );
-			} else {
-				$column = $scope.find( '.elementor-background-overlay' );						
-			}
-			$column.after( $content );
+      if( $scope.find( '.elementor-background-overlay' ).length == 0 || $scope.find( '.elementor-column-wrap' ).length == 0 ) {
+        $scope.append( $content );
+      } else if( $scope.find( '.elementor-background-overlay' ).length == 0 && $scope.find( '.elementor-column-wrap' ).length != 0 ) {
+        $column = $scope.find( '.elementor-column-wrap' );
+        $column.after( $content );
+      } else {
+        $column = $scope.find( '.elementor-background-overlay' );   
+        $column.after( $content ); 
+      }
+			
 		} else {
 			if( $scope.find( '.elementor-background-overlay ~ .elementor-container' ).length == 0 ) {
 				$scope.prepend( $content );

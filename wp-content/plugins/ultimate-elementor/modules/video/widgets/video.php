@@ -366,6 +366,8 @@ class Video extends Common_Widget {
 						'4_3'  => '4:3',
 						'3_2'  => '3:2',
 						'9_16' => '9:16',
+						'1_1'  => '1:1',
+						'21_9' => '21:9',
 					),
 					'default'      => '16_9',
 					'prefix_class' => 'uael-aspect-ratio-',

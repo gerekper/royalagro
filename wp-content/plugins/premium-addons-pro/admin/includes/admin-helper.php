@@ -293,7 +293,6 @@ class Admin_Helper {
 
 	}
 
-
 	/**
 	 * Get Encrypted Key
 	 *

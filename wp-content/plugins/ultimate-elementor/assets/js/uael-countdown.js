@@ -47,6 +47,7 @@
 			hours    = Math.floor( ( distance % ( 1000 * 60 * 60 * 24 ) ) / ( 1000 * 60 * 60 ) );
 			minutes  = Math.floor( ( distance % ( 1000 * 60 * 60 ) ) / ( 1000 * 60 ) );
 			seconds  = Math.floor( ( distance % ( 1000 * 60 ) ) / 1000 );
+			var countdown_wrapper =  $('.elementor-element-' + scope_id ).find('.uael-countdown-wrapper');
 
 			Cookies.set( 'uael-timer-days-' + scope_id, days, { path: '/' } );
 			Cookies.set( 'uael-timer-hours-' + scope_id, hours, { path: '/' } );
@@ -81,6 +82,14 @@
 
 				$('.elementor-element-' + scope_id + ' .uael-countdown-show-days-no').find('.uael-countdown-days').css('display', 'none');
 				$('.elementor-element-' + scope_id + ' .uael-countdown-show-days-no').find('.uael-countdown-days-separator').css('display', 'none');
+				
+				if( countdown_wrapper.hasClass('uael-countdown-show-days-no') && countdown_wrapper.hasClass( 'uael-countdown-show-hours-no' ) ) {
+					$( '.uael-countdown-hours-separator' ).css('display', 'none');
+				}
+
+				if( countdown_wrapper.hasClass('uael-countdown-show-days-no') && countdown_wrapper.hasClass( 'uael-countdown-show-hours-no' ) && countdown_wrapper.hasClass( 'uael-countdown-show-minutes-no' ) ) {
+					$( '.uael-countdown-minutes-separator' ).css('display', 'none');
+				}
 			}
 		},
 		/**

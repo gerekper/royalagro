@@ -78,6 +78,18 @@ class Premium_Whatsapp_Chat extends Widget_Base {
 	}
 
 	/**
+	 * Retrieve Widget Keywords.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return string Widget keywords.
+	 */
+	public function get_keywords() {
+		return array( 'message', 'client', 'send', 'customer' );
+	}
+
+	/**
 	 * Retrieve Widget Dependent CSS.
 	 *
 	 * @since 1.0.0

@@ -115,6 +115,18 @@ class Premium_Tabs extends Widget_Base {
 	}
 
 	/**
+	 * Retrieve Widget Keywords.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return string Widget keywords.
+	 */
+	public function get_keywords() {
+		return array( 'content', 'switcher', 'section' );
+	}
+
+	/**
 	 * Retrieve Widget Support URL.
 	 *
 	 * @access public

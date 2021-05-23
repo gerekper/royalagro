@@ -248,6 +248,9 @@
 		if (!empty($submit_id)) {
 			$message = str_replace( '[submit_id]', $submit_id, $message );
 		}
+		$meta_data_shortcode = ['[remote_ip]', '[user_agent]', '[date_submit]', '[time_submit]', '[page_url]'];
+		$meta_data_shortcode_value = [$_POST['remote_ip'], $_SERVER['HTTP_USER_AGENT'], date_i18n(get_option('date_format')), date_i18n(get_option('time_format')), $_POST['referrer']];
+		$message = str_replace($meta_data_shortcode, $meta_data_shortcode_value, $message);
 		return $message;
 	}
 
@@ -366,7 +369,9 @@
 					$field_value = str_replace( '[payment_id]', $payment_id, $field_name_first );
 				}
 			}
-
+			$meta_data_shortcode = ['[remote_ip]', '[user_agent]', '[date_submit]', '[time_submit]', '[page_url]'];
+			$meta_data_shortcode_value = [$_POST['remote_ip'], $_SERVER['HTTP_USER_AGENT'], date_i18n(get_option('date_format')), date_i18n(get_option('time_format')), $_POST['referrer']];
+			$message = str_replace($meta_data_shortcode, $meta_data_shortcode_value, $field_value);
 			return trim($field_value);
 		} else {
 			return $field_value;
@@ -1336,7 +1341,7 @@
 												}
 											}
 
-											if ($meta_type == 'select' && strpos($custom_field_value, ',') !== false || $meta_type == 'checkbox') {
+											if ($meta_type == 'select' && strpos($custom_field_value, ',') !== false || $meta_type == 'checkbox' || $meta_type == 'acf_relationship') {
 												$custom_field_value = explode(',', $custom_field_value);
 											}
 

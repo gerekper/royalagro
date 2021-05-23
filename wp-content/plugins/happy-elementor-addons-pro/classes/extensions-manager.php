@@ -12,9 +12,9 @@ class Extensions_Manager {
 			include_once HAPPY_ADDONS_PRO_DIR_PATH . 'extensions/image-masking.php';
 		}
 
-		
-		include_once HAPPY_ADDONS_PRO_DIR_PATH . 'extensions/happy-particle-effects.php';
-		
+		if ( hapro_is_happy_particle_effects_enabled() ) {
+			include_once HAPPY_ADDONS_PRO_DIR_PATH . 'extensions/happy-particle-effects.php';
+		}
 	}
 
 	public static function load_display_condition() {

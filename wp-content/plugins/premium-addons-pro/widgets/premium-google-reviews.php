@@ -75,6 +75,18 @@ class Premium_Google_Reviews extends Widget_Base {
 	}
 
 	/**
+	 * Retrieve Widget Keywords.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return string Widget keywords.
+	 */
+	public function get_keywords() {
+		return array( 'business', 'rating', 'testimonials', 'place', 'rate', 'recommendation', 'social' );
+	}
+
+	/**
 	 * Retrieve Widget Dependent CSS.
 	 *
 	 * @since 1.0.0

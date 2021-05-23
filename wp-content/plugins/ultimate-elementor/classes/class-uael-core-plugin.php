@@ -358,6 +358,14 @@ class UAEL_Core_Plugin {
 		wp_localize_script( 'uael-woocommerce', 'uael_wc_script', $wc_localize );
 
 		wp_localize_script(
+			'uael-woocommerce',
+			'uael_woo_chekout',
+			array(
+				'validation_msg' => __( 'Invalid or data missing in the required(*) fields.', 'uael' ),
+			)
+		);
+
+		wp_localize_script(
 			'uael-table',
 			'uael_table_script',
 			array(

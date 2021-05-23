@@ -5,6 +5,6 @@ function PAFE_has_license($license) {
 }
 
 function PAFE_has_valid_license($license) {
-
+   
     return true;
 }

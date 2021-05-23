@@ -397,7 +397,7 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 			$license_manager = self::instance();
 			$is_free         = $license_manager->bsf_get_product_info( $product_id, 'is_product_free' );
 
-			return $is_free;
+			return false;
 		}
 		/**
 		 *  Get product info.

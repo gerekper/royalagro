@@ -135,6 +135,18 @@ class Premium_Prev_Img extends Widget_Base {
 	}
 
 	/**
+	 * Retrieve Widget Keywords.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return string Widget keywords.
+	 */
+	public function get_keywords() {
+		return array( 'cta', 'lightbox', 'popup', 'modal' );
+	}
+
+	/**
 	 * Retrieve Widget Support URL.
 	 *
 	 * @access public

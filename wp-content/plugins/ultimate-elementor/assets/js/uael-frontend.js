@@ -2005,8 +2005,10 @@
 						    });
 
 						    $this.addClass('uael-title-active');
-						    $this.attr('aria-expanded', 'true');
-						    $this.next('.uael-accordion-content').slideDown('normal','swing');
+						    $this.next('.uael-accordion-content').slideDown('normal','swing', function(){
+								$(this).prev().addClass('uael-title-active');
+								$this.attr('aria-expanded', 'true');
+							});
 						}
 				    return false;
 					}

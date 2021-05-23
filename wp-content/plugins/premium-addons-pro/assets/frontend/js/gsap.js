@@ -2832,93 +2832,16 @@
     return ScrollMagic;
 }));
 
-
 /*!
- * VERSION: 1.9.2
- * DATE: 2019-02-07
- * UPDATES AND DOCS AT: http://greensock.com
+ * ScrollToPlugin 3.6.1
+ * https://greensock.com
  *
- * @license Copyright (c) 2008-2019, GreenSock. All rights reserved.
- * This work is subject to the terms at http://greensock.com/standard-license or for
- * Club GreenSock members, the software agreement that was issued with your membership.
- *
+ * @license Copyright 2021, GreenSock. All rights reserved.
+ * Subject to the terms at https://greensock.com/standard-license or for Club GreenSock members, the agreement issued with that membership.
  * @author: Jack Doyle, jack@greensock.com
- **/
-var _gsScope = "undefined" != typeof module && module.exports && "undefined" != typeof global ? global : this || window;
-(_gsScope._gsQueue || (_gsScope._gsQueue = [])).push(function () {
-    "use strict";
-    var a = (_gsScope.document || {}).documentElement,
-        b = _gsScope,
-        c = function (c, d) {
-            var e = "x" === d ? "Width" : "Height",
-                f = "scroll" + e,
-                g = "client" + e,
-                h = document.body;
-            return c === b || c === a || c === h ? Math.max(a[f], h[f]) - (b["inner" + e] || a[g] || h[g]) : c[f] - c["offset" + e]
-        },
-        d = function (a) {
-            return "string" == typeof a && (a = TweenLite.selector(a)), a.length && a !== b && a[0] && a[0].style && !a.nodeType && (a = a[0]), a === b || a.nodeType && a.style ? a : null
-        },
-        e = function (c, d) {
-            var e = "scroll" + ("x" === d ? "Left" : "Top");
-            return c === b && (null != c.pageXOffset ? e = "page" + d.toUpperCase() + "Offset" : c = null != a[e] ? a : document.body),
-                function () {
-                    return c[e]
-                }
-        },
-        f = function (c, f) {
-            var g = d(c).getBoundingClientRect(),
-                h = document.body,
-                i = !f || f === b || f === h,
-                j = i ? {
-                    top: a.clientTop - (window.pageYOffset || a.scrollTop || h.scrollTop || 0),
-                    left: a.clientLeft - (window.pageXOffset || a.scrollLeft || h.scrollLeft || 0)
-                } : f.getBoundingClientRect(),
-                k = {
-                    x: g.left - j.left,
-                    y: g.top - j.top
-                };
-            return !i && f && (k.x += e(f, "x")(), k.y += e(f, "y")()), k
-        },
-        g = function (a, b, d, e) {
-            var g = typeof a;
-            return isNaN(a) ? "string" === g && "=" === a.charAt(1) ? parseInt(a.charAt(0) + "1", 10) * parseFloat(a.substr(2)) + e : "max" === a ? c(b, d) : Math.min(c(b, d), f(a, b)[d]) : parseFloat(a)
-        },
-        h = _gsScope._gsDefine.plugin({
-            propName: "scrollTo",
-            API: 2,
-            global: !0,
-            version: "1.9.2",
-            init: function (a, c, d) {
-                return this._wdw = a === b, this._target = a, this._tween = d, "object" != typeof c ? (c = {
-                    y: c
-                }, "string" == typeof c.y && "max" !== c.y && "=" !== c.y.charAt(1) && (c.x = c.y)) : c.nodeType && (c = {
-                    y: c,
-                    x: c
-                }), this.vars = c, this._autoKill = c.autoKill !== !1, this.getX = e(a, "x"), this.getY = e(a, "y"), this.x = this.xPrev = this.getX(), this.y = this.yPrev = this.getY(), null != c.x ? (this._addTween(this, "x", this.x, g(c.x, a, "x", this.x) - (c.offsetX || 0), "scrollTo_x", !0), this._overwriteProps.push("scrollTo_x")) : this.skipX = !0, null != c.y ? (this._addTween(this, "y", this.y, g(c.y, a, "y", this.y) - (c.offsetY || 0), "scrollTo_y", !0), this._overwriteProps.push("scrollTo_y")) : this.skipY = !0, !0
-            },
-            set: function (a) {
-                this._super.setRatio.call(this, a);
-                var d = this._wdw || !this.skipX ? this.getX() : this.xPrev,
-                    e = this._wdw || !this.skipY ? this.getY() : this.yPrev,
-                    f = e - this.yPrev,
-                    g = d - this.xPrev,
-                    i = h.autoKillThreshold;
-                this.x < 0 && (this.x = 0), this.y < 0 && (this.y = 0), this._autoKill && (!this.skipX && (g > i || -i > g) && d < c(this._target, "x") && (this.skipX = !0), !this.skipY && (f > i || -i > f) && e < c(this._target, "y") && (this.skipY = !0), this.skipX && this.skipY && (this._tween.kill(), this.vars.onAutoKill && this.vars.onAutoKill.apply(this.vars.onAutoKillScope || this._tween, this.vars.onAutoKillParams || []))), this._wdw ? b.scrollTo(this.skipX ? d : this.x, this.skipY ? e : this.y) : (this.skipY || (this._target.scrollTop = this.y), this.skipX || (this._target.scrollLeft = this.x)), this.xPrev = this.x, this.yPrev = this.y
-            }
-        }),
-        i = h.prototype;
-    h.max = c, h.getOffset = f, h.buildGetter = e, h.autoKillThreshold = 7, i._kill = function (a) {
-        return a.scrollTo_x && (this.skipX = !0), a.scrollTo_y && (this.skipY = !0), this._super._kill.call(this, a)
-    }
-}), _gsScope._gsDefine && _gsScope._gsQueue.pop()(),
-    function (a) {
-        "use strict";
-        var b = function () {
-            return (_gsScope.GreenSockGlobals || _gsScope)[a]
-        };
-        "undefined" != typeof module && module.exports ? (require("../TweenLite.min.js"), module.exports = b()) : "function" == typeof define && define.amd && define(["TweenLite"], b)
-    }("ScrollToPlugin");
+ */
+
+!function (t, e) { "object" == typeof exports && "undefined" != typeof module ? e(exports) : "function" == typeof define && define.amd ? define(["exports"], e) : e((t = t || self).window = t.window || {}) }(this, function (e) { "use strict"; function k() { return "undefined" != typeof window } function l() { return i || k() && (i = window.gsap) && i.registerPlugin && i } function m(t) { return "string" == typeof t } function n(t) { return "function" == typeof t } function o(t, e) { var o = "x" === e ? "Width" : "Height", n = "scroll" + o, r = "client" + o; return t === x || t === u || t === c ? Math.max(u[n], c[n]) - (x["inner" + o] || u[r] || c[r]) : t[n] - t["offset" + o] } function p(t, e) { var o = "scroll" + ("x" === e ? "Left" : "Top"); return t === x && (null != t.pageXOffset ? o = "page" + e.toUpperCase() + "Offset" : t = null != u[o] ? u : c), function () { return t[o] } } function r(t, e) { if (!(t = a(t)[0]) || !t.getBoundingClientRect) return console.warn("scrollTo target doesn't exist. Using 0") || { x: 0, y: 0 }; var o = t.getBoundingClientRect(), n = !e || e === x || e === c, r = n ? { top: u.clientTop - (x.pageYOffset || u.scrollTop || c.scrollTop || 0), left: u.clientLeft - (x.pageXOffset || u.scrollLeft || c.scrollLeft || 0) } : e.getBoundingClientRect(), i = { x: o.left - r.left, y: o.top - r.top }; return !n && e && (i.x += p(e, "x")(), i.y += p(e, "y")()), i } function s(t, e, n, i, l) { return isNaN(t) || "object" == typeof t ? m(t) && "=" === t.charAt(1) ? parseFloat(t.substr(2)) * ("-" === t.charAt(0) ? -1 : 1) + i - l : "max" === t ? o(e, n) - l : Math.min(o(e, n), r(t, e)[n] - l) : parseFloat(t) - l } function t() { i = l(), k() && i && document.body && (x = window, c = document.body, u = document.documentElement, a = i.utils.toArray, i.config({ autoKillThreshold: 7 }), g = i.config(), f = 1) } var i, f, x, u, c, a, g, y = { version: "3.6.1", name: "scrollTo", rawVars: 1, register: function register(e) { i = e, t() }, init: function init(e, o, r, i, l) { f || t(); var u = this; u.isWin = e === x, u.target = e, u.tween = r, o = function _clean(t, e, o, r) { if (n(t) && (t = t(e, o, r)), "object" != typeof t) return m(t) && "max" !== t && "=" !== t.charAt(1) ? { x: t, y: t } : { y: t }; if (t.nodeType) return { y: t, x: t }; var i, l = {}; for (i in t) l[i] = "onAutoKill" !== i && n(t[i]) ? t[i](e, o, r) : t[i]; return l }(o, i, e, l), u.vars = o, u.autoKill = !!o.autoKill, u.getX = p(e, "x"), u.getY = p(e, "y"), u.x = u.xPrev = u.getX(), u.y = u.yPrev = u.getY(), null != o.x ? (u.add(u, "x", u.x, s(o.x, e, "x", u.x, o.offsetX || 0), i, l), u._props.push("scrollTo_x")) : u.skipX = 1, null != o.y ? (u.add(u, "y", u.y, s(o.y, e, "y", u.y, o.offsetY || 0), i, l), u._props.push("scrollTo_y")) : u.skipY = 1 }, render: function render(t, e) { for (var n, r, i, l, s, u = e._pt, f = e.target, p = e.tween, c = e.autoKill, a = e.xPrev, y = e.yPrev, d = e.isWin; u;)u.r(t, u.d), u = u._next; n = d || !e.skipX ? e.getX() : a, i = (r = d || !e.skipY ? e.getY() : y) - y, l = n - a, s = g.autoKillThreshold, e.x < 0 && (e.x = 0), e.y < 0 && (e.y = 0), c && (!e.skipX && (s < l || l < -s) && n < o(f, "x") && (e.skipX = 1), !e.skipY && (s < i || i < -s) && r < o(f, "y") && (e.skipY = 1), e.skipX && e.skipY && (p.kill(), e.vars.onAutoKill && e.vars.onAutoKill.apply(p, e.vars.onAutoKillParams || []))), d ? x.scrollTo(e.skipX ? n : e.x, e.skipY ? r : e.y) : (e.skipY || (f.scrollTop = e.y), e.skipX || (f.scrollLeft = e.x)), e.xPrev = e.x, e.yPrev = e.y }, kill: function kill(t) { var e = "scrollTo" === t; !e && "scrollTo_x" !== t || (this.skipX = 1), !e && "scrollTo_y" !== t || (this.skipY = 1) } }; y.max = o, y.getOffset = r, y.buildGetter = p, l() && i.registerPlugin(y), e.ScrollToPlugin = y, e.default = y; if (typeof (window) === "undefined" || window !== e) { Object.defineProperty(e, "__esModule", { value: !0 }) } else { delete e.default } });
 
 /*! ScrollMagic v2.0.7 | (c) 2019 Jan Paepke (@janpaepke) | license & info: http://scrollmagic.io */
 ! function (e, n) {

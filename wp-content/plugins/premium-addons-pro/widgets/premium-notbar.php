@@ -124,7 +124,7 @@ class Premium_Notbar extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'notification', 'bar', 'popup' );
+		return array( 'notification', 'bar', 'popup', 'modal', 'event' );
 	}
 
 	/**

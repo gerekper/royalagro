@@ -1,3 +1,9 @@
+# v1.17.1  - 20 May 2021
+
+- Tweak: Single Image Scroll image dynamic tag enable
+- Tweak: Team Carousel title html tag option increased
+- Fix: Single Image anchor tag issue
+
 # v1.17.0 - 25 April 2021
 
 - Tweak: Image Masking map rearrange

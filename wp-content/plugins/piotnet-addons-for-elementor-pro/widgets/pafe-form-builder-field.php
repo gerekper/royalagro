@@ -1165,7 +1165,7 @@ class PAFE_Form_Builder_Field extends \Elementor\Widget_Base {
 				'dynamic' => [
 					'active' => true,
 				],
-				'description' => __( 'Enter each option in a separate line. To differentiate between label and value, separate them with a pipe char ("|"). For example: First Name|f_name.<br>Select option group:<br>[optgroup label="Swedish Cars"]<br>Volvo|volvo<br>Saab|saab<br>[/optgroup]<br>[optgroup label="German Cars"]<br>Mercedes|mercedes<br>Audi|audi<br>[/optgroup]', 'pafe' ),
+				'description' => __( 'Enter each option in a separate line. To differentiate between label and value, separate them with a pipe char ("|"). For example: First Name|f_name.<br>Select option group:<br>[optgroup label="Swedish Cars"]<br>Volvo|volvo<br>Saab|saab<br>[/optgroup]<br>[optgroup label="German Cars"]<br>Mercedes|mercedes<br>Audi|audi<br>[/optgroup]<br><br>The get posts shortcode for ACF Relationship Field [pafe_get_posts post_type="post" value="id"]', 'pafe' ),
 				'conditions' => [
 					'terms' => [
 						[
@@ -1351,8 +1351,10 @@ class PAFE_Form_Builder_Field extends \Elementor\Widget_Base {
 							'operator' => 'in',
 							'value' => [
 								'select',
+								'select',
 								'image_select',
 								'terms_select',
+								'select_autocomplete',
 							],
 						],
 					],
@@ -4129,7 +4131,7 @@ class PAFE_Form_Builder_Field extends \Elementor\Widget_Base {
 						$this->add_render_attribute( $option_id, 'selected', 'selected' );
 					}
 
-					if (!$select_autocomplete) {
+					// if (!$select_autocomplete) {
 						$values = explode(',', $value);
 
                         foreach ($values as $value_item) {
@@ -4137,7 +4139,7 @@ class PAFE_Form_Builder_Field extends \Elementor\Widget_Base {
                                 $this->add_render_attribute( $option_id, 'selected', 'selected' );
                             }
                         }
-					}
+					// }
 
 					if ( $item['send_data_by_label'] ) {
 						$this->add_render_attribute( $option_id, 'data-pafe-form-builder-send-data-by-label', $option_label );
@@ -4619,10 +4621,13 @@ class PAFE_Form_Builder_Field extends \Elementor\Widget_Base {
 												}
 											}
 
-											if ($meta_type == 'select' || $meta_type == 'checkbox') {
+											if ($meta_type == 'select' || $meta_type == 'checkbox' || $meta_type == 'acf_relationship') {
 												if (is_array($value)) {
 													$value_string = '';
 													foreach ($value as $item) {
+														if (is_object($item)) {
+															$item = $item->ID;
+														}
 														$value_string .= $item . ',';
 													}
 													$value = rtrim($value_string, ',');

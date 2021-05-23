@@ -391,7 +391,14 @@ class PAFE_Form_Builder_Submit extends \Elementor\Widget_Base {
 				'description' => __( 'Add actions that will be performed after a visitor submits the form (e.g. send an email notification). Choosing an action will add its setting below.', 'elementor-pro' ),
 			]
 		);
-
+		$this->add_control(
+			'submit_metadata_shortcode',
+			[
+				'label' => __( 'Metadata Shortcode', 'pafe' ),
+				'type' => \Elementor\Controls_Manager::RAW_HTML,
+				'raw' => __( '<div class="pafe-metarata-shortcode"><div class="pafe-metadata-shortcode-item"><label>Post URL</label><div><input type="text" value="[post_url]" readonly></div></div><div class="pafe-metadata-shortcode-item"><label>Remote IP</label><div><input type="text" value="[remote_ip]" readonly></div></div><div class="pafe-metadata-shortcode-item"><label>User Agent</label><div><input type="text" value="[user_agent]" readonly></div></div><div class="pafe-metadata-shortcode-item"><label>Date Submit</label><div><input type="text" value="[date_submit]" readonly></div></div><div class="pafe-metadata-shortcode-item"><label>Time Submit</label><div><input type="text" value="[time_submit]" readonly></div></div></div>', 'pafe' ),
+			]
+		);
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -1161,6 +1168,7 @@ class PAFE_Form_Builder_Submit extends \Elementor\Widget_Base {
 					'time' => __( 'Time', 'pafe' ),
 					'repeater' => __( 'ACF Repeater', 'pafe' ),
 					'google_map' => __( 'ACF Google Map', 'pafe' ),
+					'acf_relationship' => __( 'ACF Relationship', 'pafe' ),
 				],
 				'default' => 'text',
 			]

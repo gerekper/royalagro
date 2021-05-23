@@ -74,7 +74,7 @@ class Premium_Instagram_Feed extends Widget_Base {
 		return array(
 			'font-awesome-5-all',
 			'premium-addons',
-			'prettyPhoto-js',
+			'pa-prettyphoto',
 		);
 	}
 
@@ -115,6 +115,18 @@ class Premium_Instagram_Feed extends Widget_Base {
 	 */
 	public function get_categories() {
 		return array( 'premium-elements' );
+	}
+
+	/**
+	 * Retrieve Widget Keywords.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return string Widget keywords.
+	 */
+	public function get_keywords() {
+		return array( 'profile', 'account', 'post', 'social' );
 	}
 
 	/**

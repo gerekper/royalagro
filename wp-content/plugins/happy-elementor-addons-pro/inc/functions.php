@@ -43,6 +43,28 @@ function hapro_short_number_format($n, $precision = 1) {
 	return $n_format . $suffix;
 }
 
+
+/**
+ * Escaped title html tags
+ *
+ * @param string $tag input string of title tag
+ * @return string $default default tag will be return during no matches
+ */
+if ( ! function_exists( 'ha_escape_tags' ) ) {
+	function ha_escape_tags( $tag, $default = 'span', $extra = [] ) {
+
+		$supports = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div', 'span', 'p'];
+
+		$supports = array_merge( $supports, $extra );
+
+		if ( ! in_array( $tag, $supports, true ) ) {
+			return $default;
+		}
+
+		return $tag;
+	}
+}
+
 /**
  * Instagram Feed Ajax
  */

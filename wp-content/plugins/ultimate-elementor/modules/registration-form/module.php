@@ -173,7 +173,7 @@ class Module extends Module_Base {
 		$allow_register   = get_option( 'users_can_register' );
 		$is_widget_active = UAEL_Helper::is_widget_active( 'RegistrationForm' );
 
-		if ( isset( $_POST['data'] ) && '1' === $allow_register && true === $is_widget_active ) {
+		if ( isset( $_POST['data'] ) && $allow_register && true === $is_widget_active ) {
 
 			$data = $_POST['data'];
 
