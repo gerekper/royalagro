@@ -10,10 +10,10 @@ namespace TheplusAddons\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Utils;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Box_Shadow;
 
@@ -435,6 +435,21 @@ class ThePlus_Pricing_Table extends Widget_Base {
 				'label_off'    => esc_html__( 'No', 'theplus' ),
 				'render_type'  => 'template',
 				'separator' => 'before',
+			]
+		);
+		$repeater->add_control(
+			'show_tooltips_on',
+			[
+				'label' => esc_html__( 'Tooltip On', 'theplus' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'box',
+				'options' => [
+					'box'  => esc_html__( 'Box', 'theplus' ),
+					'icon'  => esc_html__( 'Icon', 'theplus' ),
+				],
+				'condition' => [
+					'show_tooltips' => 'yes',
+				],
 			]
 		);
 		$repeater->add_control(
@@ -2596,6 +2611,79 @@ class ThePlus_Pricing_Table extends Widget_Base {
 				],
 			]
 		);
+		$this->add_control(
+			'tt_on_icon',
+			[
+				'label' => esc_html__( 'Tooltip Icon', 'theplus' ),
+				'type' => Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fas fa-info-circle',
+					'library' => 'solid',
+				],
+				'condition' => [
+					'content_style' => 'stylist_list',
+				],
+			]
+		);
+		$this->add_control(
+            'tt_on_icon_margin_left',
+            [
+                'type' => Controls_Manager::SLIDER,
+				'label' => esc_html__('Left Offset', 'theplus'),
+				'range' => [
+					'' => [
+						'min'	=> 1,
+						'max'	=> 50,
+						'step' => 1,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 15,
+				],
+				'render_type' => 'ui',
+				'selectors'  => [
+					'{{WRAPPER}} .tp-tooltip-on-icon' => 'margin-left: {{SIZE}}px;',
+				],
+				'condition' => [
+					'content_style' => 'stylist_list',
+				],
+            ]
+        );
+		$this->add_control(
+			'tt_on_icon_color',
+			[
+				'label' => esc_html__( 'Color', 'theplus' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .tp-tooltip-on-icon i' => 'color: {{VALUE}};',
+				],
+				'condition' => [
+					'content_style' => 'stylist_list',
+				],
+			]
+		);
+		$this->add_control(
+            'tt_on_icon_size',
+            [
+                'type' => Controls_Manager::SLIDER,
+				'label' => esc_html__('Size', 'theplus'),
+				'range' => [
+					'' => [
+						'min'	=> 1,
+						'max'	=> 50,
+						'step' => 1,
+					],
+				],
+				'render_type' => 'ui',
+				'selectors'  => [
+					'{{WRAPPER}} .tp-tooltip-on-icon i' => 'font-size: {{SIZE}}px;',
+				],
+				'condition' => [
+					'content_style' => 'stylist_list',
+				],
+            ]
+        );
 		$this->end_controls_section();
 		/*button style*/
 		$this->start_controls_section(
@@ -2897,7 +2985,7 @@ class ThePlus_Pricing_Table extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'ribbon_pin_typography',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .plus-pricing-table .pricing-ribbon-pin .ribbon-pin-inner',
 			]
 		);
@@ -3019,6 +3107,17 @@ class ThePlus_Pricing_Table extends Widget_Base {
 				'size_units' => [ 'px', 'em' ],
 				'selectors' => [
 					'{{WRAPPER}} .plus-pricing-table.pricing-style-1 .pricing-table-inner,{{WRAPPER}} .plus-pricing-table.pricing-style-2 .pricing-table-inner,{{WRAPPER}} .plus-pricing-table.pricing-style-3 .pricing-top-part' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'bg_margin',
+			[
+				'label' => esc_html__( 'Margin', 'theplus' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .plus-pricing-table.pricing-style-1 .pricing-table-inner,{{WRAPPER}} .plus-pricing-table.pricing-style-2 .pricing-table-inner,{{WRAPPER}} .plus-pricing-table.pricing-style-3 .pricing-top-part' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -3449,7 +3548,7 @@ class ThePlus_Pricing_Table extends Widget_Base {
         );
 		$this->end_controls_section();
 	}
-	 protected function render() {
+	protected function render() {
 
         $settings = $this->get_settings_for_display();
 		$pricing_style = $settings["pricing_table_style"];
@@ -3543,17 +3642,17 @@ class ThePlus_Pricing_Table extends Widget_Base {
 		$pricing_content ='';
 		$i=0;
 		if($content_style =='wysiwyg_content' && !empty($settings["content_wysiwyg"])){
-			$pricing_content .='<div class="pricing-content-wrap content-desc '.$settings["content_wysiwyg_style"].'">';
+			$pricing_content .='<div class="pricing-content-wrap content-desc '.esc_attr($settings["content_wysiwyg_style"]).'">';
 				if($settings["content_wysiwyg_style"]=='style-1'){
 					$pricing_content .='<hr class="border-line" />';
 				}
 				$pricing_content .='<div class="pricing-content">';
-					$pricing_content .=$settings["content_wysiwyg"];
+					$pricing_content .= wp_kses_post($settings["content_wysiwyg"]);
 				$pricing_content .='</div>';
 				$pricing_content .= '<div class="content-overlay-bg-color"></div>';
 			$pricing_content .='</div>';
 		}else if($content_style =='stylist_list'){
-			$pricing_content .='<div class="pricing-content-wrap listing-content '.$settings["content_list_style"].'">';
+			$pricing_content .='<div class="pricing-content-wrap listing-content '.esc_attr($settings["content_list_style"]).'">';
 				$pricing_content .='<ul class="plus-icon-list-items">';
 					
 					foreach ( $settings['icon_list'] as $index => $item ) :
@@ -3608,7 +3707,23 @@ class ThePlus_Pricing_Table extends Widget_Base {
 						
 						$uniqid=uniqid("tooltip");
 						
-						$pricing_content .='<li id="'.esc_attr($uniqid).'" class="plus-icon-list-item elementor-repeater-item-'.esc_attr($item['_id']).'" data-local="true" '.$this->get_render_attribute_string( $_tooltip ).'>';
+						$show_tooltips_on = $item['show_tooltips_on'];
+						$toolbox=$toolicon=$tt_on_icon='';
+						if(!empty($show_tooltips_on) && $show_tooltips_on=='icon'){
+							$toolbox = 'class="plus-icon-list-item elementor-repeater-item-'.esc_attr($item['_id']).'"';
+							$toolicon = 'id="'.esc_attr($uniqid).'" class="plus-icon-list-item elementor-repeater-item-'.esc_attr($item['_id']).'" data-local="true" '.$this->get_render_attribute_string( $_tooltip ).'';
+							
+							ob_start();
+							\Elementor\Icons_Manager::render_icon( $settings['tt_on_icon'] , [ 'aria-hidden' => 'true' ]);
+							$tt_on_icon = ob_get_contents();
+							ob_end_clean();
+							
+						}else{
+							$toolbox = 'id="'.esc_attr($uniqid).'" class="plus-icon-list-item elementor-repeater-item-'.esc_attr($item['_id']).'" data-local="true" '.$this->get_render_attribute_string( $_tooltip ).'';							
+						}
+						
+						
+						$pricing_content .='<li '.$toolbox.'>';
 						if($item['list_icon_style']=='font_awesome'){
 							$icons=$item['list_icon_fontawesome'];									
 						}else if($item['list_icon_style']=='icon_mind'){
@@ -3622,6 +3737,9 @@ class ThePlus_Pricing_Table extends Widget_Base {
 							$pricing_content .='</span>';
 						endif;
 						$pricing_content .='<span '.$this->get_render_attribute_string( $repeater_setting_key ).'>'.$item["list_description"].'</span>';
+						if(!empty($show_tooltips_on) && $show_tooltips_on=='icon'){
+							$pricing_content .='<span class="tp-tooltip-on-icon" '.$toolicon.'>'.$tt_on_icon.'</span>';
+						}
 						if($item['show_tooltips'] == 'yes'){
 						$pricing_content .= '<script>
 							jQuery( document ).ready(function() {
@@ -3639,7 +3757,7 @@ class ThePlus_Pricing_Table extends Widget_Base {
 						}
 						$pricing_content .='</li>';
 						$i++;
-					endforeach;						
+					endforeach;
 				$pricing_content .='</ul>';
 				
 				if(!empty($settings['load_show_list_toggle'])){
@@ -3664,7 +3782,7 @@ class ThePlus_Pricing_Table extends Widget_Base {
 			$previous_price_prefix = $settings["previous_price_prefix"];
 			$previous_price = $settings["previous_price"];
 			$previous_price_postfix = $settings["previous_price_postfix"];
-			$previous_price_content .='<span class="pricing-previous-price-wrap">'.$previous_price_prefix.$previous_price.$previous_price_postfix.'</span>';			
+			$previous_price_content .='<span class="pricing-previous-price-wrap">'.esc_attr($previous_price_prefix).esc_attr($previous_price).esc_attr($previous_price_postfix).'</span>';			
 		}
 		/*Previous Price*/
 		
@@ -3674,16 +3792,16 @@ class ThePlus_Pricing_Table extends Widget_Base {
 		$price = $settings["price"];
 		$price_postfix = $settings["price_postfix"];
 		
-		$price_content ='<div class="pricing-price-wrap '.$price_style.'">';
+		$price_content ='<div class="pricing-price-wrap '.esc_attr($price_style).'">';
 			$price_content .= $previous_price_content;
 			if(!empty($price_prefix)){
-				$price_content .='<span class="price-prefix-text">'.$price_prefix.'</span>';
+				$price_content .='<span class="price-prefix-text">'.esc_attr($price_prefix).'</span>';
 			}
 			if(!empty($price)){
-				$price_content .='<span class="pricing-price">'.$price.'</span>';
+				$price_content .='<span class="pricing-price">'.esc_attr($price).'</span>';
 			}
 			if(!empty($price_postfix)){
-				$price_content .='<span class="price-postfix-text">'.$price_postfix.'</span>';
+				$price_content .='<span class="price-postfix-text">'.esc_attr($price_postfix).'</span>';
 			}
 		$price_content .='</div>';
 		/*Price content*/
@@ -3707,12 +3825,12 @@ class ThePlus_Pricing_Table extends Widget_Base {
 		$button_text = $settings['button_text'];
 		$btn_uid=uniqid('btn');
 		$data_class= $btn_uid;
-		$data_class .=' button-'.$button_style.' ';
+		$data_class .=' button-'.esc_attr($button_style).' ';
 		
 		$the_button ='<div class="pt-plus-button-wrapper">';
 			$the_button .='<div class="button_parallax">';
 				$the_button .='<div class="ts-button">';
-					$the_button .='<div class="pt_plus_button '.$data_class.'">';
+					$the_button .='<div class="pt_plus_button '.esc_attr($data_class).'">';
 						$the_button .= '<div class="animted-content-inner">';
 							$the_button .='<a '.$this->get_render_attribute_string( "button" ).'>';
 							$the_button .= $this->render_text();
@@ -3724,7 +3842,7 @@ class ThePlus_Pricing_Table extends Widget_Base {
 		$the_button .='</div>';
 		}
 		if(!empty($settings["call_to_action_text"])){
-			$the_button .='<div class="pricing-cta-text">'.$settings["call_to_action_text"].'</div>';
+			$the_button .='<div class="pricing-cta-text">'.wp_kses_post($settings["call_to_action_text"]).'</div>';
 		}
 		/* button */
 		
@@ -3743,198 +3861,196 @@ class ThePlus_Pricing_Table extends Widget_Base {
 			$ribbon_style=$settings["ribbon_pin_style"];
 			$ribbon_content .='<div class="pricing-ribbon-pin '.esc_attr($ribbon_style).'">';
 				$ribbon_content .='<div class="ribbon-pin-inner">';
-				$ribbon_content .= $settings["ribbon_pin_text"];
+				$ribbon_content .= wp_kses_post($settings["ribbon_pin_text"]);
 				$ribbon_content .='</div>';
 			$ribbon_content .='</div>';
 		}
 		/*Ribbon Pin*/
 		
 		/*--Plus Extra ---*/
-		$magic_class = $magic_attr = $parallax_scroll = '';
-		if (!empty($settings['magic_scroll']) && $settings['magic_scroll'] == 'yes') {
-			
-				if($settings["scroll_option_popover_toggle"]==''){
-					$scroll_offset=0;
-					$scroll_duration=300;
-				}else{
-					$scroll_offset=$settings['scroll_option_scroll_offset'];
-					$scroll_duration=$settings['scroll_option_scroll_duration'];
-				}
-				
-				if($settings["scroll_from_popover_toggle"]==''){
-					$scroll_x_from=0;
-					$scroll_y_from=0;
-					$scroll_opacity_from=1;
-					$scroll_scale_from=1;
-					$scroll_rotate_from=0;
-				}else{
-					$scroll_x_from=$settings['scroll_from_scroll_x_from'];
-					$scroll_y_from=$settings['scroll_from_scroll_y_from'];
-					$scroll_opacity_from=$settings['scroll_from_scroll_opacity_from'];
-					$scroll_scale_from=$settings['scroll_from_scroll_scale_from'];
-					$scroll_rotate_from=$settings['scroll_from_scroll_rotate_from'];
-				}
-				
-				if($settings["scroll_to_popover_toggle"]==''){
-					$scroll_x_to=0;
-					$scroll_y_to=-50;
-					$scroll_opacity_to=1;
-					$scroll_scale_to=1;
-					$scroll_rotate_to=0;
-				}else{
-					$scroll_x_to=$settings['scroll_to_scroll_x_to'];
-					$scroll_y_to=$settings['scroll_to_scroll_y_to'];
-					$scroll_opacity_to=$settings['scroll_to_scroll_opacity_to'];
-					$scroll_scale_to=$settings['scroll_to_scroll_scale_to'];
-					$scroll_rotate_to=$settings['scroll_to_scroll_rotate_to'];
-				}
-				$magic_attr .= ' data-scroll_type="position" ';
-				$magic_attr .= ' data-scroll_offset="' . esc_attr($scroll_offset) . '" ';
-				$magic_attr .= ' data-scroll_duration="' . esc_attr($scroll_duration) . '" ';
-				
-				$magic_attr .= ' data-scroll_x_from="' . esc_attr($scroll_x_from) . '" ';
-				$magic_attr .= ' data-scroll_x_to="' . esc_attr($scroll_x_to) . '" ';
-				$magic_attr .= ' data-scroll_y_from="' . esc_attr($scroll_y_from) . '" ';
-				$magic_attr .= ' data-scroll_y_to="' . esc_attr($scroll_y_to) . '" ';
-				$magic_attr .= ' data-scroll_opacity_from="' . esc_attr($scroll_opacity_from) . '" ';
-				$magic_attr .= ' data-scroll_opacity_to="' . esc_attr($scroll_opacity_to) . '" ';
-				$magic_attr .= ' data-scroll_scale_from="' . esc_attr($scroll_scale_from) . '" ';
-				$magic_attr .= ' data-scroll_scale_to="' . esc_attr($scroll_scale_to) . '" ';
-				$magic_attr .= ' data-scroll_rotate_from="' . esc_attr($scroll_rotate_from) . '" ';
-				$magic_attr .= ' data-scroll_rotate_to="' . esc_attr($scroll_rotate_to) . '" ';
-			
-			$parallax_scroll .= ' parallax-scroll ';
-			
-			$magic_class .= ' magic-scroll ';
-		}
-		if( $settings['plus_tooltip'] == 'yes' ) {
-			
-			$this->add_render_attribute( '_tooltip', 'data-tippy', '', true );
+$magic_class=$magic_attr=$parallax_scroll='';
+if (!empty($settings['magic_scroll']) && $settings['magic_scroll'] == 'yes') {
+    
+    if(empty($settings["scroll_option_popover_toggle"])){
+        $scroll_offset	 = 0;
+        $scroll_duration = 300;
+    }else{
+        $scroll_offset	 = (isset($settings['scroll_option_scroll_offset']) ? $settings['scroll_option_scroll_offset'] : 0 );
+        $scroll_duration = (isset($settings['scroll_option_scroll_duration']) ? $settings['scroll_option_scroll_duration'] : 300 );
+    }
+    
+    if(empty($settings["scroll_from_popover_toggle"])){
+        $scroll_x_from	= 0;
+        $scroll_y_from	= 0;
+        $scroll_opacity_from= 1;
+        $scroll_scale_from	= 1;
+        $scroll_rotate_from	= 0;
+    }else{
+        $scroll_x_from 		= (isset($settings['scroll_from_scroll_x_from']) ? $settings['scroll_from_scroll_x_from'] : 0 );
+        $scroll_y_from 		= (isset($settings['scroll_from_scroll_y_from']) ? $settings['scroll_from_scroll_y_from'] : 0 );
+        $scroll_opacity_from = (isset($settings['scroll_from_scroll_opacity_from']) ? $settings['scroll_from_scroll_opacity_from'] : 1 );
+        $scroll_scale_from 	= (isset($settings['scroll_from_scroll_scale_from']) ? $settings['scroll_from_scroll_scale_from'] : 1 );
+        $scroll_rotate_from = (isset($settings['scroll_from_scroll_rotate_from']) ? $settings['scroll_from_scroll_rotate_from'] : 0 );
+    }
+    
+    if(empty($settings["scroll_to_popover_toggle"])){
+        $scroll_x_to = 0;
+        $scroll_y_to = -50;
+        $scroll_opacity_to = 1;
+        $scroll_scale_to = 1;
+        $scroll_rotate_to = 0;
+    }else{
+        $scroll_x_to 		= (isset($settings['scroll_to_scroll_x_to']) ? $settings['scroll_to_scroll_x_to'] : 0 );
+        $scroll_y_to 		= (isset($settings['scroll_to_scroll_y_to']) ? $settings['scroll_to_scroll_y_to'] : -50 );
+        $scroll_opacity_to 		= (isset($settings['scroll_to_scroll_opacity_to']) ? $settings['scroll_to_scroll_opacity_to'] : 1 );
+        $scroll_scale_to 		= (isset($settings['scroll_to_scroll_scale_to']) ? $settings['scroll_to_scroll_scale_to'] : 1 );
+        $scroll_rotate_to 		= (isset($settings['scroll_to_scroll_rotate_to']) ? $settings['scroll_to_scroll_rotate_to'] : 0 );
+    }
+    $magic_attr .= ' data-scroll_type="position" ';
+    $magic_attr .= ' data-scroll_offset="' . esc_attr($scroll_offset) . '" ';
+    $magic_attr .= ' data-scroll_duration="' . esc_attr($scroll_duration) . '" ';
 
-			if (!empty($settings['plus_tooltip_content_type']) && $settings['plus_tooltip_content_type']=='normal_desc') {
-				$this->add_render_attribute( '_tooltip', 'title', $settings['plus_tooltip_content_desc'], true );
-			}else if (!empty($settings['plus_tooltip_content_type']) && $settings['plus_tooltip_content_type']=='content_wysiwyg') {
-				$tooltip_content=$settings['plus_tooltip_content_wysiwyg'];
-				$this->add_render_attribute( '_tooltip', 'title', $tooltip_content, true );
-			}
-			$plus_tooltip_position=($settings["tooltip_opt_plus_tooltip_position"]!='') ? $settings["tooltip_opt_plus_tooltip_position"] : 'top';
-			$this->add_render_attribute( '_tooltip', 'data-tippy-placement', $plus_tooltip_position, true );
-			
-			$tooltip_interactive =($settings["tooltip_opt_plus_tooltip_interactive"]=='' || $settings["tooltip_opt_plus_tooltip_interactive"]=='yes') ? 'true' : 'false';
-			$this->add_render_attribute( '_tooltip', 'data-tippy-interactive', $tooltip_interactive, true );
-			
-			$plus_tooltip_theme=($settings["tooltip_opt_plus_tooltip_theme"]!='') ? $settings["tooltip_opt_plus_tooltip_theme"] : 'dark';
-			$this->add_render_attribute( '_tooltip', 'data-tippy-theme', $plus_tooltip_theme, true );
-			
-			
-			$tooltip_arrow =($settings["tooltip_opt_plus_tooltip_arrow"]!='none' || $settings["tooltip_opt_plus_tooltip_arrow"]=='') ? 'true' : 'false';
-			$this->add_render_attribute( '_tooltip', 'data-tippy-arrow', $tooltip_arrow , true );
-			
-			$plus_tooltip_arrow=($settings["tooltip_opt_plus_tooltip_arrow"]!='') ? $settings["tooltip_opt_plus_tooltip_arrow"] : 'sharp';
-			$this->add_render_attribute( '_tooltip', 'data-tippy-arrowtype', $plus_tooltip_arrow, true );
-			
-			$plus_tooltip_animation=($settings["tooltip_opt_plus_tooltip_animation"]!='') ? $settings["tooltip_opt_plus_tooltip_animation"] : 'shift-toward';
-			$this->add_render_attribute( '_tooltip', 'data-tippy-animation', $plus_tooltip_animation, true );
-			
-			$plus_tooltip_x_offset=($settings["tooltip_opt_plus_tooltip_x_offset"]!='') ? $settings["tooltip_opt_plus_tooltip_x_offset"] : 0;
-			$plus_tooltip_y_offset=($settings["tooltip_opt_plus_tooltip_y_offset"]!='') ? $settings["tooltip_opt_plus_tooltip_y_offset"] : 0;
-			$this->add_render_attribute( '_tooltip', 'data-tippy-offset', $plus_tooltip_x_offset .','. $plus_tooltip_y_offset, true );
-			
-			$tooltip_duration_in =($settings["tooltip_opt_plus_tooltip_duration_in"]!='') ? $settings["tooltip_opt_plus_tooltip_duration_in"] : 250;
-			$tooltip_duration_out =($settings["tooltip_opt_plus_tooltip_duration_out"]!='') ? $settings["tooltip_opt_plus_tooltip_duration_out"] : 200;
-			$tooltip_trigger =($settings["tooltip_opt_plus_tooltip_triggger"]!='') ? $settings["tooltip_opt_plus_tooltip_triggger"] : 'mouseenter';
-			$tooltip_arrowtype =($settings["tooltip_opt_plus_tooltip_arrow"]!='') ? $settings["tooltip_opt_plus_tooltip_arrow"] : 'sharp';
-		}
-		
-		$move_parallax=$move_parallax_attr=$parallax_move='';
-		if(!empty($settings['plus_mouse_move_parallax']) && $settings['plus_mouse_move_parallax']=='yes'){
-			$move_parallax='pt-plus-move-parallax';
-			$parallax_move='parallax-move';
-			$parallax_speed_x=($settings["plus_mouse_parallax_speed_x"]["size"]!='') ? $settings["plus_mouse_parallax_speed_x"]["size"] : 30;
-				$parallax_speed_y=($settings["plus_mouse_parallax_speed_y"]["size"]!='') ? $settings["plus_mouse_parallax_speed_y"]["size"] : 30;
-				$move_parallax_attr .= ' data-move_speed_x="' . esc_attr($parallax_speed_x) . '" ';
-				$move_parallax_attr .= ' data-move_speed_y="' . esc_attr($parallax_speed_y) . '" ';
-		}
-		$tilt_attr='';
-		if(!empty($settings['plus_tilt_parallax']) && $settings['plus_tilt_parallax']=='yes'){
-			$tilt_scale=($settings["plus_tilt_opt_tilt_scale"]["size"]!='') ? $settings["plus_tilt_opt_tilt_scale"]["size"] : 1.1;
-			$tilt_max=($settings["plus_tilt_opt_tilt_max"]["size"]!='') ? $settings["plus_tilt_opt_tilt_max"]["size"] : 20;
-			$tilt_perspective=($settings["plus_tilt_opt_tilt_perspective"]["size"]!='') ? $settings["plus_tilt_opt_tilt_perspective"]["size"] : 400;
-			$tilt_speed=($settings["plus_tilt_opt_tilt_speed"]["size"]!='') ? $settings["plus_tilt_opt_tilt_speed"]["size"] : 400;
-			
-			$this->add_render_attribute( '_tilt_parallax', 'data-tilt', '' , true );
-			$this->add_render_attribute( '_tilt_parallax', 'data-tilt-scale', $tilt_scale , true );
-			$this->add_render_attribute( '_tilt_parallax', 'data-tilt-max', $tilt_max , true );
-			$this->add_render_attribute( '_tilt_parallax', 'data-tilt-perspective', $tilt_perspective , true );
-			$this->add_render_attribute( '_tilt_parallax', 'data-tilt-speed', $tilt_speed , true );
-			
-			if($settings["plus_tilt_opt_tilt_easing"] !='custom'){
-				$easing_tilt=$settings["plus_tilt_opt_tilt_easing"];					
-			}else if($settings["plus_tilt_opt_tilt_easing"] =='custom'){
-				$easing_tilt=$settings["plus_tilt_opt_tilt_easing_custom"];
-			}else{
-				$easing_tilt='cubic-bezier(.03,.98,.52,.99)';
-			}
-			$this->add_render_attribute( '_tilt_parallax', 'data-tilt-easing', $easing_tilt , true );
-			
-		}
-		$reveal_effects=$effect_attr='';
-		if(!empty($settings["plus_overlay_effect"]) && $settings["plus_overlay_effect"]=='yes'){
-			$effect_rand_no =uniqid('reveal');
-			$color_1=($settings["plus_overlay_spcial_effect_color_1"]!='') ? $settings["plus_overlay_spcial_effect_color_1"] : '#313131';
-			$color_2=($settings["plus_overlay_spcial_effect_color_2"]!='') ? $settings["plus_overlay_spcial_effect_color_2"] : '#ff214f';
-			$effect_attr .=' data-reveal-id="'.esc_attr($effect_rand_no).'" ';
-			$effect_attr .=' data-effect-color-1="'.esc_attr($color_1).'" ';
-			$effect_attr .=' data-effect-color-2="'.esc_attr($color_2).'" ';
-			$reveal_effects=' pt-plus-reveal '.esc_attr($effect_rand_no).' ';
-		}
-		$continuous_animation='';
-		if(!empty($settings["plus_continuous_animation"]) && $settings["plus_continuous_animation"]=='yes'){
-			if($settings["plus_animation_hover"]=='yes'){
-				$animation_class='hover_';
-			}else{
-				$animation_class='image-';
-			}
-			$continuous_animation=$animation_class.$settings["plus_animation_effect"];
-		}
-		
-		$before_content =$after_content ='';
-		$uid_widget=uniqid("plus");
-		if($settings['magic_scroll'] == 'yes' || $settings['plus_tooltip'] == 'yes' || $settings['plus_mouse_move_parallax']=='yes' || $settings['plus_tilt_parallax']=='yes' || $settings["plus_overlay_effect"]=='yes' || $settings["plus_continuous_animation"]=='yes'){
-			$before_content .='<div id="'.esc_attr($uid_widget).'" class="plus-pricing-table-widget plus-widget-wrapper '.esc_attr($magic_class).' '.esc_attr($move_parallax).' '.esc_attr($reveal_effects).' '.esc_attr($continuous_animation).'" '.$effect_attr.' '.$this->get_render_attribute_string( '_tooltip' ).'>';
-			$before_content .='<div class="plus-widget-inner-wrap '.esc_attr($parallax_scroll).' " '.$magic_attr.'>';
-			if($settings['plus_mouse_move_parallax']=='yes'){
-				$before_content .='<div class="plus-widget-inner-parallax '.esc_attr($parallax_move).'" '.$move_parallax_attr.'>';
-			}
-			if($settings['plus_tilt_parallax']=='yes'){
-				$before_content .='<div class="plus-widget-inner-tilt js-tilt" '.$this->get_render_attribute_string( '_tilt_parallax' ).'>';
-			}
-		}
-		if($settings['magic_scroll'] == 'yes' || $settings['plus_tooltip'] == 'yes' || $settings['plus_mouse_move_parallax']=='yes' || $settings['plus_tilt_parallax']=='yes' || $settings["plus_overlay_effect"]=='yes' || $settings["plus_continuous_animation"]=='yes'){
-			$after_content .='</div>';
-			$after_content .='</div>';
-			if($settings['plus_mouse_move_parallax']=='yes'){
-				$after_content .='</div>';
-			}
-			if($settings['plus_tilt_parallax']=='yes'){
-				$after_content .='</div>';
-			}
-			if($settings['plus_tooltip'] == 'yes'){
-				$after_content .='<script>
-				jQuery( document ).ready(function() {
-				"use strict";
-					if(typeof tippy === "function"){
-						tippy( "#'.esc_attr($uid_widget).'" , {
-							arrowType : "'.$tooltip_arrowtype.'",
-							duration : ['.esc_attr($tooltip_duration_in).','.esc_attr($tooltip_duration_out).'],
-							trigger : "'.esc_attr($tooltip_trigger).'",
-							appendTo: document.querySelector("#'.esc_attr($uid_widget).'")
-						});
-					}
-				});
-				</script>';
-			}
-		}
+    $magic_attr .= ' data-scroll_x_from="' . esc_attr($scroll_x_from) . '" ';
+    $magic_attr .= ' data-scroll_x_to="' . esc_attr($scroll_x_to) . '" ';
+    $magic_attr .= ' data-scroll_y_from="' . esc_attr($scroll_y_from) . '" ';
+    $magic_attr .= ' data-scroll_y_to="' . esc_attr($scroll_y_to) . '" ';
+    $magic_attr .= ' data-scroll_opacity_from="' . esc_attr($scroll_opacity_from) . '" ';
+    $magic_attr .= ' data-scroll_opacity_to="' . esc_attr($scroll_opacity_to) . '" ';
+    $magic_attr .= ' data-scroll_scale_from="' . esc_attr($scroll_scale_from) . '" ';
+    $magic_attr .= ' data-scroll_scale_to="' . esc_attr($scroll_scale_to) . '" ';
+    $magic_attr .= ' data-scroll_rotate_from="' . esc_attr($scroll_rotate_from) . '" ';
+    $magic_attr .= ' data-scroll_rotate_to="' . esc_attr($scroll_rotate_to) . '" ';
+    
+    $parallax_scroll .= ' parallax-scroll ';
+    
+    $magic_class .= ' magic-scroll ';
+}
+if( $settings['plus_tooltip'] == 'yes' ) {
+    
+    $this->add_render_attribute( '_tooltip', 'data-tippy', '', true );
+
+    if (!empty($settings['plus_tooltip_content_type']) && $settings['plus_tooltip_content_type'] == 'normal_desc') {
+        $this->add_render_attribute( '_tooltip', 'title', $settings['plus_tooltip_content_desc'], true );
+    }else if (!empty($settings['plus_tooltip_content_type']) && $settings['plus_tooltip_content_type'] == 'content_wysiwyg') {
+        $tooltip_content = $settings['plus_tooltip_content_wysiwyg'];
+        $this->add_render_attribute( '_tooltip', 'title', $tooltip_content, true );
+    }
+    $plus_tooltip_position = (!empty($settings["tooltip_opt_plus_tooltip_position"]) ? $settings["tooltip_opt_plus_tooltip_position"] : 'top');
+    $this->add_render_attribute( '_tooltip', 'data-tippy-placement', $plus_tooltip_position, true );
+    
+	$tooltip_interactive = (isset($settings["tooltip_opt_plus_tooltip_interactive"]) && $settings["tooltip_opt_plus_tooltip_interactive"] == 'yes' ? 'true' : 'false');
+    $this->add_render_attribute( '_tooltip', 'data-tippy-interactive', $tooltip_interactive, true );
+    
+    $plus_tooltip_theme = (!empty($settings["tooltip_opt_plus_tooltip_theme"])) ? $settings["tooltip_opt_plus_tooltip_theme"] : 'dark';
+    $this->add_render_attribute( '_tooltip', 'data-tippy-theme', $plus_tooltip_theme, true );
+    
+    $tooltip_arrow = ($settings["tooltip_opt_plus_tooltip_arrow"] != 'none' && !empty($settings["tooltip_opt_plus_tooltip_arrow"])) ? 'true' : 'false';
+    $this->add_render_attribute( '_tooltip', 'data-tippy-arrow', $tooltip_arrow , true );
+    
+    $plus_tooltip_arrow = (!empty($settings["tooltip_opt_plus_tooltip_arrow"])) ? $settings["tooltip_opt_plus_tooltip_arrow"] : 'sharp';
+    $this->add_render_attribute( '_tooltip', 'data-tippy-arrowtype', $plus_tooltip_arrow, true );
+    
+    $plus_tooltip_animation = (!empty($settings["tooltip_opt_plus_tooltip_animation"])) ? $settings["tooltip_opt_plus_tooltip_animation"] : 'shift-toward';
+    $this->add_render_attribute( '_tooltip', 'data-tippy-animation', $plus_tooltip_animation, true );
+    
+    $plus_tooltip_x_offset = (!empty($settings["tooltip_opt_plus_tooltip_x_offset"]) ? $settings["tooltip_opt_plus_tooltip_x_offset"] : 0);
+    $plus_tooltip_y_offset = (!empty($settings["tooltip_opt_plus_tooltip_y_offset"]) ? $settings["tooltip_opt_plus_tooltip_y_offset"] : 0);
+    $this->add_render_attribute( '_tooltip', 'data-tippy-offset', $plus_tooltip_x_offset .','. $plus_tooltip_y_offset, true );
+    
+    $tooltip_duration_in = (!empty($settings["tooltip_opt_plus_tooltip_duration_in"]) ? $settings["tooltip_opt_plus_tooltip_duration_in"] : 250);
+    $tooltip_duration_out = (!empty($settings["tooltip_opt_plus_tooltip_duration_out"]) ? $settings["tooltip_opt_plus_tooltip_duration_out"] : 200);
+    $tooltip_trigger = (!empty($settings["tooltip_opt_plus_tooltip_triggger"]) ? $settings["tooltip_opt_plus_tooltip_triggger"] : 'mouseenter');
+    $tooltip_arrowtype = (!empty($settings["tooltip_opt_plus_tooltip_arrow"]) ? $settings["tooltip_opt_plus_tooltip_arrow"] : 'sharp');
+}
+
+$move_parallax=$move_parallax_attr=$parallax_move='';
+if(!empty($settings['plus_mouse_move_parallax']) && $settings['plus_mouse_move_parallax'] == 'yes'){
+    $move_parallax='pt-plus-move-parallax';
+    $parallax_move='parallax-move';
+    $parallax_speed_x=(!empty($settings["plus_mouse_parallax_speed_x"]["size"]) ? $settings["plus_mouse_parallax_speed_x"]["size"] : 30);
+    $parallax_speed_y=(!empty($settings["plus_mouse_parallax_speed_y"]["size"]) ? $settings["plus_mouse_parallax_speed_y"]["size"] : 30);
+    $move_parallax_attr .= ' data-move_speed_x="' . esc_attr($parallax_speed_x) . '" ';
+    $move_parallax_attr .= ' data-move_speed_y="' . esc_attr($parallax_speed_y) . '" ';
+}
+$tilt_attr='';
+if(!empty($settings['plus_tilt_parallax']) && $settings['plus_tilt_parallax']=='yes'){
+    $tilt_scale	= (!empty($settings["plus_tilt_opt_tilt_scale"]["size"]) ? $settings["plus_tilt_opt_tilt_scale"]["size"] : 1.1);
+    $tilt_max	= (!empty($settings["plus_tilt_opt_tilt_max"]["size"]) ? $settings["plus_tilt_opt_tilt_max"]["size"] : 20);
+    $tilt_perspective = (!empty($settings["plus_tilt_opt_tilt_perspective"]["size"]) ? $settings["plus_tilt_opt_tilt_perspective"]["size"] : 400);
+    $tilt_speed	= (!empty($settings["plus_tilt_opt_tilt_speed"]["size"]) ? $settings["plus_tilt_opt_tilt_speed"]["size"] : 400);
+    
+    $this->add_render_attribute( '_tilt_parallax', 'data-tilt', '' , true );
+    $this->add_render_attribute( '_tilt_parallax', 'data-tilt-scale', $tilt_scale , true );
+    $this->add_render_attribute( '_tilt_parallax', 'data-tilt-max', $tilt_max , true );
+    $this->add_render_attribute( '_tilt_parallax', 'data-tilt-perspective', $tilt_perspective , true );
+    $this->add_render_attribute( '_tilt_parallax', 'data-tilt-speed', $tilt_speed , true );
+    
+    if($settings["plus_tilt_opt_tilt_easing"] != 'custom'){
+        $easing_tilt=$settings["plus_tilt_opt_tilt_easing"];					
+    }else if($settings["plus_tilt_opt_tilt_easing"] == 'custom'){
+        $easing_tilt=$settings["plus_tilt_opt_tilt_easing_custom"];
+    }else{
+        $easing_tilt='cubic-bezier(.03,.98,.52,.99)';
+    }
+    $this->add_render_attribute( '_tilt_parallax', 'data-tilt-easing', $easing_tilt , true );
+    
+}
+$reveal_effects=$effect_attr='';
+if(!empty($settings["plus_overlay_effect"]) && $settings["plus_overlay_effect"]=='yes'){
+    $effect_rand_no = uniqid('reveal');
+    $color_1=(!empty($settings["plus_overlay_spcial_effect_color_1"]) ? $settings["plus_overlay_spcial_effect_color_1"] : '#313131');
+    $color_2=(!empty($settings["plus_overlay_spcial_effect_color_2"]) ? $settings["plus_overlay_spcial_effect_color_2"] : '#ff214f');
+    $effect_attr .=' data-reveal-id="'.esc_attr($effect_rand_no).'" ';
+    $effect_attr .=' data-effect-color-1="'.esc_attr($color_1).'" ';
+    $effect_attr .=' data-effect-color-2="'.esc_attr($color_2).'" ';
+    $reveal_effects=' pt-plus-reveal '.esc_attr($effect_rand_no).' ';
+}
+$continuous_animation='';
+if(!empty($settings["plus_continuous_animation"]) && $settings["plus_continuous_animation"]=='yes'){
+    if($settings["plus_animation_hover"] == 'yes'){
+        $animation_class='hover_';
+    }else{
+        $animation_class='image-';
+    }
+    $continuous_animation=$animation_class.$settings["plus_animation_effect"];
+}
+
+$before_content=$after_content='';
+$uid_widget=uniqid("plus");
+if($settings['magic_scroll'] == 'yes' || $settings['plus_tooltip'] == 'yes' || $settings['plus_mouse_move_parallax']=='yes' || $settings['plus_tilt_parallax']=='yes' || $settings["plus_overlay_effect"]=='yes' || $settings["plus_continuous_animation"]=='yes'){
+    $before_content .='<div id="'.esc_attr($uid_widget).'" class="plus-widget-wrapper '.esc_attr($magic_class).' '.esc_attr($move_parallax).' '.esc_attr($reveal_effects).' '.esc_attr($continuous_animation).'" '.$effect_attr.' '.$this->get_render_attribute_string( '_tooltip' ).'>';
+    $before_content .='<div class="plus-widget-inner-wrap '.esc_attr($parallax_scroll).' " '.$magic_attr.'>';
+    if($settings['plus_mouse_move_parallax']=='yes'){
+        $before_content .='<div class="plus-widget-inner-parallax '.esc_attr($parallax_move).'" '.$move_parallax_attr.'>';
+    }
+    if($settings['plus_tilt_parallax']=='yes'){
+        $before_content .='<div class="plus-widget-inner-tilt js-tilt" '.$this->get_render_attribute_string( '_tilt_parallax' ).'>';
+    }
+}
+if($settings['magic_scroll'] == 'yes' || $settings['plus_tooltip'] == 'yes' || $settings['plus_mouse_move_parallax']=='yes' || $settings['plus_tilt_parallax']=='yes' || $settings["plus_overlay_effect"]=='yes' || $settings["plus_continuous_animation"]=='yes'){
+    $after_content .='</div>';
+    $after_content .='</div>';
+    if($settings['plus_mouse_move_parallax']=='yes'){
+        $after_content .='</div>';
+    }
+    if($settings['plus_tilt_parallax']=='yes'){
+        $after_content .='</div>';
+    }
+    if($settings['plus_tooltip'] == 'yes'){
+        $after_content .='<script>
+        jQuery( document ).ready(function() {
+        "use strict";
+            tippy( "#'.esc_attr($uid_widget).'" , {
+                arrowType : "'.esc_attr($tooltip_arrowtype).'",
+                duration : ['.esc_attr($tooltip_duration_in).','.esc_attr($tooltip_duration_out).'],
+                trigger : "'.esc_attr($tooltip_trigger).'",
+                appendTo: document.querySelector("#'.esc_attr($uid_widget).'")
+            });
+        });
+        </script>';
+    }
+}
+/*--Plus Extra ---*/
 		/*--Plus Extra ---*/
 		
 		$pricing_output='';

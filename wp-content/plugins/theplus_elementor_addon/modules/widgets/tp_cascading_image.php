@@ -10,10 +10,10 @@ namespace TheplusAddons\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Utils;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Text_Shadow;
@@ -608,7 +608,7 @@ class ThePlus_Cascading_Image extends Widget_Base {
 			[
 				'name' => 'text_content_typography',
 				'label' => esc_html__( 'Text Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .cascading-text{{CURRENT_ITEM}} .cascading-inner-content,{{WRAPPER}} .cascading-text{{CURRENT_ITEM}} .cascading-inner-content a',
 				'separator' => 'before',
 				'condition'    => [

@@ -1871,12 +1871,8 @@
 
 /**************** Premium Tabs ********************/
 /**************************************************/
-.premium-tabs-container {
-  overflow: hidden; }
-
 .premium-tabs {
   position: relative;
-  overflow: hidden;
   margin: 0 auto;
   width: 100%; }
   .premium-tabs .premium-tabs-nav {
@@ -2464,6 +2460,29 @@
 
 /**************** Premium Social Reviews *******************/
 /***********************************************************/
+.premium-fb-page-next-yes .premium-fb-rev-list {
+  -js-display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+.premium-fb-page-next-yes .premium-fb-rev-content {
+  width: 70%; }
+
+.premium-fb-page-next-yes .slick-dots {
+  -webkit-box-flex: 0 !important;
+  -webkit-flex: 0 auto !important;
+     -moz-box-flex: 0 !important;
+      -ms-flex: 0 auto !important;
+          flex: 0 auto !important; }
+
 .premium-fb-rev-container {
   padding: 8px 0 0; }
   .premium-fb-rev-container .premium-fb-rev-img {
@@ -2477,7 +2496,7 @@
   text-align: center; }
 
 .premium-fb-rev-page {
-  margin-bottom: 10px; }
+  margin-bottom: 30px; }
 
 .premium-reviews-ltr .premium-fb-rev-review-inner,
 .premium-reviews-rtl .premium-fb-rev-review-inner {
@@ -2495,9 +2514,6 @@
       -ms-flex: none;
           flex: none; }
 
-.premium-reviews-src-rtl .premium-fb-rev-content-left {
-  min-width: 60px; }
-
 .premium-reviews-src-ltr .premium-fb-rev-content-left {
   min-width: 60px; }
 
@@ -2509,6 +2525,12 @@
   display: -ms-inline-flexbox;
   display: inline-flex; }
 
+.premium-reviews-src-ltr .premium-fb-rev-page-left {
+  margin-right: 20px; }
+
+.premium-reviews-src-rtl .premium-fb-rev-content-left {
+  min-width: 60px; }
+
 .premium-reviews-src-rtl .premium-fb-rev-page-inner {
   -js-display: inline-flex;
   display: -webkit-inline-box;
@@ -2517,8 +2539,8 @@
   display: -ms-inline-flexbox;
   display: inline-flex; }
 
-.premium-reviews-src-ltr .premium-fb-rev-content-right {
-  margin-left: 10px; }
+.premium-reviews-src-rtl .premium-fb-rev-page-left {
+  margin-left: 20px; }
 
 .premium-reviews-src-rtl .premium-fb-rev-page-inner,
 .premium-reviews-rtl .premium-fb-rev-review-inner {
@@ -2531,8 +2553,18 @@
       -ms-flex-direction: row-reverse;
           flex-direction: row-reverse; }
 
+.premium-reviewer-image-pos-inline.premium-reviews-ltr .premium-fb-rev-content-right {
+  margin-left: 10px; }
+
+.premium-reviewer-image-pos-inline.premium-reviews-rtl .premium-fb-rev-content-right {
+  margin-right: 10px; }
+
 .premium-fb-rev-page-rating {
   vertical-align: middle; }
+
+.premium-fb-rev-page-stars img,
+.premium-trustpilot-badge img {
+  width: 100px; }
 
 .premium-fb-rev-star {
   -js-display: inline-flex;
@@ -2558,6 +2590,7 @@
   transition: all 0.3s ease-in-out; }
 
 .premium-fb-rev-time .premium-fb-rev-time-text {
+  font-size: 13px;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out; }
 
@@ -2577,6 +2610,9 @@
 
 .premium-fb-rev-stars .premium-fb-rev-star {
   vertical-align: middle; }
+
+.premium-fb-rev-stars-container img {
+  width: 80px; }
 
 .premium-reviews-even .premium-fb-rev-reviews {
   -js-display: flex;
@@ -2626,14 +2662,40 @@
       -ms-flex-direction: column;
           flex-direction: column; }
 
-/** * Carousel Arrows */
-.premium-fb-rev-reviews a.carousel-arrow {
-  -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-          transform: translateY(-50%); }
+.premium-fb-dots-container {
+  -js-display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+  .premium-fb-dots-container .slick-dots {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+       -moz-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    bottom: 25px;
+    position: relative; }
+
+.premium-fb-page-next-yes .premium-fb-rev-page-inner {
+  position: relative; }
+
+.premium-fb-page-next-yes.premium-reviews-place-v-bottom .premium-fb-rev-page-inner {
+  top: 100%; }
+
+.premium-fb-page-next-yes.premium-reviews-place-v-center .premium-fb-rev-page-inner {
+  top: 50%; }
 
 /** Read More **/
 .premium-fb-rev-text-wrapper .premium-fb-rev-readmore {
+  margin-top: 10px;
   display: block;
   font-size: 1em;
   -webkit-transition: all 0.3s ease-in-out;
@@ -2656,6 +2718,67 @@
 [dir="rtl"] .premium-fb-rev-container .slick-slider .slick-track,
 [dir="rtl"] .premium-fb-rev-container .slick-slider .slick-list {
   direction: ltr; }
+
+.premium-social-reviews-default.premium-reviewer-image-pos-left .premium-fb-rev-content-left {
+  margin-right: 15px; }
+
+.premium-social-reviews-default.premium-reviewer-image-pos-left .premium-fb-rev-content-right {
+  -js-display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+     -moz-box-orient: horizontal;
+     -moz-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap; }
+  .premium-social-reviews-default.premium-reviewer-image-pos-left .premium-fb-rev-content-right .premium-fb-rev-reviewer-header {
+    -webkit-box-ordinal-group: 3;
+    -webkit-order: 2;
+       -moz-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+    -js-display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+       -moz-box-orient: vertical;
+       -moz-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+  .premium-social-reviews-default.premium-reviewer-image-pos-left .premium-fb-rev-content-right .premium-fb-rev-content-left {
+    -webkit-box-ordinal-group: 2;
+    -webkit-order: 1;
+       -moz-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1; }
+  .premium-social-reviews-default.premium-reviewer-image-pos-left .premium-fb-rev-content-right .premium-fb-rev-rating {
+    -webkit-box-ordinal-group: 4;
+    -webkit-order: 3;
+       -moz-box-ordinal-group: 4;
+        -ms-flex-order: 3;
+            order: 3;
+    -webkit-flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
+            flex-basis: 100%; }
+
+.premium-social-reviews-card .premium-fb-rev-content-left {
+  margin-right: 10px; }
+
+.premium-social-reviews-card .premium-fb-rev-readmore {
+  margin-bottom: 15px; }
 
 .premium-social-reviews-card .premium-fb-rev-content-right {
   -js-display: flex;
@@ -2695,6 +2818,218 @@
        -moz-box-ordinal-group: 2;
         -ms-flex-order: 1;
             order: 1; }
+
+.premium-social-reviews-card.premium-reviewer-image-pos-block .premium-fb-rev-content-left {
+  margin-top: 20px;
+  margin-right: 0px; }
+
+.premium-social-reviews-card.premium-reviewer-image-pos-block .premium-fb-rev-readmore {
+  margin-bottom: 0px; }
+
+.premium-social-reviews-card.premium-reviewer-image-pos-left .premium-fb-rev-content-right {
+  -js-display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+     -moz-box-orient: horizontal;
+     -moz-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap; }
+  .premium-social-reviews-card.premium-reviewer-image-pos-left .premium-fb-rev-content-right .premium-fb-rev-reviewer-header {
+    -webkit-box-ordinal-group: 4;
+    -webkit-order: 3;
+       -moz-box-ordinal-group: 4;
+        -ms-flex-order: 3;
+            order: 3;
+    -js-display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+       -moz-box-orient: vertical;
+       -moz-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+  .premium-social-reviews-card.premium-reviewer-image-pos-left .premium-fb-rev-content-right .premium-fb-rev-content-left {
+    margin-top: 7px;
+    -webkit-box-ordinal-group: 3;
+    -webkit-order: 2;
+       -moz-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2; }
+  .premium-social-reviews-card.premium-reviewer-image-pos-left .premium-fb-rev-content-right .premium-fb-rev-rating {
+    -webkit-box-ordinal-group: 2;
+    -webkit-order: 1;
+       -moz-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    -webkit-flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
+            flex-basis: 100%; }
+
+.premium-social-reviews-card.premium-reviewer-image-pos-inline .premium-fb-rev-content-left {
+  margin-top: 10px; }
+
+.premium-social-reviews-card.premium-reviewer-image-pos-inline .premium-fb-rev-review-inner {
+  -js-display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.premium-review-stars-above .premium-fb-rev-reviewer-header {
+  -js-display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+  .premium-review-stars-above .premium-fb-rev-reviewer-header .premium-fb-rev-reviewer-wrapper {
+    -webkit-box-ordinal-group: 3;
+    -webkit-order: 2;
+       -moz-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2; }
+  .premium-review-stars-above .premium-fb-rev-reviewer-header .premium-fb-rev-info {
+    -webkit-box-ordinal-group: 2;
+    -webkit-order: 1;
+       -moz-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1; }
+
+.premium-social-reviews-bubble .premium-fb-rev-content-right {
+  -js-display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+     -moz-box-orient: horizontal;
+     -moz-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap; }
+  .premium-social-reviews-bubble .premium-fb-rev-content-right .premium-fb-rev-reviewer-header {
+    -webkit-box-ordinal-group: 4;
+    -webkit-order: 3;
+       -moz-box-ordinal-group: 4;
+        -ms-flex-order: 3;
+            order: 3; }
+  .premium-social-reviews-bubble .premium-fb-rev-content-right .premium-fb-rev-content-left {
+    margin-right: 15px;
+    -webkit-box-ordinal-group: 3;
+    -webkit-order: 2;
+       -moz-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2; }
+  .premium-social-reviews-bubble .premium-fb-rev-content-right .premium-fb-rev-rating {
+    -webkit-box-ordinal-group: 2;
+    -webkit-order: 1;
+       -moz-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    -webkit-flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
+            flex-basis: 100%;
+    position: relative;
+    margin-bottom: 25px; }
+  .premium-social-reviews-bubble .premium-fb-rev-content-right .premium-fb-rev-rating {
+    border: 1px solid #ededed;
+    -webkit-border-radius: 25px;
+            border-radius: 25px;
+    background-color: #fafafa; }
+  .premium-social-reviews-bubble .premium-fb-rev-content-right .premium-fb-rev-text-wrapper {
+    padding: 25px; }
+
+.premium-rev-arrow-bubble {
+  position: absolute;
+  left: 20px; }
+
+.premium-rev-arrow-bubble-border {
+  border-width: 16px;
+  border-style: solid;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-top-color: #ededed;
+  left: 0;
+  top: 0;
+  position: absolute; }
+
+.premium-rev-arrow {
+  border-width: 16px;
+  border-style: solid;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-top-color: #fafafa;
+  left: 0;
+  top: -1px;
+  position: absolute; }
+
+.premium-reviewer-image-yes .premium-rev-arrow-bubble {
+  left: 45px; }
+
+.premium-fb-rev-review-inner {
+  position: relative; }
+
+.premium-reviews-even .premium-fb-rev-review {
+  position: relative; }
+
+.premium-reviews-even .premium-fb-rev-review-inner {
+  position: static; }
+
+.premium-fb-rev-icon {
+  position: absolute;
+  -js-display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  top: 0;
+  -webkit-transform: translate(var(--translate-x), var(--translate-y));
+      -ms-transform: translate(var(--translate-x), var(--translate-y));
+          transform: translate(var(--translate-x), var(--translate-y)); }
+  .premium-fb-rev-icon svg {
+    width: 20px;
+    height: 20px; }
+
+.elementor-widget-premium-trustpilot-reviews .premium-fb-rev-icon svg {
+  width: 22px;
+  height: 22px; }
+
+.elementor-widget-premium-trustpilot-reviews.premium-social-reviews-card .premium-fb-rev-review {
+  padding: 15px;
+  border: 1px solid #ededed;
+  -webkit-border-radius: 15px;
+          border-radius: 15px;
+  background-color: #fafafa; }
 
 /*********** Premium Animated Gradient ***********/
 /*************************************************/
@@ -5885,7 +6220,10 @@ ul.premium-social-count-ul {
     -webkit-justify-content: center;
        -moz-box-pack: center;
         -ms-flex-pack: center;
-            justify-content: center; }
+            justify-content: center;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap; }
     .premium-table-pagination ul.page-numbers li {
       margin: 0 0.4em 0.4em 0;
       padding: 0;

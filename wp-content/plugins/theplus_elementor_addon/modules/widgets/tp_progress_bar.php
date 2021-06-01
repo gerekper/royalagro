@@ -10,12 +10,12 @@ namespace TheplusAddons\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Utils;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Image_Size;
 
 use TheplusAddons\Theplus_Element_Load;
@@ -516,8 +516,8 @@ class ThePlus_Progress_Bar extends Widget_Base {
 				'label' => esc_html__( 'Title Color', 'theplus' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
+					'type' => Color::get_type(),
+					'value' => Color::COLOR_1,
 				],
 				'selectors' => [
 					'{{WRAPPER}} span.progress_bar-title,
@@ -598,8 +598,8 @@ class ThePlus_Progress_Bar extends Widget_Base {
 				'label' => esc_html__( 'Number Color', 'theplus' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
+					'type' => Color::get_type(),
+					'value' => Color::COLOR_1,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .progress_bar .counter-number .theserivce-milestone-number' => 'color: {{VALUE}}',

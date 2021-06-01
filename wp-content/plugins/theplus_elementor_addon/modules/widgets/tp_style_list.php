@@ -10,10 +10,10 @@ namespace TheplusAddons\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Utils;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Css_Filter;
@@ -491,8 +491,8 @@ class ThePlus_Style_List extends Widget_Base {
 					'{{WRAPPER}} .plus-icon-list-icon i' => 'color: {{VALUE}};',
 				],
 				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type' => Color::get_type(),
+					'value' => Color::COLOR_1,
 				],
 			]
 		);
@@ -733,8 +733,8 @@ class ThePlus_Style_List extends Widget_Base {
 					'{{WRAPPER}} .plus-icon-list-text,{{WRAPPER}} .plus-icon-list-text p' => 'color: {{VALUE}};',
 				],
 				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type' => Color::get_type(),
+					'value' => Color::COLOR_2,
 				],
 			]
 		);
@@ -769,7 +769,7 @@ class ThePlus_Style_List extends Widget_Base {
 			[
 				'name' => 'text_typography',
 				'selector' => '{{WRAPPER}} .plus-icon-list-item,{{WRAPPER}} .plus-icon-list-item p',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 		$this->end_controls_section();
@@ -849,7 +849,7 @@ class ThePlus_Style_List extends Widget_Base {
 			[
 				'name' => 'hint_typography',
 				'selector' => '{{WRAPPER}} .plus-stylist-list-wrapper .plus-icon-list-text span.plus-hint-text',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 			]
 		);
 		$this->add_group_control(

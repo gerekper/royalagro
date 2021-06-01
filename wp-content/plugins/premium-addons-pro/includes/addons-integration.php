@@ -65,10 +65,15 @@ class Addons_Integration {
 		// Registers AJAX Hooks.
 		add_action( 'wp_ajax_handle_table_data', array( $this, 'handle_table_data' ) );
 		add_action( 'wp_ajax_nopriv_handle_table_data', array( $this, 'handle_table_data' ) );
+
 		add_action( 'wp_ajax_get_fb_page_token', array( $this, 'get_fb_page_token' ) );
+
 		add_action( 'wp_ajax_get_instagram_token', array( $this, 'get_instagram_token' ) );
+
 		add_action( 'wp_ajax_check_instagram_token', array( $this, 'check_instagram_token' ) );
 		add_action( 'wp_ajax_nopriv_check_instagram_token', array( $this, 'check_instagram_token' ) );
+
+		add_action( 'wp_ajax_clear_reviews_data', array( $this, 'clear_reviews_data' ) );
 
 	}
 
@@ -101,7 +106,7 @@ class Addons_Integration {
 	 */
 	public function get_fb_page_token() {
 
-		check_ajax_referer( 'papro-templates', 'security' );
+		check_ajax_referer( 'papro-social-elements', 'security' );
 
 		$api_url = 'https://appfb.premiumaddons.com/wp-json/fbapp/v2/pages';
 
@@ -130,7 +135,7 @@ class Addons_Integration {
 	 */
 	public function get_instagram_token() {
 
-		check_ajax_referer( 'papro-templates', 'security' );
+		check_ajax_referer( 'papro-social-elements', 'security' );
 
 		$api_url = 'https://appfb.premiumaddons.com/wp-json/fbapp/v2/instagram';
 
@@ -250,6 +255,28 @@ class Addons_Integration {
 	}
 
 	/**
+	 * Clear Reviews Data
+	 *
+	 * @since 2.4.2
+	 * @access public
+	 */
+	public function clear_reviews_data() {
+
+		check_ajax_referer( 'papro-social-elements', 'security' );
+
+		if ( ! isset( $_POST['transient'] ) ) {
+			wp_send_json_error();
+		}
+
+		$transient = sanitize_text_field( wp_unslash( $_POST['transient'] ) );
+
+		delete_transient( $transient );
+
+		wp_send_json_success();
+
+	}
+
+	/**
 	 * Enqueue Editor assets
 	 *
 	 * @since 1.4.5
@@ -273,6 +300,12 @@ class Addons_Integration {
 			true
 		);
 
+		$data = array(
+			'ajaxurl' => esc_url( admin_url( 'admin-ajax.php' ) ),
+			'nonce'   => wp_create_nonce( 'papro-social-elements' ),
+			'key'     => Papro_Helper::get_license_key(),
+		);
+
 		if ( $fb_reviews || $fb_feed || $instagram_feed ) {
 
 			wp_register_script(
@@ -291,14 +324,6 @@ class Addons_Integration {
 				false
 			);
 
-			$license_key = Papro_Helper::get_license_key();
-
-			$data = array(
-				'ajaxurl' => esc_url( admin_url( 'admin-ajax.php' ) ),
-				'nonce'   => wp_create_nonce( 'papro-templates' ),
-				'key'     => $license_key,
-			);
-
 			wp_localize_script( 'papro-fb-connect', 'settings', $data );
 
 			wp_enqueue_script( 'papro-fb-helper' );
@@ -306,15 +331,15 @@ class Addons_Integration {
 
 		}
 
-		// wp_enqueue_script(
-		// 'papro-reviews-cache',
-		// PREMIUM_PRO_ADDONS_URL . 'assets/editor/js/fb-cache.js',
-		// array(),
-		// PREMIUM_PRO_ADDONS_VERSION,
-		// true
-		// );
+		wp_enqueue_script(
+			'papro-reviews-cache',
+			PREMIUM_PRO_ADDONS_URL . 'assets/editor/js/fb-cache.js',
+			array(),
+			PREMIUM_PRO_ADDONS_VERSION,
+			true
+		);
 
-		// wp_localize_script( 'papro-fb-connect', 'settings', $data );
+		wp_localize_script( 'papro-reviews-cache', 'settings', $data );
 	}
 
 	/**
@@ -603,7 +628,7 @@ class Addons_Integration {
 
 		require $file;
 
-		if ( 'PremiumAddonsPro\Widgets\Premium_Facebook_Reviews' === $class || 'PremiumAddonsPro\Widgets\Premium_Google_Reviews' === $class || 'PremiumAddonsPro\Widgets\Premium_Instagram_Feed' === $class ) {
+		if ( 'PremiumAddonsPro\Widgets\Premium_Trustpilot_Reviews' === $class || 'PremiumAddonsPro\Widgets\Premium_Facebook_Reviews' === $class || 'PremiumAddonsPro\Widgets\Premium_Google_Reviews' === $class || 'PremiumAddonsPro\Widgets\Premium_Instagram_Feed' === $class ) {
 			require_once PREMIUM_ADDONS_PATH . 'widgets/dep/urlopen.php';
 
 			require_once PREMIUM_PRO_ADDONS_PATH . 'includes/deps/reviews.php';

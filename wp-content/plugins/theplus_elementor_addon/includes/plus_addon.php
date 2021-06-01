@@ -359,88 +359,112 @@ function theplus_createSlug($str, $delimiter = '-'){
 function theplus_more_post_ajax(){
 		global $post;
 		ob_start();
-		$post_type=$_POST["post_type"];
-		$post_load=$_POST["post_load"];
-		$texonomy_category=$_POST["texonomy_category"];
-		$include_posts=$_POST["include_posts"];
-		$exclude_posts=$_POST["exclude_posts"];
-		$layout=$_POST["layout"];
-		$b_dis_badge_switch=$_POST["badge"];
-		$out_of_stock=$_POST["out_of_stock"];
-		$variation_price_on=$_POST["variationprice"];
-		$hover_image_on_off=$_POST["hoverimagepro"];
-		$offset = $_POST["offset"];
-		$display_post = $_POST["display_post"];
-		$category=$_POST["category"];
-		$post_tags=$_POST["post_tags"];
-		$ex_cat=$_POST["ex_cat"];
-		$ex_tag=$_POST["ex_tag"];
-		$post_authors=$_POST["post_authors"];
-		$desktop_column=$_POST["desktop_column"];
-		$tablet_column=$_POST["tablet_column"];
-		$mobile_column=$_POST["mobile_column"];
-		$style= $_POST["style"];
-		$style_layout= $_POST["style_layout"];
-		$filter_category=$_POST["filter_category"];
-		$order_by=$_POST["order_by"];
-		$post_order=$_POST["post_order"];
-		$animated_columns=$_POST["animated_columns"];
-		$post_load_more=$_POST["post_load_more"];
-		$display_cart_button=$_POST["cart_button"];
-		$paged=$_POST["paged"];
-		$metro_column=$_POST["metro_column"];
-		$metro_style=$_POST["metro_style"];
-		$responsive_tablet_metro=$_POST["responsive_tablet_metro"];
-		$tablet_metro_column=$_POST["tablet_metro_column"];
-		$tablet_metro_style=$_POST["tablet_metro_style"];
+		$load_attr = isset($_POST["loadattr"]) ? wp_unslash( $_POST["loadattr"] ) : '';
+		if(empty($load_attr)){
+			ob_get_contents();
+			exit;
+			ob_end_clean();
+		}
+		$load_attr = tp_check_decrypt_key($load_attr);
+		$load_attr = json_decode($load_attr,true);
+		if(!is_array($load_attr)){
+			ob_get_contents();
+			exit;
+			ob_end_clean();
+		}
 		
-		$display_post_title=$_POST["display_post_title"];
-		$post_title_tag=$_POST["post_title_tag"];
-		$title_desc_word_break=$_POST["title_desc_word_break"];
+		$nonce = (isset($load_attr["theplus_nonce"])) ? wp_unslash( $load_attr["theplus_nonce"] ) : '';
+		if ( ! wp_verify_nonce( $nonce, 'theplus-addons' ) ){
+			die ( 'Security checked!');
+		}
 		
-		$display_title_limit=$_POST["display_title_limit"];
-		$display_title_by=$_POST["display_title_by"];
-		$display_title_input=$_POST["display_title_input"];
-		$display_title_3_dots=$_POST["display_title_3_dots"];
+		$paged= (isset($_POST["paged"]) && intval($_POST["paged"]) ) ? wp_unslash( $_POST["paged"] ) : '';
+		$offset= (isset($_POST["offset"]) && intval($_POST["offset"]) ) ? wp_unslash( $_POST["offset"] ) : '';
 		
-		$feature_image=$_POST["feature_image"];
+		$post_type = isset( $load_attr["post_type"] ) ? sanitize_text_field( wp_unslash($load_attr["post_type"]) ) : '';
+		$post_load = isset( $load_attr["load"] ) ? sanitize_text_field( wp_unslash($load_attr["load"]) ) : '';
+		$texonomy_category = isset( $load_attr["texonomy_category"] ) ? sanitize_text_field( wp_unslash($load_attr["texonomy_category"]) ) : '';
+		$include_posts = isset( $load_attr["include_posts"] ) ? sanitize_text_field( wp_unslash($load_attr["include_posts"]) ) : '';
+		$exclude_posts = isset( $load_attr["exclude_posts"] ) ? sanitize_text_field( wp_unslash($load_attr["exclude_posts"]) ) : '';
+		$layout =  isset( $load_attr["layout"] ) ? sanitize_text_field( wp_unslash($load_attr["layout"]) ) : '';
+		$b_dis_badge_switch = isset( $load_attr["badge"] ) ? sanitize_text_field( wp_unslash($load_attr["badge"]) ) : '';
+		$out_of_stock = isset( $load_attr["out_of_stock"] ) ? sanitize_text_field( wp_unslash($load_attr["out_of_stock"]) ) : '';
+		$variation_price_on = isset( $load_attr["variationprice"] ) ? sanitize_text_field( wp_unslash($load_attr["variationprice"]) ) : '';
+		$hover_image_on_off = isset( $load_attr["hoverimagepro"] ) ? sanitize_text_field( wp_unslash($load_attr["hoverimagepro"]) ) : '';
 		
-		$display_post_meta=$_POST["display_post_meta"];
-		$post_meta_tag_style=$_POST["post_meta_tag_style"];
-		$display_post_meta_date=$_POST["display_post_meta_date"];
-		$display_post_meta_author=$_POST["display_post_meta_author"];
-		$display_post_meta_author_pic=$_POST["display_post_meta_author_pic"];
-		$display_excerpt=$_POST["display_excerpt"];
-		$post_excerpt_count=$_POST["post_excerpt_count"];
-		$display_post_category=$_POST["display_post_category"];
-		$post_category_style=$_POST["post_category_style"];
-		$dpc_all=$_POST["dpc_all"];
-		$featured_image_type=$_POST["featured_image_type"];
+		$display_post = (isset( $load_attr["display_post"] ) && intval($load_attr["display_post"]) ) ? wp_unslash($load_attr["display_post"]) : 4;
+		$category = isset( $load_attr["category"] ) ? wp_unslash($load_attr["category"]) : '';
+		$post_tags = isset( $load_attr["post_tags"] ) ? wp_unslash($load_attr["post_tags"]) : '';
+		$ex_cat = isset( $load_attr["ex_cat"] ) ? wp_unslash($load_attr["ex_cat"]) : '';
+		$ex_tag = isset( $load_attr["ex_tag"] ) ? wp_unslash($load_attr["ex_tag"]) : '';
+		$post_authors = isset( $load_attr["post_authors"] ) ? wp_unslash($load_attr["post_authors"]) : '';
+		$desktop_column = (isset( $load_attr["desktop-column"] )  && intval($load_attr["desktop-column"]) ) ? wp_unslash($load_attr["desktop-column"]) : '';
+		$tablet_column = (isset( $load_attr["tablet-column"] )  && intval($load_attr["tablet-column"]) ) ? wp_unslash($load_attr["tablet-column"]) : '';
+		$mobile_column = (isset( $load_attr["mobile-column"] )  && intval($load_attr["mobile-column"]) ) ? wp_unslash($load_attr["mobile-column"]) : '';
+		$style = isset( $load_attr["style"] ) ? sanitize_text_field( wp_unslash($load_attr["style"]) ) : '';
+		$style_layout = isset( $load_attr["style_layout"] ) ? sanitize_text_field( wp_unslash($load_attr["style_layout"]) ) : '';
+		$filter_category = isset( $load_attr["filter_category"] ) ? wp_unslash($load_attr["filter_category"]) : '';
+		$order_by = isset( $load_attr["order_by"] ) ? sanitize_text_field( wp_unslash($load_attr["order_by"]) ) : '';
+		$post_order = isset( $load_attr["post_order"] ) ? sanitize_text_field( wp_unslash($load_attr["post_order"]) ) : '';
+		$animated_columns = isset( $load_attr["animated_columns"] ) ? sanitize_text_field( wp_unslash($load_attr["animated_columns"]) ) : '';
+		$post_load_more = (isset( $load_attr["post_load_more"] ) && intval($load_attr["post_load_more"]) ) ? wp_unslash($load_attr["post_load_more"]) : '';
+		$display_cart_button = isset( $load_attr["cart_button"] ) ? wp_unslash($load_attr["cart_button"]) : '';
 		
-		$display_thumbnail=$_POST["display_thumbnail"];
-		$thumbnail=$_POST["thumbnail"];
-		$thumbnail_car=$_POST["thumbnail_car"];
+		$metro_column = isset( $load_attr["metro_column"] ) ? wp_unslash($load_attr["metro_column"]) : '';
+		$metro_style = isset( $load_attr["metro_style"] ) ? wp_unslash($load_attr["metro_style"]) : '';
+		$responsive_tablet_metro = isset( $load_attr["responsive_tablet_metro"] ) ? wp_unslash($load_attr["responsive_tablet_metro"]) : '';
+		$tablet_metro_column = isset( $load_attr["tablet_metro_column"] ) ? wp_unslash($load_attr["tablet_metro_column"]) : '';
+		$tablet_metro_style = isset( $load_attr["tablet_metro_style"] ) ? wp_unslash($load_attr["tablet_metro_style"]) : '';
 		
-		$display_button = $_POST['display_button'];
-		$button_style = $_POST['button_style'];
-		$before_after = $_POST['before_after'];
-		$button_text = $_POST['button_text'];
-		$button_icon_style = $_POST['button_icon_style'];
-		$button_icon = $_POST['button_icon'];
-		$button_icons_mind = $_POST['button_icons_mind'];
-		$skin_template = $_POST['skin_template'];
-		$dynamic_template =explode(",",$skin_template);
-		$display_product=$_POST["display_product"];
-		$display_catagory=$_POST["display_catagory"];
-		$display_rating=$_POST["display_rating"];
+		$display_post_title = isset( $load_attr["display_post_title"] ) ? wp_unslash($load_attr["display_post_title"]) : '';
+		$post_title_tag = isset( $load_attr["post_title_tag"] ) ? wp_unslash($load_attr["post_title_tag"]) : '';
+		$title_desc_word_break = isset( $load_attr["title_desc_word_break"] ) ? wp_unslash($load_attr["title_desc_word_break"]) : '';
 		
-		$display_yith_list=$_POST["display_yith_list"];
-		$display_yith_compare=$_POST["display_yith_compare"];
-		$display_yith_wishlist=$_POST["display_yith_wishlist"];
-		$display_yith_quickview=$_POST["display_yith_quickview"];
+		$display_title_limit = isset( $load_attr["display_title_limit"] ) ? wp_unslash($load_attr["display_title_limit"]) : '';
+		$display_title_by = isset( $load_attr["display_title_by"] ) ? wp_unslash($load_attr["display_title_by"]) : '';
+		$display_title_input = isset( $load_attr["display_title_input"] ) ? wp_unslash($load_attr["display_title_input"]) : '';
+		$display_title_3_dots = isset( $load_attr["display_title_3_dots"] ) ? wp_unslash($load_attr["display_title_3_dots"]) : '';
 		
-		$dcb_single_product=$_POST["dcb_single_product"];
-		$dcb_variation_product=$_POST["dcb_variation_product"];
+		$feature_image = isset( $load_attr["feature_image"] ) ? wp_unslash($load_attr["feature_image"]) : '';
+		
+		$display_post_meta = isset( $load_attr["display_post_meta"] ) ? wp_unslash($load_attr["display_post_meta"]) : '';
+		$post_meta_tag_style = isset( $load_attr["post_meta_tag_style"] ) ? wp_unslash($load_attr["post_meta_tag_style"]) : '';
+		$display_post_meta_date = isset( $load_attr["display_post_meta_date"] ) ? wp_unslash($load_attr["display_post_meta_date"]) : '';
+		$display_post_meta_author = isset( $load_attr["display_post_meta_author"] ) ? wp_unslash($load_attr["display_post_meta_author"]) : '';
+		$display_post_meta_author_pic = isset( $load_attr["display_post_meta_author_pic"] ) ? wp_unslash($load_attr["display_post_meta_author_pic"]) : '';
+		$display_excerpt = isset( $load_attr["display_excerpt"] ) ? wp_unslash($load_attr["display_excerpt"]) : '';
+		$post_excerpt_count = isset( $load_attr["post_excerpt_count"] ) ? wp_unslash($load_attr["post_excerpt_count"]) : '';
+		$display_post_category = isset( $load_attr["display_post_category"] ) ? wp_unslash($load_attr["display_post_category"]) : '';
+		$post_category_style = isset( $load_attr["post_category_style"] ) ? wp_unslash($load_attr["post_category_style"]) : '';
+		$dpc_all = isset( $load_attr["dpc_all"] ) ? wp_unslash($load_attr["dpc_all"]) : '';
+		$featured_image_type = isset( $load_attr["featured_image_type"] ) ? wp_unslash($load_attr["featured_image_type"]) : '';
+		
+		$display_thumbnail = isset( $load_attr["display_thumbnail"] ) ? wp_unslash($load_attr["display_thumbnail"]) : '';
+		$thumbnail = isset( $load_attr["thumbnail"] ) ? wp_unslash($load_attr["thumbnail"]) : '';
+		$thumbnail_car = isset( $load_attr["thumbnail_car"] ) ? wp_unslash($load_attr["thumbnail_car"]) : '';
+		
+		$display_button = isset( $load_attr['display_button'] ) ? wp_unslash($load_attr['display_button']) : '';
+		$button_style = isset( $load_attr['button_style'] ) ? sanitize_text_field( wp_unslash($load_attr['button_style']) ) : '';
+		$before_after = isset( $load_attr['before_after'] ) ? sanitize_text_field( wp_unslash($load_attr['before_after']) ) : '';
+		$button_text = isset( $load_attr['button_text'] ) ? sanitize_text_field( wp_unslash($load_attr['button_text']) ) : '';
+		$button_icon_style = isset( $load_attr['button_icon_style'] ) ? sanitize_text_field( wp_unslash($load_attr['button_icon_style']) ) : '';
+		$button_icon = isset( $load_attr['button_icon'] ) ? $load_attr['button_icon'] : '';
+		$button_icons_mind = isset( $load_attr['button_icons_mind'] ) ? $load_attr['button_icons_mind'] : '';
+		
+		$skin_template = isset( $load_attr['skin_template'] ) ? $load_attr['skin_template'] : '';
+
+		$dynamic_template = $skin_template;
+		$display_product = isset( $load_attr["display_product"] ) ? wp_unslash($load_attr["display_product"]) : '';
+		$display_catagory = isset( $load_attr["display_catagory"] ) ? wp_unslash($load_attr["display_catagory"]) : '';
+		$display_rating = isset( $load_attr["display_rating"] ) ? wp_unslash($load_attr["display_rating"]) : '';
+		
+		$display_yith_list = isset( $load_attr["display_yith_list"] ) ? wp_unslash($load_attr["display_yith_list"]) : '';
+		$display_yith_compare = isset( $load_attr["display_yith_compare"] ) ? wp_unslash($load_attr["display_yith_compare"]) : '';
+		$display_yith_wishlist = isset( $load_attr["display_yith_wishlist"] ) ? wp_unslash($load_attr["display_yith_wishlist"]) : '';
+		$display_yith_quickview = isset( $load_attr["display_yith_quickview"] ) ? wp_unslash($load_attr["display_yith_quickview"]) : '';
+		
+		$dcb_single_product = isset( $load_attr["dcb_single_product"] ) ? wp_unslash($load_attr["dcb_single_product"]) : '';
+		$dcb_variation_product = isset( $load_attr["dcb_variation_product"] ) ? wp_unslash($load_attr["dcb_variation_product"]) : '';
 			
 		$desktop_class=$tablet_class=$mobile_class='';
 		if($layout!='carousel' && $layout!='metro'){
@@ -475,14 +499,14 @@ function theplus_more_post_ajax(){
 			$args['category__not_in'] = $ex_cat;
 		}
 		
-		/*if('' !== $exclude_posts){
+		if('' !== $exclude_posts){
 			$exclude_posts =explode(",",$exclude_posts);
 			$args['post__not_in'] = $exclude_posts;
 		}
 		if('' !== $include_posts){
 			$include_posts =explode(",",$include_posts);
 			$args['post__in'] = $include_posts;
-		}*/
+		}
 		
 		if(!empty($display_product) && $display_product=='featured'){
 			$args['tax_query']     = array(
@@ -574,8 +598,10 @@ function theplus_more_post_ajax(){
 		$ji=($post_load_more*$paged)-$post_load_more+$display_post+1;
 		$ij='';
 		$tablet_metro_class=$tablet_ij='';
-		$loop = new WP_Query($args);		
-			if ( $loop->have_posts() ) :
+		
+		$loop = new WP_Query($args);
+
+		if ( $loop->have_posts() ) :
 				while ($loop->have_posts()) {
 					$loop->the_post();
 					
@@ -601,7 +627,6 @@ function theplus_more_post_ajax(){
 							$the_button .='</div>';
 						$the_button .='</div>';	
 					}
-					
 					
 					if($post_load=='blogs'){
 						include THEPLUS_PATH ."includes/ajax-load-post/blog-style.php";
@@ -953,27 +978,32 @@ function theplus_google_ajax_register() {
 /*Forgot Password*/
 function theplus_ajax_forgot_password_ajax() {
 	global $wpdb, $wp_hasher;
+	$tpforgotdata = isset($_POST['tpforgotdata']) ? $_POST['tpforgotdata'] : '';
 	
-	$nonce = $_POST['nonce'];
+	$forgotdata = tp_check_decrypt_key($tpforgotdata);
+	$forgotdata = json_decode(stripslashes($forgotdata),true);
 	
-	if ( ! wp_verify_nonce( $nonce, 'tp_user_lost_password_action' ) )
-        die ( 'Security checked!');
+	$nonce = isset($forgotdata['noncesecure']) ? $forgotdata['noncesecure'] : '';
+	
+	if ( ! wp_verify_nonce( $nonce, 'tp_user_lost_password_action' ) ){
+		die ( 'Security checked!');
+	}        
 		
-	$user_login = $_POST['user_login'];
+	$user_login = isset($_POST['user_login']) ? wp_unslash($_POST['user_login']) : '';
 	
 	$errors = new WP_Error();
  
-    if ( empty( $_POST['user_login'] ) || ! is_string( $_POST['user_login'] ) ) {        
+    if ( empty( $user_login ) || ! is_string( $user_login ) ) {        
 		echo wp_json_encode( [ 'lost_pass'=>'empty_username', 'message'=> sprintf(__( '<strong>ERROR</strong>: Enter a username or email address.','theplus' )) ] );
 		exit;
-    } elseif ( strpos( $_POST['user_login'], '@' ) ) {
-        $user_data = get_user_by( 'email', trim( wp_unslash( $_POST['user_login'] ) ) );
+    } elseif ( strpos( $user_login, '@' ) ) {
+        $user_data = get_user_by( 'email', trim( wp_unslash( $user_login ) ) );
         if ( empty( $user_data ) ) {          
 			echo wp_json_encode( [ 'lost_pass'=>'invalid_email', 'message'=> sprintf(__( '<strong>ERROR</strong>: There is no account with that username or email address.','theplus' )) ] );
 			exit;
         }
     } else {
-        $login     = trim( $_POST['user_login'] );
+        $login     = trim( $user_login );
         $user_data = get_user_by( 'login', $login );
 		if ( ! $user_data ) {			
 			echo wp_json_encode( [ 'lost_pass'=>'invalidcombo', 'message'=> sprintf(__( '<strong>ERROR</strong>: There is no account with that username or email address.','theplus' )) ] );
@@ -997,21 +1027,34 @@ function theplus_ajax_forgot_password_ajax() {
 		$site_name = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );
 	}
 	
+	$reset_url = isset($forgotdata['reset_url']) ? $forgotdata['reset_url'] : '';
+	$forgot_url = isset($forgotdata['forgot_url']) ? $forgotdata['forgot_url'] : '';
+	
+	$forgotdatatceol = json_decode($forgotdata['tceol']);
+	
 	/*forgot password mail*/
-	if(!empty($_POST['tceol']) && (!empty($_POST['tceol']['tp_cst_email_lost_opt']) && $_POST['tceol']['tp_cst_email_lost_opt']=='yes')){
+	$message='';
+	if(!empty($forgotdata['tceol']) && (!empty($forgotdata['tceol']['tp_cst_email_lost_opt']) && $forgotdata['tceol']['tp_cst_email_lost_opt']=='yes')){
 					
-		$elsub =  html_entity_decode($_POST['tceol']['tp_cst_email_lost_subject']);
-		$elmsg =  html_entity_decode($_POST['tceol']['tp_cst_email_lost_message']);
-		$reset_url = $_POST["resetpageurl"];
-		$forgot_url = $_POST["forgotpageurl"];
-		if(!empty($_POST["f_p_opt"]) && $_POST["f_p_opt"]=='default'){		
-			$tplr_link = network_site_url( "wp-login.php?action=rp&key=$key&login=" . rawurlencode( $user_login ), 'login' );		
-		}else if(!empty($_POST["f_p_opt"]) && $_POST["f_p_opt"]=='f_p_frontend'){		
-			$tplr_link = network_site_url( "wp-login.php?action=theplusrp&key=$key&redirecturl=$reset_url&forgoturl=$forgot_url&login=" . rawurlencode( $user_login ), 'login' );
+		$elsub =  html_entity_decode($forgotdata['tceol']['tp_cst_email_lost_subject']);
+		$elmsg =  html_entity_decode($forgotdata['tceol']['tp_cst_email_lost_message']);
+		
+		if(!empty($forgotdata["f_p_opt"]) && $forgotdata["f_p_opt"]=='default'){		
+			$tplr_link_get = network_site_url( "wp-login.php?action=rp&key=$key&login=" . rawurlencode( $user_login ), 'login' );		
+		}else if(!empty($forgotdata["f_p_opt"]) && $forgotdata["f_p_opt"]=='f_p_frontend'){
+			$data_fp_frontdata = [];
+			$data_fp_frontdata['key'] = $key;
+			$data_fp_frontdata['redirecturl'] = $reset_url;
+			$data_fp_frontdata['forgoturl'] = $forgot_url;
+			$data_fp_frontdata['login'] = rawurlencode( $user_login );
+			
+			$frontdata_key= tp_plus_simple_decrypt( json_encode($data_fp_frontdata), 'ey' );
+			
+			$tplr_link_get = network_site_url( "wp-login.php?action=theplusrp&datakey=$frontdata_key", 'login' );
 		}
 		
 		$elfind = array( '/\[tplr_sitename\]/', '/\[tplr_username\]/', '/\[tplr_link\]/' );
-		$lrreplacement = array( $site_name,$user_login,$tplr_link);		
+		$lrreplacement = array( $site_name,$user_login,$tplr_link_get);		
 		$clrmessage = preg_replace( $elfind,$lrreplacement,$elmsg );
 		
 		$lrheaders = array( 'Content-Type: text/html; charset=UTF-8' );
@@ -1027,12 +1070,17 @@ function theplus_ajax_forgot_password_ajax() {
 		$message .= esc_html__( 'If this was a mistake, just ignore this email and nothing will happen.','theplus' ) . "\r\n\r\n";
 		$message .= esc_html__( 'To reset your password, visit the following address:','theplus' ) . "\r\n\r\n";
 		
-		$reset_url = $_POST["resetpageurl"];
-		$forgot_url = $_POST["forgotpageurl"];
-		if(!empty($_POST["f_p_opt"]) && $_POST["f_p_opt"]=='default'){		
+		if(!empty($forgotdata["f_p_opt"]) && $forgotdata["f_p_opt"]=='default'){		
 			$message .= '<' . network_site_url( "wp-login.php?action=rp&key=$key&login=" . rawurlencode( $user_login ), 'login' ) . ">\r\n";		
-		}else if(!empty($_POST["f_p_opt"]) && $_POST["f_p_opt"]=='f_p_frontend'){		
-			$message .= '<' . network_site_url( "wp-login.php?action=theplusrp&key=$key&redirecturl=$reset_url&forgoturl=$forgot_url&login=" . rawurlencode( $user_login ), 'login' ) . ">\r\n";
+		}else if(!empty($forgotdata["f_p_opt"]) && $forgotdata["f_p_opt"]=='f_p_frontend'){
+			$data_fp_frontdata = [];
+			$data_fp_frontdata['key'] = $key;
+			$data_fp_frontdata['redirecturl'] = $reset_url;
+			$data_fp_frontdata['forgoturl'] = $forgot_url;
+			$data_fp_frontdata['login'] = rawurlencode( $user_login );
+			
+			$frontdata_key= tp_plus_simple_decrypt( json_encode($data_fp_frontdata), 'ey' );
+			$message .= '<' . network_site_url( "wp-login.php?action=theplusrp&datakey=$frontdata_key", 'login' ) . ">\r\n";
 		}
 	}
 	
@@ -1043,29 +1091,65 @@ function theplus_ajax_forgot_password_ajax() {
 
 	$message = apply_filters( 'retrieve_password_message', $message, $key, $user_login, $user_data );
 	
-	if(!empty($_POST['tceol']) && (!empty($_POST['tceol']['tp_cst_email_lost_opt']) && $_POST['tceol']['tp_cst_email_lost_opt']=='yes')){
+	if(!empty($forgotdata['tceol']) && (!empty($forgotdata['tceol']['tp_cst_email_lost_opt']) && $forgotdata['tceol']['tp_cst_email_lost_opt']=='yes')){
 		echo wp_json_encode( [ 'lost_pass'=>'confirm', 'message'=> esc_html__('Check your e-mail for the reset password link.','theplus') ] );
 	}else{
 		if ( wp_mail( $user_email, wp_specialchars_decode( $title ), $message ) )
 		echo wp_json_encode( [ 'lost_pass'=>'confirm', 'message'=> esc_html__('Check your e-mail for the reset password link.','theplus') ] );
 	else
 		echo wp_json_encode( [ 'lost_pass'=>'could_not_sent', 'message'=> esc_html__('The e-mail could not be sent.','theplus') . "<br />\n" . esc_html__('Possible reason: your host may have disabled the mail() function.','theplus') ] );
-	}
-	
+	}	
 
 	exit;
 }
 add_action( 'wp_ajax_nopriv_theplus_ajax_forgot_password', 'theplus_ajax_forgot_password_ajax' );
 add_action( 'wp_ajax_theplus_ajax_forgot_password', 'theplus_ajax_forgot_password_ajax' );
 /*Forgot Password*/
+
+/*ENCRYPT DECRIPT*/
+function tp_check_decrypt_key($key){   	 
+	$decrypted = tp_plus_simple_decrypt( $key, 'dy' );
+	return $decrypted;
+}
+function tp_plus_simple_decrypt( $string, $action = 'dy' ) {
+	// you may change these values to your own
+	$tppk=get_option( 'theplus_purchase_code' );
+	$secret_key = ( isset($tppk['tp_api_key']) && !empty($tppk['tp_api_key']) ) ? $tppk['tp_api_key'] : 'PO$_key';
+	$secret_iv = 'PO$_iv';
+
+	$output = false;
+	$encrypt_method = "AES-128-CBC";
+	$key = hash( 'sha256', $secret_key );
+	$iv = substr( hash( 'sha256', $secret_iv ), 0, 16 );
+
+	if( $action == 'ey' ) {
+	$output = base64_encode( openssl_encrypt( $string, $encrypt_method, $key, 0, $iv ) );
+	}
+	else if( $action == 'dy' ){
+	$output = openssl_decrypt( base64_decode( $string ), $encrypt_method, $key, 0, $iv );
+	}
+
+	return $output;
+}
+
 /*reset password start*/
 add_action( 'wp_ajax_nopriv_theplus_ajax_reset_password', 'theplus_ajax_reset_password_ajax' );
 add_action( 'wp_ajax_theplus_ajax_reset_password', 'theplus_ajax_reset_password_ajax' );
 function theplus_ajax_reset_password_ajax() {
+	$tpresetdata = isset($_POST['tpresetdata']) ? $_POST['tpresetdata'] : '';
+	
+	$resetdata = tp_check_decrypt_key($tpresetdata);
+	$resetdata = json_decode(stripslashes($resetdata),true);
+	$user_login = isset($resetdata['login']) ? $resetdata['login'] : '';	
+	$user_login = urldecode($user_login);
+    $user_key = isset($resetdata['key']) ? $resetdata['key'] : '';
+	$nonce = isset($resetdata['noncesecure']) ? $resetdata['noncesecure'] : '';
+	
+	if ( ! wp_verify_nonce( $nonce, 'tp_reset_action' ) ){
+		die ( 'Security checked!');
+	}
+	
     if ( 'POST' == $_SERVER['REQUEST_METHOD'] ) {
-        $user_login = $_REQUEST['user_login'];
-        $user_key = $_REQUEST['user_key'];
- 
         $user = check_password_reset_key( $user_key, $user_login );
  
         if ( ! $user || is_wp_error( $user ) ) {
@@ -1102,35 +1186,57 @@ function theplus_ajax_reset_password_ajax() {
 }
 
 add_action( 'login_form_theplusrp','redirect_to_tp_custom_password_reset');
-if(!empty($_REQUEST['forgoturl'])){
+if(!empty($_REQUEST['action']) && $_REQUEST['action']=='theplusrp'){
 	add_action( 'login_form_resetpass','redirect_to_tp_custom_password_reset' );	
 }
 
 function redirect_to_tp_custom_password_reset() {
-		
+	
     if ( 'GET' == $_SERVER['REQUEST_METHOD'] ) {
         // Verify key / login combo
-		 
-        $user = check_password_reset_key( $_REQUEST['key'], $_REQUEST['login'] );		
+		
+		if(!empty($_REQUEST['action']) && $_REQUEST['action']=='theplusrp'){
+			$datakey = isset($_REQUEST['datakey']) ? $_REQUEST['datakey'] : '';
+			$forgotdata = tp_check_decrypt_key($datakey);
+			$forgotdata = json_decode(stripslashes($forgotdata),true);
+			$user = check_password_reset_key( $forgotdata['key'], rawurldecode($forgotdata['login']) );
+			$forgoturl = $forgotdata['forgoturl'];
+			$redirecturl = $forgotdata['redirecturl'];
+			$login = $forgotdata['login'];
+			$key = $forgotdata['key'];
+		}else{
+			$forgoturl = isset($_REQUEST['forgoturl']) ? $_REQUEST['forgoturl'] : '';
+			$redirecturl ='';
+			$login = isset($_REQUEST['login']) ? $_REQUEST['login'] : '';
+			$key = isset($_REQUEST['key']) ? $_REQUEST['key'] : '';
+			
+			$user = check_password_reset_key( $key, $login );			
+		}
+        	
         if ( ! $user || is_wp_error( $user ) ) {
+			
             if ( $user && $user->get_error_code() === 'expired_key' ) {
-				$redirect_url = $_REQUEST['forgoturl'];
+				$redirect_url = $forgoturl;
 				$redirect_url = add_query_arg( 'expired', 'expired', $redirect_url );
 				wp_safe_redirect($redirect_url);
             } else {
-				$redirect_url = $_REQUEST['forgoturl'];
+				$redirect_url = $forgoturl;
 				$redirect_url = add_query_arg( 'invalid', 'invalid', $redirect_url );
 				wp_safe_redirect($redirect_url);
             }
             exit;
         }
-		if(!empty($_REQUEST['redirecturl'])){
+		if(!empty($redirecturl)){	
+			$data_res = [];
+			$data_res['login'] =  $login;
+			$data_res['forgoturl'] = $forgoturl;
+			$data_res['key'] = $key;
 			
-			$redirect_url = $_REQUEST['redirecturl'];
-			$redirect_url = add_query_arg( 'login', esc_attr( $_REQUEST['login'] ), $redirect_url );
-			$redirect_url = add_query_arg( 'key', esc_attr( $_REQUEST['key'] ), $redirect_url );
+			$data_reskey= tp_plus_simple_decrypt( json_encode($data_res), 'ey' );
+			
+			$redirect_url = $redirecturl;
 			$redirect_url = add_query_arg( 'action', 'theplusrpf', $redirect_url );
-			$redirect_url = add_query_arg( 'forgoturl', $_REQUEST['forgoturl'], $redirect_url );
+			$redirect_url = add_query_arg( 'datakey', $data_reskey, $redirect_url );
 			wp_safe_redirect($redirect_url);
 		}else{
 			wp_safe_redirect(home_url());
@@ -1597,6 +1703,7 @@ if(!function_exists('theplus_api_check_license')){
 		$license_data->license = 'valid';
 		$license_data->expires = 'lifetime';
 		
+
 			if ( !empty($license_data) && true == $license_data->success  && !empty($license_data->success)) {
 				
 				if(!empty($license_data->license)){
@@ -1708,6 +1815,7 @@ if(!function_exists('theplus_check_api_status')){
     	return 1;
 	}
 }
+
 //@version 3.3.5
 function check_expired_date_key() {
 	$option_name = 'theplus_verified';

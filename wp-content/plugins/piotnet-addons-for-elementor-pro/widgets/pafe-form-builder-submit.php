@@ -369,6 +369,10 @@ class PAFE_Form_Builder_Submit extends \Elementor\Widget_Base {
                 'name'  => 'sendinblue',
                 'label' => 'Sendinblue',
             ],
+            [
+                'name'  => 'twilio_sendgrid',
+                'label' => 'Twilio SendGrid',
+            ],
 		];
 
 		$actions_options = [];
@@ -5033,6 +5037,105 @@ class PAFE_Form_Builder_Submit extends \Elementor\Widget_Base {
 		);
 
 		$this->end_controls_section();
+
+		//SendGrid
+		$this->start_controls_section(
+			'section_twilio_sendgrid',
+			[
+				'label' => __( 'Twilio SendGrid', 'pafe' ),
+				'condition' => [
+					'submit_actions' => 'twilio_sendgrid',
+				],
+			]
+		);
+
+		// $this->add_control(
+		// 	'twilio_sendgrid_url',
+		// 	[
+		// 		'label'       => __( 'SendGrid URL', 'pafe' ),
+		// 		'type'        => \Elementor\Controls_Manager::TEXT,
+		// 		'default' => 'https://api.sendgrid.com/v3/marketing/contacts',
+		// 		'label_block' => true,
+		// 	]
+		// );
+
+		$this->add_control(
+			'twilio_sendgrid_api_key',
+			[
+				'label' => __( 'API Key', 'pafe' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'label_block' => true,
+				// 'condition' => [
+				// 	'mailchimp_api_key_source' => 'custom',
+				// ],
+				// 'description' => __( 'Use this field to set a custom API Key for the current form', 'pafe' ),
+			]
+		);
+
+		$this->add_control(
+			'twilio_sendgrid_get_data_list',
+			[
+				'type' => \Elementor\Controls_Manager::RAW_HTML,
+				'raw' => __( '<button data-pafe-twilio-sendgrid-get-data-list class="pafe-admin-button-ajax elementor-button elementor-button-default" type="button">Get List IDs&ensp;<i class="fas fa-spinner fa-spin"></i></button><br><div data-pafe-twilio-sendgrid-get-data-list-results></div>', 'pafe' ),
+			]
+		);
+
+		$this->add_control(
+			'twilio_sendgrid_list_ids',
+			[
+				'label' => __( 'List IDs', 'pafe' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'label_block' => true,
+				'title' => __( 'Separate IDs with commas', 'pafe' ),
+				'render_type' => 'none',
+			]
+		);
+
+		$this->add_control(
+			'twilio_sendgrid_email_field_shortcode',
+			[
+				'label'       => __( 'Email Field Shortcode* (Required)', 'pafe' ),
+				'type'        => \Elementor\Controls_Manager::TEXT,
+				'placeholder' => __( 'E.g [field id="email"]', 'pafe' ),
+				'label_block' => true,
+			]
+		);
+
+		$repeater = new \Elementor\Repeater();
+
+		$repeater->add_control(
+			'twilio_sendgrid_field_mapping_tag_name',
+			[
+				'label' => __( 'Tag Name', 'pafe' ),
+				'label_block' => true,
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'placeholder' => __( 'E.g first_name, last_name, phone_number', 'pafe' ),
+			]
+		);
+
+		$repeater->add_control(
+			'twilio_sendgrid_field_mapping_field_shortcode',
+			[
+				'label' => __( 'Field Shortcode', 'pafe' ),
+				'label_block' => true,
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'placeholder' => __( 'E.g [field id="first_name"]', 'pafe' ),
+			]
+		);
+
+		$this->add_control(
+			'twilio_sendgrid_field_mapping_list',
+			array(
+				'type'    => Elementor\Controls_Manager::REPEATER,
+				'fields'  => $repeater->get_controls(),
+				'title_field' => '{{{ twilio_sendgrid_field_mapping_tag_name }}} = {{{ twilio_sendgrid_field_mapping_field_shortcode }}}',
+				'label' => __( 'Field Mapping', 'pafe' ),
+			)
+		);
+
+		$this->end_controls_section();
+		//End SendGrid
 
 		//Hubspot
 

@@ -10,10 +10,10 @@ namespace TheplusAddons\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Utils;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Box_Shadow;
 use TheplusAddons\Theplus_Element_Load;
@@ -696,7 +696,7 @@ class ThePlus_Process_Steps extends Widget_Base {
 			[
 				'name' => 'tab_text_typography',
 				'label' => esc_html__( 'Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .tp-process-steps-widget .tp-process-steps-wrapper .tp-ps-icon-img .tp-ps-text',
 			]
 		);

@@ -11,6 +11,7 @@ namespace PremiumAddonsPro\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Core\Schemes\Color;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
@@ -144,7 +145,7 @@ class Premium_Facebook_Reviews extends Widget_Base {
 	 * @since 1.0.0
 	 * @access protected
 	 */
-	protected function _register_controls() { // phpcs:ignore PSR2.Methods.MethodDeclaration.Underscore
+	protected function register_controls() { // phpcs:ignore PSR2.Methods.MethodDeclaration.Underscore
 
 		$this->start_controls_section(
 			'general',
@@ -200,18 +201,17 @@ class Premium_Facebook_Reviews extends Widget_Base {
 				'type'    => Controls_Manager::TEXTAREA,
 			)
 		);
-
-		// $this->add_control(
-		// 'clear_cache',
-		// array(
-		// 'type'        => Controls_Manager::RAW_HTML,
-		// 'raw'         => '<form onsubmit="clearReviewsCache(this);" action="javascript:void(0);" data-type="facebook"><input type="submit" value="Clear Cached Data" class="elementor-button" style="background-color: #3b5998; color: #fff;"></form>',
-		// 'label_block' => true,
-		// 'condition'   => array(
-		// 'page_access!' => '',
-		// ),
-		// )
-		// );
+		$this->add_control(
+			'clear_cache',
+			array(
+				'type'        => Controls_Manager::RAW_HTML,
+				'raw'         => '<form onsubmit="clearReviewsCache(this);" action="javascript:void(0);" data-target="page_id"><input type="submit" value="Clear Cached Data" class="elementor-button" style="background-color: #3b5998; color: #fff;"></form>',
+				'label_block' => true,
+				'condition'   => array(
+					'page_access!' => '',
+				),
+			)
+		);
 
 		$this->end_controls_section();
 
@@ -231,9 +231,62 @@ class Premium_Facebook_Reviews extends Widget_Base {
 				'options'      => array(
 					'default' => __( 'Classic', 'premium-addons-pro' ),
 					'card'    => __( 'Cards', 'premium-addons-pro' ),
+					'bubble'  => __( 'Bubble', 'premium-addons-pro' ),
 				),
 				'render_type'  => 'template',
 				'prefix_class' => 'premium-social-reviews-',
+			)
+		);
+
+		$this->add_control(
+			'source_icon',
+			array(
+				'label' => __( 'Facebook Icon', 'premium-addons-pro' ),
+				'type'  => Controls_Manager::SWITCHER,
+			)
+		);
+
+		$left_direction = is_rtl() ? 'right' : 'left';
+
+		$this->add_responsive_control(
+			'iconh_position',
+			array(
+				'label'       => __( 'Horizontal Position (%)', 'premium-addons-pro' ),
+				'type'        => Controls_Manager::SLIDER,
+				'label_block' => true,
+				'size_units'  => '%',
+				'default'     => array(
+					'size' => 0,
+					'unit' => '%',
+				),
+				'min'         => 0,
+				'max'         => 100,
+				'condition'   => array(
+					'source_icon' => 'yes',
+				),
+				'selectors'   => array(
+					'{{WRAPPER}} .premium-fb-rev-icon' => $left_direction . ': {{SIZE}}{{UNIT}};--translate-x: -{{SIZE}}{{UNIT}}',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'iconv_position',
+			array(
+				'label'       => __( 'Vertical Position (%)', 'premium-addons-pro' ),
+				'type'        => Controls_Manager::SLIDER,
+				'label_block' => true,
+				'size_units'  => '%',
+				'default'     => array(
+					'size' => 0,
+					'unit' => '%',
+				),
+				'condition'   => array(
+					'source_icon' => 'yes',
+				),
+				'selectors'   => array(
+					'{{WRAPPER}} .premium-fb-rev-icon' => 'top: {{SIZE}}{{UNIT}}; --translate-y: -{{SIZE}}{{UNIT}}',
+				),
 			)
 		);
 
@@ -245,6 +298,65 @@ class Premium_Facebook_Reviews extends Widget_Base {
 				'label'     => __( 'Page', 'premium-addons-pro' ),
 				'condition' => array(
 					'page_info' => 'yes',
+				),
+			)
+		);
+
+		$this->add_control(
+			'place_reviews_position',
+			array(
+				'label'        => __( 'Place Info Next to Reviews', 'premium-addons-pro' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'prefix_class' => 'premium-fb-page-next-',
+				'condition'    => array(
+					'page_info' => 'yes',
+				),
+				'render_type'  => 'template',
+			)
+		);
+
+		$this->add_responsive_control(
+			'reviews_width',
+			array(
+				'label'       => __( 'Reviews Width (%)', 'premium-addons-pro' ),
+				'type'        => Controls_Manager::SLIDER,
+				'condition'   => array(
+					'page_info'              => 'yes',
+					'place_reviews_position' => 'yes',
+				),
+				'render_type' => 'template',
+				'selectors'   => array(
+					'{{WRAPPER}} .premium-fb-rev-content, {{WRAPPER}} .slick-dots' => 'width: {{SIZE}}%',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'business_info_valign',
+			array(
+				'label'        => __( 'Vertical Alignment', 'premium-addons-pro' ),
+				'type'         => Controls_Manager::CHOOSE,
+				'options'      => array(
+					'top'    => array(
+						'title' => __( 'Top', 'premium-addons-pro' ),
+						'icon'  => 'fa fa-long-arrow-up',
+					),
+					'center' => array(
+						'title' => __( 'Center', 'premium-addons-pro' ),
+						'icon'  => 'fa fa-align-justify',
+					),
+					'bottom' => array(
+						'title' => __( 'Bottom', 'premium-addons-pro' ),
+						'icon'  => 'fa fa-long-arrow-down',
+					),
+				),
+				'prefix_class' => 'premium-reviews-place-v-',
+				'separator'    => 'after',
+				'default'      => 'top',
+				'toggle'       => false,
+				'condition'    => array(
+					'page_info'              => 'yes',
+					'place_reviews_position' => 'yes',
 				),
 			)
 		);
@@ -338,9 +450,40 @@ class Premium_Facebook_Reviews extends Widget_Base {
 		);
 
 		$this->add_responsive_control(
+			'page_text_halign',
+			array(
+				'label'     => __( 'Text Horizontal Alignment', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::CHOOSE,
+				'options'   => array(
+					'left'   => array(
+						'title' => __( 'Left', 'premium-addons-pro' ),
+						'icon'  => 'fa fa-align-left',
+					),
+					'center' => array(
+						'title' => __( 'Center', 'premium-addons-pro' ),
+						'icon'  => 'fa fa-align-center',
+					),
+					'right'  => array(
+						'title' => __( 'Right', 'premium-addons-pro' ),
+						'icon'  => 'fa fa-align-right',
+					),
+				),
+				'toggle'    => false,
+				'default'   => 'left',
+				'selectors' => array(
+					'{{WRAPPER}} .premium-fb-rev-page-inner .premium-fb-rev-page-right' => 'text-align: {{VALUE}};',
+				),
+				'condition' => array(
+					'page_display' => 'inline',
+					'source_image' => 'true',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
 			'place_text_align',
 			array(
-				'label'     => __( 'Text Alignment', 'premium-addons-pro' ),
+				'label'     => __( 'Text Vertical Alignment', 'premium-addons-pro' ),
 				'type'      => Controls_Manager::CHOOSE,
 				'options'   => array(
 					'flex-start' => array(
@@ -429,9 +572,9 @@ class Premium_Facebook_Reviews extends Widget_Base {
 		$this->add_responsive_control(
 			'reviews_columns',
 			array(
-				'label'       => __( 'Reviews/Row', 'premium-addons-pro' ),
-				'type'        => Controls_Manager::SELECT,
-				'options'     => array(
+				'label'          => __( 'Reviews/Row', 'premium-addons-pro' ),
+				'type'           => Controls_Manager::SELECT,
+				'options'        => array(
 					'100%'    => __( '1 Column', 'premium-addons-pro' ),
 					'50%'     => __( '2 Columns', 'premium-addons-pro' ),
 					'33.33%'  => __( '3 Columns', 'premium-addons-pro' ),
@@ -439,9 +582,11 @@ class Premium_Facebook_Reviews extends Widget_Base {
 					'20%'     => __( '5 Columns', 'premium-addons-pro' ),
 					'16.667%' => __( '6 Columns', 'premium-addons-pro' ),
 				),
-				'default'     => '33.33%',
-				'render_type' => 'template',
-				'selectors'   => array(
+				'default'        => '33.33%',
+				'tablet_default' => '100%',
+				'mobile_default' => '100%',
+				'render_type'    => 'template',
+				'selectors'      => array(
 					'{{WRAPPER}} .premium-fb-rev-review-wrap' => 'width: {{VALUE}}',
 				),
 			)
@@ -450,14 +595,20 @@ class Premium_Facebook_Reviews extends Widget_Base {
 		$this->add_control(
 			'reviews_display',
 			array(
-				'label'       => __( 'Display', 'premium-addons-pro' ),
-				'type'        => Controls_Manager::SELECT,
-				'options'     => array(
-					'inline' => __( 'Inline', 'premium-addons-pro' ),
-					'block'  => __( 'Block', 'premium-addons-pro' ),
+				'label'        => __( 'Image Position', 'premium-addons-pro' ),
+				'type'         => Controls_Manager::SELECT,
+				'options'      => array(
+					'block'  => __( 'Above Name', 'premium-addons-pro' ),
+					'left'   => __( 'Left of Name', 'premium-addons-pro' ),
+					'inline' => __( 'Left of all content', 'premium-addons-pro' ),
 				),
-				'default'     => 'block',
-				'render_type' => 'ui',
+				'default'      => 'block',
+				'render_type'  => 'template',
+				'condition'    => array(
+					'reviewer_image' => 'yes',
+					'skin_type!'     => 'bubble',
+				),
+				'prefix_class' => 'premium-reviewer-image-pos-',
 			)
 		);
 
@@ -512,14 +663,14 @@ class Premium_Facebook_Reviews extends Widget_Base {
 						'icon'  => 'fa fa-long-arrow-down',
 					),
 				),
-				'default'   => 'center',
+				'default'   => 'flex-start',
 				'toggle'    => false,
 				'selectors' => array(
-					'{{WRAPPER}} .premium-fb-rev-review-inner .premium-fb-rev-content-right' => 'align-self: {{VALUE}};',
+					'{{WRAPPER}} .premium-fb-rev-reviewer-header' => 'justify-content: {{VALUE}};',
 				),
 				'condition' => array(
-					'reviews_display' => 'inline',
-					'skin_type'       => 'default',
+					'reviews_display' => 'left',
+					'skin_type!'      => 'bubble',
 				),
 			)
 		);
@@ -586,9 +737,23 @@ class Premium_Facebook_Reviews extends Widget_Base {
 				'toggle'    => false,
 				'condition' => array(
 					'reviews_display' => 'block',
+					'skin_type!'      => 'bubble',
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-fb-rev-container .premium-fb-rev-review' => 'text-align: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'bubble_arrow',
+			array(
+				'label'        => __( 'Bubble Arrow', 'premium-addons-pro' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'default'      => 'true',
+				'return_value' => 'true',
+				'condition'    => array(
+					'skin_type' => 'bubble',
 				),
 			)
 		);
@@ -602,9 +767,9 @@ class Premium_Facebook_Reviews extends Widget_Base {
 		);
 
 		$this->add_control(
-			'carousel_play',
+			'infinite_autoplay',
 			array(
-				'label'     => __( 'Auto Play', 'premium-addons-pro' ),
+				'label'     => __( 'Infinite Autoplay', 'premium-addons-pro' ),
 				'type'      => Controls_Manager::SWITCHER,
 				'condition' => array(
 					'reviews_carousel' => 'yes',
@@ -613,15 +778,77 @@ class Premium_Facebook_Reviews extends Widget_Base {
 		);
 
 		$this->add_control(
+			'rows',
+			array(
+				'label'     => __( 'Rows/Column', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::NUMBER,
+				'default'   => 2,
+				'min'       => 1,
+				'max'       => 3,
+				'condition' => array(
+					'reviews_carousel'  => 'yes',
+					'infinite_autoplay' => 'yes',
+				),
+			)
+		);
+
+		$this->add_control(
+			'carousel_play',
+			array(
+				'label'     => __( 'Autoplay', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::SWITCHER,
+				'condition' => array(
+					'reviews_carousel'   => 'yes',
+					'infinite_autoplay!' => 'yes',
+				),
+			)
+		);
+
+		$this->add_control(
 			'carousel_autoplay_speed',
 			array(
-				'label'       => __( 'Autoplay Speed', 'premium-addons-pro' ),
-				'description' => __( 'Autoplay Speed means at which time the next slide should come. Set a value in milliseconds (ms)', 'premium-addons-pro' ),
-				'type'        => Controls_Manager::NUMBER,
-				'default'     => 5000,
-				'condition'   => array(
-					'reviews_carousel' => 'yes',
-					'carousel_play'    => 'yes',
+				'label'      => __( 'Autoplay Speed', 'premium-addons-pro' ),
+				'type'       => Controls_Manager::NUMBER,
+				'default'    => 5000,
+				'conditions' => array(
+					'terms' => array(
+						array(
+							'name'  => 'reviews_carousel',
+							'value' => 'yes',
+						),
+						array(
+							'relation' => 'or',
+							'terms'    => array(
+								array(
+									'name'  => 'carousel_play',
+									'value' => 'yes',
+								),
+								array(
+									'name'  => 'infinite_autoplay',
+									'value' => 'yes',
+								),
+							),
+						),
+					),
+				),
+			)
+		);
+
+		$this->add_control(
+			'carousel_navigation',
+			array(
+				'label'     => __( 'Navigation', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::SELECT,
+				'options'   => array(
+					'none'   => __( 'None', 'premium-addons-pro' ),
+					'arrows' => __( 'Arrows', 'premium-addons-pro' ),
+					'dots'   => __( 'Dots', 'premium-addons-pro' ),
+					'all'    => __( 'Dots & Arrows', 'premium-addons-pro' ),
+				),
+				'default'   => 'arrows',
+				'condition' => array(
+					'reviews_carousel'   => 'yes',
+					'infinite_autoplay!' => 'yes',
 				),
 			)
 		);
@@ -643,7 +870,9 @@ class Premium_Facebook_Reviews extends Widget_Base {
 					),
 				),
 				'condition'  => array(
-					'reviews_carousel' => 'yes',
+					'reviews_carousel'    => 'yes',
+					'carousel_navigation' => array( 'arrows', 'all' ),
+					'infinite_autoplay!'  => 'yes',
 				),
 				'selectors'  => array(
 					'{{WRAPPER}} .premium-fb-rev-reviews a.carousel-arrow.carousel-next' => 'right: {{SIZE}}{{UNIT}};',
@@ -652,13 +881,19 @@ class Premium_Facebook_Reviews extends Widget_Base {
 			)
 		);
 
-		$this->add_control(
-			'carousel_dots',
+		$this->add_responsive_control(
+			'carousel_dots_pos',
 			array(
-				'label'     => __( 'Navigation Dots', 'premium-addons-for-elementor' ),
-				'type'      => Controls_Manager::SWITCHER,
-				'condition' => array(
-					'reviews_carousel' => 'yes',
+				'label'      => __( 'Dots Position', 'premium-addons-pro' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', 'em', '%' ),
+				'condition'  => array(
+					'reviews_carousel'    => 'yes',
+					'carousel_navigation' => array( 'dots', 'all' ),
+					'infinite_autoplay!'  => 'yes',
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .premium-fb-rev-reviews ul.slick-dots,{{WRAPPER}} .premium-fb-dots-container ul.slick-dots' => 'bottom: {{SIZE}}{{UNIT}}',
 				),
 			)
 		);
@@ -667,7 +902,7 @@ class Premium_Facebook_Reviews extends Widget_Base {
 			'carousel_rtl',
 			array(
 				'label'       => __( 'RTL Mode', 'premium-addons-pro' ),
-				'description' => __( 'Recommended for right to left Sites', 'premium-addons-pro' ),
+				'description' => __( 'Recommended for RTL Sites', 'premium-addons-pro' ),
 				'type'        => Controls_Manager::SWITCHER,
 				'condition'   => array(
 					'reviews_carousel' => 'yes',
@@ -736,6 +971,17 @@ class Premium_Facebook_Reviews extends Widget_Base {
 		);
 
 		$this->add_control(
+			'reviews_number',
+			array(
+				'label'     => __( 'Number of Reviews', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::SWITCHER,
+				'condition' => array(
+					'page_info' => 'yes',
+				),
+			)
+		);
+
+		$this->add_control(
 			'source_stars',
 			array(
 				'label'        => __( 'Rating Stars', 'premium-addons-pro' ),
@@ -753,16 +999,20 @@ class Premium_Facebook_Reviews extends Widget_Base {
 		$this->start_controls_section(
 			'review_settings',
 			array(
-				'label' => __( 'Review Settings', 'premium-addons-pro' ),
+				'label' => __( 'Reviews Settings', 'premium-addons-pro' ),
 			)
 		);
 
 		$this->add_control(
 			'reviewer_image',
 			array(
-				'label'   => __( 'Show Reviewer Image', 'premium-addons-pro' ),
-				'type'    => Controls_Manager::SWITCHER,
-				'default' => 'yes',
+				'label'        => __( 'Show Reviewer Image', 'premium-addons-pro' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'default'      => 'yes',
+				'render_type'  => 'template',
+				'return_value' => 'yes',
+				'prefix_class' => 'premium-reviewer-image-',
+
 			)
 		);
 
@@ -772,6 +1022,24 @@ class Premium_Facebook_Reviews extends Widget_Base {
 				'label'   => __( 'Show Stars', 'premium-addons-pro' ),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
+			)
+		);
+
+		$this->add_control(
+			'stars_pos_bubble',
+			array(
+				'label'        => __( 'Stars Position', 'premium-addons-pro' ),
+				'type'         => Controls_Manager::SELECT,
+				'options'      => array(
+					'above' => __( 'Above Name', 'premium-addons-pro' ),
+					'below' => __( 'Below Name', 'premium-addons-pro' ),
+				),
+				'default'      => 'below',
+				'condition'    => array(
+					'stars'     => 'yes',
+					'skin_type' => 'bubble',
+				),
+				'prefix_class' => 'premium-review-stars-',
 			)
 		);
 
@@ -824,17 +1092,55 @@ class Premium_Facebook_Reviews extends Widget_Base {
 		$this->add_control(
 			'text',
 			array(
-				'label'   => __( 'Show Review Text', 'premium-addons-pro' ),
-				'type'    => Controls_Manager::SWITCHER,
-				'default' => 'yes',
+				'label'     => __( 'Show Review Text', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::SWITCHER,
+				'default'   => 'yes',
+				'separator' => 'before',
+			)
+		);
+
+		$this->add_control(
+			'hide_empty',
+			array(
+				'label'     => __( 'Hide Reviews With Empty Text', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::SWITCHER,
+				'condition' => array(
+					'text' => 'yes',
+				),
+			)
+		);
+
+		$this->add_control(
+			'words_num',
+			array(
+				'label'     => __( 'Review Words Length', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::NUMBER,
+				'min'       => 1,
+				'condition' => array(
+					'text' => 'yes',
+				),
+			)
+		);
+
+		$this->add_control(
+			'readmore',
+			array(
+				'label'     => __( 'Read More Text', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::TEXT,
+				'default'   => __( 'Read More »', 'premium-addons-pro' ),
+				'condition' => array(
+					'text'       => 'yes',
+					'words_num!' => '',
+				),
 			)
 		);
 
 		$this->add_control(
 			'filter',
 			array(
-				'label' => __( 'Filter', 'premium-addons-pro' ),
-				'type'  => Controls_Manager::SWITCHER,
+				'label'     => __( 'Filter by Rate', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::SWITCHER,
+				'separator' => 'before',
 			)
 		);
 
@@ -881,27 +1187,6 @@ class Premium_Facebook_Reviews extends Widget_Base {
 				'description' => __( 'Set a number of reviews to retrieve', 'premium-addons-pro' ),
 				'condition'   => array(
 					'limit' => 'yes',
-				),
-			)
-		);
-
-		$this->add_control(
-			'words_num',
-			array(
-				'label' => __( 'Review Words Length', 'premium-addons-pro' ),
-				'type'  => Controls_Manager::NUMBER,
-				'min'   => 1,
-			)
-		);
-
-		$this->add_control(
-			'readmore',
-			array(
-				'label'     => __( 'Read More Text', 'premium-addons-pro' ),
-				'type'      => Controls_Manager::TEXT,
-				'default'   => __( 'Read More »', 'premium-addons-pro' ),
-				'condition' => array(
-					'words_num!' => '',
 				),
 			)
 		);
@@ -1028,7 +1313,7 @@ class Premium_Facebook_Reviews extends Widget_Base {
 				),
 				'default'    => array(
 					'unit' => 'px',
-					'size' => 60,
+					'size' => 100,
 				),
 				'condition'  => array(
 					'page_custom_image_switch!' => 'yes',
@@ -1124,6 +1409,7 @@ class Premium_Facebook_Reviews extends Widget_Base {
 				),
 				'selectors'  => array(
 					'{{WRAPPER}} .premium-fb-rev-review-inner .premium-fb-rev-img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .premium-rev-arrow-bubble' => 'left: calc( {{SIZE}}{{UNIT}} - 24px );',
 				),
 			)
 		);
@@ -1183,6 +1469,46 @@ class Premium_Facebook_Reviews extends Widget_Base {
 				'condition' => array(
 					'page_info' => 'yes',
 				),
+			)
+		);
+
+		$this->add_control(
+			'revs_number_label',
+			array(
+				'label'     => __( 'Reviews Number', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::HEADING,
+				'condition' => array(
+					'reviews_number' => 'yes',
+				),
+			)
+		);
+
+		$this->add_control(
+			'number_color',
+			array(
+				'label'     => __( 'Text Color', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::COLOR,
+				'scheme'    => array(
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
+				),
+				'condition' => array(
+					'reviews_number' => 'yes',
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .premium-fb-rev-rating-count span' => 'color: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'      => 'number_typo',
+				'condition' => array(
+					'reviews_number' => 'yes',
+				),
+				'selector'  => '{{WRAPPER}} .premium-fb-rev-rating-count span',
 			)
 		);
 
@@ -1302,6 +1628,7 @@ class Premium_Facebook_Reviews extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'page_typo',
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-fb-rev-page-link',
 			)
 		);
@@ -1342,6 +1669,7 @@ class Premium_Facebook_Reviews extends Widget_Base {
 				'type'      => Controls_Manager::NUMBER,
 				'min'       => 1,
 				'max'       => 50,
+				'default'   => 20,
 				'condition' => array(
 					'source_stars' => 'true',
 				),
@@ -1445,29 +1773,39 @@ class Premium_Facebook_Reviews extends Widget_Base {
 		$this->add_control(
 			'reviews_star_size',
 			array(
-				'label' => __( 'Star Size', 'premium-addons-pro' ),
-				'type'  => Controls_Manager::NUMBER,
-				'min'   => 1,
-				'max'   => 50,
+				'label'     => __( 'Star Size', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::NUMBER,
+				'min'       => 1,
+				'max'       => 50,
+				'default'   => 15,
+				'condition' => array(
+					'stars' => 'yes',
+				),
 			)
 		);
 
 		$this->add_control(
 			'reviews_fill',
 			array(
-				'label'   => __( 'Star Color', 'premium-addons-pro' ),
-				'type'    => Controls_Manager::COLOR,
-				'global'  => false,
-				'default' => '#ffab40',
+				'label'     => __( 'Star Color', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::COLOR,
+				'global'    => false,
+				'default'   => '#ffab40',
+				'condition' => array(
+					'stars' => 'yes',
+				),
 			)
 		);
 
 		$this->add_control(
 			'reviews_empty',
 			array(
-				'label'  => __( 'Empty Star Color', 'premium-addons-pro' ),
-				'type'   => Controls_Manager::COLOR,
-				'global' => false,
+				'label'     => __( 'Empty Star Color', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::COLOR,
+				'global'    => false,
+				'condition' => array(
+					'stars' => 'yes',
+				),
 			)
 		);
 
@@ -1514,8 +1852,17 @@ class Premium_Facebook_Reviews extends Widget_Base {
 				'label'      => __( 'Margin', 'premium-addons-pro' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
+				'default'    => array(
+					'top'    => 0,
+					'right'  => 10,
+					'bottom' => 30,
+					'left'   => 10,
+				),
 				'selectors'  => array(
 					'{{WRAPPER}} .premium-fb-rev-review-wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .premium-fb-rev-reviews a.carousel-arrow , {{WRAPPER}}.premium-fb-page-next-yes.premium-reviews-place-v-center .premium-fb-rev-page-inner ' => 'transform: translateY(calc(-50% + {{TOP}}{{UNIT}}/2 - {{BOTTOM}}{{UNIT}}/2 )) !important',
+					'{{WRAPPER}}.premium-fb-page-next-yes.premium-reviews-place-v-bottom .premium-fb-rev-page-inner ' => 'transform: translateY(calc(-100% - {{BOTTOM}}{{UNIT}} )) !important',
+					'{{WRAPPER}}.premium-fb-page-next-yes.premium-reviews-place-v-top .premium-fb-rev-page-inner ' => 'transform: translateY({{TOP}}{{UNIT}}) !important',
 				),
 			)
 		);
@@ -1576,6 +1923,7 @@ class Premium_Facebook_Reviews extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'reviewer_typo',
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-fb-rev-reviewer-link',
 			)
 		);
@@ -1658,6 +2006,130 @@ class Premium_Facebook_Reviews extends Widget_Base {
 		$this->end_controls_section();
 
 		$this->start_controls_section(
+			'bubble_style',
+			array(
+				'label'     => __( 'Review Container', 'premium-addons-pro' ),
+				'tab'       => Controls_Manager::TAB_STYLE,
+				'condition' => array(
+					'text'      => 'yes',
+					'skin_type' => 'bubble',
+				),
+			)
+		);
+
+		$this->add_control(
+			'bubble_background',
+			array(
+				'label'     => __( 'Background Color', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .premium-fb-rev-rating' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .premium-rev-arrow'     => 'border-top-color: {{VALUE}};',
+
+				),
+			)
+		);
+
+		$this->add_control(
+			'bubble_border_type',
+			array(
+				'label'       => __( 'Border Type', 'premium-addons-pro' ),
+				'type'        => Controls_Manager::SELECT,
+				'default'     => 'solid',
+				'label_block' => false,
+				'options'     => array(
+					'none'   => __( 'None', 'premium-addons-pro' ),
+					'solid'  => __( 'Solid', 'premium-addons-pro' ),
+					'double' => __( 'Double', 'premium-addons-pro' ),
+					'dotted' => __( 'Dotted', 'premium-addons-pro' ),
+					'dashed' => __( 'Dashed', 'premium-addons-pro' ),
+					'groove' => __( 'Groove', 'premium-addons-pro' ),
+				),
+				'selectors'   => array(
+					'{{WRAPPER}} .premium-fb-rev-rating' => 'border-style: {{VALUE}};',
+				),
+				'condition'   => array(
+					'skin_type' => 'bubble',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'bubble_border_width',
+			array(
+				'label'     => __( 'Border Width', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => array(
+					'px' => array(
+						'min' => 1,
+						'max' => 10,
+					),
+				),
+				'condition' => array(
+					'bubble_border_type!' => 'none',
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .premium-fb-rev-rating' => 'border-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .premium-rev-arrow'     => 'top: -{{SIZE}}px;',
+				),
+			)
+		);
+
+		$this->add_control(
+			'bubble_border_color',
+			array(
+				'label'     => __( 'Color', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::COLOR,
+				'condition' => array(
+					'bubble_border_type!' => 'none',
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .premium-fb-rev-rating' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .premium-rev-arrow-bubble-border' => 'border-top-color: {{VALUE}};',
+				),
+				'selector'  => '{{WRAPPER}} .premium-fb-rev-rating',
+			)
+		);
+
+		$this->add_control(
+			'bubble_border_radius',
+			array(
+				'label'      => __( 'Border Radius', 'premium-addons-pro' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', 'em', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .premium-fb-rev-rating' => 'border-radius: {{SIZE}}{{UNIT}}',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'bubble_margin',
+			array(
+				'label'      => __( 'Margin', 'premium-addons-pro' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', 'em', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .premium-fb-rev-rating' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'bubble_padding',
+			array(
+				'label'      => __( 'Padding', 'premium-addons-pro' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', 'em', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .premium-fb-rev-text-wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
 			'reviewer_txt',
 			array(
 				'label'     => __( 'Review Text', 'premium-addons-pro' ),
@@ -1697,6 +2169,12 @@ class Premium_Facebook_Reviews extends Widget_Base {
 				'label'      => __( 'Margin', 'premium-addons-pro' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
+				'default'    => array(
+					'top'    => 10,
+					'right'  => 0,
+					'bottom' => 0,
+					'left'   => 0,
+				),
 				'selectors'  => array(
 					'{{WRAPPER}} .premium-fb-rev-text-wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
 				),
@@ -1711,6 +2189,7 @@ class Premium_Facebook_Reviews extends Widget_Base {
 				'label'     => __( 'Readmore Text', 'premium-addons-pro' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => array(
+					'text'       => 'yes',
 					'words_num!' => '',
 				),
 			)
@@ -1889,7 +2368,9 @@ class Premium_Facebook_Reviews extends Widget_Base {
 				'label'     => __( 'Carousel Arrows', 'premium-addons-pro' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => array(
-					'reviews_carousel' => 'yes',
+					'reviews_carousel'    => 'yes',
+					'carousel_navigation' => array( 'arrows', 'all' ),
+					'infinite_autoplay!'  => 'yes',
 				),
 			)
 		);
@@ -1968,8 +2449,9 @@ class Premium_Facebook_Reviews extends Widget_Base {
 				'label'     => __( 'Carousel Dots', 'premium-addons-for-elementor' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => array(
-					'reviews_carousel' => 'yes',
-					'carousel_dots'    => 'yes',
+					'reviews_carousel'    => 'yes',
+					'carousel_navigation' => array( 'dots', 'all' ),
+					'infinite_autoplay!'  => 'yes',
 				),
 			)
 		);
@@ -2167,7 +2649,9 @@ class Premium_Facebook_Reviews extends Widget_Base {
 
 		$carousel = 'yes' === $settings['reviews_carousel'] ? true : false;
 
-		$reviews_number = intval( 100 / substr( $settings['reviews_columns'], 0, strpos( $settings['reviews_columns'], '%' ) ) );
+		$reviews_number        = intval( 100 / substr( $settings['reviews_columns'], 0, strpos( $settings['reviews_columns'], '%' ) ) );
+		$reviews_number_tab    = intval( 100 / substr( $settings['reviews_columns_tablet'], 0, strpos( $settings['reviews_columns_tablet'], '%' ) ) );
+		$reviews_number_mobile = intval( 100 / substr( $settings['reviews_columns_mobile'], 0, strpos( $settings['reviews_columns_mobile'], '%' ) ) );
 
 		$page_settings = array(
 			'name'        => $page_name,
@@ -2179,25 +2663,31 @@ class Premium_Facebook_Reviews extends Widget_Base {
 			'stars'       => $settings['source_stars'],
 			'size'        => $page_star_size,
 			'rate'        => $page_rate,
+			'rev_number'  => $settings['reviews_number'],
+			'rev_count'   => count( $reviews ),
 			'image'       => $custom_image,
 		);
 
 		$reviews_settings = array(
-			'show_image'  => $settings['reviewer_image'],
-			'id'          => $page_id,
-			'fill_color'  => $rev_fill_color,
-			'empty_color' => $rev_empty_color,
-			'stars'       => $show_stars,
-			'stars_size'  => $rev_star_size,
-			'filter_min'  => $min_filter,
-			'filter_max'  => $max_filter,
-			'date'        => $show_date,
-			'format'      => $date_format,
-			'limit'       => $limit,
-			'text'        => $rev_text,
-			'rev_length'  => $rev_length,
-			'readmore'    => $settings['readmore'],
-			'skin_type'   => $settings['skin_type'],
+			'show_image'    => $settings['reviewer_image'],
+			'id'            => $page_id,
+			'fill_color'    => $rev_fill_color,
+			'empty_color'   => $rev_empty_color,
+			'stars'         => $show_stars,
+			'stars_size'    => $rev_star_size,
+			'filter_min'    => $min_filter,
+			'filter_max'    => $max_filter,
+			'date'          => $show_date,
+			'format'        => $date_format,
+			'limit'         => $limit,
+			'text'          => $rev_text,
+			'hide_empty'    => $settings['hide_empty'],
+			'rev_length'    => $rev_length,
+			'readmore'      => $settings['readmore'],
+			'skin_type'     => $settings['skin_type'],
+			'bubble_arrow'  => 'bubble' === $settings['skin_type'] ? $settings['bubble_arrow'] : false,
+			'show_icon'     => $settings['source_icon'],
+			'image_display' => $settings['reviews_display'],
 		);
 
 		$this->add_render_attribute(
@@ -2213,26 +2703,36 @@ class Premium_Facebook_Reviews extends Widget_Base {
 		$this->add_render_attribute(
 			'container',
 			array(
-				'data-col'   => $reviews_number,
-				'data-style' => $settings['reviews_style'],
+				'data-col'        => $reviews_number,
+				'data-col-tab'    => $reviews_number_tab,
+				'data-col-mobile' => $reviews_number_mobile,
+				'data-style'      => $settings['reviews_style'],
 			)
 		);
 
 		if ( $carousel ) {
 			$this->add_render_attribute( 'container', 'data-carousel', $carousel );
 
-			$play  = 'yes' === $settings['carousel_play'] ? true : false;
-			$speed = ! empty( $settings['carousel_autoplay_speed'] ) ? $settings['carousel_autoplay_speed'] : 5000;
-			$rtl   = 'yes' === $settings['carousel_rtl'] ? true : false;
-			$dots  = 'yes' === $settings['carousel_dots'] ? 'true' : 'false';
+			$play   = 'yes' === $settings['carousel_play'] ? true : false;
+			$speed  = ! empty( $settings['carousel_autoplay_speed'] ) ? $settings['carousel_autoplay_speed'] : 5000;
+			$rtl    = 'yes' === $settings['carousel_rtl'] ? true : false;
+			$dots   = ( 'dots' === $settings['carousel_navigation'] || 'all' === $settings['carousel_navigation'] ) ? 'true' : 'false';
+			$arrows = ( 'arrows' === $settings['carousel_navigation'] || 'all' === $settings['carousel_navigation'] ) ? 'true' : 'false';
+
+			$infinite = 'yes' === $settings['infinite_autoplay'];
+
+			$rows = 'yes' === $settings['infinite_autoplay'] ? $settings['rows'] : 0;
 
 			$this->add_render_attribute(
 				'container',
 				array(
-					'data-play'  => $play,
-					'data-speed' => $speed,
-					'data-rtl'   => $rtl,
-					'data-dots'  => $dots,
+					'data-play'     => $play,
+					'data-speed'    => $speed,
+					'data-rtl'      => $rtl,
+					'data-dots'     => $dots,
+					'data-arrows'   => $arrows,
+					'data-infinite' => $infinite,
+					'data-rows'     => $rows,
 				)
 			);
 
@@ -2260,6 +2760,11 @@ class Premium_Facebook_Reviews extends Widget_Base {
 					<div class="premium-fb-rev-page-inner">
 						<?php premium_fb_rev_page( $page_id, $page_settings ); ?>
 					</div>
+					<?php if ( '0' == $limit && 'yes' === $settings['source_icon'] ) : ?>
+						<div class="premium-fb-rev-icon">
+							<svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook" class="svg-inline--fa fa-facebook fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#1877F2" d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"></path></svg>
+						</div>
+					<?php endif; ?>
 				</div>
 				<?php endif; ?>
 				<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'reviews' ) ); ?>>

@@ -879,7 +879,7 @@ class Premium_Notbar extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-pro' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'#premium-notbar-{{ID}} .premium-notbar-icon, #premium-notbar-{{ID}} .premium-notbar-custom-image, #premium-notbar-{{ID}} .premium-notbar-icon-lottie'   => 'background-color: {{VALUE}};',
+					'#premium-notbar-{{ID}} .premium-notbar-icon, #premium-notbar-{{ID}} .premium-notbar-custom-image, #premium-notbar-{{ID}} .premium-notbar-icon-lottie, #premium-notbar-{{ID}} .premium-notbar-icon-wrap svg'    => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -888,7 +888,7 @@ class Premium_Notbar extends Widget_Base {
 			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'premium_notbar_icon_border',
-				'selector' => '#premium-notbar-{{ID}} .premium-notbar-icon,#premium-notbar-{{ID}} .premium-notbar-custom-image, #premium-notbar-{{ID}} .premium-notbar-icon-lottie',
+				'selector' => '#premium-notbar-{{ID}} .premium-notbar-icon, #premium-notbar-{{ID}} .premium-notbar-custom-image, #premium-notbar-{{ID}} .premium-notbar-icon-lottie, #premium-notbar-{{ID}} .premium-notbar-icon-wrap svg',
 			)
 		);
 
@@ -899,7 +899,7 @@ class Premium_Notbar extends Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					'#premium-notbar-{{ID}} .premium-notbar-icon, #premium-notbar-{{ID}} .premium-notbar-custom-image, #premium-notbar-{{ID}} .premium-notbar-icon-lottie' => 'border-radius: {{SIZE}}{{UNIT}};',
+					'#premium-notbar-{{ID}} .premium-notbar-icon, #premium-notbar-{{ID}} .premium-notbar-custom-image, #premium-notbar-{{ID}} .premium-notbar-icon-lottie, #premium-notbar-{{ID}} .premium-notbar-icon-wrap svg' => 'border-radius: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -1028,7 +1028,7 @@ class Premium_Notbar extends Widget_Base {
 			array(
 				'label'    => __( 'Shadow', 'premium-addons-pro' ),
 				'name'     => 'premium_notbar_text_shadow',
-				'selector' => '#premium-notbar-{{ID}} .premium-notbar-text .premium-notbar-text',
+				'selector' => '#premium-notbar-{{ID}} .premium-notbar-text',
 			)
 		);
 
@@ -1240,7 +1240,7 @@ class Premium_Notbar extends Widget_Base {
 
 		$bar_position = $settings['premium_notbar_position'];
 
-		$bar_layout = 'premium-notbar-' . $settings['premium_notbar_top_select'];
+		$bar_layout = ' premium-notbar-' . $settings['premium_notbar_top_select'];
 
 		$bar_width = $settings['premium_notbar_width'];
 

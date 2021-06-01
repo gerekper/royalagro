@@ -720,23 +720,13 @@
 
             var spacerHeight = $("#premium-hscroll-spacer-" + id).outerHeight();
 
-            if (!snapScroll) {
-
-                TweenMax.to(window, 1.5, {
-                    scrollTo: {
-                        y: targetOffset - spacerHeight
-                    },
-                    ease: Power3.easeOut,
-                    onComplete: self.afterSlideChange
-                });
-            } else {
-                $("html, body")
-                    .stop()
-                    .clearQueue()
-                    .animate({
-                        scrollTop: targetOffset
-                    }, 1000);
-            }
+            TweenMax.to(window, 1.5, {
+                scrollTo: {
+                    y: targetOffset - spacerHeight
+                },
+                ease: Power3.easeOut,
+                onComplete: self.afterSlideChange
+            });
 
             if (settings.pagination && snapScroll)
                 $elem

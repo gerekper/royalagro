@@ -4,7 +4,7 @@ Tags: elementor, elements, addons, elementor addon, elementor widget, elementor 
 Requires at least: 4.5
 Tested up to: 5.7.1
 Requires PHP: 5.4
-Stable tag: 2.4.1
+Stable tag: 2.4.5
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -59,6 +59,7 @@ Premium Addons PRO can be used only as a complement of Elementor page builder pl
 28. [Premium Unfold](https://premiumaddons.com/unfold-widget-for-elementor-page-builder/)
 29. [Premium WhatsApp Chat](https://premiumaddons.com/whatsapp-widget-for-elementor-page-builder/)
 30. [Premium Yelp Reviews](https://premiumaddons.com/elementor-yelp-reviews-widget/)
+31. [Premium Trustpilot Reviews](https://premiumaddons.com/elementor-trustpilot-reviews-widget/)
 
 == Installation ==
 
@@ -89,6 +90,29 @@ Yes, it will work with any WordPress theme as long as you are using Elementor as
 Premium Addons for Elementor is light weight and we also gave you the control to enable only the elements you actually use on your website for faster performance.
 
 == Changelog ==
+
+= 2.4.5 =
+
+- Fixed: Error `Call to undefined function` when only Trustpilot Review widget is enabled.
+
+= 2.4.4 =
+
+- Fixed: Console error in Parallax addon issue.
+
+= 2.4.3 =
+
+- New: Added Premium Trustpilot Reviews widget.
+- Tweak: Added Infinite Autoplay for carousel in social reviews widgets.
+- Tweak: Added Navigation Type Dots/Arrows option in social reviews widgets.
+- Tweak: Added Show Number of Reviews option in social reviews widgets.
+- Tweak: Added Put Place/Business Info next to reviews option in social reviews widgets.
+- Fixed: Console error `$ is not defined` since v2.4.2.
+
+= 2.4.2 =
+
+- Tweak: Added Clear Cached Data button to Facebook, Google and Yelp Reviews widgets.
+- Tweak: Added Carousel Arrows option for Carousel Tabs option in Tabs widget.
+- Tweak: Snap Scroll improved in Horizontal Scroll widget.
 
 = 2.4.1 =
 

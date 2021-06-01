@@ -5,8 +5,8 @@ use Elementor\Utils;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Typography;
+use Elementor\Core\Schemes\Color;
 use Elementor\Repeater;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -129,6 +129,7 @@ class Theplus_Widgets_Rules extends Elementor\Widget_Base {
 					'post' 				=> esc_html__( 'Post', 'theplus' ),
 					'static_page' 		=> esc_html__( 'Static Page', 'theplus' ),
 					'post_type' 		=> esc_html__( 'Post Type', 'theplus' ),
+					'term_single' 		=> esc_html__( 'Term', 'theplus' ),
 				],
 			],
 			[
@@ -625,7 +626,25 @@ class Theplus_Widgets_Rules extends Elementor\Widget_Base {
 				],
 			]
 		);
-
+		
+		$repeater->add_control(
+			'tp_rule_term_single_value',
+			[
+				'label' 		=> esc_html__( 'Term', 'theplus' ),
+				'description'	=> esc_html__( 'Leave blank or select all for any term single.', 'theplus' ),
+				'type' 			=> 'plus-query',
+				'post_type' 	=> '',
+				'options' 		=> [],
+				'label_block' 	=> true,
+				'multiple' 		=> true,
+				'query_type' 	=> 'terms',
+				'include_type' 	=> true,
+				'condition' 	=> [
+					'tp_rule_key' => 'term_single',
+				],
+			]
+		);
+		
 		$repeater->add_control(
 			'tp_rule_post_type_archive_value',
 			[
@@ -1405,6 +1424,29 @@ class Theplus_Widgets_Rules extends Elementor\Widget_Base {
 
 		return self::compare_check( $display, true, $check_is_not );
 	}
+	
+	/**
+	 * Check current taxonomy terms single
+	 *
+	 * @access protected
+	 *
+	 * @param mixed  $value  The control value to check
+	 * @param string $check_is_not  Comparison value.
+	 */
+	protected static function plus_check_term_single( $value, $check_is_not, $key ) {
+		$display = false;
+
+		if ( is_array( $value ) && ! empty( $value ) ) {
+			foreach ( $value as $_key => $_value ) {
+
+				$display = self::plus_check_term_single_type( $_value );
+
+				if ( $display ) break;
+			}
+		} else { $display = self::plus_check_term_single_type( $value ); }
+
+		return self::compare_check( $display, true, $check_is_not );
+	}
 
 	/**
 	 * Checks taxonomy term current page template
@@ -1427,7 +1469,29 @@ class Theplus_Widgets_Rules extends Elementor\Widget_Base {
 
 		return false;
 	}
+	
+	/**
+	 * Checks taxonomy term current page template
+	 *
+	 * @access protected
+	 *
+	 * @param string  $taxonomy  The taxonomy to check value
+	 */
+	protected static function plus_check_term_single_type( $term ) {
 
+		if ( in_category( $term ) ) {
+			return true;
+		} else if ( is_tag( $term ) ) {
+			return true;
+		} else if ( is_tax() ) {
+			if ( is_tax( get_queried_object()->taxonomy, $term ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+	
 	/**
 	 * Check current post type archive
 	 *
@@ -1853,5 +1917,4 @@ class Theplus_Widgets_Rules extends Elementor\Widget_Base {
 
 		return self::compare_check( $display, true, $check_is_not );
 	}
-
 }

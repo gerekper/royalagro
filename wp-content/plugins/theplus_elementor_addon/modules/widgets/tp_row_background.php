@@ -10,12 +10,12 @@ namespace TheplusAddons\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Utils;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Background;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 
 if (!defined('ABSPATH'))
     exit; // Exit if accessed directly
@@ -1819,17 +1819,126 @@ class ThePlus_Row_Background extends Widget_Base {
 					'style_of_pieces' => 'custom',
 				],
             ]
-        );
-		$this->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
+        );		
+		$this->add_control(
+			'box_shadow_pieces',
 			[
-				'name' => 'box_shadow_pieces',
-				'label' => esc_html__( 'Segment Box Shadow', 'theplus' ),
-				'condition'    => [
+				'label' => esc_html__( 'Box Shadow', 'theplus' ),
+				'type' => Controls_Manager::POPOVER_TOGGLE,
+				'label_off' => __( 'Default', 'theplus' ),
+				'label_on' => __( 'Custom', 'theplus' ),
+				'return_value' => 'yes',
+				'condition' => [
 					'select_anim' => [ 'bg_Image_pieces' ],
 				],
 			]
+		);			
+		$this->start_popover();
+		$this->add_control(
+			'box_shadow_color',
+			[
+				'label' => esc_html__( 'Color', 'theplus' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => 'rgba(0,0,0,0.5)',
+				'condition' => [
+					'select_anim' => [ 'bg_Image_pieces' ],
+					'box_shadow_pieces' => 'yes',
+				],
+			]
 		);
+		$this->add_control(
+			'box_shadow_horizontal',
+			[
+				'label' => esc_html__( 'Horizontal', 'theplus' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'range' => [
+					'px' => [
+						'max' => -100,
+						'min' => 100,
+						'step' => 2,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 0,
+				],
+				'condition'    => [
+					'select_anim' => [ 'bg_Image_pieces' ],
+					'box_shadow_pieces' => 'yes',
+				],
+			]
+		);
+		$this->add_control(
+			'box_shadow_vertical',
+			[
+				'label' => esc_html__( 'Vertical', 'theplus' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'range' => [
+					'px' => [
+						'max' => -100,
+						'min' => 100,
+						'step' => 2,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 0,
+				],
+				'condition'    => [
+					'select_anim' => [ 'bg_Image_pieces' ],
+					'box_shadow_pieces' => 'yes',
+				],
+			]
+		);
+		$this->add_control(
+			'box_shadow_blur',
+			[
+				'label' => esc_html__( 'Blur', 'theplus' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'range' => [
+					'px' => [
+						'max' => 0,
+						'min' => 100,
+						'step' => 1,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 10,
+				],
+				'condition'    => [
+					'select_anim' => [ 'bg_Image_pieces' ],
+					'box_shadow_pieces' => 'yes',
+				],
+			]
+		);
+		$this->add_control(
+			'box_shadow_spread',
+			[
+				'label' => esc_html__( 'Spread', 'theplus' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'range' => [
+					'px' => [
+						'max' => -100,
+						'min' => 100,
+						'step' => 2,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 0,
+				],
+				'condition'    => [
+					'select_anim' => [ 'bg_Image_pieces' ],
+					'box_shadow_pieces' => 'yes',
+				],
+			]
+		);
+		$this->end_popover();	
 		/*--------Image segmentation-------*/		
 		$this->end_controls_section();
 		/*---------Middle Layer-------------*/
@@ -4096,7 +4205,7 @@ class ThePlus_Row_Background extends Widget_Base {
 		$output ='<div id="pt-plus-row-settings" class="pt-plus-row-set '.esc_attr($rand_no).' '.esc_attr($img_parallax_scroll_class).' '.esc_attr($parellax_class).' '.esc_attr($magic_class).' '.esc_attr($responsive_bg_class).' '.esc_attr($fixed_bg_attach).'" data-no="'.esc_attr($rand_no).'" '.$section_overflow_hidden.'>';
 		/* bg solid color*/
 		if(isset($select_anim) && !empty($select_anim) && $select_anim=='bg_normal_color') {
-			$output .='<div class="pt-plus-columns-bg-wrap columns-solid-color" style="background:'.$settings["normal_bg_color"].'"></div>';
+			$output .='<div class="pt-plus-columns-bg-wrap columns-solid-color" style="background:'.esc_attr($settings["normal_bg_color"]).'"></div>';
 		}
 		/* bg solid color*/
 		/*gradient color*/
@@ -4109,10 +4218,10 @@ class ThePlus_Row_Background extends Widget_Base {
 				$css_rules='';
 				if(!empty($settings["gradient_style"]) && $settings["gradient_style"]=='linear'){
 					$gradient_angle=($settings["gradient_angle"]["size"]).($settings["gradient_angle"]["unit"]);
-					$css_rules .= 'background-color: transparent; background-image: linear-gradient('.$gradient_angle.', '.$color1.' '.$color1_control.', '.$color2.' '.$color2_control.')';
+					$css_rules .= 'background-color: transparent; background-image: linear-gradient('.esc_attr($gradient_angle).', '.esc_attr($color1).' '.esc_attr($color1_control).', '.esc_attr($color2).' '.esc_attr($color2_control).')';
 				}else if(!empty($settings["gradient_style"]) && $settings["gradient_style"]=='radial'){
 					$gradient_position=$settings["gradient_position"];
-					$css_rules .= 'background-color: transparent; background-image: radial-gradient(at '.$gradient_position.', '.$color1.' '.$color1_control.', '.$color2.' '.$color2_control.')';
+					$css_rules .= 'background-color: transparent; background-image: radial-gradient(at '.esc_attr($gradient_position).', '.esc_attr($color1).' '.esc_attr($color1_control).', '.esc_attr($color2).' '.esc_attr($color2_control).')';
 				}
 			$output .='<div class="pt-plus-columns-bg-wrap columns-bg-anim-colors columns-gradient-color" style="'.$css_rules.'"></div>';
 
@@ -4226,13 +4335,13 @@ class ThePlus_Row_Background extends Widget_Base {
 			//tablet
 			if(isset($settings['tablet_bg_image']['url']) && !empty($settings['tablet_bg_image']['url'])) {	
 				$output .= '<div class="pt-plus-columns-bg-wrap tp_bg_tablet columns-bg-image  '.esc_attr($parellax_inner_class).' '.esc_attr($class1).' '.esc_attr($img_parallax_scroll).' '.esc_attr($parallax_scroll).' "  id="'.esc_attr($uniqid1).'" '.$magic_attr.' '.$parallax_atts.' '.$data_atts.'  style="'.$tablet_bg_image.$css_rules1.'"></div>';
-				$output.='<style>#pt-plus-row-settings.bg_tablet #'.esc_attr($uniqid1).'.tp_bg_tablet:after {background:'.$settings['tablet_overlay_color'].'}</style>';
+				$output.='<style>#pt-plus-row-settings.bg_tablet #'.esc_attr($uniqid1).'.tp_bg_tablet:after {background:'.esc_attr($settings['tablet_overlay_color']).'}</style>';
 			}
 			
 			//mobile
 			if(isset($settings['mobile_bg_image']['url']) && !empty($settings['mobile_bg_image']['url'])) {	
 				$output .= '<div class="pt-plus-columns-bg-wrap tp_bg_mobile columns-bg-image  '.esc_attr($parellax_inner_class).' '.esc_attr($class1).' '.esc_attr($img_parallax_scroll).' '.esc_attr($parallax_scroll).' "  id="'.esc_attr($uniqid1).'" '.$magic_attr.' '.$parallax_atts.' '.$data_atts.'  style="'.$mobile_bg_image.$mobile_css_bg.'"></div>';
-				$output.='<style>#pt-plus-row-settings.bg_mobile #'.esc_attr($uniqid1).'.tp_bg_mobile:after {background:'.$settings['mobile_overlay_color'].'}</style>';
+				$output.='<style>#pt-plus-row-settings.bg_mobile #'.esc_attr($uniqid1).'.tp_bg_mobile:after {background:'.esc_attr($settings['mobile_overlay_color']).'}</style>';
 			}
 		}
 		/*----------bg image---*/
@@ -4303,7 +4412,7 @@ class ThePlus_Row_Background extends Widget_Base {
 									$active_sec='active_sec';
 								}
 								if(!empty($settings["scrolling_change_color"]) && $settings["scrolling_change_color"]=='no'){
-									$loop .= '<div class="elementor-repeater-item-' . $item['_id'] . ' plus-section-bg-scrolling '.esc_attr($active_sec).'" style="background:'.esc_attr($item['column_bg_single_color']).';'.$scroll_color_duration.'"></div>';
+									$loop .= '<div class="elementor-repeater-item-' .esc_attr($item['_id']). ' plus-section-bg-scrolling '.esc_attr($active_sec).'" style="background:'.esc_attr($item['column_bg_single_color']).';'.$scroll_color_duration.'"></div>';
 								}
 							}							
 							if(!empty($settings["scrolling_change_color"]) && $settings["scrolling_change_color"]=='no' && !empty($item['column_bg_single_image']['url'])) {
@@ -4313,7 +4422,7 @@ class ThePlus_Row_Background extends Widget_Base {
 									$active_sec='active_sec';
 								}
 								if(!empty($settings["scrolling_change_color"]) && $settings["scrolling_change_color"]=='no'){
-									$loop .= '<div class="elementor-repeater-item-' . $item['_id'] . ' plus-section-bg-scrolling  '.esc_attr($active_sec).'" style="background:url('.esc_url($item['column_bg_single_image']['url']).');'.$scroll_color_duration.'"></div>';
+									$loop .= '<div class="elementor-repeater-item-'.esc_attr($item['_id']). ' plus-section-bg-scrolling  '.esc_attr($active_sec).'" style="background:url('.esc_url($item['column_bg_single_image']['url']).');'.$scroll_color_duration.'"></div>';
 								}
 							}
 						$i++;
@@ -4497,7 +4606,7 @@ class ThePlus_Row_Background extends Widget_Base {
 			$gallery1 ='';
 			$uniq_id_gallery = uniqid('bgGallaryslide');
 			if(!empty($settings['images_gallery']) && $select_anim=='bg_gallery') {				
-				$output .='<div  id="'.$uniq_id_gallery.'" class="pt-plus-row-slideshow ">';
+				$output .='<div  id="'.esc_attr($uniq_id_gallery).'" class="pt-plus-row-slideshow ">';
 				foreach($settings['images_gallery'] as $gallery){				
 					$gallery1 .='{src: "'.esc_url($gallery["url"]).'",transition: "'.esc_attr($settings["gallery_slide_style"]).'",transitionDuration: '.esc_attr($settings["gallery_animation_duration"]).'},';
 				}  
@@ -4558,13 +4667,13 @@ class ThePlus_Row_Background extends Widget_Base {
 					$animate_pieces=$item['animate_pieces'];
 					$animatespeed=$item['animate_speed'];
 					if($count!=$i){
-						$position .='{top:'.$ypos.', left: '.$xpos.', width: '.$width.', height: '.$height.'},';
-						$effects .='{"effect" : "'.$animate_pieces.'"},';
-						$animate_speed .='{"duration" : "'.$animatespeed.'"},';
+						$position .='{top:'.esc_attr($ypos).', left: '.esc_attr($xpos).', width: '.esc_attr($width).', height: '.esc_attr($height).'},';
+						$effects .='{"effect" : "'.esc_attr($animate_pieces).'"},';
+						$animate_speed .='{"duration" : "'.esc_attr($animatespeed).'"},';
 					}else{
-						$position .='{top:'.$ypos.', left: '.$xpos.', width: '.$width.', height: '.$height.'}';
-						$effects .='{"effect" : "'.$animate_pieces.'"}';
-						$animate_speed .='{"duration" : "'.$animatespeed.'"}';
+						$position .='{top:'.esc_attr($ypos).', left: '.esc_attr($xpos).', width: '.esc_attr($width).', height: '.esc_attr($height).'}';
+						$effects .='{"effect" : "'.esc_attr($animate_pieces).'"}';
+						$animate_speed .='{"duration" : "'.esc_attr($animatespeed).'"}';
 					}
 				}
 			}
@@ -4689,10 +4798,14 @@ class ThePlus_Row_Background extends Widget_Base {
 		}else if(!empty($settings['bg_options']) && $settings['bg_options']=='bg_gradient'){
 			
 		}
-		$box_shadow_pieces='';
-		if(!empty($settings['box_shadow_pieces'])){
-			$box_shadow_pieces=$settings['box_shadow_pieces'];
+		$box_shadow_pieces='';		
+		if(!empty($settings['box_shadow_pieces']) && $settings['box_shadow_pieces']=='yes'){			 
+			$box_shadow_pieces = $settings["box_shadow_horizontal"]["size"].'px '.$settings["box_shadow_vertical"]["size"].'px '.$settings["box_shadow_blur"]["size"].'px '.$settings["box_shadow_spread"]["size"].'px '.$settings["box_shadow_color"];
 		}
+		$border_width="7px";
+		$border_style="solid";
+		$border_color="rgba(255,255,255,0.7)";		
+		
 		$output .= '<div class="pt-plus-row-imageclip row-'.esc_attr($rand_no12).'" data-id="row-'.esc_attr($rand_no12).'" data-box-shadow="'.esc_attr($box_shadow_pieces).'" data-border-width="'.esc_attr($border_width).'" data-border-style="'.esc_attr($border_style).'" data-border-color="'.esc_attr($border_color).'" style="'.$bg_style.'"></div>';
 
 			$output .='<script>
@@ -5317,7 +5430,7 @@ class ThePlus_Row_Background extends Widget_Base {
 		
 		if(!empty($settings["overlay_style"]) && $settings["overlay_style"]=='normal_color'){
 		
-			$output .='<div class="pt-plus-row-overlay" style="background:'.$settings["normal_overlay_color"].'"></div>';
+			$output .='<div class="pt-plus-row-overlay" style="background:'.esc_attr($settings["normal_overlay_color"]).'"></div>';
 		}
 		/*----------------overlay normal color---*/
 		/*----overlay gradient color---*/
@@ -5329,11 +5442,11 @@ class ThePlus_Row_Background extends Widget_Base {
 			$css_rules='';
 			if(!empty($settings["overlay_bg_gradient_style"]) && $settings["overlay_bg_gradient_style"]=='linear'){
 				$overlay_bg_gradient_angle=$settings["overlay_bg_gradient_angle"]["size"].$settings["overlay_bg_gradient_angle"]["unit"];	
-				$css_rules .='background-color: transparent; background-image: linear-gradient('.$overlay_bg_gradient_angle.', '.$overlay_gradient_color1.' '.$overlay_gradient_color1_control.', '.$overlay_gradient_color2.' '.$overlay_gradient_color2_control.')';
+				$css_rules .='background-color: transparent; background-image: linear-gradient('.esc_attr($overlay_bg_gradient_angle).', '.esc_attr($overlay_gradient_color1).' '.esc_attr($overlay_gradient_color1_control).', '.esc_attr($overlay_gradient_color2).' '.esc_attr($overlay_gradient_color2_control).')';
 			}else if(!empty($settings["overlay_bg_gradient_style"]) && $settings["overlay_bg_gradient_style"]=='radial'){
 				
 				$overlay_bg_gradient_position=$settings["overlay_bg_gradient_position"];
-				$css_rules .='background-color: transparent; background-image: radial-gradient(at '.$overlay_bg_gradient_position.', '.$overlay_gradient_color1.' '.$overlay_gradient_color1_control.', '.$overlay_gradient_color2.' '.$overlay_gradient_color2_control.')';
+				$css_rules .='background-color: transparent; background-image: radial-gradient(at '.esc_attr($overlay_bg_gradient_position).', '.esc_attr($overlay_gradient_color1).' '.esc_attr($overlay_gradient_color1_control).', '.esc_attr($overlay_gradient_color2).' '.esc_attr($overlay_gradient_color2_control).')';
 			}
 			$output .='<div class="pt-plus-row-overlay gradient-color" style="'.$css_rules.'"></div>';
 		}

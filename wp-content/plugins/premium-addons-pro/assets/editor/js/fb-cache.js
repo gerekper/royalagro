@@ -1,4 +1,7 @@
-function clearCache(obj, type) {
+
+var currentID = null;
+
+function clearCache(obj, transient, control) {
 
     jQuery.ajax({
         type: "POST",
@@ -7,9 +10,11 @@ function clearCache(obj, type) {
         data: {
             action: "clear_reviews_data",
             security: settings.nonce,
-            widgetID: jQuery(obj).closest("elementor-widget-premium-" + type + "-reviews")
+            transient: transient
         },
-        success: function (res) {
+        success: function () {
+
+            jQuery(obj).parents(".elementor-control-clear_cache").prevAll(".elementor-control-" + control).find("input").trigger("input");
 
         },
         error: function (err) {
@@ -21,20 +26,23 @@ function clearCache(obj, type) {
 }
 
 function clearReviewsCache(obj) {
-    console.log(elementorCommon.helpers.getUniqueId());
-    if (!obj) return;
 
-    var type = jQuery(obj).data("type"),
-        widgetID = jQuery(obj).data("widgetid"),
+    if (!obj || !currentID) return;
+
+    var targetControl = jQuery(obj).data("target"),
         transient = null;
 
-    switch (type) {
-        case 'facebook':
-            transient = 'papro_reviews_' + jQuery(obj).parents(".elementor-control-clear_cache").prevAll(".elementor-control-page_id").find("input").val() + widgetID;
-            console.log(widgetID);
-            break;
 
-    }
+    transient = 'papro_reviews_' + jQuery(obj).parents(".elementor-control-clear_cache").prevAll(".elementor-control-" + targetControl).find("input").val() + '_' + currentID;
 
-    clearCache(obj, type);
+    clearCache(obj, transient, targetControl);
 }
+
+function triggerActions() {
+    elementor.channels.editor.on('section:activated', function (sectionName, elementorEditor) {
+        currentID = elementorEditor.model.id;
+    });
+}
+
+
+jQuery(window).on('elementor:init', triggerActions);

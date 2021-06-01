@@ -349,26 +349,22 @@ abstract class Base_App {
 		if ( $this->is_connected() ) {
 			$headers['X-Elementor-Signature'] = hash_hmac( 'sha256', wp_json_encode( $request_body, JSON_NUMERIC_CHECK ), $this->get( 'access_token_secret' ) );
 		}
+		
+		if ( $action === 'get_template_content' && file_exists( ELEMENTOR_PATH . 'templates/' . $request_body['id'] . '.json' ) ) {
+			$response = wp_remote_get( ELEMENTOR_URL . 'templates/' . $request_body['id'] . '.json', [
+				'timeout' => 25,
+				'sslverify' => false,
+			] );
 
-	// NF ++
-	if ($action === 'get_template_content') {
-		$templateExists = false;
-		if (file_exists(ELEMENTOR_PATH . 'templates/' . $request_body['id'] . '.json')) {
-			$templateExists = true;
-			$url = ELEMENTOR_URL . 'templates/' . $request_body['id'] . '.json';
+		} else {
+			$response = wp_remote_post( $this->get_api_url() . '/' . $action, [
+				'body' => $request_body,
+				'headers' => $headers,
+				'timeout' => 25,
+			] );
+			
 		}
-	}
-	if ($templateExists) {
-		$response = wp_remote_get( $url, [
-		'timeout' => 40,
-		'sslverify' => false,
-	] );
-	} 
-	// NF end
 		
-		// NF ++
-		
-		// NF end
 		if ( is_wp_error( $response ) ) {
 			wp_die( $response, [
 				'back_link' => true,

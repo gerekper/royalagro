@@ -1306,6 +1306,24 @@
         #d6249f 60%,
         #285aeb 90%
     );
+    background: -webkit-radial-gradient(
+        30% 107%,
+        circle,
+        #fdf497 0%,
+        #fdf497 5%,
+        #fd5949 45%,
+        #d6249f 60%,
+        #285aeb 90%
+    );
+    background: -webkit-radial-gradient(
+        30% 107%,
+        circle,
+        #fdf497 0%,
+        #fdf497 5%,
+        #fd5949 45%,
+        #d6249f 60%,
+        #285aeb 90%
+    );
     background: -webkit-radial-gradient(30% 107%, circle, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
     background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
     background: -webkit-radial-gradient(
@@ -2638,13 +2656,8 @@
 
 /**************** Premium Tabs ********************/
 /**************************************************/
-.premium-tabs-container {
-    overflow: hidden;
-}
-
 .premium-tabs {
     position: relative;
-    overflow: hidden;
     margin: 0 auto;
     width: 100%;
 }
@@ -7419,6 +7432,9 @@ ul.premium-social-count-ul {
     -moz-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 
 .premium-table-pagination ul.page-numbers li {
@@ -8510,6 +8526,10 @@ ul.premium-social-count-ul {
         -webkit-transform 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out, visibility 0.2s ease-in-out, opacity 0.2s ease-in-out,
         -webkit-transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, visibility 0.2s ease-in-out, opacity 0.2s ease-in-out,
+        -webkit-transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, visibility 0.2s ease-in-out, opacity 0.2s ease-in-out,
+        -webkit-transform 0.3s ease-in-out;
 }
 
 .premium-accordion-container .premium-accordion-overlay-wrap {
@@ -8517,6 +8537,10 @@ ul.premium-social-count-ul {
         visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out;
     -webkit-transition: background-color 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out,
         opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out,
+        color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out,
+        color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out;
     transition: background-color 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out,
         color 0.3s ease-in-out, -webkit-transform 0.3s 0.3s ease-in-out;
     transition: background-color 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out,
@@ -8596,6 +8620,14 @@ ul.premium-social-count-ul {
 .premium-accordion-container .premium-accordion-li:hover .premium-accordion-content * {
     -webkit-transition: transform 0.3s 0.3s ease-in-out, visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out,
         color 0.3s ease-in-out;
+    -webkit-transition: visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out,
+        -webkit-transform 0.3s 0.3s ease-in-out;
+    transition: visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out,
+        -webkit-transform 0.3s 0.3s ease-in-out;
+    -webkit-transition: visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out,
+        -webkit-transform 0.3s 0.3s ease-in-out;
+    transition: visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out,
+        -webkit-transform 0.3s 0.3s ease-in-out;
     -webkit-transition: visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out,
         -webkit-transform 0.3s 0.3s ease-in-out;
     transition: visibility 0.3s 0.3s ease-in-out, opacity 0.3s 0.3s ease-in-out, color 0.3s ease-in-out,

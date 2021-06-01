@@ -362,6 +362,24 @@ jQuery(document).ready(function( $ ) {
 		});
 	});
 
+	//SendGrid
+	$(document).on('click', '[data-pafe-twilio-sendgrid-get-data-list]', function(){
+		$(this).attr('disabled', 'disabled');
+		$(this).addClass('loading');
+		var $parent = $(this).closest('#elementor-controls');
+		var apiKey = $parent.find('[data-setting="twilio_sendgrid_api_key"]').val();
+		var dataSendgrid = {
+			'action': 'pafe_twilio_sendgrid_get_list',
+			'api': apiKey
+		}
+		$.post(ajaxurl, dataSendgrid, function(response) {
+			if(response){
+				$('[data-pafe-twilio-sendgrid-get-data-list-results]').html(response);
+				$('[data-pafe-twilio-sendgrid-get-data-list]').removeClass('loading');
+			}
+		});
+	});
+
 	// Mailpoet
 	$(document).on('click', '[data-piotnet-mailpoet-get-custom-fields]', function(){
 		$(this).addClass('loading');

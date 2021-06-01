@@ -10,10 +10,10 @@ namespace TheplusAddons\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Utils;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Box_Shadow;
@@ -564,8 +564,8 @@ class ThePlus_Custom_Field extends Widget_Base {
 				'label' => __( 'Controls Color', 'theplus' ),
 				'type' => Controls_Manager::COLOR,
 				'scheme' => [
-					'type' => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_4,
+					'type' => Color::get_type(),
+					'value' => Color::COLOR_4,
 				],
 				'condition' => [
 					'cfkey_type' => 'video',
@@ -669,7 +669,7 @@ class ThePlus_Custom_Field extends Widget_Base {
 			[
 				'name' => 'field_typography',
 				'label' => esc_html__( 'Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .tp-field-wrapper .plus-custom-field-wrap',
 				'condition' => [
 					'cfkey_type' => ['text','html','link', 'date'],
@@ -720,7 +720,7 @@ class ThePlus_Custom_Field extends Widget_Base {
 			[
 				'name' => 'cf_label_typography',
 				'label' => esc_html__( 'Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .tp-field-wrapper .tp-field-label',
 				'condition' => [
 					'field_label!' => '',

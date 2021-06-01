@@ -642,6 +642,12 @@ function parseFloatWithRemoveSepChar(text, separator_char) {
 					$fields.each(function(){
 						if ( $(this).data('pafe-form-builder-stripe') == undefined && $(this).data('pafe-form-builder-html') == undefined ) {
 
+							var $checkboxRequired = $(this).closest('.elementor-field-type-checkbox.elementor-field-required');
+							var checked = 0;
+							if ($checkboxRequired.length > 0) {
+								checked = $checkboxRequired.find("input[type=checkbox]:checked").length;
+							}
+
 							if ($(this).attr('oninvalid') != undefined) {
 								requiredText = $(this).attr('oninvalid').replace("this.setCustomValidity('","").replace("')","");
 							}
@@ -676,7 +682,7 @@ function parseFloatWithRemoveSepChar(text, separator_char) {
 								}
 								error++;
 							} else {
-								if ($(this).val()=='' && $(this).attr('aria-required') == "true" && $(this).attr('data-pafe-form-builder-select-autocomplete') !== undefined) {
+								if ($(this).val()=='' && $(this).attr('aria-required') == "true" && $(this).attr('data-pafe-form-builder-select-autocomplete') !== undefined || checked == 0 && $checkboxRequired.length > 0) {
 									$(this).closest('.elementor-field-group').find('[data-pafe-form-builder-required]').html(requiredText);
 									error++;
 								} else {
@@ -1475,7 +1481,7 @@ jQuery(document).ready(function( $ ) {
 									fieldItem['value'] = '';
 									fieldItem['type'] = $(this).attr('type');
 									fieldItem['upload'] = 1;
-									fieldItem['repeater_id'] = repeaterIDOne;
+									fieldItem['repeater_id'] = repeaterID;
 									fieldItem['repeater_id_one'] = repeaterIDOne;
 									fieldItem['repeater_label'] = repeaterLabel;
 									fieldItem['repeater_index'] = repeaterIndex;
@@ -2205,7 +2211,12 @@ jQuery(document).ready(function($) {
 	                        	} else {
 
 	                    			if($fieldCurrent.attr('type') != 'hidden') {
-	                        			$fieldWidget.slideDown(speed,easing).removeClass('pafe-form-builder-conditional-logic-hidden');
+										$paypal_element_button = $fieldWidget.closest('.elementor-widget-pafe-form-builder-submit').find('.pafe-form-builder-paypal');
+										if($paypal_element_button.length > 0){
+										   $paypal_element_button.slideDown(speed,easing).removeClass('pafe-form-builder-conditional-logic-hidden');
+										}else{
+											$fieldWidget.slideDown(speed,easing).removeClass('pafe-form-builder-conditional-logic-hidden');
+										}
 	                        		} else {
 	                        			if ($fieldCurrent.attr('data-date-format') !== undefined) {
 	                        				$fieldWidget.slideDown(speed,easing).removeClass('pafe-form-builder-conditional-logic-hidden');
@@ -2318,7 +2329,12 @@ jQuery(document).ready(function($) {
 	                    			
 	                        	} else {
 	                        		if (showAction) {
-	                    				$fieldWidget.slideUp(speed,easing).addClass('pafe-form-builder-conditional-logic-hidden');
+										$paypal_element_button = $fieldWidget.closest('.elementor-widget-pafe-form-builder-submit').find('.pafe-form-builder-paypal');
+										if($paypal_element_button.length > 0){
+										   $paypal_element_button.slideUp(speed,easing).addClass('pafe-form-builder-conditional-logic-hidden');
+										}else{
+											$fieldWidget.slideUp(speed,easing).addClass('pafe-form-builder-conditional-logic-hidden');
+										}
 
 	                    				if (notField != undefined) {
 	                    					var repeaterID = $fieldGroup.data('pafe-form-builder-repeater-id');
@@ -2437,7 +2453,12 @@ jQuery(document).ready(function($) {
 	                        	} else {
 
 	                        		if($fieldCurrent.attr('type') != 'hidden') {
-	                        			$fieldWidget.slideDown(speed,easing).removeClass('pafe-form-builder-conditional-logic-hidden');
+										$paypal_element_button = $fieldWidget.closest('.elementor-widget-pafe-form-builder-submit').find('.pafe-form-builder-paypal');
+										if($paypal_element_button.length > 0){
+										   $paypal_element_button.slideDown(speed,easing).removeClass('pafe-form-builder-conditional-logic-hidden');
+										}else{
+											$fieldWidget.slideDown(speed,easing).removeClass('pafe-form-builder-conditional-logic-hidden');
+										}
 	                        		} else {
 	                        			if ($fieldCurrent.attr('data-date-format') !== undefined) {
 	                        				$fieldWidget.slideDown(speed,easing).removeClass('pafe-form-builder-conditional-logic-hidden');
@@ -2549,8 +2570,12 @@ jQuery(document).ready(function($) {
 	                    			
 	                        	} else {
 	                        		if (showAction) {
-	                    				$fieldWidget.slideUp(speed,easing).addClass('pafe-form-builder-conditional-logic-hidden');
-
+										$paypal_element_button = $fieldWidget.closest('.elementor-widget-pafe-form-builder-submit').find('.pafe-form-builder-paypal');
+										if($paypal_element_button.length > 0){
+										   $paypal_element_button.slideUp(speed,easing).addClass('pafe-form-builder-conditional-logic-hidden');
+										}else{
+											$fieldWidget.slideUp(speed,easing).addClass('pafe-form-builder-conditional-logic-hidden');
+										}
 	                    				if (notField != undefined) {
 	                    					var repeaterID = $fieldGroup.data('pafe-form-builder-repeater-id');
 	                            			if (repeaterID != undefined) {
@@ -2935,7 +2960,7 @@ jQuery(document).ready(function($) {
             if (calculation.indexOf('field id') == -1) {
 
 	            // Loop qua tat ca field trong form
-	            $(document).find('[name^="form_fields"][data-pafe-form-builder-form-id="' + formID + '"]').each(function(){
+	            $(document).find('[name^="form_fields"][data-pafe-form-builder-form-id="' + formID + '"]').each(function(field_index, field_dom){
 
 	                if ($(this).attr('id') != undefined) {
 	                    var fieldName = $(this).attr('name').replace('[]','').replace('form_fields[','').replace(']',''),
@@ -2947,7 +2972,7 @@ jQuery(document).ready(function($) {
 
 	                        if (fieldType == 'radio' || fieldType == 'checkbox') {
 	                        	if ($repeater_field.length > 0) {
-		                        	var fieldValue = $repeater_field.find('[data-pafe-form-builder-form-id="' + formID + '"][name="form_fields[' + fieldName + ']"]:checked').val();
+		                        	var fieldValue = $(field_dom.closest('[data-pafe-form-builder-repeater-form-id]')).find('[data-pafe-form-builder-form-id="' + formID + '"][name="form_fields[' + fieldName + ']"]:checked').val();
 		                        } else {
 		                        	var fieldValue = $(document).find('[data-pafe-form-builder-form-id="' + formID + '"][name="form_fields[' + fieldName + ']"]:checked').val();
 		                        }
@@ -3087,9 +3112,9 @@ jQuery(document).ready(function($) {
 		                    if($fieldSelector.length > 1 || $fieldSelector.length == 1 && $fieldSelector.closest('[data-pafe-form-builder-repeater-id]').length > 0) {
 		                    	$repeater_field = $fieldSelector.closest('[data-pafe-form-builder-repeater-id]');
 		                    	if ($repeater_field.length > 0) {
-			                    	$fieldSelector.each(function(){
+			                    	$fieldSelector.each(function(field_index, field_dom){
 			                    		if (fieldType == 'radio' || fieldType == 'checkbox') {
-				                            var fieldValue = $repeater_field.find('[data-pafe-form-builder-form-id="' + formID + '"][name="form_fields[' + fieldName + ']"]:checked').val();
+				                            var fieldValue = $(field_dom.closest('[data-pafe-form-builder-repeater-id]')).find('[data-pafe-form-builder-form-id="' + formID + '"][name="form_fields[' + fieldName + ']"]:checked').val();
 				                        } else {
 				                            var fieldValue = $(this).val().trim();
 				                        }

@@ -10,10 +10,10 @@ namespace TheplusAddons\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Utils;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Text_Shadow;
@@ -551,7 +551,7 @@ class ThePlus_Dynamic_Categories extends Widget_Base {
 			[
 				'name' => 'title_typography',
 				'label' => esc_html__( 'Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .dynamic-cat-list .pt-dynamic-hover-cat-name,{{WRAPPER}} .dynamic-cat-list .pt-dynamic-hover-cat-name a',
 			]
 		);
@@ -998,7 +998,7 @@ class ThePlus_Dynamic_Categories extends Widget_Base {
 			[
 				'name' => 'count_typography',
 				'label' => esc_html__( 'Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .dynamic-cat-list .pt-dynamic-hover-cat-count',
 			]
 		);
@@ -1265,7 +1265,7 @@ class ThePlus_Dynamic_Categories extends Widget_Base {
 			[
 				'name' => 'desc_typography',
 				'label' => esc_html__( 'Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .dynamic-cat-list .pt-dynamic-wrapper .pt-dynamic-hover-cat-desc',
 			]
 		);

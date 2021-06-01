@@ -10,10 +10,10 @@ namespace TheplusAddons\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Utils;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Image_Size;
@@ -5001,26 +5001,25 @@ class ThePlus_Info_Box extends Widget_Base {
 		
 	}
 	 protected function render() {
-
         $settings = $this->get_settings_for_display();
 		
-		$info_box_layout = $settings["info_box_layout"];
-		$main_style = $settings["main_style"];
+		$info_box_layout = !empty($settings["info_box_layout"]) ? $settings["info_box_layout"] : 'single_layout';
+		$main_style = !empty($settings["main_style"]) ? $settings["main_style"] : 'style_1';
 		$full_infobox_switch = $settings["full_infobox_switch"];
 		$full_infobox_link = (!empty($settings["full_infobox_link"]["url"])) ? $settings["full_infobox_link"]["url"] : '#';
 		$fc_load_class='';
 		//r_full_infobox_switch
-		if((!empty($full_infobox_switch) && $full_infobox_switch=='yes') || (!empty($item['r_full_infobox_switch']) && $item['r_full_infobox_switch']=='yes')){
+		if((!empty($full_infobox_switch) && $full_infobox_switch == 'yes') || (!empty($item['r_full_infobox_switch']) && $item['r_full_infobox_switch'] == 'yes')){
 			$fc_load_class = 'tp-info-fbc';
 		}else{
 			$fc_load_class = 'tp-info-nc';
 		}
-		
+
 		$icon_shine='';
-		if(!empty($settings["icon_shine_effect"]) && $settings["icon_shine_effect"]=='yes'){
+		if(!empty($settings["icon_shine_effect"]) && $settings["icon_shine_effect"] == 'yes'){
 			$icon_shine = 'icon_shine_show';
 		}
-		
+
 		$hover_class  = $hover_attr = '';
 		$hover_uniqid = uniqid('hover-effect');
 		if ($settings["box_hover_effects"] == "float_shadow" || $settings["box_hover_effects"] == "grow_shadow" || $settings["box_hover_effects"] == "shadow_radial") {
@@ -5028,7 +5027,7 @@ class ThePlus_Info_Box extends Widget_Base {
 			$hover_attr .= ' data-hover_shadow="' . esc_attr($settings["box_hover_shadow_color"]) . '" ';
 			$hover_attr .= ' data-content_hover_effects="' . esc_attr($settings["box_hover_effects"]) . '" ';
 		}
-		$box_hover_effects=$settings["box_hover_effects"];
+		$box_hover_effects = $settings["box_hover_effects"];
 		if ($box_hover_effects == "grow") {
 			$hover_class .= 'content_hover_grow';
 		} elseif ($box_hover_effects == "push") {
@@ -5059,56 +5058,56 @@ class ThePlus_Info_Box extends Widget_Base {
 			$animated_class = 'animate-general';
 			$animation_attr = ' data-animate-type="'.esc_attr($animation_effects).'" data-animate-delay="'.esc_attr($animation_delay).'"';
 			$animation_attr .= ' data-animate-offset="'.esc_attr($animate_offset).'"';
-			if($settings["animation_duration_default"]=='yes'){
-				$animate_duration=$settings["animate_duration"]["size"];
+			if($settings["animation_duration_default"] == 'yes'){
+				$animate_duration = (isset($settings["animate_duration"]["size"]) ? $settings["animate_duration"]["size"] : 50);
 				$animation_attr .= ' data-animate-duration="'.esc_attr($animate_duration).'"';
 			}
-			if(!empty($settings["animation_out_effects"]) && $settings["animation_out_effects"]!='no-animation'){
-				$animation_attr .= ' data-animate-out-type="'.esc_attr($settings["animation_out_effects"]).'" data-animate-out-delay="'.esc_attr($settings["animation_out_delay"]["size"]).'"';					
-				if($settings["animation_out_duration_default"]=='yes'){						
-					$animation_attr .= ' data-animate-out-duration="'.esc_attr($settings["animation_out_duration"]["size"]).'"';
+			if(!empty($settings["animation_out_effects"]) && $settings["animation_out_effects"] != 'no-animation'){
+				$animation_attr .= ' data-animate-out-type="'.esc_attr($settings["animation_out_effects"]).'" data-animate-out-delay="'.esc_attr((isset($settings["animation_out_delay"]["size"])) ? $settings["animation_out_delay"]["size"] : 50).'"';
+				if($settings["animation_out_duration_default"] == 'yes'){
+					$animation_attr .= ' data-animate-out-duration="'.esc_attr((isset($settings["animation_out_duration"]["size"])) ? $settings["animation_out_duration"]["size"] : 50).'"';
 				}
 			}
 		}
-		
+
 		/*--Plus Extra ---*/
 		$magic_class = $magic_attr = $parallax_scroll = '';
 		if (!empty($settings['magic_scroll']) && $settings['magic_scroll'] == 'yes') {
 			
-				if($settings["scroll_option_popover_toggle"]==''){
-					$scroll_offset=0;
-					$scroll_duration=300;
+				if(empty($settings["scroll_option_popover_toggle"])){
+					$scroll_offset	 = 0;
+					$scroll_duration = 300;
 				}else{
-					$scroll_offset=$settings['scroll_option_scroll_offset'];
-					$scroll_duration=$settings['scroll_option_scroll_duration'];
+					$scroll_offset	 = (isset($settings['scroll_option_scroll_offset']) ? $settings['scroll_option_scroll_offset'] : 0 );
+					$scroll_duration = (isset($settings['scroll_option_scroll_duration']) ? $settings['scroll_option_scroll_duration'] : 300 );
 				}
 				
-				if($settings["scroll_from_popover_toggle"]==''){
-					$scroll_x_from=0;
-					$scroll_y_from=0;
-					$scroll_opacity_from=1;
-					$scroll_scale_from=1;
-					$scroll_rotate_from=0;
+				if(empty($settings["scroll_from_popover_toggle"])){
+					$scroll_x_from	= 0;
+					$scroll_y_from	= 0;
+					$scroll_opacity_from= 1;
+					$scroll_scale_from	= 1;
+					$scroll_rotate_from	= 0;
 				}else{
-					$scroll_x_from=$settings['scroll_from_scroll_x_from'];
-					$scroll_y_from=$settings['scroll_from_scroll_y_from'];
-					$scroll_opacity_from=$settings['scroll_from_scroll_opacity_from'];
-					$scroll_scale_from=$settings['scroll_from_scroll_scale_from'];
-					$scroll_rotate_from=$settings['scroll_from_scroll_rotate_from'];
+					$scroll_x_from 		= (isset($settings['scroll_from_scroll_x_from']) ? $settings['scroll_from_scroll_x_from'] : 0 );
+					$scroll_y_from 		= (isset($settings['scroll_from_scroll_y_from']) ? $settings['scroll_from_scroll_y_from'] : 0 );
+					$scroll_opacity_from = (isset($settings['scroll_from_scroll_opacity_from']) ? $settings['scroll_from_scroll_opacity_from'] : 1 );
+					$scroll_scale_from 	= (isset($settings['scroll_from_scroll_scale_from']) ? $settings['scroll_from_scroll_scale_from'] : 1 );
+					$scroll_rotate_from = (isset($settings['scroll_from_scroll_rotate_from']) ? $settings['scroll_from_scroll_rotate_from'] : 0 );
 				}
 				
-				if($settings["scroll_to_popover_toggle"]==''){
-					$scroll_x_to=0;
-					$scroll_y_to=-50;
-					$scroll_opacity_to=1;
-					$scroll_scale_to=1;
-					$scroll_rotate_to=0;
+				if(empty($settings["scroll_to_popover_toggle"])){
+					$scroll_x_to = 0;
+					$scroll_y_to = -50;
+					$scroll_opacity_to = 1;
+					$scroll_scale_to = 1;
+					$scroll_rotate_to = 0;
 				}else{
-					$scroll_x_to=$settings['scroll_to_scroll_x_to'];
-					$scroll_y_to=$settings['scroll_to_scroll_y_to'];
-					$scroll_opacity_to=$settings['scroll_to_scroll_opacity_to'];
-					$scroll_scale_to=$settings['scroll_to_scroll_scale_to'];
-					$scroll_rotate_to=$settings['scroll_to_scroll_rotate_to'];
+					$scroll_x_to = (isset($settings['scroll_to_scroll_x_to']) ? $settings['scroll_to_scroll_x_to'] : 0 );
+					$scroll_y_to = (isset($settings['scroll_to_scroll_y_to']) ? $settings['scroll_to_scroll_y_to'] : -50 );
+					$scroll_opacity_to = (isset($settings['scroll_to_scroll_opacity_to']) ? $settings['scroll_to_scroll_opacity_to'] : 1 );
+					$scroll_scale_to = (isset($settings['scroll_to_scroll_scale_to']) ? $settings['scroll_to_scroll_scale_to'] : 1 );
+					$scroll_rotate_to = (isset($settings['scroll_to_scroll_rotate_to']) ? $settings['scroll_to_scroll_rotate_to'] : 0 );
 				}
 				$magic_attr .= ' data-scroll_type="position" ';
 				$magic_attr .= ' data-scroll_offset="' . esc_attr($scroll_offset) . '" ';
@@ -5133,55 +5132,54 @@ class ThePlus_Info_Box extends Widget_Base {
 			
 			$this->add_render_attribute( '_tooltip', 'data-tippy', '', true );
 
-			if (!empty($settings['plus_tooltip_content_type']) && $settings['plus_tooltip_content_type']=='normal_desc') {
+			if (!empty($settings['plus_tooltip_content_type']) && $settings['plus_tooltip_content_type'] == 'normal_desc') {
 				$this->add_render_attribute( '_tooltip', 'title', $settings['plus_tooltip_content_desc'], true );
-			}else if (!empty($settings['plus_tooltip_content_type']) && $settings['plus_tooltip_content_type']=='content_wysiwyg') {
-				$tooltip_content=$settings['plus_tooltip_content_wysiwyg'];
+			}else if (!empty($settings['plus_tooltip_content_type']) && $settings['plus_tooltip_content_type'] == 'content_wysiwyg') {
+				$tooltip_content = $settings['plus_tooltip_content_wysiwyg'];
 				$this->add_render_attribute( '_tooltip', 'title', $tooltip_content, true );
 			}
-			$plus_tooltip_position=($settings["tooltip_opt_plus_tooltip_position"]!='') ? $settings["tooltip_opt_plus_tooltip_position"] : 'top';
-				$this->add_render_attribute( '_tooltip', 'data-tippy-placement', $plus_tooltip_position, true );
-				
-				$tooltip_interactive =($settings["tooltip_opt_plus_tooltip_interactive"]=='' || $settings["tooltip_opt_plus_tooltip_interactive"]=='yes') ? 'true' : 'false';
-				$this->add_render_attribute( '_tooltip', 'data-tippy-interactive', $tooltip_interactive, true );
-				
-				$plus_tooltip_theme=($settings["tooltip_opt_plus_tooltip_theme"]!='') ? $settings["tooltip_opt_plus_tooltip_theme"] : 'dark';
-				$this->add_render_attribute( '_tooltip', 'data-tippy-theme', $plus_tooltip_theme, true );
-				
-				
-				$tooltip_arrow =($settings["tooltip_opt_plus_tooltip_arrow"]!='none' || $settings["tooltip_opt_plus_tooltip_arrow"]=='') ? 'true' : 'false';
-				$this->add_render_attribute( '_tooltip', 'data-tippy-arrow', $tooltip_arrow , true );
-				
-				$plus_tooltip_arrow=($settings["tooltip_opt_plus_tooltip_arrow"]!='') ? $settings["tooltip_opt_plus_tooltip_arrow"] : 'sharp';
-				$this->add_render_attribute( '_tooltip', 'data-tippy-arrowtype', $plus_tooltip_arrow, true );
-				
-				$plus_tooltip_animation=($settings["tooltip_opt_plus_tooltip_animation"]!='') ? $settings["tooltip_opt_plus_tooltip_animation"] : 'shift-toward';
-				$this->add_render_attribute( '_tooltip', 'data-tippy-animation', $plus_tooltip_animation, true );
-				
-				$plus_tooltip_x_offset=($settings["tooltip_opt_plus_tooltip_x_offset"]!='') ? $settings["tooltip_opt_plus_tooltip_x_offset"] : 0;
-				$plus_tooltip_y_offset=($settings["tooltip_opt_plus_tooltip_y_offset"]!='') ? $settings["tooltip_opt_plus_tooltip_y_offset"] : 0;
-				$this->add_render_attribute( '_tooltip', 'data-tippy-offset', $plus_tooltip_x_offset .','. $plus_tooltip_y_offset, true );
-				
-				$tooltip_duration_in =($settings["tooltip_opt_plus_tooltip_duration_in"]!='') ? $settings["tooltip_opt_plus_tooltip_duration_in"] : 250;
-				$tooltip_duration_out =($settings["tooltip_opt_plus_tooltip_duration_out"]!='') ? $settings["tooltip_opt_plus_tooltip_duration_out"] : 200;
-				$tooltip_trigger =($settings["tooltip_opt_plus_tooltip_triggger"]!='') ? $settings["tooltip_opt_plus_tooltip_triggger"] : 'mouseenter';
-				$tooltip_arrowtype =($settings["tooltip_opt_plus_tooltip_arrow"]!='') ? $settings["tooltip_opt_plus_tooltip_arrow"] : 'sharp';
+			$plus_tooltip_position = (!empty($settings["tooltip_opt_plus_tooltip_position"]) ? $settings["tooltip_opt_plus_tooltip_position"] : 'top');
+			$this->add_render_attribute( '_tooltip', 'data-tippy-placement', $plus_tooltip_position, true );
+			
+			$tooltip_interactive = (empty($settings["tooltip_opt_plus_tooltip_interactive"]) || $settings["tooltip_opt_plus_tooltip_interactive"] == 'yes' ? 'true' : 'false');
+			$this->add_render_attribute( '_tooltip', 'data-tippy-interactive', $tooltip_interactive, true );
+			
+			$plus_tooltip_theme = (!empty($settings["tooltip_opt_plus_tooltip_theme"])) ? $settings["tooltip_opt_plus_tooltip_theme"] : 'dark';
+			$this->add_render_attribute( '_tooltip', 'data-tippy-theme', $plus_tooltip_theme, true );
+			
+			$tooltip_arrow = ($settings["tooltip_opt_plus_tooltip_arrow"] != 'none' || empty($settings["tooltip_opt_plus_tooltip_arrow"])) ? 'true' : 'false';
+			$this->add_render_attribute( '_tooltip', 'data-tippy-arrow', $tooltip_arrow , true );
+			
+			$plus_tooltip_arrow = (!empty($settings["tooltip_opt_plus_tooltip_arrow"])) ? $settings["tooltip_opt_plus_tooltip_arrow"] : 'sharp';
+			$this->add_render_attribute( '_tooltip', 'data-tippy-arrowtype', $plus_tooltip_arrow, true );
+			
+			$plus_tooltip_animation = (!empty($settings["tooltip_opt_plus_tooltip_animation"])) ? $settings["tooltip_opt_plus_tooltip_animation"] : 'shift-toward';
+			$this->add_render_attribute( '_tooltip', 'data-tippy-animation', $plus_tooltip_animation, true );
+			
+			$plus_tooltip_x_offset = (!empty($settings["tooltip_opt_plus_tooltip_x_offset"]) ? $settings["tooltip_opt_plus_tooltip_x_offset"] : 0);
+			$plus_tooltip_y_offset = (!empty($settings["tooltip_opt_plus_tooltip_y_offset"]) ? $settings["tooltip_opt_plus_tooltip_y_offset"] : 0);
+			$this->add_render_attribute( '_tooltip', 'data-tippy-offset', $plus_tooltip_x_offset .','. $plus_tooltip_y_offset, true );
+			
+			$tooltip_duration_in = (!empty($settings["tooltip_opt_plus_tooltip_duration_in"]) ? $settings["tooltip_opt_plus_tooltip_duration_in"] : 250);
+			$tooltip_duration_out = (!empty($settings["tooltip_opt_plus_tooltip_duration_out"]) ? $settings["tooltip_opt_plus_tooltip_duration_out"] : 200);
+			$tooltip_trigger = (!empty($settings["tooltip_opt_plus_tooltip_triggger"]) ? $settings["tooltip_opt_plus_tooltip_triggger"] : 'mouseenter');
+			$tooltip_arrowtype = (!empty($settings["tooltip_opt_plus_tooltip_arrow"]) ? $settings["tooltip_opt_plus_tooltip_arrow"] : 'sharp');
 		}
 		
 		$move_parallax=$move_parallax_attr=$parallax_move='';
 		if(!empty($settings['plus_mouse_move_parallax']) && $settings['plus_mouse_move_parallax']=='yes'){
 			$move_parallax='pt-plus-move-parallax';
 			$parallax_move='parallax-move';
-			$parallax_speed_x=($settings["plus_mouse_parallax_speed_x"]["size"]!='') ? $settings["plus_mouse_parallax_speed_x"]["size"] : 30;
-				$parallax_speed_y=($settings["plus_mouse_parallax_speed_y"]["size"]!='') ? $settings["plus_mouse_parallax_speed_y"]["size"] : 30;
+			$parallax_speed_x=(!empty($settings["plus_mouse_parallax_speed_x"]["size"]) ? $settings["plus_mouse_parallax_speed_x"]["size"] : 30);
+			$parallax_speed_y=(!empty($settings["plus_mouse_parallax_speed_y"]["size"]) ? $settings["plus_mouse_parallax_speed_y"]["size"] : 30);
 				$move_parallax_attr .= ' data-move_speed_x="' . esc_attr($parallax_speed_x) . '" ';
 				$move_parallax_attr .= ' data-move_speed_y="' . esc_attr($parallax_speed_y) . '" ';
 		}
 		if(!empty($settings['plus_tilt_parallax']) && $settings['plus_tilt_parallax']=='yes'){
-			$tilt_scale=($settings["plus_tilt_opt_tilt_scale"]["size"]!='') ? $settings["plus_tilt_opt_tilt_scale"]["size"] : 1.1;
-			$tilt_max=($settings["plus_tilt_opt_tilt_max"]["size"]!='') ? $settings["plus_tilt_opt_tilt_max"]["size"] : 20;
-			$tilt_perspective=($settings["plus_tilt_opt_tilt_perspective"]["size"]!='') ? $settings["plus_tilt_opt_tilt_perspective"]["size"] : 400;
-			$tilt_speed=($settings["plus_tilt_opt_tilt_speed"]["size"]!='') ? $settings["plus_tilt_opt_tilt_speed"]["size"] : 400;
+			$tilt_scale	= (!empty($settings["plus_tilt_opt_tilt_scale"]["size"]) ? $settings["plus_tilt_opt_tilt_scale"]["size"] : 1.1);
+			$tilt_max = (!empty($settings["plus_tilt_opt_tilt_max"]["size"]) ? $settings["plus_tilt_opt_tilt_max"]["size"] : 20);
+			$tilt_perspective = (!empty($settings["plus_tilt_opt_tilt_perspective"]["size"]) ? $settings["plus_tilt_opt_tilt_perspective"]["size"] : 400);
+			$tilt_speed	= (!empty($settings["plus_tilt_opt_tilt_speed"]["size"]) ? $settings["plus_tilt_opt_tilt_speed"]["size"] : 400);
 			
 			$this->add_render_attribute( '_tilt_parallax', 'data-tilt', '' , true );
 			$this->add_render_attribute( '_tilt_parallax', 'data-tilt-scale', $tilt_scale , true );
@@ -5201,10 +5199,10 @@ class ThePlus_Info_Box extends Widget_Base {
 		}
 		$inner_js_tilt=$tilt_hover_class='';
 		if(!empty($settings['tilt_parallax']) && $settings['tilt_parallax']=='yes'){
-			$tilt_scale=($settings["tilt_opt_tilt_scale"]["size"]!='') ? $settings["tilt_opt_tilt_scale"]["size"] : 1.1;
-			$tilt_max=($settings["tilt_opt_tilt_max"]["size"]!='') ? $settings["tilt_opt_tilt_max"]["size"] : 20;
-			$tilt_perspective=($settings["tilt_opt_tilt_perspective"]["size"]!='') ? $settings["tilt_opt_tilt_perspective"]["size"] : 400;
-			$tilt_speed=($settings["tilt_opt_tilt_speed"]["size"]!='') ? $settings["tilt_opt_tilt_speed"]["size"] : 400;
+			$tilt_scale	= (!empty($settings["plus_tilt_opt_tilt_scale"]["size"]) ? $settings["plus_tilt_opt_tilt_scale"]["size"] : 1.1);
+			$tilt_max = (!empty($settings["plus_tilt_opt_tilt_max"]["size"]) ? $settings["plus_tilt_opt_tilt_max"]["size"] : 20);
+			$tilt_perspective = (!empty($settings["plus_tilt_opt_tilt_perspective"]["size"]) ? $settings["plus_tilt_opt_tilt_perspective"]["size"] : 400);
+			$tilt_speed	= (!empty($settings["plus_tilt_opt_tilt_speed"]["size"]) ? $settings["plus_tilt_opt_tilt_speed"]["size"] : 400);
 			
 			$this->add_render_attribute( 'tilt_parallax', 'data-tilt', '' , true );
 			$this->add_render_attribute( 'tilt_parallax', 'data-tilt-scale', $tilt_scale , true );
@@ -5225,9 +5223,9 @@ class ThePlus_Info_Box extends Widget_Base {
 		}
 		$reveal_effects=$effect_attr='';
 		if(!empty($settings["plus_overlay_effect"]) && $settings["plus_overlay_effect"]=='yes'){
-			$effect_rand_no =uniqid('reveal');
-			$color_1=($settings["plus_overlay_spcial_effect_color_1"]!='') ? $settings["plus_overlay_spcial_effect_color_1"] : '#313131';
-			$color_2=($settings["plus_overlay_spcial_effect_color_2"]!='') ? $settings["plus_overlay_spcial_effect_color_2"] : '#ff214f';
+			$effect_rand_no = uniqid('reveal');
+			$color_1 = (!empty($settings["plus_overlay_spcial_effect_color_1"]) ? $settings["plus_overlay_spcial_effect_color_1"] : '#313131');
+    		$color_2 = (!empty($settings["plus_overlay_spcial_effect_color_2"]) ? $settings["plus_overlay_spcial_effect_color_2"] : '#ff214f');
 			$effect_attr .=' data-reveal-id="'.esc_attr($effect_rand_no).'" ';
 			$effect_attr .=' data-effect-color-1="'.esc_attr($color_1).'" ';
 			$effect_attr .=' data-effect-color-2="'.esc_attr($color_2).'" ';
@@ -5269,7 +5267,7 @@ class ThePlus_Info_Box extends Widget_Base {
 				jQuery( document ).ready(function() {
 				"use strict";
 					tippy( "#'.esc_attr($uid_widget).'" , {
-						arrowType : "'.$tooltip_arrowtype.'",
+						arrowType : "'.esc_attr($tooltip_arrowtype).'",
 						duration : ['.esc_attr($tooltip_duration_in).','.esc_attr($tooltip_duration_out).'],
 						trigger : "'.esc_attr($tooltip_trigger).'",
 						appendTo: document.querySelector("#'.esc_attr($uid_widget).'")
@@ -5279,7 +5277,7 @@ class ThePlus_Info_Box extends Widget_Base {
 			}
 		}
 		/*--Plus Extra ---*/
-		
+
 		$service_title = $description= $service_img = $service_center= $service_align = $service_border = $service_icon_style= $service_space = $serice_box_border =$serice_img_border=$border_right_css=$imge_content=$title_css=$subtitle_css=$output='';
 		
 		$text_align=$settings["text_align"];
@@ -5299,24 +5297,18 @@ class ThePlus_Info_Box extends Widget_Base {
 			$service_center = 'vertical-center';
 		}
 		
-		if ( ! empty( $settings['url_link']['url'] ) ) {
-			$this->add_render_attribute( 'box_link', 'href', $settings['url_link']['url'] );
-			if ( $settings['url_link']['is_external'] ) {
-				$this->add_render_attribute( 'box_link', 'target', '_blank' );
-			}
-			if ( $settings['url_link']['nofollow'] ) {
-				$this->add_render_attribute( 'box_link', 'rel', 'nofollow' );
-			}
+		if ( ! empty( $settings['url_link']['url'] ) ) {			
+			$this->add_link_attributes( 'box_link', $settings['url_link'] );
 		}
-		
+
 		//Image
 		$image_icon=$settings["image_icon"];
 		if($image_icon == 'image'){
 			$image_alt='';
-			if($settings["select_image"]["url"]!=''){				
+			if(!empty($settings["select_image"]["url"])){				
 				$image_id=$settings["select_image"]["id"];				
 				$img = wp_get_attachment_image_src($image_id,$settings['select_image_thumbnail_size']);
-				$imgSrc = $img[0];
+				$imgSrc = isset($img[0]) ? $img[0] : Utils::get_placeholder_image_src();
 				
 				$image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
 				if(!$image_alt){
@@ -5332,7 +5324,7 @@ class ThePlus_Info_Box extends Widget_Base {
 				$service_a_start= '<a '.$this->get_render_attribute_string( "box_link" ).' >';
 				$service_a_end= '</a>';
 			}
-			$service_img=$service_a_start.'<img src="'.esc_url($imgSrc).'" class="service-img " alt="'.esc_attr($image_alt).'" />'.$service_a_end;
+			$service_img = wp_kses_post($service_a_start).'<img src="'.esc_url($imgSrc).'" class="service-img " alt="'.esc_attr($image_alt).'" />'.wp_kses_post($service_a_end);
 		}
 		
 		//font Icon
@@ -5360,22 +5352,21 @@ class ThePlus_Info_Box extends Widget_Base {
 				$icons = $settings["icons_mind"];
 			}else if($settings["icon_font_style"]=='font_awesome_5'){
 				ob_start();
-				\Elementor\Icons_Manager::render_icon( $settings['icon_fontawesome_5'], [ 'aria-hidden' => 'true' ]);
-				$icons = ob_get_contents();
+					\Elementor\Icons_Manager::render_icon( $settings['icon_fontawesome_5'], [ 'aria-hidden' => 'true' ]);
+					$icons = ob_get_contents();
 				ob_end_clean();
 			}else if($settings["icon_font_style"]=='icon_image' && !empty($settings["icons_image"]["url"])){
 				$image_id=$settings["icons_image"]["id"];				
 				$img = wp_get_attachment_image_src($image_id,$settings['icons_image_thumbnail_size']);
-				$icons_image_src = $img[0];
+				$icons_image_src = isset($img[0]) ? $img[0] : Utils::get_placeholder_image_src();
 				$image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
 				if(!$image_alt){
 					$image_alt = get_the_title($image_id);
 				}else if(!$image_alt){
 					$image_alt = 'Plus service icon';
 				}
-				
-				
-				$icons_image = '<div class="service-icon-image '.esc_attr($icon_shine).' service-icon '.esc_attr($service_icon_style).'"><img src="'.$icons_image_src.'" class="icon-image-set" alt="'.esc_attr($image_alt).'"/></div>';
+		
+				$icons_image = '<div class="service-icon-image '.esc_attr($icon_shine).' service-icon '.esc_attr($service_icon_style).'"><img src="'.esc_url($icons_image_src).'" class="icon-image-set" alt="'.esc_attr($image_alt).'"/></div>';
 			}else{
 				$icons = $icons_image='';
 			}
@@ -5392,23 +5383,34 @@ class ThePlus_Info_Box extends Widget_Base {
 		}
 		
 		//Svg Icon
-		if($settings['border_stroke_color'] !=''){
-			$border_stroke_color=$settings['border_stroke_color'];
+		if(!empty($settings['border_stroke_color'])){
+			$border_stroke_color = $settings['border_stroke_color'];
 		}else{
-			$border_stroke_color='none';
+			$border_stroke_color = 'none';
 		}
-		if(!empty($settings['svg_stroke_none']) && $settings['svg_stroke_none']=='yes'){
-				$border_stroke_color = 'none';
+		
+		if(!empty($settings['border_stroke_color_hover'])){
+			$border_stroke_color_hover = $settings['border_stroke_color_hover'];
+		}else{
+			$border_stroke_color_hover = '';
 		}
+		
+		if(!empty($settings['svg_stroke_none']) && $settings['svg_stroke_none'] == 'yes'){
+			$border_stroke_color = 'none';
+			$border_stroke_color_hover = 'none';
+		}
+		
 		if(!empty($settings['draw_animated_svg']) && $settings['draw_animated_svg']=='yes'){
 			$duration = 1;										
 		}else{
 			$duration = (!empty($settings["duration"]["size"])) ? $settings["duration"]["size"] : 30;
 		}
-		if($settings['svg_fill_color'] =='yes'){
-			$svg_fill_color=$settings['svg_fill_color_f'];
+		if($settings['svg_fill_color'] == 'yes'){
+			$svg_fill_color = $settings['svg_fill_color_f'];
+			$svg_fill_color_hover = $settings['svg_fill_color_hover'];
 		}else{
-			$svg_fill_color='none';
+			$svg_fill_color = 'none';
+			$svg_fill_color_hover = '';
 		}
 		if($image_icon == 'svg'){
 			if($settings['svg_icon'] == 'img'){
@@ -5416,11 +5418,11 @@ class ThePlus_Info_Box extends Widget_Base {
 			}else{
 				$svg_url = THEPLUS_URL.'assets/images/svg/'.esc_attr($settings["svg_d_icon"]); 
 			}
-			$rand_no=rand(1000000, 1500000);
-						
+			$rand_no = rand(1000000, 1500000);
 			
-			$service_img ='<div class="pt_plus_animated_svg  svg-'.esc_attr($rand_no).'" data-id="svg-'.esc_attr($rand_no).'" data-type="'.esc_attr($settings["svg_type"]).'" data-duration="'.esc_attr($duration).'" data-stroke="'.esc_attr($border_stroke_color).'" data-fill_color="'.esc_attr($svg_fill_color).'">';
-				$service_img .='<div class="info_box_svg svg_inner_block '.esc_attr($service_icon_style).'" >';
+			
+			$service_img ='<div class="pt_plus_animated_svg  svg-'.esc_attr($rand_no).'" data-id="svg-'.esc_attr($rand_no).'" data-type="'.esc_attr($settings["svg_type"]).'" data-duration="'.esc_attr($duration).'" data-stroke="'.esc_attr($border_stroke_color).'" data-fill_color="'.esc_attr($svg_fill_color).'" data-fillhover="'.esc_attr($svg_fill_color_hover).'" data-strokehover="'.esc_attr($border_stroke_color_hover).'">';
+				$service_img .='<div class="info_box_svg svg_inner_block '.esc_attr($service_icon_style).'">';
 					//@since 4.1.9
 					$svg_url_pass='';
 					$ext = pathinfo($svg_url, PATHINFO_EXTENSION);
@@ -5434,129 +5436,124 @@ class ThePlus_Info_Box extends Widget_Base {
 		if($settings['border_check_right'] == 'yes'){
 			$serice_img_border ='service-img-border';
 			$border_right_css = ' style="';
-			if($settings['border_right_color'] != "") {
+			if(!empty($settings['border_right_color'])) {
 			$border_right_css .= 'border-color: '.esc_attr($settings["border_right_color"]).';';
 			}		
 			$border_right_css .= '"';
 		}
-		
+
 		$title_tag=!empty($settings['title_tag']) ? $settings['title_tag'] : 'div';
-		if(!empty($settings["title"])){
-			if ((!empty($settings['url_link']['url'])) && ($full_infobox_switch !='yes')){
-				$service_title= '<a '.$this->get_render_attribute_string( "box_link" ).' ><'.theplus_validate_html_tag($title_tag).' class="service-title "> '.esc_html($settings["title"]).' </'.theplus_validate_html_tag($title_tag).'></a>';				
+		if(!empty($settings["title"])){			 
+			if ((!empty($settings['url_link']['url'])) && ($full_infobox_switch != 'yes')){
+				$service_title= '<a '.$this->get_render_attribute_string( "box_link" ).' ><'.theplus_validate_html_tag($title_tag).' class="service-title "> '.wp_kses_post($settings["title"]).' </'.theplus_validate_html_tag($title_tag).'></a>';
 			}else{
-				$service_title= '<'.theplus_validate_html_tag($title_tag).' class="service-title "> '.esc_html($settings["title"]).' </'.theplus_validate_html_tag($title_tag).'>';
+				$service_title= '<'.theplus_validate_html_tag($title_tag).' class="service-title "> '.wp_kses_post($settings["title"]).' </'.theplus_validate_html_tag($title_tag).'>';
 			}
 		}
-		
+
 		$border_check=$settings["border_check"];
 		if($border_check == 'yes'){
 			$service_border = '<div class="service-border"> </div>' ;
 		}
-		
+
 		$content_desc = $settings['content_desc'];
-		if($content_desc !=''){
-			 $description='<div class="service-desc"> '.$content_desc.' </div>';
+		if(!empty($content_desc)){
+			 $description='<div class="service-desc"> '.wp_kses_post($content_desc).' </div>';
 		}
 		//carousel option
 		$isotope =$data_slider =$arrow_class=$data_carousel='';
-		if($info_box_layout=='carousel_layout'){
+		if($info_box_layout == 'carousel_layout'){
 			
-			$slider_direction = ($settings['slider_direction']=='vertical') ? 'true' : 'false';
+			$slider_direction = ($settings['slider_direction'] == 'vertical') ? 'true' : 'false';
 			$data_slider .=' data-slider_direction="'.esc_attr($slider_direction).'"';
-			$data_slider .=' data-slide_speed="'.esc_attr($settings["slide_speed"]["size"]).'"';
-			
-			$data_slider .=' data-slider_desktop_column="'.esc_attr($settings['slider_desktop_column']).'"';
-			$data_slider .=' data-steps_slide="'.esc_attr($settings['steps_slide']).'"';
-			
-			$slider_draggable= ($settings["slider_draggable"]=='yes') ? 'true' : 'false';
-			$multi_drag= ($settings["multi_drag"]=='yes') ? 'true' : 'false';
+			$data_slider .=' data-slide_speed="'.(isset($settings["slide_speed"]["size"]) ? esc_attr($settings["slide_speed"]["size"]) : 1500).'"';
+
+			$data_slider .=' data-slider_desktop_column="'.(isset($settings["slider_desktop_column"]) ? esc_attr($settings['slider_desktop_column']) : 4).'"';
+			$data_slider .=' data-steps_slide="'.(isset($settings['steps_slide']) ? esc_attr($settings['steps_slide']) : 1).'"';
+
+			$slider_draggable = ($settings["slider_draggable"] == 'yes') ? 'true' : 'false';
+			$multi_drag = ($settings["multi_drag"]=='yes') ? 'true' : 'false';
 			$data_slider .=' data-slider_draggable="'.esc_attr($slider_draggable).'"';
 			$data_slider .=' data-multi_drag="'.esc_attr($multi_drag).'"';
-			$slider_infinite= ($settings["slider_infinite"]=='yes') ? 'true' : 'false';
+			$slider_infinite = ($settings["slider_infinite"] == 'yes') ? 'true' : 'false';
 			$data_slider .=' data-slider_infinite="'.esc_attr($slider_infinite).'"';
-			$slider_pause_hover= ($settings["slider_pause_hover"]=='yes') ? 'true' : 'false';
+			$slider_pause_hover = ($settings["slider_pause_hover"] == 'yes') ? 'true' : 'false';
 			$data_slider .=' data-slider_pause_hover="'.esc_attr($slider_pause_hover).'"';
-			$slider_adaptive_height= ($settings["slider_adaptive_height"]=='yes') ? 'true' : 'false';
+			$slider_adaptive_height = ($settings["slider_adaptive_height"] == 'yes') ? 'true' : 'false';
 			$data_slider .=' data-slider_adaptive_height="'.esc_attr($slider_adaptive_height).'"';
-			$slider_animation=$settings['slider_animation'];
+			$slider_animation = (isset($settings['slider_animation']) ? $settings['slider_animation'] : 'ease');
 			$data_slider .=' data-slider_animation="'.esc_attr($slider_animation).'"';
-			$slider_autoplay= ($settings["slider_autoplay"]=='yes') ? 'true' : 'false';
+			$slider_autoplay = ($settings["slider_autoplay"] == 'yes') ? 'true' : 'false';
 			$data_slider .=' data-slider_autoplay="'.esc_attr($slider_autoplay).'"';
-			$data_slider .=' data-autoplay_speed="'.esc_attr($settings["autoplay_speed"]["size"]).'"';
+			$data_slider .=' data-autoplay_speed="'.(isset($settings["autoplay_speed"]["size"]) ? esc_attr($settings["autoplay_speed"]["size"]) : 3000).'"';
 			
 			//tablet
-			$data_slider .=' data-slider_tablet_column="'.esc_attr($settings['slider_tablet_column']).'"';
-			$data_slider .=' data-tablet_steps_slide="'.esc_attr($settings['tablet_steps_slide']).'"';
-			$slider_responsive_tablet=$settings['slider_responsive_tablet'];
+			$data_slider .=' data-slider_tablet_column="'.(isset($settings['slider_tablet_column']) ? esc_attr($settings['slider_tablet_column']) : 3).'"';
+			$data_slider .=' data-tablet_steps_slide="'.(isset($settings['tablet_steps_slide']) ? esc_attr($settings['tablet_steps_slide']) : 1).'"';
+			$slider_responsive_tablet = $settings['slider_responsive_tablet'];
 			$data_slider .=' data-slider_responsive_tablet="'.esc_attr($slider_responsive_tablet).'"';
-			if(!empty($settings['slider_responsive_tablet']) && $settings['slider_responsive_tablet']=='yes'){				
-				$tablet_slider_draggable= ($settings["tablet_slider_draggable"]=='yes') ? 'true' : 'false';
+			if(!empty($slider_responsive_tablet) && $slider_responsive_tablet == 'yes'){
+				$tablet_slider_draggable = ($settings["tablet_slider_draggable"] == 'yes') ? 'true' : 'false';
 				$data_slider .=' data-tablet_slider_draggable="'.esc_attr($tablet_slider_draggable).'"';
-				$tablet_slider_infinite= ($settings["tablet_slider_infinite"]=='yes') ? 'true' : 'false';
+				$tablet_slider_infinite = ($settings["tablet_slider_infinite"] == 'yes') ? 'true' : 'false';
 				$data_slider .=' data-tablet_slider_infinite="'.esc_attr($tablet_slider_infinite).'"';
-				$tablet_slider_autoplay= ($settings["tablet_slider_autoplay"]=='yes') ? 'true' : 'false';
+				$tablet_slider_autoplay= ($settings["tablet_slider_autoplay"] == 'yes') ? 'true' : 'false';
 				$data_slider .=' data-tablet_slider_autoplay="'.esc_attr($tablet_slider_autoplay).'"';
-				$data_slider .=' data-tablet_autoplay_speed="'.esc_attr($settings["tablet_autoplay_speed"]["size"]).'"';
-				$tablet_slider_dots= ($settings["tablet_slider_dots"]=='yes') ? 'true' : 'false';
+				$data_slider .=' data-tablet_autoplay_speed="'.(isset($settings["tablet_autoplay_speed"]["size"]) ? esc_attr($settings["tablet_autoplay_speed"]["size"]) : 1500).'"';
+				$tablet_slider_dots= ($settings["tablet_slider_dots"] == 'yes') ? 'true' : 'false';
 				$data_slider .=' data-tablet_slider_dots="'.esc_attr($tablet_slider_dots).'"';
-				$tablet_slider_arrows= ($settings["tablet_slider_arrows"]=='yes') ? 'true' : 'false';
+				$tablet_slider_arrows = ($settings["tablet_slider_arrows"] == 'yes') ? 'true' : 'false';
 				$data_slider .=' data-tablet_slider_arrows="'.esc_attr($tablet_slider_arrows).'"';
-				$data_slider .=' data-tablet_slider_rows="'.esc_attr($settings["tablet_slider_rows"]).'"';
-				$tablet_center_mode= ($settings["tablet_center_mode"]=='yes') ? 'true' : 'false';
+				$data_slider .=' data-tablet_slider_rows="'.(isset($settings["tablet_slider_rows"]) ? esc_attr($settings["tablet_slider_rows"]) : 1).'"';
+				$tablet_center_mode = ($settings["tablet_center_mode"] == 'yes') ? 'true' : 'false';
 				$data_slider .=' data-tablet_center_mode="'.esc_attr($tablet_center_mode).'" ';
-				$data_slider .=' data-tablet_center_padding="'.esc_attr(!empty($settings["tablet_center_padding"]["size"]) ? $settings["tablet_center_padding"]["size"] : 0).'" ';
+				$data_slider .=' data-tablet_center_padding="'.(isset($settings["tablet_center_padding"]["size"]) ? esc_attr($settings["tablet_center_padding"]["size"]) : 0).'" ';
 			}
-			
+
 			//mobile 
-			$data_slider .=' data-slider_mobile_column="'.esc_attr($settings['slider_mobile_column']).'"';
-			$data_slider .=' data-mobile_steps_slide="'.esc_attr($settings['mobile_steps_slide']).'"';
-			$slider_responsive_mobile=$settings['slider_responsive_mobile'];			
+			$data_slider .=' data-slider_mobile_column="'.(isset($settings['slider_mobile_column']) ? esc_attr($settings['slider_mobile_column']) : 2).'"';
+			$data_slider .=' data-mobile_steps_slide="'.(isset($settings['mobile_steps_slide']) ? esc_attr($settings['mobile_steps_slide']) : 1).'"';
+			$slider_responsive_mobile = $settings['slider_responsive_mobile'];			
 			$data_slider .=' data-slider_responsive_mobile="'.esc_attr($slider_responsive_mobile).'"';
-			if(!empty($settings['slider_responsive_mobile']) && $settings['slider_responsive_mobile']=='yes'){
-				$mobile_slider_draggable= ($settings["mobile_slider_draggable"]=='yes') ? 'true' : 'false';
+			if(!empty($slider_responsive_mobile) && $slider_responsive_mobile == 'yes'){
+				$mobile_slider_draggable = ($settings["mobile_slider_draggable"] == 'yes') ? 'true' : 'false';
 				$data_slider .=' data-mobile_slider_draggable="'.esc_attr($mobile_slider_draggable).'"';
-				$mobile_slider_infinite= ($settings["mobile_slider_infinite"]=='yes') ? 'true' : 'false';
+				$mobile_slider_infinite = ($settings["mobile_slider_infinite"] == 'yes') ? 'true' : 'false';
 				$data_slider .=' data-mobile_slider_infinite="'.esc_attr($mobile_slider_infinite).'"';
-				$mobile_slider_autoplay= ($settings["mobile_slider_autoplay"]=='yes') ? 'true' : 'false';
+				$mobile_slider_autoplay = ($settings["mobile_slider_autoplay"] == 'yes') ? 'true' : 'false';
 				$data_slider .=' data-mobile_slider_autoplay="'.esc_attr($mobile_slider_autoplay).'"';
-				$data_slider .=' data-mobile_autoplay_speed="'.esc_attr($settings["mobile_autoplay_speed"]["size"]).'"';
-				$mobile_slider_dots= ($settings["mobile_slider_dots"]=='yes') ? 'true' : 'false';
+				$data_slider .=' data-mobile_autoplay_speed="'.(isset($settings["mobile_autoplay_speed"]["size"]) ? esc_attr($settings["mobile_autoplay_speed"]["size"]) : 1500).'"';    
+				$mobile_slider_dots = ($settings["mobile_slider_dots"] == 'yes') ? 'true' : 'false';
 				$data_slider .=' data-mobile_slider_dots="'.esc_attr($mobile_slider_dots).'"';
-				$mobile_slider_arrows= ($settings["mobile_slider_arrows"]=='yes') ? 'true' : 'false';
+				$mobile_slider_arrows = ($settings["mobile_slider_arrows"] == 'yes') ? 'true' : 'false';
 				$data_slider .=' data-mobile_slider_arrows="'.esc_attr($mobile_slider_arrows).'"';
-				$data_slider .=' data-mobile_slider_rows="'.esc_attr($settings["mobile_slider_rows"]).'"';
-				$mobile_center_mode= ($settings["mobile_center_mode"]=='yes') ? 'true' : 'false';
+				$data_slider .=' data-mobile_slider_rows="'.(isset($settings["mobile_slider_rows"]) ? esc_attr($settings["mobile_slider_rows"]) : 1).'"';
+				$mobile_center_mode = ($settings["mobile_center_mode"] == 'yes') ? 'true' : 'false';
 				$data_slider .=' data-mobile_center_mode="'.esc_attr($mobile_center_mode).'" ';
-				$data_slider .=' data-mobile_center_padding="'.esc_attr($settings["mobile_center_padding"]["size"]).'" ';
+				$data_slider .=' data-mobile_center_padding="'.(isset($settings["mobile_center_padding"]["size"]) ? esc_attr($settings["mobile_center_padding"]["size"]) : 0).'"';
 			}
 			
-			$slider_dots= ($settings["slider_dots"]=='yes') ? 'true' : 'false';
+			$slider_dots = ($settings["slider_dots"] == 'yes') ? 'true' : 'false';
 			$data_slider .=' data-slider_dots="'.esc_attr($slider_dots).'"';
-			$data_slider .=' data-slider_dots_style="slick-dots '.esc_attr($settings["slider_dots_style"]).'"';
-			
-			
-			$slider_arrows= ($settings["slider_arrows"]=='yes') ? 'true' : 'false';
+			$data_slider .=' data-slider_dots_style="slick-dots '.(isset($settings["slider_dots_style"]) ? esc_attr($settings["slider_dots_style"]) : 'style-1').'" ';
+
+			$slider_arrows = ($settings["slider_arrows"] == 'yes') ? 'true' : 'false';
 			$data_slider .=' data-slider_arrows="'.esc_attr($slider_arrows).'"';
-			$data_slider .=' data-slider_arrows_style="'.esc_attr($settings["slider_arrows_style"]).'" ';
-			$data_slider .=' data-arrows_position="'.esc_attr($settings["arrows_position"]).'" ';
-			$data_slider .=' data-arrow_bg_color="'.esc_attr($settings["arrow_bg_color"]).'" ';
-			$data_slider .=' data-arrow_icon_color="'.esc_attr($settings["arrow_icon_color"]).'" ';
-			$data_slider .=' data-arrow_hover_bg_color="'.esc_attr($settings["arrow_hover_bg_color"]).'" ';
-			$data_slider .=' data-arrow_hover_icon_color="'.esc_attr($settings["arrow_hover_icon_color"]).'" ';
-			
-			$slider_center_mode= ($settings["slider_center_mode"]=='yes') ? 'true' : 'false';
+			$data_slider .=' data-slider_arrows_style="'.(isset($settings["slider_arrows_style"]) ? esc_attr($settings["slider_arrows_style"]) : 'style-1').'" ';
+			$data_slider .=' data-arrows_position="'.(isset($settings["arrows_position"]) ? esc_attr($settings["arrows_position"]) : 'top-right').'" ';
+			$data_slider .=' data-arrow_bg_color="'.(isset($settings["arrow_bg_color"]) ? esc_attr($settings["arrow_bg_color"]) : '#c44d48').'" ';
+			$data_slider .=' data-arrow_icon_color="'.(isset($settings["arrow_icon_color"]) ? esc_attr($settings["arrow_icon_color"]) : '#fff').'" ';
+			$data_slider .=' data-arrow_hover_bg_color="'.(isset($settings["arrow_hover_bg_color"]) ? esc_attr($settings["arrow_hover_bg_color"]) : '#fff').'" ';
+			$data_slider .=' data-arrow_hover_icon_color="'.(isset($settings["arrow_hover_icon_color"]) ? esc_attr($settings["arrow_hover_icon_color"]) : '#c44d48').'" ';  
+
+			$slider_center_mode = ( $settings["slider_center_mode"] == 'yes' ) ? 'true' : 'false';
 			$data_slider .=' data-slider_center_mode="'.esc_attr($slider_center_mode).'" ';
-			$data_slider .=' data-center_padding="'.esc_attr((!empty($settings["center_padding"]["size"])) ? $settings["center_padding"]["size"] : 0).'" ';
-			$data_slider .=' data-scale_center_slide="'.esc_attr((!empty($settings["scale_center_slide"]["size"])) ? $settings["scale_center_slide"]["size"] : 1).'" ';
-			$data_slider .=' data-scale_normal_slide="'.esc_attr((!empty($settings["scale_normal_slide"]["size"])) ? $settings["scale_normal_slide"]["size"] : 0.8).'" ';
-			$data_slider .=' data-opacity_normal_slide="'.esc_attr((!empty($settings["opacity_normal_slide"]["size"])) ? $settings["opacity_normal_slide"]["size"] : 0.7).'" ';
-			
-			$data_slider .=' data-slider_rows="'.esc_attr($settings["slider_rows"]).'" ';
-			
+			$data_slider .=' data-center_padding="'.(isset($settings["center_padding"]["size"]) ? esc_attr($settings["center_padding"]["size"]) : 0).'" ';
+			$data_slider .=' data-scale_center_slide="'.(isset($settings["scale_center_slide"]["size"]) ? esc_attr($settings["scale_center_slide"]["size"]) : 1).'" ';
+			$data_slider .=' data-scale_normal_slide="'.(isset($settings["scale_normal_slide"]["size"]) ? esc_attr($settings["scale_normal_slide"]["size"]) : 0.8).'" ';
+			$data_slider .=' data-opacity_normal_slide="'.(isset($settings["opacity_normal_slide"]["size"]) ? esc_attr($settings["opacity_normal_slide"]["size"]) : 0.7).'" ';
+			$data_slider .=' data-slider_rows="'.(isset($settings["slider_rows"]) ? esc_attr($settings["slider_rows"]) : 1).'" ';
 			$isotope = 'list-carousel-slick';
-			
-			
 			
 			if($settings["slider_arrows_style"]=='style-3' || $settings["slider_arrows_style"]=='style-4'){
 				$arrow_class=$settings["arrows_position"];
@@ -5578,13 +5575,7 @@ class ThePlus_Info_Box extends Widget_Base {
 		$the_button='';
 		if($settings['display_button'] == 'yes'){
 		if ( ! empty( $settings['button_link']['url'] ) ) {
-			$this->add_render_attribute( 'button', 'href', $settings['button_link']['url'] );
-			if ( $settings['button_link']['is_external'] ) {
-				$this->add_render_attribute( 'button', 'target', '_blank' );
-			}
-			if ( $settings['button_link']['nofollow'] ) {
-				$this->add_render_attribute( 'button', 'rel', 'nofollow' );
-			}
+			$this->add_link_attributes( 'button', $settings['button_link'] );
 		}
 		$this->add_render_attribute( 'button', 'class', 'button-link-wrap' );
 		$hover_box_class = (!empty($settings["hover_info_button"]) && $settings["hover_info_button"]=='yes') ? ' hover_box_button' : '';
@@ -5594,14 +5585,13 @@ class ThePlus_Info_Box extends Widget_Base {
 		$button_style = $settings['button_style'];
 		$button_text = $settings['button_text'];
 		$btn_uid=uniqid('btn');
-		$data_class= $btn_uid;
+		$data_class = $btn_uid;
 		$data_class .=' button-'.$button_style.' ';
-		
 		
 		$the_button ='<div class="pt-plus-button-wrapper">';
 			$the_button .='<div class="button_parallax">';
 				$the_button .='<div class="ts-button">';
-					$the_button .='<div class="pt_plus_button '.$data_class.'">';
+					$the_button .='<div class="pt_plus_button '.esc_attr($data_class).'">';
 						$the_button .= '<div class="animted-content-inner">';
 							if(!empty($full_infobox_switch) && $full_infobox_switch=='yes'){
 								$the_button .='<div class="button-link-wrap">';
@@ -5632,45 +5622,37 @@ class ThePlus_Info_Box extends Widget_Base {
 							$on_load_class = 'tp-info-active';		
 						}
 						
-							//r_full_infobox_switch
-							if((!empty($full_infobox_switch) && $full_infobox_switch=='yes') || (!empty($item['r_full_infobox_switch']) && $item['r_full_infobox_switch']=='yes')){
-								$fc_load_class = 'tp-info-fbc';
-							}else{
-								$fc_load_class = 'tp-info-nc';
-							}
+						//r_full_infobox_switch
+						if((!empty($full_infobox_switch) && $full_infobox_switch=='yes') || (!empty($item['r_full_infobox_switch']) && $item['r_full_infobox_switch']=='yes')){
+							$fc_load_class = 'tp-info-fbc';
+						}else{
+							$fc_load_class = 'tp-info-nc';
+						}
 						
 						$loop_svg_d_icon=$svg_type=$loop_image_icon=$svg_image=$loop_max_width=$description=$loop_title=$list_subtitle=$list_title=$loop_btn_text=$list_img='';
 						
-						
-
 						if ( ! empty( $item['loop_url_link']['url'] ) ) {
-							$this->add_render_attribute( 'loop_box_link'.$index, 'href', $item['loop_url_link']['url'] );
-							if ( $item['loop_url_link']['is_external'] ) {
-								$this->add_render_attribute( 'loop_box_link'.$index, 'target', '_blank' );
-							}
-							if ( $item['loop_url_link']['nofollow'] ) {
-								$this->add_render_attribute( 'loop_box_link'.$index, 'rel', 'nofollow' );
-							}
+							$this->add_link_attributes( 'loop_box_link'.$index, $item['loop_url_link'] );
 						}
 						
 						if(!empty($item['loop_title'])){
-							$loop_title= $item['loop_title'];
+							$loop_title = $item['loop_title'];
 							$loop_title_tag = !empty($settings['loop_title_tag']) ? $settings['loop_title_tag'] : 'h6';
 							if ((!empty($item['loop_url_link']['url'])) && ($item['r_full_infobox_switch'] !='yes')){
-								$list_title = '<a '.$this->get_render_attribute_string( "loop_box_link".$index ).'><'.theplus_validate_html_tag($loop_title_tag).' class="service-title ">'.esc_html($loop_title).'</'.theplus_validate_html_tag($loop_title_tag).'></a>';						
+								$list_title = '<a '.$this->get_render_attribute_string( "loop_box_link".$index ).'><'.theplus_validate_html_tag($loop_title_tag).' class="service-title ">'.wp_kses_post($loop_title).'</'.theplus_validate_html_tag($loop_title_tag).'></a>';						
 							}else{
-								$list_title = '<'.theplus_validate_html_tag($loop_title_tag).' class="service-title">'.esc_html($loop_title).'</'.theplus_validate_html_tag($loop_title_tag).'>';
+								$list_title = '<'.theplus_validate_html_tag($loop_title_tag).' class="service-title">'.wp_kses_post($loop_title).'</'.theplus_validate_html_tag($loop_title_tag).'>';
 							}							
 						}
 						
 						$loop_content_desc = $item['loop_content_desc'];
-						if($loop_content_desc !=''){
-							 $description='<div class="service-desc"> '.$loop_content_desc.' </div>';
+						if(!empty($loop_content_desc)){
+							 $description='<div class="service-desc"> '.wp_kses_post($loop_content_desc).' </div>';
 						}
 						
 						//Icon style
 						if(!empty($item['loop_image_icon'])){
-							
+
 							$loop_svg_d_icon= $item['loop_svg_d_icon'];
 							$loop_max_width_size=$loop_max_width_unit='';
 							$loop_max_width_size = (!empty($item['loop_max_width']["size"])) ? $item['loop_max_width']["size"] : 100;
@@ -5682,9 +5664,9 @@ class ThePlus_Info_Box extends Widget_Base {
 								if(isset($item['loop_image_icon']) && $item['loop_image_icon'] == 'image'){
 									$image_alt='';
 									if(!empty($item["loop_select_image"]["url"])){										
-										$image_id=$item["loop_select_image"]["id"];
+										$image_id = $item["loop_select_image"]["id"];
 										$img = wp_get_attachment_image_src($image_id,$item['loop_select_image_thumbnail_size']);
-										$loop_imgSrc = $img[0];
+										$loop_imgSrc = isset($img[0]) ? $img[0] : Utils::get_placeholder_image_src();
 										$image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
 										if(!$image_alt){
 											$image_alt = get_the_title($image_id);
@@ -5705,8 +5687,8 @@ class ThePlus_Info_Box extends Widget_Base {
 										$icons=$item["loop_icons_mind"];
 									}else if(!empty($item["loop_icon_style"]) && $item["loop_icon_style"]=='font_awesome_5'){
 										ob_start();
-										\Elementor\Icons_Manager::render_icon( $item['loop_icon_fontawesome_5'], [ 'aria-hidden' => 'true' ]);
-										$icons = ob_get_contents();
+											\Elementor\Icons_Manager::render_icon( $item['loop_icon_fontawesome_5'], [ 'aria-hidden' => 'true' ]);
+											$icons = ob_get_contents();
 										ob_end_clean();
 									}else{
 										$icons='';
@@ -5729,7 +5711,7 @@ class ThePlus_Info_Box extends Widget_Base {
 									}
 									$rand_no=rand(1000000, 1500000);
 									
-									$list_img ='<div class="pt_plus_animated_svg svg-'.esc_attr($rand_no).' " data-id="svg-'.esc_attr($rand_no).'" data-type="'.esc_attr($settings["svg_type"]).'" data-duration="'.esc_attr($duration).'" data-stroke="'.esc_attr($border_stroke_color).'" data-fill_color="'.esc_attr($svg_fill_color).'">';
+									$list_img ='<div class="pt_plus_animated_svg svg-'.esc_attr($rand_no).' " data-id="svg-'.esc_attr($rand_no).'" data-type="'.esc_attr($settings["svg_type"]).'" data-duration="'.esc_attr($duration).'" data-stroke="'.esc_attr($border_stroke_color).'" data-fill_color="'.esc_attr($svg_fill_color).'" data-fillhover="'.esc_attr($svg_fill_color_hover).'" data-strokehover="'.esc_attr($border_stroke_color_hover).'">';
 										$list_img .='<div class="info_box_svg svg_inner_block '.esc_attr($service_icon_style).'">';
 											//@since 4.1.9
 											$svg_loop_url_pass='';
@@ -5747,13 +5729,7 @@ class ThePlus_Info_Box extends Widget_Base {
 					if($settings['loop_display_button'] == 'yes'){
 						$link_key = 'link_' . $index;
 						if ( ! empty( $item['loop_button_link']['url'] ) ) {
-							$this->add_render_attribute( $link_key, 'href', $item['loop_button_link']['url'] );
-							if ( $item['loop_button_link']['is_external'] ) {
-								$this->add_render_attribute( $link_key, 'target', '_blank' );
-							}
-							if ( $item['loop_button_link']['nofollow'] ) {
-								$this->add_render_attribute( $link_key, 'rel', 'nofollow' );
-							}
+							$this->add_link_attributes( $link_key, $item['loop_button_link']);							
 						}
 						$this->add_render_attribute( $link_key, 'class', 'button-link-wrap' );
 						$this->add_render_attribute( $link_key, 'role', 'button' );
@@ -5765,19 +5741,19 @@ class ThePlus_Info_Box extends Widget_Base {
 						$data_class .=' button-'.$button_style.' ';
 						
 						if($button_style=='style-7'){
-							$button_text =$button_text.'<span class="btn-arrow"></span>';
+							$button_text = wp_kses_post($button_text).'<span class="btn-arrow"></span>';
 						}
 						if($button_style=='style-8'){
-							$button_text =$button_text;
+							$button_text = wp_kses_post($button_text);
 						}
 						if($button_style=='style-9'){
-							$button_text =$button_text.'<span class="btn-arrow"><i class="fa-show fa fa-chevron-right" aria-hidden="true"></i><i class="fa-hide fa fa-chevron-right" aria-hidden="true"></i></span>';
+							$button_text = wp_kses_post($button_text).'<span class="btn-arrow"><i class="fa-show fa fa-chevron-right" aria-hidden="true"></i><i class="fa-hide fa fa-chevron-right" aria-hidden="true"></i></span>';
 						}
 						
 						$loop_button ='<div class="pt-plus-button-wrapper">';
 							$loop_button .='<div class="button_parallax">';
 								$loop_button .='<div class="ts-button">';
-									$loop_button .='<div class="pt_plus_button '.$data_class.'">';
+									$loop_button .='<div class="pt_plus_button '.esc_attr($data_class).'">';
 										$loop_button .= '<div class="animted-content-inner">';
 											if(!empty($item['r_full_infobox_switch']) && $item['r_full_infobox_switch']=='yes'){
 												$loop_button .='<div class="button-link-wrap">';
@@ -5799,16 +5775,16 @@ class ThePlus_Info_Box extends Widget_Base {
 					}
 					
 					if((!empty($item['r_full_infobox_switch']) && $item['r_full_infobox_switch']=='yes') && (!empty($item['r_full_infobox_link']))){
-						$output .= '<div class="info-box-inner elementor-repeater-item-' . esc_attr($item['_id']) . ' '.$on_load_class.' '.$fc_load_class.'"><a href="'.$item['r_full_infobox_link']['url'].'">';
+						$output .= '<div class="info-box-inner elementor-repeater-item-' . esc_attr($item['_id']) . ' '.esc_attr($on_load_class).' '.esc_attr($fc_load_class).'"><a href="'.esc_url($item['r_full_infobox_link']['url']).'">';
 					}else{
-						$output .= '<div class="info-box-inner elementor-repeater-item-' . esc_attr($item['_id']) . ' '.$on_load_class.' '.$fc_load_class.'">';
+						$output .= '<div class="info-box-inner elementor-repeater-item-' . esc_attr($item['_id']) . ' '.esc_attr($on_load_class).' '.esc_attr($fc_load_class).'">';
 					}
-						
+
 						if($main_style == 'style_1'){
 							$output .= '<div class="info-box-bg-box '.esc_attr($serice_box_border).' content_hover_effect '. esc_attr($hover_class) .'">';
 							
 								$output .= '<div class="service-media text-left '.esc_attr($service_center).' ">';	
-								if($list_img != ''){				
+								if(!empty($list_img)){				
 									$output .= '<div class="m-r-16 '.esc_attr($serice_img_border).'" '.$border_right_css.'> '.$list_img.' </div>';
 								}
 									$output .= '<div class="service-content ">';
@@ -5847,7 +5823,7 @@ class ThePlus_Info_Box extends Widget_Base {
 										$output .= $service_border;
 										$output .= $description;
 										$output .= $loop_button;
-										$output .= '</div>';				
+									$output .= '</div>';				
 								$output .= '</div>';
 								$output .= '<div class="infobox-overlay-color"></div>';
 							$output .= '</div>';
@@ -5868,7 +5844,7 @@ class ThePlus_Info_Box extends Widget_Base {
 								$output .= '<div class="infobox-overlay-color"></div>';
 							$output .= '</div>';
 						}
-						
+
 						if($main_style == 'style_11'){
 							$output .= '<div class="info-box-bg-box content_hover_effect '. esc_attr($hover_class) .'">';
 								$output .= '<div class="info-box style-11 text-center">';	
@@ -5879,7 +5855,7 @@ class ThePlus_Info_Box extends Widget_Base {
 													$output .= $list_img;
 												$output .= '</div>';	
 												$output .= $list_title;	
-												$output .= '<div class="info-box-title-hide">'.esc_html($item["loop_title"]).' </div>';	
+												$output .= '<div class="info-box-title-hide">'.wp_kses_post($item["loop_title"]).' </div>';	
 												$output .= $service_border;
 												$output .= $description;
 												$output .= $loop_button;
@@ -5897,15 +5873,14 @@ class ThePlus_Info_Box extends Widget_Base {
 							$output .= '</div>';
 						}						
 					$index++;
-					}
-						
+					}	
 				}
 			}
 		if ($info_box_layout == 'single_layout'){
 			if((!empty($full_infobox_switch) && $full_infobox_switch=='yes') && !empty($full_infobox_link)){				
-				$output = '<a href="'.$full_infobox_link.'"><div class="info-box-inner content_hover_effect '. esc_attr($hover_class) .' '.$fc_load_class.'"  ' . $hover_attr . ' >';
+				$output = '<a href="'.$full_infobox_link.'"><div class="info-box-inner content_hover_effect '. esc_attr($hover_class) .' '.esc_attr($fc_load_class).'"  ' . $hover_attr . ' >';
 			}else{
-				$output = '<div class="info-box-inner content_hover_effect '. esc_attr($hover_class) .' '.$fc_load_class.'"  ' . $hover_attr . ' >';	
+				$output = '<div class="info-box-inner content_hover_effect '. esc_attr($hover_class) .' '.esc_attr($fc_load_class).'"  ' . $hover_attr . ' >';	
 			}
 			if($main_style == 'style_1'){
 				$icon_overlay_style='';
@@ -5914,7 +5889,7 @@ class ThePlus_Info_Box extends Widget_Base {
 				}
 				$output .= '<div class="info-box-bg-box '.esc_attr($icon_overlay_style).' '.esc_attr($serice_box_border).'">';
 					$output .= '<div class="service-media text-left '.esc_attr($service_center).' ">';	
-					if($service_img != ''){
+					if(!empty($service_img)){
 						$output .= '<div class="m-r-16  '.esc_attr($serice_img_border).'" '.$border_right_css.'> '.$service_img.' </div>';
 					}
 						$output .= '<div class="service-content ">';
@@ -5940,7 +5915,7 @@ class ThePlus_Info_Box extends Widget_Base {
 							$output .= $description;
 							$output .= $the_button;
 						$output .= '</div>';			
-					if($service_img != ''){					
+					if(!empty($service_img)){				
 						$output .=  '<div class="m-l-16 '.esc_attr($serice_img_border).' " '.$border_right_css.'>'.$service_img.'</div>';
 					}
 					$output .= '</div>';
@@ -5954,7 +5929,7 @@ class ThePlus_Info_Box extends Widget_Base {
 					if(!empty($settings["square_pin"]) && $settings["square_pin"]=='yes'){
 						$square_pin = 'square-pin';
 					}
-					$pin_text='<div class="info-pin-text '.esc_attr($square_pin).'">'.$settings["pin_text_title"].'</div>';
+					$pin_text='<div class="info-pin-text '.esc_attr($square_pin).'">'.wp_kses_post($settings["pin_text_title"]).'</div>';
 				}
 				$icon_overlay_style='';
 				if(!empty($settings['icon_overlay']) && $settings['icon_overlay']=='yes'){
@@ -5992,7 +5967,7 @@ class ThePlus_Info_Box extends Widget_Base {
 			if($main_style == 'style_7'){
 				$output .= '<div class="info-box-bg-box">';
 					$output .= '<div class="service-media text-left '.esc_attr($service_center).' ">';	
-					if($service_img != ''){				
+					if(!empty($service_img)){	
 						$output .= '<div class="m-r-16 service-bg-7 '.esc_attr($serice_img_border).'" '.$border_right_css.'> '.$service_img.' </div>';
 					}
 						$output .= '<div class="service-content ">';
@@ -6015,7 +5990,7 @@ class ThePlus_Info_Box extends Widget_Base {
 										$output .= $service_img;
 									$output .= '</div>';	
 									$output .= $service_title;	
-									$output .= '<div class="info-box-title-hide"> '.esc_html($settings["title"]).' </div>';	
+									$output .= '<div class="info-box-title-hide"> '.wp_kses_post($settings["title"]).' </div>';	
 									$output .= $service_border;
 									$output .= $description;
 									$output .= $the_button;
@@ -6054,7 +6029,7 @@ class ThePlus_Info_Box extends Widget_Base {
 			$connection_hover_click=$settings["connection_hover_click"];
 		}	
 		
-		$info_box ='<div id="'.$uid.'" class="pt_plus_info_box '.$settings['bg_hover_animation'].' '.esc_attr($isotope).' '.esc_attr($arrow_class).' '.esc_attr($data_carousel).' '.esc_attr($uid).' info-box-'.esc_attr($main_style).' '.esc_attr($animated_class).'  '.esc_attr($service_space).' '.esc_attr($tilt_hover_class).'"  data-id="'.esc_attr($uid).'" '.$animation_attr.' '.$data_slider.' '.$visiblity_hide.' data-connection="'.esc_attr($connect_carousel).'" data-eventtype="'.esc_attr($connection_hover_click).'" '.$carousel_bg.'>';
+		$info_box ='<div id="'.esc_attr($uid).'" class="pt_plus_info_box '.esc_attr($settings['bg_hover_animation']).' '.esc_attr($isotope).' '.esc_attr($arrow_class).' '.esc_attr($data_carousel).' '.esc_attr($uid).' info-box-'.esc_attr($main_style).' '.esc_attr($animated_class).'  '.esc_attr($service_space).' '.esc_attr($tilt_hover_class).'"  data-id="'.esc_attr($uid).'" '.$animation_attr.' '.$data_slider.' '.$visiblity_hide.' data-connection="'.esc_attr($connect_carousel).'" data-eventtype="'.esc_attr($connection_hover_click).'" '.$carousel_bg.'>';
 			$info_box .= '<div class="post-inner-loop ">';
 				$info_box .= $output;
 			$info_box .='</div>';
@@ -6101,7 +6076,7 @@ class ThePlus_Info_Box extends Widget_Base {
 		}
 		
 		if($button_style=='style-8'){
-			$button_text =$icons_before . $button_text . $icons_after;
+			$button_text = $icons_before . $button_text . $icons_after;
 		}
 		
 		if($button_style=='style-7'){

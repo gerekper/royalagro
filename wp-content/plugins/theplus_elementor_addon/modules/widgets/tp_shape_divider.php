@@ -10,7 +10,7 @@ namespace TheplusAddons\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Utils;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 
 if (!defined('ABSPATH'))
     exit; // Exit if accessed directly

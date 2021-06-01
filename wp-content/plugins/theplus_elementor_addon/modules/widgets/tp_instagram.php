@@ -10,7 +10,7 @@ namespace TheplusAddons\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Utils;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
@@ -663,7 +663,7 @@ class ThePlus_Instagram extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
              'name' => 'theplus_instafeed_like_comments_typography',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+				'scheme' => Typography::TYPOGRAPHY_2,
 				'selector' => '{{WRAPPER}} .theplus-insta-likes-comments > span',
 			]
 		);
@@ -813,7 +813,7 @@ class ThePlus_Instagram extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
              'name' => 'theplus_instafeed_caption_typography',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_2,
+				'scheme' => Typography::TYPOGRAPHY_2,
 				'selector' => '{{WRAPPER}} .theplus-insta-info-wrap .insta-caption',
 			]
 		);

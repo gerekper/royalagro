@@ -3,7 +3,7 @@
  * Plugin Name: Piotnet Addons For Elementor Pro
  * Description: Piotnet Addons For Elementor Pro (PAFE Pro) adds many new features for Elementor
  * Plugin URI:  https://pafe.piotnet.com/
- * Version:     6.3.67
+ * Version:     6.3.69
  * Author:      Luong Huu Phuoc (Louis Hufer)
  * Author URI:  https://piotnet.com/
  * Text Domain: pafe
@@ -14,8 +14,8 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'PAFE_PRO_VERSION', '6.3.67' );
-define( 'PAFE_PRO_PREVIOUS_STABLE_VERSION', '6.3.66' );
+define( 'PAFE_PRO_VERSION', '6.3.69' );
+define( 'PAFE_PRO_PREVIOUS_STABLE_VERSION', '6.3.68' );
 $license = array();
 $license['license_key'] = '1415b451be1a13c283ba771ea52d38bb';
 $license['email'] = 'nullmaster@babiato.org';
@@ -30,7 +30,7 @@ update_option( 'piotnet-addons-for-elementor-pro-password', '1415b451be1a13c283b
 
 final class Piotnet_Addons_For_Elementor_Pro {
 
-	const VERSION = '6.3.67';
+	const VERSION = '6.3.69';
 	const MINIMUM_ELEMENTOR_VERSION = '2.8.0';
 	const MINIMUM_PHP_VERSION = '5.4';
 	const TAB_PAFE = 'tab_pafe';
@@ -159,6 +159,7 @@ final class Piotnet_Addons_For_Elementor_Pro {
 			require_once( __DIR__ . '/inc/ajax-export-database.php');
 			require_once( __DIR__ . '/inc/ajax-sendinblue-get-list.php');
 			require_once( __DIR__ . '/inc/ajax-sendinblue-get-attribute.php');
+            require_once( __DIR__ . '/inc/ajax-twilio-sendgrid-get-list.php');
 		}
 		if( get_option( 'pafe-features-woocommerce-checkout', 2 ) == 2 || get_option( 'pafe-features-woocommerce-checkout', 2 ) == 1 ) {
 			require_once( __DIR__ . '/inc/ajax-form-builder-woocommerce-checkout.php' );
@@ -211,15 +212,7 @@ final class Piotnet_Addons_For_Elementor_Pro {
     	// Redirect Woocommerce
     	add_action( 'template_redirect', [ $this, 'pafe_woocommerce_checkout_redirect' ] );
 
-    	add_action( 'woocommerce_add_order_item_meta', function ( $itemId, $values, $key ) {
-			if ( isset( $values['fields'] ) ) {
-				foreach ($values['fields'] as $item) {
-					if (!empty($item['label'])) {
-						wc_add_order_item_meta( $itemId, $item['label'], $item['value'] );
-					}
-				}
-			}
-		}, 10, 3 );
+    	add_action( 'woocommerce_add_order_item_meta',[ $this,'pafe_add_order_item_meta'], 10, 3 );
 
     	if (function_exists('get_field')) {
     		add_filter('acf/settings/remove_wp_meta_box', '__return_false');
@@ -544,6 +537,19 @@ final class Piotnet_Addons_For_Elementor_Pro {
 	            }
 	        }
         }
+	}
+	
+	public function pafe_add_order_item_meta( $itemId, $values, $key) {
+		if ( class_exists( 'WooCommerce' ) && !defined('PIOTNETFORMS_PRO_VERSION')) {
+			if ( isset( $values['fields'] ) ) {
+				foreach ($values['fields'] as $item) {
+					if (!empty($item['label'])) {
+						wc_add_order_item_meta( $itemId, $item['label'], $item['value'] );
+					}
+				}
+			}
+
+		}
 	}
 
 	public function pafe_apply_custom_price_to_cart_item( $cart ) {
@@ -1153,7 +1159,7 @@ final class Piotnet_Addons_For_Elementor_Pro {
 
 		register_setting( 'piotnet-addons-for-elementor-pro-twilio-group', 'piotnet-addons-for-elementor-pro-twilio-account-sid' );
 		register_setting( 'piotnet-addons-for-elementor-pro-twilio-group', 'piotnet-addons-for-elementor-pro-twilio-author-token' );
-        
+
         register_setting( 'piotnet-addons-for-elementor-pro-sendfox-group', 'piotnet-addons-for-elementor-pro-sendfox-access-token' );
 
         register_setting( 'piotnet-addons-for-elementor-pro-zoho-group', 'piotnet-addons-for-elementor-pro-zoho-domain' );

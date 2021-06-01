@@ -12,12 +12,12 @@ use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Core\Responsive\Responsive;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Background;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 
 use TheplusAddons\Theplus_Element_Load;
 
@@ -1439,7 +1439,7 @@ class ThePlus_Page_Scroll extends Widget_Base {
 			[
 				'name' => 'dots_text_typo_n',
 				'label' => esc_html__( 'Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '#fp-nav ul li .fp-tooltip,#pp-nav ul li .pp-tooltip,#multiscroll-nav ul li .multiscroll-tooltip',
 				
 			]
@@ -1752,7 +1752,7 @@ class ThePlus_Page_Scroll extends Widget_Base {
 			[
 				'name' => 'paginate_typography',
 				'label' => esc_html__( 'Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '.ps{{ID}}.fullpage-nav-paginate .slide-nav',
 			]
 		);
@@ -1773,7 +1773,7 @@ class ThePlus_Page_Scroll extends Widget_Base {
 			[
 				'name' => 'paginate_last_typography',
 				'label' => esc_html__( 'Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '.ps{{ID}}.fullpage-nav-paginate .total-page-nav',
 				
 			]

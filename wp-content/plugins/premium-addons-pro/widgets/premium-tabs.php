@@ -87,6 +87,20 @@ class Premium_Tabs extends Widget_Base {
 	}
 
 	/**
+	 * Retrieve Widget Dependent CSS.
+	 *
+	 * @since 2.4.2
+	 * @access public
+	 *
+	 * @return array CSS script handles.
+	 */
+	public function get_style_depends() {
+		return array(
+			'premium-addons',
+		);
+	}
+
+	/**
 	 * Retrieve Widget Dependent JS.
 	 *
 	 * @since 1.0.0
@@ -462,6 +476,47 @@ class Premium_Tabs extends Widget_Base {
 				'condition'   => array(
 					'premium_tab_type' => 'horizontal',
 					'carousel_tabs'    => 'true',
+				),
+			)
+		);
+
+		$this->add_control(
+			'carousel_arrows',
+			array(
+				'label'        => __( 'Carousel Arrows', 'premium-addons-pro' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'return_value' => 'true',
+				'condition'    => array(
+					'carousel_tabs'    => 'true',
+					'premium_tab_type' => 'horizontal',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'carousel_arrows_pos',
+			array(
+				'label'      => __( 'Arrows Position', 'premium-addons-pro' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', 'em' ),
+				'range'      => array(
+					'px' => array(
+						'min' => -100,
+						'max' => 100,
+					),
+					'em' => array(
+						'min' => -10,
+						'max' => 10,
+					),
+				),
+				'condition'  => array(
+					'carousel_tabs'    => 'true',
+					'carousel_arrows'  => 'true',
+					'premium_tab_type' => 'horizontal',
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .premium-tabs-nav-list a.carousel-arrow.carousel-next' => 'right: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .premium-tabs-nav-list a.carousel-arrow.carousel-prev' => 'left: {{SIZE}}{{UNIT}}',
 				),
 			)
 		);
@@ -1213,6 +1268,87 @@ class Premium_Tabs extends Widget_Base {
 		$this->end_controls_section();
 
 		$this->start_controls_section(
+			'carousel_arrows_style',
+			array(
+				'label'     => __( 'Carousel Arrows', 'premium-addons-pro' ),
+				'tab'       => Controls_Manager::TAB_STYLE,
+				'condition' => array(
+					'carousel_tabs'    => 'true',
+					'carousel_arrows'  => 'true',
+					'premium_tab_type' => 'horizontal',
+				),
+			)
+		);
+
+		$this->add_control(
+			'arrow_color',
+			array(
+				'label'     => __( 'Color', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::COLOR,
+				'scheme'    => array(
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .premium-tabs-nav-list .slick-arrow' => 'color: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'arrow_size',
+			array(
+				'label'      => __( 'Size', 'premium-addons-pro' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', '%', 'em' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .premium-tabs-nav-list .slick-arrow i' => 'font-size: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'arrow_background',
+			array(
+				'label'     => __( 'Background Color', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::COLOR,
+				'scheme'    => array(
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .premium-tabs-nav-list .slick-arrow' => 'background-color: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'arrow_border_radius',
+			array(
+				'label'      => __( 'Border Radius', 'premium-addons-pro' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', '%', 'em' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .premium-tabs-nav-list .slick-arrow' => 'border-radius: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'arrow_padding',
+			array(
+				'label'      => __( 'Padding', 'premium-addons-pro' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', '%', 'em' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .premium-tabs-nav-list .slick-arrow' => 'padding: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
 			'premium_tab_container_style',
 			array(
 				'label' => __( 'Container', 'premium-addons-pro' ),
@@ -1337,6 +1473,7 @@ class Premium_Tabs extends Widget_Base {
 		$tabs_settings = array(
 			'id'          => '#premium-tabs-' . $id,
 			'carousel'    => $settings['carousel_tabs'],
+			'arrows'      => $settings['carousel_arrows'],
 			'slides'      => $settings['tabs_number'],
 			'slides_tab'  => ! empty( $settings['tabs_number_tablet'] ) ? $settings['tabs_number_tablet'] : $settings['tabs_number'],
 			'slides_mob'  => ! empty( $settings['tabs_number_mobile'] ) ? $settings['tabs_number_mobile'] : $settings['tabs_number'],

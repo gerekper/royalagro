@@ -866,7 +866,7 @@
 				// Filter Hook
 					
 				$fields = apply_filters( 'pafe/form_builder/fields', $fields );
-
+				$form['settings'] = apply_filters( 'pafe/form_builder/form_settings', $form['settings'] );
 				// repeater
 
 				$fields_array = array();
@@ -2591,6 +2591,73 @@
 						$response = curl_exec($curl);
 
 						curl_close($curl);
+					}
+
+					//SendGrid 
+					if (in_array("twilio_sendgrid", $form['settings']['submit_actions'])) {
+						// $sendgrid_url = $form['settings']['twilio_sendgrid_url'];
+						$sendgrid_api_key = $form['settings']['twilio_sendgrid_api_key'];
+						$sendgrid_list_ids = $form['settings']['twilio_sendgrid_list_ids'];
+						$sendgrid_email = pafe_get_field_value( $form['settings']['twilio_sendgrid_email_field_shortcode'], $fields );
+						$sendgrid_field_mapping_list = $form['settings']['twilio_sendgrid_field_mapping_list'];
+
+						// $sendgrid_api_key_source = $form['settings']['sendgrid_api_key_source'];
+						// if ($sendgrid_api_key_source == 'default') {
+						// 	$sendgrid_api_key = get_option('piotnet-addons-for-elementor-pro-sendgrid-api-key');
+						// } else {
+						// 	$sendgrid_api_key = $form['settings']['twilio_sendgrid_api_key'];
+						// }
+
+						if ( !empty($sendgrid_email) && !empty($sendgrid_api_key) && !empty($sendgrid_list_ids) ) {
+
+							$post_fields = array();
+							$sendgrid_fields = array();
+
+							$sendgrid_list_ids = explode(',', $sendgrid_list_ids);
+							
+							foreach ($sendgrid_list_ids as $sendgrid_list_id) {
+								$sendgrid_list_id = trim($sendgrid_list_id);
+								$post_fields['list_ids'][] = $sendgrid_list_id;
+							}
+
+							$sendgrid_fields['email'] = $sendgrid_email;
+
+							if ( !empty($sendgrid_field_mapping_list) ) {
+								foreach ($sendgrid_field_mapping_list as $item) {
+									$key = $item['twilio_sendgrid_field_mapping_tag_name'];
+									$shortcode = $item['twilio_sendgrid_field_mapping_field_shortcode'];
+									if ( !empty($key) && !empty($shortcode) ) {
+										$sendgrid_fields[$key] = pafe_get_field_value($shortcode,$fields,$payment_status, $payment_id);
+									}
+								}
+							}
+
+							$post_fields['contacts'] = [$sendgrid_fields];
+
+							$sendgrid_api_key = 'authorization: Bearer ' . $form['settings']['twilio_sendgrid_api_key'];
+
+							$curl = curl_init();
+							curl_setopt_array($curl, array(
+								CURLOPT_URL => "https://api.sendgrid.com/v3/marketing/contacts",
+								CURLOPT_RETURNTRANSFER => true,
+								CURLOPT_ENCODING => '',
+								CURLOPT_MAXREDIRS => 10,
+								CURLOPT_TIMEOUT => 0,
+								CURLOPT_FOLLOWLOCATION => true,
+								CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+								CURLOPT_CUSTOMREQUEST => 'PUT',
+								CURLOPT_POSTFIELDS => json_encode($post_fields),
+								CURLOPT_SSL_VERIFYPEER =>false,
+								CURLOPT_HTTPHEADER => array(
+								    $sendgrid_api_key,
+								    'content-type: application/json'
+								  ),
+							));
+
+							$response = curl_exec($curl);
+
+							curl_close($curl);
+						}
 					}
 
 					// Booking

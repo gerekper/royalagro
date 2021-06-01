@@ -11,6 +11,7 @@ namespace PremiumAddonsPro\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Core\Schemes\Color;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
@@ -176,6 +177,18 @@ class Premium_Yelp_Reviews extends Widget_Base {
 			)
 		);
 
+		$this->add_control(
+			'clear_cache',
+			array(
+				'type'        => Controls_Manager::RAW_HTML,
+				'raw'         => '<form onsubmit="clearReviewsCache(this);" action="javascript:void(0);" data-target="place_id"><input type="submit" value="Clear Cached Data" class="elementor-button" style="background-color: #3b5998; color: #fff;"></form>',
+				'label_block' => true,
+				'condition'   => array(
+					'api_key!' => '',
+				),
+			)
+		);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -194,9 +207,62 @@ class Premium_Yelp_Reviews extends Widget_Base {
 				'options'      => array(
 					'default' => __( 'Classic', 'premium-addons-pro' ),
 					'card'    => __( 'Cards', 'premium-addons-pro' ),
+					'bubble'  => __( 'Bubble', 'premium-addons-pro' ),
 				),
 				'render_type'  => 'template',
 				'prefix_class' => 'premium-social-reviews-',
+			)
+		);
+
+		$this->add_control(
+			'source_icon',
+			array(
+				'label' => __( 'Yelp Icon', 'premium-addons-pro' ),
+				'type'  => Controls_Manager::SWITCHER,
+			)
+		);
+
+		$left_direction = is_rtl() ? 'right' : 'left';
+
+		$this->add_responsive_control(
+			'iconh_position',
+			array(
+				'label'       => __( 'Horizontal Position (%)', 'premium-addons-pro' ),
+				'type'        => Controls_Manager::SLIDER,
+				'label_block' => true,
+				'size_units'  => '%',
+				'default'     => array(
+					'size' => 0,
+					'unit' => '%',
+				),
+				'min'         => 0,
+				'max'         => 100,
+				'condition'   => array(
+					'source_icon' => 'yes',
+				),
+				'selectors'   => array(
+					'{{WRAPPER}} .premium-fb-rev-icon' => $left_direction . ': {{SIZE}}{{UNIT}}; --translate-x: -{{SIZE}}{{UNIT}}',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'iconv_position',
+			array(
+				'label'       => __( 'Vertical Position (%)', 'premium-addons-pro' ),
+				'type'        => Controls_Manager::SLIDER,
+				'label_block' => true,
+				'size_units'  => '%',
+				'default'     => array(
+					'size' => 0,
+					'unit' => '%',
+				),
+				'condition'   => array(
+					'source_icon' => 'yes',
+				),
+				'selectors'   => array(
+					'{{WRAPPER}} .premium-fb-rev-icon' => 'top: {{SIZE}}{{UNIT}}; --translate-y: -{{SIZE}}{{UNIT}}',
+				),
 			)
 		);
 
@@ -208,6 +274,65 @@ class Premium_Yelp_Reviews extends Widget_Base {
 				'label'     => __( 'Place', 'premium-addons-pro' ),
 				'condition' => array(
 					'place_info' => 'yes',
+				),
+			)
+		);
+
+		$this->add_control(
+			'place_reviews_position',
+			array(
+				'label'        => __( 'Place Info Next to Reviews', 'premium-addons-pro' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'prefix_class' => 'premium-fb-page-next-',
+				'condition'    => array(
+					'place_info' => 'yes',
+				),
+				'render_type'  => 'template',
+			)
+		);
+
+		$this->add_responsive_control(
+			'reviews_width',
+			array(
+				'label'       => __( 'Reviews Width (%)', 'premium-addons-pro' ),
+				'type'        => Controls_Manager::SLIDER,
+				'condition'   => array(
+					'place_info'             => 'yes',
+					'place_reviews_position' => 'yes',
+				),
+				'render_type' => 'template',
+				'selectors'   => array(
+					'{{WRAPPER}} .premium-fb-rev-content, {{WRAPPER}} .slick-dots' => 'width: {{SIZE}}%',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'business_info_valign',
+			array(
+				'label'        => __( 'Vertical Alignment', 'premium-addons-pro' ),
+				'type'         => Controls_Manager::CHOOSE,
+				'options'      => array(
+					'top'    => array(
+						'title' => __( 'Top', 'premium-addons-pro' ),
+						'icon'  => 'fa fa-long-arrow-up',
+					),
+					'center' => array(
+						'title' => __( 'Center', 'premium-addons-pro' ),
+						'icon'  => 'fa fa-align-justify',
+					),
+					'bottom' => array(
+						'title' => __( 'Bottom', 'premium-addons-pro' ),
+						'icon'  => 'fa fa-long-arrow-down',
+					),
+				),
+				'prefix_class' => 'premium-reviews-place-v-',
+				'separator'    => 'after',
+				'default'      => 'top',
+				'toggle'       => false,
+				'condition'    => array(
+					'place_info'             => 'yes',
+					'place_reviews_position' => 'yes',
 				),
 			)
 		);
@@ -300,9 +425,40 @@ class Premium_Yelp_Reviews extends Widget_Base {
 		);
 
 		$this->add_responsive_control(
+			'place_text_halign',
+			array(
+				'label'     => __( 'Text Horizontal Alignment', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::CHOOSE,
+				'options'   => array(
+					'left'   => array(
+						'title' => __( 'Left', 'premium-addons-pro' ),
+						'icon'  => 'fa fa-align-left',
+					),
+					'center' => array(
+						'title' => __( 'Center', 'premium-addons-pro' ),
+						'icon'  => 'fa fa-align-center',
+					),
+					'right'  => array(
+						'title' => __( 'Right', 'premium-addons-pro' ),
+						'icon'  => 'fa fa-align-right',
+					),
+				),
+				'default'   => 'left',
+				'toggle'    => false,
+				'selectors' => array(
+					'{{WRAPPER}} .premium-fb-rev-page-inner .premium-fb-rev-page-right' => 'text-align: {{VALUE}};',
+				),
+				'condition' => array(
+					'place_display' => 'inline',
+					'source_image'  => 'true',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
 			'place_text_align',
 			array(
-				'label'     => __( 'Text Alignment', 'premium-addons-pro' ),
+				'label'     => __( 'Text Vertical Alignment', 'premium-addons-pro' ),
 				'type'      => Controls_Manager::CHOOSE,
 				'options'   => array(
 					'flex-start' => array(
@@ -391,16 +547,18 @@ class Premium_Yelp_Reviews extends Widget_Base {
 		$this->add_responsive_control(
 			'reviews_columns',
 			array(
-				'label'       => __( 'Reviews/Row', 'premium-addons-pro' ),
-				'type'        => Controls_Manager::SELECT,
-				'options'     => array(
+				'label'          => __( 'Reviews/Row', 'premium-addons-pro' ),
+				'type'           => Controls_Manager::SELECT,
+				'options'        => array(
 					'100%'   => __( '1 Column', 'premium-addons-pro' ),
 					'50%'    => __( '2 Columns', 'premium-addons-pro' ),
 					'33.33%' => __( '3 Columns', 'premium-addons-pro' ),
 				),
-				'render_type' => 'template',
-				'default'     => '33.33%',
-				'selectors'   => array(
+				'render_type'    => 'template',
+				'default'        => '33.33%',
+				'tablet_default' => '100%',
+				'mobile_default' => '100%',
+				'selectors'      => array(
 					'{{WRAPPER}} .premium-fb-rev-review-wrap' => 'width: {{VALUE}}',
 				),
 			)
@@ -409,14 +567,21 @@ class Premium_Yelp_Reviews extends Widget_Base {
 		$this->add_control(
 			'reviews_display',
 			array(
-				'label'       => __( 'Display', 'premium-addons-pro' ),
-				'type'        => Controls_Manager::SELECT,
-				'options'     => array(
-					'inline' => __( 'Inline', 'premium-addons-pro' ),
-					'block'  => __( 'Block', 'premium-addons-pro' ),
+				'label'        => __( 'Image Position', 'premium-addons-pro' ),
+				'type'         => Controls_Manager::SELECT,
+				'options'      => array(
+					'block'  => __( 'Above Name', 'premium-addons-pro' ),
+					'left'   => __( 'Left of Name', 'premium-addons-pro' ),
+					'inline' => __( 'Left of all content', 'premium-addons-pro' ),
+
 				),
-				'default'     => 'inline',
-				'render_type' => 'ui',
+				'default'      => 'inline',
+				'render_type'  => 'template',
+				'condition'    => array(
+					'reviewer_image' => 'yes',
+					'skin_type!'     => 'bubble',
+				),
+				'prefix_class' => 'premium-reviewer-image-pos-',
 			)
 		);
 
@@ -471,14 +636,14 @@ class Premium_Yelp_Reviews extends Widget_Base {
 						'icon'  => 'fa fa-long-arrow-down',
 					),
 				),
-				'default'   => 'center',
+				'default'   => 'flex-start',
 				'toggle'    => false,
 				'selectors' => array(
-					'{{WRAPPER}} .premium-fb-rev-review-inner .premium-fb-rev-content-right' => 'align-self: {{VALUE}};',
+					'{{WRAPPER}} .premium-fb-rev-reviewer-header' => 'justify-content: {{VALUE}};',
 				),
 				'condition' => array(
-					'reviews_display' => 'inline',
-					'skin_type'       => 'default',
+					'reviews_display' => 'left',
+					'skin_type!'      => 'bubble',
 				),
 			)
 		);
@@ -545,9 +710,23 @@ class Premium_Yelp_Reviews extends Widget_Base {
 				'default'   => 'center',
 				'condition' => array(
 					'reviews_display' => 'block',
+					'skin_type!'      => 'bubble',
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-fb-rev-container .premium-fb-rev-content' => 'text-align: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'bubble_arrow',
+			array(
+				'label'        => __( 'Bubble Arrow', 'premium-addons-pro' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'default'      => 'true',
+				'return_value' => 'true',
+				'condition'    => array(
+					'skin_type' => 'bubble',
 				),
 			)
 		);
@@ -561,9 +740,9 @@ class Premium_Yelp_Reviews extends Widget_Base {
 		);
 
 		$this->add_control(
-			'carousel_play',
+			'infinite_autoplay',
 			array(
-				'label'     => __( 'Auto Play', 'premium-addons-pro' ),
+				'label'     => __( 'Infinite Autoplay', 'premium-addons-pro' ),
 				'type'      => Controls_Manager::SWITCHER,
 				'condition' => array(
 					'reviews_carousel' => 'yes',
@@ -572,15 +751,77 @@ class Premium_Yelp_Reviews extends Widget_Base {
 		);
 
 		$this->add_control(
+			'rows',
+			array(
+				'label'     => __( 'Rows/Column', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::NUMBER,
+				'default'   => 2,
+				'min'       => 1,
+				'max'       => 3,
+				'condition' => array(
+					'reviews_carousel'  => 'yes',
+					'infinite_autoplay' => 'yes',
+				),
+			)
+		);
+
+		$this->add_control(
+			'carousel_play',
+			array(
+				'label'     => __( 'Autoplay', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::SWITCHER,
+				'condition' => array(
+					'reviews_carousel'   => 'yes',
+					'infinite_autoplay!' => 'yes',
+				),
+			)
+		);
+
+		$this->add_control(
 			'carousel_autoplay_speed',
 			array(
-				'label'       => __( 'Autoplay Speed', 'premium-addons-pro' ),
-				'description' => __( 'Autoplay Speed means at which time the next slide should come. Set a value in milliseconds (ms)', 'premium-addons-pro' ),
-				'type'        => Controls_Manager::NUMBER,
-				'default'     => 5000,
-				'condition'   => array(
-					'reviews_carousel' => 'yes',
-					'carousel_play'    => 'yes',
+				'label'      => __( 'Autoplay Speed', 'premium-addons-pro' ),
+				'type'       => Controls_Manager::NUMBER,
+				'default'    => 5000,
+				'conditions' => array(
+					'terms' => array(
+						array(
+							'name'  => 'reviews_carousel',
+							'value' => 'yes',
+						),
+						array(
+							'relation' => 'or',
+							'terms'    => array(
+								array(
+									'name'  => 'carousel_play',
+									'value' => 'yes',
+								),
+								array(
+									'name'  => 'infinite_autoplay',
+									'value' => 'yes',
+								),
+							),
+						),
+					),
+				),
+			)
+		);
+
+		$this->add_control(
+			'carousel_navigation',
+			array(
+				'label'     => __( 'Navigation', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::SELECT,
+				'options'   => array(
+					'none'   => __( 'None', 'premium-addons-pro' ),
+					'arrows' => __( 'Arrows', 'premium-addons-pro' ),
+					'dots'   => __( 'Dots', 'premium-addons-pro' ),
+					'all'    => __( 'Dots & Arrows', 'premium-addons-pro' ),
+				),
+				'default'   => 'arrows',
+				'condition' => array(
+					'reviews_carousel'   => 'yes',
+					'infinite_autoplay!' => 'yes',
 				),
 			)
 		);
@@ -602,7 +843,9 @@ class Premium_Yelp_Reviews extends Widget_Base {
 					),
 				),
 				'condition'  => array(
-					'reviews_carousel' => 'yes',
+					'reviews_carousel'    => 'yes',
+					'carousel_navigation' => array( 'arrows', 'all' ),
+					'infinite_autoplay!'  => 'yes',
 				),
 				'selectors'  => array(
 					'{{WRAPPER}} .premium-fb-rev-reviews a.carousel-arrow.carousel-next' => 'right: {{SIZE}}{{UNIT}};',
@@ -611,13 +854,19 @@ class Premium_Yelp_Reviews extends Widget_Base {
 			)
 		);
 
-		$this->add_control(
-			'carousel_dots',
+		$this->add_responsive_control(
+			'carousel_dots_pos',
 			array(
-				'label'     => __( 'Navigation Dots', 'premium-addons-for-elementor' ),
-				'type'      => Controls_Manager::SWITCHER,
-				'condition' => array(
-					'reviews_carousel' => 'yes',
+				'label'      => __( 'Dots Position', 'premium-addons-pro' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', 'em', '%' ),
+				'condition'  => array(
+					'reviews_carousel'    => 'yes',
+					'carousel_navigation' => array( 'dots', 'all' ),
+					'infinite_autoplay!'  => 'yes',
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .premium-fb-rev-reviews ul.slick-dots,{{WRAPPER}} .premium-fb-dots-container ul.slick-dots' => 'bottom: {{SIZE}}{{UNIT}}',
 				),
 			)
 		);
@@ -626,7 +875,7 @@ class Premium_Yelp_Reviews extends Widget_Base {
 			'carousel_rtl',
 			array(
 				'label'       => __( 'RTL Mode', 'premium-addons-pro' ),
-				'description' => __( 'Recommended for right to left Sites', 'premium-addons-pro' ),
+				'description' => __( 'Recommended for RTL Sites', 'premium-addons-pro' ),
 				'type'        => Controls_Manager::SWITCHER,
 				'condition'   => array(
 					'reviews_carousel' => 'yes',
@@ -695,6 +944,17 @@ class Premium_Yelp_Reviews extends Widget_Base {
 		);
 
 		$this->add_control(
+			'reviews_number',
+			array(
+				'label'     => __( 'Number of Reviews', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::SWITCHER,
+				'condition' => array(
+					'place_info' => 'yes',
+				),
+			)
+		);
+
+		$this->add_control(
 			'source_stars',
 			array(
 				'label'        => __( 'Rating Stars', 'premium-addons-pro' ),
@@ -712,16 +972,20 @@ class Premium_Yelp_Reviews extends Widget_Base {
 		$this->start_controls_section(
 			'review_settings',
 			array(
-				'label' => __( 'Review Settings', 'premium-addons-pro' ),
+				'label' => __( 'Reviews Settings', 'premium-addons-pro' ),
 			)
 		);
 
 		$this->add_control(
 			'reviewer_image',
 			array(
-				'label'   => __( 'Show Reviewer Image', 'premium-addons-pro' ),
-				'type'    => Controls_Manager::SWITCHER,
-				'default' => 'yes',
+				'label'        => __( 'Show Reviewer Image', 'premium-addons-pro' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'default'      => 'yes',
+				'render_type'  => 'template',
+				'return_value' => 'yes',
+				'prefix_class' => 'premium-reviewer-image-',
+
 			)
 		);
 
@@ -731,6 +995,24 @@ class Premium_Yelp_Reviews extends Widget_Base {
 				'label'   => __( 'Show Stars', 'premium-addons-pro' ),
 				'type'    => Controls_Manager::SWITCHER,
 				'default' => 'yes',
+			)
+		);
+
+		$this->add_control(
+			'stars_pos_bubble',
+			array(
+				'label'        => __( 'Stars Position', 'premium-addons-pro' ),
+				'type'         => Controls_Manager::SELECT,
+				'options'      => array(
+					'above' => __( 'Above Name', 'premium-addons-pro' ),
+					'below' => __( 'Below Name', 'premium-addons-pro' ),
+				),
+				'default'      => 'below',
+				'condition'    => array(
+					'stars'     => 'yes',
+					'skin_type' => 'bubble',
+				),
+				'prefix_class' => 'premium-review-stars-',
 			)
 		);
 
@@ -783,17 +1065,56 @@ class Premium_Yelp_Reviews extends Widget_Base {
 		$this->add_control(
 			'text',
 			array(
-				'label'   => __( 'Show Review Text', 'premium-addons-pro' ),
-				'type'    => Controls_Manager::SWITCHER,
-				'default' => 'yes',
+				'label'     => __( 'Show Review Text', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::SWITCHER,
+				'default'   => 'yes',
+				'separator' => 'before',
+			)
+		);
+
+		$this->add_control(
+			'hide_empty',
+			array(
+				'label'     => __( 'Hide Reviews With Empty Text', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::SWITCHER,
+				'condition' => array(
+					'text' => 'yes',
+				),
+			)
+		);
+
+		$this->add_control(
+			'words_num',
+			array(
+				'label'     => __( 'Review Words Length', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::NUMBER,
+				'min'       => 1,
+				'default'   => 20,
+				'condition' => array(
+					'text' => 'yes',
+				),
+			)
+		);
+
+		$this->add_control(
+			'readmore',
+			array(
+				'label'     => __( 'Read More Text', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::TEXT,
+				'default'   => __( 'Read More »', 'premium-addons-pro' ),
+				'condition' => array(
+					'text'       => 'yes',
+					'words_num!' => '',
+				),
 			)
 		);
 
 		$this->add_control(
 			'filter',
 			array(
-				'label' => __( 'Filter by Rate', 'premium-addons-pro' ),
-				'type'  => Controls_Manager::SWITCHER,
+				'label'     => __( 'Filter by Rate', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::SWITCHER,
+				'separator' => 'before',
 			)
 		);
 
@@ -841,28 +1162,6 @@ class Premium_Yelp_Reviews extends Widget_Base {
 				'description' => __( 'You can only pull 3 reviews from Yelp', 'premium-addons-pro' ),
 				'condition'   => array(
 					'limit' => 'yes',
-				),
-			)
-		);
-
-		$this->add_control(
-			'words_num',
-			array(
-				'label'   => __( 'Review Words Length', 'premium-addons-pro' ),
-				'type'    => Controls_Manager::NUMBER,
-				'min'     => 1,
-				'default' => 20,
-			)
-		);
-
-		$this->add_control(
-			'readmore',
-			array(
-				'label'     => __( 'Read More Text', 'premium-addons-pro' ),
-				'type'      => Controls_Manager::TEXT,
-				'default'   => __( 'Read More »', 'premium-addons-pro' ),
-				'condition' => array(
-					'words_num!' => '',
 				),
 			)
 		);
@@ -991,7 +1290,7 @@ class Premium_Yelp_Reviews extends Widget_Base {
 				),
 				'default'    => array(
 					'unit' => 'px',
-					'size' => 60,
+					'size' => 100,
 				),
 				'condition'  => array(
 					'place_custom_image_switch!' => 'yes',
@@ -1087,6 +1386,7 @@ class Premium_Yelp_Reviews extends Widget_Base {
 				),
 				'selectors'  => array(
 					'{{WRAPPER}} .premium-fb-rev-review-inner .premium-fb-rev-img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .premium-rev-arrow-bubble' => 'left: calc( {{SIZE}}{{UNIT}} - 24px );',
 				),
 			)
 		);
@@ -1146,6 +1446,46 @@ class Premium_Yelp_Reviews extends Widget_Base {
 				'condition' => array(
 					'place_info' => 'yes',
 				),
+			)
+		);
+
+		$this->add_control(
+			'revs_number_label',
+			array(
+				'label'     => __( 'Reviews Number', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::HEADING,
+				'condition' => array(
+					'reviews_number' => 'yes',
+				),
+			)
+		);
+
+		$this->add_control(
+			'number_color',
+			array(
+				'label'     => __( 'Text Color', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::COLOR,
+				'scheme'    => array(
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
+				),
+				'condition' => array(
+					'reviews_number' => 'yes',
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .premium-fb-rev-rating-count span' => 'color: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'      => 'number_typo',
+				'condition' => array(
+					'reviews_number' => 'yes',
+				),
+				'selector'  => '{{WRAPPER}} .premium-fb-rev-rating-count span',
 			)
 		);
 
@@ -1265,6 +1605,7 @@ class Premium_Yelp_Reviews extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'page_typo',
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-fb-rev-page-link',
 			)
 		);
@@ -1305,6 +1646,7 @@ class Premium_Yelp_Reviews extends Widget_Base {
 				'type'      => Controls_Manager::NUMBER,
 				'min'       => 1,
 				'max'       => 50,
+				'default'   => 20,
 				'condition' => array(
 					'source_stars' => 'true',
 				),
@@ -1408,29 +1750,39 @@ class Premium_Yelp_Reviews extends Widget_Base {
 		$this->add_control(
 			'reviews_star_size',
 			array(
-				'label' => __( 'Star Size', 'premium-addons-pro' ),
-				'type'  => Controls_Manager::NUMBER,
-				'min'   => 1,
-				'max'   => 50,
+				'label'     => __( 'Star Size', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::NUMBER,
+				'min'       => 1,
+				'max'       => 50,
+				'default'   => 15,
+				'condition' => array(
+					'stars' => 'yes',
+				),
 			)
 		);
 
 		$this->add_control(
 			'reviews_fill',
 			array(
-				'label'   => __( 'Star Color', 'premium-addons-pro' ),
-				'type'    => Controls_Manager::COLOR,
-				'global'  => false,
-				'default' => '#ffab40',
+				'label'     => __( 'Star Color', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::COLOR,
+				'global'    => false,
+				'default'   => '#ffab40',
+				'condition' => array(
+					'stars' => 'yes',
+				),
 			)
 		);
 
 		$this->add_control(
 			'reviews_empty',
 			array(
-				'label'  => __( 'Empty Star Color', 'premium-addons-pro' ),
-				'type'   => Controls_Manager::COLOR,
-				'global' => false,
+				'label'     => __( 'Empty Star Color', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::COLOR,
+				'global'    => false,
+				'condition' => array(
+					'stars' => 'yes',
+				),
 			)
 		);
 
@@ -1477,8 +1829,17 @@ class Premium_Yelp_Reviews extends Widget_Base {
 				'label'      => __( 'Margin', 'premium-addons-pro' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
+				'default'    => array(
+					'top'    => 0,
+					'right'  => 10,
+					'bottom' => 30,
+					'left'   => 10,
+				),
 				'selectors'  => array(
 					'{{WRAPPER}} .premium-fb-rev-review-wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .premium-fb-rev-reviews a.carousel-arrow , {{WRAPPER}}.premium-fb-page-next-yes.premium-reviews-place-v-center .premium-fb-rev-page-inner ' => 'transform: translateY(calc(-50% + {{TOP}}{{UNIT}}/2 - {{BOTTOM}}{{UNIT}}/2 )) !important',
+					'{{WRAPPER}}.premium-fb-page-next-yes.premium-reviews-place-v-bottom .premium-fb-rev-page-inner ' => 'transform: translateY(calc(-100% - {{BOTTOM}}{{UNIT}} )) !important',
+					'{{WRAPPER}}.premium-fb-page-next-yes.premium-reviews-place-v-top .premium-fb-rev-page-inner ' => 'transform: translateY({{TOP}}{{UNIT}}) !important',
 				),
 			)
 		);
@@ -1539,6 +1900,7 @@ class Premium_Yelp_Reviews extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'reviewer_typo',
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-fb-rev-reviewer-link',
 			)
 		);
@@ -1621,6 +1983,130 @@ class Premium_Yelp_Reviews extends Widget_Base {
 		$this->end_controls_section();
 
 		$this->start_controls_section(
+			'bubble_style',
+			array(
+				'label'     => __( 'Review Container', 'premium-addons-pro' ),
+				'tab'       => Controls_Manager::TAB_STYLE,
+				'condition' => array(
+					'text'      => 'yes',
+					'skin_type' => 'bubble',
+				),
+			)
+		);
+
+		$this->add_control(
+			'bubble_background',
+			array(
+				'label'     => __( 'Background Color', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .premium-fb-rev-rating' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .premium-rev-arrow'     => 'border-top-color: {{VALUE}};',
+
+				),
+			)
+		);
+
+		$this->add_control(
+			'bubble_border_type',
+			array(
+				'label'       => __( 'Border Type', 'premium-addons-pro' ),
+				'type'        => Controls_Manager::SELECT,
+				'default'     => 'solid',
+				'label_block' => false,
+				'options'     => array(
+					'none'   => __( 'None', 'premium-addons-pro' ),
+					'solid'  => __( 'Solid', 'premium-addons-pro' ),
+					'double' => __( 'Double', 'premium-addons-pro' ),
+					'dotted' => __( 'Dotted', 'premium-addons-pro' ),
+					'dashed' => __( 'Dashed', 'premium-addons-pro' ),
+					'groove' => __( 'Groove', 'premium-addons-pro' ),
+				),
+				'selectors'   => array(
+					'{{WRAPPER}} .premium-fb-rev-rating' => 'border-style: {{VALUE}};',
+				),
+				'condition'   => array(
+					'skin_type' => 'bubble',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'bubble_border_width',
+			array(
+				'label'     => __( 'Border Width', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => array(
+					'px' => array(
+						'min' => 1,
+						'max' => 10,
+					),
+				),
+				'condition' => array(
+					'bubble_border_type!' => 'none',
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .premium-fb-rev-rating' => 'border-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .premium-rev-arrow'     => 'top: -{{SIZE}}px',
+				),
+			)
+		);
+
+		$this->add_control(
+			'bubble_border_color',
+			array(
+				'label'     => __( 'Color', 'premium-addons-pro' ),
+				'type'      => Controls_Manager::COLOR,
+				'condition' => array(
+					'bubble_border_type!' => 'none',
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .premium-fb-rev-rating' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .premium-rev-arrow-bubble-border' => 'border-top-color: {{VALUE}};',
+				),
+				'selector'  => '{{WRAPPER}} .premium-fb-rev-rating',
+			)
+		);
+
+		$this->add_control(
+			'bubble_border_radius',
+			array(
+				'label'      => __( 'Border Radius', 'premium-addons-pro' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', 'em', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .premium-fb-rev-rating' => 'border-radius: {{SIZE}}{{UNIT}}',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'bubble_margin',
+			array(
+				'label'      => __( 'Margin', 'premium-addons-pro' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', 'em', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .premium-fb-rev-rating' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'bubble_padding',
+			array(
+				'label'      => __( 'Padding', 'premium-addons-pro' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', 'em', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} .premium-fb-rev-text-wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
 			'reviewer_txt',
 			array(
 				'label'     => __( 'Review Text', 'premium-addons-pro' ),
@@ -1660,6 +2146,12 @@ class Premium_Yelp_Reviews extends Widget_Base {
 				'label'      => __( 'Margin', 'premium-addons-pro' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
+				'default'    => array(
+					'top'    => 10,
+					'right'  => 0,
+					'bottom' => 0,
+					'left'   => 0,
+				),
 				'selectors'  => array(
 					'{{WRAPPER}} .premium-fb-rev-text-wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
 				),
@@ -1674,6 +2166,7 @@ class Premium_Yelp_Reviews extends Widget_Base {
 				'label'     => __( 'Readmore Text', 'premium-addons-pro' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => array(
+					'text'       => 'yes',
 					'words_num!' => '',
 				),
 			)
@@ -1852,7 +2345,9 @@ class Premium_Yelp_Reviews extends Widget_Base {
 				'label'     => __( 'Carousel Arrows', 'premium-addons-pro' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => array(
-					'reviews_carousel' => 'yes',
+					'reviews_carousel'    => 'yes',
+					'carousel_navigation' => array( 'arrows', 'all' ),
+					'infinite_autoplay!'  => 'yes',
 				),
 			)
 		);
@@ -1907,8 +2402,9 @@ class Premium_Yelp_Reviews extends Widget_Base {
 				'label'     => __( 'Carousel Dots', 'premium-addons-for-elementor' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => array(
-					'reviews_carousel' => 'yes',
-					'carousel_dots'    => 'yes',
+					'reviews_carousel'    => 'yes',
+					'carousel_navigation' => array( 'dots', 'all' ),
+					'infinite_autoplay!'  => 'yes',
 				),
 			)
 		);
@@ -2060,7 +2556,7 @@ class Premium_Yelp_Reviews extends Widget_Base {
 
 		$date_format = $settings['date_format'];
 
-		$this->add_render_attribute( 'place_dir', 'class', 'premium-fb-rev-page' );
+		$this->add_render_attribute( 'place', 'class', 'premium-fb-rev-page' );
 
 		$this->add_render_attribute( 'reviews', 'class', 'premium-fb-rev-content' );
 
@@ -2121,11 +2617,9 @@ class Premium_Yelp_Reviews extends Widget_Base {
 
 		$carousel = 'yes' === $settings['reviews_carousel'] ? true : false;
 
-		if ( ! empty( $settings['reviews_columns'] ) ) {
-			$reviews_number = intval( 100 / substr( $settings['reviews_columns'], 0, strpos( $settings['reviews_columns'], '%' ) ) );
-		} else {
-			$reviews_number = 2;
-		}
+		$reviews_number        = intval( 100 / substr( $settings['reviews_columns'], 0, strpos( $settings['reviews_columns'], '%' ) ) );
+		$reviews_number_tab    = intval( 100 / substr( $settings['reviews_columns_tablet'], 0, strpos( $settings['reviews_columns_tablet'], '%' ) ) );
+		$reviews_number_mobile = intval( 100 / substr( $settings['reviews_columns_mobile'], 0, strpos( $settings['reviews_columns_mobile'], '%' ) ) );
 
 		$place_settings = array(
 			'image'       => $custom_image,
@@ -2137,25 +2631,30 @@ class Premium_Yelp_Reviews extends Widget_Base {
 			'stars'       => $settings['source_stars'],
 			'stars_size'  => $place_star_size,
 			'place_rate'  => $place_rate,
+			'rev_number'  => $settings['reviews_number'],
 			'key'         => $api_key,
 			'id'          => $id,
 		);
 
 		$reviews_settings = array(
-			'show_image'  => $settings['reviewer_image'],
-			'fill_color'  => $rev_fill_color,
-			'empty_color' => $rev_empty_color,
-			'stars'       => $show_stars,
-			'stars_size'  => $rev_star_size,
-			'filter_min'  => $min_filter,
-			'filter_max'  => $max_filter,
-			'date'        => $show_date,
-			'format'      => $date_format,
-			'limit'       => $limit,
-			'text'        => $rev_text,
-			'rev_length'  => $rev_length,
-			'readmore'    => $settings['readmore'],
-			'skin_type'   => $settings['skin_type'],
+			'show_image'    => $settings['reviewer_image'],
+			'fill_color'    => $rev_fill_color,
+			'empty_color'   => $rev_empty_color,
+			'stars'         => $show_stars,
+			'stars_size'    => $rev_star_size,
+			'filter_min'    => $min_filter,
+			'filter_max'    => $max_filter,
+			'date'          => $show_date,
+			'format'        => $date_format,
+			'limit'         => $limit,
+			'text'          => $rev_text,
+			'hide_empty'    => $settings['hide_empty'],
+			'rev_length'    => $rev_length,
+			'readmore'      => $settings['readmore'],
+			'skin_type'     => $settings['skin_type'],
+			'bubble_arrow'  => 'bubble' === $settings['skin_type'] ? $settings['bubble_arrow'] : false,
+			'show_icon'     => $settings['source_icon'],
+			'image_display' => $settings['reviews_display'],
 		);
 
 		$this->add_render_attribute(
@@ -2171,26 +2670,36 @@ class Premium_Yelp_Reviews extends Widget_Base {
 		$this->add_render_attribute(
 			'container',
 			array(
-				'data-col'   => $reviews_number,
-				'data-style' => $settings['reviews_style'],
+				'data-col'        => $reviews_number,
+				'data-col-tab'    => $reviews_number_tab,
+				'data-col-mobile' => $reviews_number_mobile,
+				'data-style'      => $settings['reviews_style'],
 			)
 		);
 
 		if ( $carousel ) {
 			$this->add_render_attribute( 'container', 'data-carousel', $carousel );
 
-			$play  = 'yes' === $settings['carousel_play'] ? true : false;
-			$speed = ! empty( $settings['carousel_autoplay_speed'] ) ? $settings['carousel_autoplay_speed'] : 5000;
-			$rtl   = 'yes' === $settings['carousel_rtl'] ? true : false;
-			$dots  = 'yes' === $settings['carousel_dots'] ? 'true' : 'false';
+			$play   = 'yes' === $settings['carousel_play'] ? true : false;
+			$speed  = ! empty( $settings['carousel_autoplay_speed'] ) ? $settings['carousel_autoplay_speed'] : 5000;
+			$rtl    = 'yes' === $settings['carousel_rtl'] ? true : false;
+			$dots   = ( 'dots' === $settings['carousel_navigation'] || 'all' === $settings['carousel_navigation'] ) ? 'true' : 'false';
+			$arrows = ( 'arrows' === $settings['carousel_navigation'] || 'all' === $settings['carousel_navigation'] ) ? 'true' : 'false';
+
+			$infinite = 'yes' === $settings['infinite_autoplay'];
+
+			$rows = 'yes' === $settings['infinite_autoplay'] ? $settings['rows'] : 0;
 
 			$this->add_render_attribute(
 				'container',
 				array(
-					'data-play'  => $play,
-					'data-speed' => $speed,
-					'data-rtl'   => $rtl,
-					'data-dots'  => $dots,
+					'data-play'     => $play,
+					'data-speed'    => $speed,
+					'data-rtl'      => $rtl,
+					'data-dots'     => $dots,
+					'data-arrows'   => $arrows,
+					'data-infinite' => $infinite,
+					'data-rows'     => $rows,
 				)
 			);
 
@@ -2214,11 +2723,16 @@ class Premium_Yelp_Reviews extends Widget_Base {
 		<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'container' ) ); ?>>
 			<div class="premium-fb-rev-list">
 				<?php if ( 'yes' === $settings['place_info'] ) : ?>
-					<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'place_dir' ) ); ?>>
+					<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'place' ) ); ?>>
 						<div class="premium-fb-rev-page-inner">
 							<?php premium_reviews_place( $place, $place_settings ); ?>
 						</div>
 					</div>
+					<?php if ( '0' == $limit && 'yes' === $settings['source_icon'] ) : ?>
+						<div class="premium-fb-rev-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1016.09 1333.33" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"><path d="M25.87 641.95C4.22 676.65-4.93 785.94 2.59 858.47c2.65 23.94 6.98 43.91 13.29 55.81 8.66 16.48 23.22 26.28 39.81 26.88 10.64.54 17.26-1.26 217.43-65.62 0 0 88.96-28.39 89.31-28.57 22.19-5.65 37.11-26.05 38.56-52.09 1.44-26.7-12.33-50.28-35.07-58.82 0 0-62.73-25.56-62.85-25.56-215.08-88.71-224.76-92.2-235.59-92.32-16.59-.67-31.33 7.7-41.62 23.76zM515.4 545.6c-3.91-90.1-31.04-491.27-34.22-509.86-4.57-16.84-17.74-28.87-36.63-33.62-58.04-14.37-279.86 47.76-320.94 90.16-13.23 13.78-18.1 30.74-14.14 45.78 6.5 13.29 281.3 445.68 281.3 445.68 40.6 65.86 73.74 55.63 84.63 52.2 10.76-3.31 43.72-13.54 40-90.34zm228.19 187.72c227.35-55.1 236.13-57.98 245.09-63.88 13.78-9.26 20.69-24.78 19.49-43.67 0-.6.12-1.27 0-1.93-5.84-55.81-103.63-201.01-151.81-224.58-17.08-8.19-34.16-7.64-48.35 1.86-8.78 5.71-15.22 14.38-136.95 180.86 0 0-54.97 74.88-55.63 75.6-14.49 17.62-14.73 42.88-.54 64.54 14.68 22.44 39.46 33.38 62.19 27.07 0 0-.91 1.62-1.15 1.93 11.19-4.21 31.22-9.15 67.66-17.8zm103.39 496.44c50.52-20.15 160.71-160.35 168.47-214.3 2.7-18.77-3.19-34.94-16.12-45.29-8.48-6.37-14.92-8.84-214.96-74.52 0 0-87.75-28.99-88.9-29.53-21.23-8.24-45.47-.61-61.77 19.48-16.96 20.63-19.49 47.88-5.96 68.45l35.31 57.5c118.73 192.83 127.81 206.48 136.35 213.16 13.23 10.4 30.07 12.09 47.57 5.05zm-339.94 73.2c3.49-10.11 3.91-17.02 4.51-227.3 0 0 .48-92.93.54-93.83 1.44-22.8-13.29-43.54-37.41-52.81-24.84-9.56-51.6-3.67-66.64 15.04 0 0-43.9 52.09-44.03 52.09-150.66 177.01-156.97 185.19-160.65 195.65-2.23 6.13-3.13 12.75-2.41 19.31.91 9.38 5.17 18.64 12.21 27.3 34.95 41.5 202.51 103.15 256.04 94.01 18.58-3.37 32.12-13.83 37.83-29.47z" fill="#bf2519" fill-rule="nonzero"></path></svg>
+						</div>
+					<?php endif; ?>
 				<?php endif; ?>
 
 				<?php if ( ! empty( $reviews ) ) : ?>

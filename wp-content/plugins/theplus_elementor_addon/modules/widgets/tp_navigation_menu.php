@@ -10,12 +10,12 @@ namespace TheplusAddons\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Utils;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 
 use TheplusAddons\Theplus_Element_Load;
 if (!defined('ABSPATH'))
@@ -1888,6 +1888,64 @@ class ThePlus_Navigation_Menu extends Widget_Base {
 				
 			]
 		);
+		$this->add_control(
+			'secbackdropshadown',
+			[
+				'label' => esc_html__( 'Backdrop Filter', 'theplus' ),
+				'type' => Controls_Manager::POPOVER_TOGGLE,
+				'label_off' => __( 'Default', 'theplus' ),
+				'label_on' => __( 'Custom', 'theplus' ),
+				'return_value' => 'yes',
+			]
+		);
+		$this->add_control(
+			'secbackdropshadown_blur',
+			[
+				'label' => esc_html__( 'Blur', 'theplus' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'range' => [
+					'px' => [
+						'max' => 100,
+						'min' => 1,
+						'step' => 1,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 10,
+				],
+				'condition'    => [
+					'secbackdropshadown' => 'yes',
+				],
+			]
+		);
+		$this->add_control(
+			'secbackdropshadown_grayscale',
+			[
+				'label' => esc_html__( 'Grayscale', 'theplus' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'range' => [
+					'px' => [
+						'max' => 1,
+						'min' => 0,
+						'step' => 0.1,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 0,
+				],
+				'selectors' => [
+					'.elementor-element.plus-nav-sticky-sec' => '-webkit-backdrop-filter:grayscale({{secbackdropshadown_grayscale.SIZE}})  blur({{secbackdropshadown_blur.SIZE}}{{secbackdropshadown_blur.UNIT}}) !important;backdrop-filter:grayscale({{secbackdropshadown_grayscale.SIZE}})  blur({{secbackdropshadown_blur.SIZE}}{{secbackdropshadown_blur.UNIT}}) !important;',
+				 ],
+				'condition'    => [
+					'secbackdropshadown' => 'yes',
+				],
+			]
+		);
+		$this->end_popover();
 		$this->end_controls_tab();
 		$this->start_controls_tab(
 			'tab_smain_bg_sticky',
@@ -1904,6 +1962,65 @@ class ThePlus_Navigation_Menu extends Widget_Base {
 				
 			]
 		);
+		$this->add_control(
+			'secbackdropshadowh',
+			[
+				'label' => esc_html__( 'Backdrop Filter', 'theplus' ),
+				'type' => Controls_Manager::POPOVER_TOGGLE,
+				'label_off' => __( 'Default', 'theplus' ),
+				'label_on' => __( 'Custom', 'theplus' ),
+				'return_value' => 'yes',
+			]
+		);
+		$this->start_popover();			
+		$this->add_control(
+			'secbackdropshadowh_blur',
+			[
+				'label' => esc_html__( 'Blur', 'theplus' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'range' => [
+					'px' => [
+						'max' => 100,
+						'min' => 1,
+						'step' => 1,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 10,
+				],
+				'condition'    => [
+					'secbackdropshadowh' => 'yes',
+				],
+			]
+		);		
+		$this->add_control(
+			'secbackdropshadowh_grayscale',
+			[
+				'label' => esc_html__( 'Grayscale', 'theplus' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px' ],
+				'range' => [
+					'px' => [
+						'max' => 1,
+						'min' => 0,
+						'step' => 0.1,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 0,
+				],
+				'selectors' => [
+					'.elementor-element.plus-nav-sticky-sec.plus-fixed-sticky' => '-webkit-backdrop-filter:grayscale({{secbackdropshadowh_grayscale.SIZE}})  blur({{secbackdropshadowh_blur.SIZE}}{{secbackdropshadowh_blur.UNIT}}) !important;backdrop-filter:grayscale({{secbackdropshadowh_grayscale.SIZE}})  blur({{secbackdropshadowh_blur.SIZE}}{{secbackdropshadowh_blur.UNIT}}) !important;',
+				 ],
+				'condition'    => [
+					'secbackdropshadowh' => 'yes',
+				],
+			]
+		);
+		$this->end_popover();
 		$this->end_controls_tab();
 		$this->end_controls_tabs();
 		$this->add_control(

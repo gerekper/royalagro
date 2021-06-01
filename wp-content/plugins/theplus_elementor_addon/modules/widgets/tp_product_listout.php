@@ -10,10 +10,10 @@ namespace TheplusAddons\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Utils;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Image_Size;
@@ -724,7 +724,7 @@ class ThePlus_Product_ListOut extends Widget_Base {
 			[
 				'name' => 'pagination_typography',
 				'label' => esc_html__( 'Pagination Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .theplus-pagination a,{{WRAPPER}} .theplus-pagination span',
 				'condition'   => [
 					'layout!' => ['carousel'],
@@ -828,7 +828,7 @@ class ThePlus_Product_ListOut extends Widget_Base {
 			[
 				'name' => 'load_more_typography',
 				'label' => esc_html__( 'Load More Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .ajax_load_more .post-load-more',
 				'condition'   => [
 					'layout!' => ['carousel'],
@@ -842,7 +842,7 @@ class ThePlus_Product_ListOut extends Widget_Base {
 			[
 				'name' => 'loaded_posts_typo',
 				'label' => esc_html__( 'Loaded All Posts Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .plus-all-posts-loaded',
 				'separator' => 'before',
 				'condition'   => [
@@ -1271,7 +1271,7 @@ class ThePlus_Product_ListOut extends Widget_Base {
 			[
 				'name' => 'catagory_typography',
 				'label' => esc_html__( 'Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .product-list .post-inner-loop .post-catagory',
 			]
 		);
@@ -1377,7 +1377,7 @@ class ThePlus_Product_ListOut extends Widget_Base {
 			[
 				'name' => 'title_typography',
 				'label' => esc_html__( 'Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .product-list .post-inner-loop .post-title,{{WRAPPER}} .product-list .post-inner-loop .post-title a',
 			]
 		);
@@ -1531,7 +1531,7 @@ class ThePlus_Product_ListOut extends Widget_Base {
 			[
 				'name' => 'price_typography',
 				'label' => esc_html__( 'Price Typography', 'theplus' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .product-list .wrapper-cart-price .price .amount,{{WRAPPER}} .product-list .wrapper-cart-price .price .amount .woocommerce-Price-currencySymbol',
 			]
 		);		
@@ -1586,7 +1586,7 @@ class ThePlus_Product_ListOut extends Widget_Base {
 			[
 				'name' => 'sale_price_typography',
 				'label' => esc_html__( 'Price Typography', 'theplus' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .product-list .wrapper-cart-price .price del .amount,{{WRAPPER}} .product-list .product-list-content .wrapper-cart-price .price del .amount .woocommerce-Price-currencySymbol',
 			]
 		);
@@ -4191,7 +4191,7 @@ class ThePlus_Product_ListOut extends Widget_Base {
 			[
 				'name' => 'pnf_typography',
 				'label' => esc_html__( 'Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .theplus-posts-not-found',
 				
 			]
@@ -4943,19 +4943,73 @@ class ThePlus_Product_ListOut extends Widget_Base {
 			}
 			
 			
+			$include_products = !empty($settings['include_products']) ? $settings['include_products'] : '';
+			$exclude_products = !empty($settings['exclude_products']) ? $settings['exclude_products'] : '';
+		
+			$postattr =[];
+			$data_loadkey='';
+			if(($settings['post_extra_option']=='load_more' || $settings['post_extra_option']=='lazy_load') && $layout!='carousel'){
+				$postattr =[
+					'load' => 'products',
+					'post_type' => 'product',
+					'texonomy_category' => 'product_cat',
+					'layout' => esc_attr($layout),
+					'offset-posts' => esc_attr($settings['post_offset']),
+					'display_post' => esc_attr($settings['display_posts']),
+					'post_load_more' => esc_attr($settings['load_more_post']),
+					'post_title_tag' => esc_attr($post_title_tag),
+					'badge' => esc_attr($b_dis_badge_switch),
+					'out_of_stock' => esc_attr($out_of_stock),
+					'style' => esc_attr($style),
+					'desktop-column' => esc_attr($settings['desktop_column']),
+					'tablet-column' => esc_attr($settings['tablet_column']),
+					'mobile-column' => esc_attr($settings['mobile_column']),
+					'metro_column' => esc_attr($settings['metro_column']),
+					'metro_style' => esc_attr($metro_style),
+					'responsive_tablet_metro' => esc_attr($responsive_tablet_metro),
+					'tablet_metro_column' => esc_attr($tablet_metro_column),
+					'tablet_metro_style' => esc_attr($tablet_metro_style),
+					'category' => esc_attr($post_category_list),
+					'order_by' => esc_attr($settings['post_order_by']),
+					'post_order' => esc_attr($settings['post_order']),
+					'filter_category' => esc_attr($settings['filter_category']),
+					'animated_columns' => esc_attr($animated_columns),
+					'cart_button' => esc_attr($display_cart_button),
+					'featured_image_type' => esc_attr($featured_image_type),
+					'variationprice' => esc_attr($variation_price_on),
+					'hoverimagepro' => esc_attr($hover_image_on_off),
+					'display_thumbnail' => esc_attr($display_thumbnail),
+					'thumbnail' => esc_attr($thumbnail),
+					'thumbnail_car' => esc_attr($thumbnail_car),
+					'display_product' => esc_attr($settings['display_product']),
+					'display_catagory' => esc_attr($display_catagory),
+					'display_rating' => esc_attr($display_rating),
+					'display_yith_list' => esc_attr($display_yith_list),
+					'display_yith_compare' => esc_attr($display_yith_compare),
+					'display_yith_wishlist' => esc_attr($display_yith_wishlist),
+					'display_yith_quickview' => esc_attr($display_yith_quickview),
+					'dcb_single_product' => esc_attr($dcb_single_product),
+					'dcb_variation_product' => esc_attr($dcb_variation_product),
+					'include_posts' => esc_attr($include_products),
+					'exclude_posts' => esc_attr($exclude_products),
+					'theplus_nonce' => wp_create_nonce("theplus-addons"),
+				];				
+				$data_loadkey= tp_plus_simple_decrypt( json_encode($postattr), 'ey' );
+			}
+			
 			if($settings['post_extra_option']=='pagination' && $layout!='carousel'){
 				$output .= theplus_pagination($query->max_num_pages,'2');
 			}else if($settings['post_extra_option']=='load_more' && $layout!='carousel'){
 				if(!empty($total_posts) && $total_posts>0){
 				
 					$output .= '<div class="ajax_load_more">';
-						$output .= '<a class="post-load-more" data-load="products" data-post_type="product" data-texonomy_category="product_cat"  data-post_title_tag ="'.esc_attr($post_title_tag).'" data-load-class="'.esc_attr($uid).'" data-layout="'.esc_attr($layout).'" data-badge="'.$b_dis_badge_switch.'" data-out_of_stock="'.$out_of_stock.'" data-style="'.esc_attr($style).'" data-desktop-column="'.esc_attr($settings['desktop_column']).'" data-tablet-column="'.esc_attr($settings['tablet_column']).'" data-mobile-column="'.esc_attr($settings['mobile_column']).'" data-metro_column="'.esc_attr($settings['metro_column']).'" data-metro_style="'.esc_attr($metro_style).'" data-responsive_tablet_metro="'.esc_attr($responsive_tablet_metro).'" data-tablet_metro_column="'.esc_attr($tablet_metro_column).'" data-tablet_metro_style="'.esc_attr($tablet_metro_style).'" data-offset-posts="'.($settings['post_offset']).'" data-category="'.esc_attr($post_category_list).'" data-order_by="'.esc_attr($settings['post_order_by']).'" data-post_order="'.esc_attr($settings['post_order']).'" data-filter_category="'.esc_attr($settings['filter_category']).'" data-display_post="'.esc_attr($settings['display_posts']).'" data-animated_columns="'.esc_attr($animated_columns).'" data-post_load_more="'.esc_attr($settings['load_more_post']).'" data-page="1" data-total_page="'.esc_attr($load_page).'" data-cart_button="'.esc_attr($display_cart_button).'"  data-page="1" data-total_page="'.esc_attr($query->max_num_pages).'" data-featured_image_type="'.$featured_image_type.'" data-loaded_posts="'.esc_attr($loaded_posts_text).'" data-tp_loading_text="'.esc_attr($tp_loading_text).'" data-variationprice="'.esc_attr($variation_price_on).'" data-hoverimagepro="'.esc_attr($hover_image_on_off).'" data-display_thumbnail="'.esc_attr($display_thumbnail).'" data-thumbnail="'.esc_attr($thumbnail).'" data-thumbnail_car="'.esc_attr($thumbnail_car).'" data-display_product="'.esc_attr($settings['display_product']).'" data-display_catagory="'.esc_attr($display_catagory).'" data-display_rating="'.esc_attr($display_rating).'" data-display_yith_list="'.esc_attr($display_yith_list).'" data-display_yith_compare="'.esc_attr($display_yith_compare).'" data-display_yith_wishlist="'.esc_attr($display_yith_wishlist).'" data-display_yith_quickview="'.esc_attr($display_yith_quickview).'" data-dcb_single_product="'.esc_attr($dcb_single_product).'" data-dcb_variation_product="'.esc_attr($dcb_variation_product).'">'.esc_html($settings['load_more_btn_text']).'</a>';					
+						$output .= '<a class="post-load-more" data-layout="'.esc_attr($layout).'" data-offset-posts="'.($settings['post_offset']).'" data-load-class="'.esc_attr($uid).'" data-display_post="'.esc_attr($settings['display_posts']).'" data-post_load_more="'.esc_attr($settings['load_more_post']).'" data-loaded_posts="'.esc_attr($loaded_posts_text).'" data-tp_loading_text="'.esc_attr($tp_loading_text).'" data-page="1" data-total_page="'.esc_attr($load_page).'" data-loadattr= \'' . $data_loadkey . '\'>'.esc_html($settings['load_more_btn_text']).'</a>';					
 					$output .= '</div>';	
 				}
 			}else if($settings['post_extra_option']=='lazy_load' && $layout!='carousel'){
 				if(!empty($total_posts) && $total_posts>0){
 					$output .= '<div class="ajax_lazy_load">';
-						$output .= '<a class="post-lazy-load" data-load="products" data-post_type="product" data-texonomy_category="product_cat"  data-post_title_tag ="'.esc_attr($post_title_tag).'" data-load-class="'.esc_attr($uid).'" data-layout="'.esc_attr($layout).'" data-badge="'.$b_dis_badge_switch.'" data-out_of_stock="'.$out_of_stock.'" data-style="'.esc_attr($style).'" data-desktop-column="'.esc_attr($settings['desktop_column']).'" data-tablet-column="'.esc_attr($settings['tablet_column']).'" data-mobile-column="'.esc_attr($settings['mobile_column']).'" data-metro_column="'.esc_attr($settings['metro_column']).'" data-metro_style="'.esc_attr($metro_style).'" data-responsive_tablet_metro="'.esc_attr($responsive_tablet_metro).'" data-tablet_metro_column="'.esc_attr($tablet_metro_column).'" data-tablet_metro_style="'.esc_attr($tablet_metro_style).'"  data-offset-posts="'.($settings['post_offset']).'" data-category="'.esc_attr($post_category_list).'" data-order_by="'.esc_attr($settings['post_order_by']).'" data-post_order="'.esc_attr($settings['post_order']).'" data-filter_category="'.esc_attr($settings['filter_category']).'" data-display_post="'.esc_attr($settings['display_posts']).'" data-animated_columns="'.esc_attr($animated_columns).'" data-post_load_more="'.esc_attr($settings['load_more_post']).'" data-page="1" data-total_page="'.esc_attr($load_page).'" data-cart_button="'.esc_attr($display_cart_button).'" data-page="1" data-total_page="'.esc_attr($query->max_num_pages).'" data-featured_image_type="'.$featured_image_type.'" data-loaded_posts="'.esc_attr($loaded_posts_text).'" data-tp_loading_text="'.esc_attr($tp_loading_text).'" data-variationprice="'.esc_attr($variation_price_on).'" data-hoverimagepro="'.esc_attr($hover_image_on_off).'" data-display_thumbnail="'.esc_attr($display_thumbnail).'" data-thumbnail="'.esc_attr($thumbnail).'" data-thumbnail_car="'.esc_attr($thumbnail_car).'" data-display_product="'.esc_attr($settings['display_product']).'" data-display_catagory="'.esc_attr($display_catagory).'" data-display_rating="'.esc_attr($display_rating).'" data-display_yith_list="'.esc_attr($display_yith_list).'" data-display_yith_compare="'.esc_attr($display_yith_compare).'" data-display_yith_wishlist="'.esc_attr($display_yith_wishlist).'" data-display_yith_quickview="'.esc_attr($display_yith_quickview).'" data-dcb_single_product="'.esc_attr($dcb_single_product).'" data-dcb_variation_product="'.esc_attr($dcb_variation_product).'"><div class="tp-spin-ring"><div></div><div></div><div></div><div></div></div></a>';
+						$output .= '<a class="post-lazy-load" data-load-class="'.esc_attr($uid).'" data-layout="'.esc_attr($layout).'" data-offset-posts="'.($settings['post_offset']).'" data-display_post="'.esc_attr($settings['display_posts']).'"  data-post_load_more="'.esc_attr($settings['load_more_post']).'" data-page="1" data-total_page="'.esc_attr($load_page).'" data-loaded_posts="'.esc_attr($loaded_posts_text).'" data-tp_loading_text="'.esc_attr($tp_loading_text).'" data-loadattr= \'' . $data_loadkey . '\'><div class="tp-spin-ring"><div></div><div></div><div></div><div></div></div></a>';
 						$output .= '</div>';
 				}
 				}

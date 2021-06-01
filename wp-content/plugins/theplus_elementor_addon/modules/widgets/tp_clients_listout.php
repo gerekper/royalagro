@@ -10,10 +10,10 @@ namespace TheplusAddons\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Utils;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Css_Filter;
@@ -418,7 +418,7 @@ class ThePlus_Clients_ListOut extends Widget_Base {
 			[
 				'name' => 'pagination_typography',
 				'label' => esc_html__( 'Pagination Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .theplus-pagination a,{{WRAPPER}} .theplus-pagination span',
 				'condition'   => [
 					'layout!' => ['carousel'],
@@ -513,7 +513,7 @@ class ThePlus_Clients_ListOut extends Widget_Base {
 			[
 				'name' => 'load_more_typography',
 				'label' => esc_html__( 'Load More Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .ajax_load_more .post-load-more',
 				'condition'   => [
 					'layout!' => ['carousel'],
@@ -526,7 +526,7 @@ class ThePlus_Clients_ListOut extends Widget_Base {
 			[
 				'name' => 'loaded_posts_typo',
 				'label' => esc_html__( 'Loaded All Posts Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .plus-all-posts-loaded',
 				'separator' => 'before',
 				'condition'   => [
@@ -917,7 +917,7 @@ class ThePlus_Clients_ListOut extends Widget_Base {
 			[
 				'name' => 'title_typography',
 				'label' => esc_html__( 'Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .clients-list .post-inner-loop .post-title,{{WRAPPER}} .clients-list .post-inner-loop .post-title a',
 			]
 		);
@@ -2564,7 +2564,7 @@ class ThePlus_Clients_ListOut extends Widget_Base {
 			[
 				'name' => 'pnf_typography',
 				'label' => esc_html__( 'Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .theplus-posts-not-found',
 				
 			]
@@ -3238,17 +3238,48 @@ class ThePlus_Clients_ListOut extends Widget_Base {
 			
 			$loaded_posts_text = (!empty($settings['loaded_posts_text'])) ? $settings['loaded_posts_text'] : 'All done!';
 			$tp_loading_text = (!empty($settings['tp_loading_text'])) ? $settings['tp_loading_text'] : 'Loading...';
+			
+			$postattr =[];
+			$data_loadkey='';
+			if(($settings['post_extra_option']=='load_more' || $settings['post_extra_option']=='lazy_load') && $layout!='carousel'){
+				$postattr =[
+					'load' => 'clients',
+					'layout' => esc_attr($layout),
+					'offset-posts' => esc_attr($settings['post_offset']),
+					'display_post' => esc_attr($settings['display_posts']),
+					'post_load_more' => esc_attr($settings['load_more_post']),
+					'post_type' => esc_attr($clients_name),
+					'texonomy_category' => esc_attr($clients_taxonomy),
+					'post_title_tag' => esc_attr($post_title_tag),
+					'style' => esc_attr($style),
+					'desktop-column' => esc_attr($settings['desktop_column']),
+					'tablet-column' => esc_attr($settings['tablet_column']),
+					'mobile-column' => esc_attr($settings['mobile_column']),
+					'category' => esc_attr($post_category),
+					'order_by' => esc_attr($settings['post_order_by']),
+					'post_order' => esc_attr($settings['post_order']),
+					'filter_category' => esc_attr($settings['filter_category']),
+					'animated_columns' => esc_attr($animated_columns),
+					'display_post_title' => esc_attr($display_post_title),
+					'display_thumbnail' => esc_attr($display_thumbnail),
+					'thumbnail' => esc_attr($thumbnail),
+					'theplus_nonce' => wp_create_nonce("theplus-addons"),
+				];				
+				$data_loadkey= tp_plus_simple_decrypt( json_encode($postattr), 'ey' );
+			}
+			
+			
 			if($settings['post_extra_option']=='pagination' && $layout!='carousel'){
 				$output .= theplus_pagination($query->max_num_pages,'2');
 			}else if($settings['post_extra_option']=='load_more' && $layout!='carousel'){
 				
 					$output .= '<div class="ajax_load_more">';
-						$output .= '<a class="post-load-more" data-load="clients" data-post_type="'.$clients_name.'" data-texonomy_category="'.$clients_taxonomy.'" data-post_title_tag ="'.esc_attr($post_title_tag).'" data-load-class="'.esc_attr($uid).'" data-layout="'.esc_attr($layout).'" data-style="'.esc_attr($style).'" data-desktop-column="'.esc_attr($settings['desktop_column']).'" data-tablet-column="'.esc_attr($settings['tablet_column']).'" data-mobile-column="'.esc_attr($settings['mobile_column']).'"  data-offset-posts="'.($settings['post_offset']).'" data-category="'.esc_attr($post_category).'" data-order_by="'.esc_attr($settings['post_order_by']).'" data-post_order="'.esc_attr($settings['post_order']).'" data-filter_category="'.esc_attr($settings['filter_category']).'" data-display_post="'.esc_attr($settings['display_posts']).'" data-animated_columns="'.esc_attr($animated_columns).'" data-post_load_more="'.esc_attr($settings['load_more_post']).'" data-page="1" data-total_page="'.esc_attr($load_page).'" data-display_post_title="'.esc_attr($display_post_title).'" data-loaded_posts="'.esc_attr($loaded_posts_text).'"  data-tp_loading_text="'.esc_attr($tp_loading_text).'" data-display_thumbnail="'.esc_attr($display_thumbnail).'" data-thumbnail="'.esc_attr($thumbnail).'">'.esc_html($settings['load_more_btn_text']).'</a>';					
+						$output .= '<a class="post-load-more" data-layout="'.esc_attr($layout).'" data-offset-posts="'.($settings['post_offset']).'" data-load-class="'.esc_attr($uid).'" data-display_post="'.esc_attr($settings['display_posts']).'" data-post_load_more="'.esc_attr($settings['load_more_post']).'" data-loaded_posts="'.esc_attr($loaded_posts_text).'" data-tp_loading_text="'.esc_attr($tp_loading_text).'" data-page="1" data-total_page="'.esc_attr($load_page).'" data-loadattr= \'' . $data_loadkey . '\'>'.esc_html($settings['load_more_btn_text']).'</a>';					
 					$output .= '</div>';					
 			}else if($settings['post_extra_option']=='lazy_load' && $layout!='carousel'){
 				
 					$output .= '<div class="ajax_lazy_load">';
-						$output .= '<a class="post-lazy-load" data-load="clients" data-post_type="'.$clients_name.'" data-texonomy_category="'.$clients_taxonomy.'"  data-post_title_tag ="'.esc_attr($post_title_tag).'" data-load-class="'.esc_attr($uid).'" data-layout="'.esc_attr($layout).'" data-style="'.esc_attr($style).'" data-desktop-column="'.esc_attr($settings['desktop_column']).'" data-tablet-column="'.esc_attr($settings['tablet_column']).'" data-mobile-column="'.esc_attr($settings['mobile_column']).'"  data-offset-posts="'.($settings['post_offset']).'" data-category="'.esc_attr($post_category).'" data-order_by="'.esc_attr($settings['post_order_by']).'" data-post_order="'.esc_attr($settings['post_order']).'" data-filter_category="'.esc_attr($settings['filter_category']).'" data-display_post="'.esc_attr($settings['display_posts']).'" data-animated_columns="'.esc_attr($animated_columns).'" data-post_load_more="'.esc_attr($settings['load_more_post']).'" data-page="1" data-total_page="'.esc_attr($load_page).'" data-display_post_title="'.esc_attr($display_post_title).'" data-loaded_posts="'.esc_attr($loaded_posts_text).'"  data-tp_loading_text="'.esc_attr($tp_loading_text).'" data-display_thumbnail="'.esc_attr($display_thumbnail).'" data-thumbnail="'.esc_attr($thumbnail).'" ><div class="tp-spin-ring"><div></div><div></div><div></div><div></div></div></a>';
+						$output .= '<a class="post-lazy-load" data-load-class="'.esc_attr($uid).'" data-layout="'.esc_attr($layout).'" data-offset-posts="'.($settings['post_offset']).'" data-display_post="'.esc_attr($settings['display_posts']).'"  data-post_load_more="'.esc_attr($settings['load_more_post']).'" data-page="1" data-total_page="'.esc_attr($load_page).'" data-loaded_posts="'.esc_attr($loaded_posts_text).'"  data-tp_loading_text="'.esc_attr($tp_loading_text).'" data-loadattr= \'' . $data_loadkey . '\'><div class="tp-spin-ring"><div></div><div></div><div></div><div></div></div></a>';
 						$output .= '</div>';
 				}
 			$output .='</div>';

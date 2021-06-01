@@ -128,7 +128,7 @@
 				
 				/*yith quickview start*/
 				if(!empty($display_yith_quickview) && $display_yith_quickview=='yes'){
-					if( is_plugin_active('yith-woocommerce-quick-view/init.php') ){ ?>
+					if( defined( 'YITH_WCQV_VERSION' ) && is_plugin_active('yith-woocommerce-quick-view/init.php') ){ ?>
 						<div class="tp-yith-inner post-yith-wc-quickview" style="opacity:0;">
 								<?php echo do_shortcode('[yith_quick_view product_id=$product_id icons="fas fa-eye"]'); ?>
 						</div>

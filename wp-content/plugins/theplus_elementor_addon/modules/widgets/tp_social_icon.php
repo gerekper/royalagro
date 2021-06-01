@@ -10,10 +10,10 @@ namespace TheplusAddons\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Utils;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 
 if (!defined('ABSPATH'))
     exit; // Exit if accessed directly
@@ -133,6 +133,7 @@ class ThePlus_Social_Icon extends Widget_Base {
 					'fa-odnoklassniki-square' => esc_html__( 'Odnoklassniki','theplus' ),
 					'fa-odnoklassniki' => esc_html__( 'Odnoklassniki 1','theplus' ),
 					'fa-get-pocket' => esc_html__( 'Get Pocket','theplus' ),
+					'fa-tiktok' => esc_html__( 'Tiktok','theplus' ),
 					'custom' => esc_html__( 'Custom','theplus' ),
 				],
 			]
@@ -1141,7 +1142,7 @@ class ThePlus_Social_Icon extends Widget_Base {
 						}
 						
 						
-						$icon_html = '<i class="fa '.esc_attr($icon).'"></i>';
+						$icon_html = '<i class="fa fab '.esc_attr($icon).'"></i>';
 						
 						
 						if($styles=='style-6'){							

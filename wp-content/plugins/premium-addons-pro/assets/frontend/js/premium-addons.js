@@ -1091,6 +1091,9 @@
 
         if (settings.carousel) {
 
+            var prevArrow = '<a type="button" data-role="none" class="carousel-arrow carousel-prev" aria-label="Next" role="button" style=""><i class="fas fa-angle-left" aria-hidden="true"></i></a>',
+                nextArrow = '<a type="button" data-role="none" class="carousel-arrow carousel-next" aria-label="Next" role="button" style=""><i class="fas fa-angle-right" aria-hidden="true"></i></a>';
+
             //Make sure slick is initialized before showing tabs
             $navList.on('init', function () {
                 $premiumTabsElem.removeClass("elementor-invisible");
@@ -1115,8 +1118,8 @@
                 ],
                 infinite: true,
                 autoplay: false,
-                nextArrow: false,
-                prevArrow: false,
+                nextArrow: settings.arrows ? nextArrow : '',
+                prevArrow: settings.arrows ? prevArrow : '',
                 draggable: false,
                 rows: 0,
                 dots: false,
@@ -2715,51 +2718,83 @@
     var PremiumReviewHandler = function ($scope, $) {
         var premiumRevElem = $scope.find(".premium-fb-rev-container"),
             revsContainer = premiumRevElem.find(".premium-fb-rev-reviews"),
-            colsNumber = premiumRevElem.data("col"),
             revStyle = premiumRevElem.data("style"),
             carousel = premiumRevElem.data("carousel");
 
         if (carousel) {
 
             var autoPlay = premiumRevElem.data("play"),
+                colsNumber = premiumRevElem.data("col"),
+                colsNumberTablet = premiumRevElem.data("col-tab"),
+                colsNumberMobile = premiumRevElem.data("col-mobile"),
                 speed = premiumRevElem.data("speed"),
                 rtl = premiumRevElem.data("rtl"),
                 dots = premiumRevElem.data("dots"),
+                arrows = premiumRevElem.data("arrows"),
+                infinite = premiumRevElem.data("infinite"),
+                rows = infinite ? premiumRevElem.data("rows") : 0,
                 prevArrow = '<a type="button" data-role="none" class="carousel-arrow carousel-prev" aria-label="Next" role="button" style=""><i class="fas fa-angle-left" aria-hidden="true"></i></a>',
                 nextArrow = '<a type="button" data-role="none" class="carousel-arrow carousel-next" aria-label="Next" role="button" style=""><i class="fas fa-angle-right" aria-hidden="true"></i></a>';
 
             $(revsContainer).slick({
                 infinite: true,
                 slidesToShow: colsNumber,
-                slidesToScroll: colsNumber,
+                slidesToScroll: infinite ? 1 : colsNumber,
                 responsive: [{
                     breakpoint: 1025,
                     settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
+                        slidesToShow: infinite ? 1 : colsNumberTablet,
+                        slidesToScroll: 1,
+                        autoplaySpeed: speed,
+                        speed: 300,
+                        centerMode: infinite ? true : false,
+                        centerPadding: '30px',
                     }
                 },
                 {
                     breakpoint: 768,
                     settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
+                        slidesToShow: infinite ? 1 : colsNumberMobile,
+                        slidesToScroll: 1,
+                        autoplaySpeed: speed,
+                        speed: 300,
+                        centerMode: infinite ? true : false,
+                        centerPadding: '30px',
                     }
                 }
                 ],
-                autoplay: autoPlay,
-                autoplaySpeed: speed,
-                rows: 0,
+                useTransform: true,
+                autoplay: infinite ? true : autoPlay,
+                speed: infinite ? speed : 300,
+                autoplaySpeed: infinite ? 0 : speed,
+                rows: rows,
                 rtl: rtl ? true : false,
+                arrows: arrows,
                 nextArrow: nextArrow,
                 prevArrow: prevArrow,
                 draggable: true,
-                pauseOnHover: true,
+                pauseOnHover: infinite ? false : true,
                 dots: dots,
+                cssEase: infinite ? "linear" : "ease",
                 customPaging: function () {
                     return '<i class="fas fa-circle"></i>';
                 },
             });
+
+            if ((dots && $scope.hasClass("premium-fb-page-next-yes")) || (dots && arrows)) {
+
+                $('<div class="premium-fb-dots-container"></div>').appendTo(premiumRevElem);
+                var dotsContainer = premiumRevElem.find(".premium-fb-dots-container")
+                dotsElem = revsContainer.find(".slick-dots");
+                $('<div class="premium-fb-empty-dots"></div>').appendTo(dotsContainer);
+                $(dotsElem).appendTo(dotsContainer);
+                if ($scope.hasClass("premium-fb-page-next-yes")) {
+                    var pageWidth = premiumRevElem.find(".premium-fb-rev-page").outerWidth();
+                    dotsContainer.find(".premium-fb-empty-dots").css('width', pageWidth + 'px');
+                }
+
+            }
+
         }
 
         if ("masonry" === revStyle && 1 !== colsNumber && !carousel) {
@@ -3928,6 +3963,11 @@
 
         elementorFrontend.hooks.addAction(
             "frontend/element_ready/premium-yelp-reviews.default",
+            PremiumReviewHandler
+        );
+
+        elementorFrontend.hooks.addAction(
+            "frontend/element_ready/premium-trustpilot-reviews.default",
             PremiumReviewHandler
         );
 

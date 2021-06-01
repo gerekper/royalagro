@@ -10,10 +10,10 @@ namespace TheplusAddons\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Utils;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Image_Size;
@@ -1103,7 +1103,7 @@ class ThePlus_Hotspot extends Widget_Base {
 			[
 				'name' => 'text_typography',
 				'label' => esc_html__( 'Text Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .pin-hotspot-loop .pin-loop-content.pin-icon-text .pin-icon',
 			]
 		);

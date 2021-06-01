@@ -10,10 +10,10 @@ namespace TheplusAddons\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Utils;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Image_Size;
@@ -1368,7 +1368,7 @@ class ThePlus_Dynamic_Listing extends Widget_Base {
 			[
 				'name' => 'pagination_typography',
 				'label' => esc_html__( 'Pagination Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .theplus-pagination a,{{WRAPPER}} .theplus-pagination span',
 				'condition'   => [
 					'layout!' => ['carousel'],
@@ -1430,7 +1430,7 @@ class ThePlus_Dynamic_Listing extends Widget_Base {
 			[
 				'name' => 'cqid_pagination_typography',
 				'label' => esc_html__( 'Pagination Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .theplus-pagination a,{{WRAPPER}} .theplus-pagination span',
 				'condition'   => [
 					'blogs_post_listing' => 'custom_query',
@@ -1530,7 +1530,7 @@ class ThePlus_Dynamic_Listing extends Widget_Base {
 			[
 				'name' => 'load_more_typography',
 				'label' => esc_html__( 'Load More Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .ajax_load_more .post-load-more',
 				'condition'   => [
 					'layout!' => ['carousel'],
@@ -1544,7 +1544,7 @@ class ThePlus_Dynamic_Listing extends Widget_Base {
 			[
 				'name' => 'loaded_posts_typo',
 				'label' => esc_html__( 'Loaded All Posts Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .plus-all-posts-loaded',
 				'separator' => 'before',
 				'condition'   => [
@@ -2039,7 +2039,7 @@ class ThePlus_Dynamic_Listing extends Widget_Base {
 			[
 				'name' => 'meta_tag_typography',
 				'label' => esc_html__( 'Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .dynamic-listing .post-inner-loop .post-meta-info span',
 			]
 		);
@@ -2116,7 +2116,7 @@ class ThePlus_Dynamic_Listing extends Widget_Base {
 			[
 				'name' => 'category_typography',
 				'label' => esc_html__( 'Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .dynamic-listing .post-category-list span a',
 				'condition'   => [
 					'display_post_category' => 'yes',
@@ -2475,7 +2475,7 @@ class ThePlus_Dynamic_Listing extends Widget_Base {
 			[
 				'name' => 'title_typography',
 				'label' => esc_html__( 'Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .dynamic-listing .post-inner-loop .post-title,{{WRAPPER}} .dynamic-listing .post-inner-loop .post-title a',
 			]
 		);
@@ -2537,7 +2537,7 @@ class ThePlus_Dynamic_Listing extends Widget_Base {
 			[
 				'name' => 'excerpt_typography',
 				'label' => esc_html__( 'Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .dynamic-listing .post-inner-loop .entry-content,{{WRAPPER}} .dynamic-listing .post-inner-loop .entry-content p',
 			]
 		);
@@ -3614,7 +3614,7 @@ class ThePlus_Dynamic_Listing extends Widget_Base {
 			[
 				'name' => 'fcc__cat_typography',
 				'label' => esc_html__( 'Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .post-filter-data .category-filters-child li a',
 			]
 		);
@@ -4994,7 +4994,7 @@ class ThePlus_Dynamic_Listing extends Widget_Base {
 			[
 				'name' => 'pnf_typography',
 				'label' => esc_html__( 'Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .theplus-posts-not-found',
 				
 			]
@@ -5893,16 +5893,20 @@ class ThePlus_Dynamic_Listing extends Widget_Base {
 					$tablet_metro_style=$settings["tablet_metro_style_".$tablet_metro_column];
 				}
 			}
-			$button_attr='';
+			
+			$button_attr = [];
 			if($settings['display_button'] == 'yes'){
-				$button_attr .= ' data-display_button="'.$settings['display_button'].'"';
-				$button_attr .= ' data-button_style="'.$settings['button_style'].'"';
-				$button_attr .= ' data-before_after="'.$settings['before_after'].'"';
-				$button_attr .= ' data-button_text="'.$settings['button_text'].'"';
-				$button_attr .= ' data-button_icon_style="'.$settings['button_icon_style'].'"';
-				$button_attr .= ' data-button_icon="'.$settings['button_icon'].'"';
-				$button_attr .= ' data-button_icons_mind="'.$settings['button_icons_mind'].'"';
+				$button_attr = [
+					'display_button' => $settings['display_button'],
+					'button_style' => $settings['button_style'],
+					'before_after' => $settings['before_after'],
+					'button_text' => $settings['button_text'],
+					'button_icon_style' => $settings['button_icon_style'],
+					'button_icon' => $settings['button_icon'],
+					'button_icons_mind' => $settings['button_icons_mind'],
+				];
 			}
+			
 			if(!empty($post_category) && is_array($post_category)){
 				$post_category=implode(',', $post_category);
 			}else{
@@ -5966,18 +5970,76 @@ class ThePlus_Dynamic_Listing extends Widget_Base {
 			
 			$loaded_posts_text = (!empty($settings['loaded_posts_text'])) ? $settings['loaded_posts_text'] : 'All done!';
 			$tp_loading_text = (!empty($settings['tp_loading_text'])) ? $settings['tp_loading_text'] : 'Loading...';
+			
+			$postattr =[];
+			$data_loadkey='';
+			if(($settings['post_extra_option']=='load_more' || $settings['post_extra_option']=='lazy_load') && $layout!='carousel'){
+				$postattr =[
+					'load' => 'dynamiclisting',					
+					'layout' => esc_attr($layout),
+					'offset-posts' => esc_attr($settings['post_offset']),
+					'display_post' => esc_attr($settings['display_posts']),
+					'post_load_more' => esc_attr($settings['load_more_post']),
+					'post_type' => esc_attr($settings['query']),
+					'texonomy_category' => esc_attr($get_taxonomy),
+					'post_title_tag' => esc_attr($post_title_tag),
+					'title_desc_word_break' => esc_attr($title_desc_word_break),
+					'include_posts' => esc_attr($include_posts),
+					'exclude_posts' => esc_attr($exclude_posts),
+					'style' => esc_attr($style),
+					'style_layout' => esc_attr($style_layout),
+					'desktop-column' => esc_attr($settings['desktop_column']),
+					'tablet-column' => esc_attr($settings['tablet_column']),
+					'mobile-column' => esc_attr($settings['mobile_column']),
+					'metro_column' => esc_attr($settings['metro_column']),
+					'metro_style' => esc_attr($metro_style),
+					'responsive_tablet_metro' => esc_attr($responsive_tablet_metro),
+					'tablet_metro_column' => esc_attr($tablet_metro_column),
+					'tablet_metro_style' => esc_attr($tablet_metro_style),
+					'category' => esc_attr($dynamic_cat),
+					'post_tags' => esc_attr($post_tags),
+					'post_authors' => esc_attr($post_authors),
+					'order_by' => esc_attr($settings['post_order_by']),
+					'post_order' => esc_attr($settings['post_order']),
+					'filter_category' => esc_attr($settings['filter_category']),
+					'animated_columns' => esc_attr($animated_columns),
+					'display_post_meta' => esc_attr($display_post_meta),
+					'post_meta_tag_style' => esc_attr($post_meta_tag_style),
+					'display_post_meta_date' => esc_attr($display_post_meta_date),
+					'display_post_meta_author' => esc_attr($display_post_meta_author),
+					'display_post_meta_author_pic' => esc_attr($display_post_meta_author_pic),
+					'display_excerpt' => esc_attr($display_excerpt),
+					'post_excerpt_count' => esc_attr($post_excerpt_count),
+					'display_post_category' => esc_attr($display_post_category),
+					'dpc_all' => esc_attr($dpc_all),
+					'post_category_style' => esc_attr($post_category_style),
+					'featured_image_type' => esc_attr($featured_image_type),
+					'display_thumbnail' => esc_attr($display_thumbnail),
+					'thumbnail' => esc_attr($thumbnail),
+					'thumbnail_car' => esc_attr($thumbnail_car),
+					'display_title_limit' => esc_attr($display_title_limit),
+					'display_title_by' => esc_attr($display_title_by),
+					'display_title_input' => esc_attr($display_title_input),
+					'display_title_3_dots' => esc_attr($display_title_3_dots),
+					'feature_image' => esc_attr($feature_image),
+					'skin_template' => $temp_array,
+					'theplus_nonce' => wp_create_nonce("theplus-addons"),
+				];
+				$postattr = array_merge($postattr, $button_attr);
+				$data_loadkey= tp_plus_simple_decrypt( json_encode($postattr), 'ey' );
+			}
+			
 			if(($settings['post_extra_option']=='pagination' || ($settings['cqid_pagination'] && $settings['cqid_pagination']=='yes')) && $layout!='carousel'){
 				$output .= theplus_pagination($query->max_num_pages,'2');
 			}else if($settings['post_extra_option']=='load_more' && $layout!='carousel'){
 				if(!empty($total_posts) && $total_posts>0){
 					$output .= '<div class="ajax_load_more">';
-						$output .= '<a class="post-load-more" data-load="dynamiclisting" data-post_type="'.$settings['query'].'" data-texonomy_category="'.$get_taxonomy.'" data-post_title_tag ="'.esc_attr($post_title_tag).'" data-title_desc_word_break ="'.esc_attr($title_desc_word_break).'" data-include_posts="'.$include_posts.'" data-exclude_posts="'.$exclude_posts.'" data-load-class="'.esc_attr($uid).'" data-layout="'.esc_attr($layout).'" data-style="'.esc_attr($style).'" data-style_layout="'.esc_attr($style_layout).'" data-desktop-column="'.esc_attr($settings['desktop_column']).'" data-tablet-column="'.esc_attr($settings['tablet_column']).'" data-mobile-column="'.esc_attr($settings['mobile_column']).'" data-metro_column="'.esc_attr($settings['metro_column']).'" data-metro_style="'.esc_attr($metro_style).'" data-responsive_tablet_metro="'.esc_attr($responsive_tablet_metro).'" data-tablet_metro_column="'.esc_attr($tablet_metro_column).'" data-tablet_metro_style="'.esc_attr($tablet_metro_style).'"  data-offset-posts="'.($settings['post_offset']).'" data-category="'.esc_attr($dynamic_cat).'"  data-post_tags="'.esc_attr($post_tags).'" data-post_authors="'.esc_attr($post_authors).'" data-order_by="'.esc_attr($settings['post_order_by']).'" data-post_order="'.esc_attr($settings['post_order']).'" data-filter_category="'.esc_attr($settings['filter_category']).'" data-display_post="'.esc_attr($settings['display_posts']).'" data-animated_columns="'.esc_attr($animated_columns).'" data-post_load_more="'.esc_attr($settings['load_more_post']).'" data-page="1" data-total_page="'.esc_attr($load_page).'" data-display_post_meta="'.$display_post_meta.'" data-post_meta_tag_style="'.$post_meta_tag_style.'" data-display_post_meta_date="'.$display_post_meta_date.'" data-display_post_meta_author="'.$display_post_meta_author.'" data-display_post_meta_author_pic="'.$display_post_meta_author_pic.'" data-display_excerpt="'.$display_excerpt.'" data-post_excerpt_count="'.$post_excerpt_count.'" data-display_post_category="'.$display_post_category.'" data-dpc_all="'.$dpc_all.'" data-post_category_style="'.$post_category_style.'" data-featured_image_type="'.$featured_image_type.'" data-loaded_posts="'.esc_attr($loaded_posts_text).'" data-tp_loading_text="'.esc_attr($tp_loading_text).'" data-display_thumbnail="'.esc_attr($display_thumbnail).'" data-thumbnail="'.esc_attr($thumbnail).'" data-thumbnail_car="'.esc_attr($thumbnail_car).'" data-display_title_limit="'.esc_attr($display_title_limit).'" data-display_title_by="'.esc_attr($display_title_by).'" data-display_title_input="'.esc_attr($display_title_input).'" data-display_title_3_dots="'.esc_attr($display_title_3_dots).'" data-feature_image="'.esc_attr($feature_image).'" '.$button_attr.' data-skin_template=\''.json_encode($temp_array).'\'>'.esc_html($settings['load_more_btn_text']).'</a>';					
-					$output .= '</div>';	
+						$output .= '<a class="post-load-more" data-load-class="'.esc_attr($uid).'" data-layout="'.esc_attr($layout).'"    data-offset-posts="'.($settings['post_offset']).'" data-display_post="'.esc_attr($settings['display_posts']).'"  data-post_load_more="'.esc_attr($settings['load_more_post']).'" data-page="1" data-total_page="'.esc_attr($load_page).'" data-loaded_posts="'.esc_attr($loaded_posts_text).'" data-tp_loading_text="'.esc_attr($tp_loading_text).'" data-loadattr= \'' . $data_loadkey . '\'>'.esc_html($settings['load_more_btn_text']).'</a>';$output .= '</div>';	
 				}
 			}else if($settings['post_extra_option']=='lazy_load' && $layout!='carousel'){
 				if(!empty($total_posts) && $total_posts>0){	
 					$output .= '<div class="ajax_lazy_load">';
-						$output .= '<a class="post-lazy-load" data-load="dynamiclisting" data-post_type="'.$settings['query'].'" data-texonomy_category="'.$get_taxonomy.'" data-post_title_tag ="'.esc_attr($post_title_tag).'" data-title_desc_word_break ="'.esc_attr($title_desc_word_break).'" data-load-class="'.esc_attr($uid).'" data-layout="'.esc_attr($layout).'" data-style="'.esc_attr($style).'" data-style_layout="'.esc_attr($style_layout).'" data-desktop-column="'.esc_attr($settings['desktop_column']).'" data-tablet-column="'.esc_attr($settings['tablet_column']).'" data-mobile-column="'.esc_attr($settings['mobile_column']).'" data-metro_column="'.esc_attr($settings['metro_column']).'" data-metro_style="'.esc_attr($metro_style).'" data-responsive_tablet_metro="'.esc_attr($responsive_tablet_metro).'" data-tablet_metro_column="'.esc_attr($tablet_metro_column).'" data-tablet_metro_style="'.esc_attr($tablet_metro_style).'"  data-offset-posts="'.($settings['post_offset']).'"  data-category="'.esc_attr($dynamic_cat).'"  data-post_tags="'.esc_attr($post_tags).'" data-post_authors="'.esc_attr($post_authors).'" data-order_by="'.esc_attr($settings['post_order_by']).'" data-post_order="'.esc_attr($settings['post_order']).'" data-filter_category="'.esc_attr($settings['filter_category']).'" data-display_post="'.esc_attr($settings['display_posts']).'" data-animated_columns="'.esc_attr($animated_columns).'" data-post_load_more="'.esc_attr($settings['load_more_post']).'" data-page="1" data-total_page="'.esc_attr($load_page).'"  data-display_post_meta="'.$display_post_meta.'" data-post_meta_tag_style="'.$post_meta_tag_style.'" data-display_post_meta_date="'.$display_post_meta_date.'" data-display_post_meta_author="'.$display_post_meta_author.'" data-display_post_meta_author_pic="'.$display_post_meta_author_pic.'" data-display_excerpt="'.$display_excerpt.'" data-post_excerpt_count="'.$post_excerpt_count.'" data-display_post_category="'.$display_post_category.'" data-dpc_all="'.$dpc_all.'" data-post_category_style="'.$post_category_style.'" data-featured_image_type="'.$featured_image_type.'" data-loaded_posts="'.esc_attr($loaded_posts_text).'" data-tp_loading_text="'.esc_attr($tp_loading_text).'" data-display_thumbnail="'.esc_attr($display_thumbnail).'" data-thumbnail="'.esc_attr($thumbnail).'" data-thumbnail_car="'.esc_attr($thumbnail_car).'" data-display_title_limit="'.esc_attr($display_title_limit).'" data-display_title_by="'.esc_attr($display_title_by).'" data-display_title_input="'.esc_attr($display_title_input).'" data-display_title_3_dots="'.esc_attr($display_title_3_dots).'" data-feature_image="'.esc_attr($feature_image).'" '.$button_attr.' data-skin_template=\''.json_encode($temp_array).'\'><div class="tp-spin-ring"><div></div><div></div><div></div><div></div></div></a>';
+						$output .= '<a class="post-lazy-load" data-load-class="'.esc_attr($uid).'" data-layout="'.esc_attr($layout).'" data-offset-posts="'.($settings['post_offset']).'" data-display_post="'.esc_attr($settings['display_posts']).'"  data-post_load_more="'.esc_attr($settings['load_more_post']).'" data-page="1" data-total_page="'.esc_attr($load_page).'" data-loaded_posts="'.esc_attr($loaded_posts_text).'" data-tp_loading_text="'.esc_attr($tp_loading_text).'" data-loadattr= \'' . $data_loadkey . '\'><div class="tp-spin-ring"><div></div><div></div><div></div><div></div></div></a>';
 						$output .= '</div>';
 				}			
 			}

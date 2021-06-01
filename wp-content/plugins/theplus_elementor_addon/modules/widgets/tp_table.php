@@ -10,12 +10,12 @@ namespace TheplusAddons\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Utils;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Border;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Image_Size;
 
 if (!defined('ABSPATH'))
@@ -142,6 +142,44 @@ class ThePlus_Data_Table extends Widget_Base {
 					'header_content_type' => 'cell',
 				],
 			]
+		);
+		$repeater->add_control(
+			'heading_show_tooltips',
+			[
+				'label'        => esc_html__( 'Tooltip', 'theplus' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => esc_html__( 'Enable', 'theplus' ),
+				'label_off'    => esc_html__( 'Disable', 'theplus' ),
+				'render_type'  => 'template',
+				'separator' => 'before',
+			]
+		);
+		$repeater->add_control(
+			'heading_show_tooltips_on',
+			[
+				'label' => esc_html__( 'Tooltip On', 'theplus' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'box',
+				'options' => [
+					'box'  => esc_html__( 'Box', 'theplus' ),
+					'icon'  => esc_html__( 'Icon', 'theplus' ),
+				],
+				'condition' => [
+					'heading_show_tooltips' => 'yes',
+				],
+			]
+		);
+		$repeater->add_control(
+			'heading_tooltip_content',
+			[
+				'label' => esc_html__( 'Tooltip Content', 'theplus' ),
+				'type' => Controls_Manager::TEXTAREA,
+				'default' => esc_html__( 'Luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'theplus' ),
+				'dynamic' => ['active'   => true,],
+				'condition' => [
+					'heading_show_tooltips' => 'yes',
+				],
+			]				
 		);
 		$repeater->end_controls_tab();
 
@@ -544,6 +582,44 @@ class ThePlus_Data_Table extends Widget_Base {
 					'button_custom_attributes' => 'yes'
 				]
 			]
+		);
+		$repeater->add_control(
+			'body_show_tooltips',
+			[
+				'label'        => esc_html__( 'Tooltip', 'theplus' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => esc_html__( 'Enable', 'theplus' ),
+				'label_off'    => esc_html__( 'Disable', 'theplus' ),
+				'render_type'  => 'template',
+				'separator' => 'before',
+			]
+		);
+		$repeater->add_control(
+			'body_show_tooltips_on',
+			[
+				'label' => esc_html__( 'Tooltip On', 'theplus' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'box',
+				'options' => [
+					'box'  => esc_html__( 'Box', 'theplus' ),
+					'icon'  => esc_html__( 'Icon', 'theplus' ),
+				],
+				'condition' => [
+					'body_show_tooltips' => 'yes',
+				],
+			]
+		);
+		$repeater->add_control(
+			'body_tooltip_content',
+			[
+				'label' => esc_html__( 'Tooltip Content', 'theplus' ),
+				'type' => Controls_Manager::TEXTAREA,
+				'default' => esc_html__( 'Luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'theplus' ),
+				'dynamic' => ['active'   => true,],
+				'condition' => [
+					'body_show_tooltips' => 'yes',
+				],
+			]				
 		);
 		$repeater_row_col->end_controls_tab();
 
@@ -959,7 +1035,7 @@ class ThePlus_Data_Table extends Widget_Base {
 			[
 				'name'     => 'header_typography',
 				'label'    => esc_html__( 'Typography', 'theplus' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+				'scheme'   => Typography::TYPOGRAPHY_4,
 				'selector' => '{{WRAPPER}} th.plus-table-col',
 			]
 		);
@@ -995,8 +1071,8 @@ class ThePlus_Data_Table extends Widget_Base {
 				'label'     => esc_html__( 'Row Text Color', 'theplus' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => [
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_3,
 				],
 				'selectors' => [
 					'{{WRAPPER}} thead .plus-table-row th .plus-table__text' => 'color: {{VALUE}};',
@@ -1194,7 +1270,7 @@ class ThePlus_Data_Table extends Widget_Base {
 			[
 				'name'     => 'mob_header_typography',
 				'label'    => esc_html__( 'Typography', 'theplus' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
+				'scheme'   => Typography::TYPOGRAPHY_4,
 				'selector' => '{{WRAPPER}} .plus-table-mob-res span.plus-table-mob-row',
 			]
 		);
@@ -1255,8 +1331,8 @@ class ThePlus_Data_Table extends Widget_Base {
 				'label'     => esc_html__( 'Heading Color', 'theplus' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => [
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_3,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .plus-table-mob-res span.plus-table-mob-row' => 'color: {{VALUE}};',
@@ -1458,7 +1534,7 @@ class ThePlus_Data_Table extends Widget_Base {
 			[
 				'name'     => 'cell_typography',
 				'label'    => esc_html__( 'Typography', 'theplus' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme'   => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} td .plus-table__text-inner,{{WRAPPER}} td .plus-align-icon--left,{{WRAPPER}} td .plus-align-icon--right,
 				{{WRAPPER}} td',
 			]
@@ -1494,8 +1570,8 @@ class ThePlus_Data_Table extends Widget_Base {
 				'label'     => esc_html__( 'Row Text Color', 'theplus' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => [
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_3,
 				],
 				'selectors' => [
 					'{{WRAPPER}} tbody td.plus-table-col .plus-table__text,{{WRAPPER}} tbody td.plus-table-col' => 'color: {{VALUE}};',
@@ -2195,7 +2271,7 @@ class ThePlus_Data_Table extends Widget_Base {
 			[
 				'name'     => 'label_typography',
 				'label'    => esc_html__( 'Typography', 'theplus' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme'   => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .plus-advance-heading label, {{WRAPPER}} .plus-advance-heading select, {{WRAPPER}} .plus-advance-heading input',
 			]
 		);
@@ -2336,6 +2412,92 @@ class ThePlus_Data_Table extends Widget_Base {
 		$this->end_controls_section();
 		/* Search Style*/
 		
+		/*tooltip option start*/
+		$this->start_controls_section(
+            'section_tooltip_option_styling',
+            [
+                'label' => esc_html__('Tooltip Options', 'theplus'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->add_group_control(
+			\Theplus_Tooltips_Option_Group::get_type(),
+			[
+				'label' => esc_html__( 'Tooltip Options', 'theplus' ),
+				'name'           => 'tooltip_common_option',
+			]
+		);
+		$this->add_group_control(
+			\Theplus_Tooltips_Option_Style_Group::get_type(),
+			[
+				'label' => esc_html__( 'Tooltip Style', 'theplus' ),
+				'name'           => 'tooltip_common_style',
+			]
+		);
+		$this->add_control(
+			'tt_on_icon',
+			[
+				'label' => esc_html__( 'Tooltip Icon', 'theplus' ),
+				'type' => Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fas fa-info-circle',
+					'library' => 'solid',
+				],
+			]
+		);
+		$this->add_control(
+            'tt_on_icon_margin_left',
+            [
+                'type' => Controls_Manager::SLIDER,
+				'label' => esc_html__('Left Offset', 'theplus'),
+				'range' => [
+					'' => [
+						'min'	=> 1,
+						'max'	=> 50,
+						'step' => 1,
+					],
+				],				
+				'default' => [
+					'unit' => 'px',
+					'size' => 15,
+				],
+				'render_type' => 'ui',
+				'selectors'  => [
+					'{{WRAPPER}} .tp-tooltip-on-icon' => 'margin-left: {{SIZE}}px;',
+				],
+            ]
+        );
+		$this->add_control(
+			'tt_on_icon_color',
+			[
+				'label' => esc_html__( 'Color', 'theplus' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .tp-tooltip-on-icon i' => 'color: {{VALUE}};',
+				],
+			]
+		);
+		$this->add_control(
+            'tt_on_icon_size',
+            [
+                'type' => Controls_Manager::SLIDER,
+				'label' => esc_html__('Size', 'theplus'),
+				'range' => [
+					'' => [
+						'min'	=> 1,
+						'max'	=> 50,
+						'step' => 1,
+					],
+				],
+				'render_type' => 'ui',
+				'selectors'  => [
+					'{{WRAPPER}} .tp-tooltip-on-icon i' => 'font-size: {{SIZE}}px;',
+				],
+            ]
+        );
+		$this->end_controls_section();
+		/*tooltip option end*/
+		
 		/* table background option*/
 		$this->start_controls_section(
             'section_table_option_styling',
@@ -2418,6 +2580,20 @@ class ThePlus_Data_Table extends Widget_Base {
 				'name'     => 'tos_box_shadow',
 				'selector' => '{{WRAPPER}} .plus-table-wrapper .plus-table',
 				'separator' => 'before',
+			]
+		);
+		$this->add_control(
+			'table_overflow',
+			[
+				'label' => esc_html__( 'Overflow', 'theplus' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Show', 'theplus' ),
+				'label_off' => esc_html__( 'Hide', 'theplus' ),
+				'default' => 'no',
+				'separator' => 'before',
+				'selectors'  => [
+					'{{WRAPPER}} .plus-table-wrapper .plus-table' => 'overflow:visible;',
+				],
 			]
 		);
 		$this->end_controls_section();
@@ -2697,6 +2873,7 @@ class ThePlus_Data_Table extends Widget_Base {
 					<thead>
 						<?php
 						if ( $settings['table_headings'] ) {
+							$headi=0;
 							foreach ( $settings['table_headings'] as $index => $head ) {
 								
 								// Header text prepview editing.
@@ -2725,7 +2902,7 @@ class ThePlus_Data_Table extends Widget_Base {
 									$this->add_render_attribute( 'icon_sort_' . $head['_id'], 'class', 'plus-sort-icon' );
 								}
 								
-								if ( $head['icons_image']['url'] ) {
+								if (!empty($head['icons_image']['url']) ) {
 									$icons_image=$head['icons_image']['id'];
 									$img = wp_get_attachment_image_src($icons_image,$head['icons_image_thumbnail_size']);
 									$icons_image_Src = $img[0];
@@ -2742,10 +2919,65 @@ class ThePlus_Data_Table extends Widget_Base {
 									$this->add_render_attribute( 'plus_heading_icon' . $head['_id'], 'class', $head['icons_mind'] );
 								}
 								$this->add_render_attribute( 'plus_heading_icon_align' . $head['_id'], 'class', 'plus-align-icon--' . $settings['all_icon_align'] );
+								
+								//tooltip
+								$_tooltip='_tooltip_'.$headi;
+								if( $head['heading_show_tooltips'] == 'yes' ) {
+									
+									$this->add_render_attribute( $_tooltip, 'data-tippy', '', true );
 
+									$tooltip_content=$head['heading_tooltip_content'];
+									$this->add_render_attribute( $_tooltip, 'title', $tooltip_content, true );
+									
+									$plus_tooltip_position=($settings["tooltip_common_option_plus_tooltip_position"]!='') ? $settings["tooltip_common_option_plus_tooltip_position"] : 'top';
+									$this->add_render_attribute( $_tooltip, 'data-tippy-placement', $plus_tooltip_position, true );
+									
+									$tooltip_interactive =($settings["tooltip_common_option_plus_tooltip_interactive"]=='' || $settings["tooltip_common_option_plus_tooltip_interactive"]=='yes') ? 'true' : 'false';
+									$this->add_render_attribute( $_tooltip, 'data-tippy-interactive', $tooltip_interactive, true );
+									
+									$plus_tooltip_theme=($settings["tooltip_common_option_plus_tooltip_theme"]!='') ? $settings["tooltip_common_option_plus_tooltip_theme"] : 'dark';
+									$this->add_render_attribute( $_tooltip, 'data-tippy-theme', $plus_tooltip_theme, true );
+									
+									
+									$tooltip_arrow =($settings["tooltip_common_option_plus_tooltip_arrow"]!='none' || $settings["tooltip_common_option_plus_tooltip_arrow"]=='') ? 'true' : 'false';
+									$this->add_render_attribute( $_tooltip, 'data-tippy-arrow', $tooltip_arrow , true );
+									
+									$plus_tooltip_arrow=($settings["tooltip_common_option_plus_tooltip_arrow"]!='') ? $settings["tooltip_common_option_plus_tooltip_arrow"] : 'sharp';
+									$this->add_render_attribute( $_tooltip, 'data-tippy-arrowtype', $plus_tooltip_arrow, true );
+									
+									$plus_tooltip_animation=($settings["tooltip_common_option_plus_tooltip_animation"]!='') ? $settings["tooltip_common_option_plus_tooltip_animation"] : 'shift-toward';
+									$this->add_render_attribute( $_tooltip, 'data-tippy-animation', $plus_tooltip_animation, true );
+									
+									$plus_tooltip_x_offset=($settings["tooltip_common_option_plus_tooltip_x_offset"]!='') ? $settings["tooltip_common_option_plus_tooltip_x_offset"] : 0;
+									$plus_tooltip_y_offset=($settings["tooltip_common_option_plus_tooltip_y_offset"]!='') ? $settings["tooltip_common_option_plus_tooltip_y_offset"] : 0;
+									$this->add_render_attribute( $_tooltip, 'data-tippy-offset', $plus_tooltip_x_offset .','. $plus_tooltip_y_offset, true );
+									
+									$tooltip_duration_in =($settings["tooltip_common_option_plus_tooltip_duration_in"]!='') ? $settings["tooltip_common_option_plus_tooltip_duration_in"] : 250;
+									$tooltip_duration_out =($settings["tooltip_common_option_plus_tooltip_duration_out"]!='') ? $settings["tooltip_common_option_plus_tooltip_duration_out"] : 200;
+									$tooltip_trigger =($settings["tooltip_common_option_plus_tooltip_triggger"]!='') ? $settings["tooltip_common_option_plus_tooltip_triggger"] : 'mouseenter';
+									$tooltip_arrowtype =($settings["tooltip_common_option_plus_tooltip_arrow"]!='') ? $settings["tooltip_common_option_plus_tooltip_arrow"] : 'sharp';
+								}
+
+								$uniqid=uniqid("tooltip");
+						
+								$show_tooltips_on = $head['heading_show_tooltips_on'];
+								$toolbox=$toolicon=$tt_on_icon='';
+								if(!empty($show_tooltips_on) && $show_tooltips_on=='icon'){
+									$toolbox = $this->get_render_attribute_string( 'current_' . $head['_id'] );
+									$toolicon = 'id="'.esc_attr($uniqid).'" class="plus-icon-list-item elementor-repeater-item-'.esc_attr($head['_id']).'" data-local="true" '.$this->get_render_attribute_string( $_tooltip ).'';
+									
+									ob_start();
+									\Elementor\Icons_Manager::render_icon( $settings['tt_on_icon'] , [ 'aria-hidden' => 'true' ]);
+									$tt_on_icon = ob_get_contents();
+									ob_end_clean();
+									
+								}else{									
+									$toolbox = 'id="'.esc_attr($uniqid).'"'.$this->get_render_attribute_string( 'current_' . $head['_id'] ).' data-local="true" '.$this->get_render_attribute_string( $_tooltip ).'';
+								}
+						
 								if ( 'cell' === $head['header_content_type'] ) {
 									?>
-									<th <?php echo $this->get_render_attribute_string( 'current_' . $head['_id'] ); ?> scope="col">
+									<th <?php echo $toolbox; ?> scope="col">
 										<span class="sort-style">
 										<span <?php echo $this->get_render_attribute_string( 'plus_table__text' ); ?>>
 											<?php if ( 'icon' === $head['header_content_icon_image'] ) { ?>												
@@ -2755,13 +2987,13 @@ class ThePlus_Data_Table extends Widget_Base {
 												</span>
 											<?php } ?>											
 											<?php } else { ?>
-													<?php if ( $head['icons_image']['url'] ) { ?>
+													<?php if ( !empty($head['icons_image']['url']) ) { ?>
 														<?php if ( 'left' == $settings['all_image_align'] ) { ?>
 														<img <?php echo $this->get_render_attribute_string( 'plus_head_col_img' . $head['_id'] ); ?>>
 													<?php } ?>
 													<?php } ?>
 											<?php } ?>
-											<span <?php echo $this->get_render_attribute_string( $repeater_heading_text ); ?>><?php echo $head['heading_text']; ?></span>
+											<span <?php echo $this->get_render_attribute_string( $repeater_heading_text ); ?>><?php echo esc_html($head['heading_text']); ?></span>
 											<?php if ( 'icon' === $head['header_content_icon_image'] ) { ?>												
 													<?php if ( 'right' === $settings['all_icon_align'] ) { ?>
 												<span <?php echo $this->get_render_attribute_string( 'plus_heading_icon_align' . $head['_id'] ); ?>>
@@ -2769,24 +3001,46 @@ class ThePlus_Data_Table extends Widget_Base {
 												</span>
 											<?php } ?>											
 											<?php } else { ?>
-													<?php if ( $head['icons_image']['url'] ) { ?>
+													<?php if ( !empty($head['icons_image']['url']) ) { ?>
 														<?php if ( 'right' == $settings['all_image_align'] ) { ?>
 														<img <?php echo $this->get_render_attribute_string( 'plus_head_col_img' . $head['_id'] ); ?>>
 													<?php } ?>
 													<?php } ?>
-											<?php } ?>
-										</span>
-										<?php if ( 'yes' === $settings['sortable'] && true === $first_row_th ) { ?>
+											<?php } 
+											if(!empty($show_tooltips_on) && $show_tooltips_on=='icon'){
+												echo '<span class="tp-tooltip-on-icon" '.$toolicon.'>'.$tt_on_icon.'</span>';
+											}											
+											?>
+										</span> 
+										
+										<?php
+										if ( 'yes' === $settings['sortable'] && true === $first_row_th ) { ?>
 											<span <?php echo $this->get_render_attribute_string( 'icon_sort_' . $head['_id'] ); ?>></span>
 										<?php } ?>
 										</span>
 									</th>
 									<?php
+									if( $head['heading_show_tooltips'] == 'yes' ) {
+									echo '<script>
+										jQuery( document ).ready(function() {
+										"use strict";
+											if(typeof tippy === "function"){
+												tippy( "#'.esc_attr($uniqid).'" , {
+													arrowType : "'.$tooltip_arrowtype.'",
+													duration : ['.esc_attr($tooltip_duration_in).','.esc_attr($tooltip_duration_out).'],
+													trigger : "'.esc_attr($tooltip_trigger).'",
+													appendTo: document.querySelector("#'.esc_attr($uniqid).'")
+												});
+											}
+										});
+										</script>';
+									}
+							
 									$header_text[ $cell_col_count ]['heading_text'] = $head['heading_text'];
 									$header_text[ $cell_col_count ]['icon_image'] = $head['header_content_icon_image'];
-									$header_text[ $cell_col_count ]['plus_heading_icon_align'] = 'plus_heading_icon_align' . $head['_id'];
+									$header_text[ $cell_col_count ]['plus_heading_icon_align'] = 'plus_heading_icon_align' .$head['_id'];
 									$header_text[ $cell_col_count ]['plus_heading_icon'] = 'plus_heading_icon' . $head['_id'];
-									$header_text[ $cell_col_count ]['icons_image_url'] = $head['icons_image']['url'];
+									$header_text[ $cell_col_count ]['icons_image_url'] = !empty($head['icons_image']['url']) ? $head['icons_image']['url'] : '';
 									$header_text[ $cell_col_count ]['plus_head_col_img'] = 'plus_head_col_img' . $head['_id'];
 									$cell_col_count++;
 								} else {
@@ -2803,6 +3057,7 @@ class ThePlus_Data_Table extends Widget_Base {
 									}
 									$cell_col_count = 0;
 								}
+								$headi++;
 								$counter_row++;
 								$inline_count++;
 							}
@@ -2813,7 +3068,7 @@ class ThePlus_Data_Table extends Widget_Base {
 					<tbody>
 						<!-- ROWS -->
 						<?php
-						$cell_counter_c      = 0;
+						$cell_counter_c    = 0;
 						$counter           = 1;						
 						$cell_inline_count = 0;
 						$row_count         = count( $settings['table_content'] );						
@@ -2821,6 +3076,7 @@ class ThePlus_Data_Table extends Widget_Base {
 						$ij=0;
 						
 						if ( $settings['table_content'] ) {
+							$rowi=0;
 							foreach ( $settings['table_content'] as $index => $row ) {
 								// Cell text inline classes.
 								$ij++;
@@ -2860,9 +3116,9 @@ class ThePlus_Data_Table extends Widget_Base {
 									$btn_uid=uniqid('btn');
 									$data_class= $btn_uid;
 									$data_class .=' button-'.$button_style.' ';
-									$button .='<div class="pt_plus_button '.$data_class.'">';										
+									$button .='<div class="pt_plus_button '.esc_attr($data_class).'">';						
 											$button .='<a '.$this->get_render_attribute_string( $link_key ).' '.$cst_att.' >';
-											$button .= $button_text;
+											$button .= esc_html($button_text);
 											$button .='</a>';
 									$button .='</div>';
 								}
@@ -2883,7 +3139,7 @@ class ThePlus_Data_Table extends Widget_Base {
 									$this->add_render_attribute( 'plus_table_col' . $row['_id'], 'rowspan', $row['cell_row_span'] );
 								}
 								
-								if ( $row['image']['url'] ) {
+								if ( !empty($row['image']['url']) ) {
 									$image=$row['image']['id'];
 									$img = wp_get_attachment_image_src($image,$row['image_thumbnail_size']);
 									$image_Src = $img[0];
@@ -2910,8 +3166,64 @@ class ThePlus_Data_Table extends Widget_Base {
 									if ( isset( $header_text[ $cell_counter_c ]['heading_text'] ) && $header_text[ $cell_counter_c ]['heading_text'] ) {
 										$this->add_render_attribute( 'plus_table_col' . $row['_id'], 'data-title', $header_text[ $cell_counter_c ]['heading_text'] );
 									}
+									
+									//tooltip
+									$_tooltip='_tooltip_'.$rowi;
+									if( $row['body_show_tooltips'] == 'yes' ) {
+										
+										$this->add_render_attribute( $_tooltip, 'data-tippy', '', true );
+
+										$tooltip_content=$row['body_tooltip_content'];
+										$this->add_render_attribute( $_tooltip, 'title', $tooltip_content, true );
+										
+										$plus_tooltip_position=($settings["tooltip_common_option_plus_tooltip_position"]!='') ? $settings["tooltip_common_option_plus_tooltip_position"] : 'top';
+										$this->add_render_attribute( $_tooltip, 'data-tippy-placement', $plus_tooltip_position, true );
+										
+										$tooltip_interactive =($settings["tooltip_common_option_plus_tooltip_interactive"]=='' || $settings["tooltip_common_option_plus_tooltip_interactive"]=='yes') ? 'true' : 'false';
+										$this->add_render_attribute( $_tooltip, 'data-tippy-interactive', $tooltip_interactive, true );
+										
+										$plus_tooltip_theme=($settings["tooltip_common_option_plus_tooltip_theme"]!='') ? $settings["tooltip_common_option_plus_tooltip_theme"] : 'dark';
+										$this->add_render_attribute( $_tooltip, 'data-tippy-theme', $plus_tooltip_theme, true );
+										
+										
+										$tooltip_arrow =($settings["tooltip_common_option_plus_tooltip_arrow"]!='none' || $settings["tooltip_common_option_plus_tooltip_arrow"]=='') ? 'true' : 'false';
+										$this->add_render_attribute( $_tooltip, 'data-tippy-arrow', $tooltip_arrow , true );
+										
+										$plus_tooltip_arrow=($settings["tooltip_common_option_plus_tooltip_arrow"]!='') ? $settings["tooltip_common_option_plus_tooltip_arrow"] : 'sharp';
+										$this->add_render_attribute( $_tooltip, 'data-tippy-arrowtype', $plus_tooltip_arrow, true );
+										
+										$plus_tooltip_animation=($settings["tooltip_common_option_plus_tooltip_animation"]!='') ? $settings["tooltip_common_option_plus_tooltip_animation"] : 'shift-toward';
+										$this->add_render_attribute( $_tooltip, 'data-tippy-animation', $plus_tooltip_animation, true );
+										
+										$plus_tooltip_x_offset=($settings["tooltip_common_option_plus_tooltip_x_offset"]!='') ? $settings["tooltip_common_option_plus_tooltip_x_offset"] : 0;
+										$plus_tooltip_y_offset=($settings["tooltip_common_option_plus_tooltip_y_offset"]!='') ? $settings["tooltip_common_option_plus_tooltip_y_offset"] : 0;
+										$this->add_render_attribute( $_tooltip, 'data-tippy-offset', $plus_tooltip_x_offset .','. $plus_tooltip_y_offset, true );
+										
+										$tooltip_duration_in =($settings["tooltip_common_option_plus_tooltip_duration_in"]!='') ? $settings["tooltip_common_option_plus_tooltip_duration_in"] : 250;
+										$tooltip_duration_out =($settings["tooltip_common_option_plus_tooltip_duration_out"]!='') ? $settings["tooltip_common_option_plus_tooltip_duration_out"] : 200;
+										$tooltip_trigger =($settings["tooltip_common_option_plus_tooltip_triggger"]!='') ? $settings["tooltip_common_option_plus_tooltip_triggger"] : 'mouseenter';
+										$tooltip_arrowtype =($settings["tooltip_common_option_plus_tooltip_arrow"]!='') ? $settings["tooltip_common_option_plus_tooltip_arrow"] : 'sharp';
+									}
+
+									$uniqid=uniqid("tooltip");
+							
+									$show_tooltips_on = $row['body_show_tooltips_on'];
+									$toolbox=$toolicon=$tt_on_icon='';
+									if(!empty($show_tooltips_on) && $show_tooltips_on=='icon'){
+										$toolbox = $this->get_render_attribute_string( 'plus_table_col' . $row['_id'] );
+										$toolicon = 'id="'.esc_attr($uniqid).'" '.$this->get_render_attribute_string( 'plus_table_col' . $row['_id'] ).' data-local="true" '.$this->get_render_attribute_string( $_tooltip ).'';
+										
+										ob_start();
+										\Elementor\Icons_Manager::render_icon( $settings['tt_on_icon'] , [ 'aria-hidden' => 'true' ]);
+										$tt_on_icon = ob_get_contents();
+										ob_end_clean();
+										
+									}else{										
+										$toolbox = 'id="'.esc_attr($uniqid).'"'.$this->get_render_attribute_string( 'plus_table_col' . $row['_id'] ) .$this->get_render_attribute_string( $_tooltip );
+									}								
+								
 									?>
-									<<?php echo $row['table_th_td']; ?> <?php echo $this->get_render_attribute_string( 'plus_table_col' . $row['_id'] ); ?>>
+									<<?php echo esc_attr($row['table_th_td']); ?> <?php echo $toolbox; ?>>
 										<?php if ( ! empty( $row['link']['url'] ) ) { ?>
 										<a <?php echo $this->get_render_attribute_string( 'col-link-' . $row['_id'] ); ?>>
 										<?php } ?>
@@ -2932,7 +3244,7 @@ class ThePlus_Data_Table extends Widget_Base {
 															<?php } ?>
 													<?php } ?>
 													<?php if ( isset( $header_text[ $cell_counter_c ]['heading_text'] ) && $header_text[ $cell_counter_c ]['heading_text'] ) {														
-														echo '<span class="mob-heading-text">'.$header_text[ $cell_counter_c ]['heading_text'].'</span>';
+														echo '<span class="mob-heading-text">'.esc_html($header_text[ $cell_counter_c ]['heading_text']).'</span>';
 													}
 													?>
 													<?php if ( 'icon' === $header_text[ $cell_counter_c ]['icon_image'] ) { ?>												
@@ -2960,7 +3272,7 @@ class ThePlus_Data_Table extends Widget_Base {
 														<?php } ?>
 														
 													<?php } else { ?>
-														<?php if ( $row['image']['url'] ) { ?>
+														<?php if ( !empty($row['image']) && !empty($row['image']['url']) ) { ?>
 															<?php if ( 'left' === $settings['all_image_align'] ) { ?>
 															<img <?php echo $this->get_render_attribute_string( 'plus_col_img' . $row['_id'] ); ?>>
 														<?php } ?>
@@ -2978,7 +3290,7 @@ class ThePlus_Data_Table extends Widget_Base {
 														<?php } ?>
 														
 													<?php } else { ?>
-														<?php if ( $row['image']['url'] ) { ?>
+														<?php if ( !empty($row['image']['url']) ) { ?>
 															<?php if ( 'right' === $settings['all_image_align'] ) { ?>
 															<img <?php echo $this->get_render_attribute_string( 'plus_col_img' . $row['_id'] ); ?>>
 														<?php } ?>
@@ -2988,7 +3300,11 @@ class ThePlus_Data_Table extends Widget_Base {
 												</span>
 											<?php if(!empty($settings["mobile_responsive_table"]) && $settings["mobile_responsive_table"]=='one-by-one'){ ?>
 												</div>
-											<?php } ?>
+											<?php } 
+											if(!empty($show_tooltips_on) && $show_tooltips_on=='icon'){
+												echo '<span class="tp-tooltip-on-icon" '.$toolicon.'>'.$tt_on_icon.'</span>';
+											}											
+											?>
 										<?php if ( ! empty( $row['link']['url'] ) ) { ?>
 										</a>
 										<?php } ?>
@@ -2996,21 +3312,38 @@ class ThePlus_Data_Table extends Widget_Base {
 										<?php
 										// Increment to next cell.
 										$cell_counter_c++;
+										
+										if( $row['body_show_tooltips'] == 'yes' ) {
+										echo '<script>
+											jQuery( document ).ready(function() {
+											"use strict";
+												if(typeof tippy === "function"){
+													tippy( "#'.esc_attr($uniqid).'" , {
+														arrowType : "'.$tooltip_arrowtype.'",
+														duration : ['.esc_attr($tooltip_duration_in).','.esc_attr($tooltip_duration_out).'],
+														trigger : "'.esc_attr($tooltip_trigger).'",
+														appendTo: document.querySelector("#'.esc_attr($uniqid).'")
+													});
+												}
+											});
+											</script>';
+										}
 								} else {
 									if ( $counter > 1 && $counter < $row_count ) {
 										// Break into new row.
 										++$data_entry_col;
 										?>
-										</tr><tr data-entry="<?php echo $data_entry_col; ?>" <?php echo $this->get_render_attribute_string( 'plus_table_row' ); ?>>
+										</tr><tr data-entry="<?php echo esc_attr($data_entry_col); ?>" <?php echo $this->get_render_attribute_string( 'plus_table_row' ); ?>>
 									<?php
 									} elseif ( 1 === $counter && false === $this->table_first_row() ) {
 										$data_entry_col = 1;
 										?>
-										<tr data-entry="<?php echo $data_entry_col; ?>" <?php echo $this->get_render_attribute_string( 'plus_table_row' ); ?>>
+										<tr data-entry="<?php echo esc_attr($data_entry_col); ?>" <?php echo $this->get_render_attribute_string( 'plus_table_row' ); ?>>
 									<?php
 									}
 									$cell_counter_c = 0;
 								}
+								$rowi++;
 								$counter++;
 								$cell_inline_count++;
 							}
@@ -3028,7 +3361,7 @@ class ThePlus_Data_Table extends Widget_Base {
 			
 			$css_rule = '<style>';
 			if(!empty($cell_align_head_desktop)){				
-				$css_rule .='#plus-table-id-' . $widget_id.' th,#plus-table-id-' . $widget_id.' th .plus-table__text{ ';			
+				$css_rule .='#plus-table-id-' .esc_attr($widget_id).' th,#plus-table-id-' .esc_attr($widget_id).' th .plus-table__text{ ';			
 					if($cell_align_head_desktop == 'left'){
 						$css_rule .='margin:0 auto;text-align:left;margin-left:0;';
 					}
@@ -3040,8 +3373,8 @@ class ThePlus_Data_Table extends Widget_Base {
 					}
 				$css_rule .='}';
 			}
-			if($cell_align_head_tablet!=''){
-				$css_rule .='@media (max-width:1024px){#plus-table-id-' . $widget_id.' th,#plus-table-id-' . $widget_id.' th .plus-table__text{';
+			if(!empty($cell_align_head_tablet)){
+				$css_rule .='@media (max-width:1024px){#plus-table-id-' .esc_attr($widget_id).' th,#plus-table-id-' .esc_attr($widget_id).' th .plus-table__text{';
 				
 					if($cell_align_head_tablet=='left'){
 						$css_rule .='margin:0 auto;text-align:left;margin-left:0;';
@@ -3054,8 +3387,8 @@ class ThePlus_Data_Table extends Widget_Base {
 					}			
 				$css_rule .='}}';
 			}
-			if($cell_align_head_mobile!=''){
-				$css_rule .='@media (max-width:767px){#plus-table-id-' . $widget_id.' th,#plus-table-id-' . $widget_id.' th .plus-table__text{';
+			if(!empty($cell_align_head_mobile)){
+				$css_rule .='@media (max-width:767px){#plus-table-id-' .esc_attr($widget_id).' th,#plus-table-id-' .esc_attr($widget_id).' th .plus-table__text{';
 				
 					if($cell_align_head_mobile=='left'){
 						$css_rule .='margin:0 auto;text-align:left;margin-left:0;';
@@ -3091,5 +3424,4 @@ class ThePlus_Data_Table extends Widget_Base {
     protected function content_template() {
 	
     }
-
 }

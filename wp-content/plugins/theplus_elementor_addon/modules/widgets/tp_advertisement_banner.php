@@ -10,12 +10,12 @@ namespace TheplusAddons\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Utils;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Image_Size;
 
 use TheplusAddons\Theplus_Element_Load;
@@ -397,8 +397,8 @@ class ThePlus_Advertisement_Banner extends Widget_Base {
 			'type' => \Elementor\Controls_Manager::COLOR,
 			'default' => '#313131',
 			'scheme' => [
-				'type' => \Elementor\Scheme_Color::get_type(),
-				'value' => \Elementor\Scheme_Color::COLOR_1,
+				'type' => Color::get_type(),
+				'value' => Color::COLOR_1,
 			],
 			'selectors' => [
 				'{{WRAPPER}} .pt_plus_addbanner .addbanner-block .addbanner_inner .addbanner_title,
@@ -420,8 +420,8 @@ class ThePlus_Advertisement_Banner extends Widget_Base {
 			'type' => \Elementor\Controls_Manager::COLOR,
 			'default' => '#313131',
 			'scheme' => [
-				'type' => \Elementor\Scheme_Color::get_type(),
-				'value' => \Elementor\Scheme_Color::COLOR_1,
+				'type' => Color::get_type(),
+				'value' => Color::COLOR_1,
 			],
 			'selectors' => [
 				'{{WRAPPER}} .pt_plus_addbanner:hover .addbanner-block .addbanner_inner .addbanner_title,
@@ -463,8 +463,8 @@ class ThePlus_Advertisement_Banner extends Widget_Base {
 			'type' => \Elementor\Controls_Manager::COLOR,
 			'default' => '#313131',
 			'scheme' => [
-				'type' => \Elementor\Scheme_Color::get_type(),
-				'value' => \Elementor\Scheme_Color::COLOR_1,
+				'type' => Color::get_type(),
+				'value' => Color::COLOR_1,
 			],
 			'selectors' => [
 				'{{WRAPPER}} .pt_plus_addbanner .addbanner-block .addbanner_inner .addbanner_subtitle,
@@ -486,8 +486,8 @@ class ThePlus_Advertisement_Banner extends Widget_Base {
 			'type' => \Elementor\Controls_Manager::COLOR,
 			'default' => '#313131',
 			'scheme' => [
-				'type' => \Elementor\Scheme_Color::get_type(),
-				'value' => \Elementor\Scheme_Color::COLOR_1,
+				'type' => Color::get_type(),
+				'value' => Color::COLOR_1,
 			],
 			'selectors' => [
 				'{{WRAPPER}} .pt_plus_addbanner:hover .addbanner-block .addbanner_inner .addbanner_subtitle,
@@ -896,8 +896,8 @@ class ThePlus_Advertisement_Banner extends Widget_Base {
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'default' => '#676767',
 				'scheme' => [
-					'type' => \Elementor\Scheme_Color::get_type(),
-					'value' => \Elementor\Scheme_Color::COLOR_1,
+					'type' => Color::get_type(),
+					'value' => Color::COLOR_1,
 				],
 				'selectors' => [
 					'{{WRAPPER}} .pt_plus_addbanner.add-banner-style-8 .addbanner_product_box .ab_btn_back' => 'background: {{VALUE}}',

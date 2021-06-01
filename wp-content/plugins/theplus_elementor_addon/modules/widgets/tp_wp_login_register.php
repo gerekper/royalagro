@@ -10,7 +10,7 @@ namespace TheplusAddons\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Utils;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
@@ -659,7 +659,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 			'pattern_desc_3',
 			[				
 				'type' => \Elementor\Controls_Manager::RAW_HTML,
-				'raw' => esc_html__( 'Minimum six characters, at least one letter and one number', 'theplus' ),
+				'raw' => esc_html__( 'Maximum six characters, at least one letter and one number', 'theplus' ),
 				'content_classes' => 'tp-widget-description',
 				'condition' => [
 					'tp_dis_pass_field' => 'yes',
@@ -894,7 +894,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 					'tp_terms_condition_opt' => 'yes',
 				],
 			]
-		);			
+		);
 		$this->add_control(
 			'tp_cst_email_opt',
 			[
@@ -905,9 +905,10 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 				'default' => 'no',
 				'separator' => 'before',				
 			]
-		);
+		);	
 		$EMtitle = get_option( 'blogname' );
-		$subject = sprintf( __( 'Thank you for registering with %s!', 'theplus' ), $EMtitle );
+		/* translators: %s: Site title. */
+		$subject = sprintf( __( 'Thank you for registering with %s', 'theplus' ), $EMtitle );
 		
 		$this->add_control(
 			'tp_cst_email_subject',
@@ -922,13 +923,14 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 					'tp_cst_email_opt' => 'yes',
 				],
 			]
-		);
+		);		
 		$this->add_control(
 			'tp_cst_email_message',
 			[
 				'label' => esc_html__( 'Email Message', 'theplus' ),
 				'type' => Controls_Manager::WYSIWYG,
 				'placeholder' => __( 'Enter Email Message', 'theplus' ),
+				/* translators: %1$s: Site title. */
 				'default'     => sprintf( __( 'Dear User,<br/>You have successfully created your %1$s account. Thank you for registering with us! <br/>And here\'s the password [tp_password] to log in to the account.', 'theplus' ), $EMtitle ),
 				'description' => 'Fields : [tp_firstname] , [tp_lastname] , [tp_username] , [tp_email] ,[tp_password]',
 				'label_block' => true,
@@ -1912,6 +1914,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 			]
 		);
 		$EMtitle1 = get_option( 'blogname' );
+		/* translators: %s: Site title. */
 		$subject1 = sprintf( __( 'Someone has requested a password reset for the following account from %s!', 'theplus' ), $EMtitle1 );
 		
 		$this->add_control(
@@ -1934,6 +1937,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 				'label' => esc_html__( 'Email Message', 'theplus' ),
 				'type' => Controls_Manager::WYSIWYG,
 				'placeholder' => __( 'Enter Email Message', 'theplus' ),
+				/* translators: %1$s: Site title. */
 				'default'     => sprintf( __( 'Dear [tplr_username],<br/>Someone has requested a password reset for the following %1$s account.<br/>If this was a mistake, just ignore this email and nothing will happen.<br/>To reset your password, visit the following address:<br/> [tplr_link]', 'theplus' ), $EMtitle1 ),
 				'description' => 'Fields : [tplr_sitename] , [tplr_username] , [tplr_link]',
 				'label_block' => true,
@@ -6522,9 +6526,9 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 		}
 		
 		if ( is_user_logged_in() && ! Theplus_Element_Load::elementor()->editor->is_edit_mode() ) {
-			$button_text = esc_html__( $settings['button_text_logout'], 'theplus' );
+			$button_text = wp_kses_post($settings['button_text_logout']);
 		} else {
-			$button_text = $settings['dropdown_button_text'];
+			$button_text = wp_kses_post($settings['dropdown_button_text']);
 		}
 		
 		?>
@@ -6548,9 +6552,9 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 		}
 		
 		if ( is_user_logged_in() && ! Theplus_Element_Load::elementor()->editor->is_edit_mode() ) {
-			$button_text = esc_html__( $settings['button_text_logout'], 'theplus' );
+			$button_text = wp_kses_post( $settings['button_text_logout'] );
 		} else {
-			$button_text = $settings['dropdown_button_text'];
+			$button_text = wp_kses_post( $settings['dropdown_button_text'] );
 		}
 		
 		?>
@@ -6570,9 +6574,9 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 			ob_end_clean();						
 		}
 		if ( is_user_logged_in() && ! Theplus_Element_Load::elementor()->editor->is_edit_mode() ) {
-			$button_text = esc_html__( $settings['button_text_logout'], 'theplus' );
+			$button_text = wp_kses_post( $settings['button_text_logout'] );
 		} else {
-			$button_text = $settings['dropdown_button_text'];
+			$button_text = wp_kses_post( $settings['dropdown_button_text'] );
 		}
 		
 		?>
@@ -6694,7 +6698,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 							<ul class="tp-list">';
 					}
 								if(!empty($settings['edit_profile_text_switch']) && $settings['edit_profile_text_switch']=='yes'){
-								$after_login_panel .='<li class="tp-user-name"><a href="'.get_edit_user_link().'" class="tp-text-bold">'.esc_html__($settings['edit_profile_text'], 'theplus' ).'</a>
+								$after_login_panel .='<li class="tp-user-name"><a href="'.get_edit_user_link().'" class="tp-text-bold">'.esc_html($settings['edit_profile_text']).'</a>
 								</li>';	
 								}
 								$i=0;
@@ -6724,7 +6728,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 						if(!empty($settings['button_text_logout_switch']) && $settings['button_text_logout_switch']=='yes'){
 						$after_login_panel .= '<li class="tp-user-logged-out">
 													<a href="'.wp_logout_url( $current_url ).'" class="tp-button tp-button-primary">
-													'.esc_html__($settings['button_text_logout'], 'theplus' ).'</a>
+													'.esc_html__($settings['button_text_logout']).'</a>
 											   </li>';
 						}
 						if ( (!empty($settings['show_logged_in_message']) && $settings['show_logged_in_message']=='yes') && 
@@ -6755,7 +6759,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 					<div class="elementor-form-fields-wrapper">						
 						<?php if ($settings['modal_header']=='yes' && (!empty($settings['hide_form']) && $settings['hide_form']=='no')) : ?>
 						<div class="tp-modal-header">
-							<h2 class="tp-modal-title"><span tp-icon="user"></span> <?php echo $settings['modal_header_description_log']; ?></h2>			
+							<h2 class="tp-modal-title"><span tp-icon="user"></span> <?php echo esc_attr ( $settings['modal_header_description_log'] ); ?></h2>
 						</div>
 						<?php endif; ?>
 						<?php $this->user_login_form(); ?>
@@ -6768,10 +6772,10 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 					</a>
 					<div <?php echo $this->get_render_attribute_string('dropdown-settings'); ?>>
 						<div class="elementor-form-fields-wrapper">
-							<div class="lr-extra-div <?php echo $settings['layout_start_from']; ?>">
+							<div class="lr-extra-div <?php echo esc_attr($settings['layout_start_from']); ?>">
 							<?php if ($settings['modal_header']=='yes') : ?>
 							<div class="tp-modal-header">
-								<h2 class="tp-modal-title"><span tp-icon="user"></span> <?php echo $settings['modal_header_description_log']; ?></h2>			
+								<h2 class="tp-modal-title"><span tp-icon="user"></span> <?php echo esc_attr( $settings['modal_header_description_log'] ); ?></h2>
 							</div>
 							<?php endif; ?>
 							<?php $this->user_login_form(); ?>
@@ -6789,15 +6793,15 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 					</a>
 
 					<div id="<?php echo esc_attr($id); ?>" class="tp-user-login-modal">
-						<div class="tp-modal-dialog <?php echo $settings['layout_start_from']; ?>">	
+						<div class="tp-modal-dialog <?php echo esc_attr ( $settings['layout_start_from'] ) ; ?>">
 							<?php if ($settings['modal_close_button']=='yes') : ?>
-								<img src="<?php echo $settings['modal_close_button_icon']['url']; ?>" class="lr-close-custom_img"/>
+								<img src="<?php echo esc_url( $settings['modal_close_button_icon']['url'] ); ?>" class="lr-close-custom_img"/>
 							<?php endif; ?>
 							
 							<div class="elementor-form-fields-wrapper tp-modal-body">
 								<?php if ($settings['modal_header']=='yes') : ?>
 							<div class="tp-modal-header">
-								<h2 class="tp-modal-title"><span tp-icon="user"></span> <?php echo $settings['modal_header_description_log']; ?></h2>			
+								<h2 class="tp-modal-title"><span tp-icon="user"></span> <?php echo esc_attr( $settings['modal_header_description_log'] ); ?></h2>
 							</div>
 							<?php endif; ?>
 								<?php $this->user_login_form(); ?>
@@ -6817,12 +6821,12 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 					
 					<div class="tp-modal-wrapper">
 					  <div class="tp-modal">						
-						  <a class="tp-ulsp-btn-close tp-ulsp-trigger" href="javascript:;"><img src="<?php echo $settings['modal_close_button_icon']['url']; ?>" class="lr-close-custom_img"/></a>
+						  <a class="tp-ulsp-btn-close tp-ulsp-trigger" href="javascript:;"><img src="<?php echo esc_url($settings['modal_close_button_icon']['url']); ?>" class="lr-close-custom_img"/></a>
 						<div class="tp-ulsp-content">
 							<div class="elementor-form-fields-wrapper tp-popup-body">
 								<?php if ($settings['modal_header']=='yes') : ?>
 									<div class="tp-popup-header">												
-										<h2 class="tp-popup-title"><span tp-icon="user"></span> <?php echo $settings['modal_header_description_log']; ?></h2>
+										<h2 class="tp-popup-title"><span tp-icon="user"></span> <?php echo esc_attr( $settings['modal_header_description_log'] ); ?></h2>
 									</div>
 								<?php endif; ?>
 								<?php $this->user_login_form(); ?>
@@ -6834,17 +6838,14 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 				
 		<?php }
 		}
-		}else if((isset($_GET['action']) && !empty($_GET['action']) && $_GET['action']=='theplusrpf') && (!empty($settings['tp_convert_rest_form']) && $settings['tp_convert_rest_form']=='yes')){				
-				$this->user_reset_password_form(); 
+		}else if((isset($_GET['action']) && !empty($_GET['action']) && $_GET['action']=='theplusrpf') && (!empty($settings['tp_convert_rest_form']) && $settings['tp_convert_rest_form']=='yes')){
+				$this->user_reset_password_form();
 		}
 		
 		if(!empty($settings['form_selection']) && ($settings['form_selection']=='tp_forgot_password')){
 			if((empty($_GET['action']))|| (!empty($_GET['action']) && $_GET['action'] !='theplusrpf')){
 				$this->user_lost_password_form('login-time-fp'); 
-			}
-			/*if(isset($_GET['action']) && !empty($_GET['action']) && $_GET['action']=='theplusrpf'){
-				$this->user_reset_password_form(); 
-			}*/
+			}			
 		}
 		
 		if((empty($_GET['action']))|| (!empty($_GET['action']) && $_GET['action'] !='theplusrpf')){
@@ -6876,7 +6877,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 				<div class="elementor-form-fields-wrapper">
 					<?php if ($settings['modal_header']=='yes' && (!empty($settings['hide_form']) && $settings['hide_form']=='no')) : ?>
 						<div class="tp-modal-header">									
-							<h2 class="tp-modal-title"><span tp-icon="user"></span> <?php echo $settings['modal_header_description_reg']; ?></h2>
+							<h2 class="tp-modal-title"><span tp-icon="user"></span> <?php echo esc_attr( $settings['modal_header_description_reg'] ); ?></h2>
 						</div>
 					<?php endif; ?>
 					<?php $this->user_register_form(); ?>
@@ -6893,10 +6894,10 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 
 				<div <?php echo $this->get_render_attribute_string( 'dropdown-settings' ); ?>>
 					<div class="elementor-form-fields-wrapper">
-						<div class="lr-extra-div <?php echo $settings['layout_start_from']; ?>">
+						<div class="lr-extra-div <?php echo esc_attr( $settings['layout_start_from'] ); ?>">
 							<?php if ($settings['modal_header']=='yes') : ?>
 								<div class="tp-modal-header">									
-									<h2 class="tp-modal-title"><span tp-icon="user"></span> <?php echo $settings['modal_header_description_reg']; ?></h2>
+									<h2 class="tp-modal-title"><span tp-icon="user"></span> <?php echo esc_attr( $settings['modal_header_description_reg'] ); ?></h2>
 								</div>
 							<?php endif; ?>
 							<?php $this->user_register_form(); ?>
@@ -6915,15 +6916,15 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 					<?php $this->render_text_reg_dropdown(); ?>
 				</a>				
 				<div id="<?php echo esc_attr($id); ?>" class="tp-user-register-modal">
-					<div class="tp-modal-dialog <?php echo $settings['layout_start_from']; ?>">
+					<div class="tp-modal-dialog <?php echo esc_attr( $settings['layout_start_from'] ); ?>">
 						<?php if ($settings['modal_close_button']=='yes') : ?>
-							<img src="<?php echo $settings['modal_close_button_icon']['url']; ?>" class="lr-close-custom_img"/>
+							<img src="<?php echo esc_url( $settings['modal_close_button_icon']['url'] ); ?>" class="lr-close-custom_img"/>
 						<?php endif; ?>
 						
 						<div class="elementor-form-fields-wrapper tp-modal-body">
 							<?php if ($settings['modal_header']=='yes') : ?>
 								<div class="tp-modal-header">									
-									<h2 class="tp-modal-title"><span tp-icon="user"></span> <?php echo $settings['modal_header_description_reg']; ?></h2>
+									<h2 class="tp-modal-title"><span tp-icon="user"></span> <?php echo esc_attr( $settings['modal_header_description_reg'] ); ?></h2>
 								</div>
 							<?php endif; ?>
 							<?php $this->user_register_form(); ?>
@@ -6944,12 +6945,12 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 				</div>
 				<div class="tp-modal-wrapper">
 				  <div class="tp-modal">						
-					  <a class="tp-ursp-btn-close tp-ursp-trigger" href="javascript:;"><img src="<?php echo $settings['modal_close_button_icon']['url']; ?>" class="lr-close-custom_img"/></a>						
+					  <a class="tp-ursp-btn-close tp-ursp-trigger" href="javascript:;"><img src="<?php echo esc_url( $settings['modal_close_button_icon']['url'] ); ?>" class="lr-close-custom_img"/></a>
 					<div class="tp-ursp-content">
 						<div class="elementor-form-fields-wrapper tp-popup-body">
 							<?php if ($settings['modal_header']=='yes') : ?>
 								<div class="tp-popup-header">
-									<h2 class="tp-popup-title"><span tp-icon="user"></span> <?php echo $settings['modal_header_description_reg']; ?></h2>
+									<h2 class="tp-popup-title"><span tp-icon="user"></span> <?php echo esc_attr( $settings['modal_header_description_reg'] ); ?></h2>
 								</div>
 							<?php endif; ?>
 							<?php $this->user_register_form(); ?>
@@ -6968,7 +6969,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 									</div>
 							<div class="tp-modal-wrapper">
 								<div class="tp-modal">						
-									<a class="tp-ursp-btn-close tp-ursp-trigger" href="javascript:;"><img src="'.esc_url($settings['modal_close_button_icon']['url']).'" class="lr-close-custom_img"/></a>						
+									<a class="tp-ursp-btn-close tp-ursp-trigger" href="javascript:;"><img src="'.esc_url(!empty($settings['modal_close_button_icon']['url']) ? $settings['modal_close_button_icon']['url'] : '' ).'" class="lr-close-custom_img"/></a>						
 									<div class="tp-ursp-content">';
 								
 			$lr_popup_close='</div>
@@ -7008,10 +7009,10 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 					echo '<div class="tp-lr-comm-wrap">';
 				}
 				?>			
-				<div id="<?php echo esc_attr($id); ?>" class="tp-lr-cl-100per <?php echo $settings['layout_start_from']; ?>">
+				<div id="<?php echo esc_attr($id); ?>" class="tp-lr-cl-100per <?php echo esc_attr( $settings['layout_start_from'] ); ?>">
 					<?php if(!empty($settings['_skin']) && $settings['_skin']=='tp-modal'){
 					if ($settings['modal_close_button']=='yes') : ?>
-								<img src="<?php echo $settings['modal_close_button_icon']['url']; ?>" class="lr-close-custom_img"/>
+								<img src="<?php echo esc_url( $settings['modal_close_button_icon']['url'] ); ?>" class="lr-close-custom_img"/>
 							<?php endif; 
 					} ?>
 							
@@ -7027,15 +7028,15 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 					<?php } ?>
 							<div id="<?php echo esc_attr($id); ?>" class="tp-l-r-main-wrapper">
 								  <ul id="<?php echo esc_attr($id); ?>" class="tp-l-r-tab-group">
-									<li class="tp-l-r-tab active" data-active="login"><?php echo $settings['tab_com_login']; ?></li>
-									<li class="tp-l-r-tab" data-active="signup"><?php echo $settings['tab_com_signup']; ?></li>
+									<li class="tp-l-r-tab active" data-active="login"><?php echo esc_html($settings['tab_com_login']); ?></li>
+									<li class="tp-l-r-tab" data-active="signup"><?php echo esc_html($settings['tab_com_signup']); ?></li>
 								  </ul>      
 								  
 									  <div class="tp-l-r-tab-content">
 											<div class="tp-tab-content-inner tab-login active">   
 													<?php if ($settings['modal_header']=='yes') : ?>
 														<div class="tp-popup-header">													
-															<h2 class="tp-popup-title"><span tp-icon="user"></span> <?php echo $settings['modal_header_description_log']; ?></h2>
+															<h2 class="tp-popup-title"><span tp-icon="user"></span> <?php echo esc_attr( $settings['modal_header_description_log'] ); ?></h2>
 														</div>
 													<?php endif; ?>
 													<?php $this->user_login_form(); ?>
@@ -7043,7 +7044,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 											<div class="tp-tab-content-inner tab-signup">
 												<?php if ($settings['modal_header']=='yes') : ?>
 														<div class="tp-popup-header">													
-															<h2 class="tp-popup-title"><span tp-icon="user"></span> <?php echo $settings['modal_header_description_reg']; ?></h2>
+															<h2 class="tp-popup-title"><span tp-icon="user"></span> <?php echo esc_attr( $settings['modal_header_description_reg'] ); ?></h2>
 														</div>
 													<?php endif; ?>
 											  <?php $this->user_register_form(); ?>
@@ -7107,20 +7108,9 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 			echo '<div class="tp-invalid-expired-key">'.esc_html($key_msg).'</div>';
 		}
 		
-		$tceol=array();
-		if(!empty($settings['tp_cst_email_lost_opt']) && $settings['tp_cst_email_lost_opt'] == 'yes'){
-			$tpces = !empty($settings['tp_cst_email_lost_subject']) ? $settings['tp_cst_email_lost_subject'] : '';
-			$tpcem = !empty($settings['tp_cst_email_lost_message']) ? $settings['tp_cst_email_lost_message'] : '';
-			
-			$tceol["tp_cst_email_lost_opt"] = $settings['tp_cst_email_lost_opt'];
-			$tceol["tp_cst_email_lost_subject"] = $tpces;
-			$tceol["tp_cst_email_lost_message"] = $tpcem;
-		}
-		$data_tceol=json_encode($tceol);
+		
 		?>
-		<form id="tp-user-lost-password<?php echo esc_attr($id); ?>" class="tp-form-stacked-fp" method="post" action="forgot-password" data-f_p_opt="<?php echo $settings['f_p_opt']; ?>" data-tceol="<?php echo htmlspecialchars($data_tceol, ENT_QUOTES, 'UTF-8'); ?>">
-			<?php if ( function_exists( 'wp_nonce_field' ) ) 
-					wp_nonce_field( 'tp_user_lost_password_action', 'tp_user_lost_password_nonce' ); ?>
+		<form id="tp-user-lost-password<?php echo esc_attr($id); ?>" class="tp-form-stacked-fp" method="post" action="forgot-password" >
 			<?php 
 				$lpba_icon='';
 				if(!empty($settings['lpba_icon'])){
@@ -7137,19 +7127,19 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 			<?php 
 				if( !empty($value) && $value=='login-time-fp' ){
 					echo '<span class="tp-forgot-password-label">';
-						echo $settings['lost_password_heading_desc'];
+						echo esc_attr( $settings['lost_password_heading_desc'] );
 					echo '</span>';
 				}
 			if((!empty($settings['lost_pass_label_switch']) && $settings['lost_pass_label_switch']=='yes') && !empty($settings['lost_pass_label'])){
 			?>
-			<label for="user_login<?php echo esc_attr($id); ?>" class="tp-form-label"><?php echo $settings['lost_pass_label']; ?></label>
+			<label for="user_login<?php echo esc_attr($id); ?>" class="tp-form-label"><?php echo esc_html( $settings['lost_pass_label'] ); ?></label>
 			<?php } ?>
 			<div class="tp-ulp-input-group">
 				<input type="text" name="user_login" id="user_login<?php echo esc_attr($id); ?>" placeholder="<?php echo esc_attr($settings['lost_pass_placeholder']); ?>" class="tp-input" required>
 			</div>
 			<?php do_action( 'lostpassword_form' ); ?>
 			<input type="hidden" name="_tp_login_form" value="lostPassword">
-			<button type="submit" class="tp-button-fp"><?php echo $settings['forgot_pass_btn']; ?></button>			
+			<button type="submit" class="tp-button-fp"><?php echo esc_html( $settings['forgot_pass_btn'] ); ?></button>			
 			<div class="theplus-notification"><div class="tp-lr-response"></div></div>
 			
 		</form>
@@ -7172,12 +7162,14 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 		
 		$attributes = array();
 		if ( is_user_logged_in() ) {
-			echo  __( 'You are already signed in.', 'theplus' );
-		} else {
-			if ( isset( $_REQUEST['login'] ) && isset( $_REQUEST['key'] ) ) {
-				$attributes['login'] = $_REQUEST['login'];
-				$attributes['key'] = $_REQUEST['key'];
-				$attributes['forgoturl'] = $_REQUEST['forgoturl'];
+			echo  esc_html( 'You are already signed in.', 'theplus' );
+		} else {			
+			if ( isset( $_REQUEST['datakey'] )) {
+				$forgotresdata = tp_check_decrypt_key($_REQUEST['datakey']);
+				$forgotresdata = json_decode(stripslashes($forgotresdata),true);
+				$attributes['login'] = wp_unslash( $forgotresdata['login'] );
+				$attributes['key'] = wp_unslash( $forgotresdata['key'] );
+				$attributes['forgoturl'] = wp_unslash( $forgotresdata['forgoturl'] );
 			}
 		}
 		if(!empty($attributes)){
@@ -7187,26 +7179,30 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 			if(!empty($tp_dp_reset_field_strong) && $tp_dp_reset_field_strong=='yes'){
 				$pattern_pass_reset='pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"';
 			}
+			
+			$data_forgotres = [];
+			$data_forgotres['login'] = $attributes['login'];
+			$data_forgotres['forgoturl'] = $attributes['forgoturl'];
+			$data_forgotres['key'] = $attributes['key'];
+			$data_forgotres['noncesecure'] = wp_create_nonce( 'tp_reset_action' );
+			
+			$data_forgotreskey= tp_plus_simple_decrypt( json_encode($data_forgotres), 'ey' );
 		?>		
 			<div class="tp-reset-pass-form">
-			<form id="tp-user-reset-password<?php echo esc_attr($id); ?>" class="tp-form-stacked-reset" method="post">
-				<input type="hidden" id="tp-reset-login-user<?php echo esc_attr($id); ?>" name="tp_login" value="<?php echo esc_attr( $attributes['login'] ); ?>" autocomplete="off" />
-				<input type="hidden" id="tp-reset-forgot-url<?php echo esc_attr($id); ?>" name="tp_forgot_url" value="<?php echo esc_attr( $attributes['forgoturl'] ); ?>" autocomplete="off" />
-				<input type="hidden" id="tp-reset-user-key<?php echo esc_attr($id); ?>" name="tp_key" value="<?php echo esc_attr( $attributes['key'] ); ?>" />
+			<form id="tp-user-reset-password<?php echo esc_attr($id); ?>" class="tp-form-stacked-reset" method="post">				
 				<?php
 				if((!empty($settings['res_pass_label_switch']) && $settings['res_pass_label_switch']=='yes') && !empty($settings['res_pass_label'])){
 				?>
-				<label for="user_login<?php echo esc_attr($id); ?>" class="tp-form-label"><?php echo $settings['res_pass_label']; ?></label>
+				<label for="user_login<?php echo esc_attr($id); ?>" class="tp-form-label"><?php echo esc_html( $settings['res_pass_label'] ); ?></label>
 				<?php } ?>
 				<div class="tp-ulp-input-group">
-					<input type="password" name="user_reset_pass" id="user_reset_pass<?php echo esc_attr($id); ?>" placeholder="<?php echo esc_attr($settings['res_pass_placeholder']); ?>" class="tp-input" required <?php echo $pattern_pass_reset; ?> style="margin-bottom:15px">
+					<input type="password" name="user_reset_pass" id="user_reset_pass<?php echo esc_attr($id); ?>" placeholder="<?php echo esc_attr($settings['res_pass_placeholder']); ?>" class="tp-input" required <?php echo esc_attr( $pattern_pass_reset ); ?> style="margin-bottom:15px">
 				</div>
 				<div class="tp-ulp-input-group">
 					<input type="password" name="user_reset_pass_conf" id="user_reset_pass_conf<?php echo esc_attr($id); ?>" placeholder="<?php echo esc_attr($settings['res_conf_pass_placeholder']); ?>" class="tp-input" required>
 				</div>
-				
-				<?php if ( function_exists( 'wp_nonce_field' ) ){ wp_nonce_field( 'tp_reset_pass', 'tp_reset_pass' ); } ?>			
-				<button type="submit" class="tp-button-reset-pass"><?php echo $settings['reset_pass_btn']; ?></button>			
+					
+				<button type="submit" class="tp-button-reset-pass"><?php echo esc_html( $settings['reset_pass_btn'] ); ?></button>
 				<div class="theplus-notification"><div class="tp-lr-response"></div></div>
 			</form>
 			</div>
@@ -7215,7 +7211,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 				
 				var reset_pass_form = 'form#tp-user-reset-password<?php echo esc_attr($id); ?>';
 				var fp_loading='<span class="loading-spinner-reg"><i class="far fa-times-circle" aria-hidden="true"></i></span>';
-				var forgot_url = $(reset_pass_form + ' #tp-reset-forgot-url<?php echo esc_attr($id); ?>').val();
+				var forgot_url = '<?php echo $data_forgotres["forgoturl"]; ?>';
 			    
 			    $(reset_pass_form).on('submit', function(e){
 			        $.ajax({
@@ -7224,12 +7220,9 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 			            url: theplus_ajax_url,
 			            data: { 
 			                'action': 'theplus_ajax_reset_password',
-			                'user_login': $(reset_pass_form + ' #tp-reset-login-user<?php echo esc_attr($id); ?>').val(),
-							'user_key': $(reset_pass_form + ' #tp-reset-user-key<?php echo esc_attr($id); ?>').val(), 
+			                'tpresetdata': '<?php echo $data_forgotreskey; ?>',							
 							'user_pass': $(reset_pass_form + ' #user_reset_pass<?php echo esc_attr($id); ?>').val(), 
-							'user_pass_conf': $(reset_pass_form + ' #user_reset_pass_conf<?php echo esc_attr($id); ?>').val(), 
-							//'redirecturl': '<?php echo get_the_permalink(); ?>',
-							'nonce': $(reset_pass_form + ' #tp_reset_pass_nonce').val()
+							'user_pass_conf': $(reset_pass_form + ' #user_reset_pass_conf<?php echo esc_attr($id); ?>').val(),
 			            },
 						beforeSend: function(){
 							$("#tp-user-reset-password<?php echo esc_attr($id);?> .theplus-notification").addClass("active");
@@ -7300,10 +7293,10 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 				<?php
 				
 				if ( $settings['show_labels']=='yes' && ($settings['form_selection']=='tp_login' || $settings['form_selection']=='tp_login_register')) {					
-					echo '<label for="user'.esc_attr($id).'" class="tp-form-label">'.$settings['user_label'].'</label>';					
+					echo '<label for="user'.esc_attr($id).'" class="tp-form-label">'.esc_html( $settings['user_label'] ).'</label>';					
 				}
 				echo '<div class="tp-form-controls">';
-				echo '<input type="text" name="log" id="user'.esc_attr($id).'" placeholder="'.$settings['user_placeholder'].'" class="tp-input" required>';
+				echo '<input type="text" name="log" id="user'.esc_attr($id).'" placeholder="'.esc_html( $settings['user_placeholder'] ).'" class="tp-input" required>';
 				echo '</div>';
 
 				?>
@@ -7312,10 +7305,10 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 			<div class="tp-field-group tp-l-lr-password">
 				<?php
 				if ( $settings['show_labels']=='yes' && ($settings['form_selection']=='tp_login' || $settings['form_selection']=='tp_login_register'))  :					
-					echo '<label for="password'.esc_attr($id).'" class="tp-form-label">'.$settings['password_label'].'</label>';
+					echo '<label for="password'.esc_attr($id).'" class="tp-form-label">'.esc_html( $settings['password_label'] ).'</label>';
 				endif;
 				echo '<div class="tp-form-controls">';				
-				echo '<input type="password" name="pwd" id="password'.esc_attr($id).'" placeholder="'.$settings['password_placeholder'].'" class="tp-input" required>';
+				echo '<input type="password" name="pwd" id="password'.esc_attr($id).'" placeholder="'.esc_html( $settings['password_placeholder'] ).'" class="tp-input" required>';
 				echo '</div>';
 				?>
 			</div>
@@ -7332,7 +7325,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 			<div <?php echo $this->get_render_attribute_string( 'submit-group' ); ?>>
 				<button type="submit" class="tp-button" name="wp-submit">
 					<?php if ( ! empty( $settings['button_text'] ) ) : ?>
-						<span><?php echo $settings['button_text']; ?></span>
+						<span><?php echo esc_html( $settings['button_text'] ); ?></span>
 					<?php endif; ?>
 				</button>
 			</div>
@@ -7354,10 +7347,10 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 								echo wp_registration_url(); 
 							}else if($settings['show_register_opt']=='custom'){						
 								if ( ! empty( $settings['show_register_opt_link']['url'] ) ) {
-									echo $settings['show_register_opt_link']['url'];								
+									echo esc_url ( $settings['show_register_opt_link']['url'] );
 								}
 							}
-						?>"><?php echo esc_html($settings['bottom_register_text']); ?></a>
+						?>"><?php echo esc_html( $settings['bottom_register_text'] ); ?></a>
 					<?php endif; ?>
 					
 				</div>
@@ -7370,7 +7363,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 		}
 		$this->user_social_log_reg('login');
 		
-		if(!empty($settings['show_lost_password']) && $settings['show_lost_password']=='yes'){			
+		if(!empty($settings['show_lost_password']) && $settings['show_lost_password']=='yes'){
 			if((empty($_GET['action'])) || (!empty($_GET['action']) && $_GET['action'] !='theplusrpf')){
 				$this->user_lost_password_form('login-time-fp'); 
 			}
@@ -7401,7 +7394,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 		
 		$dis_password = ( $settings['tp_dis_pass_field'] == 'yes' ) ? 'yes' : 'no';
 		$dis_password_conf = ( $settings['tp_dis_conf_pass_field'] == 'yes' ) ? 'yes' : 'no';
-				
+		
 		$dis_mail_chimp = ( $settings['tp_mail_chimp_subscribe_opt'] == 'yes' ) ? 'yes' : 'no';
 		$mc_custom_apikey=$mc_custom_listid='';
 		if(!empty($dis_mail_chimp) && $dis_mail_chimp=='yes'){
@@ -7427,7 +7420,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 		
 		?>
 		
-		<form id="tp-user-register<?php echo esc_attr($id); ?>" name="tp-user-registration" class="tp-form-stacked " method="post" action="" data-dis_cap="<?php echo $dis_cap; ?>" ' data-tceo="<?php echo htmlspecialchars($data_tceo, ENT_QUOTES, 'UTF-8'); ?>" data-dis_password="<?php echo $dis_password; ?>" data-dis_password_conf="<?php echo $dis_password_conf; ?>" data-after_reg_redirect="<?php echo $redirect_url_reg; ?>" data-dis_mail_chimp="<?php echo $dis_mail_chimp; ?>" data-mc_custom_apikey="<?php echo $mc_custom_apikey; ?>" data-mc_custom_listid="<?php echo $mc_custom_listid; ?>">
+		<form id="tp-user-register<?php echo esc_attr($id); ?>" name="tp-user-registration" class="tp-form-stacked " method="post" action="" data-dis_cap="<?php echo esc_attr( $dis_cap ); ?>" ' data-tceo="<?php echo htmlspecialchars($data_tceo, ENT_QUOTES, 'UTF-8'); ?>" data-dis_password="<?php echo esc_attr( $dis_password ); ?>" data-dis_password_conf="<?php echo esc_attr( $dis_password_conf ); ?>" data-after_reg_redirect="<?php echo esc_attr( $redirect_url_reg ); ?>" data-dis_mail_chimp="<?php echo esc_attr( $dis_mail_chimp ); ?>" data-mc_custom_apikey="<?php echo esc_attr( $mc_custom_apikey ); ?>" data-mc_custom_listid="<?php echo esc_attr( $mc_custom_listid ); ?>">
 			
 			<?php if(!empty($hide_form) && $hide_form != 'yes'){
 				if(!empty($settings['tp_dis_name_field']) && $settings['tp_dis_name_field']=='yes'){ 
@@ -7437,10 +7430,10 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 			<div class="tp-field-group tp-lr-f-first-name">
 				<?php				
 				if ( $settings['show_labels_reg']=='yes' && ($settings['form_selection']=='tp_register' || $settings['form_selection']=='tp_login_register')) {					
-					echo '<label for="first_name'.esc_attr($id).'" class="tp-form-label">'.$settings['first_name_label'].'</label>';					
+					echo '<label for="first_name'.esc_attr($id).'" class="tp-form-label">'.esc_html( $settings['first_name_label'] ).'</label>';					
 				}
 				echo '<div class="tp-form-controls">';
-				echo '<input type="text" name="first_name" id="first_name'.esc_attr($id).'" placeholder="'.$settings['first_name_placeholder'].'" class="tp-input tp-reg-f-load" required>';				
+				echo '<input type="text" name="first_name" id="first_name'.esc_attr($id).'" placeholder="'.esc_html( $settings['first_name_placeholder'] ).'" class="tp-input tp-reg-f-load" required>';				
 				if(!empty($settings['tp_honeypot_opt']) && $settings['tp_honeypot_opt']=='yes'){
 					echo '<input type="text" name="tphoney-first_name" id="tphoney_first_name'.esc_attr($id).'" class="tp-honey-input">';
 				}
@@ -7453,10 +7446,10 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 			<div class="tp-field-group tp-lr-f-last-name">
 				<?php
 				if ( $settings['show_labels_reg']=='yes' && ($settings['form_selection']=='tp_register' || $settings['form_selection']=='tp_login_register')) {					
-					echo '<label for="last_name'.esc_attr($id).'" class="tp-form-label">'.$settings['last_name_label'].'</label>';									
+					echo '<label for="last_name'.esc_attr($id).'" class="tp-form-label">'.esc_html( $settings['last_name_label'] ).'</label>';									
 				}
 				echo '<div class="tp-form-controls">';				
-				echo '<input type="text" name="last_name" id="last_name'.esc_attr($id).'" placeholder="'.$settings['last_name_placeholder'].'" class="tp-input tp-reg-f-load" required>';
+				echo '<input type="text" name="last_name" id="last_name'.esc_attr($id).'" placeholder="'.esc_html( $settings['last_name_placeholder'] ).'" class="tp-input tp-reg-f-load" required>';
 				if(!empty($settings['tp_honeypot_opt']) && $settings['tp_honeypot_opt']=='yes'){
 					echo '<input type="text" name="tphoney-last_name" id="tphoney_last_name'.esc_attr($id).'" class="tp-honey-input">';
 				}
@@ -7471,10 +7464,10 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 			if(!empty($settings['tp_dis_username_field']) && $settings['tp_dis_username_field']=='yes'){
 				echo '<div class="tp-field-group tp-lr-f-user-name">';
 						if ( $settings['show_labels_reg']=='yes' && ($settings['form_selection']=='tp_register' || $settings['form_selection']=='tp_login_register')) {
-							echo '<label for="user_login'.esc_attr($id).'" class="tp-form-label">'.$settings['user_name_label'].'</label>';
+							echo '<label for="user_login'.esc_attr($id).'" class="tp-form-label">'.esc_html( $settings['user_name_label'] ).'</label>';
 						}
 					echo '<div class="tp-form-controls">';				
-						echo '<input type="text" name="user_login" id="user_login'.esc_attr($id).'" placeholder="'.$settings['user_name_placeholder'].'" class="tp-input tp-reg-f-load" required>';
+						echo '<input type="text" name="user_login" id="user_login'.esc_attr($id).'" placeholder="'.esc_html( $settings['user_name_placeholder'] ).'" class="tp-input tp-reg-f-load" required>';
 						if(!empty($settings['tp_honeypot_opt']) && $settings['tp_honeypot_opt']=='yes'){
 							echo '<input type="text" name="tphoney-user_login" id="tphoney_user_login'.esc_attr($id).'" class="tp-honey-input">';
 						}
@@ -7487,10 +7480,10 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 			<div class="tp-field-group tp-lr-f-email">
 				<?php
 				if ( $settings['show_labels_reg']=='yes' && ($settings['form_selection']=='tp_register' || $settings['form_selection']=='tp_login_register')){					
-					echo '<label for="user_email'.esc_attr($id).'" class="tp-form-label">'.$settings['email_label'].'</label>';						
+					echo '<label for="user_email'.esc_attr($id).'" class="tp-form-label">'.esc_html( $settings['email_label'] ).'</label>';						
 				}
 				echo '<div class="tp-form-controls">';				
-				echo '<input type="email" name="user_email" id="user_email'.esc_attr($id).'" placeholder="'.$settings['email_placeholder'].'" class="tp-input tp-reg-f-load" required>';
+				echo '<input type="email" name="user_email" id="user_email'.esc_attr($id).'" placeholder="'.esc_html( $settings['email_placeholder'] ).'" class="tp-input tp-reg-f-load" required>';
 				if(!empty($settings['tp_honeypot_opt']) && $settings['tp_honeypot_opt']=='yes'){
 					echo '<input type="text" name="tphoney-user_email" id="tphoney_user_email'.esc_attr($id).'" class="tp-honey-input">';
 				}
@@ -7536,7 +7529,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 			<div class="tp-field-group tp-lr-f-user-pass">
 				<?php
 				if ( $settings['show_labels_reg']=='yes' && ($settings['form_selection']=='tp_register' || $settings['form_selection']=='tp_login_register')){					
-					echo '<label for="user_password'.esc_attr($id).'" class="tp-form-label">'.$settings['r_password_label'].'</label>';	
+					echo '<label for="user_password'.esc_attr($id).'" class="tp-form-label">'.esc_html( $settings['r_password_label'] ).'</label>';	
 					if((!empty($settings['psm_style']) && $settings['psm_style']=='style-2') && (!empty($settings['psm_style2_in']) && $settings['psm_style2_in']=='after-label')){
 						echo $dpm_div;
 					}
@@ -7546,7 +7539,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 					$rfpm_class='tp-form-rf-meter';
 				}
 				echo '<div class="tp-form-controls '.$rfpm_class.'">';				
-				echo '<input type="password" name="user_password" id="user_password'.esc_attr($id).'" placeholder="'.$settings['r_password_placeholder'].'" class="tp-input tp-reg-f-load tp-reg-pass-hint" required '.$pattern_pass_reg.'>';
+				echo '<input type="password" name="user_password" id="user_password'.esc_attr($id).'" placeholder="'.esc_html( $settings['r_password_placeholder'] ).'" class="tp-input tp-reg-f-load tp-reg-pass-hint" required '.esc_attr( $pattern_pass_reg ).'>';
 				
 				$passshowicon=$passhideicon='';
 				if(!empty($settings['tp_dis_show_pass_icon']) && $settings['tp_dis_show_pass_icon']=='yes'){
@@ -7562,7 +7555,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 						$passhideicon = ob_get_contents();
 						ob_end_clean();	
 					}
-					echo '<span toggle="#user_password'.esc_attr($id).'" class="tp-password-field-show tpsi" data-passshowicon="'.esc_html($passshowicon).'" data-passhideicon="'.esc_html($passhideicon).'">'.$passshowicon.'</span>';					
+					echo '<span toggle="#user_password'.esc_attr($id).'" class="tp-password-field-show tpsi" data-passshowicon="'.esc_html($passshowicon).'" data-passhideicon="'.esc_html($passhideicon).'">'.esc_attr( $passshowicon ).'</span>';					
 				}
 				//hint
 				$passshowiconh='';
@@ -7573,7 +7566,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 						$passshowiconh = ob_get_contents();
 						ob_end_clean();	
 					}					
-					echo '<span toggle="#user_password'.esc_attr($id).'" class="tp-password-field-showh tpsi">'.$passshowiconh.'</span>';					
+					echo '<span toggle="#user_password'.esc_attr($id).'" class="tp-password-field-showh tpsi">'.esc_attr( $passshowiconh ).'</span>';					
 				}
 				
 				if(!empty($settings['tp_honeypot_opt']) && $settings['tp_honeypot_opt']=='yes'){
@@ -7587,7 +7580,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 			</div>
 			<?php
 			if((!empty($settings['tp_dis_pass_pattern'])) && (!empty($settings['tp_dis_pass_hint']) && $settings['tp_dis_pass_hint']=='yes') && !empty($settings['dis_pass_hint_on'])){			
-				echo '<ul class="tp-pass-indicator '.$settings['dis_pass_hint_on'].' '.$settings['tp_dis_pass_pattern'].' '.$settings['dis_pass_hint_layout'].'">';
+				echo '<ul class="tp-pass-indicator '.esc_attr( $settings['dis_pass_hint_on']).' '.esc_attr( $settings['tp_dis_pass_pattern'] ).' '.esc_attr( $settings['dis_pass_hint_layout'] ).'">';
 				if($settings['tp_dis_pass_pattern']=='pattern-1' || $settings['tp_dis_pass_pattern']=='pattern-4' || $settings['tp_dis_pass_pattern']=='pattern-5'){
 					echo '<li><span class="tp-min-eight-character"><i class="fas fa-question-circle" aria-hidden="true"></i></span>Minimum eight characters</li>';
 				}
@@ -7629,10 +7622,10 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 				<div class="tp-field-group tp-lr-f-user-conf-pass">
 					<?php
 					if ( $settings['show_labels_reg']=='yes' && ($settings['form_selection']=='tp_register' || $settings['form_selection']=='tp_login_register')){
-						echo '<label for="user_conf_password'.esc_attr($id).'" class="tp-form-label">'.$settings['r_conf_password_label'].'</label>';
+						echo '<label for="user_conf_password'.esc_attr($id).'" class="tp-form-label">'.esc_html( $settings['r_conf_password_label'] ).'</label>';
 					}
 					echo '<div class="tp-form-controls">';				
-					echo '<input type="password" name="user_conf_password" id="user_conf_password'.esc_attr($id).'" placeholder="'.$settings['r_conf_password_placeholder'].'" class="tp-input tp-reg-f-load" required >';
+					echo '<input type="password" name="user_conf_password" id="user_conf_password'.esc_attr($id).'" placeholder="'.esc_html( $settings['r_conf_password_placeholder'] ).'" class="tp-input tp-reg-f-load" required >';
 					if(!empty($settings['tp_honeypot_opt']) && $settings['tp_honeypot_opt']=='yes'){
 						echo '<input type="password" name="tphoney-user_conf_password" id="tphoney_user_conf_password'.esc_attr($id).'" class="tp-honey-input">';
 					}
@@ -7728,7 +7721,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 				}	/*password field end*/ ?>
 			<?php if ( $settings['show_additional_message'] ) : ?>
 				<div class="tp-field-group tp-lr-f-add-msg">
-					<span class="tp-register-additional-message"><?php echo $settings['additional_message']; ?></span>
+					<span class="tp-register-additional-message"><?php echo esc_html( $settings['additional_message'] ); ?></span>
 				</div>
 			<?php endif;
 				$id = 'lr'.$this->get_id();
@@ -7740,8 +7733,9 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 				if(!empty($check_recaptcha['theplus_site_key_recaptcha'])){
 					$site_key_captcha = $check_recaptcha['theplus_site_key_recaptcha'];
 				?>
-				<div class="tp-plus-re-captcha tp-lrfp-ff-<?php echo $settings['form_align']; ?>">
+				<div class="tp-plus-re-captcha tp-lrfp-ff-<?php echo esc_attr( $settings['form_align'] ); ?>">
 					<div id="inline-badge-<?php echo esc_attr($id); ?>"></div>
+					
 					<script src="https://www.google.com/recaptcha/api.js?render=explicit&onload=plus_onLoadReCaptcha<?php echo esc_attr($id); ?>"></script>
 						<script>
 						window.plus_onLoadReCaptcha<?php echo esc_attr($id); ?> = function() {
@@ -7768,7 +7762,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 			/*mailchimp field start*/ 
 			if(!empty($settings['tp_mail_chimp_subscribe_opt']) && $settings['tp_mail_chimp_subscribe_opt']=='yes'){
 			?>
-			<div class="tp-field-group tp-lr-f-mail-chimp-sub tp-lrfp-ff-<?php echo $settings['form_align']; ?>">
+			<div class="tp-field-group tp-lr-f-mail-chimp-sub tp-lrfp-ff-<?php echo esc_attr( $settings['form_align'] ); ?>">
 				<?php
 				
 				echo '<div class="tp-form-controls " style="display: flex;">';	
@@ -7777,7 +7771,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 					echo '<label class="user_mail_chimp_subscribe_checkbox" for="user_mail_chimp_subscribe'.esc_attr($id).'"></label>';
 				}
 				if ($settings['form_selection']=='tp_register' || $settings['form_selection']=='tp_login_register'){
-					echo '<label class="tp-form-label" for="user_mail_chimp_subscribe'.esc_attr($id).'">'.$settings['r_mail_chimp_label'].'</label>';						
+					echo '<label class="tp-form-label" for="user_mail_chimp_subscribe'.esc_attr($id).'">'.esc_html( $settings['r_mail_chimp_label'] ).'</label>';						
 				}
 				if(!empty($settings['form_align']) && $settings['form_align']=='right'){
 					echo '<label class="user_mail_chimp_subscribe_checkbox" for="user_mail_chimp_subscribe'.esc_attr($id).'" style="padding-left:15px;margin-left:15px;"></label>';					
@@ -7791,7 +7785,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 			/*Terms of Conditions start*/ 
 			if(!empty($settings['tp_terms_condition_opt']) && $settings['tp_terms_condition_opt']=='yes'){
 			?>
-			<div class="tp-field-group tp-lr-f-tac tp-lrfp-ff-<?php echo $settings['form_align']; ?>">
+			<div class="tp-field-group tp-lr-f-tac tp-lrfp-ff-<?php echo esc_attr( $settings['form_align'] ); ?>">
 				<?php				
 				echo '<div class="tp-form-controls " style="display: flex;">';	
 				echo '<input type="checkbox" name="user_tac" id="user_tac'.esc_attr($id).'" class="tp-input" required>';
@@ -7799,7 +7793,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 					echo '<label class="user_tac_checkbox" for="user_tac'.esc_attr($id).'"></label>';
 				}
 				if($settings['form_selection']=='tp_register' || $settings['form_selection']=='tp_login_register'){					
-					echo '<label class="tp-form-label" for="user_tac'.esc_attr($id).'">'.$settings['r_terms_conition_label'].'</label>';						
+					echo '<label class="tp-form-label" for="user_tac'.esc_attr($id).'">'.esc_html( $settings['r_terms_conition_label'] ).'</label>';						
 				}
 				if(!empty($settings['form_align']) && $settings['form_align']=='right'){
 					echo '<label class="user_tac_checkbox" for="user_tac'.esc_attr($id).'" style="padding-left:15px;margin-left:15px;"></label>';
@@ -7814,7 +7808,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 			<div <?php echo $this->get_render_attribute_string( 'submit-group' ); ?>>				
 				<button type="submit" class="tp-button" name="wp-submit">
 					<?php if ( ! empty( $settings['button_text_reg'] ) ) : ?>
-						<span><?php echo $settings['button_text_reg']; ?></span>
+						<span><?php echo esc_html( $settings['button_text_reg'] ); ?></span>
 					<?php endif; ?>
 				</button>
 			</div>
@@ -7826,7 +7820,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 				<div class="tp-field-group tp-user-register-password">
 					<?php if (!empty($show_login) && $show_login=='yes') :
 						if(!empty($settings['login_before_text'])){
-							echo '<div class="login-before-text">'.$settings['login_before_text'].'</div>';
+							echo '<div class="login-before-text">'.esc_html( $settings['login_before_text'] ).'</div>';
 						}
 						 ?><a class="tp-login" href="<?php 
 						if($settings['show_login_opt']=='default'){
@@ -8311,17 +8305,16 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 		}else if($type=='register'){
 			$action = 'theplus_ajax_facebook_login';
 			$gid = 'register'.$this->get_id();
-		}	
+		}
 				
 		if(((!empty($settings['tp_sl_facebook']) && $settings['tp_sl_facebook']=="yes") || (!empty($settings['tp_sl_google']) && $settings['tp_sl_google']=="yes"))){
 			
 			if(!empty($settings['tp_sl_layout_opt']) && $settings['tp_sl_layout_opt']=='tp_sl_layout_opt_1'){
-				echo '<style>div#g-signin2-'.$gid.' .abcRioButton,div#g-signin2-'.$gid.' .abcRioButton{height:24px!important;width:70px!important}div#g-signin2-'.$gid.' .abcRioButton .abcRioButtonIcon,div#g-signin2-'.$gid.' .abcRioButton .abcRioButtonIcon{padding:5px!important}div#g-signin2-'.$gid.' .abcRioButton .abcRioButtonIcon .abcRioButtonSvgImageWithFallback,div#g-signin2-'.$gid.' .abcRioButton .abcRioButtonIcon .abcRioButtonSvgImageWithFallback{width:16px!important;height:16px!important}div#g-signin2-'.$gid.' .abcRioButtonContentWrapper .abcRioButtonContents,div#g-signin2-'.$gid.' .abcRioButtonContentWrapper .abcRioButtonContents{font-size:11px!important;line-height:1!important;margin:0}div#g-signin2-'.$gid.' .abcRioButtonContentWrapper,div#g-signin2-'.$gid.' .abcRioButtonContentWrapper{display:flex;align-items:center}div#g-signin2-'.$gid.',div#g-signin2-'.$gid.'{margin-left:15px;border-radius:3px!important;overflow:hidden}</style>';
+				echo '<style>div#g-signin2-'.esc_attr( $gid ).' .abcRioButton,div#g-signin2-'.esc_attr( $gid ).' .abcRioButton{height:24px!important;width:70px!important}div#g-signin2-'.$gid.' .abcRioButton .abcRioButtonIcon,div#g-signin2-'.esc_attr( $gid ).' .abcRioButton .abcRioButtonIcon{padding:5px!important}div#g-signin2-'.esc_attr( $gid ).' .abcRioButton .abcRioButtonIcon .abcRioButtonSvgImageWithFallback,div#g-signin2-'.esc_attr( $gid ).' .abcRioButton .abcRioButtonIcon .abcRioButtonSvgImageWithFallback{width:16px!important;height:16px!important}div#g-signin2-'.esc_attr( $gid ).' .abcRioButtonContentWrapper .abcRioButtonContents,div#g-signin2-'.esc_attr( $gid ).' .abcRioButtonContentWrapper .abcRioButtonContents{font-size:11px!important;line-height:1!important;margin:0}div#g-signin2-'.$gid.' .abcRioButtonContentWrapper,div#g-signin2-'.esc_attr( $gid ).' .abcRioButtonContentWrapper{display:flex;align-items:center}div#g-signin2-'.esc_attr( $gid ).',div#g-signin2-'.esc_attr( $gid ).'{margin-left:15px;border-radius:3px!important;overflow:hidden}</style>';
 			}	
 			if(!empty($settings['tp_sl_layout_opt']) && $settings['tp_sl_layout_opt']=='tp_sl_layout_opt_2'){
 				echo '<style>.tp-social-login-wrapper > div{margin-right: 10px;}.tp-wp-lrcf .tp-social-login-wrapper{margin-top:10px;}</style>';
-			}
-			
+			}			
 		
 		$mcl_double_opt_in = (!empty($settings['mcl_double_opt_in'])) ? $settings['mcl_double_opt_in'] : 'no';
 		
@@ -8362,7 +8355,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 
 		  window.fbAsyncInit = function() {
 			FB.init({
-			  appId      : '<?php echo $facebook_appid; ?>',
+			  appId      : '<?php echo esc_attr( $facebook_appid ); ?>',
 			  cookie     : true,
 			  xfbml      : true,
 			  version    : 'v7.0'
@@ -8407,8 +8400,8 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 						success: function( data ) {				
 							if( data.loggedin === true || data.registered === true) {
 								//$scope.find( '.status' ).addClass( 'success' ).text( 'Thanks for logging in, ' + res.name + '!' );
-								if( '<?php echo $settings['redirect_url_social']['url'] !=''; ?>'){
-									window.location = '<?php echo $settings['redirect_url_social']['url']; ?>';
+								if( '<?php echo !empty(esc_url( $settings['redirect_url_social']['url'])); ?>'){
+									window.location = '<?php echo esc_url( $settings['redirect_url_social']['url'] ); ?>';
 								}else{
 									location.reload();
 								}	
@@ -8423,9 +8416,9 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 		</script>
 		<?php
 		 if(!empty($settings['tp_sl_layout_opt']) && $settings['tp_sl_layout_opt']=='tp_sl_layout_opt_2'){ ?>
-			 <div class="fb-login-button" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width="" data-height="200px" onlogin="checkloginstatus('<?php echo $type; ?>');"></div>
+			 <div class="fb-login-button" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-width="" data-height="200px" onlogin="checkloginstatus('<?php echo esc_attr( $type ); ?>');"></div>
 		<?php }else { ?>
-			 <fb:login-button scope="public_profile,email" onlogin="checkloginstatus('<?php echo $type; ?>');"></fb:login-button>
+			 <fb:login-button scope="public_profile,email" onlogin="checkloginstatus('<?php echo esc_attr( $type ); ?>');"></fb:login-button>
 		<?php } ?>		
 			<div id="status"></div>
 		<?php
@@ -8454,17 +8447,17 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 			?>
 			<script src="https://apis.google.com/js/platform.js?onload=init"></script>
 			<script>
-			var redirect_page = "<?php echo $settings['redirect_url_social']['url']; ?>";
+			var redirect_page = "<?php echo esc_url( $settings['redirect_url_social']['url'] ); ?>";
 			var fp_loading='<span class="loading-spinner-reg"><i class="far fa-times-circle" aria-hidden="true"></i></span>';
 				gapi.load( 'auth2', function() {
 					gapi.signin2.render('g-signin2-<?php echo esc_attr($gid); ?>', {
 						'scope': 'profile email',
-						'longtitle': '<?php echo $tp_sl_google_longtitle; ?>', 
-						'theme': '<?php echo $tp_sl_google_theme; ?>',
+						'longtitle': '<?php echo esc_attr( $tp_sl_google_longtitle ); ?>', 
+						'theme': '<?php echo esc_attr( $tp_sl_google_theme ); ?>',
 						'height': 40,
 					});
 					auth2 = gapi.auth2.init({
-						client_id: '<?php echo $google_clint_id; ?>',
+						client_id: '<?php echo esc_attr( $google_clint_id ); ?>',
 						cookiepolicy: 'single_host_origin',
 					});
 					auth2.attachClickHandler( 'g-signin2-<?php echo esc_attr($gid); ?>', {},
@@ -8477,7 +8470,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 							
 							var google_data = {
 								'nonce': "<?php echo $nonce; ?>",
-								'action' : "<?php echo $action; ?>",
+								'action' : "<?php echo esc_attr( $action ); ?>",
 								'name' : name,
 								'email' : email,
 								'id_token' : id_token,
@@ -8531,13 +8524,32 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 		$settings = $this->get_settings();
 		$id       = 'lr'.$this->get_id();
 		
-		if(!empty($settings['reset_pass_url'])){
-			$reset_page_url = get_permalink($settings['reset_pass_url']);
-			$forgot_page_url = get_the_permalink();
+		if(!empty($settings['reset_pass_url'])){	
+			$reset_url = get_permalink($settings['reset_pass_url']);
+			$forgot_url = get_the_permalink();
 		}else{
-			$reset_page_url = get_the_permalink();
-			$forgot_page_url = get_the_permalink();
+			$reset_url = get_the_permalink();
+			$forgot_url = get_the_permalink();
 		}
+		
+		$tceol=array();
+		if(!empty($settings['tp_cst_email_lost_opt']) && $settings['tp_cst_email_lost_opt'] == 'yes'){
+			$tpces = !empty($settings['tp_cst_email_lost_subject']) ? $settings['tp_cst_email_lost_subject'] : '';
+			$tpcem = !empty($settings['tp_cst_email_lost_message']) ? $settings['tp_cst_email_lost_message'] : '';
+			
+			$tceol["tp_cst_email_lost_opt"] = $settings['tp_cst_email_lost_opt'];
+			$tceol["tp_cst_email_lost_subject"] = $tpces;
+			$tceol["tp_cst_email_lost_message"] = $tpcem;
+		}		
+
+		$data_forgot = [];
+		$data_forgot['f_p_opt'] =$settings['f_p_opt'];		
+		$data_forgot['reset_url'] =$reset_url;
+		$data_forgot['forgot_url'] =$forgot_url;
+		$data_forgot['tceol'] = $tceol;
+		$data_forgot['noncesecure'] =wp_create_nonce( 'tp_user_lost_password_action' );
+		
+		$generate_key= tp_plus_simple_decrypt( json_encode($data_forgot), 'ey' );
 		?>
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
@@ -8556,11 +8568,7 @@ class ThePlus_Wp_Login_Register extends Widget_Base {
 			            data: { 
 			                'action': 'theplus_ajax_forgot_password',
 			                'user_login': $(forgot_pass_form + ' #user_login<?php echo esc_attr($id); ?>').val(),
-							'f_p_opt': $(forgot_pass_form).data('f_p_opt'), 
-							'resetpageurl': '<?php echo $reset_page_url; ?>',
-							'forgotpageurl': '<?php echo $forgot_page_url; ?>',
-							'tceol':$(forgot_pass_form).data('tceol'), 
-							'nonce': $(forgot_pass_form + ' #tp_user_lost_password_nonce').val()
+							'tpforgotdata': '<?php echo esc_html( $generate_key ); ?>',
 			            },
 						beforeSend: function(){							
 							$("#tp-user-lost-password<?php echo esc_attr($id);?> .theplus-notification").addClass("active");

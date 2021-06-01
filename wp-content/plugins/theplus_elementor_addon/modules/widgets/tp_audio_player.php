@@ -15,8 +15,8 @@ use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Background;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Typography;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Css_Filter;
 use Elementor\Group_Control_Image_Size;
 
@@ -252,7 +252,7 @@ class ThePlus_Audio_Player extends Widget_Base {
 			[
 				'name' => 'title_typography',
 				'label' => esc_html__( 'Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .tp-audio-player-wrapper .trackDetails .title,{{WRAPPER}} .tp-audio-player-wrapper .title',
 			]
 		);
@@ -283,7 +283,7 @@ class ThePlus_Audio_Player extends Widget_Base {
 			[
 				'name' => 'author_typography',
 				'label' => esc_html__( 'Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .tp-audio-player-wrapper .trackDetails .artist,{{WRAPPER}} .tp-audio-player-wrapper .artist',
 			]
 		);
@@ -314,7 +314,7 @@ class ThePlus_Audio_Player extends Widget_Base {
 			[
 				'name' => 'splittext_typography',
 				'label' => esc_html__( 'Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .tp-audio-player-wrapper .trackDetails .splitTxt,{{WRAPPER}} .tp-audio-player-wrapper .splitTxt',
 			]
 		);
@@ -867,7 +867,7 @@ class ThePlus_Audio_Player extends Widget_Base {
 			[
 				'name' => 'playlist_typography',
 				'label' => esc_html__( 'Typography', 'theplus' ),
-				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme' => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .tp-audio-player-wrapper .playlist li',
 				
 			]

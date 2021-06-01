@@ -9,6 +9,8 @@
 			var data_stroke=$self.data("stroke");
 			var svg_fill_enable=$self.data("svg_fill_enable");
 			var data_fill_color=$self.data("fill_color");
+			var fill_hover_color = $self.data("fillhover");
+			var stroke_hover_color=$self.data("strokehover");
 			/*if($self.find(".info_box_svg").length > 0){
 				$self.find(".info_box_svg > svg").attr("id",data_id);
 				new Vivus(data_id, {type: data_type, duration: data_duration,forceRender:false,start: 'inViewport'});
@@ -35,6 +37,28 @@
 							}
 						}
 					}
+					if(stroke_hover_color!='' || fill_hover_color!=''){
+						var fillc='',strokec='';
+						if(stroke_hover_color!=''){
+							strokec = 'stroke:'+stroke_hover_color+' !important;'
+						}
+						if(fill_hover_color!=''){
+							fillc = 'fill:'+fill_hover_color+' !important;'
+						}
+						myVivus.el.insertAdjacentHTML('afterbegin', '<style>svg *{-webkit-transition: all .3s;moz-transition: all .3s;-o-transition: all .3s;-ms-transition: all .3s;transition:all .3s;}svg.hoversvg *{'+strokec+fillc+' }</style>');
+						if($self.closest('.info-box-inner').length > 0){
+							$self.closest('.info-box-inner').on("mouseover", function(){
+								myVivus.el.classList.add('hoversvg')
+							});
+							$self.closest('.info-box-inner').on("mouseout", function(){
+								myVivus.el.classList.remove('hoversvg');
+							});
+						}
+					}
+					
+					
+					
+					
 				}
 				}, function (myVivus) {
 					if(myVivus.getStatus() === 'end' && svg_fill_enable!='' && svg_fill_enable=='yes'){

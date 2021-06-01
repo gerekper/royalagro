@@ -10,9 +10,9 @@ namespace TheplusAddons\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Utils;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Background;
 
@@ -159,7 +159,7 @@ class ThePlus_Countdown extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'numbers_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme' => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}}  .pt_plus_countdown li > span',
 				'separator' => 'after',
 			)
