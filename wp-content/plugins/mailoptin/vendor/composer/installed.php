@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '4d93806923495d3b327d3c6d45cff06346ccb717',
+    'reference' => '7d1f7941f890ca2d2effe4bcf0367425d4e3b9c6',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '4d93806923495d3b327d3c6d45cff06346ccb717',
+      'reference' => '7d1f7941f890ca2d2effe4bcf0367425d4e3b9c6',
     ),
     'collizo4sky/persist-admin-notices-dismissal' => 
     array (
@@ -31,12 +31,12 @@
     ),
     'composer/installers' => 
     array (
-      'pretty_version' => 'v1.10.0',
-      'version' => '1.10.0.0',
+      'pretty_version' => 'v1.11.0',
+      'version' => '1.11.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '1a0357fccad9d1cc1ea0c9a05b8847fbccccb78d',
+      'reference' => 'ae03311f45dfe194412081526be2e003960df74b',
     ),
     'deliciousbrains/wp-background-processing' => 
     array (
@@ -83,8 +83,8 @@
     ),
     'mailoptin/authifly' => 
     array (
-      'pretty_version' => '0.2.1617692439',
-      'version' => '0.2.1617692439.0',
+      'pretty_version' => '0.2.1622721744',
+      'version' => '0.2.1622721744.0',
       'aliases' => 
       array (
       ),
@@ -92,8 +92,8 @@
     ),
     'mailoptin/connections' => 
     array (
-      'pretty_version' => '0.2.1617692482',
-      'version' => '0.2.1617692482.0',
+      'pretty_version' => '0.2.1622721809',
+      'version' => '0.2.1622721809.0',
       'aliases' => 
       array (
       ),
@@ -101,12 +101,12 @@
     ),
     'mailoptin/core' => 
     array (
-      'pretty_version' => '0.1.0-alpha.1617713129',
-      'version' => '0.1.0.0-alpha1617713129',
+      'pretty_version' => '0.1.0-alpha.1622721802',
+      'version' => '0.1.0.0-alpha1622721802',
       'aliases' => 
       array (
       ),
-      'reference' => 'afa0e11c29b512cdc5f7586bd6fd0b1a78453976',
+      'reference' => '227d9b0bb421809804e7e86176f33fa1e89549e4',
     ),
     'nesbot/carbon' => 
     array (

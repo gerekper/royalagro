@@ -3,7 +3,7 @@ Contributors: gt3themes
 Tags: gallery, photo gallery, gallery block, image gallery, gutenberg block, wordpress photo gallery plugin, gutenberg gallery block, responsive gallery, image gallery block, instagram gallery, photo album, video gallery
 Requires at least: 5.5
 Tested up to: 5.7
-Stable tag: 2.7.5
+Stable tag: 2.7.7.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -17,7 +17,9 @@ GT3 Photo Gallery & Video plugin lets you extend the functionality of the defaul
 
 Create an awesome look for your photo galleries with ease. The current version of the GT3 photo & video gallery plugin works with latest versions the Gutenberg blocks editor. You can easily use GT3 Gutenberg blocks to add image and video galleries on your website.
 
-The current plugin version meets all Google Pagespeed requirements and if you check our sample photo gallery [Gallery Pagespeed Test](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Flivewp.site%2Fwp%2Fmd%2Fgoogle%2Fpagespeed%2F&tab=desktop) you will get 99 score.
+The current plugin version meets all Google Pagespeed requirements and if you check our sample photo gallery speed test you will get 100 score.
+
+🚀 [Check Gallery Pagespeed Test](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Flivewp.site%2Fwp%2Fmd%2Fgoogle%2Fpagespeed%2F&tab=desktop)
 
 <h3>How to Add GT3 Photo & Video Gallery Block in Gutenberg</h3>
 In this video you will see how easily you can create gallery using GT3 Gutenberg photo & video gallery blocks.
@@ -26,7 +28,9 @@ In this video you will see how easily you can create gallery using GT3 Gutenberg
 
 Please note that you can convert Gutenberg block gallery from Grid to Masonry and vice versa.
 
-You can also read the photo gallery plugin [Online Documentation](https://gt3wpgallery.com/kb/) to better understand how all the things work.
+You can also read the photo gallery plugin documentation to better understand how all the things work.
+
+ℹ️ [Online Documentation](https://gt3wpgallery.com/kb/)
 
 <h3>Elementor Compatibility</h3>
 The lite version is fully compatible with Elementor page builder. It comes with Grid and Masonry photo gallery widgets.
@@ -175,6 +179,20 @@ Yes, the plugin has a built-in lazy loading functionality. You can enable or dis
 == Upgrade Notice ==
 
 == Changelog ==
+
+= 2.7.7.1 =
+* Fixed: MailPoet incompatibility issue
+* Fixed: Minor bug fixes
+
+= 2.7.7 =
+* Fixed: Isotope issue
+* Fixed: Minor bug fixes
+
+= 2.7.6 =
+* Updated: Plugin core
+* Updated: Lazyloading
+* Updated: Removed animated dash icon
+* Fixed: Minor bug fixes
 
 = 2.7.5 =
 * Updated: Plugin core

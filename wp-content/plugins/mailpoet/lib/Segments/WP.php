@@ -67,7 +67,6 @@ class WP {
     if (!$subscriber) {
       $subscriber = Subscriber::where('email', $wpUser->user_email)->findOne(); // phpcs:ignore Squiz.NamingConventions.ValidVariableName.NotCamelCaps
     }
-
     // get first name & last name
     $firstName = $wpUser->first_name; // phpcs:ignore Squiz.NamingConventions.ValidVariableName.NotCamelCaps
     $lastName = $wpUser->last_name; // phpcs:ignore Squiz.NamingConventions.ValidVariableName.NotCamelCaps
@@ -76,6 +75,10 @@ class WP {
     }
     $signupConfirmationEnabled = SettingsController::getInstance()->get('signup_confirmation.enabled');
     $status = $signupConfirmationEnabled ? Subscriber::STATUS_UNCONFIRMED : Subscriber::STATUS_SUBSCRIBED;
+    // we want to mark a new subscriber as unsubscribe when the checkbox from registration is unchecked
+    if (isset($_POST['mailpoet']['subscribe_on_register_active']) && (bool)$_POST['mailpoet']['subscribe_on_register_active'] === true) {
+      $status = SubscriberEntity::STATUS_UNSUBSCRIBED;
+    }
     // subscriber data
     $data = [
       'wp_user_id' => $wpUser->ID,
@@ -147,6 +150,8 @@ class WP {
     $updatedUsersEmails = $this->updateSubscribersEmails();
     $insertedUsersEmails = $this->insertSubscribers();
     $this->removeUpdatedSubscribersWithInvalidEmail(array_merge($updatedUsersEmails, $insertedUsersEmails));
+    unset($updatedUsersEmails);
+    unset($insertedUsersEmails);
     $this->updateFirstNames();
     $this->updateLastNames();
     $this->updateFirstNameIfMissing();

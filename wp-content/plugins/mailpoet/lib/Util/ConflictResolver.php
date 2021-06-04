@@ -23,6 +23,7 @@ class ConflictResolver {
       'wpt-tx-updater-network',
       // WP.com styles
       '^/_static',
+      'atomic-plugins/debug-bar/css',
     ],
     'scripts' => [
       'mailpoet',

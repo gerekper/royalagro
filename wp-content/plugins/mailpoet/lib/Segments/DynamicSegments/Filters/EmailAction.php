@@ -6,6 +6,7 @@ if (!defined('ABSPATH')) exit;
 
 
 use MailPoet\Entities\DynamicSegmentFilterEntity;
+use MailPoet\Entities\NewsletterLinkEntity;
 use MailPoet\Entities\StatisticsClickEntity;
 use MailPoet\Entities\StatisticsNewsletterEntity;
 use MailPoet\Entities\StatisticsOpenEntity;
@@ -17,6 +18,7 @@ class EmailAction implements Filter {
   const ACTION_OPENED = 'opened';
   const ACTION_NOT_OPENED = 'notOpened';
   const ACTION_CLICKED = 'clicked';
+  const ACTION_CLICKED_ANY = 'clickedAny';
   const ACTION_NOT_CLICKED = 'notClicked';
 
   const ALLOWED_ACTIONS = [
@@ -24,6 +26,14 @@ class EmailAction implements Filter {
     self::ACTION_NOT_OPENED,
     self::ACTION_CLICKED,
     self::ACTION_NOT_CLICKED,
+    self::ACTION_CLICKED_ANY,
+    EmailOpensAbsoluteCountAction::TYPE,
+  ];
+
+  const CLICK_ACTIONS = [
+    self::ACTION_CLICKED,
+    self::ACTION_NOT_CLICKED,
+    self::ACTION_CLICKED_ANY,
   ];
 
   /** @var EntityManager */
@@ -41,7 +51,8 @@ class EmailAction implements Filter {
 
     $statsSentTable = $this->entityManager->getClassMetadata(StatisticsNewsletterEntity::class)->getTableName();
     $subscribersTable = $this->entityManager->getClassMetadata(SubscriberEntity::class)->getTableName();
-    if (($action === self::ACTION_CLICKED) || ($action === self::ACTION_NOT_CLICKED)) {
+    $newsletterLinksTable = $this->entityManager->getClassMetadata(NewsletterLinkEntity::class)->getTableName();
+    if (in_array($action, self::CLICK_ACTIONS, true)) {
       $statsTable = $this->entityManager->getClassMetadata(StatisticsClickEntity::class)->getTableName();
     } else {
       $statsTable = $this->entityManager->getClassMetadata(StatisticsOpenEntity::class)->getTableName();
@@ -60,22 +71,38 @@ class EmailAction implements Filter {
         $statsTable,
         'stats',
         $this->createNotStatsJoinCondition($filter, $action, $linkId)
-      );
+      )->setParameter('newsletter' . $filter->getId(), $newsletterId);
       $where .= ' AND stats.id IS NULL';
+    } else if ($action === self::ACTION_CLICKED_ANY) {
+      $excludedLinks = [
+        '[link:subscription_unsubscribe_url]',
+        '[link:subscription_instant_unsubscribe_url]',
+        '[link:newsletter_view_in_browser_url]',
+        '[link:subscription_manage_url]',
+      ];
+      $queryBuilder = $queryBuilder->innerJoin(
+        $subscribersTable,
+        $statsTable,
+        'stats',
+        "stats.subscriber_id = $subscribersTable.id"
+      )->innerJoin(
+        'stats',
+        $newsletterLinksTable,
+        'newsletterLinks',
+        "stats.link_id = newsletterLinks.id AND newsletterLinks.URL NOT IN ('" . join("', '", $excludedLinks) . "')"
+      );
     } else {
       $queryBuilder = $queryBuilder->innerJoin(
         $subscribersTable,
         $statsTable,
         'stats',
         "stats.subscriber_id = $subscribersTable.id AND stats.newsletter_id = :newsletter" . $filter->getId()
-      );
+      )->setParameter('newsletter' . $filter->getId(), $newsletterId);
     }
     if ($action === EmailAction::ACTION_CLICKED && $linkId) {
       $where .= ' AND stats.link_id = :link' . $filter->getId();
     }
-    $queryBuilder = $queryBuilder
-      ->andWhere($where)
-      ->setParameter('newsletter' . $filter->getId(), $newsletterId);
+    $queryBuilder = $queryBuilder->andWhere($where);
     if (in_array($action, [EmailAction::ACTION_CLICKED, EmailAction::ACTION_NOT_CLICKED]) && $linkId) {
       $queryBuilder = $queryBuilder
         ->setParameter('link' . $filter->getId(), $linkId);

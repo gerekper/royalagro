@@ -7,6 +7,7 @@ if (!defined('ABSPATH')) exit;
 
 use MailPoet\Doctrine\Repository;
 use MailPoet\Entities\FormEntity;
+use MailPoetVendor\Carbon\Carbon;
 
 /**
  * @extends Repository<FormEntity>
@@ -36,5 +37,24 @@ class FormsRepository extends Repository {
       ->select('count(f.id)')
       ->getQuery()
       ->getSingleScalarResult();
+  }
+
+  public function delete(FormEntity $form) {
+    $this->remove($form);
+    $this->flush();
+  }
+
+  public function trash(FormEntity $form) {
+    $this->updateDeletedAt($form, Carbon::now());
+  }
+
+  public function restore(FormEntity $form) {
+    $this->updateDeletedAt($form, null);
+  }
+
+  private function updateDeletedAt(FormEntity $form, ?Carbon $value) {
+    $form->setDeletedAt($value);
+    $this->persist($form);
+    $this->flush();
   }
 }

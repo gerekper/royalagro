@@ -93,8 +93,11 @@ class Migrator {
       'created_at timestamp NULL,', // must be NULL, see comment at the top
       'updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,',
       'deleted_at timestamp NULL,',
+      'average_engagement_score FLOAT unsigned NULL,',
+      'average_engagement_score_updated_at timestamp NULL,',
       'PRIMARY KEY  (id),',
-      'UNIQUE KEY name (name)',
+      'UNIQUE KEY name (name),',
+      'KEY average_engagement_score_updated_at (average_engagement_score_updated_at)',
     ];
     return $this->sqlify(__FUNCTION__, $attributes);
   }
@@ -219,6 +222,8 @@ class Migrator {
       'count_confirmations int(11) unsigned NOT NULL DEFAULT 0,',
       'unsubscribe_token char(15) NULL,',
       'link_token char(32) NULL,',
+      'engagement_score FLOAT unsigned NULL,',
+      'engagement_score_updated_at timestamp NULL,',
       'PRIMARY KEY  (id),',
       'UNIQUE KEY email (email),',
       'UNIQUE KEY unsubscribe_token (unsubscribe_token),',
@@ -226,6 +231,7 @@ class Migrator {
       'KEY updated_at (updated_at),',
       'KEY status_deleted_at (status,deleted_at),',
       'KEY last_subscribed_at (last_subscribed_at),',
+      'KEY engagement_score_updated_at (engagement_score_updated_at),',
       'KEY link_token (link_token)',
     ];
     return $this->sqlify(__FUNCTION__, $attributes);

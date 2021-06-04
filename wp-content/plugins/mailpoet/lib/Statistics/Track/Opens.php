@@ -9,8 +9,16 @@ use MailPoet\Entities\NewsletterEntity;
 use MailPoet\Entities\SendingQueueEntity;
 use MailPoet\Entities\SubscriberEntity;
 use MailPoet\Models\StatisticsOpens;
+use MailPoet\Statistics\StatisticsOpensRepository;
 
 class Opens {
+  /** @var StatisticsOpensRepository */
+  private $statisticsOpensRepository;
+
+  public function __construct(StatisticsOpensRepository $statisticsOpensRepository) {
+    $this->statisticsOpensRepository = $statisticsOpensRepository;
+  }
+
   public function track($data, $displayImage = true) {
     if (!$data) {
       return $this->returnResponse($displayImage);
@@ -30,6 +38,7 @@ class Opens {
         $newsletter->getId(),
         $queue->getId()
       );
+      $this->statisticsOpensRepository->recalculateSubscriberScore($subscriber);
     }
     return $this->returnResponse($displayImage);
   }

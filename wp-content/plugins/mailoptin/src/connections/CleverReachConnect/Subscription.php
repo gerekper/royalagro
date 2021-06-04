@@ -50,7 +50,7 @@ class Subscription extends AbstractCleverReachConnect
 
             $group_id = $this->list_id;
 
-            $lead_tags = $this->get_integration_data('CleverReachConnect_lead_tags');
+            $lead_tags = $this->get_integration_tags('CleverReachConnect_lead_tags');
 
             if ( ! empty($lead_tags)) {
                 $subscriber_data['tags'] = array_map('trim', explode(',', $lead_tags));
@@ -60,14 +60,14 @@ class Subscription extends AbstractCleverReachConnect
 
             $doi_data = [];
 
-            if( ! empty($subscription_form)) {
-                $ip_address = get_ip_address();
-                $doi_data['email'] = $this->email;
+            if ( ! empty($subscription_form)) {
+                $ip_address          = get_ip_address();
+                $doi_data['email']   = $this->email;
                 $doi_data['form_id'] = absint($subscription_form);
                 $doi_data['doidata'] = [
-                    'user_ip'               => !empty($ip_address) ? $ip_address : '127.0.0.1',
-                    'referer'               => $this->extras['referrer'],
-                    'user_agent'            => $this->extras['user_agent']
+                    'user_ip'    => ! empty($ip_address) ? $ip_address : '127.0.0.1',
+                    'referer'    => $this->extras['referrer'],
+                    'user_agent' => $this->extras['user_agent']
                 ];
             }
 
@@ -109,7 +109,8 @@ class Subscription extends AbstractCleverReachConnect
         }
     }
 
-    public function get_subscriber_details($group_id, $pool_id) {
+    public function get_subscriber_details($group_id, $pool_id)
+    {
 
         try {
 

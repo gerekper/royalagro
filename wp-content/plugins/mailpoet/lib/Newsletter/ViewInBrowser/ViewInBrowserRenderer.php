@@ -10,16 +10,11 @@ use MailPoet\Entities\NewsletterEntity;
 use MailPoet\Entities\SendingQueueEntity;
 use MailPoet\Entities\SubscriberEntity;
 use MailPoet\Models\Newsletter;
-use MailPoet\Models\SendingQueue;
-use MailPoet\Models\Subscriber;
 use MailPoet\Newsletter\Links\Links;
 use MailPoet\Newsletter\NewslettersRepository;
 use MailPoet\Newsletter\Renderer\Renderer;
-use MailPoet\Newsletter\Sending\SendingQueuesRepository;
 use MailPoet\Newsletter\Shortcodes\Shortcodes;
 use MailPoet\Settings\SettingsController;
-use MailPoet\Subscribers\SubscribersRepository;
-use MailPoet\Tasks\Sending;
 use MailPoet\WP\Emoji;
 
 class ViewInBrowserRenderer {
@@ -51,11 +46,16 @@ class ViewInBrowserRenderer {
     bool $isPreview,
     Newsletter $newsletter,
     SubscriberEntity $subscriber = null,
-    SendingQueue $queue = null
+    SendingQueueEntity $queue = null
   ) {
     $wpUserPreview = $isPreview;
     if ($queue && $queue->getNewsletterRenderedBody()) {
-      $newsletterBody = $queue->getNewsletterRenderedBody('html');
+      $body = $queue->getNewsletterRenderedBody();
+      if (is_array($body)) {
+        $newsletterBody = $body['html'];
+      } else {
+        $newsletterBody = '';
+      }
       $newsletterBody = $this->emoji->decodeEmojisInBody($newsletterBody);
       // rendered newsletter body has shortcodes converted to links; we need to
       // isolate "view in browser", "unsubscribe" and "manage subscription" links
@@ -64,7 +64,7 @@ class ViewInBrowserRenderer {
       if ($wpUserPreview && preg_match(Links::getLinkRegex(), $newsletterBody)) {
         $newsletterBody = Links::convertHashedLinksToShortcodesAndUrls(
           $newsletterBody,
-          $queueId = $queue->id,
+          $queue->getId(),
           $convertAll = true
         );
         // remove open tracking link
@@ -87,7 +87,7 @@ class ViewInBrowserRenderer {
     if (!$wpUserPreview && $queue && $subscriber && $this->isTrackingEnabled) {
       $renderedNewsletter = Links::replaceSubscriberData(
         $subscriber->getId(),
-        $queue->id,
+        $queue->getId(),
         $renderedNewsletter
       );
     }
@@ -96,16 +96,9 @@ class ViewInBrowserRenderer {
 
   /** this is here to prepare entities for the shortcodes library, when this whole file uses doctrine, this can be deleted */
   private function prepareShortcodes($newsletter, $subscriber, $queue, $wpUserPreview) {
-    /** @var SendingQueuesRepository $sendingQueueRepository */
-    $sendingQueueRepository = ContainerWrapper::getInstance()->get(SendingQueuesRepository::class);
     /** @var NewslettersRepository $newsletterRepository */
     $newsletterRepository = ContainerWrapper::getInstance()->get(NewslettersRepository::class);
-    /** @var SubscribersRepository $subscribersRepository */
-    $subscribersRepository = ContainerWrapper::getInstance()->get(SubscribersRepository::class);
 
-    if ($queue instanceof Sending || $queue instanceof SendingQueue) {
-      $queue = $sendingQueueRepository->findOneById($queue->id);
-    }
     if ($queue instanceof SendingQueueEntity) {
       $this->shortcodes->setQueue($queue);
     }
@@ -115,9 +108,7 @@ class ViewInBrowserRenderer {
     if ($newsletter instanceof NewsletterEntity) {
       $this->shortcodes->setNewsletter($newsletter);
     }
-    if ($subscriber instanceof Subscriber) {
-      $subscriber = $subscribersRepository->findOneById($subscriber->id);
-    }
+
     $this->shortcodes->setWpUserPreview($wpUserPreview);
     if ($subscriber instanceof SubscriberEntity) {
       $this->shortcodes->setSubscriber($subscriber);

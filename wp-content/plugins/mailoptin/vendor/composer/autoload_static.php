@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticIniteead5a9b95dd9c2d7be2f43b198cadeb
+class ComposerStaticInitbafe46e1dbda5d32e5799e4759a3230d
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -70,6 +70,7 @@ class ComposerStaticIniteead5a9b95dd9c2d7be2f43b198cadeb
             'MailOptin\\GravityFormsConnect\\' => 30,
             'MailOptin\\GetResponseConnect\\' => 29,
             'MailOptin\\GEMConnect\\' => 21,
+            'MailOptin\\ForminatorFormConnect\\' => 32,
             'MailOptin\\FormidableFormConnect\\' => 32,
             'MailOptin\\FluentCRMConnect\\' => 27,
             'MailOptin\\FacebookCustomAudienceConnect\\' => 40,
@@ -255,6 +256,10 @@ class ComposerStaticIniteead5a9b95dd9c2d7be2f43b198cadeb
         'MailOptin\\GEMConnect\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/connections/GEMConnect',
+        ),
+        'MailOptin\\ForminatorFormConnect\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/connections/ForminatorFormConnect',
         ),
         'MailOptin\\FormidableFormConnect\\' => 
         array (
@@ -486,6 +491,7 @@ class ComposerStaticIniteead5a9b95dd9c2d7be2f43b198cadeb
         'Composer\\Installers\\MauticInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/MauticInstaller.php',
         'Composer\\Installers\\MayaInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/MayaInstaller.php',
         'Composer\\Installers\\MediaWikiInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/MediaWikiInstaller.php',
+        'Composer\\Installers\\MiaoxingInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/MiaoxingInstaller.php',
         'Composer\\Installers\\MicroweberInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/MicroweberInstaller.php',
         'Composer\\Installers\\ModxInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/ModxInstaller.php',
         'Composer\\Installers\\MoodleInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/MoodleInstaller.php',
@@ -521,12 +527,14 @@ class ComposerStaticIniteead5a9b95dd9c2d7be2f43b198cadeb
         'Composer\\Installers\\TYPO3CmsInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/TYPO3CmsInstaller.php',
         'Composer\\Installers\\TYPO3FlowInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/TYPO3FlowInstaller.php',
         'Composer\\Installers\\TaoInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/TaoInstaller.php',
+        'Composer\\Installers\\TastyIgniterInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/TastyIgniterInstaller.php',
         'Composer\\Installers\\TheliaInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/TheliaInstaller.php',
         'Composer\\Installers\\TuskInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/TuskInstaller.php',
         'Composer\\Installers\\UserFrostingInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/UserFrostingInstaller.php',
         'Composer\\Installers\\VanillaInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/VanillaInstaller.php',
         'Composer\\Installers\\VgmcpInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/VgmcpInstaller.php',
         'Composer\\Installers\\WHMCSInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/WHMCSInstaller.php',
+        'Composer\\Installers\\WinterInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/WinterInstaller.php',
         'Composer\\Installers\\WolfCMSInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/WolfCMSInstaller.php',
         'Composer\\Installers\\WordPressInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/WordPressInstaller.php',
         'Composer\\Installers\\YawikInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/YawikInstaller.php',
@@ -775,6 +783,12 @@ class ComposerStaticIniteead5a9b95dd9c2d7be2f43b198cadeb
         'MailOptin\\FluentCRMConnect\\Subscription' => __DIR__ . '/../..' . '/src/connections/FluentCRMConnect/Subscription.php',
         'MailOptin\\FormidableFormConnect\\Connect' => __DIR__ . '/../..' . '/src/connections/FormidableFormConnect/Connect.php',
         'MailOptin\\FormidableFormConnect\\FormidableForm' => __DIR__ . '/../..' . '/src/connections/FormidableFormConnect/FormidableForm.php',
+        'MailOptin\\ForminatorFormConnect\\Connect' => __DIR__ . '/../..' . '/src/connections/ForminatorFormConnect/Connect.php',
+        'MailOptin\\ForminatorFormConnect\\ConnectionFormSettingsPage' => __DIR__ . '/../..' . '/src/connections/ForminatorFormConnect/ConnectionFormSettingsPage.php',
+        'MailOptin\\ForminatorFormConnect\\ConnectionQuizSettingsPage' => __DIR__ . '/../..' . '/src/connections/ForminatorFormConnect/ConnectionQuizSettingsPage.php',
+        'MailOptin\\ForminatorFormConnect\\FFMailOptin' => __DIR__ . '/../..' . '/src/connections/ForminatorFormConnect/FFMailOptin.php',
+        'MailOptin\\ForminatorFormConnect\\FormHook' => __DIR__ . '/../..' . '/src/connections/ForminatorFormConnect/FormHook.php',
+        'MailOptin\\ForminatorFormConnect\\QuizHook' => __DIR__ . '/../..' . '/src/connections/ForminatorFormConnect/QuizHook.php',
         'MailOptin\\GEMConnect\\APIClass' => __DIR__ . '/../..' . '/src/connections/GEMConnect/APIClass.php',
         'MailOptin\\GEMConnect\\AbstractGEMConnect' => __DIR__ . '/../..' . '/src/connections/GEMConnect/AbstractGEMConnect.php',
         'MailOptin\\GEMConnect\\Connect' => __DIR__ . '/../..' . '/src/connections/GEMConnect/Connect.php',
@@ -860,6 +874,7 @@ class ComposerStaticIniteead5a9b95dd9c2d7be2f43b198cadeb
         'MailOptin\\NinjaFormsConnect\\Integrations\\EmailOctopusConnect' => __DIR__ . '/../..' . '/src/connections/NinjaFormsConnect/Integrations/EmailOctopusConnect.php',
         'MailOptin\\NinjaFormsConnect\\Integrations\\EmmaConnect' => __DIR__ . '/../..' . '/src/connections/NinjaFormsConnect/Integrations/EmmaConnect.php',
         'MailOptin\\NinjaFormsConnect\\Integrations\\FacebookCustomAudienceConnect' => __DIR__ . '/../..' . '/src/connections/NinjaFormsConnect/Integrations/FacebookCustomAudienceConnect.php',
+        'MailOptin\\NinjaFormsConnect\\Integrations\\FluentCRMConnect' => __DIR__ . '/../..' . '/src/connections/NinjaFormsConnect/Integrations/FluentCRMConnect.php',
         'MailOptin\\NinjaFormsConnect\\Integrations\\GEMConnect' => __DIR__ . '/../..' . '/src/connections/NinjaFormsConnect/Integrations/GEMConnect.php',
         'MailOptin\\NinjaFormsConnect\\Integrations\\GetResponseConnect' => __DIR__ . '/../..' . '/src/connections/NinjaFormsConnect/Integrations/GetResponseConnect.php',
         'MailOptin\\NinjaFormsConnect\\Integrations\\HubspotConnect' => __DIR__ . '/../..' . '/src/connections/NinjaFormsConnect/Integrations/HubspotConnect.php',
@@ -1090,11 +1105,11 @@ class ComposerStaticIniteead5a9b95dd9c2d7be2f43b198cadeb
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticIniteead5a9b95dd9c2d7be2f43b198cadeb::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticIniteead5a9b95dd9c2d7be2f43b198cadeb::$prefixDirsPsr4;
-            $loader->fallbackDirsPsr4 = ComposerStaticIniteead5a9b95dd9c2d7be2f43b198cadeb::$fallbackDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticIniteead5a9b95dd9c2d7be2f43b198cadeb::$prefixesPsr0;
-            $loader->classMap = ComposerStaticIniteead5a9b95dd9c2d7be2f43b198cadeb::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitbafe46e1dbda5d32e5799e4759a3230d::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitbafe46e1dbda5d32e5799e4759a3230d::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInitbafe46e1dbda5d32e5799e4759a3230d::$fallbackDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitbafe46e1dbda5d32e5799e4759a3230d::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitbafe46e1dbda5d32e5799e4759a3230d::$classMap;
 
         }, null, ClassLoader::class);
     }

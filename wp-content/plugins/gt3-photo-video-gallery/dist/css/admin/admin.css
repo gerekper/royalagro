@@ -1210,7 +1210,7 @@ body.active_message_popup .gt3pg_result_message {
 }
 
 .gt3pg_error_notice {
-	padding: 15px;
+	/*padding: 15px;*/
 	position: relative;
 }
 

