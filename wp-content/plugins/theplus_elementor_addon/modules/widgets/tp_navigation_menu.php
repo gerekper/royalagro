@@ -66,6 +66,21 @@ class ThePlus_Navigation_Menu extends Widget_Base {
 			]
 		);
 		$this->add_control(
+			'vertical_side_open_right',
+			[
+				'label' => esc_html__( 'Open Direction', 'theplus' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'vso_left',
+				'options' => [
+					'vso_left'  => esc_html__( 'Left', 'theplus' ),					
+					'vso_right' => esc_html__( 'Right', 'theplus' ),
+				],
+				'condition' => [
+					'navbar_menu_type' => 'vertical-side',
+				],
+			]
+		);
+		$this->add_control(
 			'navbar',
 			[
 				'label' => esc_html__( 'Select Menu', 'theplus' ),
@@ -3205,6 +3220,21 @@ class ThePlus_Navigation_Menu extends Widget_Base {
 		);
 		$this->end_controls_tab();
 		$this->end_controls_tabs();
+		$this->add_control(
+			'tp_mob_scroll_overflow',
+			[
+				'label' => esc_html__( 'Scroll Overflow', 'theplus' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Enable', 'theplus' ),
+				'label_off' => esc_html__( 'Disable', 'theplus' ),				
+				'default' => 'no',
+				'separator' => 'before',
+				'condition' => [
+					'enable_sticky_menu' => 'yes',
+					'show_mobile_menu' => 'yes',
+				],
+			]
+		);
 		$this->end_controls_section();
 		/*sticky mobile menu style end*/
 		
@@ -4072,13 +4102,18 @@ class ThePlus_Navigation_Menu extends Widget_Base {
 			$menu_attr .= ' data-mobile-menu-click="no"';
 		}
 		
+		$ver_slide_right_class = '';
+		if(!empty($settings['vertical_side_open_right']) && $settings['vertical_side_open_right']=='vso_right'){
+			$ver_slide_right_class = 'tp-vso-right';
+		}
+		
 		?>
 		
 		<div class="plus-navigation-wrap <?php echo esc_attr($nav_alignment); ?> <?php echo esc_attr($uid); ?>">
 			<div class="plus-navigation-inner <?php echo esc_attr($menu_hover_click); ?> <?php echo esc_attr($main_menu_indicator_style); ?> <?php echo esc_attr($sub_menu_indicator_style); ?> <?php echo esc_attr($menu_effect); ?>" <?php echo $menu_attr; ?>>
 				<div id="theplus-navigation-normal-menu" class="collapse navbar-collapse navbar-ex1-collapse">
 				
-					<div class="plus-navigation-menu <?php echo esc_attr($navbar_menu_type);?>  <?php echo esc_attr($toggle_type); ?>">
+					<div class="plus-navigation-menu <?php echo esc_attr($navbar_menu_type);?> <?php echo esc_attr($ver_slide_right_class);?> <?php echo esc_attr($toggle_type); ?>">
 						<?php echo $vertical_toggle_title_bar; ?>
 						<?php wp_nav_menu( apply_filters( 'widget_nav_menu_args', $nav_menu_args, $nav_menu, $settings ) ); ?>
 						
@@ -4182,6 +4217,10 @@ class ThePlus_Navigation_Menu extends Widget_Base {
 			$close_mobile_menu=($settings['open_mobile_menu']['size']+1).$settings['open_mobile_menu']['unit'];
 			
 			$css_rule .='@media (min-width:'.esc_attr($close_mobile_menu).'){.plus-navigation-wrap.'.esc_attr($uid).' #theplus-navigation-normal-menu{display: block!important;}.plus-navigation-wrap.'.esc_attr($uid).' #plus-mobile-nav-toggle-'.esc_attr($uid).'.collapse.in{display:none;}}';
+			
+			if((!empty($settings['enable_sticky_menu']) && $settings['enable_sticky_menu']=='yes') && (!empty($settings['tp_mob_scroll_overflow']) && $settings['tp_mob_scroll_overflow']=='yes')){
+				$css_rule .='@media (max-width:'.esc_attr($open_mobile_menu).'){.elementor-section.plus-nav-sticky-sec.plus-fixed-sticky{overflow:scroll;height: 100%}}';
+			}
 			
 			$css_rule .='@media (max-width:'.esc_attr($open_mobile_menu).'){.plus-navigation-wrap.'.esc_attr($uid).' #theplus-navigation-normal-menu{display:none !important;}.plus-navigation-wrap.'.esc_attr($uid).' .plus-mobile-nav-toggle.mobile-toggle{display: -webkit-flex;display: -moz-flex;display: -ms-flex;display: flex;-webkit-align-items: center;-moz-align-items: center;-ms-align-items: center;align-items: center;-webkit-justify-content: flex-end;-moz-justify-content: flex-end;-ms-justify-content: flex-end;justify-content: flex-end;}.plus-navigation-wrap .plus-mobile-menu-content.collapse.swiper-container{display: block;}}';
 		}else{
