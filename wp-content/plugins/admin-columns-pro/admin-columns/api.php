@@ -1,6 +1,7 @@
 <?php
 
 use AC\Admin;
+use AC\Admin\RequestHandlerInterface;
 use AC\EncodedListScreenDataFactory;
 use AC\Helper;
 use AC\ListScreen;
@@ -12,10 +13,6 @@ use AC\Type\Url;
  * @return AC\AdminColumns
  * @since 3.0
  */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 function AC() {
 	return AC\AdminColumns::instance();
 }
@@ -112,8 +109,8 @@ function ac_load_columns( array $data ) {
 function ac_get_admin_url( $slug ) {
 	return add_query_arg(
 		[
-			Admin::QUERY_ARG_PAGE => Admin::NAME,
-			Admin::QUERY_ARG_TAB  => $slug,
+			RequestHandlerInterface::PARAM_PAGE => Admin\Admin::NAME,
+			RequestHandlerInterface::PARAM_TAB  => $slug,
 		],
 		admin_url( 'options-general.php' )
 	);
@@ -127,8 +124,8 @@ function ac_get_admin_url( $slug ) {
 function ac_get_admin_network_url( $slug = null ) {
 	return add_query_arg(
 		[
-			Admin::QUERY_ARG_PAGE => Admin::NAME,
-			Admin::QUERY_ARG_TAB  => $slug,
+			RequestHandlerInterface::PARAM_PAGE => Admin\Admin::NAME,
+			RequestHandlerInterface::PARAM_TAB  => $slug,
 		],
 		network_admin_url( 'settings.php' )
 	);

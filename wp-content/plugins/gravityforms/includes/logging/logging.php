@@ -14,10 +14,6 @@ GFForms::include_addon_framework();
  * @author    Rocketgenius
  * @copyright Copyright (c) 2016, Rocketgenius
  */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class GFLogging extends GFAddOn {
 
 	/**

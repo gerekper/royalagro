@@ -3,10 +3,6 @@
 /**
 * Additional functions used in classes and another subclasses
 */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class Permalink_Manager_Helper_Functions extends Permalink_Manager_Class {
 
 	public function __construct() {
@@ -184,7 +180,7 @@ class Permalink_Manager_Helper_Functions extends Permalink_Manager_Class {
 		global $wp_post_types, $permalink_manager_options;
 
 		$disabled_post_types = array(
-			'revision', 'algolia_task', 'fl_builder', 'fl-builder', 'fl-builder-template', 'fl-theme-layout', 'fusion_tb_layout', 'fusion_tb_section', 'fusion_template', 'fusion_element', 'wc_product_tab', 'wc_voucher', 'wc_voucher_template',
+			'revision', 'nav_menu_item', 'algolia_task', 'fl_builder', 'fl-builder', 'fl-builder-template', 'fl-theme-layout', 'fusion_tb_layout', 'fusion_tb_section', 'fusion_template', 'fusion_element', 'wc_product_tab', 'wc_voucher', 'wc_voucher_template',
 			'sliders', 'thirstylink', 'elementor_library', 'elementor_menu_item', 'cms_block', 'nooz_coverage'
 		);
 

@@ -3,10 +3,6 @@
 /**
 * Third parties integration
 */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class Permalink_Manager_Third_Parties extends Permalink_Manager_Class {
 
 	public function __construct() {
@@ -1288,7 +1284,7 @@ class Permalink_Manager_Third_Parties extends Permalink_Manager_Class {
 				if(!empty($parts[2])) {
 					$uri_parts['uri'] = $parts[1];
 					$uri_parts['endpoint'] = $query_var;
-					$uri_parts['endpoint_value'] = sanitize_title($parts[2]);
+					$uri_parts['endpoint_value'] = Permalink_Manager_Helper_Functions::sanitize_title($parts[2], null, null, false);
 				}
 			}
 		}

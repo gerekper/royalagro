@@ -4,10 +4,6 @@ if ( ! class_exists( 'GFForms' ) ) {
 }
 
 
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class GF_REST_Feed_Properties_Controller extends GF_REST_Feeds_Controller {
 
 	/**

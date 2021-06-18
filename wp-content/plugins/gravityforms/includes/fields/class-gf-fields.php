@@ -6,10 +6,6 @@ if ( ! class_exists( 'GFForms' ) ) {
 
 require_once( plugin_dir_path( __FILE__ ) . 'class-gf-field.php' );
 
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class GF_Fields {
 
 	public static $deprecation_notice_fired = false;

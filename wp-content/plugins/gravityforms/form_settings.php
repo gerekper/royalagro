@@ -12,11 +12,7 @@ use Gravity_Forms\Gravity_Forms\Settings\Settings;
  * Handles the form settings page.
  *
  * @since Unknown
- */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
+ */
 class GFFormSettings {
 
 	/**
@@ -433,6 +429,7 @@ class GFFormSettings {
 								'name'       => 'limitEntriesMessage',
 								'type'       => 'textarea',
 								'label'      => esc_html__( 'Entry Limit Reached Message', 'gravityforms' ),
+								'allow_html' => true,
 								'dependency' => array(
 									'live'   => true,
 									'fields' => array(
@@ -486,6 +483,7 @@ class GFFormSettings {
 								'name'       => 'schedulePendingMessage',
 								'type'       => 'textarea',
 								'label'      => esc_html__( 'Form Pending Message', 'gravityforms' ),
+								'allow_html' => true,
 								'dependency' => array(
 									'live'   => true,
 									'fields' => array(
@@ -499,6 +497,7 @@ class GFFormSettings {
 								'name'       => 'scheduleMessage',
 								'type'       => 'textarea',
 								'label'      => esc_html__( 'Form Expired Message', 'gravityforms' ),
+								'allow_html' => true,
 								'dependency' => array(
 									'live'   => true,
 									'fields' => array(

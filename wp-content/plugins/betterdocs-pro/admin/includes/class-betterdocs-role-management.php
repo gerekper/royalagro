@@ -2,10 +2,6 @@
 /**
  * Role Management Class for BetterDocs
  */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class BetterDocs_Role_Management {
     private static $instance = null;
     /**
@@ -103,7 +99,7 @@ class BetterDocs_Role_Management {
                 ),
                 'restrict_template' => array(
                     'type'        => 'select',
-                    'label'       => __('Restriction on Docs Pages', 'betterdocs'),
+                    'label'       => __('Restriction on Docs', 'betterdocs'),
                     'help'        => __('<strong>Note:</strong> Selected Docs pages will be restricted' , 'betterdocs'),
                     'priority'    => 3,
                     'multiple'    => true,

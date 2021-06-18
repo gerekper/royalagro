@@ -12,10 +12,6 @@ require_once( 'includes/legacy/forms_model_legacy.php' );
  *
  * Handles database calls and formatting of stored data regarding forms
  */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class GFFormsModel {
 
 	/**
@@ -6627,7 +6623,7 @@ class GFFormsModel {
 	}
 
 	public static function is_html5_enabled() {
-		return get_option( 'rg_gforms_enable_html5', true );
+		return get_option( 'rg_gforms_enable_html5', false );
 	}
 
 	/**

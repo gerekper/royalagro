@@ -4,10 +4,6 @@ if ( ! class_exists( 'GFForms' ) ) {
 	die();
 }
 
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class GFEntryDetail {
 
 	/**
@@ -448,6 +444,10 @@ class GFEntryDetail {
 
 		$mode = empty( $_POST['screen_mode'] ) ? 'view' : $_POST['screen_mode'];
 
+		if ( $mode === 'edit' ) {
+			wp_print_styles( 'gform_admin_theme' );
+		}
+
 		$screen = get_current_screen();
 
 		$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG || isset( $_GET['gform_debug'] ) ? '' : '.min';
@@ -727,7 +727,7 @@ class GFEntryDetail {
 				<label for="name"><?php esc_html_e( 'Details', 'gravityforms' ); ?></label>
 			</h3>
 
-			<div class="inside">
+			<div class="inside gform_wrapper gravity-theme">
 				<table class="form-table entry-details">
 					<tbody>
 					<?php

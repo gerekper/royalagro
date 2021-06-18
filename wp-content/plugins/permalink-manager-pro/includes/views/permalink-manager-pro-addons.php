@@ -3,10 +3,6 @@
 /**
 * Display the page where the slugs could be regenerated or replaced
 */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class Permalink_Manager_Pro_Addons extends Permalink_Manager_Class {
 
 	public function __construct() {
@@ -143,8 +139,10 @@ class Permalink_Manager_Pro_Addons extends Permalink_Manager_Class {
 
 		// 2. Unblock some fields
 		// if(Permalink_Manager_Admin_Functions::is_pro_active()) {
-			unset($fields['seo']['fields']['setup_redirects']['pro']);
-			unset($fields['seo']['fields']['setup_redirects']['disabled']);
+			unset($fields['redirect']['fields']['setup_redirects']['pro']);
+			unset($fields['redirect']['fields']['setup_redirects']['disabled']);
+			unset($fields['redirect']['fields']['extra_redirects']['pro']);
+			unset($fields['redirect']['fields']['extra_redirects']['disabled']);
 		// }
 
 		return $fields;
@@ -265,7 +263,12 @@ class Permalink_Manager_Pro_Addons extends Permalink_Manager_Class {
 	 * Custom Redirects Panel
 	 */
 	public static function display_redirect_form($element_id) {
-		global $permalink_manager_redirects, $permalink_manager_external_redirects;
+		global $permalink_manager_redirects, $permalink_manager_options, $permalink_manager_external_redirects;
+
+		// Do not display if "Extra redirects" option is turned off
+		if(empty($permalink_manager_options['general']['extra_redirects'])) {
+			return __('Turn on "<strong>Extra redirects (aliases)</strong>" in Permalink Manager settings to enable this feature.', 'permalink-manager');
+		}
 
 		// 1. Extra redirects
 		$html = "<div class=\"single-section\">";

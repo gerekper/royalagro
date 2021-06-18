@@ -5,10 +5,6 @@ if ( ! class_exists( 'GF_Blocks' ) || ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class GF_Block_Form extends GF_Block {
 
 	/**
@@ -110,8 +106,9 @@ class GF_Block_Form extends GF_Block {
 			$script['handle'],
 			'gform_block_form',
 			array(
-				'forms'   => $this->get_forms(),
-				'preview' => GFCommon::get_base_url() . '/images/gf_block_preview.svg',
+				'adminURL' => admin_url( 'admin.php' ),
+				'forms'    => $this->get_forms(),
+				'preview'  => GFCommon::get_base_url() . '/images/gf_block_preview.svg',
 			)
 		);
 

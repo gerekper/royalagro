@@ -20,10 +20,6 @@
  * @subpackage Betterdocs_Pro/includes
  * @author     WPDeveloper <support@wpdeveloper.net>
  */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class Betterdocs_Pro_Deactivator {
 
 	/**
@@ -34,7 +30,7 @@ class Betterdocs_Pro_Deactivator {
 	 * @since    1.0.0
 	 */
 	public static function deactivate() {
-
+        flush_rewrite_rules();
 	}
 
 }

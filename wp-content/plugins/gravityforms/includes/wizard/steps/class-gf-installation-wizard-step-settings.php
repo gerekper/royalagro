@@ -1,9 +1,5 @@
 <?php
 
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class GF_Installation_Wizard_Step_Settings extends GF_Installation_Wizard_Step {
 
 	protected $_name = 'settings';
@@ -93,5 +89,6 @@ class GF_Installation_Wizard_Step_Settings extends GF_Installation_Wizard_Step {
 		update_option( 'rg_gforms_enable_akismet', (bool) $this->enable_akismet );
 		update_option( 'rg_gforms_currency', $this->currency );
 		update_option( 'gform_enable_toolbar_menu', (bool) $this->enable_toolbar_menu );
+		update_option( 'rg_gforms_enable_html5', 1 );
 	}
 }
