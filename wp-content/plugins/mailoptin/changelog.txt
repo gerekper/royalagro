@@ -1,5 +1,9 @@
 ﻿== Changelog ==
 
+= 1.2.36.3 =
+* Fixed bug where plus (+) in post content was replaced with space.
+* Fixed bug where Sendinblue Elementor integration forces DOI.
+
 = 1.2.36.2 =
 * Fixed multiple PHP error notices and improved PHP 8 support.
 

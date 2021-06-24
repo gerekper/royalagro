@@ -102,8 +102,7 @@ class Elementor extends Action_Base
                     'condition'         => [
                         'mailoptin_connection'  =>  \MailOptin\Connections\Init::double_optin_support_connections(true)
                     ],
-                    'return_value'      => 'false',
-                    'default'           => 'false',
+                    'default'           => 'no',
                     'label_on'          => __('Enabled', 'mailoptin'),
                     'label_off'         => __('Disabled', 'mailoptin'),
                     'description'       => esc_html__('Double optin requires users to confirm their email address before they are added or subscribed.', 'mailoptin')
@@ -230,9 +229,10 @@ class Elementor extends Action_Base
             $form_tags = $record->get_form_settings('mailoptin_tags_select2');
         }
 
+        // get the default
         $double_optin = false;
         if(in_array($connection_service, \MailOptin\Connections\Init::double_optin_support_connections(true))) {
-            $double_optin = $record->get_form_settings('mailoptin_double_optin_field') === "";
+            $double_optin = $record->get_form_settings('mailoptin_double_optin_field') === "yes";
         }
 
         $name  = \MailOptin\Connections\Init::return_name($full_name, $first_name, $last_name);

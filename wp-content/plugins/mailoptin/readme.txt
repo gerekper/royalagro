@@ -5,7 +5,7 @@ Tags: popup, popup maker, newsletter, mailchimp, contact form, aweber, popups, c
 Requires at least: 4.6
 Requires PHP: 5.6
 Tested up to: 5.7
-Stable tag: 1.2.36.2
+Stable tag: 1.2.36.3
 License: GPL-2.0+
 
 Create popups, optin forms to get email newsletter subscribers via an easy form builder and popup maker. Mailchimp, ConvertKit, Infusionsoft, ActiveCampaign, Campaign Monitor, Constant Contact & more.
@@ -166,6 +166,10 @@ Yes, MailOptin has full translation and localization support. All .mo and .po tr
 10. Elementor form integration with MailOptin
 
 == Changelog ==
+
+= 1.2.36.3 =
+* Fixed bug where plus (+) in post content was replaced with space.
+* Fixed bug where Sendinblue Elementor integration forces DOI.
 
 = 1.2.36.2 =
 * Fixed multiple PHP error notices and improved PHP 8 support.

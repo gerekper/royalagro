@@ -37,6 +37,9 @@ class Renderer {
   /** @var Text */
   private $text;
 
+  /** @var Placeholder */
+  private $placeholder;
+
   public function __construct(
     AutomatedLatestContentBlock $ALC,
     Button $button,
@@ -46,7 +49,8 @@ class Renderer {
     Image $image,
     Social $social,
     Spacer $spacer,
-    Text $text
+    Text $text,
+    Placeholder $placeholder
   ) {
     $this->ALC = $ALC;
     $this->button = $button;
@@ -57,6 +61,7 @@ class Renderer {
     $this->social = $social;
     $this->spacer = $spacer;
     $this->text = $text;
+    $this->placeholder = $placeholder;
   }
 
   public function render(NewsletterEntity $newsletter, $data) {
@@ -116,6 +121,8 @@ class Renderer {
         return $this->spacer->render($block);
       case 'text':
         return $this->text->render($block);
+      case 'placeholder':
+        return $this->placeholder->render($block);
     }
     return "<!-- Skipped unsupported block type: {$block['type']} -->";
   }

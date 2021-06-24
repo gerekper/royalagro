@@ -7,7 +7,6 @@ if (!defined('ABSPATH')) exit;
 
 use MailPoet\Entities\SendingQueueEntity;
 use MailPoet\Models\Newsletter;
-use MailPoet\Models\Subscriber;
 use MailPoet\Newsletter\Sending\SendingQueuesRepository;
 use MailPoet\Newsletter\Url as NewsletterUrl;
 use MailPoet\Subscribers\LinkTokens;
@@ -16,6 +15,9 @@ use MailPoet\Subscribers\SubscribersRepository;
 class ViewInBrowserController {
   /** @var LinkTokens */
   private $linkTokens;
+
+  /** @var NewsletterUrl */
+  private $newsletterUrl;
 
   /** @var ViewInBrowserRenderer */
   private $viewInBrowserRenderer;
@@ -28,6 +30,7 @@ class ViewInBrowserController {
 
   public function __construct(
     LinkTokens $linkTokens,
+    NewsletterUrl $newsletterUrl,
     ViewInBrowserRenderer $viewInBrowserRenderer,
     SendingQueuesRepository $sendingQueuesRepository,
     SubscribersRepository $subscribersRepository
@@ -36,10 +39,11 @@ class ViewInBrowserController {
     $this->viewInBrowserRenderer = $viewInBrowserRenderer;
     $this->subscribersRepository = $subscribersRepository;
     $this->sendingQueuesRepository = $sendingQueuesRepository;
+    $this->newsletterUrl = $newsletterUrl;
   }
 
   public function view(array $data) {
-    $data = NewsletterUrl::transformUrlDataObject($data);
+    $data = $this->newsletterUrl->transformUrlDataObject($data);
     $isPreview = !empty($data['preview']);
     $newsletter = $this->getNewsletter($data);
     $subscriber = $this->getSubscriber($data);
@@ -94,11 +98,7 @@ class ViewInBrowserController {
       throw new \InvalidArgumentException("Missing 'subscriber_token'");
     }
 
-    $subscriberModel = Subscriber::findOne($subscriber->getId());
-    if (!$subscriberModel) {
-      return null;
-    }
-    if (!$this->linkTokens->verifyToken($subscriberModel, $data['subscriber_token'])) {
+    if (!$this->linkTokens->verifyToken($subscriber, $data['subscriber_token'])) {
       throw new \InvalidArgumentException("Invalid 'subscriber_token'");
     }
     return $subscriber;

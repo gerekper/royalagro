@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the MailOptin - Lite package.
 msgid ""
 msgstr ""
-"Project-Id-Version: MailOptin - Lite 1.2.36.2\n"
+"Project-Id-Version: MailOptin - Lite 1.2.36.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mailoptin\n"
-"POT-Creation-Date: 2021-06-03 12:51:53+00:00\n"
+"POT-Creation-Date: 2021-06-10 15:17:08+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -450,8 +450,8 @@ msgstr ""
 #: src/connections/CleverReachConnect/Connect.php:117
 #: src/connections/ContactForm7Connect/panel-settings-view.php:70
 #: src/connections/ContactForm7Connect/panel-settings-view.php:86
-#: src/connections/ElementorConnect/Elementor.php:116
-#: src/connections/ElementorConnect/Elementor.php:129
+#: src/connections/ElementorConnect/Elementor.php:115
+#: src/connections/ElementorConnect/Elementor.php:128
 #: src/connections/FluentCRMConnect/Connect.php:177
 #: src/connections/FormidableFormConnect/panel-settings-view.php:57
 #: src/connections/FormidableFormConnect/panel-settings-view.php:73
@@ -788,7 +788,7 @@ msgstr ""
 #: src/connections/NinjaFormsConnect/Integrations/ZohoCRMConnect.php:198
 #: src/connections/NinjaFormsConnect/Integrations/ZohoCampaignsConnect.php:198
 #: src/connections/NinjaFormsConnect/MoNinjaConnect.php:198
-#: src/connections/SendinblueConnect/Connect.php:77
+#: src/connections/SendinblueConnect/Connect.php:74
 #: src/connections/WPFormsConnect/MailOptin.php:456
 msgid "Enable Double Optin"
 msgstr ""
@@ -844,7 +844,7 @@ msgid "Disable Double Optin"
 msgstr ""
 
 #: src/connections/ContactForm7Connect/panel-settings-view.php:62
-#: src/connections/ElementorConnect/Elementor.php:109
+#: src/connections/ElementorConnect/Elementor.php:108
 #: src/connections/FluentCRMConnect/Connect.php:185
 #: src/connections/FormidableFormConnect/panel-settings-view.php:51
 #: src/connections/GravityFormsConnect/GFMailOptin.php:341
@@ -862,7 +862,7 @@ msgid "Select tags to assign to subscribers."
 msgstr ""
 
 #: src/connections/ContactForm7Connect/panel-settings-view.php:99
-#: src/connections/ElementorConnect/Elementor.php:144
+#: src/connections/ElementorConnect/Elementor.php:143
 msgid "Field Mapping"
 msgstr ""
 
@@ -1312,36 +1312,36 @@ msgstr ""
 msgid "Double Optin"
 msgstr ""
 
-#: src/connections/ElementorConnect/Elementor.php:107
+#: src/connections/ElementorConnect/Elementor.php:106
 msgid "Enabled"
 msgstr ""
 
-#: src/connections/ElementorConnect/Elementor.php:108
+#: src/connections/ElementorConnect/Elementor.php:107
 msgid "Disabled"
 msgstr ""
 
-#: src/connections/ElementorConnect/Elementor.php:122
+#: src/connections/ElementorConnect/Elementor.php:121
 #: src/connections/SendlaneConnect/Connect.php:61
 #: src/connections/WPFormsConnect/MailOptin.php:490
 #: src/connections/WeMailConnect/Connect.php:61
 msgid "Enter comma-separated list of tags to assign to subscribers."
 msgstr ""
 
-#: src/connections/ElementorConnect/Elementor.php:137
+#: src/connections/ElementorConnect/Elementor.php:136
 msgid "Select tags that will be assigned to subscribers."
 msgstr ""
 
-#: src/connections/ElementorConnect/Elementor.php:198
+#: src/connections/ElementorConnect/Elementor.php:197
 msgid "Upgrade to Premium"
 msgstr ""
 
-#: src/connections/ElementorConnect/Elementor.php:202
+#: src/connections/ElementorConnect/Elementor.php:201
 msgid ""
 "Upgrade to Premium to assign tags to subscribers, add support custom fields "
 "and remove the 500 subscribers monthly limit."
 msgstr ""
 
-#: src/connections/ElementorConnect/Elementor.php:208
+#: src/connections/ElementorConnect/Elementor.php:207
 msgid "Go Premium Now"
 msgstr ""
 
@@ -2478,7 +2478,7 @@ msgid "Comma-separated list of tags to assign to a new subscriber in MailChimp"
 msgstr ""
 
 #: src/connections/MailChimpConnect/Connect.php:387
-#: src/connections/SendinblueConnect/Connect.php:78
+#: src/connections/SendinblueConnect/Connect.php:75
 msgid ""
 "Double optin requires users to confirm their email address before they are "
 "added or subscribed (recommended)."
@@ -2722,7 +2722,7 @@ msgid "Last Name Property"
 msgstr ""
 
 #: src/connections/MailjetConnect/Connect.php:205
-#: src/connections/SendinblueConnect/Connect.php:106
+#: src/connections/SendinblueConnect/Connect.php:103
 msgid ""
 "If subscribers last names are missing, change this to the correct attribute "
 "name. %sLearn more%s"
@@ -3042,21 +3042,21 @@ msgstr ""
 msgid "Sendinblue API Key not found."
 msgstr ""
 
-#: src/connections/SendinblueConnect/Connect.php:95
+#: src/connections/SendinblueConnect/Connect.php:92
 msgid "First Name Attribute"
 msgstr ""
 
-#: src/connections/SendinblueConnect/Connect.php:97
+#: src/connections/SendinblueConnect/Connect.php:94
 msgid ""
 "If subscribers first names are missing, change this to the correct attribute "
 "name. %sLearn more%s"
 msgstr ""
 
-#: src/connections/SendinblueConnect/Connect.php:104
+#: src/connections/SendinblueConnect/Connect.php:101
 msgid "Last Name Attribute"
 msgstr ""
 
-#: src/connections/SendinblueConnect/Connect.php:148
+#: src/connections/SendinblueConnect/Connect.php:145
 msgid "Sendinblue"
 msgstr ""
 
@@ -8345,9 +8345,9 @@ msgstr ""
 msgid "MailOptin - Lite"
 msgstr ""
 
-#. #-#-#-#-#  mailoptin.pot (MailOptin - Lite 1.2.36.2)  #-#-#-#-#
+#. #-#-#-#-#  mailoptin.pot (MailOptin - Lite 1.2.36.3)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
-#. #-#-#-#-#  mailoptin.pot (MailOptin - Lite 1.2.36.2)  #-#-#-#-#
+#. #-#-#-#-#  mailoptin.pot (MailOptin - Lite 1.2.36.3)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "https://mailoptin.io"
 msgstr ""

