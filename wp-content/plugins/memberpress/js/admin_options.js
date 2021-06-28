@@ -61,6 +61,7 @@ jQuery(document).ready(function($) {
     $.post(ajaxurl, data, function(response) {
       if( response.error === undefined ) {
         $(response.form).hide().appendTo('#integrations-list').slideDown('fast');
+        $("select.mepr-gateways-dropdown").val("MeprStripeGateway").change();
         mepr_setup_clipboard();
       }
       else {
@@ -96,7 +97,7 @@ jQuery(document).ready(function($) {
         $('#mepr-integration-'+data_id).replaceWith(response.form);
         mepr_setup_clipboard();
         if( gateway === 'MeprStripeGateway' ) {
-          $('#mepr-stripe-live-keys-'+response.id).show();
+          $('#mepr-stripe-live-keys-'+response.id).slideDown('fast');
         }
 
         mepr_toggle_boxes();
@@ -585,4 +586,25 @@ jQuery(document).ready(function($) {
 
   $('select[name=mepr_tax_calc_type]').change(show_charge_business_customer_option);
   $('input[name=mepr_vat_tax_businesses]').change(show_charge_business_customer_option);
+
+  var $detected_ip_address = $('#mepr-detected-ip-address');
+
+  $('input[name="mepr-anti-card-testing-ip-method"]').on('change', function () {
+    $detected_ip_address.text('...');
+
+    $.ajax({
+      url: ajaxurl,
+      method: 'GET',
+      dataType: 'json',
+      data: {
+        action: 'mepr_anti_card_testing_get_ip',
+        method: $(this).val()
+      }
+    })
+    .done(function (response) {
+      if(response && typeof response == 'object' && response.success) {
+        $detected_ip_address.text(response.data);
+      }
+    });
+  });
 });

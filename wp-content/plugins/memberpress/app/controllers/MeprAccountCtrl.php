@@ -1,10 +1,6 @@
 <?php
 if(!defined('ABSPATH')) {die('You are not allowed to call this page directly.');}
 
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class MeprAccountCtrl extends MeprBaseCtrl {
   //Prevent a silly error with BuddyPress and our account links widget
   //We should eventually change our account links widget to properly inherit the WP_Widget class
@@ -14,6 +10,18 @@ class MeprAccountCtrl extends MeprBaseCtrl {
     add_action('wp_enqueue_scripts',        array($this,  'enqueue_scripts'));
     add_action('init',                      array($this,  'maybe_update_username')); //Need to use init for cookie stuff and to get old and new emails
     add_action('mepr-above-checkout-form',  array($this,  'maybe_show_broken_sub_message')); //Show message on checkout form with link to update broken sub
+
+    //These are dependent on the the theme/template supporting them.
+    //To Turn On:
+    /*
+    add_filter('mepr-account-nav-page-titles', 'mepr_cust_on_switch');
+    add_filter('mepr-account-nav-broswer-titles', 'mepr_cust_on_switch');
+    function mepr_cust_on_switch($on) {
+      return true;
+    }
+    */
+    add_filter('the_title', array($this, 'account_page_the_title'), 10, 2);
+    add_filter('wp_title', array($this, 'account_page_browser_title'));
 
     //Shortcodes
     MeprHooks::add_shortcode('mepr-account-form',          array($this, 'account_form_shortcode'));
@@ -269,7 +277,7 @@ class MeprAccountCtrl extends MeprBaseCtrl {
     $mepr_options = MeprOptions::fetch();
     $account_url = $_SERVER['REQUEST_URI']; //Use URI for BuddyPress compatibility
     $delim = MeprAppCtrl::get_param_delimiter_char($account_url);
-    $perpage = 10;
+    $perpage = MeprHooks::apply_filters('mepr_payments_per_page', 10);
     $curr_page = (isset($_GET['currpage']) && is_numeric($_GET['currpage']))?$_GET['currpage']:1;
     $start = ($curr_page - 1) * $perpage;
     $end = $start + $perpage;
@@ -604,5 +612,58 @@ class MeprAccountCtrl extends MeprBaseCtrl {
     if(!isset($txn->gateway) || $txn->gateway != $atts['gateway_id']) { return ''; }
 
     return $content;
+  }
+
+  public function account_page_the_title($title) {
+    if (!in_the_loop() || !MeprHooks::apply_filters('mepr-account-nav-page-titles', false)) {
+      return $title;
+    }
+
+    return $this->account_page_title($title);
+  }
+  public function account_page_browser_title($title) {
+    if (!MeprHooks::apply_filters('mepr-account-nav-broswer-titles', false)) {
+      return $title;
+    }
+
+    return $this->account_page_title($title);
+  }
+  public function account_page_title($title) {
+    global $post;
+
+    //Only apply the title changes on the account nave pages if it is turned on
+    //and buddy press intregration is not installed.
+    if (class_exists('MpBuddyPress')) {
+      return $title;
+    }
+
+    //If we don't have a post, just return the title
+    if (!isset($post) || !isset($post->ID) || $post->ID <= 0) {
+      return $title;
+    }
+
+    $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
+    $title_after = '';
+    $sep = ' ' . apply_filters( 'document_title_separator', '-' ) . ' ';
+
+    if (MeprUser::is_account_page($post)) {
+      switch($action) {
+        case 'subscriptions':
+          $title_after = MeprHooks::apply_filters('mepr-account-subscriptions-title',_x('Subscriptions', 'ui', 'memberpress'));
+          break;
+        case 'payments':
+          $title_after = MeprHooks::apply_filters('mepr-account-payments-title',_x('Payments', 'ui', 'memberpress'));
+          break;
+        case 'courses':
+          $title_after = MeprHooks::apply_filters('mepr-account-courses-title',_x('Courses', 'ui', 'memberpress'));
+          break;
+        default:
+          //For custom tabs on account page.
+          $title_after = MeprHooks::apply_filters('mepr-custom-account-nav-title', '', $action);
+          break;
+      }
+    }
+
+    return !empty($title_after) ? $title . $sep . $title_after : $title;
   }
 }

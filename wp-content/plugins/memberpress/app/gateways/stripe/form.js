@@ -37,9 +37,10 @@
     var self = this;
 
     self.$form.find('.mepr-stripe-card-element').each(function () {
-      var $cardElement = $(this),
-        $cardErrors = $cardElement.closest('.mp-form-row').find('.mepr-stripe-card-errors'),
-        stripe = Stripe($cardElement.data('stripe-public-key')),
+      var $cardElement = $(this);
+      console.log($cardElement.data('locale-code').toLowerCase());
+      var $cardErrors = $cardElement.closest('.mp-form-row').find('.mepr-stripe-card-errors'),
+        stripe = Stripe($cardElement.data('stripe-public-key'), { locale: $cardElement.data('locale-code').toLowerCase() }),
         elements = stripe.elements(),
         card = elements.create('card', {
           style: MeprStripeGateway.style,
@@ -113,11 +114,16 @@
         }
       });
     } else {
+      if (!self.isSpc && isStripeCheckoutPageMode == '1') {
+        self.redirectToStripeCheckout(e);
+        return;
+      }
+
       const paymentMethodId = self.$form.find('input[name="mepr_payment_method"]:checked').data('payment-method-type');
       if (
         isStripeCheckoutPageMode == '1' && (
-          paymentMethodId == 'Stripe' ||
-          $('[name=mepr_stripe_is_checkout]').val() == '1'
+          paymentMethodId == 'Stripe' &&
+          self.$form.find('[name=mepr_stripe_is_checkout]').val() == '1'
         )
       ) {
         self.redirectToStripeCheckout(e);
@@ -315,6 +321,10 @@
         this.handleValidationErrors(response.errors);
       } else if (response.error) {
         this.handlePaymentError(response.error);
+
+        if (response.destroy_payment_method) {
+          this.selectedPaymentMethod.card.destroy();
+        }
       } else if (response.requires_action) {
         this.handleAction(response);
       } else if (!this.$form.hasClass('mepr-payment-submitted')) {
@@ -412,6 +422,24 @@
       }
     })
     .done(function(result) {
+      if (typeof result.errors !== 'undefined') {
+        self.$form.find('.mepr-stripe-checkout-errors').html('');
+        for (var i = 0; i < Object.entries(result.errors).length; i++) {
+          self.$form.find('.mepr-stripe-checkout-errors').
+              append('<p>' + Object.entries(result.errors)[i][1] + '</p>');
+        }
+        self.allowResubmission();
+      }
+
+      if (typeof result.error !== 'undefined') {
+        self.$form.find('.mepr-stripe-checkout-errors').html(result.error);
+        self.allowResubmission();
+      }
+
+      if (typeof result.errors !== 'undefined' || typeof result.error !== 'undefined') {
+        return;
+      }
+
       var stripe = Stripe(result.public_key);
       return stripe.redirectToCheckout({ sessionId: result.id });
     })

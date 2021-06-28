@@ -1,10 +1,6 @@
 <?php
 if(!defined('ABSPATH')) {die('You are not allowed to call this page directly.');}
 
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class MeprAppHelper {
   public static function info_tooltip($id, $title, $info) {
     ?>
@@ -315,7 +311,7 @@ class MeprAppHelper {
         $now = time();
 
         if ($obj instanceof MeprTransaction || $obj instanceof MeprSubscription) {
-          $expire_ts = strtotime( $obj->expires_at );
+          $expire_ts = strtotime( $obj->expire_fixed );
         } else {
           $expire_ts = strtotime( $product->expire_fixed );
 

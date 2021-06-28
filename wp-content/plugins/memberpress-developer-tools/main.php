@@ -3,7 +3,7 @@
 Plugin Name: MemberPress Developer Tools
 Plugin URI: http://www.memberpress.com/
 Description: Tools for MemberPress Developers.
-Version: 1.1.44
+Version: 1.2.2
 Author: Caseproof, LLC
 Author URI: http://caseproof.com/
 Text Domain: memberpress-developer-tools
@@ -13,10 +13,6 @@ Copyright: 2004-2017, Caseproof, LLC
 if(!defined('ABSPATH')) {die('You are not allowed to call this page directly.');}
 
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
 
 function mpdt_rest_api_available() {
   global $wp_version;

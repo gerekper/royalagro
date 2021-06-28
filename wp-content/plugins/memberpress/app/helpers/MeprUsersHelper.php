@@ -1,10 +1,6 @@
 <?php
 if(!defined('ABSPATH')) {die('You are not allowed to call this page directly.');}
 
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class MeprUsersHelper {
   public static function get_email_vars() {
     return MeprHooks::apply_filters(
@@ -87,6 +83,7 @@ class MeprUsersHelper {
     $required_attr = $line->required ? 'required' : '';
     $array_types = array( 'multiselect', 'checkboxes' ); //If we update this, we need make sure it doesn't break the {$usermeta:slug} stuff in MeprTransactionsHelper
     $bool_types  = array( 'checkbox' );
+    $classes = MeprHooks::apply_filters('mepr-custom-field-classes', $classes, $line);
 
     // Figure out what type we have here
     $is_array  = in_array( $line->field_type, $array_types );

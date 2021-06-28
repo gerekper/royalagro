@@ -1,10 +1,6 @@
 <?php
 if(!defined('ABSPATH')) {die('You are not allowed to call this page directly.');}
 
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class MeprProduct extends MeprCptModel implements MeprProductInterface {
   public static $price_str                      = '_mepr_product_price';
   public static $period_str                     = '_mepr_product_period';
@@ -802,6 +798,7 @@ class MeprProduct extends MeprCptModel implements MeprProductInterface {
       if(MeprUtils::is_ssl() && $modify_if_https) {
         $url = preg_replace('!^http:!','https:',$url);
       }
+      $url = MeprHooks::apply_filters('mepr-product-url', $url, $this, $args, $modify_if_https);
 
       return $url;
     }
@@ -867,7 +864,8 @@ class MeprProduct extends MeprCptModel implements MeprProductInterface {
     $return = false;
 
     if( is_object($post) &&
-        ( ( $post->post_type == MeprProduct::$cpt &&
+        ( ( property_exists( $post, 'post_type' ) &&
+            $post->post_type == MeprProduct::$cpt &&
             $prd = new MeprProduct($post->ID) ) ||
           ( preg_match( '~\[mepr-(product|membership)-registration-form\s+(product_)?id=[\"\\\'](\d+)[\"\\\']~',
                         $post->post_content, $m ) &&

@@ -1,10 +1,6 @@
 <?php
 if(!defined('ABSPATH')) {die('You are not allowed to call this page directly.');}
 
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class MeprRule extends MeprCptModel {
   public static $mepr_type_str                = '_mepr_rules_type';
   public static $mepr_content_str             = '_mepr_rules_content';
@@ -916,11 +912,13 @@ class MeprRule extends MeprCptModel {
 
   //Should probably put this in Utils at some point
   public function has_time_passed($ts, $unit, $amount, $is_fixed = false) {
-    //TODO -- should make this use local WP timezone instead
     //Convert $ts to the start of the day, so drips/expirations don't come in at odd hours throughout the day
     if(!$is_fixed) {
-      $datetime = gmdate('Y-m-d 00:00:01', $ts);
-      $ts = strtotime($datetime);
+      //$datetime = gmdate('Y-m-d 00:00:01', $ts);
+      //$ts = strtotime($datetime);
+      $datetime = gmdate('Y-m-d H:i:s', $ts);
+      $datetime = get_date_from_gmt($datetime, 'Y-m-d 00:00:01'); // Convert to local WP timezone
+      $ts = (int) get_gmt_from_date($datetime, 'U'); // Now back to a unix timestamp
     }
 
     switch($unit) {
@@ -1130,6 +1128,7 @@ class MeprRule extends MeprCptModel {
 
   public static function get_unauth_settings_for($post) {
     $mepr_options = MeprOptions::fetch();
+
     $unauth = (object)array();
     $global_settings = self::get_global_unauth_settings();
     $post_settings = self::get_post_unauth_settings($post);
@@ -1186,10 +1185,10 @@ class MeprRule extends MeprCptModel {
       if($pos !== false) {
         //mbstring library loaded?
         if(extension_loaded('mbstring')) {
-          $unauth->excerpt = force_balance_tags(wpautop(do_shortcode(mb_substr($post->post_content, 0, $pos))));
+          $unauth->excerpt = force_balance_tags((do_shortcode(mb_substr($post->post_content, 0, $pos))));
         }
         else {
-          $unauth->excerpt = force_balance_tags(wpautop(do_shortcode(substr($post->post_content, 0, $pos))));
+          $unauth->excerpt = force_balance_tags((do_shortcode(substr($post->post_content, 0, $pos))));
         }
       }
       else { //No more tag?

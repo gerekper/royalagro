@@ -1,10 +1,6 @@
 <?php
 if(!defined('ABSPATH')) {die('You are not allowed to call this page directly.');}
 
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class MeprArtificialGateway extends MeprBaseRealGateway {
   /** Used in the view to identify the gateway */
   public function __construct() {
@@ -64,6 +60,11 @@ class MeprArtificialGateway extends MeprBaseRealGateway {
     $this->desc = $this->settings->desc;
     $this->use_desc = $this->settings->use_desc;
     //$this->recurrence_type = $this->settings->recurrence_type;
+  }
+
+  // Hide update link when using offline gateway.
+  protected function hide_update_link($subscription) {
+    return true;
   }
 
   public function spc_payment_fields() {
@@ -131,14 +132,11 @@ class MeprArtificialGateway extends MeprBaseRealGateway {
       MeprUtils::send_signup_notices($txn);
     }
     else {
-      if(!$usr->signup_notice_sent) {
-        if($this->settings->always_send_welcome) {
-          MeprUtils::send_signup_notices($txn, false, true);
-        }
-        else {
-          MeprUtils::send_notices($txn, null, 'MeprAdminSignupEmail');
-        }
-
+      if($this->settings->always_send_welcome) {
+        MeprUtils::send_signup_notices($txn, false, true);
+      }
+      else if (!$usr->signup_notice_sent) {
+        MeprUtils::send_notices($txn, null, 'MeprAdminSignupEmail');
         $usr->signup_notice_sent = true;
         $usr->store();
       }
@@ -246,18 +244,14 @@ class MeprArtificialGateway extends MeprBaseRealGateway {
     if(!$this->settings->manually_complete) {
       $txn->status = MeprTransaction::$complete_str;
       $txn->store(); //Need to store here so the event will show as "complete" when firing the hooks
-      MeprUtils::send_transaction_receipt_notices($txn);
       MeprUtils::send_signup_notices($txn);
     }
     else {
-      if(!$usr->signup_notice_sent) {
-        if($this->settings->always_send_welcome) {
-          MeprUtils::send_signup_notices($txn, false, true);
-        }
-        else {
-          MeprUtils::send_notices($txn, null, 'MeprAdminSignupEmail');
-        }
-
+      if($this->settings->always_send_welcome) {
+        MeprUtils::send_signup_notices($txn, false, true);
+      }
+      else if (!$usr->signup_notice_sent) {
+        MeprUtils::send_notices($txn, null, 'MeprAdminSignupEmail');
         $usr->signup_notice_sent = true;
         $usr->store();
       }

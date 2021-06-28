@@ -2,10 +2,6 @@
 if(!defined('ABSPATH')) {die('You are not allowed to call this page directly.');}
 
 /** To add new dynamic options please edit the config file in lib/data/options/dynamic_attrs.json */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class MeprOptions {
   public $dynamic_attrs;
 
@@ -108,6 +104,18 @@ class MeprOptions {
 
     if(!isset($this->disable_mod_rewrite))
       $this->disable_mod_rewrite = true;
+
+    if(!isset($this->anti_card_testing_enabled)) {
+      $this->anti_card_testing_enabled = true;
+    }
+
+    if(!isset($this->anti_card_testing_ip_method)) {
+      $this->anti_card_testing_ip_method = '';
+    }
+
+    if(!isset($this->anti_card_testing_blocked)) {
+      $this->anti_card_testing_blocked = array();
+    }
 
     if(!isset($this->emails)) {
       $this->emails = array();
@@ -370,6 +378,9 @@ class MeprOptions {
     $this->logout_redirect_url_str                  = 'mepr-logout-redirect-url';
     $this->account_css_width_str                    = 'mepr-account-css-width';
     $this->disable_mod_rewrite_str                  = 'mepr-disable-mod-rewrite';
+    $this->anti_card_testing_enabled_str            = 'mepr-anti-card-testing-enabled';
+    $this->anti_card_testing_ip_method_str          = 'mepr-anti-card-testing-ip-method';
+    $this->anti_card_testing_blocked_str            = 'mepr-anti-card-testing-blocked';
     $this->admin_email_str                          = 'mepr-admin-email';
     $this->admin_email_subject_str                  = 'mepr-admin-email-subject';
     $this->admin_email_body_str                     = 'mepr-admin-email-body';
@@ -553,6 +564,10 @@ class MeprOptions {
     }
 
     $this->disable_mod_rewrite           = isset($params[$this->disable_mod_rewrite_str]);
+    $this->anti_card_testing_enabled     = isset($params[$this->anti_card_testing_enabled_str]);
+    $this->anti_card_testing_ip_method   = isset($params[$this->anti_card_testing_ip_method_str]) ? sanitize_text_field(wp_unslash($params[$this->anti_card_testing_ip_method_str])) : '';
+    $this->anti_card_testing_blocked     = isset($params[$this->anti_card_testing_blocked_str]) && is_string($params[$this->anti_card_testing_blocked_str]) ? array_unique(array_filter(array_map('trim', explode("\n", $params[$this->anti_card_testing_blocked_str])))) : array();
+
     $this->custom_message                = wp_kses_post(stripslashes($params[$this->custom_message_str]));
     $this->currency_code                 = stripslashes($params[$this->currency_code_str]);
     $this->currency_symbol               = stripslashes($params[$this->currency_symbol_str]);

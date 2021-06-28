@@ -1,9 +1,5 @@
 <?php if(!defined('ABSPATH')) {die('You are not allowed to call this page directly.');}
 
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class MeprVatTaxCtrl extends MeprBaseCtrl {
   public function load_hooks() {
     // Filter for MP Options page (field to enable VAT and collect VAT country & VAT ID)
@@ -128,7 +124,9 @@ class MeprVatTaxCtrl extends MeprBaseCtrl {
   }
 
   public function process_signup($amt, $usr, $pid, $tid) {
-    if($this->vat_calc_possible()) {
+    $is_stripe_spc = isset($_POST['mepr_process_signup_form'], $_POST['mepr_transaction_id']) && is_numeric($_POST['mepr_transaction_id']);
+
+    if($this->vat_calc_possible() || $is_stripe_spc) {
       if(isset($_POST['mepr_vat_customer_type'])) {
         update_user_meta($usr->ID, 'mepr_vat_customer_type', $this->get_customer_type());
       }
