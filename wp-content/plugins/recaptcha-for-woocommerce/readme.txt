@@ -1,10 +1,10 @@
 === reCaptcha for WooCommerce===
 Contributors:nik00726
-Tags:Recpatcha
+Tags:Recaptcha
 Requires at least:3.0
-Tested up to:5.7
-Version:2.11
-Stable tag:2.11
+Tested up to:5.7.2
+Version:2.17
+Stable tag:2.17
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -55,6 +55,7 @@ Protect your eCommerce site with google recptcha.
 
 18.Reset captcha on order postback error
 
+19.Bypass reCAPTCHA (do not show captcha) using IP or IP-Range for specific clients/users
 
 
 
@@ -88,10 +89,37 @@ This plugin is easy to install like other plug-ins of Wordpress as you need to j
 
 == Changelog ==
 
+= 2.17 =
+
+* Added filter for reCaptcha v2 to change language if needed programmatically. To change hl paramter of recaptcha anyone can use this filter - i13_recapchav2_set_lang
+
+
+= 2.16 =
+
+* Added functionality to Bypass reCAPTCHA (do not show captcha) using IP or IP-Range for your clients/users
+
+= 2.15 =
+
+* Fixed registration captcha not work for some theme as it is using _nonce.
+
+= 2.14 =
+
+* Added captcha for Post Comment forms.
+
+
+= 2.13 =
+
+* Fixed complain that plugin automatically deactivated.
+
+
+= 2.12 =
+
+* Fixed Elavon payment processor shown catcha twice on add payment method page
+
+
 = 2.11 =
 
 * Added option to enable/disable recaptcha for stripe payment request buttons (Google Pay and Apple Pay)
-
 
 
 = 2.10 =
