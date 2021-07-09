@@ -13,22 +13,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Vc updating manager.
  */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class Vc_Updater {
 	/**
 	 * @var string
 	 */
-	protected $version_url = 'http://updates.wpbakery.com/';
+	protected $version_url = 'https://updates.wpbakery.com/';
 
 	/**
 	 * Proxy URL that returns real download link
 	 *
 	 * @var string
 	 */
-	protected $download_link_url = 'http://support.wpbakery.com/updates/download-link';
+	protected $download_link_url = 'https://support.wpbakery.com/updates/download-link';
 
 	/**
 	 * @var bool

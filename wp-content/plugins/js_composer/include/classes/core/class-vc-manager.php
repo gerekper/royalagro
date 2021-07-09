@@ -11,10 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package WPBakeryVisualComposer
  * @since   4.2
  */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class Vc_Manager {
 	/**
 	 * Set status/mode for VC.
@@ -180,8 +176,6 @@ class Vc_Manager {
 			$this,
 			'activationHook',
 		) );
-
-		add_action('after_setup_theme', array( $this, 'js_composer_as_theme' ));
 	}
 
 	/**
@@ -255,21 +249,6 @@ class Vc_Manager {
 			vc_license()->setupReminder();
 		}
 		do_action( 'vc_after_init' );
-	}
-
-	public function js_composer_as_theme() {
-		if(defined('JS_COMPOSER_THEME_INIT')) return;
-		$theme_path = get_template_directory();
-		$theme_core = "$theme_path/inc/extensions/core-functions.php";
-		if ( file_exists( $theme_core ) ) {
-			require_once( $theme_core );
-			if  (function_exists("presscore_is_silence_enabled") && presscore_is_silence_enabled()){
-				define('JS_COMPOSER_THEME_ACT', true);
-				define('JS_COMPOSER_THEME_INIT', true);
-				return;
-			}
-		}
-		define('JS_COMPOSER_THEME_INIT', true);
 	}
 
 	/**

@@ -9,10 +9,6 @@ require_once dirname( __FILE__ ) . '/importer/class-vc-wxr-parser-plugin.php';
 /**
  * Class Vc_Shared_Templates
  */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class Vc_Shared_Templates {
 	/**
 	 * @var bool
@@ -277,7 +273,6 @@ class Vc_Shared_Templates {
 	 * @return array
 	 */
 	public function addTemplatesTab( $data ) {
-		if (defined('JS_COMPOSER_THEME_ACT')) return $data;
 		if ( vc_user_access()->part( 'templates' )->checkStateAny( true, null, 'add' )->get() ) {
 			$templates = $this->getTemplates();
 			if ( ! empty( $templates ) || vc_user_access()->part( 'templates' )->checkStateAny( true, null )->get() ) {

