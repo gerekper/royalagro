@@ -11,10 +11,6 @@
  * @author     WPDeveloper <support@wpdeveloper.net>
  */
 
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class BetterDocs_Multiple_Kb
 {
 	public static $enable;
@@ -268,8 +264,19 @@ class BetterDocs_Multiple_Kb
 
 	public static function breadcrumb_single($html, $delimiter)
 	{
-		global $post;
-		$kb_terms = wp_get_post_terms($post->ID, 'knowledge_base');
+		global $post, $wp_query;
+
+        $kb_terms = array();
+        if (isset($wp_query->query_vars['knowledge_base'])) {
+            $term = get_term_by('slug', $wp_query->query_vars['knowledge_base'], 'knowledge_base');
+            if (!empty($term)) {
+                $kb_terms[] = $term;
+            }
+        }
+
+        if (empty($kb_terms)) {
+            $kb_terms = wp_get_post_terms($post->ID, 'knowledge_base');
+        }
 
 		if ($kb_terms) {
 			$html = '<li class="betterdocs-breadcrumb-item breadcrumb-delimiter"> ' . $delimiter . ' </li>'

