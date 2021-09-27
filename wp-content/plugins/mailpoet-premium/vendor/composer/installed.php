@@ -1,27 +1,27 @@
-<?php return array (
+<?php
 
 if (!defined('ABSPATH')) exit;
 
-  'root' => 
-  array (
-    'pretty_version' => 'dev-master',
-    'version' => 'dev-master',
-    'aliases' => 
-    array (
+ return array(
+    'root' => array(
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'reference' => '478843e6236ce900c519be583d79d8f7b0af887c',
+        'name' => '__root__',
+        'dev' => false,
     ),
-    'reference' => 'b621a74137fd018ac5a17948ec27fef097fb805d',
-    'name' => '__root__',
-  ),
-  'versions' => 
-  array (
-    '__root__' => 
-    array (
-      'pretty_version' => 'dev-master',
-      'version' => 'dev-master',
-      'aliases' => 
-      array (
-      ),
-      'reference' => 'b621a74137fd018ac5a17948ec27fef097fb805d',
+    'versions' => array(
+        '__root__' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'reference' => '478843e6236ce900c519be583d79d8f7b0af887c',
+            'dev_requirement' => false,
+        ),
     ),
-  ),
 );

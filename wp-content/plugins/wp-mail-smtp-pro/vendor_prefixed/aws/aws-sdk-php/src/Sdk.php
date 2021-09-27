@@ -431,6 +431,12 @@ namespace WPMailSMTP\Vendor\Aws;
  * @method \Aws\MultiRegionClient createMultiRegionRoute53(array $args = [])
  * @method \Aws\Route53Domains\Route53DomainsClient createRoute53Domains(array $args = [])
  * @method \Aws\MultiRegionClient createMultiRegionRoute53Domains(array $args = [])
+ * @method \Aws\Route53RecoveryCluster\Route53RecoveryClusterClient createRoute53RecoveryCluster(array $args = [])
+ * @method \Aws\MultiRegionClient createMultiRegionRoute53RecoveryCluster(array $args = [])
+ * @method \Aws\Route53RecoveryControlConfig\Route53RecoveryControlConfigClient createRoute53RecoveryControlConfig(array $args = [])
+ * @method \Aws\MultiRegionClient createMultiRegionRoute53RecoveryControlConfig(array $args = [])
+ * @method \Aws\Route53RecoveryReadiness\Route53RecoveryReadinessClient createRoute53RecoveryReadiness(array $args = [])
+ * @method \Aws\MultiRegionClient createMultiRegionRoute53RecoveryReadiness(array $args = [])
  * @method \Aws\Route53Resolver\Route53ResolverClient createRoute53Resolver(array $args = [])
  * @method \Aws\MultiRegionClient createMultiRegionRoute53Resolver(array $args = [])
  * @method \Aws\S3\S3Client createS3(array $args = [])
@@ -546,7 +552,7 @@ namespace WPMailSMTP\Vendor\Aws;
  */
 class Sdk
 {
-    const VERSION = '3.185.6';
+    const VERSION = '3.187.3';
     /** @var array Arguments for creating clients */
     private $args;
     /**

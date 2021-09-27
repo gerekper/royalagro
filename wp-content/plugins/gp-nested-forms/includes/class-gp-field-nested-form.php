@@ -139,11 +139,7 @@ class GP_Field_Nested_Form extends GF_Field {
 
 		$template = new GP_Template( gp_nested_forms() );
 		$markup   = $template->parse_template(
-			array(
-				sprintf( '%s-%s-%s.php', $args['template'], $form['id'], $this->id ),
-				sprintf( '%s-%s.php', $args['template'], $form['id'] ),
-				sprintf( '%s.php', $args['template'] ),
-			),
+			gp_nested_forms()->get_template_names( $args['template'], $form['id'], $this->id ),
 			true,
 			false,
 			$args
@@ -221,11 +217,7 @@ class GP_Field_Nested_Form extends GF_Field {
 		);
 
 		$markup = $template->parse_template(
-			array(
-				sprintf( '%s-%s-%s.php', $args['template'], $field->formId, $field->id ),
-				sprintf( '%s-%s.php', $args['template'], $field->formId ),
-				sprintf( '%s.php', $args['template'] ),
-			),
+			gp_nested_forms()->get_template_names( $args['template'], $field->formId, $field->id ),
 			true,
 			false,
 			$args
@@ -331,11 +323,7 @@ class GP_Field_Nested_Form extends GF_Field {
 
 		$template = new GP_Template( gp_nested_forms() );
 		$markup   = $template->parse_template(
-			array(
-				sprintf( '%s-%s-%s.php', $args['template'], $this->form_id, $this->id ),
-				sprintf( '%s-%s.php', $args['template'], $this->form_id ),
-				sprintf( '%s.php', $args['template'] ),
-			),
+			gp_nested_forms()->get_template_names( $args['template'], $this->formId, $this->id ),
 			true,
 			false,
 			$args

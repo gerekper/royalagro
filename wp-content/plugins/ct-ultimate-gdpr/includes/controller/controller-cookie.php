@@ -1336,6 +1336,13 @@ class CT_Ultimate_GDPR_Controller_Cookie extends CT_Ultimate_GDPR_Controller_Abs
 			'ct-ultimate-gdpr-cookie' // Page
 		);
 
+        add_settings_section(
+            'ct-ultimate-gdpr-cookie_tab-2_section-9', // ID
+            esc_html__( 'Reject All Cookies', 'ct-ultimate-gdpr' ), // Title
+            null, // callback
+            'ct-ultimate-gdpr-cookie' // Page
+        );
+
 		add_settings_section(
 			'ct-ultimate-gdpr-cookie_tab-2_section-4', // ID
 			esc_html__( 'Position of the cookie notice box', 'ct-ultimate-gdpr' ), // Title
@@ -1360,6 +1367,13 @@ class CT_Ultimate_GDPR_Controller_Cookie extends CT_Ultimate_GDPR_Controller_Abs
 		add_settings_section(
 			'ct-ultimate-gdpr-cookie_tab-2_section-6', // ID
 			esc_html__( 'Custom style CSS', 'ct-ultimate-gdpr' ), // Title
+			null, // callback
+			'ct-ultimate-gdpr-cookie' // Page
+		);
+		
+		add_settings_section(
+			'ct-ultimate-gdpr-cookie_tab-2_section-10', // ID
+			esc_html__( 'Withdrawal Cookie Agreement', 'ct-ultimate-gdpr' ), // Title
 			null, // callback
 			'ct-ultimate-gdpr-cookie' // Page
 		);
@@ -1499,7 +1513,7 @@ class CT_Ultimate_GDPR_Controller_Cookie extends CT_Ultimate_GDPR_Controller_Abs
 
             add_settings_field(
                 'cookie_popup_consent_crawler',
-                esc_html__( 'Block user agents (eg. bots) containing the following texts (comma separated)', 'ct-ultimate-gdpr' ),
+                esc_html__( 'Do not block user agents (eg. bots) containing the following texts (comma separated)', 'ct-ultimate-gdpr' ),
                 array( $this, 'render_field_cookie_popup_consent_crawler' ),
                 'ct-ultimate-gdpr-cookie',
                 'ct-ultimate-gdpr-cookie_tab-1_section-3'
@@ -1605,8 +1619,18 @@ class CT_Ultimate_GDPR_Controller_Cookie extends CT_Ultimate_GDPR_Controller_Abs
 				'ct-ultimate-gdpr-cookie_tab-2_section-2'
 			);
 
+            //TAB 2 - SECTION 3 - Reject Cookie
 
-			//TAB 2 - SECTION 3 - READ MORE
+            add_settings_field(
+                'cookie_read_page',
+                esc_html__( 'Cookie close modal button (an option to decline the cookies completely)', 'ct-ultimate-gdpr' ),
+                array( $this, 'render_field_cookie_gear_close_box' ),
+                'ct-ultimate-gdpr-cookie',
+                'ct-ultimate-gdpr-cookie_tab-2_section-9'
+            );
+
+
+            //TAB 2 - SECTION 3 - READ MORE
 
 			add_settings_field(
 				'cookie_read_page',
@@ -1716,6 +1740,22 @@ class CT_Ultimate_GDPR_Controller_Cookie extends CT_Ultimate_GDPR_Controller_Abs
                 array( $this, 'render_field_cookie_my_account_disclaimer' ),
                 'ct-ultimate-gdpr-cookie',
                 'ct-ultimate-gdpr-cookie_tab-2_section-8'
+            );
+			
+            add_settings_field(
+                'cookie_withdrawal_cookies_agreement',
+                esc_html__( 'Heading', 'ct-ultimate-gdpr' ),
+                array( $this, 'render_field_cookie_withdrawal_cookies_agreement' ),
+                'ct-ultimate-gdpr-cookie',
+                'ct-ultimate-gdpr-cookie_tab-2_section-10'
+            );
+
+			add_settings_field(
+                'cookie_withdrawal_cookies_agreement_description',
+                esc_html__( 'Description', 'ct-ultimate-gdpr' ),
+                array( $this, 'render_field_cookie_withdrawal_cookies_agreement_description' ),
+                'ct-ultimate-gdpr-cookie',
+                'ct-ultimate-gdpr-cookie_tab-2_section-10'
             );
 
 			//TAB 2 - SECTION 6 - CUSTOM STYLE CSS
@@ -1917,14 +1957,13 @@ class CT_Ultimate_GDPR_Controller_Cookie extends CT_Ultimate_GDPR_Controller_Abs
 				'ct-ultimate-gdpr-cookie_tab-3_section-4'
 			);
 
-			add_settings_field(
-				'cookie_gear_close_box',
-				esc_html__( 'Cookie close modal button (an option to decline the cookies completely)', 'ct-ultimate-gdpr' ),
-				array( $this, 'render_field_cookie_gear_close_box' ),
-				'ct-ultimate-gdpr-cookie',
-				'ct-ultimate-gdpr-cookie_tab-3_section-4'
-			);
-
+            add_settings_field(
+                'cookie_close_text_modal',
+                esc_html__( 'Cookie close modal text (If empty, button X(close) will display. If not, it will display the text)', 'ct-ultimate-gdpr' ),
+                array( $this, 'render_field_cookie_close_text_modal' ),
+                'ct-ultimate-gdpr-cookie',
+                'ct-ultimate-gdpr-cookie_tab-2_section-9'
+            );
 			//TAB 3 - SECTION 5 - LABELS
 
 
@@ -2943,6 +2982,37 @@ class CT_Ultimate_GDPR_Controller_Cookie extends CT_Ultimate_GDPR_Controller_Abs
 		);
 	}
 
+	public function render_field_cookie_withdrawal_cookies_agreement()
+	{
+		$admin      = CT_Ultimate_GDPR::instance()->get_admin_controller();
+		$field_name = $admin->get_field_name( __FUNCTION__ );
+		$default    = ct_ultimate_gdpr_get_value( $field_name, $this->get_default_options() );
+		$value      = $admin->get_option_value_escaped( $field_name );
+		$value      = $value ? $value : $default;
+
+		printf(
+			"<input class='ct-ultimate-gdpr-field' type='text' id='%s' name='%s' value='%s' />",
+			$admin->get_field_name( __FUNCTION__ ),
+			$admin->get_field_name_prefixed( $field_name ),
+			$value
+		);
+	}
+
+	public function render_field_cookie_withdrawal_cookies_agreement_description()
+	{
+		$default    = ct_ultimate_gdpr_get_value( 'cookie_withdrawal_cookies_agreement_description', $this->get_default_options() );
+		$admin      = CT_Ultimate_GDPR::instance()->get_admin_controller();
+		$field_name = $admin->get_field_name( __FUNCTION__ );
+		$value      = $admin->get_option_value_escaped( $field_name, $default );
+
+		printf(
+			"<textarea class='ct-ultimate-gdpr-field' id='%s' name='%s' rows='5' cols='100'>%s</textarea>",
+			$admin->get_field_name( __FUNCTION__ ),
+			$admin->get_field_name_prefixed( $field_name ),
+			$value
+		);
+	}
+
 	/**
 	 *
 	 */
@@ -3506,6 +3576,19 @@ class CT_Ultimate_GDPR_Controller_Cookie extends CT_Ultimate_GDPR_Controller_Abs
 		);
 
 	}
+    /**
+     *
+     */
+    public function render_field_cookie_close_text_modal() {
+        $admin      = CT_Ultimate_GDPR::instance()->get_admin_controller();
+        $field_name = $admin->get_field_name( __FUNCTION__ );
+        printf(
+            "<input type='text' id='%s' name='%s' value='%s' />",
+            $admin->get_field_name( __FUNCTION__ ),
+            $admin->get_field_name_prefixed( $field_name ),
+            $admin->get_option_value_escaped( $field_name )
+        );
+    }
 
 	/**
 	 *
@@ -3775,15 +3858,17 @@ class CT_Ultimate_GDPR_Controller_Cookie extends CT_Ultimate_GDPR_Controller_Abs
 			'cookie_group_popup_features_nonavailable_group_2' => esc_html__( "Remember your login details; Functionality: Remember social media settings; Functionality: Remember selected region and country; Analytics: Keep track of your visited pages and interaction taken; Analytics: Keep track about your location and region based on your IP number; Analytics: Keep track of the time spent on each page; Analytics: Increase the data quality of the statistics functions; Advertising: Tailor information and advertising to your interests based on e.g. the content you have visited before. (Currently we do not use targeting or targeting cookies.; Advertising: Gather personally identifiable information such as name and location;", 'ct-ultimate-gdpr' ),
 			'cookie_group_popup_features_available_group_3'    => esc_html__( "Essential: Remember your cookie permission setting; Essential: Allow session cookies; Essential: Gather information you input into a contact forms, newsletter and other forms across all pages; Essential: Keep track of what you input in a shopping cart; Essential: Authenticate that you are logged into your user account; Essential: Remember language version you selected; Functionality: Remember social media settings; Functionality: Remember selected region and country;", 'ct-ultimate-gdpr' ),
 			'cookie_group_popup_features_nonavailable_group_3' => esc_html__( "Remember your login details; Analytics: Keep track of your visited pages and interaction taken; Analytics: Keep track about your location and region based on your IP number; Analytics: Keep track of the time spent on each page; Analytics: Increase the data quality of the statistics functions; Advertising: Tailor information and advertising to your interests based on e.g. the content you have visited before. (Currently we do not use targeting or targeting cookies.; Advertising: Gather personally identifiable information such as name and location;", 'ct-ultimate-gdpr' ),
-			'cookie_group_popup_features_available_group_4'    => esc_html__( "Essential: Remember your cookie permission setting; Essential: Allow session cookies; Essential: Gather information you input into a contact forms, newsletter and other forms across all pages; Essential: Keep track of what you input in a shopping cart; Essential: Authenticate that you are logged into your user account; Essential: Remember language version you selected; Functionality: Remember social media settingsl Functionality: Remember selected region and country; Analytics: Keep track of your visited pages and interaction taken; Analytics: Keep track about your location and region based on your IP number; Analytics: Keep track of the time spent on each page; Analytics: Increase the data quality of the statistics functions;", 'ct-ultimate-gdpr' ),
+			'cookie_group_popup_features_available_group_4'    => esc_html__( "Essential: Remember your cookie permission setting; Essential: Allow session cookies; Essential: Gather information you input into a contact forms, newsletter and other forms across all pages; Essential: Keep track of what you input in a shopping cart; Essential: Authenticate that you are logged into your user account; Essential: Remember language version you selected; Functionality: Remember social media settings; Functionality: Remember selected region and country; Analytics: Keep track of your visited pages and interaction taken; Analytics: Keep track about your location and region based on your IP number; Analytics: Keep track of the time spent on each page; Analytics: Increase the data quality of the statistics functions;", 'ct-ultimate-gdpr' ),
 			'cookie_group_popup_features_nonavailable_group_4' => esc_html__( "Remember your login details; Advertising: Use information for tailored advertising with third parties; Advertising: Allow you to connect to social sites; Advertising: Identify device you are using; Advertising: Gather personally identifiable information such as name and location", 'ct-ultimate-gdpr' ),
-			'cookie_group_popup_features_available_group_5'    => esc_html__( "Essential: Remember your cookie permission setting; Essential: Allow session cookies; Essential: Gather information you input into a contact forms, newsletter and other forms across all pages; Essential: Keep track of what you input in a shopping cart; Essential: Authenticate that you are logged into your user account; Essential: Remember language version you selected; Functionality: Remember social media settingsl Functionality: Remember selected region and country; Analytics: Keep track of your visited pages and interaction taken; Analytics: Keep track about your location and region based on your IP number; Analytics: Keep track of the time spent on each page; Analytics: Increase the data quality of the statistics functions; Advertising: Use information for tailored advertising with third parties; Advertising: Allow you to connect to social sitesl Advertising: Identify device you are using; Advertising: Gather personally identifiable information such as name and location", 'ct-ultimate-gdpr' ),
+			'cookie_group_popup_features_available_group_5'    => esc_html__( "Essential: Remember your cookie permission setting; Essential: Allow session cookies; Essential: Gather information you input into a contact forms, newsletter and other forms across all pages; Essential: Keep track of what you input in a shopping cart; Essential: Authenticate that you are logged into your user account; Essential: Remember language version you selected; Functionality: Remember social media settings; Functionality: Remember selected region and country; Analytics: Keep track of your visited pages and interaction taken; Analytics: Keep track about your location and region based on your IP number; Analytics: Keep track of the time spent on each page; Analytics: Increase the data quality of the statistics functions; Advertising: Use information for tailored advertising with third parties; Advertising: Allow you to connect to social sitesl Advertising: Identify device you are using; Advertising: Gather personally identifiable information such as name and location", 'ct-ultimate-gdpr' ),
 			'cookie_group_popup_features_nonavailable_group_5' => esc_html__( "Remember your login details", 'ct-ultimate-gdpr' ),
 			'cookie_modal_header_color'                        => "#595959",
 			'cookie_modal_text_color'                          => "#797979",
 			'cookie_modal_skin'                                => "default",
 			'cookie_protection_shortcode_label'                => esc_html__( "This content requires cookies", 'ct-ultimate-gdpr' ),
 			'cookie_my_account_disclaimer'                     => esc_html__( "Removal of your data will not limit in any way the system functionalities", 'ct-ultimate-gdpr' ),
+			'cookie_withdrawal_cookies_agreement'			   => esc_html__( "Withdrawal Cookie Agreement", 'ct-ultimate-gdpr' ),
+			'cookie_withdrawal_cookies_agreement_description'  => esc_html__( "Decide to block all cookies which we're using. You can change these settings at any time. Learn more about the cookies we use.", 'ct-ultimate-gdpr' ),
 		) );
 
 	}

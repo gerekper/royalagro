@@ -3,6 +3,7 @@
 namespace WPMailSMTP\Pro;
 
 use WPMailSMTP\Admin\Area;
+use WPMailSMTP\Admin\DebugEvents\DebugEvents;
 use WPMailSMTP\Debug;
 use WPMailSMTP\Options;
 use WPMailSMTP\WP;
@@ -101,6 +102,12 @@ class Multisite {
 				[ $this, 'display_network_admin_site_selector' ]
 			);
 
+			// Display network admin email reports site selector.
+			add_action(
+				'wp_mail_smtp_admin_page_reports_reports_display_header',
+				[ $this, 'display_network_admin_site_selector' ]
+			);
+
 			// Handle network admin site selector. This option must be saved early.
 			$this->handle_network_admin_site_selector();
 
@@ -120,9 +127,17 @@ class Multisite {
 			add_action( 'wp-mail-smtp_page_wp-mail-smtp-tools', [ $this, 'switch_blog_to_selection' ], 0 );
 			add_action( 'wp-mail-smtp_page_wp-mail-smtp-tools', 'restore_current_blog', PHP_INT_MAX );
 
+			// Switch blog on email reports page.
+			add_action( 'wp-mail-smtp_page_wp-mail-smtp-reports', [ $this, 'switch_blog_to_selection' ], 0 );
+			add_action( 'wp-mail-smtp_page_wp-mail-smtp-reports', 'restore_current_blog', PHP_INT_MAX );
+
 			// Switch blog on admin actions.
 			add_action( 'admin_init', [ $this, 'switch_blog_to_selection' ], 0 );
 			add_action( 'admin_init', 'restore_current_blog', PHP_INT_MAX );
+
+			// Switch blog on enqueue assets (mainly for js data objects preparation).
+			add_action( 'wp_mail_smtp_admin_area_enqueue_assets', [ $this, 'switch_blog_to_selection' ], 0 );
+			add_action( 'wp_mail_smtp_admin_area_enqueue_assets', 'restore_current_blog', PHP_INT_MAX );
 
 			// Filters options.
 			add_filter( 'wp_mail_smtp_populate_options', [ $this, 'network_admin_filter_options' ] );
@@ -136,6 +151,19 @@ class Multisite {
 
 		// Maybe remove plugin admin pages for network child sites.
 		$this->maybe_remove_plugin_admin_pages_from_child_sites();
+
+		// Fire DB migrations once per day on "init" action instead of "admin_init" for correct DB tables creation on subsites.
+		if (
+			! WP::in_wp_admin() &&
+			! WP::is_doing_ajax() &&
+			! is_network_admin() &&
+			! wp_doing_cron() &&
+			! get_transient( 'wp_mail_smtp_ms_init_migrations_daily' )
+		) {
+			remove_action( 'admin_init', [ wp_mail_smtp(), 'init_migrations' ] );
+			add_action( 'init', [ wp_mail_smtp(), 'init_migrations' ] );
+			set_transient( 'wp_mail_smtp_ms_init_migrations_daily', true, DAY_IN_SECONDS );
+		}
 	}
 
 	/**
@@ -545,7 +573,14 @@ class Multisite {
 			}
 
 			if ( ! empty( $site_debug ) && is_array( $site_debug ) ) {
-				$error = (string) end( $site_debug );
+				$error = end( $site_debug );
+
+				if ( is_int( $error ) ) {
+					switch_to_blog( $site->blog_id );
+					$debug_messages = DebugEvents::get_debug_messages( $error );
+					$error          = ! empty( $debug_messages[0] ) ? $debug_messages[0] : '';
+					restore_current_blog();
+				}
 
 				if ( ! in_array( $error, $unique_notices, true ) ) {
 					$site_info        = get_blog_details( [ 'blog_id' => $site->blog_id ] );
@@ -659,7 +694,8 @@ class Multisite {
 			is_network_admin() &&
 			(
 				wp_mail_smtp()->get_admin()->is_admin_page( 'logs' ) ||
-				( wp_mail_smtp()->get_admin()->is_admin_page( 'tools' ) && $current_tab === 'export' )
+				( wp_mail_smtp()->get_admin()->is_admin_page( 'tools' ) && $current_tab === 'export' ) ||
+				( wp_mail_smtp()->get_admin()->is_admin_page( 'reports' ) && ( $current_tab === '' || $current_tab === 'reports' ) )
 			)
 		) {
 			return true;
@@ -682,6 +718,8 @@ class Multisite {
 			$form_action = wp_mail_smtp()->get_pro()->get_logs()->get_admin_page_url();
 		} elseif ( $current_action === 'wp_mail_smtp_admin_page_tools_export_display_header' ) {
 			$form_action = wp_mail_smtp()->get_admin()->get_parent_pages()['tools']->get_link( 'export' );
+		} elseif ( $current_action === 'wp_mail_smtp_admin_page_reports_reports_display_header' ) {
+			$form_action = wp_mail_smtp()->get_admin()->get_parent_pages()['reports']->get_link( 'reports' );
 		}
 
 		global $blog_id;
@@ -728,7 +766,7 @@ class Multisite {
 
 		$selected_site = get_user_meta( get_current_user_id(), 'wp_mail_smtp_network_admin_site', true );
 
-		if ( ! empty( $selected_site ) ) {
+		if ( ! empty( $selected_site ) && get_blog_details( $selected_site ) !== false ) {
 			switch_to_blog( $selected_site );
 		}
 	}

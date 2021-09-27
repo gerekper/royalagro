@@ -1,0 +1,4 @@
+2021-09-27T06:36:56+00:00 CRITICAL Maximum execution time of 20 seconds exceeded in /home/gerekper/web/royalagro.farm/public_html/wp-admin/includes/update-core.php on line 1106
+
+2021-09-27T06:45:44+00:00 CRITICAL Maximum execution time of 20 seconds exceeded in /home/gerekper/web/royalagro.farm/public_html/wp-content/plugins/redux-framework/redux-core/inc/classes/.classes.php on line 1818
+

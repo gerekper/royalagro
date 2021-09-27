@@ -1,6 +1,5 @@
 <?php
 
-use AC\Asset;
 use AC\Request;
 use ACP\Bookmark\SegmentRepository;
 use ACP\Editing;
@@ -88,13 +87,10 @@ function acp_filtering_helper() {
 }
 
 /**
- * @return Editing\Helper
  * @deprecated 4.5
  */
 function acp_editing_helper() {
-	_deprecated_function( __FUNCTION__, '4.5', 'ACP\Editing\Helper' );
-
-	return new Editing\Helper();
+	_deprecated_function( __FUNCTION__, '4.5' );
 }
 
 /**
@@ -104,7 +100,7 @@ function acp_editing_helper() {
 function acp_editing() {
 	_deprecated_function( __FUNCTION__, '5.1' );
 
-	return new Editing\Addon( AC()->get_storage(), new Asset\Location\Absolute( ACP()->get_url(), ACP()->get_dir() ), new Request() );
+	return new Editing\Addon( AC()->get_storage(), ACP()->get_location(), new Request() );
 }
 
 /**
@@ -114,7 +110,7 @@ function acp_editing() {
 function acp_filtering() {
 	_deprecated_function( __FUNCTION__, '5.1' );
 
-	return new Filtering\Addon( AC()->get_storage(), new Asset\Location\Absolute( ACP()->get_url(), ACP()->get_dir() ), new Request() );
+	return new Filtering\Addon( AC()->get_storage(), ACP()->get_location(), new Request() );
 }
 
 /**
@@ -126,7 +122,7 @@ function acp_sorting() {
 
 	return new Sorting\Addon(
 		AC()->get_storage(),
-		new Asset\Location\Absolute( ACP()->get_url(), ACP()->get_dir() ),
+		ACP()->get_location(),
 		new Sorting\NativeSortableFactory(),
 		new Sorting\ModelFactory(),
 		new SegmentRepository()
@@ -139,7 +135,7 @@ function acp_sorting() {
 function ac_addon_export() {
 	_deprecated_function( __FUNCTION__, '5.1' );
 
-	return new Export\Addon( new Asset\Location\Absolute( ACP()->get_url(), ACP()->get_dir() ) );
+	return new Export\Addon( ACP()->get_location() );
 }
 
 /**
@@ -150,7 +146,7 @@ function ac_addon_search() {
 
 	return new Search\Addon(
 		AC()->get_storage(),
-		new Asset\Location\Absolute( ACP()->get_url(), ACP()->get_dir() ),
+		ACP()->get_location(),
 		new SegmentRepository()
 	);
 }

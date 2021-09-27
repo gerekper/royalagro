@@ -3,9 +3,11 @@
 namespace Yoast\WP\SEO\Premium\Integrations\Admin;
 
 use WPSEO_Admin_Asset_Manager;
+use WPSEO_Premium_Asset_JS_L10n;
 use WPSEO_Shortlinker;
 use Yoast\WP\SEO\Conditionals\Admin_Conditional;
 use Yoast\WP\SEO\Helpers\Options_Helper;
+use Yoast\WP\SEO\Helpers\Post_Type_Helper;
 use Yoast\WP\SEO\Integrations\Integration_Interface;
 use Yoast\WP\SEO\Models\Indexable;
 use Yoast\WP\SEO\Premium\Actions\Link_Suggestions_Action;
@@ -60,6 +62,13 @@ class Workouts_Integration implements Integration_Interface {
 	private $prominent_words_helper;
 
 	/**
+	 * The post type helper.
+	 *
+	 * @var Post_Type_Helper
+	 */
+	private $post_type_helper;
+
+	/**
 	 * {@inheritDoc}
 	 */
 	public static function get_conditionals() {
@@ -75,6 +84,7 @@ class Workouts_Integration implements Integration_Interface {
 	 * @param WPSEO_Shortlinker         $shortlinker                The shortlinker.
 	 * @param Options_Helper            $options_helper             The options helper.
 	 * @param Prominent_Words_Helper    $prominent_words_helper     The prominent words helper.
+	 * @param Post_Type_Helper          $post_type_helper           The post type helper.
 	 */
 	public function __construct(
 		Indexable_Repository $indexable_repository,
@@ -82,7 +92,8 @@ class Workouts_Integration implements Integration_Interface {
 		WPSEO_Admin_Asset_Manager $admin_asset_manager,
 		WPSEO_Shortlinker $shortlinker,
 		Options_Helper $options_helper,
-		Prominent_Words_Helper $prominent_words_helper
+		Prominent_Words_Helper $prominent_words_helper,
+		Post_Type_Helper $post_type_helper
 	) {
 		$this->indexable_repository    = $indexable_repository;
 		$this->link_suggestions_action = $link_suggestions_action;
@@ -90,6 +101,7 @@ class Workouts_Integration implements Integration_Interface {
 		$this->shortlinker             = $shortlinker;
 		$this->options_helper          = $options_helper;
 		$this->prominent_words_helper  = $prominent_words_helper;
+		$this->post_type_helper        = $post_type_helper;
 	}
 
 	/**
@@ -132,10 +144,23 @@ class Workouts_Integration implements Integration_Interface {
 
 		$this->admin_asset_manager->enqueue_style( 'monorepo' );
 		$cornerstone_guide = $this->shortlinker->build_shortlink( 'https://yoa.st/4el' );
+		$orphaned_guide    = $this->shortlinker->build_shortlink( 'https://yoa.st/4fa' );
+		$workouts_option   = $this->options_helper->get( 'workouts' );
+		$object_sub_types  = \array_values(
+			\array_merge(
+				$this->post_type_helper->get_public_post_types(),
+				\get_taxonomies( [ 'public' => true ] )
+			)
+		);
+
+		$excluded_post_types = apply_filters( 'wpseo_indexable_excluded_post_types', [ 'attachment' ] );
+		$object_sub_types    = array_diff( $object_sub_types, $excluded_post_types );
+		$default_category_id = get_option( 'default_category' );
 
 		$cornerstones = $this->indexable_repository->query()
-			->where_raw( 'is_cornerstone=1 AND ( post_status NOT IN ( \'draft\', \'auto-draft\', \'trash\' ) OR post_status IS NULL )' )
+			->where_raw( '(post_status=\'publish\' OR post_status IS NULL) AND is_cornerstone=1' )
 			->where_in( 'object_type', [ 'term', 'post' ] )
+			->where_in( 'object_sub_type', $object_sub_types )
 			->order_by_desc( 'incoming_link_count' )
 			->find_many();
 		$cornerstones = \array_map( [ $this->indexable_repository, 'ensure_permalink' ], $cornerstones );
@@ -159,15 +184,75 @@ class Workouts_Integration implements Integration_Interface {
 		$most_linked = $this->indexable_repository->query()
 			->where_gt( 'incoming_link_count', 0 )
 			->where_not_null( 'incoming_link_count' )
-			->where_raw( '(post_status NOT IN ( \'draft\', \'auto-draft\', \'trash\' ) OR post_status IS NULL)' )
-			->where_raw( '(object_sub_type NOT IN ( \'attachment\' ) OR post_status IS NULL)' )
+			->where_raw( '(post_status=\'publish\' OR post_status IS NULL)' )
+			->where_in( 'object_sub_type', $object_sub_types )
 			->where_in( 'object_type', [ 'term', 'post' ] )
 			->order_by_desc( 'incoming_link_count' )
 			->limit( 20 )
 			->find_many();
 		$most_linked = \array_map( [ $this->indexable_repository, 'ensure_permalink' ], $most_linked );
 
-		\wp_enqueue_style( 'yoast-seo-workouts' );
+		$indexable_ids_in_orphaned_workout = [ 0 ];
+		if (
+			isset( $workouts_option['orphaned']['indexablesByStep'] ) &&
+			is_array( $workouts_option['orphaned']['indexablesByStep'] )
+		) {
+			foreach ( $workouts_option['orphaned']['indexablesByStep'] as $step => $indexables ) {
+				if ( $step === 'removed' ) {
+					continue;
+				}
+				foreach ( $indexables as $indexable_id ) {
+					$indexable_ids_in_orphaned_workout[] = $indexable_id;
+				}
+			}
+
+			$indexables_in_orphaned_workout = $this->indexable_repository->find_by_ids( $indexable_ids_in_orphaned_workout );
+			foreach ( $workouts_option['orphaned']['indexablesByStep'] as $step => $indexables ) {
+				if ( $step === 'removed' ) {
+					continue;
+				}
+				$workouts_option['orphaned']['indexablesByStep'][ $step ] = \array_values(
+					\array_filter(
+						\array_map(
+							function( $indexable_id ) use ( $indexables_in_orphaned_workout, $default_category_id ) {
+								foreach ( $indexables_in_orphaned_workout as $updated_indexable ) {
+									if ( \is_array( $indexable_id ) ) {
+										$indexable_id = $indexable_id['id'];
+									}
+									if ( (int) $indexable_id === $updated_indexable->id ) {
+										if ( $updated_indexable->post_status !== 'publish' && $updated_indexable->post_status !== null ) {
+											return false;
+										}
+										if ( $updated_indexable->object_id === $default_category_id && $updated_indexable->object_type === 'term' ) {
+											return false;
+										}
+										return $updated_indexable;
+									}
+								}
+								return false;
+							},
+							$indexables
+						)
+					)
+				);
+			}
+		}
+
+		$orphaned = $this->indexable_repository->query()
+			->where_raw( '( incoming_link_count is NULL OR incoming_link_count < 3 )' )
+			->where_raw( '( post_status = \'publish\' OR post_status IS NULL )' )
+			->where_raw( '( object_id != %s OR object_type != \'term\' )', $default_category_id )
+			->where_in( 'object_sub_type', $object_sub_types )
+			->where_in( 'object_type', [ 'term', 'post' ] )
+			->where_not_in( 'id', $indexable_ids_in_orphaned_workout )
+			->order_by_asc( 'created_at' )
+			->limit( 10 )
+			->find_many();
+		$orphaned = \array_map( [ $this->indexable_repository, 'ensure_permalink' ], $orphaned );
+
+		\wp_enqueue_style( 'yoast-seo-premium-workouts' );
+		$premium_localization = new WPSEO_Premium_Asset_JS_L10n();
+		$premium_localization->localize_script( 'yoast-seo-premium-workouts' );
 		\wp_enqueue_script( 'yoast-seo-premium-workouts' );
 		\wp_localize_script(
 			'yoast-seo-premium-workouts',
@@ -177,9 +262,12 @@ class Workouts_Integration implements Integration_Interface {
 				'improvables'               => \array_values( $improvables ),
 				'mostLinked'                => \array_map( [ $this, 'map_subtypes_to_singular_name' ], $most_linked ),
 				'cornerstoneGuide'          => $cornerstone_guide,
-				'workouts'                  => $this->options_helper->get( 'workouts' ),
+				'orphanedGuide'             => $orphaned_guide,
+				'workouts'                  => $workouts_option,
 				'cornerstoneOn'             => $this->options_helper->get( 'enable_cornerstone_content' ),
 				'seoDataOptimizationNeeded' => ! $this->prominent_words_helper->is_indexing_completed(),
+				'orphaned'                  => $orphaned,
+				'homeUrl'                   => \home_url(),
 			]
 		);
 	}

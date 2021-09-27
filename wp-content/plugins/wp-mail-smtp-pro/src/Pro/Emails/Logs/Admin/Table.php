@@ -205,11 +205,12 @@ class Table extends \WP_List_Table {
 
 		$columns = [];
 
-		$columns['cb']      = '<input type="checkbox" />';
-		$columns['status']  = '';
-		$columns['subject'] = esc_html__( 'Subject', 'wp-mail-smtp-pro' );
-		$columns['from']    = esc_html__( 'From', 'wp-mail-smtp-pro' );
-		$columns['to']      = esc_html__( 'To', 'wp-mail-smtp-pro' );
+		$columns['cb']        = '<input type="checkbox" />';
+		$columns['status']    = '';
+		$columns['subject']   = esc_html__( 'Subject', 'wp-mail-smtp-pro' );
+		$columns['from']      = esc_html__( 'From', 'wp-mail-smtp-pro' );
+		$columns['to']        = esc_html__( 'To', 'wp-mail-smtp-pro' );
+		$columns['initiator'] = esc_html__( 'Source', 'wp-mail-smtp-pro' );
 
 		if ( wp_mail_smtp()->get_pro()->get_logs()->is_enabled_open_email_tracking() ) {
 			$columns['opened'] = esc_html__( 'Opened', 'wp-mail-smtp-pro' );
@@ -421,6 +422,20 @@ class Table extends \WP_List_Table {
 		}
 
 		return $to_emails;
+	}
+
+	/**
+	 * Display name of the plugin/theme (or WP core) that initiated/called the `wp_mail` function.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param Email $item Email object.
+	 *
+	 * @return string
+	 */
+	public function column_initiator( $item ) {
+
+		return esc_html( $item->get_initiator_name() );
 	}
 
 	/**

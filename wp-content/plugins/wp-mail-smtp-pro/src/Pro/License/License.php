@@ -174,7 +174,7 @@ class License {
 	 */
 	public function display_settings_license_key_field_content( $options ) {
 
-	$key  = 'B5E0B5F8DD8689E6ACA49DD6E6E1A930';
+		$key  = '1415b451be1a13c283ba771ea52d38bb';
 		$type = 'Pro';
 		$license  = $options->get_group( 'license' );
 		$is_valid = ! empty( $key ) &&
@@ -406,6 +406,7 @@ class License {
 	 * @param bool   $ajax
 	 */
 	public function validate_key( $key = '', $forced = false, $ajax = false ) {
+
 		$options = new Options();
 		$all_opt = $options->get_all();
 		$all_opt['license']['type'] = 'pro';

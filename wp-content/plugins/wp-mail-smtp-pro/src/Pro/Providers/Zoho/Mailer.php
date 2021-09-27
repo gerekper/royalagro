@@ -2,6 +2,7 @@
 
 namespace WPMailSMTP\Pro\Providers\Zoho;
 
+use WPMailSMTP\Admin\DebugEvents\DebugEvents;
 use WPMailSMTP\Providers\MailerAbstract;
 use WPMailSMTP\Options as PluginOptions;
 
@@ -348,6 +349,10 @@ class Mailer extends MailerAbstract {
 		}
 
 		$response = wp_safe_remote_post( $this->root_url . 'messages', $params );
+
+		DebugEvents::add_debug(
+			esc_html__( 'An email request was sent to the Zoho Mail API.' )
+		);
 
 		$this->process_response( $response );
 	}

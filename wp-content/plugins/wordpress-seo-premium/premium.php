@@ -29,7 +29,7 @@ class WPSEO_Premium {
 	 *
 	 * @var string
 	 */
-	const PLUGIN_VERSION_NAME = '16.6';
+	const PLUGIN_VERSION_NAME = '16.9';
 
 	/**
 	 * Machine readable version for determining whether an upgrade is needed.
@@ -96,9 +96,6 @@ class WPSEO_Premium {
 			'redirect-export-manager'      => new WPSEO_Premium_Redirect_Export_Manager(),
 			'keyword-export-manager'       => new WPSEO_Premium_Keyword_Export_Manager(),
 			'orphaned-post-filter'         => new WPSEO_Premium_Orphaned_Post_Filter(),
-			// Joost de Valk, April 6th 2019.
-			// Disabling this until we've found a better way to display this data that doesn't become annoying when you have a lot of post types.
-			// 'orphaned-post-notifier'    => new WPSEO_Premium_Orphaned_Post_Notifier( array( 'post', 'page' ), Yoast_Notification_Center::get() ), // Commented out.
 			'request-free-translations'    => new WPSEO_Premium_Free_Translations(),
 			'expose-javascript-shortlinks' => new WPSEO_Premium_Expose_Shortlinks(),
 			'multi-keyword'                => new WPSEO_Multi_Keyword(),
@@ -111,34 +108,6 @@ class WPSEO_Premium {
 		}
 
 		$this->setup();
-	}
-
-	/**
-	 * Adds a feature toggle to the given feature_toggles.
-	 *
-	 * @param array $feature_toggles The feature toggles to extend.
-	 *
-	 * @return array
-	 */
-	public function add_feature_toggles( array $feature_toggles ) {
-		$feature_toggles[] = (object) [
-			'name'            => __( 'Insights', 'wordpress-seo-premium' ),
-			'setting'         => 'enable_metabox_insights',
-			'label'           => __( 'The Insights section in our metabox shows you useful data about your content, like what words you use most often.', 'wordpress-seo-premium' ),
-			'read_more_label' => __( 'Read more about how the insights can help you improve your content.', 'wordpress-seo-premium' ),
-			'read_more_url'   => 'https://yoa.st/2ai',
-			'order'           => 41,
-		];
-		$feature_toggles[] = (object) [
-			'name'            => __( 'Link suggestions', 'wordpress-seo-premium' ),
-			'setting'         => 'enable_link_suggestions',
-			'label'           => __( 'The link suggestions metabox contains a list of posts on your blog with similar content that might be interesting to link to.', 'wordpress-seo-premium' ),
-			'read_more_label' => __( 'Read more about how internal linking can improve your site structure.', 'wordpress-seo-premium' ),
-			'read_more_url'   => 'https://yoa.st/17g',
-			'order'           => 42,
-		];
-
-		return $feature_toggles;
 	}
 
 	/**
@@ -157,7 +126,6 @@ class WPSEO_Premium {
 		if ( is_admin() ) {
 			// Make sure priority is below registration of other implementations of the beacon in News, Video, etc.
 			add_filter( 'wpseo_helpscout_beacon_settings', [ $this, 'filter_helpscout_beacon' ], 1 );
-			add_filter( 'wpseo_feature_toggles', [ $this, 'add_feature_toggles' ] );
 
 			// Only register the yoast i18n when the page is a Yoast SEO page.
 			if ( $this->is_yoast_seo_premium_page( filter_input( INPUT_GET, 'page' ) ) ) {

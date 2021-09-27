@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.0.2] - 2021-08-05
+### Fixed:
+- Fatal PHP error on WP version 5.2 and lower (missing wp_timezone function).
+
+## [3.0.1] - 2021-08-05
+### Fixed:
+- Email Log and Debug Events Source column detection.
+
+## [3.0.0] - 2021-08-03
+### Added:
+- Email Reports - Email Log statistics grouped by email subject.
+- Weekly Email Summary - email sending statistics sent to your inbox.
+- Debug Events - logging all email sending errors and debug events.
+- Support for automatic pro plugin updates.
+- Quick admin area links.
+- New Amazon AWS SES regions: Milan, Cape Town, Bahrain, and GovCloud.
+- Email Log: the source of the sent email. Which plugin/theme (or WP Core) sent the email.
+
+### Changed:
+- Updated the successful Email Test screen.
+- How plugin DB tables are created on WP Multisite installations.
+- Included Microsoft 365 in our existing Outlook mailer labels, for easier recognition.
+- Updated Action Scheduler library to 3.2.1.
+
+### Fixed:
+- Outlook oAuth processing conflicting with other plugins (WP Amelia).
+- WP core admin spinner for the dashboard widget.
+- Email Log: non-ascii character encoding when link tracking is enabled.
+- PHP error when objects implementing `__invoke()` method were used as hook callbacks for admin notices.
+
 ## [2.9.1] - 2021-07-05
 ### Fixed:
 - Email Log: mailto links not working correctly when link tracking is enabled.

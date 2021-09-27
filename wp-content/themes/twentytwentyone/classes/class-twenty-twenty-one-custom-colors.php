@@ -19,8 +19,6 @@ class Twenty_Twenty_One_Custom_Colors {
 	/**
 	 * Instantiate the object.
 	 *
-	 * @access public
-	 *
 	 * @since Twenty Twenty-One 1.0
 	 */
 	public function __construct() {
@@ -38,12 +36,9 @@ class Twenty_Twenty_One_Custom_Colors {
 	/**
 	 * Determine the luminance of the given color and then return #fff or #000 so that the text is always readable.
 	 *
-	 * @access public
-	 *
-	 * @param string $background_color The background color.
-	 *
 	 * @since Twenty Twenty-One 1.0
 	 *
+	 * @param string $background_color The background color.
 	 * @return string (hex color)
 	 */
 	public function custom_get_readable_color( $background_color ) {
@@ -57,12 +52,9 @@ class Twenty_Twenty_One_Custom_Colors {
 	 * Both text and link colors needs to be updated.
 	 * The code below needs to be updated, because the colors are no longer theme mods.
 	 *
-	 * @access public
-	 *
 	 * @since Twenty Twenty-One 1.0
 	 *
 	 * @param string|null $context Can be "editor" or null.
-	 *
 	 * @return string
 	 */
 	public function generate_custom_color_variables( $context = null ) {
@@ -91,8 +83,6 @@ class Twenty_Twenty_One_Custom_Colors {
 	/**
 	 * Customizer & frontend custom color variables.
 	 *
-	 * @access public
-	 *
 	 * @since Twenty Twenty-One 1.0
 	 *
 	 * @return void
@@ -106,8 +96,6 @@ class Twenty_Twenty_One_Custom_Colors {
 	/**
 	 * Editor custom color variables.
 	 *
-	 * @access public
-	 *
 	 * @since Twenty Twenty-One 1.0
 	 *
 	 * @return void
@@ -117,7 +105,7 @@ class Twenty_Twenty_One_Custom_Colors {
 			'twenty-twenty-one-custom-color-overrides',
 			get_theme_file_uri( 'assets/css/custom-color-overrides.css' ),
 			array(),
-			(string) filemtime( get_theme_file_path( 'assets/css/custom-color-overrides.css' ) )
+			wp_get_theme()->get( 'Version' )
 		);
 
 		$background_color = get_theme_mod( 'background_color', 'D1E4DD' );
@@ -131,12 +119,9 @@ class Twenty_Twenty_One_Custom_Colors {
 	 *
 	 * @static
 	 *
-	 * @access public
-	 *
 	 * @since Twenty Twenty-One 1.0
 	 *
 	 * @param string $hex The HEX color.
-	 *
 	 * @return int Returns a number (0-255).
 	 */
 	public static function get_relative_luminance_from_hex( $hex ) {
@@ -162,12 +147,9 @@ class Twenty_Twenty_One_Custom_Colors {
 	/**
 	 * Adds a class to <body> if the background-color is dark.
 	 *
-	 * @access public
-	 *
 	 * @since Twenty Twenty-One 1.0
 	 *
 	 * @param array $classes The existing body classes.
-	 *
 	 * @return array
 	 */
 	public function body_class( $classes ) {

@@ -49,7 +49,30 @@ class ClickLinkEvent extends AbstractInjectableEvent {
 		$html_dom                = new \DOMDocument();
 		$old_libxml_errors_value = libxml_use_internal_errors( true );
 
-		$html_dom->loadHTML( make_clickable( $email_content ) );
+		$html = make_clickable( $email_content );
+
+		// Encode email content if charset is not included.
+		$should_encode = preg_match( '/<meta.*charset=.*>/i', $html ) === 0;
+
+		/**
+		 * Filters whether email content should be encoded.
+		 *
+		 * @since 3.0.0
+		 *
+		 * @param bool $should_encode Whether email content should be encoded.
+		 */
+		$should_encode = apply_filters( 'wp_mail_smtp_pro_emails_logs_tracking_events_injectable_click_link_event_inject_encode_content', $should_encode );
+
+		if ( $should_encode ) {
+
+			// Convert non-ascii code into html-readable stuff.
+			$encoded_html = mb_convert_encoding( $html, 'HTML-ENTITIES', 'auto' );
+			if ( $encoded_html !== false ) {
+				$html = $encoded_html;
+			}
+		}
+
+		$html_dom->loadHTML( $html );
 
 		$links = $html_dom->getElementsByTagName( 'a' );
 

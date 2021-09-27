@@ -127,6 +127,17 @@ class Content_Action implements Indexation_Action_Interface {
 	}
 
 	/**
+	 * The total number of indexables without prominent words.
+	 *
+	 * @param int $limit Limit the number of unindexed objects that are counted.
+	 *
+	 * @return int|false The total number of indexables without prominent words. False if the query fails.
+	 */
+	public function get_limited_unindexed_count( $limit ) {
+		return $this->get_total_unindexed();
+	}
+
+	/**
 	 * Retrieves a batch of indexables, to be indexed for internal linking suggestions.
 	 *
 	 * @deprecated 15.1

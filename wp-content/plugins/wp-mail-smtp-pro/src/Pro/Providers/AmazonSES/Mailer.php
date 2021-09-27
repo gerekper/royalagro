@@ -2,6 +2,7 @@
 
 namespace WPMailSMTP\Pro\Providers\AmazonSES;
 
+use WPMailSMTP\Admin\DebugEvents\DebugEvents;
 use WPMailSMTP\Debug;
 use WPMailSMTP\MailCatcherInterface;
 use WPMailSMTP\Providers\MailerAbstract;
@@ -68,6 +69,10 @@ class Mailer extends MailerAbstract {
 
 		try {
 			$response = $auth->get_client()->sendRawEmail( $data );
+
+			DebugEvents::add_debug(
+				esc_html__( 'An email request was sent to the Amazon SES API.' )
+			);
 
 			$this->process_response( $response );
 		} catch ( \Exception $e ) {

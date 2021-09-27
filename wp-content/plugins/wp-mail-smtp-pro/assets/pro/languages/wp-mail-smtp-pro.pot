@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WP Mail SMTP 2.9.1\n"
+"Project-Id-Version: WP Mail SMTP 3.0.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-mail-smtp-pro\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-07-05T06:08:28+00:00\n"
+"POT-Creation-Date: 2021-08-05T18:52:42+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: wp-mail-smtp-pro\n"
@@ -25,7 +25,7 @@ msgid "Reconfigures the <code>wp_mail()</code> function to use Gmail/Mailgun/Sen
 msgstr ""
 
 #. Author of the plugin
-#: src/Pro/Admin/DashboardWidget.php:539
+#: src/Pro/Admin/DashboardWidget.php:540
 msgid "WPForms"
 msgstr ""
 
@@ -33,161 +33,171 @@ msgstr ""
 msgid "https://wpforms.com/"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:203
+#: src/Pro/Admin/DashboardWidget.php:204
+#: src/Pro/Emails/Logs/Reports/Admin.php:193
 msgid "Confirmed sent emails"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:204
+#: src/Pro/Admin/DashboardWidget.php:205
+#: src/Pro/Emails/Logs/Reports/Admin.php:194
 msgid "Sent emails"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:205
+#: src/Pro/Admin/DashboardWidget.php:206
+#: src/Pro/Emails/Logs/Reports/Admin.php:195
 msgid "Unconfirmed sent emails"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:206
+#: src/Pro/Admin/DashboardWidget.php:207
+#: src/Pro/Emails/Logs/Reports/Admin.php:196
 msgid "Failed emails"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:226
-#: src/Pro/Admin/DashboardWidget.php:420
+#: src/Pro/Admin/DashboardWidget.php:227
+#: src/Pro/Admin/DashboardWidget.php:421
 msgid "WP Mail SMTP"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:283
+#: src/Pro/Admin/DashboardWidget.php:284
 msgid "Pattie the WP Mail SMTP mascot"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:284
+#: src/Pro/Admin/DashboardWidget.php:285
 msgid "Enable Email Logs to View Stats"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:285
+#: src/Pro/Admin/DashboardWidget.php:286
 msgid "Automatically keep track of every email sent from your WordPress site and view valuable statistics right here in your dashboard."
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:287
+#: src/Pro/Admin/DashboardWidget.php:288
 msgid "Enable Email Logging"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:290
-#: src/Pro/Admin/DashboardWidget.php:543
+#: src/Pro/Admin/DashboardWidget.php:291
+#: src/Pro/Admin/DashboardWidget.php:544
 msgid "Learn More"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:317
+#: src/Pro/Admin/DashboardWidget.php:318
 msgid "View Full Log"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:343
+#: src/Pro/Admin/DashboardWidget.php:344
 msgid "Select timespan"
 msgstr ""
 
 #. translators: %d - Number of days.
-#: src/Pro/Admin/DashboardWidget.php:347
+#: src/Pro/Admin/DashboardWidget.php:348
 msgid "Last %d day"
 msgid_plural "Last %d days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Pro/Admin/DashboardWidget.php:364
+#: src/Pro/Admin/DashboardWidget.php:365
+#: src/Pro/Emails/Logs/Reports/Admin.php:191
+#: src/Pro/Emails/Logs/Reports/Admin.php:292
 msgid "All Emails"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:365
+#: src/Pro/Admin/DashboardWidget.php:366
+#: src/Pro/Emails/Logs/Reports/Emails/Summary.php:183
 msgid "Confirmed Emails"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:366
+#: src/Pro/Admin/DashboardWidget.php:367
+#: src/Pro/Emails/Logs/Reports/Emails/Summary.php:190
 msgid "Unconfirmed Emails"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:367
+#: src/Pro/Admin/DashboardWidget.php:368
+#: src/Pro/Emails/Logs/Reports/Emails/Summary.php:198
 msgid "Failed Emails"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:372
+#: src/Pro/Admin/DashboardWidget.php:373
+#: src/Pro/Emails/Logs/Reports/Emails/Summary.php:176
 msgid "Sent Emails"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:376
+#: src/Pro/Admin/DashboardWidget.php:377
 msgid "Select email type"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:403
+#: src/Pro/Admin/DashboardWidget.php:404
 msgid "Graph Style"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:407
+#: src/Pro/Admin/DashboardWidget.php:408
 msgid "Bar"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:411
+#: src/Pro/Admin/DashboardWidget.php:412
 msgid "Line"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:416
+#: src/Pro/Admin/DashboardWidget.php:417
 msgid "Color Scheme"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:424
+#: src/Pro/Admin/DashboardWidget.php:425
 msgid "WordPress"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:428
+#: src/Pro/Admin/DashboardWidget.php:429
 msgid "Save Changes"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:462
+#: src/Pro/Admin/DashboardWidget.php:463
 msgid "No email logs for selected period."
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:509
+#: src/Pro/Admin/DashboardWidget.php:510
 msgid "Table cell icon"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:537
+#: src/Pro/Admin/DashboardWidget.php:538
 msgid "Recommended Plugin:"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:541
+#: src/Pro/Admin/DashboardWidget.php:542
 msgid "Install"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:546
+#: src/Pro/Admin/DashboardWidget.php:547
 msgid "Dismiss recommended plugin block"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:565
+#: src/Pro/Admin/DashboardWidget.php:566
 msgid "No email logs yet"
 msgstr ""
 
-#: src/Pro/Admin/DashboardWidget.php:566
+#: src/Pro/Admin/DashboardWidget.php:567
 msgid "Please check back tomorrow."
 msgstr ""
 
 #. translators: %d number of total emails sent.
-#: src/Pro/Admin/DashboardWidget.php:1060
+#: src/Pro/Admin/DashboardWidget.php:1061
 msgid "%d total"
 msgstr ""
 
 #. translators: %d number of confirmed emails sent.
-#: src/Pro/Admin/DashboardWidget.php:1067
+#: src/Pro/Admin/DashboardWidget.php:1068
 msgid "%d confirmed"
 msgstr ""
 
 #. translators: %d number of unconfirmed emails sent.
-#: src/Pro/Admin/DashboardWidget.php:1074
+#: src/Pro/Admin/DashboardWidget.php:1075
 msgid "%d unconfirmed"
 msgstr ""
 
 #. translators: %d number of failed email sent attempts.
-#: src/Pro/Admin/DashboardWidget.php:1081
+#: src/Pro/Admin/DashboardWidget.php:1082
 msgid "%d failed"
 msgstr ""
 
 #. translators: %d number of sent emails.
-#: src/Pro/Admin/DashboardWidget.php:1093
+#: src/Pro/Admin/DashboardWidget.php:1094
 msgid "%d sent"
 msgstr ""
 
@@ -208,7 +218,7 @@ msgid "Off"
 msgstr ""
 
 #: src/Pro/Emails/Control/Admin/SettingsTab.php:158
-#: src/Pro/Emails/Logs/Admin/SettingsTab.php:290
+#: src/Pro/Emails/Logs/Admin/SettingsTab.php:313
 msgid "Settings were successfully saved."
 msgstr ""
 
@@ -453,7 +463,7 @@ msgid "User activated their new site, or site was added from Network Admin -> Si
 msgstr ""
 
 #: src/Pro/Emails/Logs/Admin/ArchivePage.php:43
-#: src/Pro/Emails/Logs/Admin/SettingsTab.php:42
+#: src/Pro/Emails/Logs/Admin/SettingsTab.php:55
 msgid "Email Log"
 msgstr ""
 
@@ -465,6 +475,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: src/Pro/Emails/Logs/Admin/ArchivePage.php:137
+#: src/Pro/Emails/Logs/Reports/Table.php:319
 msgid "Search Emails"
 msgstr ""
 
@@ -486,7 +497,7 @@ msgid "contains"
 msgstr ""
 
 #: src/Pro/Emails/Logs/Admin/ArchivePage.php:219
-#: src/Pro/Emails/Logs/Admin/Table.php:756
+#: src/Pro/Emails/Logs/Admin/Table.php:771
 #: src/Pro/Emails/Logs/Export/Admin.php:252
 msgid "Content"
 msgstr ""
@@ -507,31 +518,33 @@ msgid "between %1$s and %2$s"
 msgstr ""
 
 #: src/Pro/Emails/Logs/Admin/PageAbstract.php:59
-msgid "Email Logging is Not Enabled"
+msgid "Email Log is Not Enabled"
 msgstr ""
 
-#. translators: %s - settings page URL to configure Email Log.
-#: src/Pro/Emails/Logs/Admin/PageAbstract.php:64
-msgid "Email Logging can be turned on in the WP Mail SMTP plugin settings, under the <a href=\"%s\">Email Log tab</a>. "
+#: src/Pro/Emails/Logs/Admin/PageAbstract.php:62
+msgid "Emails sent when logging is disabled are not stored in the database and will not display when enabled. "
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/PageAbstract.php:75
-msgid "Emails sent when logging is disabled are not stored in the database and will not display when enabled."
+#: src/Pro/Emails/Logs/Admin/PageAbstract.php:66
+#: src/Pro/Emails/Logs/Reports/Admin.php:378
+msgid "Enable Email Log"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/PageAbstract.php:94
+#: src/Pro/Emails/Logs/Admin/PageAbstract.php:84
 msgid "Email Logging is Not Installed Correctly"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/PageAbstract.php:99
+#: src/Pro/Emails/Logs/Admin/PageAbstract.php:89
+#: src/Pro/Emails/Logs/Reports/Admin.php:399
 msgid "The database table was not installed correctly. Please contact plugin support to diagnose and fix the issue. Provide them the error message below:"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/PageAbstract.php:103
+#: src/Pro/Emails/Logs/Admin/PageAbstract.php:93
+#: src/Pro/Emails/Logs/Reports/Admin.php:403
 msgid "For some reason the database table was not installed correctly. Please contact plugin support team to diagnose and fix the issue."
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/PageAbstract.php:107
+#: src/Pro/Emails/Logs/Admin/PageAbstract.php:97
 msgid "Right now all sent emails are not logged."
 msgstr ""
 
@@ -549,12 +562,12 @@ msgid "Compact view"
 msgstr ""
 
 #: src/Pro/Emails/Logs/Admin/PrintPreview.php:148
-#: src/Pro/Providers/Providers.php:191
+#: src/Pro/Providers/Providers.php:217
 msgid "Close"
 msgstr ""
 
 #: src/Pro/Emails/Logs/Admin/PrintPreview.php:149
-#: src/Pro/Emails/Logs/Admin/SinglePage.php:493
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:511
 msgid "Print"
 msgstr ""
 
@@ -573,13 +586,13 @@ msgstr ""
 #: src/Pro/Emails/Logs/Admin/PrintPreview.php:210
 #: src/Pro/Emails/Logs/Admin/SinglePage.php:187
 #: src/Pro/Emails/Logs/Admin/SinglePage.php:202
-#: src/Pro/Emails/Logs/Admin/SinglePage.php:687
 #: src/Pro/Emails/Logs/Admin/SinglePage.php:705
-#: src/Pro/Emails/Logs/Admin/Table.php:394
-#: src/Pro/Emails/Logs/Admin/Table.php:420
-#: src/Pro/Emails/Logs/Admin/Table.php:438
-#: src/Pro/Emails/Logs/Admin/Table.php:458
-#: src/Pro/Emails/Logs/Admin/Table.php:487
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:723
+#: src/Pro/Emails/Logs/Admin/Table.php:395
+#: src/Pro/Emails/Logs/Admin/Table.php:421
+#: src/Pro/Emails/Logs/Admin/Table.php:453
+#: src/Pro/Emails/Logs/Admin/Table.php:473
+#: src/Pro/Emails/Logs/Admin/Table.php:502
 #: src/Pro/Emails/Logs/Export/AbstractData.php:169
 #: src/Pro/Emails/Logs/Export/AbstractData.php:189
 msgid "N/A"
@@ -607,6 +620,7 @@ msgstr ""
 #: src/Pro/Emails/Logs/Admin/SinglePage.php:229
 #: src/Pro/Emails/Logs/Admin/Table.php:210
 #: src/Pro/Emails/Logs/Export/Export.php:129
+#: src/Pro/Emails/Logs/Reports/Table.php:60
 msgid "Subject"
 msgstr ""
 
@@ -621,108 +635,108 @@ msgstr ""
 msgid "Mailer"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SettingsTab.php:73
+#: src/Pro/Emails/Logs/Admin/SettingsTab.php:92
 msgid "Enable Log"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SettingsTab.php:81
+#: src/Pro/Emails/Logs/Admin/SettingsTab.php:100
 msgid "Keep a record of basic details for all emails sent from your site."
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SettingsTab.php:85
+#: src/Pro/Emails/Logs/Admin/SettingsTab.php:104
 msgid "This will allow you to view both general information (date sent, subject, email status) and technical information (all the headers, including TO, CC, BCC) for all sent emails."
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SettingsTab.php:99
+#: src/Pro/Emails/Logs/Admin/SettingsTab.php:118
 msgid "Log Email Content"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SettingsTab.php:107
+#: src/Pro/Emails/Logs/Admin/SettingsTab.php:126
 msgid "Keep a record of all content for all emails sent from your site."
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SettingsTab.php:111
+#: src/Pro/Emails/Logs/Admin/SettingsTab.php:130
 msgid "Email content may contain personal information, such as plain text passwords. Please carefully consider before enabling this option, as it will store all sent email content to your site’s database."
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SettingsTab.php:125
+#: src/Pro/Emails/Logs/Admin/SettingsTab.php:144
 msgid "Save Attachments"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SettingsTab.php:133
+#: src/Pro/Emails/Logs/Admin/SettingsTab.php:152
 msgid "Save the sent attachments to the Email Log."
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SettingsTab.php:137
+#: src/Pro/Emails/Logs/Admin/SettingsTab.php:156
 msgid "All sent attachments will be saved to your WordPress uploads folder. If your site sends a lot of big unique attachments, this could potentially cause some disk space issue."
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SettingsTab.php:151
+#: src/Pro/Emails/Logs/Admin/SettingsTab.php:170
 msgid "Open Email Tracking"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SettingsTab.php:159
+#: src/Pro/Emails/Logs/Admin/SettingsTab.php:178
 msgid "Track when an email is opened."
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SettingsTab.php:163
+#: src/Pro/Emails/Logs/Admin/SettingsTab.php:182
 msgid "This will allow you to see which emails were opened by the recipients."
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SettingsTab.php:177
+#: src/Pro/Emails/Logs/Admin/SettingsTab.php:196
 msgid "Click Link Tracking"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SettingsTab.php:185
+#: src/Pro/Emails/Logs/Admin/SettingsTab.php:204
 msgid "Track clicked links in emails."
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SettingsTab.php:189
+#: src/Pro/Emails/Logs/Admin/SettingsTab.php:208
 msgid "This will allow you to see which links were clicked in the sent emails."
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SettingsTab.php:203
+#: src/Pro/Emails/Logs/Admin/SettingsTab.php:222
 msgid "Log Retention Period"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SettingsTab.php:210
+#: src/Pro/Emails/Logs/Admin/SettingsTab.php:229
 msgid "Forever"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SettingsTab.php:217
+#: src/Pro/Emails/Logs/Admin/SettingsTab.php:236
 msgid "Email logs older than the selected period will be permanently deleted from the database."
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SettingsTab.php:305
+#: src/Pro/Emails/Logs/Admin/SettingsTab.php:328
 msgid "1 Day"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SettingsTab.php:306
+#: src/Pro/Emails/Logs/Admin/SettingsTab.php:329
 msgid "1 Week"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SettingsTab.php:307
+#: src/Pro/Emails/Logs/Admin/SettingsTab.php:330
 msgid "1 Month"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SettingsTab.php:308
+#: src/Pro/Emails/Logs/Admin/SettingsTab.php:331
 msgid "6 Months"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SettingsTab.php:309
+#: src/Pro/Emails/Logs/Admin/SettingsTab.php:332
 msgid "1 Year"
 msgstr ""
 
 #. translators: %d - days count.
-#: src/Pro/Emails/Logs/Admin/SettingsTab.php:323
+#: src/Pro/Emails/Logs/Admin/SettingsTab.php:346
 msgid "%d Day"
 msgid_plural "%d Days"
 msgstr[0] ""
 msgstr[1] ""
 
 #: src/Pro/Emails/Logs/Admin/SinglePage.php:60
-#: src/Pro/Emails/Logs/Admin/SinglePage.php:456
-#: src/Pro/Emails/Logs/Admin/Table.php:297
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:474
+#: src/Pro/Emails/Logs/Admin/Table.php:298
 msgid "View Email"
 msgstr ""
 
@@ -751,131 +765,143 @@ msgstr ""
 msgid "Headers"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SinglePage.php:287
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:286
+#: src/Pro/Emails/Logs/Admin/Table.php:213
+msgid "Source"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:294
 #: src/Pro/SiteHealth.php:187
 msgid "Error"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SinglePage.php:312
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:319
 msgid "Log Details"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SinglePage.php:322
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:329
 #: src/Pro/Emails/Logs/Admin/Table.php:85
-#: src/Pro/Emails/Logs/Admin/Table.php:257
-#: src/Pro/Emails/Logs/Email.php:370
+#: src/Pro/Emails/Logs/Admin/Table.php:258
+#: src/Pro/Emails/Logs/Email.php:388
 msgid "Delivered"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SinglePage.php:325
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:332
 #: src/Pro/Emails/Logs/Admin/Table.php:86
-#: src/Pro/Emails/Logs/Admin/Table.php:259
-#: src/Pro/Emails/Logs/Email.php:368
-#: src/Pro/Providers/Providers.php:181
+#: src/Pro/Emails/Logs/Admin/Table.php:260
+#: src/Pro/Emails/Logs/Email.php:386
+#: src/Pro/Emails/Logs/Reports/Emails/Summary.php:85
+#: src/Pro/Emails/Logs/Reports/Table.php:64
+#: src/Pro/Providers/Providers.php:207
 msgid "Sent"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SinglePage.php:328
-#: src/Pro/Emails/Logs/Admin/Table.php:261
-#: src/Pro/Emails/Logs/Email.php:369
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:335
+#: src/Pro/Emails/Logs/Admin/Table.php:262
+#: src/Pro/Emails/Logs/Email.php:387
 msgid "Waiting for confirmation"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SinglePage.php:331
-#: src/Pro/Emails/Logs/Admin/Table.php:263
-#: src/Pro/Emails/Logs/Email.php:367
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:338
+#: src/Pro/Emails/Logs/Admin/Table.php:264
+#: src/Pro/Emails/Logs/Email.php:385
 msgid "Not Sent"
 msgstr ""
 
 #. translators: %s - Sent status text (like Delivered or Not Sent, ...)
-#: src/Pro/Emails/Logs/Admin/SinglePage.php:341
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:348
 msgid "Status: %s"
 msgstr ""
 
 #. translators: %s - name of the mailer.
-#: src/Pro/Emails/Logs/Admin/SinglePage.php:363
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:370
 msgid "Mailer: %s"
 msgstr ""
 
 #. translators: %s - number of attachments.
-#: src/Pro/Emails/Logs/Admin/SinglePage.php:377
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:384
 msgid "Attachments: %s"
 msgstr ""
 
 #. translators: %s - ID of an email log.
-#: src/Pro/Emails/Logs/Admin/SinglePage.php:387
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:394
 msgid "Log ID: %s"
 msgstr ""
 
 #. translators: %s - whether email was opened.
-#: src/Pro/Emails/Logs/Admin/SinglePage.php:397
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:404
 msgid "Opened: %s"
 msgstr ""
 
 #. translators: %s - whether one of email links was clicked.
-#: src/Pro/Emails/Logs/Admin/SinglePage.php:408
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:415
 msgid "Clicked: %s"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SinglePage.php:433
+#. translators: %s - email source.
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:426
+msgid "Source: %s"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:451
 msgid "Delete Log"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SinglePage.php:498
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:516
 msgid "Export (CSV)"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SinglePage.php:503
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:521
 msgid "Export (XLSX)"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SinglePage.php:508
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:526
 msgid "Export (EML)"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SinglePage.php:516
-#: src/Pro/Emails/Logs/Admin/Table.php:521
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:534
+#: src/Pro/Emails/Logs/Admin/Table.php:536
 #: src/Pro/Providers/AmazonSES/Identity.php:190
-#: src/Pro/Providers/Providers.php:182
+#: src/Pro/Providers/Providers.php:208
 msgid "Resend"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SinglePage.php:532
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:550
 msgid "Actions"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SinglePage.php:582
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:600
 #: src/Pro/Emails/Logs/Export/Export.php:133
 msgid "Attachments"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SinglePage.php:638
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:656
 msgid "Something went wrong"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SinglePage.php:640
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:658
 msgid "You are trying to access an email log entry that is no longer available or never existed."
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SinglePage.php:643
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:661
 msgid "Please use the \"Back to Email Log\" button to return to the list of all saved emails."
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SinglePage.php:691
 #: src/Pro/Emails/Logs/Admin/SinglePage.php:709
-#: src/Pro/Emails/Logs/Admin/Table.php:442
-#: src/Pro/Emails/Logs/Admin/Table.php:462
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:727
+#: src/Pro/Emails/Logs/Admin/Table.php:457
+#: src/Pro/Emails/Logs/Admin/Table.php:477
 #: src/Pro/Emails/Logs/Export/AbstractData.php:173
 #: src/Pro/Emails/Logs/Export/AbstractData.php:193
-#: src/Pro/Emails/Logs/Logs.php:434
-#: src/Pro/Providers/Providers.php:192
+#: src/Pro/Emails/Logs/Logs.php:424
+#: src/Pro/Providers/Providers.php:218
 msgid "Yes"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/SinglePage.php:692
 #: src/Pro/Emails/Logs/Admin/SinglePage.php:710
-#: src/Pro/Emails/Logs/Admin/Table.php:443
-#: src/Pro/Emails/Logs/Admin/Table.php:463
+#: src/Pro/Emails/Logs/Admin/SinglePage.php:728
+#: src/Pro/Emails/Logs/Admin/Table.php:458
+#: src/Pro/Emails/Logs/Admin/Table.php:478
 #: src/Pro/Emails/Logs/Export/AbstractData.php:174
 #: src/Pro/Emails/Logs/Export/AbstractData.php:194
 msgid "No"
@@ -886,6 +912,8 @@ msgid "Pending"
 msgstr ""
 
 #: src/Pro/Emails/Logs/Admin/Table.php:88
+#: src/Pro/Emails/Logs/Reports/Emails/Summary.php:123
+#: src/Pro/Emails/Logs/Reports/Table.php:70
 msgid "Failed"
 msgstr ""
 
@@ -893,64 +921,61 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/Table.php:215
+#: src/Pro/Emails/Logs/Admin/Table.php:216
 #: src/Pro/Emails/Logs/Export/Export.php:172
 msgid "Opened"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/Table.php:219
+#: src/Pro/Emails/Logs/Admin/Table.php:220
 #: src/Pro/Emails/Logs/Export/Export.php:173
 msgid "Clicked"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/Table.php:222
+#: src/Pro/Emails/Logs/Admin/Table.php:223
 msgid "Date Sent"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/Table.php:287
+#: src/Pro/Emails/Logs/Admin/Table.php:288
 msgid "View Log"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/Table.php:306
-#: src/Pro/Emails/Logs/Admin/Table.php:520
+#: src/Pro/Emails/Logs/Admin/Table.php:307
+#: src/Pro/Emails/Logs/Admin/Table.php:535
 #: src/Pro/Providers/AmazonSES/Identity.php:199
 msgid "Delete"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/Table.php:754
+#: src/Pro/Emails/Logs/Admin/Table.php:769
 #: src/Pro/Emails/Logs/Export/Admin.php:246
 msgid "Email Addresses"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/Table.php:755
+#: src/Pro/Emails/Logs/Admin/Table.php:770
 #: src/Pro/Emails/Logs/Export/Admin.php:249
 msgid "Subject & Headers"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/Table.php:786
+#: src/Pro/Emails/Logs/Admin/Table.php:801
 msgid "No emails found."
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/Table.php:788
+#: src/Pro/Emails/Logs/Admin/Table.php:803
 msgid "No emails have been logged for now."
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/Table.php:823
+#: src/Pro/Emails/Logs/Admin/Table.php:838
 #: src/Pro/Emails/Logs/Export/Admin.php:230
+#: src/Pro/Emails/Logs/Reports/Table.php:373
 msgid "Select a date range"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/Table.php:827
+#: src/Pro/Emails/Logs/Admin/Table.php:842
+#: src/Pro/Emails/Logs/Reports/Table.php:377
 msgid "Filter"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Admin/Table.php:839
+#: src/Pro/Emails/Logs/Admin/Table.php:854
 msgid "Delete All Logs"
-msgstr ""
-
-#. translators: %1$s - WP Mail SMTP, %2$s - error message.
-#: src/Pro/Emails/Logs/Attachments/Migration.php:133
-msgid "There was an error while upgrading the Email Log Attachments database. Please contact %1$s support with this information: %2$s."
 msgstr ""
 
 #: src/Pro/Emails/Logs/CanResendEmailTrait.php:38
@@ -974,6 +999,7 @@ msgid "Additional Information"
 msgstr ""
 
 #: src/Pro/Emails/Logs/Export/Admin.php:129
+#: src/Pro/Emails/Logs/Reports/Table.php:354
 msgid "Custom Date Range"
 msgstr ""
 
@@ -986,8 +1012,8 @@ msgid "Download Export File"
 msgstr ""
 
 #: src/Pro/Emails/Logs/Export/Admin.php:149
-#: src/Pro/Emails/Logs/Logs.php:435
-#: src/Pro/Providers/Providers.php:190
+#: src/Pro/Emails/Logs/Logs.php:425
+#: src/Pro/Providers/Providers.php:216
 msgid "Cancel"
 msgstr ""
 
@@ -1102,91 +1128,221 @@ msgstr ""
 msgid "No Email Logs found. It looks like the Email Logs database table is missing."
 msgstr ""
 
-#: src/Pro/Emails/Logs/Logs.php:181
+#: src/Pro/Emails/Logs/Logs.php:186
 msgid "Number of log entries per page:"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Logs.php:429
+#: src/Pro/Emails/Logs/Logs.php:419
 msgid "Are you sure that you want to delete this email log? This action cannot be undone."
 msgstr ""
 
-#: src/Pro/Emails/Logs/Logs.php:430
-#: src/Pro/Providers/Providers.php:186
+#: src/Pro/Emails/Logs/Logs.php:420
+#: src/Pro/Providers/Providers.php:212
 msgid "OK"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Logs.php:431
-#: src/Pro/Providers/Providers.php:188
+#: src/Pro/Emails/Logs/Logs.php:421
+#: src/Pro/Providers/Providers.php:214
 msgid "Icon"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Logs.php:432
+#: src/Pro/Emails/Logs/Logs.php:422
 msgid "Are you sure you want to permanently delete all email logs?"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Logs.php:433
+#: src/Pro/Emails/Logs/Logs.php:423
 msgid "Heads up!"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Logs.php:436
+#: src/Pro/Emails/Logs/Logs.php:426
 msgid "An error occurred!"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Logs.php:455
+#: src/Pro/Emails/Logs/Logs.php:445
 msgid "Are you sure you want to resend selected emails?"
 msgstr ""
 
-#: src/Pro/Emails/Logs/Logs.php:456
+#: src/Pro/Emails/Logs/Logs.php:446
 msgid "Queuing emails..."
 msgstr ""
 
-#: src/Pro/Emails/Logs/Logs.php:463
+#: src/Pro/Emails/Logs/Logs.php:453
 msgid "Sending email..."
 msgstr ""
 
-#: src/Pro/Emails/Logs/Logs.php:464
+#: src/Pro/Emails/Logs/Logs.php:454
 #: src/Pro/Emails/Logs/Resend.php:56
 msgid "Invalid recipients email addresses."
 msgstr ""
 
-#: src/Pro/Emails/Logs/Logs.php:700
-#: src/Pro/Emails/Logs/Logs.php:940
+#: src/Pro/Emails/Logs/Logs.php:690
+#: src/Pro/Emails/Logs/Logs.php:930
+#: src/Pro/Emails/Logs/Reports/Admin.php:423
 #: src/Pro/Emails/Logs/Resend.php:42
 #: src/Pro/Emails/Logs/Resend.php:96
-#: src/Pro/Multisite.php:816
+#: src/Pro/Multisite.php:854
 msgid "You don't have the capability to perform this action."
 msgstr ""
 
-#: src/Pro/Emails/Logs/Logs.php:749
+#: src/Pro/Emails/Logs/Logs.php:739
 msgid "Email Log entry was successfully deleted."
 msgstr ""
 
-#: src/Pro/Emails/Logs/Logs.php:756
+#: src/Pro/Emails/Logs/Logs.php:746
 msgid "Email Log entries were successfully deleted."
 msgstr ""
 
-#: src/Pro/Emails/Logs/Logs.php:763
+#: src/Pro/Emails/Logs/Logs.php:753
 msgid "There was an error while processing your request, and no email log entries were deleted. Please try again."
 msgstr ""
 
-#: src/Pro/Emails/Logs/Logs.php:936
+#: src/Pro/Emails/Logs/Logs.php:926
+#: src/Pro/Emails/Logs/Reports/Admin.php:419
 #: src/Pro/Emails/Logs/Resend.php:38
 #: src/Pro/Emails/Logs/Resend.php:92
 msgid "Access rejected."
 msgstr ""
 
-#: src/Pro/Emails/Logs/Logs.php:959
+#: src/Pro/Emails/Logs/Logs.php:949
 msgid "All email log entries were deleted successfully."
 msgstr ""
 
 #. translators: %s - WPDB error message.
-#: src/Pro/Emails/Logs/Logs.php:964
+#: src/Pro/Emails/Logs/Logs.php:954
 msgid "There was an issue while trying to delete all email log entries. Error message: %s"
 msgstr ""
 
-#. translators: %1$s - WP Mail SMTP, %2$s - error message.
-#: src/Pro/Emails/Logs/Migration.php:136
-msgid "There was an error while upgrading the database. Please contact %1$s support with this information: %2$s."
+#: src/Pro/Emails/Logs/Reports/Admin.php:192
+#: src/Pro/Emails/Logs/Reports/Admin.php:290
+msgid "Search Results"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Admin.php:197
+msgid "Opened emails"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Admin.php:198
+msgid "Clicked links"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Admin.php:232
+msgid "Number of items per page:"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Admin.php:299
+msgid "total"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Admin.php:303
+msgid "sent"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Admin.php:307
+msgid "confirmed"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Admin.php:310
+msgid "unconfirmed"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Admin.php:314
+msgid "failed"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Admin.php:318
+msgid "open count"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Admin.php:323
+msgid "click count"
+msgstr ""
+
+#. translators: %1$d - items count; %2$s - search term.
+#: src/Pro/Emails/Logs/Reports/Admin.php:341
+msgid "Found <strong>%1$d items</strong> where the subject contains <i>%2$s</i>"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Admin.php:371
+msgid "Email Log Required"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Admin.php:374
+msgid "Email Reports provide valuable insights by aggregating data from the Email Log, allowing you to measure the success of your emails."
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Admin.php:395
+msgid "Email Reports are Not Installed Correctly"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Emails/Summary.php:60
+msgid "Hi there,"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Emails/Summary.php:63
+msgid "Let’s see how your emails performed in the past week."
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Emails/Summary.php:71
+#: src/Pro/Emails/Logs/Reports/Emails/Summary.php:168
+msgid "Total Emails"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Emails/Summary.php:97
+#: src/Pro/Emails/Logs/Reports/Table.php:66
+msgid "Confirmed"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Emails/Summary.php:109
+#: src/Pro/Emails/Logs/Reports/Table.php:67
+msgid "Unconfirmed"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Emails/Summary.php:140
+msgid "Last Week’s Top Emails"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Emails/Summary.php:145
+msgid "View All Emails"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Emails/Summary.php:206
+msgid "Opened Emails"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Emails/Summary.php:219
+msgid "Clicked Links"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Table.php:61
+msgid "Total"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Table.php:73
+msgid "Open Count"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Table.php:77
+msgid "Click Count"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Table.php:80
+msgid "Graph"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Table.php:284
+msgid "No email reports are available."
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Table.php:351
+msgid "Last 7 days"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Table.php:352
+msgid "Last 14 days"
+msgstr ""
+
+#: src/Pro/Emails/Logs/Reports/Table.php:353
+msgid "Last 30 days"
 msgstr ""
 
 #: src/Pro/Emails/Logs/Resend.php:48
@@ -1219,20 +1375,15 @@ msgid "Emails were added to the send queue."
 msgstr ""
 
 #: src/Pro/Emails/Logs/Resend.php:150
-msgid "Are you sure you want to resend email?"
+msgid "Are you sure you want to resend this email?"
 msgstr ""
 
 #: src/Pro/Emails/Logs/Resend.php:153
-msgid "Email Recipients (separated by comma)"
-msgstr ""
-
-#. translators: %1$s - WP Mail SMTP, %2$s - error message.
-#: src/Pro/Emails/Logs/Tracking/Migration.php:133
-msgid "There was an error while upgrading the email tracking database. Please contact %1$s support with this information: %2$s."
+msgid "Email recipients (separate with a comma)"
 msgstr ""
 
 #: src/Pro/License/License.php:123
-#: src/Pro/Providers/Providers.php:216
+#: src/Pro/Providers/Providers.php:242
 msgid "Something went wrong. Please try again later."
 msgstr ""
 
@@ -1314,191 +1465,207 @@ msgstr ""
 msgid "Your WP Mail SMTP Pro license is active and valid."
 msgstr ""
 
-#: src/Pro/Multisite.php:187
+#: src/Pro/Multisite.php:215
 msgid "The results could not be loaded."
 msgstr ""
 
-#: src/Pro/Multisite.php:188
+#: src/Pro/Multisite.php:216
 msgid "Loading more results..."
 msgstr ""
 
-#: src/Pro/Multisite.php:189
+#: src/Pro/Multisite.php:217
 msgid "No results found."
 msgstr ""
 
-#: src/Pro/Multisite.php:190
+#: src/Pro/Multisite.php:218
 msgid "Searching..."
 msgstr ""
 
-#: src/Pro/Multisite.php:223
+#: src/Pro/Multisite.php:251
 msgid "Multisite"
 msgstr ""
 
-#: src/Pro/Multisite.php:230
+#: src/Pro/Multisite.php:258
 msgid "Settings control"
 msgstr ""
 
-#: src/Pro/Multisite.php:238
+#: src/Pro/Multisite.php:266
 msgid "Make the plugin settings global network-wide"
 msgstr ""
 
-#: src/Pro/Multisite.php:242
+#: src/Pro/Multisite.php:270
 msgid "If disabled, each subsite of this multisite will have its own WP Mail SMTP settings page that has to be configured separately."
 msgstr ""
 
-#: src/Pro/Multisite.php:244
+#: src/Pro/Multisite.php:272
 msgid "If enabled, these global settings will manage email sending for all subsites of this multisite."
 msgstr ""
 
-#: src/Pro/Multisite.php:360
+#: src/Pro/Multisite.php:388
 msgid "Sorry, you are not allowed to access the WP Mail SMTP settings for individual network subsite. The network-wide setting is enabled, so the plugin settings are only accessible in the network admin dashboard."
 msgstr ""
 
-#: src/Pro/Multisite.php:620
+#: src/Pro/Multisite.php:655
 msgid "Clear these errors"
 msgstr ""
 
-#: src/Pro/Multisite.php:691
+#: src/Pro/Multisite.php:729
 msgid "Site"
 msgstr ""
 
-#: src/Pro/Pro.php:395
+#: src/Pro/Pro.php:406
 msgid "Go to WP Mail SMTP Settings page"
 msgstr ""
 
-#: src/Pro/Pro.php:396
+#: src/Pro/Pro.php:407
 msgid "Settings"
 msgstr ""
 
-#: src/Pro/Pro.php:402
+#: src/Pro/Pro.php:413
 msgid "Go to WPMailSMTP.com documentation page"
 msgstr ""
 
-#: src/Pro/Pro.php:403
+#: src/Pro/Pro.php:414
 msgid "Docs"
 msgstr ""
 
-#: src/Pro/Pro.php:409
+#: src/Pro/Pro.php:420
 msgid "Go to WPMailSMTP.com support page"
 msgstr ""
 
-#: src/Pro/Pro.php:410
+#: src/Pro/Pro.php:421
 msgid "Support"
 msgstr ""
 
-#: src/Pro/Pro.php:467
+#: src/Pro/Pro.php:499
 msgid "There was an error while processing the authentication request. Please try again."
 msgstr ""
 
-#: src/Pro/Pro.php:474
+#: src/Pro/Pro.php:506
 msgid "There was an error while processing the authentication request. Please make sure that you have Client ID and Client Secret both valid and saved."
 msgstr ""
 
 #. translators: %s - error code, returned by Zoho API.
-#: src/Pro/Pro.php:482
+#: src/Pro/Pro.php:514
 msgid "There was an error while processing the authentication request: %s. Please try again."
 msgstr ""
 
-#: src/Pro/Pro.php:489
+#: src/Pro/Pro.php:521
 msgid "There was an error while processing the authentication request. Please recheck your Region, Client ID and Client Secret and try again."
 msgstr ""
 
-#: src/Pro/Pro.php:498
+#: src/Pro/Pro.php:530
 msgid "You have successfully linked the current site with your Microsoft API project. Now you can start sending emails through Outlook."
 msgstr ""
 
-#: src/Pro/Pro.php:504
+#: src/Pro/Pro.php:536
 msgid "You have successfully linked the current site with your Zoho Mail API project. Now you can start sending emails through Zoho Mail."
 msgstr ""
 
-#: src/Pro/Pro.php:542
+#: src/Pro/Pro.php:566
 msgid "Auto-updates are not available."
 msgstr ""
 
-#: src/Pro/Pro.php:758
-#: src/Pro/Providers/Providers.php:252
-#: src/Pro/Providers/Providers.php:296
+#: src/Pro/Pro.php:790
+#: src/Pro/Providers/Providers.php:278
+#: src/Pro/Providers/Providers.php:322
 msgid "Please provide a valid email address."
 msgstr ""
 
-#: src/Pro/Pro.php:760
+#: src/Pro/Pro.php:792
 msgid "Please provide a domain."
 msgstr ""
 
-#: src/Pro/Pro.php:836
+#: src/Pro/Pro.php:868
 msgid "You don't have the permission to perform this action."
 msgstr ""
 
-#: src/Pro/Pro.php:842
+#: src/Pro/Pro.php:874
 msgid "Please enter a valid license key!"
 msgstr ""
 
-#: src/Pro/Pro.php:852
+#: src/Pro/Pro.php:884
 msgid "License functionality missing!"
 msgstr ""
 
-#: src/Pro/Providers/AmazonSES/Auth.php:124
+#: src/Pro/Providers/AmazonSES/Auth.php:129
 msgid "US East (N. Virginia)"
 msgstr ""
 
-#: src/Pro/Providers/AmazonSES/Auth.php:125
+#: src/Pro/Providers/AmazonSES/Auth.php:130
 msgid "US East (Ohio)"
 msgstr ""
 
-#: src/Pro/Providers/AmazonSES/Auth.php:126
+#: src/Pro/Providers/AmazonSES/Auth.php:131
 msgid "US West (N. California)"
 msgstr ""
 
-#: src/Pro/Providers/AmazonSES/Auth.php:127
+#: src/Pro/Providers/AmazonSES/Auth.php:132
 msgid "US West (Oregon)"
 msgstr ""
 
-#: src/Pro/Providers/AmazonSES/Auth.php:128
+#: src/Pro/Providers/AmazonSES/Auth.php:133
 msgid "EU (Ireland)"
 msgstr ""
 
-#: src/Pro/Providers/AmazonSES/Auth.php:129
+#: src/Pro/Providers/AmazonSES/Auth.php:134
 msgid "EU (London)"
 msgstr ""
 
-#: src/Pro/Providers/AmazonSES/Auth.php:130
+#: src/Pro/Providers/AmazonSES/Auth.php:135
 msgid "EU (Paris)"
 msgstr ""
 
-#: src/Pro/Providers/AmazonSES/Auth.php:131
+#: src/Pro/Providers/AmazonSES/Auth.php:136
 msgid "EU (Frankfurt)"
 msgstr ""
 
-#: src/Pro/Providers/AmazonSES/Auth.php:132
+#: src/Pro/Providers/AmazonSES/Auth.php:137
 msgid "EU (Stockholm)"
 msgstr ""
 
-#: src/Pro/Providers/AmazonSES/Auth.php:133
-msgid "Asia Pacific (Mumbai)"
-msgstr ""
-
-#: src/Pro/Providers/AmazonSES/Auth.php:134
-msgid "Asia Pacific (Tokyo)"
-msgstr ""
-
-#: src/Pro/Providers/AmazonSES/Auth.php:135
-msgid "Asia Pacific (Seoul)"
-msgstr ""
-
-#: src/Pro/Providers/AmazonSES/Auth.php:136
-msgid "Asia Pacific (Singapore)"
-msgstr ""
-
-#: src/Pro/Providers/AmazonSES/Auth.php:137
-msgid "Asia Pacific (Sydney)"
-msgstr ""
-
 #: src/Pro/Providers/AmazonSES/Auth.php:138
-msgid "Canada (Central)"
+msgid "EU (Milan)"
 msgstr ""
 
 #: src/Pro/Providers/AmazonSES/Auth.php:139
+msgid "Asia Pacific (Mumbai)"
+msgstr ""
+
+#: src/Pro/Providers/AmazonSES/Auth.php:140
+msgid "Asia Pacific (Tokyo)"
+msgstr ""
+
+#: src/Pro/Providers/AmazonSES/Auth.php:141
+msgid "Asia Pacific (Seoul)"
+msgstr ""
+
+#: src/Pro/Providers/AmazonSES/Auth.php:142
+msgid "Asia Pacific (Singapore)"
+msgstr ""
+
+#: src/Pro/Providers/AmazonSES/Auth.php:143
+msgid "Asia Pacific (Sydney)"
+msgstr ""
+
+#: src/Pro/Providers/AmazonSES/Auth.php:144
+msgid "Africa (Cape Town)"
+msgstr ""
+
+#: src/Pro/Providers/AmazonSES/Auth.php:145
+msgid "Canada (Central)"
+msgstr ""
+
+#: src/Pro/Providers/AmazonSES/Auth.php:146
+msgid "Middle East (Bahrain)"
+msgstr ""
+
+#: src/Pro/Providers/AmazonSES/Auth.php:147
 msgid "South America (São Paulo)"
+msgstr ""
+
+#: src/Pro/Providers/AmazonSES/Auth.php:148
+msgid "GovCloud (US-West)"
 msgstr ""
 
 #: src/Pro/Providers/AmazonSES/IdentitiesTable.php:64
@@ -1518,7 +1685,7 @@ msgid "Email"
 msgstr ""
 
 #: src/Pro/Providers/AmazonSES/IdentitiesTable.php:100
-#: src/Pro/Providers/Providers.php:310
+#: src/Pro/Providers/Providers.php:336
 msgid "Domain"
 msgstr ""
 
@@ -1543,11 +1710,11 @@ msgstr ""
 msgid "Resend a verification email to this address"
 msgstr ""
 
-#: src/Pro/Providers/AmazonSES/Mailer.php:97
+#: src/Pro/Providers/AmazonSES/Mailer.php:102
 msgid "Amazon SES request failed (empty response)."
 msgstr ""
 
-#: src/Pro/Providers/AmazonSES/Mailer.php:101
+#: src/Pro/Providers/AmazonSES/Mailer.php:106
 msgid "Something went wrong. Please try again."
 msgstr ""
 
@@ -1677,21 +1844,21 @@ msgstr ""
 msgid "For information on how to add TXT DNS records, please <br><a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">refer to the Amazon SES documentation</a>."
 msgstr ""
 
-#: src/Pro/Providers/Outlook/Mailer.php:559
+#: src/Pro/Providers/Outlook/Mailer.php:564
 msgid "Outlook did not provide any specific reason why the email failed to send. Usually this means an attachment bigger than the allowed 4MB was attached to the email."
 msgstr ""
 
 #: src/Pro/Providers/Outlook/Options.php:31
-msgid "Outlook"
+msgid "Outlook / 365"
 msgstr ""
 
 #. translators: %s - URL to Outlook doc.
 #: src/Pro/Providers/Outlook/Options.php:34
-msgid "Send emails using your personal or business Outlook account, all while keeping your login credentials safe.<br><br>Read our <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">Outlook documentation</a> to learn how to configure Outlook and improve your email deliverability."
+msgid "Send emails using your personal or business Microsoft Outlook / 365  account, all while keeping your login credentials safe.<br><br>Read our <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">Outlook documentation</a> to learn how to configure Outlook and improve your email deliverability."
 msgstr ""
 
 #: src/Pro/Providers/Outlook/Options.php:48
-msgid "The Outlook mailer is a great choice if you're already using paid email services with Microsoft, as you'll have the benefit of high email sending limits without signing up for a separate service. Due to the fairly complex setup, however, this option is recommended for more technical users.<br><br>If you'd prefer a more straightforward setup, then we'd recommend considering one of the other mailer options."
+msgid "The Microsoft Outlook / 365 mailer is a great choice if you're already using paid email services with Microsoft, as you'll have the benefit of high email sending limits without signing up for a separate service. Due to the fairly complex setup, however, this option is recommended for more technical users.<br><br>If you'd prefer a more straightforward setup, then we'd recommend considering one of the other mailer options."
 msgstr ""
 
 #: src/Pro/Providers/Outlook/Options.php:92
@@ -1753,58 +1920,58 @@ msgstr ""
 msgid "To access this section, please add an Application ID and Application Password, then click the Save Settings button."
 msgstr ""
 
-#: src/Pro/Providers/Providers.php:180
+#: src/Pro/Providers/Providers.php:206
 msgid "Sending..."
 msgstr ""
 
-#: src/Pro/Providers/Providers.php:183
+#: src/Pro/Providers/Providers.php:209
 msgid "Are you sure you want to delete this email address? You will need to add and verify it again if you want to use it in the future."
 msgstr ""
 
-#: src/Pro/Providers/Providers.php:184
+#: src/Pro/Providers/Providers.php:210
 msgid "Something went wrong, please reload the page and try again."
 msgstr ""
 
-#: src/Pro/Providers/Providers.php:185
+#: src/Pro/Providers/Providers.php:211
 msgid "Please make sure that the email address is valid."
 msgstr ""
 
-#: src/Pro/Providers/Providers.php:189
+#: src/Pro/Providers/Providers.php:215
 msgid "Resend failed!"
 msgstr ""
 
-#: src/Pro/Providers/Providers.php:193
+#: src/Pro/Providers/Providers.php:219
 msgid "Done"
 msgstr ""
 
-#: src/Pro/Providers/Providers.php:194
+#: src/Pro/Providers/Providers.php:220
 msgid "Are you sure you want to delete this domain? You will need to add and verify it again if you want to use it in the future."
 msgstr ""
 
-#: src/Pro/Providers/Providers.php:195
+#: src/Pro/Providers/Providers.php:221
 msgid "Add verified domain"
 msgstr ""
 
-#: src/Pro/Providers/Providers.php:196
+#: src/Pro/Providers/Providers.php:222
 msgid "The AWS SES identities could not load because of an error."
 msgstr ""
 
-#: src/Pro/Providers/Providers.php:254
-#: src/Pro/Providers/Providers.php:298
+#: src/Pro/Providers/Providers.php:280
+#: src/Pro/Providers/Providers.php:324
 msgid "Please provide a domain name."
 msgstr ""
 
 #. translators: %s - email address.
-#: src/Pro/Providers/Providers.php:266
+#: src/Pro/Providers/Providers.php:292
 msgid "Please check inbox of <code>%s</code> address for a verification email."
 msgstr ""
 
 #. translators: %1$s - "Email address" or "Domain"; %2$s - actual email address or domain name.
-#: src/Pro/Providers/Providers.php:307
+#: src/Pro/Providers/Providers.php:333
 msgid "%1$s <code>%2$s</code> was successfully deleted."
 msgstr ""
 
-#: src/Pro/Providers/Providers.php:310
+#: src/Pro/Providers/Providers.php:336
 msgid "Email address"
 msgstr ""
 

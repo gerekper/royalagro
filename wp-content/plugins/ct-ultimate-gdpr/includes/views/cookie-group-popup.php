@@ -240,13 +240,7 @@ if ( empty( $options['cookie_modal_always_visible'] ) ) :
 		<?php echo ct_gdpr_set_class_attr( $attr_array ); ?>
                 ">
 
-	<?php
-	if( isset( $options['cookie_gear_close_box'] ) && $options['cookie_gear_close_box'] == 'on' ){
-		?>
-        <a href = "javascript:void(0);" id = "ct-ultimate-cookie-close-modal" title="Decline Cookie"><i class="fa fa-times"></i></a>
-		<?php
-	}
-	?>
+    
 
 	<?php echo $popup_panel_open_tag; ?>
     <div id="ct-ultimate-gdpr-cookie-content" <?php echo $content_style; ?>>
@@ -259,13 +253,32 @@ if ( empty( $options['cookie_modal_always_visible'] ) ) :
 	<?php echo $btn_wrapper; ?>
     <div
             id="ct-ultimate-gdpr-cookie-accept"
+			class="cookie-buttons"
             style="border-color: <?php echo esc_attr( $accept_border_color );
 			?>; background-color: <?php echo esc_attr( $accept_bg_color );
 			?>; color: <?php echo esc_attr( $accept_color );
 			?>;">
 		<?php echo $accept_btn_content; ?>
     </div>
-
+	
+	<?php
+    if( isset( $options['cookie_gear_close_box'] ) && $options['cookie_gear_close_box'] == 'on'  && empty($options['cookie_close_text_modal'])){
+        ?>
+        <a href = "javascript:void(0);" id = "ct-ultimate-cookie-close-modal" class="close-modal-icon"> <i class="fa fa-times"></i></a>
+        <?php
+    }else if (isset( $options['cookie_gear_close_box'] ) && $options['cookie_gear_close_box'] == 'on'  && !empty($options['cookie_close_text_modal'])){ ?>
+	<div id="ct_ultimate-gdpr-cookie-reject"
+	class="cookie-buttons"
+	style="border-color: <?php echo esc_attr( $accept_border_color );
+	?>; background-color: <?php echo esc_attr( $accept_bg_color );
+	?>; color: <?php echo esc_attr( $accept_color );
+	?>;">
+        <a href = "javascript:void(0);" id = "ct-ultimate-cookie-close-modal" class="close-modal-text">
+			<?php echo $options['cookie_close_text_modal']; ?> <i class="fa fa-times"></i>
+		</a>
+	</div>
+    <?php } ?>
+	
 	<?php
 	if (
 		! $_10_set
@@ -277,6 +290,7 @@ if ( empty( $options['cookie_modal_always_visible'] ) ) :
 		?>
         <div
                 id="ct-ultimate-gdpr-cookie-read-more"
+				class="cookie-buttons"
                 style="border-color: <?php echo esc_attr( $options['cookie_button_border_color'] );
 				?>; background-color: <?php echo esc_attr( $options['cookie_button_bg_color'] );
 				?>; color: <?php echo esc_attr( $options['cookie_button_text_color'] );
@@ -294,6 +308,7 @@ if ( empty( $options['cookie_modal_always_visible'] ) ) :
 
     <div
     id="ct-ultimate-gdpr-cookie-change-settings"
+	class="cookie-buttons"
     style="border-color:<?php echo $adv_set_border_color;
 	?>;background-color:<?php echo $adv_set_bg_color;
 	?>;color:<?php echo $adv_set_color;
@@ -715,7 +730,7 @@ if ( empty( $options['cookie_modal_always_visible'] ) ) :
 
 								<?php
 
-								$option_string = ct_ultimate_gdpr_get_value("cookie_group_popup_features_available_group_4", $options, "Essential: Remember your cookie permission setting; Essential: Allow session cookies; Essential: Gather information you input into a contact forms, newsletter and other forms across all pages; Essential: Keep track of what you input in a shopping cart; Essential: Authenticate that you are logged into your user account; Essential: Remember language version you selected; Functionality: Remember social media settingsl Functionality: Remember selected region and country; Analytics: Keep track of your visited pages and interaction taken; Analytics: Keep track about your location and region based on your IP number; Analytics: Keep track of the time spent on each page; Analytics: Increase the data quality of the statistics functions;");
+								$option_string = ct_ultimate_gdpr_get_value("cookie_group_popup_features_available_group_4", $options, "Essential: Remember your cookie permission setting; Essential: Allow session cookies; Essential: Gather information you input into a contact forms, newsletter and other forms across all pages; Essential: Keep track of what you input in a shopping cart; Essential: Authenticate that you are logged into your user account; Essential: Remember language version you selected; Functionality: Remember social media settings; Functionality: Remember selected region and country; Analytics: Keep track of your visited pages and interaction taken; Analytics: Keep track about your location and region based on your IP number; Analytics: Keep track of the time spent on each page; Analytics: Increase the data quality of the statistics functions;");
 								$features = array_filter(array_map('trim', explode(';', $option_string)));
 
 								foreach ($features as $feature) :
@@ -758,7 +773,7 @@ if ( empty( $options['cookie_modal_always_visible'] ) ) :
 
 								<?php
 
-								$option_string = ct_ultimate_gdpr_get_value("cookie_group_popup_features_available_group_5", $options, "Essential: Remember your cookie permission setting; Essential: Allow session cookies; Essential: Gather information you input into a contact forms, newsletter and other forms across all pages; Essential: Keep track of what you input in a shopping cart; Essential: Authenticate that you are logged into your user account; Essential: Remember language version you selected; Functionality: Remember social media settingsl Functionality: Remember selected region and country; Analytics: Keep track of your visited pages and interaction taken; Analytics: Keep track about your location and region based on your IP number; Analytics: Keep track of the time spent on each page; Analytics: Increase the data quality of the statistics functions; Advertising: Use information for tailored advertising with third parties; Advertising: Allow you to connect to social sitesl Advertising: Identify device you are using; Advertising: Gather personally identifiable information such as name and location");
+								$option_string = ct_ultimate_gdpr_get_value("cookie_group_popup_features_available_group_5", $options, "Essential: Remember your cookie permission setting; Essential: Allow session cookies; Essential: Gather information you input into a contact forms, newsletter and other forms across all pages; Essential: Keep track of what you input in a shopping cart; Essential: Authenticate that you are logged into your user account; Essential: Remember language version you selected; Functionality: Remember social media settings; Functionality: Remember selected region and country; Analytics: Keep track of your visited pages and interaction taken; Analytics: Keep track about your location and region based on your IP number; Analytics: Keep track of the time spent on each page; Analytics: Increase the data quality of the statistics functions; Advertising: Use information for tailored advertising with third parties; Advertising: Allow you to connect to social sitesl Advertising: Identify device you are using; Advertising: Gather personally identifiable information such as name and location");
 								$features = array_filter(array_map('trim', explode(';', $option_string)));
 
 								foreach ($features as $feature) :

