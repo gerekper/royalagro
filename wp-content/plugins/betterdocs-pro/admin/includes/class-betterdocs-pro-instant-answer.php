@@ -2,10 +2,6 @@
 /**
  * BetterDocs_Pro_IA class
  */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class BetterDocs_Pro_IA {
 
     const DEV_MODE = false;
@@ -435,8 +431,10 @@ class BetterDocs_Pro_IA {
 	}
 
     public static function make_url( $settings, $base = false ) {
+        $sub_string_arr_include = [];
+        $query_string_as_array = [];
+        $sub_string_url = '';
         $site_url = get_rest_url();
-
         $base_url = $site_url . 'wp/v2/docs';
 
         if( $base == true ) {
@@ -447,15 +445,14 @@ class BetterDocs_Pro_IA {
             $base_url = $site_url . 'wp/v2/doc_category';
         }
 
-        if ( has_filter('wpml_current_language') ) {
+        if ( has_filter('wpml_current_language') ) { // get wpml language
             $lang = apply_filters( 'wpml_current_language', NULL );
-            $base_url = $base_url . '?lang=' . $lang;
+            if ($lang) {
+                $sub_string_arr_include[] = 'lang=' . $lang;
+            }
         }
 
         $url = $base_url . '&per_page=10';
-
-        $query_string_as_array = [];
-        $sub_string_url = '';
 
         $parsed_url = parse_url( $base_url );
         $query_string_as_array = isset( $parsed_url['path'] ) ? explode( '&', $parsed_url['path'] ) : '';
@@ -464,7 +461,11 @@ class BetterDocs_Pro_IA {
                 case 'docs' :
                     $sub_string_url = is_array( $settings['docs_list'] ) ? implode( ',', $settings['docs_list'] ) : '';
                     if( ! empty( $sub_string_url ) ) {
-                        $query_string_as_array[] = 'include=' . $sub_string_url;
+                        $sub_string_arr = explode(",", $sub_string_url);
+                        foreach ($sub_string_arr as $value) {
+                            $sub_string_arr_include[] = 'include[]='.$value;
+                        }
+                        $query_string_as_array[] = implode("&", $sub_string_arr_include);
                     }
                     break;
                 case 'docs_categories' :
@@ -474,7 +475,17 @@ class BetterDocs_Pro_IA {
                     }
                     break;
             }
-            $query_string_as_array = implode( '&', $query_string_as_array );
+
+            $firstKey = reset($query_string_as_array);
+            $othersKey = array_slice($query_string_as_array, 1);
+
+            if ( $othersKey ) {
+                $query_string_as_array = $firstKey . '?' . implode( '&', $othersKey );
+            } else {
+                $query_string_as_array = $firstKey;
+            }
+
+
             if( ! empty( $query_string_as_array ) ) {
                 $parsed_url['path'] = $query_string_as_array;
             }

@@ -41,11 +41,7 @@ if ( ! class_exists( 'Gravity_Api' ) ) {
 		 * @return bool|WP_Error
 		 */
 		public function register_current_site( $license_key, $is_md5 = false ) {
-			update_option( 'gf_site_key','gravityforms.com' );
-			update_option( 'gf_site_secret', 'gravityforms.com' );
-		    GFCommon::log_debug( __METHOD__ . '(): site registration successful. Site Key: ' . $result->key );
-		    return true;
-/*
+
 			$body              = array();
 			$body['site_name'] = get_bloginfo( 'name' );
 			$body['site_url']  = get_bloginfo( 'url' );
@@ -59,7 +55,7 @@ if ( ! class_exists( 'Gravity_Api' ) ) {
 			GFCommon::log_debug( __METHOD__ . '(): registering site' );
 
 			$result = $this->request( 'sites', $body, 'POST', array( 'headers' => $this->get_license_auth_header( $license_key ) ) );
-			$result = $this->prepare_response_body( $result );
+			$result = $this->prepare_response_body( $result, true );
 
 			if ( is_wp_error( $result ) ) {
 				GFCommon::log_error( __METHOD__ . '(): error registering site. ' . $result->get_error_message() );
@@ -73,7 +69,6 @@ if ( ! class_exists( 'Gravity_Api' ) ) {
 			GFCommon::log_debug( __METHOD__ . '(): site registration successful. Site Key: ' . $result['key'] );
 
 			return true;
-			*/
 		}
 
 		/**
@@ -107,7 +102,7 @@ if ( ! class_exists( 'Gravity_Api' ) ) {
 			GFCommon::log_debug( __METHOD__ . '(): refreshing license info' );
 
 			$result = $this->request( 'sites/' . $site_key, $body, 'PUT', array( 'headers' => $this->get_site_auth_header( $site_key, $site_secret ) ) );
-			$result = $this->prepare_response_body( $result );
+			$result = $this->prepare_response_body( $result, true );
 
 			if ( is_wp_error( $result ) ) {
 
@@ -143,7 +138,7 @@ if ( ! class_exists( 'Gravity_Api' ) ) {
 			);
 
 			$result = $this->request( 'sites/' . $site_key, $body, 'PUT', array( 'headers' => $this->get_site_auth_header( $site_key, $site_secret ) ) );
-			$result = $this->prepare_response_body( $result );
+			$result = $this->prepare_response_body( $result, true );
 
 			if ( is_wp_error( $result ) ) {
 
@@ -176,7 +171,7 @@ if ( ! class_exists( 'Gravity_Api' ) ) {
 
 			$resource = 'licenses/' . $key . '/check?' . build_query( $params );
 			$result   = $this->request( $resource, null );
-			$result   = $this->prepare_response_body( $result );
+			$result   = $this->prepare_response_body( $result, true );
 
 			if ( is_wp_error( $result ) ) {
 
@@ -205,7 +200,7 @@ if ( ! class_exists( 'Gravity_Api' ) ) {
 		 *
 		 * @return false|array
 		 */
-		public function get_plugins() {
+		public function get_plugins_info() {
 			$version_info = $this->get_version_info();
 
 			if ( empty( $version_info['offerings'] ) ) {
@@ -374,18 +369,20 @@ if ( ! class_exists( 'Gravity_Api' ) ) {
 		 *
 		 * @since unknown
 		 * @since 2.5     Support a WP_Error being returned.
+		 * @since 2.5     Allow results to be returned as array with second param.
 		 *
 		 * @param WP_Error|WP_REST_Response $raw_response The API response.
+		 * @param bool                      $as_array     Whether to return the response as an array or object.
 		 *
-		 * @return array|WP_Error
+		 * @return array|object|WP_Error
 		 */
-		public function prepare_response_body( $raw_response ) {
+		public function prepare_response_body( $raw_response, $as_array = false ) {
 
 			if ( is_wp_error( $raw_response ) ) {
 				return $raw_response;
 			}
 
-			$response_body    = json_decode( wp_remote_retrieve_body( $raw_response ), true );
+			$response_body    = json_decode( wp_remote_retrieve_body( $raw_response ), $as_array );
 			$response_code    = wp_remote_retrieve_response_code( $raw_response );
 			$response_message = wp_remote_retrieve_response_message( $raw_response );
 

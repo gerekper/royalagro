@@ -8,10 +8,6 @@
  */
 
 add_shortcode('betterdocs_article_reactions', 'betterdocs_article_reactions');
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 function betterdocs_article_reactions($atts, $content = null)
 {
     $get_args = shortcode_atts(

@@ -32,19 +32,19 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'd88d4ede59747c454db2164edc22989a5951107f',
+    'reference' => '37c40a0d07875ddb15832ed679f1e0de74e31432',
     'name' => 'yoast/wordpress-seo-premium',
   ),
   'versions' => 
   array (
     'antecedent/patchwork' => 
     array (
-      'pretty_version' => '2.1.12',
-      'version' => '2.1.12.0',
+      'pretty_version' => '2.1.15',
+      'version' => '2.1.15.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'b98e046dd4c0acc34a0846604f06f6111654d9ea',
+      'reference' => '0430ceaac7f447f1778c199ec19d7e4362a6f961',
     ),
     'brain/monkey' => 
     array (
@@ -182,12 +182,12 @@ private static $installed = array (
     ),
     'php-parallel-lint/php-parallel-lint' => 
     array (
-      'pretty_version' => 'v1.3.0',
-      'version' => '1.3.0.0',
+      'pretty_version' => 'v1.3.1',
+      'version' => '1.3.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => '772a954e5f119f6f5871d015b23eabed8cbdadfb',
+      'reference' => '761f3806e30239b5fcd90a0a45d41dc2138de192',
     ),
     'phpcompatibility/php-compatibility' => 
     array (
@@ -209,12 +209,12 @@ private static $installed = array (
     ),
     'phpcompatibility/phpcompatibility-wp' => 
     array (
-      'pretty_version' => '2.1.1',
-      'version' => '2.1.1.0',
+      'pretty_version' => '2.1.2',
+      'version' => '2.1.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'b7dc0cd7a8f767ccac5e7637550ea1c50a67b09e',
+      'reference' => 'a792ab623069f0ce971b2417edef8d9632e32f75',
     ),
     'phpdocumentor/reflection-common' => 
     array (
@@ -491,12 +491,12 @@ private static $installed = array (
     ),
     'symfony/polyfill-ctype' => 
     array (
-      'pretty_version' => 'v1.22.0',
-      'version' => '1.22.0.0',
+      'pretty_version' => 'v1.23.0',
+      'version' => '1.23.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'c6c942b1ac76c82448322025e084cadc56048b4e',
+      'reference' => '46cd95797e9df938fdd2b03693b5fca5e64b01ce',
     ),
     'symfony/polyfill-mbstring' => 
     array (
@@ -509,21 +509,21 @@ private static $installed = array (
     ),
     'symfony/polyfill-php80' => 
     array (
-      'pretty_version' => 'v1.22.0',
-      'version' => '1.22.0.0',
+      'pretty_version' => 'v1.23.1',
+      'version' => '1.23.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'dc3063ba22c2a1fd2f45ed856374d79114998f91',
+      'reference' => '1100343ed1a92e3a38f9ae122fc0eb21602547be',
     ),
     'symfony/yaml' => 
     array (
-      'pretty_version' => 'v4.4.18',
-      'version' => '4.4.18.0',
+      'pretty_version' => 'v4.4.29',
+      'version' => '4.4.29.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'bbce94f14d73732340740366fcbe63363663a403',
+      'reference' => '3abcc4db06d4e776825eaa3ed8ad924d5bc7432a',
     ),
     'theseer/fdomdocument' => 
     array (
@@ -536,12 +536,12 @@ private static $installed = array (
     ),
     'webmozart/assert' => 
     array (
-      'pretty_version' => '1.9.1',
-      'version' => '1.9.1.0',
+      'pretty_version' => '1.10.0',
+      'version' => '1.10.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'bafc69caeb4d49c39fd0779086c03a3738cbb389',
+      'reference' => '6964c76c7804814a842473e0c8fd15bab0f18e25',
     ),
     'wp-coding-standards/wpcs' => 
     array (
@@ -563,21 +563,21 @@ private static $installed = array (
     ),
     'yoast/phpunit-polyfills' => 
     array (
-      'pretty_version' => '0.2.0',
-      'version' => '0.2.0.0',
+      'pretty_version' => '1.0.1',
+      'version' => '1.0.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'c48e4cf0c44b2d892540846aff19fb0468627bab',
+      'reference' => 'f014fb21c2b0038fd329515d59025af42fb98715',
     ),
     'yoast/wordpress-seo' => 
     array (
-      'pretty_version' => '16.9',
-      'version' => '16.9.0.0',
+      'pretty_version' => '17.4',
+      'version' => '17.4.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '43c84c96fb44fdd4b5aecebc17a835e6a87a92b4',
+      'reference' => '5299718ce3125a32bf111788881bf3c4f1d3f224',
     ),
     'yoast/wordpress-seo-premium' => 
     array (
@@ -586,25 +586,25 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'd88d4ede59747c454db2164edc22989a5951107f',
+      'reference' => '37c40a0d07875ddb15832ed679f1e0de74e31432',
     ),
     'yoast/wp-test-utils' => 
     array (
-      'pretty_version' => '0.2.1',
-      'version' => '0.2.1.0',
+      'pretty_version' => '0.2.2',
+      'version' => '0.2.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'c5cdabd58f2aa6f2a93f734cf48125f880c90101',
+      'reference' => '896f7640d86162ff7a0dc6ce59f8837f284521c5',
     ),
     'yoast/yoastcs' => 
     array (
-      'pretty_version' => '2.1.0',
-      'version' => '2.1.0.0',
+      'pretty_version' => '2.2.0',
+      'version' => '2.2.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8cc5cb79b950588f05a45d68c3849ccfcfef6298',
+      'reference' => '0b82e890bda80571fe054166ef2535cb9cb54a13',
     ),
   ),
 );

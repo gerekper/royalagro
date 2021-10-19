@@ -610,7 +610,9 @@
     .betterdocs-footer-wrapper .bd-ia-feedback-response .feedback-success-title {
       font-size: 13px;
       color: #fff;
-      font-weight: 600; }
+      font-weight: 600;
+      margin: 0;
+      padding: 0; }
   .betterdocs-footer-wrapper .betterdocs-footer-label {
     color: white;
     font-weight: 500; }

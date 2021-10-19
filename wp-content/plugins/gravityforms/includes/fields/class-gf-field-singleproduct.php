@@ -5,10 +5,6 @@ if ( ! class_exists( 'GFForms' ) ) {
 }
 
 
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class GF_Field_SingleProduct extends GF_Field {
 
 	public $type = 'singleproduct';
@@ -190,12 +186,12 @@ class GF_Field_SingleProduct extends GF_Field {
 		}
 
 		if ( $this->disableQuantity || ! $force_frontend_label ) {
-			return $field_label;
+			$label = esc_html( $field_label );
+		} else {
+			$product_quantity_sub_label = $this->get_product_quantity_label( $this->formId );
+			$label                      = '<span class="gfield_label_product">' . esc_html( $field_label ) . '</span>' . ' <span class="screen-reader-text">' . $product_quantity_sub_label . '</span>';
 		}
-
-		$product_quantity_sub_label = $this->get_product_quantity_label( $this->formId );
-
-		return '<span class="gfield_label_product">' . esc_html( $field_label ) . '</span>' . ' <span class="screen-reader-text">' . $product_quantity_sub_label . '</span>';
+		return $label;
 	}
 
 	public function get_value_entry_detail( $value, $currency = '', $use_text = false, $format = 'html', $media = 'screen' ) {

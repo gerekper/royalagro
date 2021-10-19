@@ -11,10 +11,6 @@ use Gravity_Forms\Gravity_Forms\Settings\Settings;
  *
  * Class GF_Confirmations
  */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class GF_Confirmation {
 
 	use Redirects_On_Save;

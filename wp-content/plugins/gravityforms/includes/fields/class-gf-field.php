@@ -19,10 +19,6 @@ if ( ! class_exists( 'GFForms' ) ) {
  *  Defining how the entry value is displayed when merge tags are processed, on the entries list and entry detail pages
  *  Defining how the entry value should be formatted when used in csv exports and by framework based add-ons
  */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class GF_Field extends stdClass implements ArrayAccess {
 
 	const SUPPRESS_DEPRECATION_NOTICE = true;
@@ -393,7 +389,7 @@ class GF_Field extends stdClass implements ArrayAccess {
 
 		$field_label = $this->get_field_label( $force_frontend_label, $value );
 		if ( ! in_array( $this->inputType, array( 'calculation', 'singleproduct' ), true ) ) {
-			// Calculation field put a screen reader text in the label so do not escape it.
+			// Calculation and Single Product field add a screen reader text to the label so do not escape it.
 			$field_label = esc_html( $field_label );
 		}
 

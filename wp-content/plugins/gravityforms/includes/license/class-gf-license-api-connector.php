@@ -92,7 +92,7 @@ class GF_License_API_Connector extends GF_API_Connector {
 		);
 
 		if ( $license_info->can_be_used() ) {
-			$this->cache->set( 'rg_gforms_license_info_' . $key, serialize( $license_info ), true, HOUR_IN_SECONDS );
+			$this->cache->set( 'rg_gforms_license_info_' . $key, serialize( $license_info ), true, DAY_IN_SECONDS );
 		}
 
 		return $license_info;
@@ -119,11 +119,11 @@ class GF_License_API_Connector extends GF_API_Connector {
 		}
 
 		$license_info = $this->response_factory->create(
-			$this->strategy->check_license()
+			$this->strategy->check_license( $key )
 		);
 
 		if ( $license_info->is_valid() ) {
-			$this->cache->set( 'rg_gforms_license_' . $key, serialize( $license_info ), true, HOUR_IN_SECONDS );
+			$this->cache->set( 'rg_gforms_license_' . $key, serialize( $license_info ), true, DAY_IN_SECONDS );
 		}
 
 
@@ -222,11 +222,9 @@ class GF_License_API_Connector extends GF_API_Connector {
 			return $plugins;
 		}
 
-		$plugins = $this->strategy->get_plugins();
+		$plugins = $this->strategy->get_plugins_info();
 
-		$this->cache->set( 'rg_gforms_plugins', $plugins, true, HOUR_IN_SECONDS );
-
-		$this->strategy->update_site_data();
+		$this->cache->set( 'rg_gforms_plugins', $plugins, true, DAY_IN_SECONDS );
 
 		return $plugins;
 	}

