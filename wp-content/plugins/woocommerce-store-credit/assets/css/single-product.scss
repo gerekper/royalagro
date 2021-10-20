@@ -1,0 +1,34 @@
+/**
+ * single-product.scss
+ * Single product styles.
+ *
+ * This file is deprecated and will be removed in future releases.
+ * Use store-credit.scss instead.
+ *
+ * @package    WC_Store_Credit/Assets/CSS
+ * @since      3.2.0
+ * @deprecated 3.7.0
+ */
+
+.wc-store-credit-product-container {
+
+	label span.optional {
+		display: none;
+	}
+
+	.send-to-different-customer {
+
+		label span {
+
+			.theme-storefront & {
+				font-weight: 300;
+				vertical-align: middle;
+			}
+		}
+	}
+
+	/* Fix for theme twentytwenty */
+	.single-product form.cart & input[type="checkbox"] {
+		width: auto;
+	}
+}
