@@ -33,6 +33,7 @@ if ( ! class_exists( 'Ultimate_CountDown' ) ) {
 		 */
 		public function count_down_scripts() {
 
+			Ultimate_VC_Addons::ultimate_register_script( 'ult-countdown-dependent', 'countdown-dependent', false, array( 'jquery' ), ULTIMATE_VERSION, false );
 			Ultimate_VC_Addons::ultimate_register_script( 'jquery.timecircle', 'countdown', false, array( 'jquery' ), ULTIMATE_VERSION, false );
 			Ultimate_VC_Addons::ultimate_register_script( 'jquery.countdown', 'count-timer', false, array( 'jquery' ), ULTIMATE_VERSION, false );
 

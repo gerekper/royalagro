@@ -11,11 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * BSF_Extension_Installer Extension installer.
- */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
+ */
 class BSF_Extension_Installer {
 
 	/**

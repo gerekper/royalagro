@@ -4,7 +4,7 @@
  * Plugin URI: https://brainstormforce.com/demos/ultimate/
  * Author: Brainstorm Force
  * Author URI: https://www.brainstormforce.com
- * Version: 3.19.8
+ * Version: 3.19.9
  * Description: Includes WPBakery Page Builder premium addon elements like Icon, Info Box, Interactive Banner, Flip Box, * Info List & Counter. Best of all - provides A Font Icon Manager allowing users to upload / delete custom icon fonts.
  * Text Domain: ultimate_vc
  * License: GPL version 2 or later - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -29,7 +29,7 @@ if ( ! defined( '__ULTIMATE_ROOT__' ) ) {
 }
 
 if ( ! defined( 'ULTIMATE_VERSION' ) ) {
-	define( 'ULTIMATE_VERSION', '3.19.8' );
+	define( 'ULTIMATE_VERSION', '3.19.9' );
 }
 
 if ( ! defined( 'ULTIMATE_URL' ) ) {
@@ -1024,6 +1024,7 @@ if ( ! class_exists( 'Ultimate_VC_Addons' ) ) {
 						wp_enqueue_script( 'ult-slick-custom' );
 					}
 					if ( stripos( $post_content, '[ult_countdown' ) ) {
+						wp_enqueue_script( 'ult-countdown-dependent' );
 						wp_enqueue_script( 'jquery.timecircle' );
 						wp_enqueue_script( 'jquery.countdown' );
 					}

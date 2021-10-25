@@ -311,10 +311,10 @@ if ( ! class_exists( 'AIO_Icon_Manager' ) ) {
 				}
 				if ( ! empty( $icon_set ) ) {
 					$output .= '<p><strong>' . esc_html( $set_name ) . '</strong></p>';
-					$output .= '<li title="no-icon" data-icons="none" data-icons-tag="none,blank" style="cursor: pointer;" id="' . esc_attr( $id ) . '"></li>';
+					$output .= '<li title="no-icon" data-icons="none" data-icons-tag="none,blank" style="cursor: pointer;" data-id="' . esc_attr( $id ) . '"></li>';
 					foreach ( $icon_set as $icons ) {
 						foreach ( $icons as $icon ) {
-							$output .= '<li title="' . esc_attr( $icon['class'] ) . '" data-icons="' . esc_attr( $font ) . '-' . esc_attr( $icon['class'] ) . '" data-icons-tag="' . esc_attr( $icon['tags'] ) . '" id="' . esc_attr( $id ) . '">';
+							$output .= '<li title="' . esc_attr( $icon['class'] ) . '" data-icons="' . esc_attr( $font ) . '-' . esc_attr( $icon['class'] ) . '" data-icons-tag="' . esc_attr( $icon['tags'] ) . '" data-id="' . esc_attr( $id ) . '">';
 							$output .= '<i class="icon ' . esc_attr( $font ) . '-' . esc_attr( $icon['class'] ) . '"></i><label class="icon">' . esc_html( $icon['class'] ) . '</label></li>';
 						}
 					}
